@@ -1,47 +1,141 @@
 ---
 title: Introduction
-description: "Welcome to Revol — AI-powered platform for business automation"
+sidebarTitle: Introduction
+description: "Revol — AI-powered platform for automating customer interactions across chat, voice, and messaging channels"
 ---
 
-# Welcome to Revol
+<img
+  className="block dark:hidden"
+  src="/images/hero-light.png"
+  alt="Revol Platform"
+/>
+<img
+  className="hidden dark:block"
+  src="/images/hero-dark.png"
+  alt="Revol Platform"
+/>
 
-Revol is an AI platform that helps businesses automate customer interactions through intelligent agents, multi-channel integrations, and real-time analytics.
+## What is Revol?
 
-<CardGroup cols={2}>
-  <Card title="Quick Start" icon="rocket" href="/quickstart">
-    Get up and running in 5 minutes
-  </Card>
+Revol is an AI-first platform that helps businesses automate customer interactions through intelligent agents. You create an AI agent, train it on your data, and deploy it across multiple channels — website chat, phone calls, and messengers — all from a single dashboard.
+
+Unlike generic chatbot builders, Revol combines a **visual workflow editor**, **RAG-powered knowledge bases**, **real-time voice capabilities**, and **visitor analytics** into one unified platform. Your agents don't just answer questions — they follow configurable conversation flows, call external tools, and track every interaction for optimization.
+
+<CardGroup cols={3}>
   <Card title="AI Agents" icon="robot" href="/agents/overview">
-    Create and configure AI agents
+    Build agents with custom workflows, knowledge bases, and multi-provider LLM support
   </Card>
-  <Card title="Widget" icon="message" href="/widget/installation">
-    Install chat widget on your site
+  <Card title="Widget & Tracker" icon="window" href="/widget/installation">
+    Single script embed for chat, voice, and visitor analytics on your website
   </Card>
-  <Card title="API Reference" icon="code" href="/api-reference/overview">
-    Integrate with our API
+  <Card title="Conversations" icon="messages" href="/conversations/overview">
+    Unified inbox across all agents with filtering, transcription, and audio playback
+  </Card>
+  <Card title="Integrations" icon="plug" href="/integrations/overview">
+    Connect VoIP providers, Telegram, Viber, WhatsApp, and CRM systems
+  </Card>
+  <Card title="Marketplace" icon="store" href="/agents/overview">
+    Install ready-made workflow templates or publish your own
+  </Card>
+  <Card title="Billing" icon="credit-card" href="/billing/plans">
+    Transparent token-based pricing with no bill shock
   </Card>
 </CardGroup>
 
-## Key Features
-
-- **AI Agents** — Build intelligent assistants with custom workflows, knowledge bases, and voice capabilities
-- **Multi-Channel** — Connect via website widget, VoIP, Telegram, Viber, and more
-- **Tracking & Analytics** — Monitor visitor sessions, conversions, and campaign performance
-- **Marketplace** — Share and install workflow templates
-- **Billing** — Flexible plans with token-based usage tracking
-
-## Architecture
-
-Revol consists of three main components:
+## How It Works
 
 <Steps>
-  <Step title="AI Platform">
-    Create agents, configure workflows, train knowledge bases, and manage conversations.
+  <Step title="Create an AI Agent">
+    Choose an LLM provider (OpenAI, Anthropic, Gemini, Groq), write a system prompt, and configure your agent's personality and behavior.
   </Step>
-  <Step title="Widget & Tracker">
-    Embed a single script on your website to enable chat, voice, and visitor tracking.
+  <Step title="Train the Knowledge Base">
+    Upload documents, add website URLs, or write content directly. Revol splits your data into chunks, generates vector embeddings, and enables RAG-powered answers.
+
+    <Frame caption="Knowledge base sources — upload files, add URLs, or write text">
+      <img src="/images/agents-knowledge-base.png" alt="Knowledge base configuration" />
+    </Frame>
   </Step>
-  <Step title="Integrations">
-    Connect external channels — VoIP providers, messengers, and CRM systems.
+  <Step title="Build a Workflow">
+    Use the visual node editor to design conversation flows. Add LLM nodes, conditions, tool calls, voice interactions, and branching logic.
+
+    <Frame caption="Visual workflow editor with drag-and-drop nodes">
+      <img src="/images/agents-workflow-editor.png" alt="Workflow editor" />
+    </Frame>
+  </Step>
+  <Step title="Deploy & Monitor">
+    Install a single script on your website. Your agent handles conversations while you monitor performance, read transcripts, and optimize workflows.
+
+    <Frame caption="Conversations dashboard with real-time monitoring">
+      <img src="/images/conversations-dashboard.png" alt="Conversations dashboard" />
+    </Frame>
   </Step>
 </Steps>
+
+## Who Is Revol For?
+
+<AccordionGroup>
+  <Accordion title="E-commerce" icon="cart-shopping">
+    Automate product questions, order tracking, and recommendations. Your agent knows your product catalog and can guide customers through purchases using real-time data via tool calls.
+  </Accordion>
+  <Accordion title="Service Companies" icon="headset">
+    Handle appointment booking, FAQ, and support requests 24/7. Voice-enabled agents can answer phone calls and route complex issues to human operators.
+  </Accordion>
+  <Accordion title="Agencies" icon="buildings">
+    Manage multiple client accounts from one dashboard. Each company gets isolated agents, knowledge bases, and analytics. Use the Marketplace to reuse proven workflow templates across clients.
+  </Accordion>
+  <Accordion title="SaaS Products" icon="cloud">
+    Embed an AI support agent in your product. Train it on your documentation, API reference, and changelog. Reduce support tickets while improving response quality.
+  </Accordion>
+</AccordionGroup>
+
+## Key Capabilities
+
+<Tabs>
+  <Tab title="Customer-Facing AI">
+    | Capability | Description |
+    |---|---|
+    | **Multi-Provider LLM** | Choose per-node: OpenAI, Anthropic, Gemini, or Groq |
+    | **RAG Knowledge Base** | Vector search via pgvector with per-node knowledge sources |
+    | **Visual Workflow** | Drag-and-drop node editor with conditions, loops, and tool calls |
+    | **Voice** | Real-time STT/TTS with interrupt detection and streaming |
+    | **Tool Calling** | Agents can call external APIs, query databases, and perform actions |
+    | **Multi-Channel** | Website widget, VoIP, Telegram, Viber, WhatsApp |
+  </Tab>
+  <Tab title="Analytics & Tracking">
+    | Capability | Description |
+    |---|---|
+    | **Session Tracking** | Visitor sessions with device, location, and UTM data |
+    | **Event Tracking** | Custom events — clicks, form submissions, phone calls |
+    | **Campaign Analytics** | UTM-based campaign grouping and conversion tracking |
+    | **Triggers** | Automated overlays based on time, scroll, UTM, device type |
+    | **Phone Swap** | Dynamic phone number replacement for call tracking |
+    | **Conversation Linking** | Connect tracking sessions with chat conversations |
+  </Tab>
+  <Tab title="Platform">
+    | Capability | Description |
+    |---|---|
+    | **Marketplace** | Browse, install, and publish workflow templates |
+    | **File Manager** | Upload and organize media, documents, and knowledge base files |
+    | **Product Catalog** | Manage products that agents can reference in conversations |
+    | **Team Management** | Multi-company support with isolated data per company |
+    | **Billing** | Token-based metering with separate quotas for standard and premium models |
+    | **Widget Customization** | Colors, labels, placement, terms & conditions — all configurable per agent |
+  </Tab>
+</Tabs>
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="Quick Start" icon="rocket" href="/quickstart">
+    Create your first agent and install the widget in 5 minutes
+  </Card>
+  <Card title="Core Concepts" icon="book" href="/concepts">
+    Learn the key terminology — agents, workflows, conversations, tracking
+  </Card>
+  <Card title="Widget Installation" icon="code" href="/widget/installation">
+    Embed the chat widget and tracker on your website
+  </Card>
+  <Card title="API Reference" icon="square-terminal" href="/api-reference/overview">
+    Integrate programmatically with the Revol API
+  </Card>
+</CardGroup>
