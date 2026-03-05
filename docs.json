@@ -8,7 +8,6 @@
     "dark": "#7c3aed"
   },
   "favicon": "/favicon.png",
-  "versions": ["PRO v1.0"],
   "logo": {
     "light": "/logo/light.png",
     "dark": "/logo/dark.png",
@@ -16,6 +15,10 @@
   },
   "navbar": {
     "links": [
+      {
+        "label": "PRO v1.0",
+        "href": "/introduction"
+      },
       {
         "label": "Dashboard",
         "href": "https://app.revol.com"
