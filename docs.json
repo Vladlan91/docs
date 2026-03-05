@@ -112,20 +112,7 @@
         ]
       }
     ],
-    "global": {
-      "anchors": [
-        {
-          "anchor": "Community",
-          "href": "https://discord.gg/revol",
-          "icon": "discord"
-        },
-        {
-          "anchor": "Blog",
-          "href": "https://revol.com/blog",
-          "icon": "newspaper"
-        }
-      ]
-    }
+    "global": {}
   },
   "footer": {
     "socials": {
