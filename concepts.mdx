@@ -1,0 +1,58 @@
+---
+title: Core Concepts
+description: "Key concepts and terminology in Revol"
+---
+
+## Companies
+
+A **Company** represents a business entity in Revol. Each company has its own agents, knowledge base, products, and integrations.
+
+## AI Agents
+
+An **AI Agent** is an intelligent assistant configured to handle customer interactions. Each agent has:
+
+- **System Prompt** — Instructions that define the agent's behavior
+- **Knowledge Base** — Documents and content the agent can reference (RAG)
+- **Workflow** — Visual flow that defines conversation logic
+- **Tools** — Functions the agent can call during conversations
+
+## Workflows
+
+A **Workflow** is a visual node-based editor for defining conversation flows. Node types include:
+
+| Node | Description |
+|------|-------------|
+| **Start** | Entry point of the conversation |
+| **LLM** | Send message to AI model |
+| **Condition** | Branch based on conditions |
+| **Tool Call** | Execute an external function |
+| **Voice Call** | Handle voice interactions |
+| **End** | Terminate the conversation |
+
+## Conversations
+
+A **Conversation** is a chat session between a visitor and an AI agent. Conversations can happen through multiple channels:
+
+- Website widget
+- VoIP phone calls
+- Telegram / Viber / WhatsApp
+- API
+
+## Tracking
+
+The **Tracker** monitors visitor activity on client websites:
+
+- **Sessions** — Visitor browsing sessions with device, location, and UTM data
+- **Pageviews** — Individual page visits within a session
+- **Events** — Custom events (clicks, form submissions, phone calls)
+- **Campaigns** — UTM-based campaign grouping
+- **Triggers** — Automated actions based on visitor behavior
+
+## Billing
+
+Revol uses a **token-based billing** model:
+
+- **Standard Tokens** — For standard AI models (GPT-4o-mini, Claude Haiku, Gemini Flash)
+- **Premium Tokens** — For premium models (GPT-4o, Claude Sonnet, Gemini Pro)
+- **Voice** — STT minutes and TTS characters
+- **Storage** — File storage for knowledge bases and media

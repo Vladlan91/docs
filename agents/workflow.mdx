@@ -1,0 +1,50 @@
+---
+title: Workflow Editor
+description: "Build conversation flows with the visual workflow editor"
+---
+
+## Overview
+
+The Workflow Editor is a visual node-based tool for designing conversation logic. Drag, drop, and connect nodes to create complex conversation flows.
+
+## Node Types
+
+### Start Node
+The entry point for every workflow. Each workflow has exactly one Start node.
+
+### LLM Node
+Sends a message to the configured AI model and returns the response.
+
+**Settings:**
+- Temperature (0.0 - 1.0)
+- Max tokens
+- Custom system prompt override
+
+### Condition Node
+Branches the workflow based on conditions. Supports:
+- Keyword matching
+- Sentiment analysis
+- Custom expressions
+
+### Tool Call Node
+Executes an external function or API call. Results are passed back to the conversation context.
+
+### Voice Call Node
+Handles voice-specific interactions — speech recognition and synthesis.
+
+### End Node
+Terminates the conversation with an optional closing message.
+
+## Connecting Nodes
+
+Click on a node's output port and drag to another node's input port to create a connection. Each connection represents a possible conversation path.
+
+## Best Practices
+
+<Warning>
+  Always ensure there is a path from Start to End. Unreachable nodes will never execute.
+</Warning>
+
+- Keep workflows simple — complex flows are harder to debug
+- Use Condition nodes to handle edge cases
+- Test each path individually before publishing

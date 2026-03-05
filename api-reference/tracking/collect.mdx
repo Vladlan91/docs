@@ -1,0 +1,64 @@
+---
+title: Collect Events
+api: "POST /api/tracker/collect"
+description: "Send tracking data (pageviews, events)"
+---
+
+## Request
+
+<ParamField body="api_key" type="string" required>
+  Your widget API key
+</ParamField>
+
+<ParamField body="company_id" type="integer" required>
+  Your company ID
+</ParamField>
+
+<ParamField body="session_token" type="string" required>
+  Unique session identifier
+</ParamField>
+
+<ParamField body="pageviews" type="array">
+  Array of pageview objects (max 50)
+</ParamField>
+
+<ParamField body="events" type="array">
+  Array of event objects (max 50)
+</ParamField>
+
+## Pageview Object
+
+```json
+{
+  "url": "https://example.com/products",
+  "title": "Our Products",
+  "referrer": "https://google.com",
+  "timestamp": 1709640000
+}
+```
+
+## Event Object
+
+```json
+{
+  "name": "form_submit",
+  "category": "engagement",
+  "data": {
+    "form_id": "contact-form",
+    "fields": ["name", "email", "phone"]
+  },
+  "timestamp": 1709640000
+}
+```
+
+## Response
+
+```json
+{
+  "success": true
+}
+```
+
+<Warning>
+  Arrays are limited to 50 items each to prevent abuse.
+</Warning>

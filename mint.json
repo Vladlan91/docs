@@ -1,0 +1,125 @@
+{
+  "$schema": "https://mintlify.com/schema.json",
+  "name": "Revol",
+  "logo": {
+    "dark": "/logo/dark.svg",
+    "light": "/logo/light.svg"
+  },
+  "favicon": "/favicon.svg",
+  "colors": {
+    "primary": "#8b5cf6",
+    "light": "#a78bfa",
+    "dark": "#7c3aed",
+    "anchors": {
+      "from": "#8b5cf6",
+      "to": "#ec4899"
+    }
+  },
+  "topbarLinks": [
+    {
+      "name": "Dashboard",
+      "url": "https://app.revol.com"
+    }
+  ],
+  "topbarCtaButton": {
+    "name": "Get Started",
+    "url": "https://app.revol.com/register"
+  },
+  "tabs": [
+    {
+      "name": "API Reference",
+      "url": "api-reference"
+    },
+    {
+      "name": "Widget",
+      "url": "widget"
+    }
+  ],
+  "anchors": [
+    {
+      "name": "Community",
+      "icon": "discord",
+      "url": "https://discord.gg/revol"
+    },
+    {
+      "name": "Blog",
+      "icon": "newspaper",
+      "url": "https://revol.com/blog"
+    }
+  ],
+  "navigation": [
+    {
+      "group": "Getting Started",
+      "pages": [
+        "introduction",
+        "quickstart",
+        "concepts"
+      ]
+    },
+    {
+      "group": "AI Agents",
+      "pages": [
+        "agents/overview",
+        "agents/creating-agent",
+        "agents/workflow",
+        "agents/knowledge-base",
+        "agents/voice"
+      ]
+    },
+    {
+      "group": "Conversations",
+      "pages": [
+        "conversations/overview"
+      ]
+    },
+    {
+      "group": "Integrations",
+      "pages": [
+        "integrations/overview",
+        "integrations/voip",
+        "integrations/messengers"
+      ]
+    },
+    {
+      "group": "Billing",
+      "pages": [
+        "billing/plans",
+        "billing/usage"
+      ]
+    },
+    {
+      "group": "Widget",
+      "pages": [
+        "widget/installation",
+        "widget/customization",
+        "widget/tracker"
+      ]
+    },
+    {
+      "group": "API Reference",
+      "pages": [
+        "api-reference/overview",
+        "api-reference/authentication"
+      ]
+    },
+    {
+      "group": "Widget API",
+      "pages": [
+        "api-reference/widget/init",
+        "api-reference/widget/send-message",
+        "api-reference/widget/chat-history"
+      ]
+    },
+    {
+      "group": "Tracking API",
+      "pages": [
+        "api-reference/tracking/collect",
+        "api-reference/tracking/sessions"
+      ]
+    }
+  ],
+  "footerSocials": {
+    "github": "https://github.com/revol",
+    "discord": "https://discord.gg/revol"
+  }
+}

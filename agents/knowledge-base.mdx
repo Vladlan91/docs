@@ -1,0 +1,53 @@
+---
+title: Knowledge Base
+description: "Train your agent with documents and content"
+---
+
+## Overview
+
+The Knowledge Base uses **RAG (Retrieval-Augmented Generation)** to give your agent access to your business content. Documents are split into chunks, converted to vector embeddings, and stored for semantic search.
+
+## Adding Content
+
+### Documents
+Upload files in supported formats:
+- PDF
+- DOCX
+- TXT
+
+### URLs
+Provide web page URLs. Revol will scrape the content and add it to the knowledge base.
+
+### Text
+Add content directly as text blocks.
+
+## How RAG Works
+
+<Steps>
+  <Step title="Upload">
+    You upload a document or add content.
+  </Step>
+  <Step title="Chunking">
+    Content is split into manageable chunks.
+  </Step>
+  <Step title="Embedding">
+    Each chunk is converted to a vector embedding using OpenAI's text-embedding-3-small model.
+  </Step>
+  <Step title="Storage">
+    Embeddings are stored in PostgreSQL with pgvector extension.
+  </Step>
+  <Step title="Retrieval">
+    When a user asks a question, the most similar chunks are retrieved using cosine similarity.
+  </Step>
+  <Step title="Generation">
+    Retrieved chunks are injected into the LLM prompt as context.
+  </Step>
+</Steps>
+
+## Storage Limits
+
+| Plan | Knowledge Docs | Embedding Tokens |
+|------|---------------|-----------------|
+| Free | 10 | 100,000 |
+| Premium | 100 | 1,000,000 |
+| Professional | 1,000 | 5,000,000 |

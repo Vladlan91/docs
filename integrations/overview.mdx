@@ -1,0 +1,37 @@
+---
+title: Integrations Overview
+description: "Connect external channels and services"
+---
+
+## Overview
+
+Revol integrations allow your AI agents to communicate through multiple channels beyond the website widget.
+
+## Available Integrations
+
+<CardGroup cols={2}>
+  <Card title="VoIP" icon="phone" href="/integrations/voip">
+    Binotel, Twilio — handle phone calls with AI
+  </Card>
+  <Card title="Messengers" icon="message" href="/integrations/messengers">
+    Telegram, Viber, WhatsApp
+  </Card>
+</CardGroup>
+
+## How It Works
+
+1. **Connect** — Add credentials for your provider
+2. **Configure** — Map channels to AI agents
+3. **Receive** — Incoming messages/calls are routed to the assigned agent
+4. **Respond** — Agent processes and responds through the same channel
+
+## Webhook Security
+
+All webhook endpoints are protected with:
+- **Signature validation** — Verify request authenticity
+- **Idempotency** — Prevent duplicate processing
+- **Rate limiting** — 120 requests per minute per channel
+
+<Note>
+  Integrations require a **Premium** plan or higher.
+</Note>

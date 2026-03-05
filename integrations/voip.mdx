@@ -1,0 +1,49 @@
+---
+title: VoIP Integration
+description: "Handle phone calls with AI agents"
+---
+
+## Supported Providers
+
+| Provider | Features |
+|----------|----------|
+| **Binotel** | Inbound/outbound calls, call recording |
+| **Twilio** | Inbound/outbound calls, SMS |
+
+## Setup
+
+### Binotel
+
+1. Go to **Integrations** → **Add Integration** → **Binotel**
+2. Enter your Binotel API key and secret
+3. Configure webhook URL in Binotel dashboard
+4. Assign an AI agent to handle calls
+
+### Twilio
+
+1. Go to **Integrations** → **Add Integration** → **Twilio**
+2. Enter Account SID, Auth Token, and Phone Number
+3. Twilio webhooks are configured automatically
+4. Assign an AI agent to handle calls
+
+## Voice Processing
+
+Incoming calls are processed as follows:
+
+<Steps>
+  <Step title="Receive Call">
+    VoIP provider sends webhook to Revol.
+  </Step>
+  <Step title="Speech-to-Text">
+    Caller's voice is converted to text using Whisper or Google STT.
+  </Step>
+  <Step title="AI Processing">
+    Text is sent to the assigned agent's workflow.
+  </Step>
+  <Step title="Text-to-Speech">
+    Agent's response is converted to speech using OpenAI TTS.
+  </Step>
+  <Step title="Respond">
+    Audio response is sent back to the caller.
+  </Step>
+</Steps>
