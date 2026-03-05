@@ -8,6 +8,7 @@
     "dark": "#7c3aed"
   },
   "favicon": "/favicon.png",
+  "versions": ["PRO v1.0"],
   "logo": {
     "light": "/logo/light.png",
     "dark": "/logo/dark.png",
