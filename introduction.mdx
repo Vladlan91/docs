@@ -34,7 +34,7 @@ Unlike generic chatbot builders, Revol combines a **visual workflow editor**, **
     Single script embed for chat, voice, and visitor analytics on your website
   </Card>
   <Card title="Integrations" icon="plug" href="/integrations/overview">
-    Connect VoIP providers, Telegram, Viber, WhatsApp, and CRM systems
+    Connect VoIP, messengers, Google Workspace, ad platforms, and CRM via webhooks
   </Card>
   <Card title="Conversations" icon="messages" href="/conversations/overview">
     Unified inbox across all agents with filtering, transcription, and audio playback
@@ -91,8 +91,11 @@ Unlike generic chatbot builders, Revol combines a **visual workflow editor**, **
     Integrate your agent with the channels your customers use:
 
     - **Website widget** — embed a single script for chat and voice
-    - **VoIP** — connect Twilio or Binotel for phone calls
-    - **Messengers** — Telegram, Viber, WhatsApp
+    - **Telephony** — Twilio, Ringostat, or Binotel for phone calls
+    - **Messengers** — Telegram, WhatsApp Business, Instagram DM, Facebook Messenger
+    - **CRM** — Custom Webhook to send lead data to any system
+    - **Google Workspace** — Gmail, Google Docs, Sheets, Drive, Calendar, and Meet
+    - **Ad Campaigns** — Google Ads and Facebook Ads analytics
 
     Each agent can be connected to multiple channels simultaneously.
   </Step>
@@ -100,7 +103,8 @@ Unlike generic chatbot builders, Revol combines a **visual workflow editor**, **
     Install the widget script on your website. Your agent handles conversations while you monitor everything in real time — read transcripts, listen to call recordings, track visitor sessions, and optimize based on analytics.
 
     <Frame caption="Conversations dashboard — transcripts, ratings, and analytics">
-      <img src="/images/conversations-dashboard.png" alt="Conversations dashboard" />
+      <img className="block dark:hidden" src="/images/conversations-dashboard-light.png" alt="Conversations dashboard" />
+      <img className="hidden dark:block" src="/images/conversations-dashboard-dark.png" alt="Conversations dashboard" />
     </Frame>
   </Step>
 </Steps>
@@ -133,7 +137,7 @@ Unlike generic chatbot builders, Revol combines a **visual workflow editor**, **
     | **Visual Workflow** | Drag-and-drop node editor with conditions, tool calls, and branching |
     | **Voice** | Real-time STT/TTS with interrupt detection and streaming |
     | **Tool Calling** | Agents can call external APIs, query databases, and perform actions |
-    | **Multi-Channel** | Website widget, VoIP, Telegram, Viber, WhatsApp |
+    | **Multi-Channel** | Website widget, VoIP (Twilio, Ringostat, Binotel), Telegram, WhatsApp, Instagram, Facebook Messenger |
   </Tab>
   <Tab title="Analytics & Tracking">
     | Capability | Description |
