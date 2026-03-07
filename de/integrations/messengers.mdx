@@ -6,12 +6,12 @@ description: "Connect Telegram, WhatsApp, Instagram, and Facebook Messenger"
 
 ## Supported Messengers
 
-| Messenger | Auth Method | Inbound | Outbound | Status |
+| Messenger | Auth Method | Inbound | Outbound | Tools |
 |---|---|---|---|---|
-| **Telegram** | Bot Token | Yes | Yes | Phase 1 |
-| **WhatsApp Business** | Meta OAuth | Yes | Yes | Phase 3 |
-| **Instagram DM** | Meta OAuth | Yes | Yes | Phase 3 |
-| **Facebook Messenger** | Meta OAuth | Yes | Yes | Phase 3 |
+| **Telegram** | Bot Token | Yes | Yes | 6 |
+| **WhatsApp Business** | Meta OAuth | Yes | Yes | 6 |
+| **Instagram DM** | Meta OAuth | Yes | Yes | 6 |
+| **Facebook Messenger** | Meta OAuth | Yes | Yes | 6 |
 
 ## Telegram
 
@@ -38,33 +38,18 @@ Telegram is the simplest integration — no OAuth, no SDK dependencies. Just a b
 
 | Tool | Description |
 |---|---|
-| `send_message` | Send a text message to a chat |
-| `send_file` | Send a document, photo, or media file |
+| `send_message` | Send a text message (HTML or Markdown formatting) with optional reply-to |
+| `send_file` | Send a photo, document, audio, or video by public URL |
 | `get_chat_history` | Retrieve recent messages from a chat |
-| `get_chat_info` | Get chat/user metadata |
-| `edit_message` | Edit a previously sent message |
-| `delete_message` | Delete a message |
-
-### Webhook Flow
-
-```
-User sends message in Telegram
-    → Telegram forwards to Revol webhook
-    → Revol routes to assigned AI agent
-    → Agent processes and generates response
-    → Revol calls Telegram Bot API to send reply
-    → User sees response in Telegram
-```
+| `get_chat_info` | Get chat/user metadata (name, bio, member count) |
+| `edit_message` | Edit a previously sent bot message |
+| `delete_message` | Delete a message from the chat |
 
 ---
 
 ## WhatsApp Business
 
-<Note>
-  WhatsApp integration is in development (Phase 3). This section describes the planned implementation.
-</Note>
-
-WhatsApp Business API is accessed through Meta's Graph API. Requires a Meta Business account and WhatsApp Business API setup.
+WhatsApp Business API is accessed through Meta's Graph API. Requires a Meta Business account with WhatsApp Business API access.
 
 ### Setup
 
@@ -76,10 +61,48 @@ WhatsApp Business API is accessed through Meta's Graph API. Requires a Meta Busi
     Go to **Integrations** → **Add Integration** → select **WhatsApp Business**.
   </Step>
   <Step title="OAuth">
-    Click "Connect" — you'll be redirected to Meta's consent screen. Authorize access to your WhatsApp Business account.
+    Click "Connect with Meta" — you'll be redirected to Meta's consent screen. Authorize access to your WhatsApp Business account.
   </Step>
-  <Step title="Verify & Save">
-    Revol exchanges the code for a long-lived token (60 days) and configures the webhook.
+  <Step title="Configure">
+    Enter your Phone Number ID and App Secret. Revol exchanges the OAuth code for a long-lived token (~60 days).
+  </Step>
+</Steps>
+
+<Note>
+  WhatsApp has a **24-hour messaging window**. You can send free-form messages only within 24 hours of the last customer message. Outside this window, use `send_template_message` with pre-approved templates.
+</Note>
+
+### Agent Tools
+
+| Tool | Description |
+|---|---|
+| `send_message` | Send a text message within the 24-hour window |
+| `send_template_message` | Send a pre-approved template (works outside 24h window) |
+| `send_media` | Send an image, document, video, or audio by URL |
+| `get_message_history` | Retrieve conversation messages |
+| `get_contact_info` | Get contact profile information |
+| `mark_as_read` | Send read receipts for a message |
+
+---
+
+## Instagram DM
+
+Instagram Direct Messages are accessed through Meta's Graph API with the same OAuth flow as WhatsApp.
+
+### Setup
+
+<Steps>
+  <Step title="Connect Facebook Page">
+    Your Instagram Business account must be linked to a Facebook Page.
+  </Step>
+  <Step title="Add Integration">
+    Go to **Integrations** → **Add Integration** → select **Instagram**.
+  </Step>
+  <Step title="OAuth">
+    Click "Connect with Meta" and authorize access to your Instagram account.
+  </Step>
+  <Step title="Configure">
+    Enter your App Secret and Verify Token.
   </Step>
 </Steps>
 
@@ -87,56 +110,50 @@ WhatsApp Business API is accessed through Meta's Graph API. Requires a Meta Busi
 
 | Tool | Description |
 |---|---|
-| `send_message` | Send a text message |
-| `send_template_message` | Send a pre-approved template message |
-| `send_media` | Send an image, document, or video |
-| `get_message_history` | Retrieve conversation history |
-| `get_contact_info` | Get contact profile information |
-| `mark_as_read` | Mark messages as read |
-
----
-
-## Instagram DM
-
-<Note>
-  Instagram integration is in development (Phase 3).
-</Note>
-
-Instagram Direct Messages are accessed through Meta's Graph API, same OAuth flow as WhatsApp.
-
-### Agent Tools
-
-| Tool | Description |
-|---|---|
-| `send_message` | Send a direct message |
-| `get_message_history` | Retrieve DM conversation history |
-| `get_profile` | Get Instagram user profile |
-| `get_comments` | Get comments on a post |
-| `reply_to_comment` | Reply to a comment |
+| `send_message` | Send a direct message to an Instagram user |
+| `send_media` | Send a media attachment in DM |
+| `get_message_history` | Retrieve DM thread messages |
+| `get_profile` | Get public Instagram profile info |
+| `get_comments` | Get comments on a specific post |
+| `reply_to_comment` | Post a threaded reply to a comment |
 
 ---
 
 ## Facebook Messenger
 
-<Note>
-  Facebook Messenger integration is in development (Phase 3).
-</Note>
+Facebook Messenger connects via your Facebook Page. Same Meta OAuth flow as WhatsApp and Instagram.
 
-Facebook Messenger connects via your Facebook Page. Same Meta OAuth flow.
+### Setup
+
+<Steps>
+  <Step title="Facebook Page">
+    You need a Facebook Page linked to your Meta Business Account.
+  </Step>
+  <Step title="Add Integration">
+    Go to **Integrations** → **Add Integration** → select **Facebook Messenger**.
+  </Step>
+  <Step title="OAuth">
+    Click "Connect with Meta" and authorize access to your Page.
+  </Step>
+  <Step title="Configure">
+    Enter your App Secret and Verify Token.
+  </Step>
+</Steps>
 
 ### Agent Tools
 
 | Tool | Description |
 |---|---|
-| `send_message` | Send a text message |
-| `send_template_message` | Send a structured template |
-| `send_media` | Send an image, document, or video |
-| `get_message_history` | Retrieve conversation history |
-| `get_user_profile` | Get user profile from Messenger |
+| `send_message` | Send a text message to a Facebook user |
+| `send_template_message` | Send a structured template (buttons, generic, receipt) |
+| `send_media` | Send an image, video, audio, or file |
+| `get_message_history` | Retrieve conversation thread |
+| `get_profile` | Get user profile from page-scoped ID |
+| `send_buttons` | Send quick reply options to the user |
 
 ---
 
-## Message Flow (All Messengers)
+## Message Flow
 
 Regardless of the messenger, the processing flow is identical:
 
@@ -145,21 +162,38 @@ Regardless of the messenger, the processing flow is identical:
     Messenger platform sends a webhook to Revol with the message content and sender info.
   </Step>
   <Step title="Route to Agent">
-    Revol identifies the integration, finds the assigned AI agent, and creates or continues a conversation.
+    Revol identifies the channel, finds the assigned AI agent, and creates or continues a conversation session. The same sender always gets the same conversation thread.
   </Step>
   <Step title="AI Processing">
-    The message is processed through the agent's workflow — LLM nodes, RAG knowledge base lookup, tool calls, conditions.
+    The message is processed through the agent's workflow — LLM nodes, RAG knowledge base lookup, tool calls, and conditions.
   </Step>
   <Step title="Outbound Reply">
     Agent's response is sent back through the same messenger's API. The user sees the reply in their chat.
   </Step>
 </Steps>
 
+<Tip>
+  Messenger messages are processed asynchronously via a background job. This ensures the webhook returns a quick 200 response, preventing timeouts and retries from the messenger platform.
+</Tip>
+
+## Using Tools in Workflow Nodes
+
+Messenger tools work like any other agent tool:
+
+1. Connect the integration and verify credentials
+2. In the agent's **Tools** tab, you'll see the provisioned tools
+3. Add tools to **custom nodes** in the workflow editor
+4. The LLM decides when to use them based on conversation context
+
+**Example:** A customer asks "Send me the brochure on WhatsApp". The agent uses `send_media` to send a PDF document, then confirms delivery in the chat.
+
 ## Webhook Security
 
 | Messenger | Validation |
 |---|---|
-| Telegram | Token-based URL (webhook URL contains the bot token hash) |
-| WhatsApp | Meta signature verification (X-Hub-Signature-256) |
-| Instagram | Meta signature verification (X-Hub-Signature-256) |
-| Facebook | Meta signature verification (X-Hub-Signature-256) |
+| Telegram | Secret token in webhook URL (SHA-256 hash of bot token) |
+| WhatsApp | HMAC-SHA256 signature (`X-Hub-Signature-256` header with `app_secret`) |
+| Instagram | HMAC-SHA256 signature (`X-Hub-Signature-256` header with `app_secret`) |
+| Facebook | HMAC-SHA256 signature (`X-Hub-Signature-256` header with `app_secret`) |
+
+All messenger webhooks are rate-limited to **120 requests per minute** per channel.

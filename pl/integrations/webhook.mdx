@@ -4,10 +4,6 @@ sidebarTitle: Webhook
 description: "Send lead data to any CRM or external system via HTTP"
 ---
 
-<Note>
-  Custom Webhook integration is in development (Phase 4). This section describes the planned implementation.
-</Note>
-
 ## Overview
 
 Custom Webhook is the simplest integration — it sends HTTP requests to any URL you specify. Use it to push lead data to a CRM, trigger automations in Zapier/Make, or connect to any system with an API.
@@ -21,10 +17,14 @@ No OAuth, no SDK — just a target URL and optional headers.
     Go to **Integrations** → **Add Integration** → select **Custom Webhook** from the CRM category.
   </Step>
   <Step title="Configure">
-    Enter the webhook URL and optional authentication headers (e.g., `Authorization: Bearer ...`).
+    | Field | Required | Description |
+    |---|---|---|
+    | **Webhook URL** | Yes | The endpoint to send data to |
+    | **Webhook Secret** | No | Secret for HMAC-SHA256 request signing |
+    | **Headers** | No | Custom HTTP headers (JSON format, e.g., `Authorization: Bearer ...`) |
   </Step>
   <Step title="Test">
-    Revol sends a test payload to verify the URL is reachable and returns a 2xx response.
+    Click **Test Connection**. Revol sends a test payload and verifies the URL responds with a 2xx status.
   </Step>
 </Steps>
 
@@ -32,13 +32,12 @@ No OAuth, no SDK — just a target URL and optional headers.
 
 | Tool | Description |
 |---|---|
-| `send_data` | Send structured JSON data (lead info, form data) to the webhook URL |
-| `fetch_data` | Make a GET request to retrieve data from an external API |
-| `send_custom_request` | Send a custom HTTP request with configurable method, headers, and body |
+| `send_payload` | Send structured JSON data (lead info, form data) to the webhook URL. Signed with HMAC-SHA256 if a secret is configured. |
+| `test_connection` | Verify the webhook URL is reachable and responds correctly |
 
 ## Payload Format
 
-When an agent calls `send_data`, Revol sends a POST request with the following structure:
+When an agent calls `send_payload`, Revol sends a POST request with a JSON body. The content is determined by the AI agent based on what information was collected during the conversation:
 
 ```json
 {
@@ -58,11 +57,28 @@ When an agent calls `send_data`, Revol sends a POST request with the following s
 }
 ```
 
-The `data` object contents are determined by the AI agent based on what information was collected during the conversation.
+## Request Signing
+
+If you provide a **Webhook Secret**, every request is signed with HMAC-SHA256:
+
+- The signature is included in the `X-Webhook-Signature` header
+- Verify it on your server by computing `HMAC-SHA256(request_body, your_secret)` and comparing
+
+## Using in Workflow Nodes
+
+Webhook tools work like any other agent tool:
+
+1. Connect the webhook integration and test the URL
+2. Tools appear in the agent's **Tools** tab
+3. Add `send_payload` to a **custom node** in the workflow editor
+4. The LLM decides when to send data based on conversation context
+
+**Example workflow:** Agent collects lead information (name, email, phone, interest) → on conversation end, uses `send_payload` to push the data to your CRM.
 
 ## Use Cases
 
-- **CRM integration** — Push qualified leads to Pipedrive, HubSpot, Salesforce, or any CRM
-- **Zapier/Make** — Trigger multi-step automations from conversation events
-- **Slack/Discord** — Send notifications when high-value leads are captured
-- **Custom backend** — Call your own API to create orders, update records, or trigger workflows
+- **CRM integration** — Push qualified leads to Pipedrive, HubSpot, Salesforce, or any CRM with a webhook/API endpoint
+- **Zapier / Make** — Trigger multi-step automations from conversation events
+- **Slack / Discord** — Send notifications when high-value leads are captured
+- **Custom backend** — Call your own API to create orders, update records, or trigger internal workflows
+- **Analytics** — Send conversation outcomes to your data warehouse

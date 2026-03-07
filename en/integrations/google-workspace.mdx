@@ -4,19 +4,15 @@ sidebarTitle: Google Workspace
 description: "Connect Gmail, Google Docs, Sheets, Drive, Calendar, and Meet"
 ---
 
-<Note>
-  Google Workspace integrations are in development (Phase 2). This section describes the planned implementation.
-</Note>
-
 ## Overview
 
-Six Google services are available through a single SDK (`google/apiclient`) and a shared OAuth flow. Connect once with your Google account — and your AI agents get access to email, documents, spreadsheets, files, calendar, and video meetings.
+Six Google services are available through a shared OAuth flow. Connect once with your Google account — and your AI agents get access to email, documents, spreadsheets, files, calendar, and video meetings.
 
 ## Supported Services
 
 | Service | Tools | Description |
 |---|---|---|
-| **Gmail** | 6 | Send emails, read inbox, search, reply, create drafts |
+| **Gmail** | 6 | Send emails, read inbox, search, reply, create drafts, get attachments |
 | **Google Docs** | 5 | Create, read, append, search, and export documents |
 | **Google Sheets** | 7 | Read/write ranges, append rows, search, create spreadsheets |
 | **Google Drive** | 8 | List, search, upload, download, share files and folders |
@@ -49,8 +45,8 @@ Each service requests only the scopes it needs:
 | Service | Scope |
 |---|---|
 | Gmail | `gmail.modify` |
-| Google Docs | `documents` |
-| Google Sheets | `spreadsheets` |
+| Google Docs | `documents`, `drive.file` |
+| Google Sheets | `spreadsheets`, `drive.file` |
 | Google Drive | `drive` |
 | Google Calendar | `calendar` |
 | Google Meet | `calendar` (Meet links are created via Calendar API) |
@@ -61,20 +57,20 @@ Each service requests only the scopes it needs:
   <Tab title="Gmail">
     | Tool | Description |
     |---|---|
-    | `send_email` | Compose and send an email |
+    | `send_email` | Compose and send an email with subject, body, optional CC/BCC |
     | `read_inbox` | List recent emails from inbox |
-    | `search_emails` | Search emails by query (from, subject, date, keywords) |
+    | `search_emails` | Search emails by Gmail query syntax (from, subject, date, keywords) |
     | `reply_to_email` | Reply to a specific email thread |
     | `create_draft` | Create a draft email without sending |
-    | `get_attachments` | Download attachments from an email |
+    | `get_attachments` | Download or inspect email attachments |
   </Tab>
   <Tab title="Google Docs">
     | Tool | Description |
     |---|---|
     | `create_document` | Create a new Google Doc |
-    | `read_document` | Read the content of a document |
+    | `read_document` | Read the content of a document by ID |
     | `append_to_document` | Append text to the end of a document |
-    | `search_documents` | Search documents by title or content |
+    | `search_documents` | Search documents by title or content in Drive |
     | `export_document` | Export document to PDF, DOCX, or plain text |
   </Tab>
   <Tab title="Google Sheets">
@@ -83,9 +79,9 @@ Each service requests only the scopes it needs:
     | `read_range` | Read data from a cell range (e.g., A1:D10) |
     | `write_range` | Write data to a cell range |
     | `append_rows` | Append rows to the end of a sheet |
-    | `search_rows` | Search for rows matching criteria |
+    | `search_rows` | Search for rows matching a column value |
     | `create_spreadsheet` | Create a new spreadsheet |
-    | `get_spreadsheet_info` | Get spreadsheet metadata (sheets, row count) |
+    | `get_info` | Get spreadsheet metadata (sheets, row count) |
     | `update_cells` | Update specific cells |
   </Tab>
   <Tab title="Google Drive">
@@ -95,7 +91,7 @@ Each service requests only the scopes it needs:
     | `search_files` | Search files by name, type, or content |
     | `read_file` | Download or read file content |
     | `create_file` | Upload a new file |
-    | `update_file` | Update an existing file |
+    | `update_file` | Update an existing file's content or metadata |
     | `delete_file` | Move a file to trash |
     | `create_folder` | Create a new folder |
     | `share_file` | Share a file with specific users or make public |
@@ -105,11 +101,11 @@ Each service requests only the scopes it needs:
 
     | Tool | Description |
     |---|---|
-    | `create_event` | Create a calendar event |
-    | `list_events` | List upcoming events |
-    | `update_event` | Update an existing event |
-    | `delete_event` | Cancel/delete an event |
-    | `check_availability` | Check if a time slot is free |
+    | `create_event` | Create a calendar event with attendees and reminders |
+    | `list_events` | List upcoming events in a date range |
+    | `update_event` | Update an existing event's details |
+    | `delete_event` | Cancel/delete a calendar event |
+    | `check_availability` | Check if a time slot is free or busy |
     | `find_free_slots` | Find available time slots in a date range |
 
     **Google Meet:**
@@ -120,14 +116,29 @@ Each service requests only the scopes it needs:
   </Tab>
 </Tabs>
 
+## Using Tools in Workflow Nodes
+
+Google Workspace tools are especially powerful in workflow nodes where the agent can combine multiple tools in a single conversation:
+
+1. Connect a Google service and verify via OAuth
+2. The tools appear in the agent's **Tools** tab
+3. Add them to **custom nodes** in the workflow editor
+4. The LLM calls them automatically when relevant
+
+**Example workflow:** A customer asks to schedule a demo →
+- Agent calls `check_availability` to find free slots
+- Customer picks a time → agent calls `create_event` to book it
+- Agent calls `create_meeting` to generate a Google Meet link
+- Agent calls `send_email` to send a confirmation email with the link
+
 ## Use Cases
 
 <AccordionGroup>
   <Accordion title="Automated follow-up emails">
-    Agent qualifies a lead via chat → uses `send_email` to send a follow-up with pricing → logs the interaction in `Google Sheets` via `append_rows`.
+    Agent qualifies a lead via chat → uses `send_email` to send a follow-up with pricing → logs the interaction in Google Sheets via `append_rows`.
   </Accordion>
   <Accordion title="Appointment booking">
-    Customer asks to schedule a meeting → agent uses `check_availability` to find free slots → `create_event` to book it → `create_meeting` to generate a Google Meet link → sends confirmation via chat or email.
+    Customer asks to schedule a meeting → agent uses `check_availability` to find free slots → `create_event` to book it → `create_meeting` to generate a Meet link → sends confirmation via chat or email.
   </Accordion>
   <Accordion title="Document generation">
     Agent collects information from the customer → uses `create_document` to generate a proposal or report → `share_file` to give the customer access.
@@ -141,9 +152,9 @@ Each service requests only the scopes it needs:
 
 Google access tokens expire after 1 hour. Revol handles this automatically:
 
-1. Before each API call, Revol checks if the access token is expired
+1. Before each API call, Revol checks if the token is within 5 minutes of expiry
 2. If expired, uses the stored refresh token to obtain a new access token
 3. The new token is encrypted and saved back to the database
 4. The API call proceeds with the fresh token
 
-If a refresh token becomes invalid (user revoked access), the integration is marked as disconnected and the user is prompted to re-authorize.
+If a refresh token becomes invalid (user revoked access), the integration is marked as **disconnected** and needs to be re-authorized.

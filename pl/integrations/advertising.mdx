@@ -1,72 +1,120 @@
 ---
 title: Ad Campaigns
 sidebarTitle: Ad Campaigns
-description: "Connect Google Ads and Facebook Ads for campaign analytics"
+description: "Connect Google Ads and Facebook Ads for campaign analytics and management"
 ---
-
-<Note>
-  Ad campaign integrations are in development (Phase 4). This section describes the planned implementation.
-</Note>
 
 ## Overview
 
-Ad campaign integrations give your AI agents read access to advertising data. Agents can analyze campaign performance, report on metrics, and answer questions about ad spend — all through natural conversation.
+Ad campaign integrations give your AI agents access to advertising data. Agents can analyze campaign performance, report on metrics, pause underperforming campaigns, and answer questions about ad spend — all through natural conversation.
 
 ## Supported Platforms
 
-| Platform | Auth | SDK | Capabilities |
+| Platform | Auth | Tools | Capabilities |
 |---|---|---|---|
-| **Google Ads** | Google OAuth | `googleads/google-ads-php` | Campaigns, ad groups, keywords, metrics |
-| **Facebook Ads** | Meta OAuth | `facebook/graph-sdk` | Campaigns, ad sets, ads, audience insights |
+| **Google Ads** | Google OAuth | 3 | Campaigns, keywords, pause campaigns |
+| **Facebook Ads** | Meta OAuth | 4 | Campaigns, ad sets, insights, pause campaigns |
 
 ## Google Ads
 
 ### Authentication
 
-Uses the same Google OAuth flow as Google Workspace, but with an additional scope:
+Uses the same Google OAuth flow as Google Workspace, with additional requirements:
 
-```
-https://www.googleapis.com/auth/adwords
-```
+| Field | Description |
+|---|---|
+| **OAuth** | Google account with access to the Ads account |
+| **Customer ID** | Your Google Ads account ID (format: `123-456-7890`) |
+| **Developer Token** | Obtained from [Google Ads API Center](https://ads.google.com/aw/apicenter) |
 
-Also requires a **Google Ads Developer Token** and a **Manager Account (MCC) ID** for API access.
+### Setup
+
+<Steps>
+  <Step title="Add Integration">
+    Go to **Integrations** → **Add Integration** → select **Google Ads** from the Advertising category.
+  </Step>
+  <Step title="OAuth">
+    Click "Connect with Google" and authorize access to your Google Ads account.
+  </Step>
+  <Step title="Enter Details">
+    Enter your Customer ID and Developer Token.
+  </Step>
+  <Step title="Verify">
+    Revol tests the connection by fetching your campaigns.
+  </Step>
+</Steps>
 
 ### Agent Tools
 
 | Tool | Description |
 |---|---|
-| `get_campaigns` | List campaigns with status, budget, and performance |
-| `get_campaign_metrics` | Detailed metrics — impressions, clicks, conversions, cost, ROAS |
-| `get_ad_groups` | List ad groups within a campaign |
-| `get_keywords` | Keyword performance data |
-| `get_account_summary` | High-level account performance overview |
+| `get_campaigns` | List campaigns with status, budget, impressions, clicks, cost, and conversions |
+| `get_keywords` | Keyword performance data by ad group — impressions, clicks, cost, quality score |
+| `pause_campaign` | Pause a campaign by its ID |
+
+---
 
 ## Facebook Ads
 
 ### Authentication
 
-Uses Meta OAuth with the `ads_read` scope. Supports both Facebook and Instagram ad campaigns (managed through the same Meta Ads Manager).
+Uses Meta OAuth with the `ads_management` scope. Supports both Facebook and Instagram ad campaigns managed through Meta Ads Manager.
+
+| Field | Description |
+|---|---|
+| **OAuth** | Meta account with access to the ad account |
+| **Ad Account ID** | Format: `act_XXXXXXXXX` (found in Meta Ads Manager) |
+
+### Setup
+
+<Steps>
+  <Step title="Add Integration">
+    Go to **Integrations** → **Add Integration** → select **Facebook Ads**.
+  </Step>
+  <Step title="OAuth">
+    Click "Connect with Meta" and authorize access to your ad account.
+  </Step>
+  <Step title="Enter Details">
+    Enter your Ad Account ID.
+  </Step>
+  <Step title="Verify">
+    Revol tests the connection by fetching your campaigns.
+  </Step>
+</Steps>
 
 ### Agent Tools
 
 | Tool | Description |
 |---|---|
-| `get_campaigns` | List ad campaigns with status and budget |
-| `get_campaign_metrics` | Impressions, reach, clicks, spend, conversions |
-| `get_ad_sets` | List ad sets with targeting and scheduling |
-| `get_ads` | Individual ad performance |
-| `get_account_insights` | Account-level aggregated metrics |
+| `get_campaigns` | List campaigns with status, budget, and 30-day performance (impressions, clicks, spend, CTR) |
+| `get_ad_sets` | List ad sets within a campaign with targeting and scheduling info |
+| `get_insights` | Detailed performance insights by custom date range |
+| `pause_campaign` | Pause a campaign by its ID |
+
+## Using Tools in Workflow Nodes
+
+Ad campaign tools work like any other agent tool:
+
+1. Connect the ad platform and verify via OAuth
+2. Tools appear in the agent's **Tools** tab
+3. Add them to **custom nodes** in the workflow editor
+4. The LLM calls them when the user asks about campaign data
+
+**Example:** A user asks "How are our Google Ads doing this week?" → the agent calls `get_campaigns` with a date filter and returns a summary of spend, clicks, and conversions in plain language.
 
 ## Use Cases
 
 <AccordionGroup>
   <Accordion title="Performance reporting">
-    Sales agent answers "How are our Google Ads doing this week?" by calling `get_campaign_metrics` with a date range filter. Returns spend, conversions, and ROAS in plain language.
+    "What's our ROAS on Google Ads this month?" → agent calls `get_campaigns` and calculates return on ad spend from the metrics.
   </Accordion>
   <Accordion title="Cross-platform comparison">
     Agent pulls data from both Google Ads and Facebook Ads to compare cost-per-lead across platforms.
   </Accordion>
+  <Accordion title="Campaign management">
+    "Pause the Spring Promo campaign on Facebook" → agent calls `pause_campaign` with the campaign ID.
+  </Accordion>
   <Accordion title="Lead source attribution">
-    When a lead comes in through the website widget, the agent checks UTM parameters from the tracking session and correlates with ad campaign data to identify which campaign generated the lead.
+    When a lead comes through the website widget, the agent checks UTM parameters from the tracking session and correlates with campaign data to identify which ad generated the lead.
   </Accordion>
 </AccordionGroup>

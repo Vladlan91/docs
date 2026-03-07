@@ -8,7 +8,7 @@ description: "Connect Twilio, Ringostat, or Binotel for AI-powered phone calls"
 
 | Provider | Inbound Calls | Outbound Calls | SMS | Webhook Auto-Setup |
 |---|---|---|---|---|
-| **Twilio** | Yes | Yes | Yes | Yes (automatic) |
+| **Twilio** | Yes | Yes | Yes | Automatic |
 | **Ringostat** | Yes | Yes | No | Manual |
 | **Binotel** | Yes | Yes | No | Manual |
 
@@ -18,7 +18,7 @@ description: "Connect Twilio, Ringostat, or Binotel for AI-powered phone calls"
   <Tab title="Twilio">
     ### Credentials
 
-    You need three values from the [Twilio Console](https://console.twilio.com/):
+    You need two values from the [Twilio Console](https://console.twilio.com/):
 
     | Field | Where to find |
     |---|---|
@@ -67,10 +67,7 @@ description: "Connect Twilio, Ringostat, or Binotel for AI-powered phone calls"
         Revol fetches your SIP accounts to confirm the connection.
       </Step>
       <Step title="Configure Webhook">
-        In Ringostat dashboard, set the webhook URL to:
-        ```
-        https://app.revol.com/api/webhooks/ringostat/{integration_id}
-        ```
+        In the Ringostat dashboard, set the webhook URL displayed in Revol after verification.
       </Step>
     </Steps>
   </Tab>
@@ -95,10 +92,7 @@ description: "Connect Twilio, Ringostat, or Binotel for AI-powered phone calls"
         Revol fetches your internal phone numbers to confirm the connection.
       </Step>
       <Step title="Configure Webhook">
-        In Binotel dashboard, set the webhook URL to:
-        ```
-        https://app.revol.com/api/webhooks/binotel/{integration_id}
-        ```
+        In the Binotel dashboard, set the webhook URL displayed in Revol after verification.
       </Step>
     </Steps>
 
@@ -110,13 +104,15 @@ description: "Connect Twilio, Ringostat, or Binotel for AI-powered phone calls"
 
 ## Agent Tools
 
-After connecting a VoIP provider, the following tools are automatically provisioned to your agents:
+After connecting a VoIP provider, the following tools are automatically provisioned:
 
 | Tool | Twilio | Ringostat | Binotel | Description |
 |---|---|---|---|---|
-| **make_call** | Yes | Yes | Yes | Initiate an outbound call |
-| **send_sms** | Yes | — | — | Send an SMS message |
-| **get_call_history** | Yes | Yes | Yes | Retrieve recent call logs |
+| **make_call** | Yes | Yes | Yes | Initiate an outbound call with optional greeting message |
+| **send_sms** | Yes | — | — | Send an SMS message (auto-selects sender number) |
+| **get_call_history** | Yes | Yes | Yes | Retrieve recent call logs with filters (phone, status, date range) |
+
+These tools become available in the agent's **Tools** tab and can be added to workflow nodes.
 
 ## Voice Call Flow
 
@@ -126,26 +122,40 @@ When an incoming call arrives, Revol processes it through the assigned agent's w
   <Step title="Incoming Call">
     VoIP provider sends a webhook notification to Revol with caller information.
   </Step>
+  <Step title="Greeting">
+    Revol generates an audio greeting using Text-to-Speech (configurable voice and language) and plays it to the caller.
+  </Step>
   <Step title="Speech-to-Text">
-    Caller's speech is streamed and transcribed in real time using Whisper or Google STT.
+    Caller's speech is captured and transcribed using Whisper or Google STT.
   </Step>
   <Step title="AI Processing">
-    Transcribed text is sent to the agent's workflow. The agent processes it through LLM nodes, conditions, and tool calls.
+    Transcribed text is sent to the agent's workflow. The agent processes it through LLM nodes, knowledge base lookups, and tool calls.
   </Step>
   <Step title="Text-to-Speech">
     Agent's text response is converted to audio using OpenAI TTS with configurable voice and speed.
   </Step>
   <Step title="Response">
-    Audio is streamed back to the caller. The agent can also perform actions during the call — transfer to human, look up data, or end the call.
+    Audio is played back to the caller. The conversation continues in a loop until the call ends.
   </Step>
 </Steps>
+
+## Using Tools in Workflow Nodes
+
+To make your agent use VoIP tools during conversations:
+
+1. Go to the agent's **Workflow** tab
+2. Create or select a **custom node** (LLM-powered)
+3. In the node settings, enable the VoIP tools (e.g., `make_call`, `get_call_history`)
+4. The LLM will automatically decide when to call these tools based on the conversation context
+
+For example, if a customer asks "Can you call me back at +380501234567?", the agent will use the `make_call` tool to initiate an outbound call.
 
 ## Webhook Security
 
 | Provider | Validation Method |
 |---|---|
-| Twilio | HMAC-SHA1 signature verification |
+| Twilio | HMAC-SHA1 signature verification (`X-Twilio-Signature` header) |
 | Ringostat | Structural parameter validation |
-| Binotel | IP allowlist (production only) |
+| Binotel | IP allowlist (Binotel server IPs only in production) |
 
 All VoIP webhooks are rate-limited to **120 requests per minute** per channel.
