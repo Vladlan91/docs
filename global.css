@@ -1,3 +1,18 @@
+/* Hide Mintlify's grid overlay on Frame images */
 [class*="bg-grid"] {
   display: none !important;
+}
+
+/* Add border to all content images */
+.frame img,
+article img {
+  border-radius: 0.75rem;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+[data-pc-theme="dark"] .frame img,
+[data-pc-theme="dark"] article img,
+.dark .frame img,
+.dark article img {
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
