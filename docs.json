@@ -98,6 +98,28 @@
         ]
       },
       {
+        "tab": "Creative",
+        "groups": [
+          {
+            "group": "Creative Platform",
+            "pages": [
+              "creative/overview"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Team",
+        "groups": [
+          {
+            "group": "Team Workflow",
+            "pages": [
+              "team/overview"
+            ]
+          }
+        ]
+      },
+      {
         "tab": "API Reference",
         "groups": [
           {
