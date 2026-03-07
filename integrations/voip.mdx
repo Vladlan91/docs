@@ -1,49 +1,151 @@
 ---
-title: VoIP Integration
-description: "Handle phone calls with AI agents"
+title: Telephony (VoIP)
+sidebarTitle: Telephony
+description: "Connect Twilio, Ringostat, or Binotel for AI-powered phone calls"
 ---
 
 ## Supported Providers
 
-| Provider | Features |
-|----------|----------|
-| **Binotel** | Inbound/outbound calls, call recording |
-| **Twilio** | Inbound/outbound calls, SMS |
+| Provider | Inbound Calls | Outbound Calls | SMS | Webhook Auto-Setup |
+|---|---|---|---|---|
+| **Twilio** | Yes | Yes | Yes | Yes (automatic) |
+| **Ringostat** | Yes | Yes | No | Manual |
+| **Binotel** | Yes | Yes | No | Manual |
 
 ## Setup
 
-### Binotel
+<Tabs>
+  <Tab title="Twilio">
+    ### Credentials
 
-1. Go to **Integrations** → **Add Integration** → **Binotel**
-2. Enter your Binotel API key and secret
-3. Configure webhook URL in Binotel dashboard
-4. Assign an AI agent to handle calls
+    You need three values from the [Twilio Console](https://console.twilio.com/):
 
-### Twilio
+    | Field | Where to find |
+    |---|---|
+    | **Account SID** | Dashboard → Account Info |
+    | **Auth Token** | Dashboard → Account Info |
 
-1. Go to **Integrations** → **Add Integration** → **Twilio**
-2. Enter Account SID, Auth Token, and Phone Number
-3. Twilio webhooks are configured automatically
-4. Assign an AI agent to handle calls
+    ### Steps
 
-## Voice Processing
+    <Steps>
+      <Step title="Add Integration">
+        Go to **Integrations** → **Add Integration** → select **Twilio** from the Telephony category.
+      </Step>
+      <Step title="Enter Credentials">
+        Choose a company, give the integration a name (e.g., "Main Phone Line"), and enter your Account SID and Auth Token.
+      </Step>
+      <Step title="Verify & Select Number">
+        Click **Test Connection**. Revol fetches your available phone numbers. Select the number to use.
+      </Step>
+      <Step title="Save">
+        Revol automatically configures the webhook URL on the selected Twilio number. Incoming calls and SMS are routed to your agent.
+      </Step>
+    </Steps>
 
-Incoming calls are processed as follows:
+    <Note>
+      Twilio webhook URLs are configured automatically. You don't need to set anything in the Twilio Console.
+    </Note>
+  </Tab>
+  <Tab title="Ringostat">
+    ### Credentials
+
+    | Field | Where to find |
+    |---|---|
+    | **API Key (Auth-key)** | Ringostat Dashboard → API Settings |
+    | **Project ID** | Ringostat Dashboard → Project Settings |
+
+    ### Steps
+
+    <Steps>
+      <Step title="Add Integration">
+        Go to **Integrations** → **Add Integration** → select **Ringostat**.
+      </Step>
+      <Step title="Enter Credentials">
+        Enter your API Key and Project ID.
+      </Step>
+      <Step title="Verify">
+        Revol fetches your SIP accounts to confirm the connection.
+      </Step>
+      <Step title="Configure Webhook">
+        In Ringostat dashboard, set the webhook URL to:
+        ```
+        https://app.revol.com/api/webhooks/ringostat/{integration_id}
+        ```
+      </Step>
+    </Steps>
+  </Tab>
+  <Tab title="Binotel">
+    ### Credentials
+
+    | Field | Where to find |
+    |---|---|
+    | **API Key** | Binotel Dashboard → Settings → API |
+    | **API Secret** | Binotel Dashboard → Settings → API |
+
+    ### Steps
+
+    <Steps>
+      <Step title="Add Integration">
+        Go to **Integrations** → **Add Integration** → select **Binotel**.
+      </Step>
+      <Step title="Enter Credentials">
+        Enter your API Key and API Secret.
+      </Step>
+      <Step title="Verify">
+        Revol fetches your internal phone numbers to confirm the connection.
+      </Step>
+      <Step title="Configure Webhook">
+        In Binotel dashboard, set the webhook URL to:
+        ```
+        https://app.revol.com/api/webhooks/binotel/{integration_id}
+        ```
+      </Step>
+    </Steps>
+
+    <Warning>
+      Binotel webhooks are validated by IP allowlist. Only requests from Binotel's servers are accepted in production.
+    </Warning>
+  </Tab>
+</Tabs>
+
+## Agent Tools
+
+After connecting a VoIP provider, the following tools are automatically provisioned to your agents:
+
+| Tool | Twilio | Ringostat | Binotel | Description |
+|---|---|---|---|---|
+| **make_call** | Yes | Yes | Yes | Initiate an outbound call |
+| **send_sms** | Yes | — | — | Send an SMS message |
+| **get_call_history** | Yes | Yes | Yes | Retrieve recent call logs |
+
+## Voice Call Flow
+
+When an incoming call arrives, Revol processes it through the assigned agent's workflow:
 
 <Steps>
-  <Step title="Receive Call">
-    VoIP provider sends webhook to Revol.
+  <Step title="Incoming Call">
+    VoIP provider sends a webhook notification to Revol with caller information.
   </Step>
   <Step title="Speech-to-Text">
-    Caller's voice is converted to text using Whisper or Google STT.
+    Caller's speech is streamed and transcribed in real time using Whisper or Google STT.
   </Step>
   <Step title="AI Processing">
-    Text is sent to the assigned agent's workflow.
+    Transcribed text is sent to the agent's workflow. The agent processes it through LLM nodes, conditions, and tool calls.
   </Step>
   <Step title="Text-to-Speech">
-    Agent's response is converted to speech using OpenAI TTS.
+    Agent's text response is converted to audio using OpenAI TTS with configurable voice and speed.
   </Step>
-  <Step title="Respond">
-    Audio response is sent back to the caller.
+  <Step title="Response">
+    Audio is streamed back to the caller. The agent can also perform actions during the call — transfer to human, look up data, or end the call.
   </Step>
 </Steps>
+
+## Webhook Security
+
+| Provider | Validation Method |
+|---|---|
+| Twilio | HMAC-SHA1 signature verification |
+| Ringostat | Structural parameter validation |
+| Binotel | IP allowlist (production only) |
+
+All VoIP webhooks are rate-limited to **120 requests per minute** per channel.

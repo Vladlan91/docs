@@ -64,7 +64,10 @@
             "pages": [
               "integrations/overview",
               "integrations/voip",
-              "integrations/messengers"
+              "integrations/messengers",
+              "integrations/google-workspace",
+              "integrations/advertising",
+              "integrations/webhook"
             ]
           },
           {
