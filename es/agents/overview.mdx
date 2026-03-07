@@ -1,0 +1,42 @@
+---
+title: AI Agents Overview
+description: "Create intelligent assistants for your business"
+---
+
+## What are AI Agents?
+
+AI Agents in Revol are intelligent assistants that handle customer interactions across multiple channels. Each agent can be configured with its own personality, knowledge, and conversation flow.
+
+## Supported LLM Providers
+
+<CardGroup cols={2}>
+  <Card title="OpenAI" icon="bolt">
+    GPT-4o, GPT-4o-mini
+  </Card>
+  <Card title="Anthropic" icon="brain">
+    Claude 3.5 Sonnet, Claude 3.5 Haiku
+  </Card>
+  <Card title="Google" icon="google">
+    Gemini 2.0 Flash, Gemini 2.5 Pro
+  </Card>
+  <Card title="Groq" icon="microchip">
+    Llama 3.1 8B, Llama 3.3 70B
+  </Card>
+</CardGroup>
+
+## Agent Components
+
+### System Prompt
+The system prompt defines how the agent behaves, its tone, and what it should or shouldn't do.
+
+### Knowledge Base (RAG)
+Upload documents, URLs, or text content. The agent uses vector similarity search to find relevant context for each conversation.
+
+### Workflow
+A visual node editor for defining conversation logic — conditions, branching, tool calls, and more.
+
+### Voice
+Enable voice interactions with Speech-to-Text (Whisper, Google STT) and Text-to-Speech (OpenAI TTS).
+
+### Tools
+Give your agent the ability to call external functions — check order status, book appointments, search products, etc.

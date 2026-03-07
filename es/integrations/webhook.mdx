@@ -1,0 +1,68 @@
+---
+title: Custom Webhook
+sidebarTitle: Webhook
+description: "Send lead data to any CRM or external system via HTTP"
+---
+
+<Note>
+  Custom Webhook integration is in development (Phase 4). This section describes the planned implementation.
+</Note>
+
+## Overview
+
+Custom Webhook is the simplest integration — it sends HTTP requests to any URL you specify. Use it to push lead data to a CRM, trigger automations in Zapier/Make, or connect to any system with an API.
+
+No OAuth, no SDK — just a target URL and optional headers.
+
+## Setup
+
+<Steps>
+  <Step title="Add Integration">
+    Go to **Integrations** → **Add Integration** → select **Custom Webhook** from the CRM category.
+  </Step>
+  <Step title="Configure">
+    Enter the webhook URL and optional authentication headers (e.g., `Authorization: Bearer ...`).
+  </Step>
+  <Step title="Test">
+    Revol sends a test payload to verify the URL is reachable and returns a 2xx response.
+  </Step>
+</Steps>
+
+## Agent Tools
+
+| Tool | Description |
+|---|---|
+| `send_data` | Send structured JSON data (lead info, form data) to the webhook URL |
+| `fetch_data` | Make a GET request to retrieve data from an external API |
+| `send_custom_request` | Send a custom HTTP request with configurable method, headers, and body |
+
+## Payload Format
+
+When an agent calls `send_data`, Revol sends a POST request with the following structure:
+
+```json
+{
+  "event": "lead_captured",
+  "timestamp": "2026-03-07T14:30:00Z",
+  "company_id": 5,
+  "agent_id": 12,
+  "conversation_id": "conv_abc123",
+  "data": {
+    "name": "John Doe",
+    "email": "john@example.com",
+    "phone": "+380501234567",
+    "message": "Interested in Enterprise plan",
+    "source": "website_widget",
+    "utm_campaign": "spring_promo"
+  }
+}
+```
+
+The `data` object contents are determined by the AI agent based on what information was collected during the conversation.
+
+## Use Cases
+
+- **CRM integration** — Push qualified leads to Pipedrive, HubSpot, Salesforce, or any CRM
+- **Zapier/Make** — Trigger multi-step automations from conversation events
+- **Slack/Discord** — Send notifications when high-value leads are captured
+- **Custom backend** — Call your own API to create orders, update records, or trigger workflows

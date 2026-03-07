@@ -1,0 +1,181 @@
+---
+title: Introduction
+sidebarTitle: Introduction
+description: "Revol — AI-powered platform for automating customer interactions across chat, voice, and messaging channels"
+---
+
+<Frame>
+  <img
+    className="block dark:hidden"
+    src="/images/hero-light.png"
+    alt="Revol Platform"
+  />
+  <img
+    className="hidden dark:block"
+    src="/images/hero-dark.png"
+    alt="Revol Platform"
+  />
+</Frame>
+
+## What is Revol?
+
+Revol is an AI-first platform that helps businesses automate customer interactions through intelligent agents. You set up your company, add your products and knowledge base files, create an AI agent trained on that data, and deploy it across multiple channels — website chat, phone calls, and messengers — all from a single dashboard.
+
+Unlike generic chatbot builders, Revol combines a **visual workflow editor**, **RAG-powered knowledge bases**, **real-time voice capabilities**, and **visitor analytics** into one unified platform. Your agents don't just answer questions — they know your products, follow configurable conversation flows, call external tools, and track every interaction for optimization.
+
+<CardGroup cols={3}>
+  <Card title="Company & Products" icon="building" href="/concepts">
+    Set up your company, add products, services, and upload knowledge base files
+  </Card>
+  <Card title="AI Agents" icon="robot" href="/agents/overview">
+    Create agents, choose data sources, train on your content with RAG
+  </Card>
+  <Card title="Widget & Tracker" icon="window" href="/widget/installation">
+    Single script embed for chat, voice, and visitor analytics on your website
+  </Card>
+  <Card title="Integrations" icon="plug" href="/integrations/overview">
+    Connect VoIP, messengers, Google Workspace, ad platforms, and CRM via webhooks
+  </Card>
+  <Card title="Conversations" icon="messages" href="/conversations/overview">
+    Unified inbox across all agents with filtering, transcription, and audio playback
+  </Card>
+  <Card title="Marketplace" icon="store" href="/agents/overview">
+    Install ready-made workflow templates or publish your own
+  </Card>
+</CardGroup>
+
+## How It Works
+
+<Steps>
+  <Step title="Create a Company">
+    Register and set up your company — add your business name, website, phone number, and logo. The company is the foundation: all products, files, agents, and integrations belong to it.
+
+    <Frame caption="Company setup — name, website, logo, and contact details">
+      <img className="block dark:hidden" src="/images/company-setup-light.png" alt="Company creation" />
+      <img className="hidden dark:block" src="/images/company-setup-dark.png" alt="Company creation" />
+    </Frame>
+  </Step>
+  <Step title="Add Products & Knowledge Base">
+    Fill your company with data that your AI agent will learn from:
+
+    - **Products & services** — name, description, photos, pricing, availability
+    - **Documents** — PDFs, Word files, spreadsheets
+    - **Links** — website pages and external resources (content fetched automatically)
+    - **Text snippets** — FAQ, policies, custom instructions
+    - **Media** — videos (transcribed to text) and photos (OCR extracted)
+
+    All uploaded content is automatically chunked and converted into vector embeddings for RAG retrieval.
+
+    <Frame caption="File Manager — upload documents, links, text, and media">
+      <img className="block dark:hidden" src="/images/file-manager-light.png" alt="File Manager" />
+      <img className="hidden dark:block" src="/images/file-manager-dark.png" alt="File Manager" />
+    </Frame>
+  </Step>
+  <Step title="Create & Train an AI Agent">
+    Create an agent, choose a use case (customer support, sales, scheduling, lead qualification), and select an LLM provider — OpenAI, Anthropic, Gemini, or Groq.
+
+    Then pick which **knowledge sources** your agent should learn from — specific products, documents, links, or text. Hit **Train** and Revol generates vector embeddings so your agent can answer questions based on your actual data.
+
+    <Frame caption="Agent knowledge base — select sources and train">
+      <img className="block dark:hidden" src="/images/agents-knowledge-base-light.png" alt="Agent knowledge base configuration" />
+      <img className="hidden dark:block" src="/images/agents-knowledge-base-dark.png" alt="Agent knowledge base configuration" />
+    </Frame>
+  </Step>
+  <Step title="Configure Workflow (Optional)">
+    For complex conversation scenarios, use the visual workflow editor. Build multi-step flows with LLM nodes, conditions, tool calls, and voice interactions — all connected via drag-and-drop.
+
+    <Frame caption="Visual workflow editor with drag-and-drop nodes">
+      <img className="block dark:hidden" src="/images/agents-workflow-editor-light.png" alt="Workflow editor" />
+      <img className="hidden dark:block" src="/images/agents-workflow-editor-dark.png" alt="Workflow editor" />
+    </Frame>
+  </Step>
+  <Step title="Connect Communication Channels">
+    Integrate your agent with the channels your customers use:
+
+    - **Website widget** — embed a single script for chat and voice
+    - **Telephony** — Twilio, Ringostat, or Binotel for phone calls
+    - **Messengers** — Telegram, WhatsApp Business, Instagram DM, Facebook Messenger
+    - **CRM** — Custom Webhook to send lead data to any system
+    - **Google Workspace** — Gmail, Google Docs, Sheets, Drive, Calendar, and Meet
+    - **Ad Campaigns** — Google Ads and Facebook Ads analytics
+
+    Each agent can be connected to multiple channels simultaneously.
+  </Step>
+  <Step title="Deploy & Monitor">
+    Install the widget script on your website. Your agent handles conversations while you monitor everything in real time — read transcripts, listen to call recordings, track visitor sessions, and optimize based on analytics.
+
+    <Frame caption="Deploy — install the widget script on your website via API key">
+      <img className="block dark:hidden" src="/images/conversations-dashboard-light.png" alt="Widget script installation" />
+      <img className="hidden dark:block" src="/images/conversations-dashboard-dark.png" alt="Widget script installation" />
+    </Frame>
+  </Step>
+</Steps>
+
+## Who Is Revol For?
+
+<AccordionGroup>
+  <Accordion title="E-commerce" icon="cart-shopping">
+    Automate product questions, order tracking, and recommendations. Your agent knows your entire product catalog — descriptions, photos, availability, pricing — and can guide customers through purchases using real-time data via tool calls.
+  </Accordion>
+  <Accordion title="Service Companies" icon="headset">
+    Handle appointment booking, FAQ, and support requests 24/7. Upload your service descriptions, pricing lists, and policies. Voice-enabled agents can answer phone calls and route complex issues to human operators.
+  </Accordion>
+  <Accordion title="Agencies" icon="buildings">
+    Manage multiple client accounts from one dashboard. Each company gets isolated agents, knowledge bases, and analytics. Use the Marketplace to reuse proven workflow templates across clients.
+  </Accordion>
+  <Accordion title="SaaS Products" icon="cloud">
+    Embed an AI support agent in your product. Train it on your documentation, API reference, and changelog. Reduce support tickets while improving response quality.
+  </Accordion>
+</AccordionGroup>
+
+## Key Capabilities
+
+<Tabs>
+  <Tab title="Customer-Facing AI">
+    | Capability | Description |
+    |---|---|
+    | **Multi-Provider LLM** | Choose per-agent or per-node: OpenAI, Anthropic, Gemini, or Groq |
+    | **RAG Knowledge Base** | Vector search via pgvector — train on products, docs, links, text |
+    | **Visual Workflow** | Drag-and-drop node editor with conditions, tool calls, and branching |
+    | **Voice** | Real-time STT/TTS with interrupt detection and streaming |
+    | **Tool Calling** | Agents can call external APIs, query databases, and perform actions |
+    | **Multi-Channel** | Website widget, VoIP (Twilio, Ringostat, Binotel), Telegram, WhatsApp, Instagram, Facebook Messenger |
+  </Tab>
+  <Tab title="Analytics & Tracking">
+    | Capability | Description |
+    |---|---|
+    | **Session Tracking** | Visitor sessions with device, location, and UTM data |
+    | **Event Tracking** | Custom events — clicks, form submissions, phone calls |
+    | **Campaign Analytics** | UTM-based campaign grouping and conversion tracking |
+    | **Triggers** | Automated overlays based on time, scroll, UTM, device type |
+    | **Phone Swap** | Dynamic phone number replacement for call tracking |
+    | **Conversation Linking** | Connect tracking sessions with chat conversations |
+  </Tab>
+  <Tab title="Platform">
+    | Capability | Description |
+    |---|---|
+    | **Company Management** | Multi-company support with isolated data per company |
+    | **Product Catalog** | Manage products and services that agents learn from |
+    | **File Manager** | Upload documents, links, text, video, and photos for knowledge bases |
+    | **Marketplace** | Browse, install, and publish workflow templates |
+    | **Billing** | Token-based metering with separate quotas for standard and premium models |
+    | **Widget Customization** | Colors, labels, placement, terms & conditions — configurable per agent |
+  </Tab>
+</Tabs>
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="Quick Start" icon="rocket" href="/quickstart">
+    Set up your company and create your first agent in minutes
+  </Card>
+  <Card title="Core Concepts" icon="book" href="/concepts">
+    Learn the key terminology — companies, agents, workflows, tracking
+  </Card>
+  <Card title="Widget Installation" icon="code" href="/widget/installation">
+    Embed the chat widget and tracker on your website
+  </Card>
+  <Card title="API Reference" icon="square-terminal" href="/api-reference/overview">
+    Integrate programmatically with the Revol API
+  </Card>
+</CardGroup>

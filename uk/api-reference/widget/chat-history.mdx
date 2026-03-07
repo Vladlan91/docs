@@ -1,0 +1,41 @@
+---
+title: Історія чату
+api: "GET /api/widget/chat-history"
+description: "Отримання історії розмови"
+---
+
+## Request
+
+<ParamField query="api_key" type="string" required>
+  Ваш API key віджета
+</ParamField>
+
+<ParamField query="company_id" type="integer" required>
+  ID вашої компанії
+</ParamField>
+
+<ParamField query="session_id" type="string" required>
+  Ідентифікатор сесії
+</ParamField>
+
+## Response
+
+```json
+{
+  "success": true,
+  "data": {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What products do you offer?",
+        "created_at": "2026-03-05T10:30:00Z"
+      },
+      {
+        "role": "assistant",
+        "content": "We offer a wide range of products...",
+        "created_at": "2026-03-05T10:30:02Z"
+      }
+    ]
+  }
+}
+```

@@ -1,0 +1,47 @@
+---
+title: Огляд API
+description: "Довідник API Revol"
+---
+
+## Базовий URL
+
+```
+https://app.revol.com/api
+```
+
+## Автентифікація
+
+Усі API-запити потребують автентифікації через API key, який передається у заголовку запиту або як query parameter.
+
+```bash
+curl -H "Authorization: Bearer YOUR_API_KEY" \
+     https://app.revol.com/api/widget/init
+```
+
+## Обмеження запитів
+
+| Endpoint | Обмеження |
+|----------|-----------|
+| Widget API | 15 запитів/хв |
+| Tracking API | 60 запитів/хв |
+| General API | Залежить від плану |
+
+## Формат відповіді
+
+Усі відповіді у форматі JSON:
+
+```json
+{
+  "success": true,
+  "data": { ... }
+}
+```
+
+Відповіді з помилками:
+
+```json
+{
+  "success": false,
+  "error": "Error message"
+}
+```

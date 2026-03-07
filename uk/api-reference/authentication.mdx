@@ -1,0 +1,39 @@
+---
+title: Автентифікація
+description: "Методи автентифікації API"
+---
+
+## Widget API Key
+
+Widget API використовує API key, специфічний для компанії, для автентифікації. Цей ключ використовується скриптом трекера та віджетом.
+
+```html
+<script src="https://app.revol.com/tracker.js"
+        data-api-key="YOUR_API_KEY"
+        data-company-id="YOUR_COMPANY_ID"
+        async>
+</script>
+```
+
+### Валідація домену
+
+Запити до Widget API валідуються за заголовком **Origin**. Приймаються лише запити з доменів, зареєстрованих у налаштуваннях вашої компанії.
+
+## API Endpoints
+
+Widget API endpoints приймають API key через:
+
+```bash
+# Query parameter
+GET /api/widget/init?api_key=YOUR_API_KEY&company_id=YOUR_COMPANY_ID
+
+# Або в тілі запиту
+POST /api/widget/send-message
+Content-Type: application/json
+
+{
+  "api_key": "YOUR_API_KEY",
+  "company_id": "YOUR_COMPANY_ID",
+  "message": "Hello"
+}
+```

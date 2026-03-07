@@ -1,0 +1,59 @@
+---
+title: Send Message
+api: "POST /api/widget/send-message"
+description: "Send a message to the AI agent"
+---
+
+## Request
+
+<ParamField body="api_key" type="string" required>
+  Your widget API key
+</ParamField>
+
+<ParamField body="company_id" type="integer" required>
+  Your company ID
+</ParamField>
+
+<ParamField body="message" type="string" required>
+  User message text (max 2000 characters)
+</ParamField>
+
+<ParamField body="session_id" type="string">
+  Session identifier for conversation continuity
+</ParamField>
+
+## Response
+
+The response is streamed as Server-Sent Events (SSE):
+
+```
+data: {"chunk": "Hello"}
+data: {"chunk": "! How"}
+data: {"chunk": " can I"}
+data: {"chunk": " help you?"}
+data: [DONE]
+```
+
+## Example
+
+```javascript
+const response = await fetch('/api/widget/send-message', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    api_key: 'YOUR_API_KEY',
+    company_id: 1,
+    message: 'What products do you offer?',
+    session_id: 'abc123'
+  })
+});
+
+const reader = response.body.getReader();
+const decoder = new TextDecoder();
+
+while (true) {
+  const { done, value } = await reader.read();
+  if (done) break;
+  console.log(decoder.decode(value));
+}
+```

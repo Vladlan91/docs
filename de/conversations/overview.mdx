@@ -1,0 +1,46 @@
+---
+title: Conversations
+description: "Monitor and manage AI agent conversations"
+---
+
+## Overview
+
+The Conversations page provides a real-time view of all interactions between your AI agents and customers.
+
+## Features
+
+### Conversation List
+- Filter by agent, status, channel, date range, and rating
+- Search conversations by content
+- Sort by newest, oldest, or rating
+
+### Conversation Detail
+- Full message history with timestamps
+- Agent and visitor info
+- Session tracking data (device, location, UTM)
+- Conversation rating and feedback
+
+### Statuses
+
+| Status | Description |
+|--------|-------------|
+| **Active** | Conversation is ongoing |
+| **Closed** | Conversation has ended |
+| **Archived** | Moved to archive |
+
+### Channels
+
+Conversations can come from:
+- Website widget
+- VoIP phone calls
+- Telegram
+- Viber
+- API
+
+## Real-Time Updates
+
+Conversations update in real-time via WebSocket (Laravel Reverb). New messages appear instantly without page refresh.
+
+## Export
+
+Export conversation data for analysis. Available formats: JSON.

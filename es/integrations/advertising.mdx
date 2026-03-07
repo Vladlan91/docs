@@ -1,0 +1,72 @@
+---
+title: Ad Campaigns
+sidebarTitle: Ad Campaigns
+description: "Connect Google Ads and Facebook Ads for campaign analytics"
+---
+
+<Note>
+  Ad campaign integrations are in development (Phase 4). This section describes the planned implementation.
+</Note>
+
+## Overview
+
+Ad campaign integrations give your AI agents read access to advertising data. Agents can analyze campaign performance, report on metrics, and answer questions about ad spend — all through natural conversation.
+
+## Supported Platforms
+
+| Platform | Auth | SDK | Capabilities |
+|---|---|---|---|
+| **Google Ads** | Google OAuth | `googleads/google-ads-php` | Campaigns, ad groups, keywords, metrics |
+| **Facebook Ads** | Meta OAuth | `facebook/graph-sdk` | Campaigns, ad sets, ads, audience insights |
+
+## Google Ads
+
+### Authentication
+
+Uses the same Google OAuth flow as Google Workspace, but with an additional scope:
+
+```
+https://www.googleapis.com/auth/adwords
+```
+
+Also requires a **Google Ads Developer Token** and a **Manager Account (MCC) ID** for API access.
+
+### Agent Tools
+
+| Tool | Description |
+|---|---|
+| `get_campaigns` | List campaigns with status, budget, and performance |
+| `get_campaign_metrics` | Detailed metrics — impressions, clicks, conversions, cost, ROAS |
+| `get_ad_groups` | List ad groups within a campaign |
+| `get_keywords` | Keyword performance data |
+| `get_account_summary` | High-level account performance overview |
+
+## Facebook Ads
+
+### Authentication
+
+Uses Meta OAuth with the `ads_read` scope. Supports both Facebook and Instagram ad campaigns (managed through the same Meta Ads Manager).
+
+### Agent Tools
+
+| Tool | Description |
+|---|---|
+| `get_campaigns` | List ad campaigns with status and budget |
+| `get_campaign_metrics` | Impressions, reach, clicks, spend, conversions |
+| `get_ad_sets` | List ad sets with targeting and scheduling |
+| `get_ads` | Individual ad performance |
+| `get_account_insights` | Account-level aggregated metrics |
+
+## Use Cases
+
+<AccordionGroup>
+  <Accordion title="Performance reporting">
+    Sales agent answers "How are our Google Ads doing this week?" by calling `get_campaign_metrics` with a date range filter. Returns spend, conversions, and ROAS in plain language.
+  </Accordion>
+  <Accordion title="Cross-platform comparison">
+    Agent pulls data from both Google Ads and Facebook Ads to compare cost-per-lead across platforms.
+  </Accordion>
+  <Accordion title="Lead source attribution">
+    When a lead comes in through the website widget, the agent checks UTM parameters from the tracking session and correlates with ad campaign data to identify which campaign generated the lead.
+  </Accordion>
+</AccordionGroup>

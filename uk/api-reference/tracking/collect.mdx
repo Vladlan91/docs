@@ -1,0 +1,64 @@
+---
+title: Збір подій
+api: "POST /api/tracker/collect"
+description: "Надсилання даних трекінгу (перегляди сторінок, події)"
+---
+
+## Request
+
+<ParamField body="api_key" type="string" required>
+  Ваш API key віджета
+</ParamField>
+
+<ParamField body="company_id" type="integer" required>
+  ID вашої компанії
+</ParamField>
+
+<ParamField body="session_token" type="string" required>
+  Унікальний ідентифікатор сесії
+</ParamField>
+
+<ParamField body="pageviews" type="array">
+  Масив об'єктів переглядів сторінок (максимум 50)
+</ParamField>
+
+<ParamField body="events" type="array">
+  Масив об'єктів подій (максимум 50)
+</ParamField>
+
+## Об'єкт Pageview
+
+```json
+{
+  "url": "https://example.com/products",
+  "title": "Our Products",
+  "referrer": "https://google.com",
+  "timestamp": 1709640000
+}
+```
+
+## Об'єкт Event
+
+```json
+{
+  "name": "form_submit",
+  "category": "engagement",
+  "data": {
+    "form_id": "contact-form",
+    "fields": ["name", "email", "phone"]
+  },
+  "timestamp": 1709640000
+}
+```
+
+## Response
+
+```json
+{
+  "success": true
+}
+```
+
+<Warning>
+  Масиви обмежені 50 елементами кожен для запобігання зловживанню.
+</Warning>

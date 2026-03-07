@@ -1,0 +1,128 @@
+---
+title: Integrations Overview
+sidebarTitle: Overview
+description: "Connect AI agents to communication channels, productivity tools, and ad platforms"
+---
+
+## What Are Integrations?
+
+Integrations connect your AI agents to external services — so they can answer phone calls, reply in messengers, send emails, create documents, and pull analytics data. Each integration gives your agent a set of **tools** it can call during conversations.
+
+<Frame caption="Integration wizard — select a provider, enter credentials, verify connection">
+  <img className="block dark:hidden" src="/images/integrations-wizard-light.png" alt="Integration wizard" />
+  <img className="hidden dark:block" src="/images/integrations-wizard-dark.png" alt="Integration wizard" />
+</Frame>
+
+## Available Integrations
+
+<CardGroup cols={2}>
+  <Card title="Telephony" icon="phone" href="/integrations/voip">
+    Twilio, Ringostat, Binotel — AI-powered phone calls and SMS
+  </Card>
+  <Card title="Messengers" icon="comments" href="/integrations/messengers">
+    Telegram, WhatsApp, Instagram DM, Facebook Messenger
+  </Card>
+  <Card title="Google Workspace" icon="google" href="/integrations/google-workspace">
+    Gmail, Docs, Sheets, Drive, Calendar, Meet
+  </Card>
+  <Card title="Ad Campaigns" icon="chart-line" href="/integrations/advertising">
+    Google Ads, Facebook Ads — campaign analytics
+  </Card>
+  <Card title="Custom Webhook" icon="webhook" href="/integrations/webhook">
+    Send lead data to any CRM or external system
+  </Card>
+</CardGroup>
+
+## Architecture
+
+Every integration follows the same pattern:
+
+<Steps>
+  <Step title="Connect">
+    Add an integration from the wizard. Depending on the provider, you either enter API credentials (VoIP, Telegram) or go through OAuth (Google, Meta).
+  </Step>
+  <Step title="Verify">
+    Revol tests your credentials against the provider's API and fetches available resources (phone numbers, bot info, connected accounts).
+  </Step>
+  <Step title="Provision Tools">
+    After verification, Revol creates **agent tools** based on the integration type. For example, connecting Gmail gives your agents `send_email`, `read_inbox`, `search_emails`, and other tools.
+  </Step>
+  <Step title="Assign to Agent">
+    In the agent settings, enable the tools you want the agent to use. The agent can now call these tools during conversations — either automatically through workflow nodes or via LLM function calling.
+  </Step>
+</Steps>
+
+## Authentication Methods
+
+| Method | Used by | How it works |
+|---|---|---|
+| **API Key / Token** | Twilio, Ringostat, Binotel, Telegram | Enter credentials in the wizard. Stored encrypted in database. |
+| **Google OAuth** | Gmail, Docs, Sheets, Drive, Calendar, Meet, Google Ads | User clicks "Connect", authorizes in Google consent screen, Revol stores refresh token. |
+| **Meta OAuth** | WhatsApp, Instagram, Facebook Messenger, Facebook Ads | User clicks "Connect", authorizes via Meta, Revol exchanges for long-lived token (60 days). |
+| **Webhook URL** | Custom Webhook | No auth needed — you provide the target URL and Revol sends data to it. |
+
+## Webhook Security
+
+All inbound webhook endpoints (VoIP calls, messenger messages) are protected with:
+
+- **Signature validation** — cryptographic verification of request authenticity per provider
+- **Idempotency** — duplicate webhook detection to prevent double-processing
+- **Rate limiting** — 120 requests per minute per channel
+- **IP allowlisting** — where supported by provider (e.g., Binotel)
+
+## Integration Status
+
+<Tabs>
+  <Tab title="Production Ready">
+    | Integration | Auth | Agent Tools | Webhooks |
+    |---|---|---|---|
+    | Twilio | API Key | send_sms, make_call | Voice + SMS |
+    | Ringostat | API Key | make_call, get_call_history | Call notifications |
+    | Binotel | API Key | make_call, get_call_history | Call notifications |
+  </Tab>
+  <Tab title="In Development">
+    | Integration | Auth | Agent Tools | Target |
+    |---|---|---|---|
+    | Telegram | Bot Token | 6 tools (send, edit, delete, files, history) | Phase 1 |
+    | Gmail | Google OAuth | 6 tools (send, read, search, reply, draft) | Phase 2 |
+    | Google Docs | Google OAuth | 5 tools (create, read, append, search, export) | Phase 2 |
+    | Google Sheets | Google OAuth | 7 tools (read, write, append, search, create) | Phase 2 |
+    | Google Drive | Google OAuth | 8 tools (list, search, read, create, share) | Phase 2 |
+    | Google Calendar | Google OAuth | 6 tools (create, list, update, delete, availability) | Phase 2 |
+    | Google Meet | Google OAuth | 1 tool (create meeting) | Phase 2 |
+    | WhatsApp Business | Meta OAuth | 6 tools (send, template, media, history) | Phase 3 |
+    | Instagram DM | Meta OAuth | 5 tools (send, history, profile, comments) | Phase 3 |
+    | Facebook Messenger | Meta OAuth | 5 tools (send, template, media, history) | Phase 3 |
+    | Custom Webhook | URL | 3 tools (send, fetch, custom request) | Phase 4 |
+    | Google Ads | Google OAuth | Campaign analytics | Phase 4 |
+    | Facebook Ads | Meta OAuth | Campaign analytics | Phase 4 |
+  </Tab>
+</Tabs>
+
+## Implementation Roadmap
+
+<Steps>
+  <Step title="Phase 1 — Telegram">
+    Telegram Bot API integration. No OAuth required — just a bot token from BotFather. Includes webhook handling for incoming messages and 6 agent tools for sending, editing, and managing messages.
+  </Step>
+  <Step title="Phase 2 — Google Workspace">
+    Six integrations via a single `google/apiclient` SDK. Shared OAuth flow with token refresh. Covers Gmail, Google Docs, Sheets, Drive, Calendar, and Meet — approximately 38 agent tools total.
+  </Step>
+  <Step title="Phase 3 — Meta Messengers">
+    WhatsApp Business, Instagram DM, and Facebook Messenger via Meta Graph API. Shared Meta OAuth flow with long-lived token exchange. Webhook handling for incoming messages across all three platforms — approximately 16 agent tools.
+  </Step>
+  <Step title="Phase 4 — Webhook & Ads">
+    Custom Webhook for CRM/external system integration. Google Ads and Facebook Ads for campaign analytics. Approximately 5 agent tools.
+  </Step>
+</Steps>
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="VoIP Setup" icon="phone" href="/integrations/voip">
+    Connect Twilio, Ringostat, or Binotel for AI phone calls
+  </Card>
+  <Card title="Messenger Setup" icon="comments" href="/integrations/messengers">
+    Connect Telegram, WhatsApp, Instagram, or Facebook
+  </Card>
+</CardGroup>

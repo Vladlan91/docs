@@ -1,0 +1,49 @@
+---
+title: Widget Installation
+description: "Install the Revol chat widget on your website"
+---
+
+## Quick Install
+
+Add this single script before the closing `</body>` tag on your website:
+
+```html
+<script src="https://app.revol.com/tracker.js"
+        data-api-key="YOUR_API_KEY"
+        data-company-id="YOUR_COMPANY_ID"
+        async>
+</script>
+```
+
+This script handles both the **chat widget** and **visitor tracking** — no additional code needed.
+
+## Configuration
+
+| Attribute | Required | Description |
+|-----------|----------|-------------|
+| `data-api-key` | Yes | Your widget API key |
+| `data-company-id` | Yes | Your company ID |
+
+<Tip>
+  Find your API key and Company ID in **Admin Panel** → **General Settings**.
+</Tip>
+
+## What Gets Loaded
+
+The tracker script automatically:
+
+1. **Initializes tracking** — sessions, pageviews, events
+2. **Loads the widget** — chat bubble with your customized appearance
+3. **Lazy-loads modules** — triggers, overlays, phone swap (only when needed)
+
+## Shadow DOM
+
+The widget renders inside a **Shadow DOM** container, which means:
+
+- Your site's CSS won't affect the widget
+- The widget's CSS won't affect your site
+- Complete style isolation
+
+## Single Page Applications (SPA)
+
+The tracker automatically detects URL changes via `pushState` and `popstate` events. No additional configuration needed for React, Vue, or Angular apps.

@@ -1,0 +1,149 @@
+---
+title: Google Workspace
+sidebarTitle: Google Workspace
+description: "Connect Gmail, Google Docs, Sheets, Drive, Calendar, and Meet"
+---
+
+<Note>
+  Google Workspace integrations are in development (Phase 2). This section describes the planned implementation.
+</Note>
+
+## Overview
+
+Six Google services are available through a single SDK (`google/apiclient`) and a shared OAuth flow. Connect once with your Google account — and your AI agents get access to email, documents, spreadsheets, files, calendar, and video meetings.
+
+## Supported Services
+
+| Service | Tools | Description |
+|---|---|---|
+| **Gmail** | 6 | Send emails, read inbox, search, reply, create drafts |
+| **Google Docs** | 5 | Create, read, append, search, and export documents |
+| **Google Sheets** | 7 | Read/write ranges, append rows, search, create spreadsheets |
+| **Google Drive** | 8 | List, search, upload, download, share files and folders |
+| **Google Calendar** | 6 | Create events, check availability, find free slots |
+| **Google Meet** | 1 | Create video meeting links |
+
+## Authentication
+
+All Google Workspace integrations use **OAuth 2.0** with offline access:
+
+<Steps>
+  <Step title="Add Integration">
+    Go to **Integrations** → **Add Integration** → select any Google service (e.g., Gmail).
+  </Step>
+  <Step title="OAuth Consent">
+    Click "Connect with Google". You'll be redirected to Google's consent screen where you authorize access to the specific service.
+  </Step>
+  <Step title="Token Storage">
+    Revol receives an access token and a refresh token. Both are encrypted and stored in the database. The refresh token provides long-term access — Revol automatically refreshes expired access tokens.
+  </Step>
+  <Step title="Tools Provisioned">
+    After successful OAuth, agent tools are created automatically based on the integration type.
+  </Step>
+</Steps>
+
+### OAuth Scopes
+
+Each service requests only the scopes it needs:
+
+| Service | Scope |
+|---|---|
+| Gmail | `gmail.modify` |
+| Google Docs | `documents` |
+| Google Sheets | `spreadsheets` |
+| Google Drive | `drive` |
+| Google Calendar | `calendar` |
+| Google Meet | `calendar` (Meet links are created via Calendar API) |
+
+## Agent Tools
+
+<Tabs>
+  <Tab title="Gmail">
+    | Tool | Description |
+    |---|---|
+    | `send_email` | Compose and send an email |
+    | `read_inbox` | List recent emails from inbox |
+    | `search_emails` | Search emails by query (from, subject, date, keywords) |
+    | `reply_to_email` | Reply to a specific email thread |
+    | `create_draft` | Create a draft email without sending |
+    | `get_attachments` | Download attachments from an email |
+  </Tab>
+  <Tab title="Google Docs">
+    | Tool | Description |
+    |---|---|
+    | `create_document` | Create a new Google Doc |
+    | `read_document` | Read the content of a document |
+    | `append_to_document` | Append text to the end of a document |
+    | `search_documents` | Search documents by title or content |
+    | `export_document` | Export document to PDF, DOCX, or plain text |
+  </Tab>
+  <Tab title="Google Sheets">
+    | Tool | Description |
+    |---|---|
+    | `read_range` | Read data from a cell range (e.g., A1:D10) |
+    | `write_range` | Write data to a cell range |
+    | `append_rows` | Append rows to the end of a sheet |
+    | `search_rows` | Search for rows matching criteria |
+    | `create_spreadsheet` | Create a new spreadsheet |
+    | `get_spreadsheet_info` | Get spreadsheet metadata (sheets, row count) |
+    | `update_cells` | Update specific cells |
+  </Tab>
+  <Tab title="Google Drive">
+    | Tool | Description |
+    |---|---|
+    | `list_files` | List files in a folder |
+    | `search_files` | Search files by name, type, or content |
+    | `read_file` | Download or read file content |
+    | `create_file` | Upload a new file |
+    | `update_file` | Update an existing file |
+    | `delete_file` | Move a file to trash |
+    | `create_folder` | Create a new folder |
+    | `share_file` | Share a file with specific users or make public |
+  </Tab>
+  <Tab title="Calendar & Meet">
+    **Google Calendar:**
+
+    | Tool | Description |
+    |---|---|
+    | `create_event` | Create a calendar event |
+    | `list_events` | List upcoming events |
+    | `update_event` | Update an existing event |
+    | `delete_event` | Cancel/delete an event |
+    | `check_availability` | Check if a time slot is free |
+    | `find_free_slots` | Find available time slots in a date range |
+
+    **Google Meet:**
+
+    | Tool | Description |
+    |---|---|
+    | `create_meeting` | Create a Google Meet link (via Calendar event with conferenceData) |
+  </Tab>
+</Tabs>
+
+## Use Cases
+
+<AccordionGroup>
+  <Accordion title="Automated follow-up emails">
+    Agent qualifies a lead via chat → uses `send_email` to send a follow-up with pricing → logs the interaction in `Google Sheets` via `append_rows`.
+  </Accordion>
+  <Accordion title="Appointment booking">
+    Customer asks to schedule a meeting → agent uses `check_availability` to find free slots → `create_event` to book it → `create_meeting` to generate a Google Meet link → sends confirmation via chat or email.
+  </Accordion>
+  <Accordion title="Document generation">
+    Agent collects information from the customer → uses `create_document` to generate a proposal or report → `share_file` to give the customer access.
+  </Accordion>
+  <Accordion title="CRM-like lead tracking">
+    Every conversation ending with a lead → agent uses `append_rows` to add lead data to a Google Sheet → `send_email` to notify the sales team.
+  </Accordion>
+</AccordionGroup>
+
+## Token Refresh
+
+Google access tokens expire after 1 hour. Revol handles this automatically:
+
+1. Before each API call, Revol checks if the access token is expired
+2. If expired, uses the stored refresh token to obtain a new access token
+3. The new token is encrypted and saved back to the database
+4. The API call proceeds with the fresh token
+
+If a refresh token becomes invalid (user revoked access), the integration is marked as disconnected and the user is prompted to re-authorize.

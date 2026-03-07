@@ -1,0 +1,41 @@
+---
+title: Initialize Widget
+api: "GET /api/widget/init"
+description: "Initialize the widget and get configuration"
+---
+
+## Request
+
+<ParamField query="api_key" type="string" required>
+  Your widget API key
+</ParamField>
+
+<ParamField query="company_id" type="integer" required>
+  Your company ID
+</ParamField>
+
+## Response
+
+```json
+{
+  "success": true,
+  "data": {
+    "company_name": "My Company",
+    "agent": {
+      "id": 1,
+      "name": "Sales Assistant",
+      "avatar": "/storage/avatars/agent.jpg"
+    },
+    "settings": {
+      "button_color": "#8b5cf6",
+      "animation_color": "#a855f7",
+      "background_color": "#1a1a2e",
+      "message_background_color": "#2d2d44",
+      "border_radius": 16,
+      "position": "right",
+      "welcome_message": "Hi! How can I help you?",
+      "voice_enabled": true
+    }
+  }
+}
+```

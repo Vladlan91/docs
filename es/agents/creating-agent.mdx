@@ -1,0 +1,59 @@
+---
+title: Creating an Agent
+description: "Step-by-step guide to creating and configuring an AI agent"
+---
+
+## Create a New Agent
+
+1. Navigate to **Agents Platform** → **AI Agents**
+2. Click **Create Agent**
+3. Fill in the basic information:
+
+| Field | Description |
+|-------|-------------|
+| **Name** | Agent display name |
+| **Company** | Which company this agent belongs to |
+| **Use Case** | Sales, Support, Lead Generation, etc. |
+| **LLM Provider** | OpenAI, Anthropic, Google, or Groq |
+| **Model** | Specific model to use |
+
+## Configure System Prompt
+
+The system prompt is the core instruction set for your agent. Best practices:
+
+<Tip>
+  Be specific about the agent's role, tone, and boundaries. Include examples of how it should respond.
+</Tip>
+
+```text
+You are a sales assistant for [Company Name].
+Your goal is to help customers find the right product.
+
+Rules:
+- Always be polite and professional
+- If you don't know the answer, say so honestly
+- Never discuss competitor products
+- Suggest relevant products from the knowledge base
+```
+
+## Add Knowledge Base
+
+Go to the **Knowledge** tab to add content:
+
+- **Documents** — PDF, DOCX, TXT files
+- **URLs** — Web pages to scrape and index
+- **Text** — Direct text content
+
+<Note>
+  Documents are split into chunks and converted to vector embeddings for semantic search. The agent retrieves the most relevant chunks during each conversation.
+</Note>
+
+## Configure Workflow
+
+The **Workflow** tab provides a visual editor:
+
+1. Start with the **Start** node
+2. Add **LLM** nodes for AI responses
+3. Use **Condition** nodes for branching logic
+4. Add **Tool Call** nodes for external actions
+5. Connect nodes with edges to define the flow

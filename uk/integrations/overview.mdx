@@ -1,0 +1,128 @@
+---
+title: Огляд інтеграцій
+sidebarTitle: Огляд
+description: "Підключайте AI-агентів до каналів комунікації, інструментів продуктивності та рекламних платформ"
+---
+
+## Що таке інтеграції?
+
+Інтеграції з'єднують ваших AI-агентів із зовнішніми сервісами — щоб вони могли відповідати на телефонні дзвінки, писати у месенджерах, надсилати електронні листи, створювати документи та отримувати дані аналітики. Кожна інтеграція надає вашому агенту набір **інструментів**, які він може викликати під час розмов.
+
+<Frame caption="Майстер інтеграцій — оберіть провайдера, введіть облікові дані, перевірте з'єднання">
+  <img className="block dark:hidden" src="/images/integrations-wizard-light.png" alt="Майстер інтеграцій" />
+  <img className="hidden dark:block" src="/images/integrations-wizard-dark.png" alt="Майстер інтеграцій" />
+</Frame>
+
+## Доступні інтеграції
+
+<CardGroup cols={2}>
+  <Card title="Телефонія" icon="phone" href="/integrations/voip">
+    Twilio, Ringostat, Binotel — телефонні дзвінки та SMS з AI
+  </Card>
+  <Card title="Месенджери" icon="comments" href="/integrations/messengers">
+    Telegram, WhatsApp, Instagram DM, Facebook Messenger
+  </Card>
+  <Card title="Google Workspace" icon="google" href="/integrations/google-workspace">
+    Gmail, Docs, Sheets, Drive, Calendar, Meet
+  </Card>
+  <Card title="Рекламні кампанії" icon="chart-line" href="/integrations/advertising">
+    Google Ads, Facebook Ads — аналітика кампаній
+  </Card>
+  <Card title="Custom Webhook" icon="webhook" href="/integrations/webhook">
+    Надсилайте дані лідів у будь-яку CRM або зовнішню систему
+  </Card>
+</CardGroup>
+
+## Архітектура
+
+Кожна інтеграція працює за однаковим принципом:
+
+<Steps>
+  <Step title="Підключення">
+    Додайте інтеграцію через майстер. Залежно від провайдера, ви або вводите API-облікові дані (VoIP, Telegram), або проходите OAuth (Google, Meta).
+  </Step>
+  <Step title="Перевірка">
+    Revol перевіряє ваші облікові дані через API провайдера та отримує доступні ресурси (номери телефонів, інформацію про бота, підключені акаунти).
+  </Step>
+  <Step title="Створення інструментів">
+    Після перевірки Revol створює **інструменти агента** відповідно до типу інтеграції. Наприклад, підключення Gmail дає вашим агентам інструменти `send_email`, `read_inbox`, `search_emails` та інші.
+  </Step>
+  <Step title="Призначення агенту">
+    У налаштуваннях агента увімкніть інструменти, які він має використовувати. Тепер агент може викликати ці інструменти під час розмов — автоматично через вузли workflow або через LLM function calling.
+  </Step>
+</Steps>
+
+## Методи автентифікації
+
+| Метод | Використовується | Як працює |
+|---|---|---|
+| **API Key / Token** | Twilio, Ringostat, Binotel, Telegram | Введіть облікові дані в майстрі. Зберігаються зашифрованими в базі даних. |
+| **Google OAuth** | Gmail, Docs, Sheets, Drive, Calendar, Meet, Google Ads | Користувач натискає "Підключити", авторизується на екрані згоди Google, Revol зберігає refresh token. |
+| **Meta OAuth** | WhatsApp, Instagram, Facebook Messenger, Facebook Ads | Користувач натискає "Підключити", авторизується через Meta, Revol обмінює на довготривалий токен (60 днів). |
+| **Webhook URL** | Custom Webhook | Автентифікація не потрібна — ви вказуєте цільову URL-адресу, і Revol надсилає дані на неї. |
+
+## Безпека Webhook
+
+Усі вхідні webhook-ендпоінти (VoIP-дзвінки, повідомлення месенджерів) захищені:
+
+- **Перевірка підпису** — криптографічна верифікація автентичності запиту для кожного провайдера
+- **Ідемпотентність** — виявлення дублікатів webhook для запобігання подвійній обробці
+- **Обмеження частоти** — 120 запитів на хвилину на канал
+- **Білий список IP** — де підтримується провайдером (наприклад, Binotel)
+
+## Статус інтеграцій
+
+<Tabs>
+  <Tab title="Готові до використання">
+    | Інтеграція | Автентифікація | Інструменти агента | Webhooks |
+    |---|---|---|---|
+    | Twilio | API Key | send_sms, make_call | Voice + SMS |
+    | Ringostat | API Key | make_call, get_call_history | Сповіщення про дзвінки |
+    | Binotel | API Key | make_call, get_call_history | Сповіщення про дзвінки |
+  </Tab>
+  <Tab title="В розробці">
+    | Інтеграція | Автентифікація | Інструменти агента | Етап |
+    |---|---|---|---|
+    | Telegram | Bot Token | 6 інструментів (надсилання, редагування, видалення, файли, історія) | Phase 1 |
+    | Gmail | Google OAuth | 6 інструментів (надсилання, читання, пошук, відповідь, чернетка) | Phase 2 |
+    | Google Docs | Google OAuth | 5 інструментів (створення, читання, додавання, пошук, експорт) | Phase 2 |
+    | Google Sheets | Google OAuth | 7 інструментів (читання, запис, додавання, пошук, створення) | Phase 2 |
+    | Google Drive | Google OAuth | 8 інструментів (список, пошук, читання, створення, доступ) | Phase 2 |
+    | Google Calendar | Google OAuth | 6 інструментів (створення, список, оновлення, видалення, доступність) | Phase 2 |
+    | Google Meet | Google OAuth | 1 інструмент (створення зустрічі) | Phase 2 |
+    | WhatsApp Business | Meta OAuth | 6 інструментів (надсилання, шаблон, медіа, історія) | Phase 3 |
+    | Instagram DM | Meta OAuth | 5 інструментів (надсилання, історія, профіль, коментарі) | Phase 3 |
+    | Facebook Messenger | Meta OAuth | 5 інструментів (надсилання, шаблон, медіа, історія) | Phase 3 |
+    | Custom Webhook | URL | 3 інструменти (надсилання, отримання, довільний запит) | Phase 4 |
+    | Google Ads | Google OAuth | Аналітика кампаній | Phase 4 |
+    | Facebook Ads | Meta OAuth | Аналітика кампаній | Phase 4 |
+  </Tab>
+</Tabs>
+
+## Дорожня карта реалізації
+
+<Steps>
+  <Step title="Phase 1 — Telegram">
+    Інтеграція з Telegram Bot API. OAuth не потрібен — лише токен бота від BotFather. Включає обробку webhook для вхідних повідомлень та 6 інструментів агента для надсилання, редагування та керування повідомленнями.
+  </Step>
+  <Step title="Phase 2 — Google Workspace">
+    Шість інтеграцій через єдиний SDK `google/apiclient`. Спільний потік OAuth з оновленням токенів. Охоплює Gmail, Google Docs, Sheets, Drive, Calendar та Meet — приблизно 38 інструментів агента загалом.
+  </Step>
+  <Step title="Phase 3 — Meta Messengers">
+    WhatsApp Business, Instagram DM та Facebook Messenger через Meta Graph API. Спільний потік Meta OAuth з обміном на довготривалий токен. Обробка webhook для вхідних повідомлень на всіх трьох платформах — приблизно 16 інструментів агента.
+  </Step>
+  <Step title="Phase 4 — Webhook та реклама">
+    Custom Webhook для інтеграції з CRM/зовнішніми системами. Google Ads та Facebook Ads для аналітики кампаній. Приблизно 5 інструментів агента.
+  </Step>
+</Steps>
+
+## Наступні кроки
+
+<CardGroup cols={2}>
+  <Card title="Налаштування VoIP" icon="phone" href="/integrations/voip">
+    Підключіть Twilio, Ringostat або Binotel для AI-телефонних дзвінків
+  </Card>
+  <Card title="Налаштування месенджерів" icon="comments" href="/integrations/messengers">
+    Підключіть Telegram, WhatsApp, Instagram або Facebook
+  </Card>
+</CardGroup>

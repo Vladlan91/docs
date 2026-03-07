@@ -1,0 +1,384 @@
+---
+title: Quick Start
+description: "Quick start with Revol — from registration to your first AI agent"
+---
+
+## Registration and Login
+
+Revol supports two ways to create an account:
+
+- **Google OAuth** — click "Continue with Google" and authorize with your Google account. The fastest way.
+- **Email + password** — fill out the form: first name, last name, email, password, and password confirmation. You need to accept the Terms of Service and Privacy Policy.
+
+After registration, you land on the dashboard, where the first step is to create a company.
+
+<Note>
+  If you already have an account, use the login page — the same Google OAuth or email/password options. There is a "Remember me" feature and password recovery via email.
+</Note>
+
+<Frame caption="Registration form — Google OAuth or email">
+  <img className="block dark:hidden" src="/images/register-light.png" alt="Registration form" />
+  <img className="hidden dark:block" src="/images/register-dark.png" alt="Registration form" />
+</Frame>
+
+---
+
+## Creating a Company
+
+After logging in, the first thing you need to do is **create a company**. A company is the central entity in Revol, to which all other elements are linked: products, files, agents, integrations, analytics.
+
+To create a company, fill in:
+
+| Field | Description |
+|-------|-------------|
+| **Company Name** | Brand or business name |
+| **Website** | Your website URL (used for widget domain validation) |
+| **Phone** | Company contact number |
+| **Logo** | Image that will be displayed in the widget and dashboard |
+| **Promo Description** | Short description of your business |
+
+<Frame caption="Company setup — name, website, logo, and contacts">
+  <img className="block dark:hidden" src="/images/company-setup-light.png" alt="Company setup" />
+  <img className="hidden dark:block" src="/images/company-setup-dark.png" alt="Company setup" />
+</Frame>
+
+### Why a company and not just an agent?
+
+Most AI chatbot platforms work with a simple approach: you create an agent, upload PDF files, and it answers questions based on those documents. This works for simple FAQ bots but quickly becomes a limitation for real businesses.
+
+Revol is built differently. We use a **structured data model**: company → products/services → product parameters. Here's why:
+
+<AccordionGroup>
+  <Accordion title="Structured data = more accurate answers">
+    When an AI agent knows that "iPhone 15 Pro" is a specific product priced at $999, with 8 colors, and a status of "in stock," it responds with **facts** rather than interpreting text from a PDF. No hallucinations about prices that have changed or products that are out of stock.
+  </Accordion>
+  <Accordion title="Parameters are the language of your business">
+    Every business has its own key characteristics. For an online store — size, color, material. For a clinic — procedure duration, contraindications. For SaaS — plan limits, supported integrations. Product parameters allow you to describe these details in a structured way, and the agent uses them for precise, contextual answers.
+  </Accordion>
+  <Accordion title="One dataset — multiple agents">
+    You fill in the product catalog once, then create multiple agents with different roles: one for sales, another for support, a third for internal training. Each agent chooses which specific products and files it uses. No data duplication.
+  </Accordion>
+  <Accordion title="Scaling for agencies">
+    If you manage multiple businesses or work as an agency — each company has isolated data, separate agents, and its own analytics. A single Revol account can serve dozens of companies.
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Products and Services
+
+After creating a company, add **products or services** — these are the core units that your AI agent will know about and tell customers about.
+
+To create a product, specify:
+
+| Field | Description |
+|-------|-------------|
+| **Name** | Service or product name |
+| **Link** | Product page URL on your website (optional) |
+| **Availability** | Whether the product is available for order |
+
+After creation, a product side panel opens where you can:
+
+- Add a **detailed description** (prompt) — extended text about the product that the agent will use for responses
+- Set the **price**
+- Upload product **photos**
+- Add **files** to the product's knowledge base (documents, links, text, videos)
+
+<Frame caption="Product card — description, price, photos, and knowledge base files">
+  <img className="block dark:hidden" src="/images/product-card-light.png" alt="Product card" />
+  <img className="hidden dark:block" src="/images/product-card-dark.png" alt="Product card" />
+</Frame>
+
+### Product Parameters
+
+The most powerful part of the product model is **parameters**. These are structured "name — value" pairs that describe specific product characteristics.
+
+**Parameter examples for different businesses:**
+
+<Tabs>
+  <Tab title="Online Store">
+    | Parameter | Value |
+    |-----------|-------|
+    | Size | S, M, L, XL |
+    | Color | Black, White, Blue |
+    | Material | 100% cotton |
+    | Weight | 250 g |
+    | Warranty | 12 months |
+  </Tab>
+  <Tab title="Clinic / Salon">
+    | Parameter | Value |
+    |-----------|-------|
+    | Duration | 60 minutes |
+    | Contraindications | Pregnancy, latex allergy |
+    | Preparation | Do not eat 2 hours before the procedure |
+    | Recovery | 3-5 days |
+  </Tab>
+  <Tab title="SaaS / IT">
+    | Parameter | Value |
+    |-----------|-------|
+    | Users | Up to 50 |
+    | Storage | 100 GB |
+    | API Requests | 10,000 / month |
+    | Support | Email + chat, response within 4 hours |
+    | Integrations | Slack, Jira, GitHub |
+  </Tab>
+</Tabs>
+
+**Why is this needed?** When a customer asks "What sizes are available?" or "How long does the procedure take?" — the agent takes the answer directly from the product parameters rather than trying to find this information in a long text. This provides:
+
+- **Accuracy** — specific values instead of vague wording
+- **Up-to-date info** — change a parameter in one place, and the agent immediately responds with the updated information
+- **Comparison** — the agent can compare products by specific parameters
+
+---
+
+## File Manager
+
+**File Manager** is the centralized storage for all your company's files. This is where you upload content that will be used to train AI agents.
+
+Go to **File Manager** in the side menu. You will see a list of companies — select the one you need to open its files.
+
+### Content Types
+
+<Tabs>
+  <Tab title="Documents">
+    Upload files in **PDF**, **DOCX**, **TXT** formats. Revol will automatically extract the text, split it into chunks, and create vector embeddings for semantic search.
+
+    | Format | Max Size | What is Extracted |
+    |--------|----------|-------------------|
+    | PDF | 10 MB | Text from all pages |
+    | DOCX | 10 MB | Text with formatting |
+    | TXT | 5 MB | Full text |
+  </Tab>
+  <Tab title="Links">
+    Paste the URL of any web page. Revol will automatically download the page content, extract the text, and add it to the knowledge base.
+
+    This is convenient for:
+    - Website pages with service descriptions
+    - FAQ sections
+    - Blog posts and articles
+    - External resources
+  </Tab>
+  <Tab title="Text">
+    Add content directly as a text block. Ideal for:
+    - Frequently asked questions (FAQ)
+    - Company policies
+    - Agent scripts
+    - Short instructions
+  </Tab>
+  <Tab title="Video">
+    Upload a video — Revol will automatically transcribe the audio track into text and add it to the knowledge base. Supported formats: **MP4**, **WebM**, **MOV**.
+  </Tab>
+  <Tab title="Photos">
+    Upload images with text — Revol will use OCR to extract text. Useful for screenshots, document photos, infographics.
+  </Tab>
+</Tabs>
+
+<Frame caption="File Manager — uploading documents, links, text, and media">
+  <img className="block dark:hidden" src="/images/file-manager-light.png" alt="File Manager" />
+  <img className="hidden dark:block" src="/images/file-manager-dark.png" alt="File Manager" />
+</Frame>
+
+<Note>
+  Files can be added both at the company level (available to all agents) and at the individual product level (linked to a specific product/service).
+</Note>
+
+---
+
+## Creating an AI Agent
+
+Now that you have a company with products and files — it's time to create an AI agent.
+
+Go to **AI Agents** in the side menu and click **Create Agent**.
+
+### Basic Settings
+
+| Field | Description |
+|-------|-------------|
+| **Name** | Agent name (e.g., "Sales Consultant") |
+| **Company** | Which company the agent belongs to |
+| **Use Case** | Agent role: Sales, Support, Lead Generation, Scheduling, Custom |
+| **LLM Provider** | AI model provider |
+| **Model** | Specific model to use |
+
+### Available LLM Providers
+
+<CardGroup cols={2}>
+  <Card title="OpenAI" icon="bolt">
+    GPT-4o, GPT-4o-mini — the most popular choice for most tasks
+  </Card>
+  <Card title="Anthropic" icon="brain">
+    Claude Sonnet, Claude Haiku — excellent response quality and safety
+  </Card>
+  <Card title="Google" icon="google">
+    Gemini 2.0 Flash, Gemini 2.5 Pro — fast and efficient models
+  </Card>
+  <Card title="Groq" icon="microchip">
+    Llama 3.1 8B, Llama 3.3 70B — fastest inference, open-source models
+  </Card>
+</CardGroup>
+
+### System Prompt
+
+After creating the agent, a full-screen settings panel opens. The first step is to write a **System Prompt** — the core instruction that defines the agent's behavior.
+
+```text
+You are a sales consultant for [Company Name].
+Your goal is to help customers choose the right product.
+
+Rules:
+- Always be polite and professional
+- If you don't know the answer — honestly say so
+- Do not discuss competitors' products
+- Suggest relevant products from the knowledge base
+- Respond in the customer's language
+```
+
+<Tip>
+  The more specific the system prompt, the more accurate the agent's responses. Specify the role, tone of communication, limitations, and response examples.
+</Tip>
+
+---
+
+## Agent Knowledge Base
+
+Navigate to the **Knowledge** tab in the agent panel. Here you choose which specific data the agent will use for responses.
+
+### Knowledge Sources
+
+The agent can learn from two types of sources:
+
+<AccordionGroup>
+  <Accordion title="Company Products">
+    Select specific products or services the agent should know about. The agent will get access to names, descriptions, prices, parameters, and photos of the selected products.
+  </Accordion>
+  <Accordion title="Knowledge Base Files">
+    Select documents, links, texts, and videos from the File Manager. You can choose files both at the company level and those linked to specific products.
+  </Accordion>
+</AccordionGroup>
+
+### Training
+
+After selecting sources, click **Train**. Revol will:
+
+1. Extract all text content from the selected sources
+2. Split it into optimal chunks
+3. Create vector embeddings via OpenAI text-embedding-3-small
+4. Store them in PostgreSQL with pgvector for semantic search
+
+<Frame caption="Agent knowledge base — selecting sources and training">
+  <img className="block dark:hidden" src="/images/agents-knowledge-base-light.png" alt="Agent knowledge base" />
+  <img className="hidden dark:block" src="/images/agents-knowledge-base-dark.png" alt="Agent knowledge base" />
+</Frame>
+
+<Warning>
+  After changing files or products, you need to click **Train** again so the agent receives the updated data.
+</Warning>
+
+---
+
+## Testing the Agent
+
+Before publishing, test the agent right in the dashboard. Click the **Preview** button in the agent's top panel — a built-in chat window will open.
+
+### Basic Workflow
+
+Every new agent comes with a **ready-made workflow** that covers basic needs without additional configuration. Its structure:
+
+```
+Voice Input (STT) → Start → Product Agent  ─┐
+                         ├→ Media Agent    ─┤→ Response Formatter → Voice Output (TTS)
+                         └→ Company Agent  ─┘
+```
+
+| Node | What It Does | Tools |
+|------|-------------|-------|
+| **Start** | Entry point — receives the user's message | — |
+| **Product Agent** | Searches for products, details, availability, parameters | `get_products`, `get_product_details`, `check_availability`, `search_by_parameters` |
+| **Media Agent** | Finds photos, videos, and documents from the knowledge base | `get_photos`, `get_videos`, `get_documents`, `search_documents` |
+| **Company Agent** | Answers general questions about the company | `get_company_info` |
+| **Response Formatter** | Collects responses from all agents and forms the final message | — |
+| **Voice Input / Output** | STT and TTS for voice mode (disabled by default) | — |
+
+Three specialized agents work **in parallel** — Start distributes the query among them, each searches for relevant information in its area, and the Formatter combines the results into a single coherent response.
+
+<Tip>
+  The basic workflow is sufficient for most scenarios: product consultations, FAQ answers, knowledge base search. For more complex scenarios (conditions, branches, custom tool calls), use the [Workflow Editor](/agents/workflow).
+</Tip>
+
+### What to Check
+
+<Steps>
+  <Step title="Basic Answers">
+    Ask about your products and services. Make sure the agent responds accurately and uses data from the knowledge base.
+  </Step>
+  <Step title="Knowledge Boundaries">
+    Ask something that is not in the knowledge base. The agent should honestly say it doesn't have that information rather than making up an answer.
+  </Step>
+  <Step title="Tone and Style">
+    Check whether the communication tone matches your system prompt — politeness, language, formality.
+  </Step>
+  <Step title="Multilingual Support">
+    Write in different languages — the agent should respond in the customer's language.
+  </Step>
+</Steps>
+
+<Tip>
+  Use the **Analysis** tab to view conversation history, ratings, and agent statistics.
+</Tip>
+
+---
+
+## Installing the Widget
+
+When the agent is ready — install the widget on your website. Click the **Embed** button in the agent's top panel.
+
+### Getting the Code
+
+1. Click **Generate API Key** (if a key hasn't been created yet)
+2. Copy the widget HTML code
+
+### Adding to Your Website
+
+Add this code before the closing `</body>` tag on your website:
+
+```html
+<script src="https://app.revol.com/tracker.js"
+        data-api-key="YOUR_API_KEY"
+        data-company-id="YOUR_COMPANY_ID"
+        async>
+</script>
+```
+
+A single script provides:
+
+- **Chat widget** — a button in the corner of the site for communicating with the agent
+- **Visitor tracking** — sessions, pages, events, UTM tags
+- **Voice communication** — if enabled for the agent
+
+<Note>
+  The widget renders in **Shadow DOM** — its styles are fully isolated from your website and vice versa. No CSS conflicts.
+</Note>
+
+### Checking the Connection
+
+After installing the script, return to the Embed Code modal and click **Check Connection**. Revol will verify that the widget is correctly connected to your website.
+
+---
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="Workflow Editor" icon="diagram-project" href="/agents/workflow">
+    Create complex conversation scenarios with conditions, branches, and tool calls
+  </Card>
+  <Card title="Integrations" icon="plug" href="/integrations/overview">
+    Connect Telegram, WhatsApp, telephony, and other channels
+  </Card>
+  <Card title="Widget Customization" icon="palette" href="/widget/customization">
+    Change colors, texts, placement, and the appearance of the widget
+  </Card>
+  <Card title="Analytics and Tracking" icon="chart-line" href="/widget/tracker">
+    Track visitor sessions, events, and conversions
+  </Card>
+</CardGroup>

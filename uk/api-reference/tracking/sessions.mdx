@@ -1,0 +1,61 @@
+---
+title: Сесії
+api: "POST /api/tracker/session"
+description: "Створення або оновлення сесії трекінгу"
+---
+
+## Request
+
+<ParamField body="api_key" type="string" required>
+  Ваш API key віджета
+</ParamField>
+
+<ParamField body="company_id" type="integer" required>
+  ID вашої компанії
+</ParamField>
+
+<ParamField body="session_token" type="string" required>
+  Унікальний ідентифікатор сесії (генерується tracker.js)
+</ParamField>
+
+<ParamField body="device" type="object">
+  Інформація про пристрій
+</ParamField>
+
+<ParamField body="utm" type="object">
+  UTM параметри кампанії
+</ParamField>
+
+## Об'єкт Device
+
+```json
+{
+  "type": "desktop",
+  "browser": "Chrome",
+  "os": "Windows 11",
+  "screen": "1920x1080"
+}
+```
+
+## Об'єкт UTM
+
+```json
+{
+  "source": "google",
+  "medium": "cpc",
+  "campaign": "spring_sale",
+  "term": "ai chatbot",
+  "content": "banner_v2"
+}
+```
+
+## Response
+
+```json
+{
+  "success": true,
+  "data": {
+    "session_id": 12345
+  }
+}
+```

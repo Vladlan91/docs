@@ -1,0 +1,47 @@
+---
+title: API Overview
+description: "Revol API reference"
+---
+
+## Base URL
+
+```
+https://app.revol.com/api
+```
+
+## Authentication
+
+All API requests require authentication via API key passed in the request header or as a query parameter.
+
+```bash
+curl -H "Authorization: Bearer YOUR_API_KEY" \
+     https://app.revol.com/api/widget/init
+```
+
+## Rate Limits
+
+| Endpoint | Limit |
+|----------|-------|
+| Widget API | 15 requests/min |
+| Tracking API | 60 requests/min |
+| General API | Based on plan |
+
+## Response Format
+
+All responses are JSON:
+
+```json
+{
+  "success": true,
+  "data": { ... }
+}
+```
+
+Error responses:
+
+```json
+{
+  "success": false,
+  "error": "Error message"
+}
+```
