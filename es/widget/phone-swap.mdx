@@ -1,0 +1,47 @@
+---
+title: Phone Swap
+sidebarTitle: Phone Swap
+description: "Track phone number substitution for call attribution and campaign tracking"
+---
+
+## Overview
+
+The Phone Swap tab manages dynamic phone number substitution on your website. When enabled, the tracker replaces your default phone number with a tracking number based on the visitor's traffic source — allowing you to attribute phone calls to specific campaigns.
+
+<Frame caption="Phone Swap — dynamic number substitution for call attribution">
+  <img className="block dark:hidden" src="/images/tracker-phone-swap-light.png" alt="Phone swap settings" />
+  <img className="hidden dark:block" src="/images/tracker-phone-swap-dark.png" alt="Phone swap settings" />
+</Frame>
+
+## How It Works
+
+1. You define your **default phone number** and one or more **tracking numbers**
+2. Each tracking number is assigned to a traffic source or campaign
+3. When a visitor loads your page, the tracker automatically replaces the phone number on the page with the appropriate tracking number
+4. When the visitor calls, the tracking number identifies which source or campaign drove the call
+
+## Configuration
+
+| Setting | Description |
+|---|---|
+| **Default Number** | Your main phone number displayed on the website |
+| **CSS Selector** | CSS selector for elements containing the phone number (e.g., `a[href^="tel:"]`, `.phone-number`) |
+| **Swap Numbers** | List of tracking numbers with their assigned sources/campaigns |
+
+## Swap Numbers Table
+
+| Column | Description |
+|---|---|
+| **Tracking Number** | The substitute phone number |
+| **Source** | Traffic source this number is assigned to |
+| **Campaign** | Campaign this number is assigned to (optional) |
+| **Calls** | Number of calls received on this tracking number |
+| **Actions** | Edit or delete |
+
+## Phone Swap Events
+
+Each number substitution is logged as a **Phone Swap** event in the tracking system. These events appear in:
+
+- The **Activity Log** tab
+- The **Campaign Performance** table (Phone Swaps column)
+- The session detail view

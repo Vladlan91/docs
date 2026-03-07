@@ -1,0 +1,57 @@
+---
+title: Events
+sidebarTitle: Events
+description: "Define custom tracking events — clicks, forms, scroll triggers, visibility — and set conversion goals"
+---
+
+## Overview
+
+The Events tab lets you define custom events to track specific visitor actions on your website. Events can track clicks, form submissions, scroll milestones, element visibility, and more.
+
+<Frame caption="Events — define custom tracking events and conversion goals">
+  <img className="block dark:hidden" src="/images/tracker-events-light.png" alt="Events tab" />
+  <img className="hidden dark:block" src="/images/tracker-events-dark.png" alt="Events tab" />
+</Frame>
+
+## Creating an Event
+
+Click **Create Event** to define a new tracking event:
+
+| Field | Description |
+|---|---|
+| **Name** | Event name for identification |
+| **Type** | Event type: Click, Form Submit, Scroll, Visibility, Page View, or Custom |
+| **Selector** | CSS selector for the target element (for Click, Form, Visibility types) |
+| **Page URL** | Optional — restrict the event to a specific page |
+| **Conversion Goal** | Toggle to mark this event as a conversion |
+
+## Event Types
+
+| Type | Description |
+|---|---|
+| **Click** | Fires when a visitor clicks the specified element |
+| **Form Submit** | Fires when a form matching the selector is submitted |
+| **Scroll** | Fires when the visitor scrolls past a percentage threshold |
+| **Visibility** | Fires when the specified element becomes visible in the viewport |
+| **Page View** | Fires when a specific page is loaded |
+| **Custom** | Fires via the JavaScript API: `revolTracker.event('name')` |
+
+## Conversion Goals
+
+Any event can be marked as a **Conversion Goal** by toggling the switch. Conversion events are:
+
+- Counted in the **Conversions** KPI on the Dashboard
+- Used to calculate **Conversion Rate** in the Campaign Performance table
+- Highlighted in the session detail view
+
+## Events List
+
+The events table shows all defined events with:
+
+| Column | Description |
+|---|---|
+| **Name** | Event name |
+| **Type** | Event type |
+| **Fires** | Total number of times this event has fired |
+| **Conversion** | Whether this event is a conversion goal |
+| **Actions** | Edit or delete the event |

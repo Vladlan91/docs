@@ -102,7 +102,13 @@
               {
                 "group": "Tracker",
                 "pages": [
-                  "en/widget/tracker"
+                  "en/widget/tracker",
+                  "en/widget/campaigns",
+                  "en/widget/sessions",
+                  "en/widget/events",
+                  "en/widget/triggers",
+                  "en/widget/activity-log",
+                  "en/widget/phone-swap"
                 ]
               }
             ]
@@ -231,7 +237,13 @@
               {
                 "group": "Tracker",
                 "pages": [
-                  "uk/widget/tracker"
+                  "uk/widget/tracker",
+                  "uk/widget/campaigns",
+                  "uk/widget/sessions",
+                  "uk/widget/events",
+                  "uk/widget/triggers",
+                  "uk/widget/activity-log",
+                  "uk/widget/phone-swap"
                 ]
               }
             ]
@@ -360,7 +372,13 @@
               {
                 "group": "Tracker",
                 "pages": [
-                  "pl/widget/tracker"
+                  "pl/widget/tracker",
+                  "pl/widget/campaigns",
+                  "pl/widget/sessions",
+                  "pl/widget/events",
+                  "pl/widget/triggers",
+                  "pl/widget/activity-log",
+                  "pl/widget/phone-swap"
                 ]
               }
             ]
@@ -489,7 +507,13 @@
               {
                 "group": "Tracker",
                 "pages": [
-                  "de/widget/tracker"
+                  "de/widget/tracker",
+                  "de/widget/campaigns",
+                  "de/widget/sessions",
+                  "de/widget/events",
+                  "de/widget/triggers",
+                  "de/widget/activity-log",
+                  "de/widget/phone-swap"
                 ]
               }
             ]
@@ -618,7 +642,13 @@
               {
                 "group": "Tracker",
                 "pages": [
-                  "es/widget/tracker"
+                  "es/widget/tracker",
+                  "es/widget/campaigns",
+                  "es/widget/sessions",
+                  "es/widget/events",
+                  "es/widget/triggers",
+                  "es/widget/activity-log",
+                  "es/widget/phone-swap"
                 ]
               }
             ]

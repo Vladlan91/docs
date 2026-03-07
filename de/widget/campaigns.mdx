@@ -1,0 +1,53 @@
+---
+title: Campaigns
+sidebarTitle: Campaigns
+description: "Create and manage tracking campaigns with UTM parameters for traffic attribution"
+---
+
+## Overview
+
+The Campaigns tab lets you create and manage tracking campaigns with UTM parameters. Each campaign generates a unique tracking URL that attributes visitor sessions to specific marketing efforts.
+
+<Frame caption="Campaigns — create and manage tracking campaigns">
+  <img className="block dark:hidden" src="/images/tracker-campaigns-light.png" alt="Campaigns tab" />
+  <img className="hidden dark:block" src="/images/tracker-campaigns-dark.png" alt="Campaigns tab" />
+</Frame>
+
+## Creating a Campaign
+
+Click **Create Campaign** to set up a new tracking campaign:
+
+| Field | Description |
+|---|---|
+| **Name** | Campaign name for internal reference |
+| **Source** | Traffic source (e.g., google, facebook, newsletter) |
+| **Medium** | Marketing medium (e.g., cpc, email, social, banner) |
+| **Content** | Ad content or variant identifier (optional) |
+| **Term** | Paid search keyword (optional) |
+
+After creation, the system generates a tracking URL with the appropriate UTM parameters that you can use in your marketing channels.
+
+## Campaign List
+
+The campaigns table shows all your campaigns with key metrics:
+
+| Column | Description |
+|---|---|
+| **Name** | Campaign name |
+| **Source** | UTM source value |
+| **Medium** | UTM medium value |
+| **Sessions** | Total sessions attributed to this campaign |
+| **Created** | Date the campaign was created |
+| **Actions** | Edit or delete the campaign |
+
+## UTM Parameters
+
+Campaigns use standard UTM parameters appended to your website URL:
+
+- `utm_source` — identifies the traffic source
+- `utm_medium` — identifies the marketing medium
+- `utm_campaign` — identifies the campaign name
+- `utm_content` — differentiates ad variants (optional)
+- `utm_term` — identifies paid search terms (optional)
+
+When a visitor arrives via a URL with UTM parameters, the tracker automatically attributes the session to the matching campaign.
