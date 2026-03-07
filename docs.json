@@ -16,10 +16,6 @@
   "navbar": {
     "links": [
       {
-        "label": "PRO v1.0",
-        "href": "/en/introduction"
-      },
-      {
         "label": "Dashboard",
         "href": "https://app.revol.com"
       }
@@ -35,445 +31,595 @@
       {
         "language": "en",
         "default": true,
-        "groups": [
+        "tabs": [
           {
-            "group": "Getting Started",
-            "pages": [
-              "en/introduction",
-              "en/quickstart",
-              "en/concepts"
+            "tab": "Platform",
+            "groups": [
+              {
+                "group": "Getting Started",
+                "pages": [
+                  "en/introduction",
+                  "en/quickstart",
+                  "en/concepts"
+                ]
+              },
+              {
+                "group": "AI Agents",
+                "pages": [
+                  "en/agents/overview",
+                  "en/agents/creating-agent",
+                  "en/agents/workflow",
+                  "en/agents/knowledge-base",
+                  "en/agents/voice"
+                ]
+              },
+              {
+                "group": "Conversations",
+                "pages": [
+                  "en/conversations/overview"
+                ]
+              },
+              {
+                "group": "Billing",
+                "pages": [
+                  "en/billing/plans",
+                  "en/billing/usage"
+                ]
+              }
             ]
           },
           {
-            "group": "AI Agents",
-            "pages": [
-              "en/agents/overview",
-              "en/agents/creating-agent",
-              "en/agents/workflow",
-              "en/agents/knowledge-base",
-              "en/agents/voice"
+            "tab": "Integrations",
+            "groups": [
+              {
+                "group": "Integrations",
+                "pages": [
+                  "en/integrations/overview",
+                  "en/integrations/voip",
+                  "en/integrations/messengers",
+                  "en/integrations/google-workspace",
+                  "en/integrations/advertising",
+                  "en/integrations/webhook"
+                ]
+              }
             ]
           },
           {
-            "group": "Conversations",
-            "pages": [
-              "en/conversations/overview"
+            "tab": "Widget",
+            "groups": [
+              {
+                "group": "Widget",
+                "pages": [
+                  "en/widget/installation",
+                  "en/widget/customization",
+                  "en/widget/tracker"
+                ]
+              }
             ]
           },
           {
-            "group": "Integrations",
-            "pages": [
-              "en/integrations/overview",
-              "en/integrations/voip",
-              "en/integrations/messengers",
-              "en/integrations/google-workspace",
-              "en/integrations/advertising",
-              "en/integrations/webhook"
+            "tab": "Creative",
+            "groups": [
+              {
+                "group": "Creative Platform",
+                "pages": [
+                  "en/creative/overview"
+                ]
+              }
             ]
           },
           {
-            "group": "Widget",
-            "pages": [
-              "en/widget/installation",
-              "en/widget/customization",
-              "en/widget/tracker"
+            "tab": "Team",
+            "groups": [
+              {
+                "group": "Team Workflow",
+                "pages": [
+                  "en/team/overview"
+                ]
+              }
             ]
           },
           {
-            "group": "Creative Platform",
-            "pages": [
-              "en/creative/overview"
-            ]
-          },
-          {
-            "group": "Team Workflow",
-            "pages": [
-              "en/team/overview"
-            ]
-          },
-          {
-            "group": "Billing",
-            "pages": [
-              "en/billing/plans",
-              "en/billing/usage"
-            ]
-          },
-          {
-            "group": "API Reference",
-            "pages": [
-              "en/api-reference/overview",
-              "en/api-reference/authentication"
-            ]
-          },
-          {
-            "group": "Widget API",
-            "pages": [
-              "en/api-reference/widget/init",
-              "en/api-reference/widget/send-message",
-              "en/api-reference/widget/chat-history"
-            ]
-          },
-          {
-            "group": "Tracking API",
-            "pages": [
-              "en/api-reference/tracking/collect",
-              "en/api-reference/tracking/sessions"
+            "tab": "API Reference",
+            "groups": [
+              {
+                "group": "Overview",
+                "pages": [
+                  "en/api-reference/overview",
+                  "en/api-reference/authentication"
+                ]
+              },
+              {
+                "group": "Widget API",
+                "pages": [
+                  "en/api-reference/widget/init",
+                  "en/api-reference/widget/send-message",
+                  "en/api-reference/widget/chat-history"
+                ]
+              },
+              {
+                "group": "Tracking API",
+                "pages": [
+                  "en/api-reference/tracking/collect",
+                  "en/api-reference/tracking/sessions"
+                ]
+              }
             ]
           }
         ]
       },
       {
         "language": "uk",
-        "groups": [
+        "tabs": [
           {
-            "group": "Початок роботи",
-            "pages": [
-              "uk/introduction",
-              "uk/quickstart",
-              "uk/concepts"
+            "tab": "Платформа",
+            "groups": [
+              {
+                "group": "Початок роботи",
+                "pages": [
+                  "uk/introduction",
+                  "uk/quickstart",
+                  "uk/concepts"
+                ]
+              },
+              {
+                "group": "AI Агенти",
+                "pages": [
+                  "uk/agents/overview",
+                  "uk/agents/creating-agent",
+                  "uk/agents/workflow",
+                  "uk/agents/knowledge-base",
+                  "uk/agents/voice"
+                ]
+              },
+              {
+                "group": "Розмови",
+                "pages": [
+                  "uk/conversations/overview"
+                ]
+              },
+              {
+                "group": "Білінг",
+                "pages": [
+                  "uk/billing/plans",
+                  "uk/billing/usage"
+                ]
+              }
             ]
           },
           {
-            "group": "AI Агенти",
-            "pages": [
-              "uk/agents/overview",
-              "uk/agents/creating-agent",
-              "uk/agents/workflow",
-              "uk/agents/knowledge-base",
-              "uk/agents/voice"
+            "tab": "Інтеграції",
+            "groups": [
+              {
+                "group": "Інтеграції",
+                "pages": [
+                  "uk/integrations/overview",
+                  "uk/integrations/voip",
+                  "uk/integrations/messengers",
+                  "uk/integrations/google-workspace",
+                  "uk/integrations/advertising",
+                  "uk/integrations/webhook"
+                ]
+              }
             ]
           },
           {
-            "group": "Розмови",
-            "pages": [
-              "uk/conversations/overview"
+            "tab": "Віджет",
+            "groups": [
+              {
+                "group": "Віджет",
+                "pages": [
+                  "uk/widget/installation",
+                  "uk/widget/customization",
+                  "uk/widget/tracker"
+                ]
+              }
             ]
           },
           {
-            "group": "Інтеграції",
-            "pages": [
-              "uk/integrations/overview",
-              "uk/integrations/voip",
-              "uk/integrations/messengers",
-              "uk/integrations/google-workspace",
-              "uk/integrations/advertising",
-              "uk/integrations/webhook"
+            "tab": "Creative",
+            "groups": [
+              {
+                "group": "Креативна платформа",
+                "pages": [
+                  "uk/creative/overview"
+                ]
+              }
             ]
           },
           {
-            "group": "Віджет",
-            "pages": [
-              "uk/widget/installation",
-              "uk/widget/customization",
-              "uk/widget/tracker"
+            "tab": "Team",
+            "groups": [
+              {
+                "group": "Командна робота",
+                "pages": [
+                  "uk/team/overview"
+                ]
+              }
             ]
           },
           {
-            "group": "Креативна платформа",
-            "pages": [
-              "uk/creative/overview"
-            ]
-          },
-          {
-            "group": "Командна робота",
-            "pages": [
-              "uk/team/overview"
-            ]
-          },
-          {
-            "group": "Білінг",
-            "pages": [
-              "uk/billing/plans",
-              "uk/billing/usage"
-            ]
-          },
-          {
-            "group": "API Reference",
-            "pages": [
-              "uk/api-reference/overview",
-              "uk/api-reference/authentication"
-            ]
-          },
-          {
-            "group": "Widget API",
-            "pages": [
-              "uk/api-reference/widget/init",
-              "uk/api-reference/widget/send-message",
-              "uk/api-reference/widget/chat-history"
-            ]
-          },
-          {
-            "group": "Tracking API",
-            "pages": [
-              "uk/api-reference/tracking/collect",
-              "uk/api-reference/tracking/sessions"
+            "tab": "API Reference",
+            "groups": [
+              {
+                "group": "Огляд",
+                "pages": [
+                  "uk/api-reference/overview",
+                  "uk/api-reference/authentication"
+                ]
+              },
+              {
+                "group": "Widget API",
+                "pages": [
+                  "uk/api-reference/widget/init",
+                  "uk/api-reference/widget/send-message",
+                  "uk/api-reference/widget/chat-history"
+                ]
+              },
+              {
+                "group": "Tracking API",
+                "pages": [
+                  "uk/api-reference/tracking/collect",
+                  "uk/api-reference/tracking/sessions"
+                ]
+              }
             ]
           }
         ]
       },
       {
         "language": "pl",
-        "groups": [
+        "tabs": [
           {
-            "group": "Rozpocznij",
-            "pages": [
-              "pl/introduction",
-              "pl/quickstart",
-              "pl/concepts"
+            "tab": "Platforma",
+            "groups": [
+              {
+                "group": "Rozpocznij",
+                "pages": [
+                  "pl/introduction",
+                  "pl/quickstart",
+                  "pl/concepts"
+                ]
+              },
+              {
+                "group": "Agenci AI",
+                "pages": [
+                  "pl/agents/overview",
+                  "pl/agents/creating-agent",
+                  "pl/agents/workflow",
+                  "pl/agents/knowledge-base",
+                  "pl/agents/voice"
+                ]
+              },
+              {
+                "group": "Rozmowy",
+                "pages": [
+                  "pl/conversations/overview"
+                ]
+              },
+              {
+                "group": "Rozliczenia",
+                "pages": [
+                  "pl/billing/plans",
+                  "pl/billing/usage"
+                ]
+              }
             ]
           },
           {
-            "group": "Agenci AI",
-            "pages": [
-              "pl/agents/overview",
-              "pl/agents/creating-agent",
-              "pl/agents/workflow",
-              "pl/agents/knowledge-base",
-              "pl/agents/voice"
+            "tab": "Integracje",
+            "groups": [
+              {
+                "group": "Integracje",
+                "pages": [
+                  "pl/integrations/overview",
+                  "pl/integrations/voip",
+                  "pl/integrations/messengers",
+                  "pl/integrations/google-workspace",
+                  "pl/integrations/advertising",
+                  "pl/integrations/webhook"
+                ]
+              }
             ]
           },
           {
-            "group": "Rozmowy",
-            "pages": [
-              "pl/conversations/overview"
+            "tab": "Widget",
+            "groups": [
+              {
+                "group": "Widget",
+                "pages": [
+                  "pl/widget/installation",
+                  "pl/widget/customization",
+                  "pl/widget/tracker"
+                ]
+              }
             ]
           },
           {
-            "group": "Integracje",
-            "pages": [
-              "pl/integrations/overview",
-              "pl/integrations/voip",
-              "pl/integrations/messengers",
-              "pl/integrations/google-workspace",
-              "pl/integrations/advertising",
-              "pl/integrations/webhook"
+            "tab": "Creative",
+            "groups": [
+              {
+                "group": "Platforma kreatywna",
+                "pages": [
+                  "pl/creative/overview"
+                ]
+              }
             ]
           },
           {
-            "group": "Widget",
-            "pages": [
-              "pl/widget/installation",
-              "pl/widget/customization",
-              "pl/widget/tracker"
+            "tab": "Team",
+            "groups": [
+              {
+                "group": "Praca zespołowa",
+                "pages": [
+                  "pl/team/overview"
+                ]
+              }
             ]
           },
           {
-            "group": "Platforma kreatywna",
-            "pages": [
-              "pl/creative/overview"
-            ]
-          },
-          {
-            "group": "Praca zespołowa",
-            "pages": [
-              "pl/team/overview"
-            ]
-          },
-          {
-            "group": "Rozliczenia",
-            "pages": [
-              "pl/billing/plans",
-              "pl/billing/usage"
-            ]
-          },
-          {
-            "group": "API Reference",
-            "pages": [
-              "pl/api-reference/overview",
-              "pl/api-reference/authentication"
-            ]
-          },
-          {
-            "group": "Widget API",
-            "pages": [
-              "pl/api-reference/widget/init",
-              "pl/api-reference/widget/send-message",
-              "pl/api-reference/widget/chat-history"
-            ]
-          },
-          {
-            "group": "Tracking API",
-            "pages": [
-              "pl/api-reference/tracking/collect",
-              "pl/api-reference/tracking/sessions"
+            "tab": "API Reference",
+            "groups": [
+              {
+                "group": "Overview",
+                "pages": [
+                  "pl/api-reference/overview",
+                  "pl/api-reference/authentication"
+                ]
+              },
+              {
+                "group": "Widget API",
+                "pages": [
+                  "pl/api-reference/widget/init",
+                  "pl/api-reference/widget/send-message",
+                  "pl/api-reference/widget/chat-history"
+                ]
+              },
+              {
+                "group": "Tracking API",
+                "pages": [
+                  "pl/api-reference/tracking/collect",
+                  "pl/api-reference/tracking/sessions"
+                ]
+              }
             ]
           }
         ]
       },
       {
         "language": "de",
-        "groups": [
+        "tabs": [
           {
-            "group": "Erste Schritte",
-            "pages": [
-              "de/introduction",
-              "de/quickstart",
-              "de/concepts"
+            "tab": "Plattform",
+            "groups": [
+              {
+                "group": "Erste Schritte",
+                "pages": [
+                  "de/introduction",
+                  "de/quickstart",
+                  "de/concepts"
+                ]
+              },
+              {
+                "group": "KI-Agenten",
+                "pages": [
+                  "de/agents/overview",
+                  "de/agents/creating-agent",
+                  "de/agents/workflow",
+                  "de/agents/knowledge-base",
+                  "de/agents/voice"
+                ]
+              },
+              {
+                "group": "Gespräche",
+                "pages": [
+                  "de/conversations/overview"
+                ]
+              },
+              {
+                "group": "Abrechnung",
+                "pages": [
+                  "de/billing/plans",
+                  "de/billing/usage"
+                ]
+              }
             ]
           },
           {
-            "group": "KI-Agenten",
-            "pages": [
-              "de/agents/overview",
-              "de/agents/creating-agent",
-              "de/agents/workflow",
-              "de/agents/knowledge-base",
-              "de/agents/voice"
+            "tab": "Integrationen",
+            "groups": [
+              {
+                "group": "Integrationen",
+                "pages": [
+                  "de/integrations/overview",
+                  "de/integrations/voip",
+                  "de/integrations/messengers",
+                  "de/integrations/google-workspace",
+                  "de/integrations/advertising",
+                  "de/integrations/webhook"
+                ]
+              }
             ]
           },
           {
-            "group": "Gespräche",
-            "pages": [
-              "de/conversations/overview"
+            "tab": "Widget",
+            "groups": [
+              {
+                "group": "Widget",
+                "pages": [
+                  "de/widget/installation",
+                  "de/widget/customization",
+                  "de/widget/tracker"
+                ]
+              }
             ]
           },
           {
-            "group": "Integrationen",
-            "pages": [
-              "de/integrations/overview",
-              "de/integrations/voip",
-              "de/integrations/messengers",
-              "de/integrations/google-workspace",
-              "de/integrations/advertising",
-              "de/integrations/webhook"
+            "tab": "Creative",
+            "groups": [
+              {
+                "group": "Kreativ-Plattform",
+                "pages": [
+                  "de/creative/overview"
+                ]
+              }
             ]
           },
           {
-            "group": "Widget",
-            "pages": [
-              "de/widget/installation",
-              "de/widget/customization",
-              "de/widget/tracker"
+            "tab": "Team",
+            "groups": [
+              {
+                "group": "Teamarbeit",
+                "pages": [
+                  "de/team/overview"
+                ]
+              }
             ]
           },
           {
-            "group": "Kreativ-Plattform",
-            "pages": [
-              "de/creative/overview"
-            ]
-          },
-          {
-            "group": "Teamarbeit",
-            "pages": [
-              "de/team/overview"
-            ]
-          },
-          {
-            "group": "Abrechnung",
-            "pages": [
-              "de/billing/plans",
-              "de/billing/usage"
-            ]
-          },
-          {
-            "group": "API Reference",
-            "pages": [
-              "de/api-reference/overview",
-              "de/api-reference/authentication"
-            ]
-          },
-          {
-            "group": "Widget API",
-            "pages": [
-              "de/api-reference/widget/init",
-              "de/api-reference/widget/send-message",
-              "de/api-reference/widget/chat-history"
-            ]
-          },
-          {
-            "group": "Tracking API",
-            "pages": [
-              "de/api-reference/tracking/collect",
-              "de/api-reference/tracking/sessions"
+            "tab": "API Reference",
+            "groups": [
+              {
+                "group": "Übersicht",
+                "pages": [
+                  "de/api-reference/overview",
+                  "de/api-reference/authentication"
+                ]
+              },
+              {
+                "group": "Widget API",
+                "pages": [
+                  "de/api-reference/widget/init",
+                  "de/api-reference/widget/send-message",
+                  "de/api-reference/widget/chat-history"
+                ]
+              },
+              {
+                "group": "Tracking API",
+                "pages": [
+                  "de/api-reference/tracking/collect",
+                  "de/api-reference/tracking/sessions"
+                ]
+              }
             ]
           }
         ]
       },
       {
         "language": "es",
-        "groups": [
+        "tabs": [
           {
-            "group": "Primeros pasos",
-            "pages": [
-              "es/introduction",
-              "es/quickstart",
-              "es/concepts"
+            "tab": "Plataforma",
+            "groups": [
+              {
+                "group": "Primeros pasos",
+                "pages": [
+                  "es/introduction",
+                  "es/quickstart",
+                  "es/concepts"
+                ]
+              },
+              {
+                "group": "Agentes IA",
+                "pages": [
+                  "es/agents/overview",
+                  "es/agents/creating-agent",
+                  "es/agents/workflow",
+                  "es/agents/knowledge-base",
+                  "es/agents/voice"
+                ]
+              },
+              {
+                "group": "Conversaciones",
+                "pages": [
+                  "es/conversations/overview"
+                ]
+              },
+              {
+                "group": "Facturación",
+                "pages": [
+                  "es/billing/plans",
+                  "es/billing/usage"
+                ]
+              }
             ]
           },
           {
-            "group": "Agentes IA",
-            "pages": [
-              "es/agents/overview",
-              "es/agents/creating-agent",
-              "es/agents/workflow",
-              "es/agents/knowledge-base",
-              "es/agents/voice"
+            "tab": "Integraciones",
+            "groups": [
+              {
+                "group": "Integraciones",
+                "pages": [
+                  "es/integrations/overview",
+                  "es/integrations/voip",
+                  "es/integrations/messengers",
+                  "es/integrations/google-workspace",
+                  "es/integrations/advertising",
+                  "es/integrations/webhook"
+                ]
+              }
             ]
           },
           {
-            "group": "Conversaciones",
-            "pages": [
-              "es/conversations/overview"
+            "tab": "Widget",
+            "groups": [
+              {
+                "group": "Widget",
+                "pages": [
+                  "es/widget/installation",
+                  "es/widget/customization",
+                  "es/widget/tracker"
+                ]
+              }
             ]
           },
           {
-            "group": "Integraciones",
-            "pages": [
-              "es/integrations/overview",
-              "es/integrations/voip",
-              "es/integrations/messengers",
-              "es/integrations/google-workspace",
-              "es/integrations/advertising",
-              "es/integrations/webhook"
+            "tab": "Creative",
+            "groups": [
+              {
+                "group": "Plataforma creativa",
+                "pages": [
+                  "es/creative/overview"
+                ]
+              }
             ]
           },
           {
-            "group": "Widget",
-            "pages": [
-              "es/widget/installation",
-              "es/widget/customization",
-              "es/widget/tracker"
+            "tab": "Team",
+            "groups": [
+              {
+                "group": "Trabajo en equipo",
+                "pages": [
+                  "es/team/overview"
+                ]
+              }
             ]
           },
           {
-            "group": "Plataforma creativa",
-            "pages": [
-              "es/creative/overview"
-            ]
-          },
-          {
-            "group": "Trabajo en equipo",
-            "pages": [
-              "es/team/overview"
-            ]
-          },
-          {
-            "group": "Facturación",
-            "pages": [
-              "es/billing/plans",
-              "es/billing/usage"
-            ]
-          },
-          {
-            "group": "API Reference",
-            "pages": [
-              "es/api-reference/overview",
-              "es/api-reference/authentication"
-            ]
-          },
-          {
-            "group": "Widget API",
-            "pages": [
-              "es/api-reference/widget/init",
-              "es/api-reference/widget/send-message",
-              "es/api-reference/widget/chat-history"
-            ]
-          },
-          {
-            "group": "Tracking API",
-            "pages": [
-              "es/api-reference/tracking/collect",
-              "es/api-reference/tracking/sessions"
+            "tab": "API Reference",
+            "groups": [
+              {
+                "group": "Descripción",
+                "pages": [
+                  "es/api-reference/overview",
+                  "es/api-reference/authentication"
+                ]
+              },
+              {
+                "group": "Widget API",
+                "pages": [
+                  "es/api-reference/widget/init",
+                  "es/api-reference/widget/send-message",
+                  "es/api-reference/widget/chat-history"
+                ]
+              },
+              {
+                "group": "Tracking API",
+                "pages": [
+                  "es/api-reference/tracking/collect",
+                  "es/api-reference/tracking/sessions"
+                ]
+              }
             ]
           }
         ]
