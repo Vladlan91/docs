@@ -5,54 +5,317 @@ description: "Key concepts and terminology in Revol"
 
 ## Companies
 
-A **Company** represents a business entity in Revol. Each company has its own agents, knowledge base, products, and integrations.
+A **Company** is the central entity in Revol. Everything — products, files, agents, integrations, and analytics — belongs to a company.
+
+Each company has:
+
+- **Products & Services** — structured catalog with descriptions, pricing, photos, and parameters
+- **File Manager** — documents, links, text, video, and photos for knowledge bases
+- **AI Agents** — one or more intelligent assistants trained on company data
+- **Integrations** — connected channels (widget, VoIP, messengers, ads, CRM)
+- **Analytics** — visitor tracking, session data, and conversation history
+
+<Note>
+  One Revol account can manage multiple companies with fully isolated data — ideal for agencies or multi-brand businesses.
+</Note>
+
+---
+
+## Products & Services
+
+**Products** are structured data models describing what your business offers. Unlike raw text documents, products give AI agents precise, queryable information.
+
+Each product includes:
+
+| Field | Purpose |
+|-------|---------|
+| **Name** | Product or service title |
+| **Description** | Detailed text the agent uses for answers |
+| **Price** | Pricing information |
+| **URL** | Link to product page on your website |
+| **Availability** | Whether the product is currently available |
+| **Photos** | Product images the agent can share |
+| **Parameters** | Structured key-value pairs (size, color, duration, etc.) |
+
+**Parameters** are the most powerful part — structured characteristics that let agents give exact answers instead of interpreting unstructured text. See [Quick Start → Product Parameters](/quickstart#product-parameters) for examples.
+
+---
+
+## Knowledge Base
+
+The **Knowledge Base** is the content your AI agents learn from. It uses **RAG (Retrieval-Augmented Generation)** — documents are split into chunks, converted to vector embeddings, and searched semantically during conversations.
+
+### Content Types
+
+| Type | Formats | How it works |
+|------|---------|--------------|
+| **Documents** | PDF, DOCX, TXT | Text extracted and chunked |
+| **Links** | Any URL | Web page content fetched and indexed |
+| **Text** | Free-form text | Added directly as knowledge chunks |
+| **Video** | MP4, WebM, MOV | Audio transcribed to text via STT |
+| **Photos** | JPG, PNG | Text extracted via OCR |
+
+### Two Levels of Knowledge
+
+- **Company-level files** — available to all agents in the company
+- **Product-level files** — attached to a specific product, used when the agent discusses that product
+
+---
 
 ## AI Agents
 
-An **AI Agent** is an intelligent assistant configured to handle customer interactions. Each agent has:
+An **AI Agent** is an intelligent assistant that handles customer interactions. Each agent is configured independently with its own personality, knowledge, and behavior.
 
-- **System Prompt** — Instructions that define the agent's behavior
-- **Knowledge Base** — Documents and content the agent can reference (RAG)
-- **Workflow** — Visual flow that defines conversation logic
-- **Tools** — Functions the agent can call during conversations
+### Agent Components
+
+<AccordionGroup>
+  <Accordion title="System Prompt">
+    The core instruction set — defines the agent's role, tone, language, and boundaries. The more specific your prompt, the better the agent performs.
+  </Accordion>
+  <Accordion title="Knowledge Base (RAG)">
+    Select which products and files the agent should learn from. After selection, click **Train** to generate vector embeddings for semantic search.
+  </Accordion>
+  <Accordion title="Workflow">
+    Visual node-based editor for conversation logic. Every agent gets a [default workflow](/quickstart#default-workflow) that handles most use cases out of the box.
+  </Accordion>
+  <Accordion title="Tools">
+    Functions the agent can call during conversations — search products, check availability, get photos, retrieve documents, fetch company info.
+  </Accordion>
+  <Accordion title="Widget">
+    Customize the chat widget appearance — colors, labels, placement, greeting messages, terms & conditions.
+  </Accordion>
+  <Accordion title="Channels">
+    Connect the agent to communication channels — website widget, Telegram, WhatsApp, Instagram, Facebook Messenger, VoIP.
+  </Accordion>
+</AccordionGroup>
+
+### LLM Providers
+
+Each agent (or individual workflow node) can use a different AI model:
+
+| Provider | Standard Models | Premium Models |
+|----------|----------------|----------------|
+| **OpenAI** | GPT-4o-mini | GPT-4o |
+| **Anthropic** | Claude 3.5 Haiku | Claude 3.5 Sonnet |
+| **Google** | Gemini 2.0 Flash | Gemini 2.5 Pro |
+| **Groq** | Llama 3.1 8B | Llama 3.3 70B |
+
+<Info>
+  Standard models are faster and consume standard tokens. Premium models offer higher quality and consume premium tokens.
+</Info>
+
+---
 
 ## Workflows
 
-A **Workflow** is a visual node-based editor for defining conversation flows. Node types include:
+A **Workflow** is a visual node-based editor for defining how your agent processes conversations. Nodes are connected with edges that define the flow of data.
+
+### Node Types
 
 | Node | Description |
 |------|-------------|
-| **Start** | Entry point of the conversation |
-| **LLM** | Send message to AI model |
-| **Condition** | Branch based on conditions |
-| **Tool Call** | Execute an external function |
-| **Voice Call** | Handle voice interactions |
-| **End** | Terminate the conversation |
+| **Start** | Entry point — receives the user's message |
+| **LLM** | Sends context to an AI model and gets a response |
+| **Condition** | Branches the flow based on rules (keywords, intent, variables) |
+| **Tool Call** | Executes an external function (search products, check availability) |
+| **Voice Input (STT)** | Converts speech to text for voice interactions |
+| **Voice Output (TTS)** | Converts text response to speech |
+| **Response Formatter** | Combines outputs from multiple nodes into a single response |
+
+### Default Workflow
+
+Every new agent comes with a pre-built workflow:
+
+```
+Start → Product Agent  ─┐
+     ├→ Media Agent    ─┤→ Response Formatter
+     └→ Company Agent  ─┘
+```
+
+Three specialized agents work **in parallel** — each handles its domain (products, media, company info), and the Formatter merges their outputs. This covers most use cases without any configuration.
+
+For complex scenarios — conditional branching, custom tool calls, multi-step flows — use the [Workflow Editor](/agents/workflow).
+
+---
 
 ## Conversations
 
-A **Conversation** is a chat session between a visitor and an AI agent. Conversations can happen through multiple channels:
+A **Conversation** is a chat session between a visitor and an AI agent. All conversations are stored and accessible from the **Conversations** page.
 
-- Website widget
-- VoIP phone calls
-- Telegram / Viber / WhatsApp
-- API
+### Channels
+
+Conversations can happen through:
+
+- **Website widget** — embedded chat on your site
+- **VoIP** — phone calls via Twilio, Ringostat, or Binotel
+- **Messengers** — Telegram, WhatsApp Business, Instagram DM, Facebook Messenger
+- **API** — programmatic access
+
+### Features
+
+- **Unified inbox** — all conversations across all agents and channels in one place
+- **Filters** — by agent, status, date, channel
+- **Transcripts** — full message history with timestamps
+- **Audio playback** — listen to voice call recordings
+- **Ratings** — customer satisfaction scores per conversation
+
+---
 
 ## Tracking
 
-The **Tracker** monitors visitor activity on client websites:
+The **Tracker** is built into the same widget script and monitors visitor activity on your website automatically.
 
-- **Sessions** — Visitor browsing sessions with device, location, and UTM data
-- **Pageviews** — Individual page visits within a session
-- **Events** — Custom events (clicks, form submissions, phone calls)
-- **Campaigns** — UTM-based campaign grouping
-- **Triggers** — Automated actions based on visitor behavior
+### What Gets Tracked
 
-## Billing
+| Data | Description |
+|------|-------------|
+| **Sessions** | Visitor browsing sessions — device, browser, OS, location, referrer |
+| **Pageviews** | Individual page visits within a session |
+| **Events** | Custom events — clicks, form submissions, phone calls |
+| **Campaigns** | UTM-based grouping (source, medium, campaign, term, content) |
 
-Revol uses a **token-based billing** model:
+### Automation
 
-- **Standard Tokens** — For standard AI models (GPT-4o-mini, Claude Haiku, Gemini Flash)
-- **Premium Tokens** — For premium models (GPT-4o, Claude Sonnet, Gemini Pro)
-- **Voice** — STT minutes and TTS characters
-- **Storage** — File storage for knowledge bases and media
+- **Triggers** — automated actions based on visitor behavior (time on page, scroll depth, UTM match, device type). Can show chat overlays or custom messages.
+- **Phone Swap** — dynamic phone number replacement for call tracking and attribution.
+
+---
+
+## Integrations
+
+**Integrations** connect your AI agents to external services and communication channels.
+
+| Category | Providers | What it does |
+|----------|-----------|-------------|
+| **VoIP** | Twilio, Ringostat, Binotel | Phone calls — agent answers incoming calls |
+| **Messengers** | Telegram, WhatsApp, Instagram, Facebook Messenger | Chat via messaging apps |
+| **Google Workspace** | Gmail, Docs, Sheets, Drive, Calendar, Meet | Read and interact with Google services |
+| **Advertising** | Google Ads, Facebook Ads | View campaign performance and manage ads |
+| **Webhook** | Any HTTP endpoint | Send lead data, events, or notifications to CRM or other systems |
+
+Each integration is configured per company and can be connected to one or more agents.
+
+---
+
+## Billing & Plans
+
+Revol uses a **token-based billing** model. Every AI interaction consumes tokens — input tokens (your message + context) and output tokens (agent's response).
+
+### Plans
+
+<Tabs>
+  <Tab title="Free">
+    **$0/month** — try Revol with basic limits
+
+    | Resource | Limit |
+    |----------|-------|
+    | Companies | 1 |
+    | AI Agents | 1 |
+    | Standard Tokens | 20K / day |
+    | Premium Tokens | — |
+    | Voice | — |
+    | Storage | 100 MB |
+    | Knowledge Docs | 10 |
+    | Conversations | 100 |
+    | Tracking Retention | 30 days |
+    | Integrations | — |
+    | Widget Branding | Revol branding |
+  </Tab>
+  <Tab title="Premium">
+    **$29/month** — for growing businesses
+
+    | Resource | Limit |
+    |----------|-------|
+    | Companies | 3 |
+    | AI Agents | 5 |
+    | Standard Tokens | 5M / month |
+    | Premium Tokens | 1M / month |
+    | Voice (STT) | 60 min |
+    | Voice (TTS) | 200K chars |
+    | Storage | 5 GB |
+    | Knowledge Docs | 100 |
+    | Conversations | 5,000 |
+    | Tracking Retention | 180 days |
+    | Integrations | VoIP, Messengers |
+    | Widget Branding | Custom branding |
+  </Tab>
+  <Tab title="Professional">
+    **$79/month** — for agencies and enterprises
+
+    | Resource | Limit |
+    |----------|-------|
+    | Companies | 10 |
+    | AI Agents | Unlimited |
+    | Standard Tokens | 25M / month |
+    | Premium Tokens | 2M / month |
+    | Voice (STT) | 300 min |
+    | Voice (TTS) | 500K chars |
+    | Storage | 50 GB |
+    | Knowledge Docs | 1,000 |
+    | Conversations | 50,000 |
+    | Tracking Retention | 730 days (2 years) |
+    | Integrations | All (incl. Google Workspace, Ads) |
+    | Widget Branding | White Label |
+  </Tab>
+</Tabs>
+
+### What Counts as a Token
+
+Every AI interaction has two parts:
+
+- **Input tokens** — your message + system prompt + retrieved knowledge base chunks + conversation history
+- **Output tokens** — the agent's response
+
+Different models consume different token types:
+
+| Token Type | Models | Plans |
+|-----------|--------|-------|
+| **Standard** | GPT-4o-mini, Claude 3.5 Haiku, Gemini 2.0 Flash, Llama 3.1 8B | All plans |
+| **Premium** | GPT-4o, Claude 3.5 Sonnet, Gemini 2.5 Pro, Llama 3.3 70B | Premium+ |
+
+### Add-on Packs
+
+Need more resources? Purchase add-on packs without upgrading your plan:
+
+| Pack | What you get | Price |
+|------|-------------|-------|
+| Token Pack S | 5M standard tokens | $4 |
+| Token Pack M | 20M standard tokens | $15 |
+| Token Pack L | 50M standard tokens | $35 |
+| Premium Token Pack | 2M premium tokens | $20 |
+| Voice Pack | 60 STT min + 100K TTS chars | $3 |
+| Storage Pack | 10 GB storage | $1 |
+
+<Note>
+  Add-on packs expire **3 months** after purchase. Unused tokens do not roll over between billing periods.
+</Note>
+
+### What Happens When You Hit the Limit
+
+| Resource | Behavior |
+|----------|----------|
+| Standard / Premium Tokens | Agent stops responding until next billing cycle or pack purchase |
+| Storage | Cannot upload new files |
+| Voice | Voice features disabled |
+| Conversations | New conversations blocked |
+
+Revol sends notifications at **80%** (warning) and **90%** (critical) usage so you can act before hitting the limit.
+
+---
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="Quick Start" icon="rocket" href="/quickstart">
+    Set up your company and first agent in minutes
+  </Card>
+  <Card title="AI Agents" icon="robot" href="/agents/overview">
+    Deep dive into agent configuration and capabilities
+  </Card>
+  <Card title="Widget" icon="window" href="/widget/installation">
+    Install the chat widget on your website
+  </Card>
+  <Card title="API Reference" icon="square-terminal" href="/api-reference/overview">
+    Integrate Revol programmatically
+  </Card>
+</CardGroup>
