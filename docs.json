@@ -91,7 +91,17 @@
                 "group": "Widget",
                 "pages": [
                   "en/widget/installation",
-                  "en/widget/customization",
+                  "en/widget/customization"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "Tracker",
+            "groups": [
+              {
+                "group": "Tracker",
+                "pages": [
                   "en/widget/tracker"
                 ]
               }
@@ -210,7 +220,17 @@
                 "group": "Віджет",
                 "pages": [
                   "uk/widget/installation",
-                  "uk/widget/customization",
+                  "uk/widget/customization"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "Tracker",
+            "groups": [
+              {
+                "group": "Tracker",
+                "pages": [
                   "uk/widget/tracker"
                 ]
               }
@@ -329,7 +349,17 @@
                 "group": "Widget",
                 "pages": [
                   "pl/widget/installation",
-                  "pl/widget/customization",
+                  "pl/widget/customization"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "Tracker",
+            "groups": [
+              {
+                "group": "Tracker",
+                "pages": [
                   "pl/widget/tracker"
                 ]
               }
@@ -448,7 +478,17 @@
                 "group": "Widget",
                 "pages": [
                   "de/widget/installation",
-                  "de/widget/customization",
+                  "de/widget/customization"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "Tracker",
+            "groups": [
+              {
+                "group": "Tracker",
+                "pages": [
                   "de/widget/tracker"
                 ]
               }
@@ -567,7 +607,17 @@
                 "group": "Widget",
                 "pages": [
                   "es/widget/installation",
-                  "es/widget/customization",
+                  "es/widget/customization"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "Tracker",
+            "groups": [
+              {
+                "group": "Tracker",
+                "pages": [
                   "es/widget/tracker"
                 ]
               }
