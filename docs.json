@@ -33,7 +33,7 @@
   "navigation": {
     "tabs": [
       {
-        "tab": "Guides",
+        "tab": "Platform",
         "groups": [
           {
             "group": "Getting Started",
@@ -60,6 +60,18 @@
             ]
           },
           {
+            "group": "Billing",
+            "pages": [
+              "billing/plans",
+              "billing/usage"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Integrations",
+        "groups": [
+          {
             "group": "Integrations",
             "pages": [
               "integrations/overview",
@@ -68,13 +80,6 @@
               "integrations/google-workspace",
               "integrations/advertising",
               "integrations/webhook"
-            ]
-          },
-          {
-            "group": "Billing",
-            "pages": [
-              "billing/plans",
-              "billing/usage"
             ]
           }
         ]
