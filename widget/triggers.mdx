@@ -60,32 +60,85 @@ Click the **+ Add Block** button to open the block picker. Available block types
 | **QR Code** | Embeds a campaign QR code directly in the trigger. Visitors scan it on their phone to continue on mobile — with full campaign attribution. See [Campaigns — QR Code](/widget/campaigns#qr-code) for details. |
 | **Divider** | A horizontal line to visually separate sections. |
 
-### Block Styling
+### Block Settings
 
-Each block has its own style settings. Click a block to select it and edit:
+Each block type has its own editable properties. Click a block to select it and configure:
 
-| Setting | Applies To | Description |
-|---|---|---|
-| **Font Size** | Heading, Text | Text size in pixels |
-| **Color** | Heading, Text, Button | Text or background color |
-| **Alignment** | All | Left, center, or right |
-| **Border Radius** | Button, Image | Corner roundness |
-| **Padding** | All | Inner spacing |
-| **URL / Action** | Button, Image | Link destination or action on click |
+**Image:**
+| Setting | Description |
+|---|---|
+| **URL** | Image source URL |
+| **Alt Text** | Alternative text for accessibility |
+| **Border Radius** | Corner roundness in pixels (default: 0) |
 
-### Trigger Appearance
+**Heading:**
+| Setting | Description |
+|---|---|
+| **Text** | Heading content |
+| **Align** | Left (default) or Center |
 
-Beyond individual blocks, you can style the trigger container itself:
+**Text:**
+| Setting | Description |
+|---|---|
+| **HTML Content** | Rich text with formatting — supports `<b>`, `<i>`, `<u>`, `<a>`, lists, and `<br>` |
+
+**Feature List:**
+| Setting | Description |
+|---|---|
+| **Items** | Dynamic list of features. Each item has an icon (emoji), title, and description text. Click "Add Item" to add more. |
+
+**Input Field:**
+| Setting | Description |
+|---|---|
+| **Key** | Form field name (e.g., `email`, `phone`) |
+| **Type** | Text, Email, Phone, or Number |
+| **Label** | Field label shown above the input |
+| **Placeholder** | Hint text inside the field |
+| **Required** | Whether the field must be filled before submission |
+
+**Textarea:**
+| Setting | Description |
+|---|---|
+| **Key** | Form field name |
+| **Rows** | Number of visible text rows (1–10, default: 3) |
+| **Label** | Field label |
+| **Placeholder** | Hint text |
+| **Required** | Whether the field must be filled |
+
+**Button:**
+| Setting | Description |
+|---|---|
+| **Label** | Button text |
+| **Variant** | Primary (solid accent color), Secondary (light tint), or Outline (transparent with border) |
+| **Action** | Close (dismiss trigger), Open Link (navigate to URL), Submit Form (send form data), or Copy Value (copy text to clipboard) |
+| **Value** | URL for links or text for copy action |
+
+**Promo Code:**
+| Setting | Description |
+|---|---|
+| **Code** | The promo code text (e.g., `SPRING20`) |
+| **Label** | Optional label above the code |
+
+**QR Code:**
+| Setting | Description |
+|---|---|
+| **QR Data** | URL or text to encode. Use the "Create QR" button to generate. |
+| **Size** | QR code size in pixels (default: 160) |
+
+**Divider:**
+No settings — renders a horizontal line separator.
+
+### Trigger Style
+
+The trigger container has global style settings that apply to the entire popup/toast:
 
 | Setting | Description |
 |---|---|
-| **Position** | Where the trigger appears — center, bottom-left, bottom-right, top-left, top-right |
-| **Width** | Trigger width in pixels or percentage |
-| **Background Color** | Container background |
-| **Border Radius** | Corner roundness of the entire trigger |
-| **Overlay** | Dark backdrop behind the trigger (for modals) |
-| **Close Button** | Show or hide the X button |
-| **Animation** | Entry animation — fade, slide-up, slide-down, scale |
+| **Background Color** | Container background (default: `#ffffff`) |
+| **Text Color** | Default text color for all blocks (default: `#1a1a1a`) |
+| **Accent Color** | Color for buttons, feature icons, and promo code copy button (default: `#4680ff`) |
+| **Border Radius** | Corner roundness of the entire trigger in pixels (default: 16) |
+| **Position** | For toast-style triggers: top-right, top-left, bottom-right, or bottom-left. For modals: centered with a dark backdrop. |
 
 ### Content Examples
 
