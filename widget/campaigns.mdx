@@ -1,31 +1,17 @@
 ---
 title: Campaigns
 sidebarTitle: Campaigns
-description: "Create and manage tracking campaigns with UTM parameters for traffic attribution"
+description: "Create and manage tracking campaigns with UTM parameters, phone swap, and AI agent behavior"
 ---
 
 ## Overview
 
-The Campaigns tab lets you create and manage tracking campaigns with UTM parameters. Each campaign generates a unique tracking URL that attributes visitor sessions to specific marketing efforts.<Frame>
+The Campaigns tab lets you create and manage tracking campaigns. Each campaign generates a unique tracking URL with UTM parameters that attributes visitor sessions to specific marketing efforts. Beyond attribution, campaigns can swap phone numbers for call tracking and inject custom context into your AI agent's behavior.
 
-
+<Frame>
   <img className="block dark:hidden" src="/images/tracker-campaigns-light.png" alt="Campaigns tab" />
   <img className="hidden dark:block" src="/images/tracker-campaigns-dark.png" alt="Campaigns tab" />
 </Frame>
-
-## Creating a Campaign
-
-Click **Create Campaign** to set up a new tracking campaign:
-
-| Field | Description |
-|---|---|
-| **Name** | Campaign name for internal reference |
-| **Source** | Traffic source (e.g., google, facebook, newsletter) |
-| **Medium** | Marketing medium (e.g., cpc, email, social, banner) |
-| **Content** | Ad content or variant identifier (optional) |
-| **Term** | Paid search keyword (optional) |
-
-After creation, the system generates a tracking URL with the appropriate UTM parameters that you can use in your marketing channels.
 
 ## Campaign List
 
@@ -34,20 +20,210 @@ The campaigns table shows all your campaigns with key metrics:
 | Column | Description |
 |---|---|
 | **Name** | Campaign name |
-| **Source** | UTM source value |
-| **Medium** | UTM medium value |
+| **Source / Medium** | UTM source and medium values |
 | **Sessions** | Total sessions attributed to this campaign |
 | **Created** | Date the campaign was created |
 | **Actions** | Edit or delete the campaign |
 
-## UTM Parameters
+Click any row to open the campaign details panel.
 
-Campaigns use standard UTM parameters appended to your website URL:
+---
 
-- `utm_source` — identifies the traffic source
-- `utm_medium` — identifies the marketing medium
-- `utm_campaign` — identifies the campaign name
-- `utm_content` — differentiates ad variants (optional)
-- `utm_term` — identifies paid search terms (optional)
+## Creating a Campaign
 
-When a visitor arrives via a URL with UTM parameters, the tracker automatically attributes the session to the matching campaign.
+Click **Create Campaign** to open the campaign panel. The panel has two sides: a **preview area** on the left and a **settings form** on the right.
+
+### Campaign Info
+
+| Field | Required | Description |
+|---|---|---|
+| **Name** | Yes | Internal campaign name (e.g., "Spring Sale 2026", "Google Search Brand") |
+| **Description** | No | Notes about the campaign purpose, target audience, or creative details |
+
+### UTM Parameters
+
+Standard UTM parameters that will be appended to the generated tracking URL:
+
+| Parameter | URL Param | Required | Description |
+|---|---|---|---|
+| **Source** | `utm_source` | Yes | Traffic source — where visitors come from (e.g., `google`, `facebook`, `newsletter`, `instagram`) |
+| **Medium** | `utm_medium` | Yes | Marketing medium — how they get to you (e.g., `cpc`, `email`, `social`, `banner`, `referral`) |
+| **Campaign** | `utm_campaign` | Auto | Campaign identifier — auto-filled from the campaign name |
+| **Content** | `utm_content` | No | Ad content or variant — useful for A/B testing (e.g., `blue-button`, `header-banner`) |
+| **Term** | `utm_term` | No | Paid search keyword (e.g., `buy shoes online`) |
+
+<Tip>
+  When a visitor arrives via a URL with UTM parameters, the tracker automatically matches the session to the campaign with the same source + medium + campaign combination.
+</Tip>
+
+### Revol Parameters
+
+| Parameter | URL Param | Description |
+|---|---|---|
+| **Referral ID** | `rvl_ref` | A custom referral identifier. Can be used independently from UTM parameters for internal tracking (e.g., affiliate IDs, partner codes). |
+
+If the URL contains a `rvl_cmp` parameter (direct campaign ID), it takes priority over UTM matching.
+
+**Matching priority:**
+
+1. `rvl_cmp` — direct campaign ID in URL (highest priority)
+2. UTM combination — matches `utm_source` + `utm_medium` + `utm_campaign`
+3. `rvl_ref` — referral ID fallback
+4. Auto-create — if no campaign matches, a new one is created from the UTM values
+
+---
+
+## Phone Swap
+
+Phone swap lets you dynamically replace a phone number on your website with a campaign-specific tracking number. This way, when a visitor calls, you know exactly which campaign drove the call.
+
+| Field | Description |
+|---|---|
+| **Original Phone** | The default phone number displayed on your website |
+| **Replacement Phone** | The tracking number that replaces the original for visitors from this campaign |
+
+When a visitor from this campaign loads your website, the tracker script finds the original phone number in the page content and swaps it with the replacement number. The swap is automatic and invisible to the visitor.
+
+<Note>
+  Phone swap requires the tracker script to be installed on your website. The original phone number must appear as text in the page HTML — numbers inside images or iframes are not replaced.
+</Note>
+
+---
+
+## AI Agent Behavior
+
+This is the most powerful campaign feature. The **AI Agent Behavior** field lets you inject campaign-specific context into your AI agent's system prompt, changing how the agent communicates with visitors from this campaign.
+
+### How It Works
+
+<Steps>
+  <Step title="Visitor arrives">
+    A visitor clicks your campaign URL and lands on your website. The tracker identifies the campaign from UTM parameters.
+  </Step>
+  <Step title="Campaign is attached">
+    The `campaign_id` is stored in the visitor's session and sent with every chat message to the AI agent.
+  </Step>
+  <Step title="Prompt is injected">
+    When the agent processes a message, the campaign's AI prompt is appended to the system prompt as a `[Campaign Context]` block. The agent sees this context alongside its regular instructions.
+  </Step>
+  <Step title="Agent adapts">
+    The agent adjusts its responses based on the campaign context — different tone, offers, or focus depending on where the visitor came from.
+  </Step>
+</Steps>
+
+### What to Write
+
+The AI Agent Behavior field is a free-text prompt. Write instructions as if you're briefing the agent about this specific audience. Examples:
+
+<AccordionGroup>
+  <Accordion title="Google Ads — Brand Campaign">
+    ```text
+    This visitor came from a Google brand search campaign. They already know
+    our brand. Focus on converting — offer a demo, highlight pricing advantages,
+    and mention current promotions. Don't spend time explaining what we do.
+    ```
+  </Accordion>
+  <Accordion title="Facebook — Cold Audience">
+    ```text
+    This visitor came from a Facebook awareness campaign targeting a cold audience.
+    They may not know our product well. Start with a brief explanation of key benefits,
+    use simple language, and offer a free trial rather than pushing for a purchase.
+    ```
+  </Accordion>
+  <Accordion title="Email Newsletter — Existing Customers">
+    ```text
+    This visitor is an existing customer from our email newsletter.
+    Be warm and personal. Ask about their experience with the product.
+    Offer upsell opportunities and loyalty discounts. Reference their
+    history with us.
+    ```
+  </Accordion>
+  <Accordion title="Partner Referral">
+    ```text
+    This visitor was referred by a partner. Mention the partnership,
+    offer the special partner discount (15% off first month), and
+    emphasize the integration between our products. Be extra helpful
+    as this reflects on both brands.
+    ```
+  </Accordion>
+</AccordionGroup>
+
+<Warning>
+  The campaign prompt is appended to the agent's system prompt, not replacing it. The agent still follows its base instructions — the campaign context adds an extra layer of guidance for visitors from that specific campaign.
+</Warning>
+
+---
+
+## Generated Link
+
+The left side of the campaign panel shows a **preview area** with:
+
+- **QR Code** — scannable code linking to the generated campaign URL
+- **Campaign Info** — summary table with campaign ID, status, source/medium, phone swap status, and creation date
+- **Active Toggle** — enable or disable the campaign without deleting it
+- **Generated Link** — the full tracking URL built from your website domain + UTM parameters
+
+### Link Builder
+
+Select your website URL from the dropdown, and the system generates the full tracking link:
+
+```
+https://yoursite.com/?utm_source=google&utm_medium=cpc&utm_campaign=spring-sale&rvl_ref=partner123
+```
+
+Click **Copy** to copy the link to your clipboard, or scan the QR code to test on mobile.
+
+---
+
+## Third-Party Ad Campaigns
+
+When you run ads on platforms like Google Ads or Facebook Ads, those platforms automatically append UTM parameters to your landing page URLs. Revol works seamlessly with these — no conflicts, no extra setup.
+
+### What Happens
+
+When a visitor clicks a Google or Facebook ad with UTM parameters:
+
+1. The visitor lands on your website with UTM tags in the URL (e.g., `?utm_source=google&utm_medium=cpc&utm_campaign=brand`)
+2. Revol's tracker reads the UTM parameters **passively** — it does not modify, remove, or redirect them
+3. If a matching campaign exists in Revol, the session is attributed to it. If not, Revol auto-creates a campaign from the UTM values
+4. Other tracking scripts (Google Analytics, Facebook Pixel, TikTok Pixel, etc.) continue to work normally — they read the same URL parameters independently
+
+### Why There Are No Conflicts
+
+Revol uses two types of URL parameters:
+
+| Type | Parameters | Purpose |
+|---|---|---|
+| **Standard UTM** | `utm_source`, `utm_medium`, `utm_campaign`, `utm_content`, `utm_term` | Shared with all analytics tools. Revol reads them, never overwrites them. |
+| **Revol-specific** | `rvl_cmp`, `rvl_ref` | Prefixed with `rvl_` — unique to Revol. No other platform uses these, so there is zero chance of collision. |
+
+Key points:
+
+- **Read-only approach** — Revol's tracker only reads URL parameters. It never modifies the URL, sets redirects, or strips parameters that other tools need.
+- **Unique prefix** — Revol's own parameters (`rvl_cmp`, `rvl_ref`) use the `rvl_` namespace, which doesn't overlap with any known tracking platform.
+- **Isolated storage** — Revol stores campaign data in its own database. It doesn't interfere with cookies, `dataLayer`, or local storage used by Google Analytics, Facebook Pixel, or other tools.
+- **No tag conflicts** — The `tracker.js` script operates independently. It doesn't modify the DOM in ways that break other tracking tags or interfere with tag managers (GTM, etc.).
+
+<Tip>
+  You can create a Revol campaign with the same UTM values that your Google Ads or Facebook Ads use. This way, Revol picks up those sessions automatically and you can add AI Agent Behavior instructions specific to each ad campaign — without any changes to your ad platform setup.
+</Tip>
+
+---
+
+## Managing Campaigns
+
+### Edit
+
+Click a campaign row in the table to open the panel. Modify any field and click **Save**.
+
+### Toggle Active / Inactive
+
+Use the **Active** toggle in the campaign panel. Inactive campaigns stop tracking new sessions but keep historical data.
+
+### Delete
+
+Click the **Delete** button at the bottom of the campaign panel. This removes the campaign configuration but keeps the session data already collected.
+
+<Warning>
+  Deleting a campaign cannot be undone. Sessions already attributed to the campaign will retain the campaign reference in reports.
+</Warning>
