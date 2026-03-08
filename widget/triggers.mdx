@@ -6,7 +6,7 @@ description: "Create automated popups, overlays, and notification bars based on 
 
 ## Overview
 
-The Triggers tab lets you create automated actions that fire based on visitor behavior. When a visitor meets specific conditions — time on page, scroll depth, UTM source, device type, and more — the trigger displays a popup, overlay, or notification bar with your custom content. Triggers are a powerful way to engage visitors at the right moment without any coding.
+The Triggers tab lets you create automated actions that fire based on visitor behavior. When a visitor meets specific conditions — time on page, scroll depth, UTM source, device type, and more — the trigger displays a modal popup, toast notification, or redirects to a URL. Triggers are a powerful way to engage visitors at the right moment without any coding.
 
 <Frame>
   <img className="block dark:hidden" src="/images/tracker-triggers-light.png" alt="Triggers tab" />
@@ -20,7 +20,7 @@ The triggers table shows all defined triggers with key metrics:
 | Column | Description |
 |---|---|
 | **Name** | Trigger name |
-| **Type** | Display type (Popup, Slide-in, Bar, Fullscreen) |
+| **Type** | Action type — Modal (centered popup), Toast (corner notification), or Redirect (URL navigation) |
 | **Conditions** | Summary of firing conditions |
 | **Fires** | Total number of activations |
 | **Status** | Active or inactive |
@@ -50,7 +50,7 @@ Click the **+ Add Block** button to open the block picker. Available block types
 | Block | Description |
 |---|---|
 | **Image** | Add an image — upload a file or paste a URL. Great for product photos, banners, or icons. |
-| **Heading** | Large text for titles and headlines. Supports font size, color, and alignment. |
+| **Heading** | Large text for titles and headlines. Supports text alignment (left or center). |
 | **Text** | Body text with rich formatting. Use for descriptions, offers, or instructions. |
 | **Feature List** | A bulleted list with check icons — ideal for listing benefits, features, or included items. |
 | **Input Field** | A single-line text input for collecting data (name, email, phone). |
@@ -181,7 +181,7 @@ The Settings tab controls **when**, **how often**, and **to whom** the trigger i
 
 ### Conditions
 
-Conditions define the rules that must be met for the trigger to fire. You can add multiple conditions — **all conditions must be true** for the trigger to activate.
+Conditions define the rules that must be met for the trigger to fire. You can add multiple conditions and choose the logic mode: **AND** (all conditions must be true) or **OR** (any condition is enough) for the trigger to activate.
 
 | Condition | Operator | Description |
 |---|---|---|
@@ -191,9 +191,9 @@ Conditions define the rules that must be met for the trigger to fire. You can ad
 | **UTM Source** | `=`, `contains` | Fire only for visitors from a specific traffic source. Example: show a special offer only for `google` visitors. |
 | **UTM Medium** | `=`, `contains` | Fire only for a specific marketing medium. Example: trigger only for `cpc` (paid) traffic. |
 | **UTM Campaign** | `=`, `contains` | Fire only for visitors from a specific campaign. Example: show a seasonal banner only for `summer-sale` campaign. |
-| **Referral ID** | `=`, `contains` | Fire based on the `rvl_ref` parameter. Example: show a partner welcome message for a specific referral. |
+| **Referral ID** | `=`, `!=` | Fire based on the `rvl_ref` parameter. Example: show a partner welcome message for a specific referral. |
 | **Referrer contains** | `contains` | Fire based on the referring URL. Example: show a competitor comparison for visitors coming from a competitor's site. |
-| **Page URL** | `=`, `contains` | Fire only on specific pages. Example: show a pricing popup only on `/pricing`. |
+| **Page URL** | `=`, `contains`, `starts_with`, `matches` | Fire only on specific pages. Use `matches` for regex patterns. Example: show a pricing popup only on `/pricing`. |
 | **Device type** | `=` | Fire only on Desktop, Mobile, or Tablet. Example: show a mobile app download banner only on mobile. |
 | **Event fired** | `=` | Fire after a specific tracking event occurs. Example: show a cross-sell popup after `add_to_cart` event. |
 | **Day of week (0=Sun)** | `=`, `in` | Fire only on specific days. Example: show weekend deals on Saturday (6) and Sunday (0). |
@@ -246,7 +246,7 @@ Controls how often the trigger is shown to the same visitor:
 
 | Option | Description |
 |---|---|
-| **Once per session** | Show once during the current visit. If the visitor reloads or navigates to another page, it won't show again until a new session starts. |
+| **Once per session** | Show once during the current browser tab session. The trigger won't show again even after page reload or navigation — only closing the tab resets it. |
 | **Once per day** | Show once per calendar day. The visitor won't see it again until tomorrow, regardless of how many sessions they have today. |
 | **Once per visitor (ever)** | Show only once — ever. Once a visitor has seen this trigger, it will never show again (tracked via browser token). Ideal for one-time announcements. |
 | **Every visit** | Show on every session. The trigger fires every time the conditions are met, regardless of how many times the visitor has seen it before. Use sparingly. |
@@ -286,32 +286,32 @@ Both fields are optional:
 When the tracker script loads on your website, it fetches the active trigger definitions and evaluates them in the background:
 
 <Steps>
-  <Step title="Conditions are checked">
-    The tracker continuously monitors visitor behavior — time on page, scroll position, events, URL changes. When all conditions for a trigger are met, it moves to the next step.
+  <Step title="Active triggers are loaded">
+    The tracker fetches active trigger definitions from the server. The server filters by schedule (start/end dates) and active status before sending them to the client.
   </Step>
-  <Step title="Frequency is validated">
-    The tracker checks if this visitor has already seen the trigger based on the frequency setting. If they have (and shouldn't see it again), the trigger is skipped.
+  <Step title="Frequency is checked">
+    Every 2 seconds, the tracker checks each trigger's frequency setting. If the visitor has already seen the trigger (based on localStorage or sessionStorage), the trigger is skipped.
   </Step>
-  <Step title="Schedule is verified">
-    If a schedule is set, the tracker checks the current date/time against the start/end range. Outside the window — the trigger is skipped.
+  <Step title="Conditions are evaluated">
+    For triggers that pass the frequency check, the tracker evaluates all conditions — time on page, scroll depth, UTM parameters, device type, fired events, and more. Conditions use AND or OR logic depending on configuration.
   </Step>
   <Step title="Trigger is displayed">
-    The trigger content (popup, slide-in, bar) is rendered on the page with the configured animation and styling. The activation is recorded as a trigger event.
+    The trigger content (modal or toast) is rendered on the page inside a Shadow DOM with the configured styling and animation. The activation is recorded as a `trigger_shown` event. For redirect triggers, the visitor is navigated to the target URL.
   </Step>
   <Step title="Visitor interacts">
-    The visitor can interact with the trigger — click buttons, fill in fields, copy promo codes, scan QR codes, or close it. Form submissions and button clicks are tracked as events.
+    The visitor can interact with the trigger — click buttons, fill in fields, copy promo codes, scan QR codes, or close it. Each interaction is tracked as a separate event (`trigger_clicked`, `trigger_dismissed`, `trigger_promo_copied`).
   </Step>
 </Steps>
 
 <Note>
-  Triggers are rendered inside the same **Shadow DOM** as the chat widget, so their styles are fully isolated from your website. No CSS conflicts.
+  Triggers are rendered inside their own **Shadow DOM** container, so their styles are fully isolated from your website. No CSS conflicts.
 </Note>
 
 ---
 
 ## Triggers and Events Integration
 
-Triggers create tracking events automatically. Every trigger activation is recorded as a `trigger_fired` event with the trigger ID and name. You can:
+Triggers create tracking events automatically. Every trigger activation is recorded as a `trigger_shown` event with the trigger ID and action type. You can:
 
 - See trigger activity in the **Trigger Activity** chart on the Dashboard
 - View trigger activations in the **Campaign Performance** table
