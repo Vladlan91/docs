@@ -1,57 +1,400 @@
 ---
 title: Події
 sidebarTitle: Події
-description: "Визначення кастомних подій відстеження — кліки, форми, прокрутка, видимість — та налаштування конверсійних цілей"
+description: "Визначення подій відстеження — кліки, форми, прокрутка, видимість — та налаштування конверсійних цілей"
 ---
 
 ## Огляд
 
-Вкладка Events дозволяє визначати кастомні події для відстеження конкретних дій відвідувачів на вашому сайті. Події можуть відстежувати кліки, відправлення форм, досягнення порогів прокрутки, видимість елементів та інше.<Frame>
+Вкладка Events дозволяє визначати події для відстеження конкретних дій відвідувачів на вашому сайті. Відстежуйте кліки на кнопки, відправлення форм, прокрутку до ключових елементів, видимість елементів або відправляйте кастомні події зі свого коду. Будь-яку подію можна позначити як **конверсійну ціль** для вимірювання ефективності кампаній.
 
-
+<Frame>
   <img className="block dark:hidden" src="/images/tracker-events-light.png" alt="Вкладка подій" />
   <img className="hidden dark:block" src="/images/tracker-events-dark.png" alt="Вкладка подій" />
 </Frame>
 
-## Створення події
-
-Натисніть **Create Event**, щоб визначити нову подію:
-
-| Поле | Опис |
-|---|---|
-| **Name** | Назва події для ідентифікації |
-| **Type** | Тип події: Click, Form Submit, Scroll, Visibility, Page View або Custom |
-| **Selector** | CSS-селектор цільового елемента (для типів Click, Form, Visibility) |
-| **Page URL** | Необов'язково — обмежити подію конкретною сторінкою |
-| **Conversion Goal** | Перемикач для позначення події як конверсії |
-
-## Типи подій
-
-| Тип | Опис |
-|---|---|
-| **Click** | Спрацьовує при кліку на вказаний елемент |
-| **Form Submit** | Спрацьовує при відправленні форми, що відповідає селектору |
-| **Scroll** | Спрацьовує при прокрутці за визначений поріг відсотків |
-| **Visibility** | Спрацьовує коли вказаний елемент стає видимим у viewport |
-| **Page View** | Спрацьовує при завантаженні конкретної сторінки |
-| **Custom** | Спрацьовує через JavaScript API: `revolTracker.event('name')` |
-
-## Конверсійні цілі
-
-Будь-яка подія може бути позначена як **Conversion Goal** перемикачем. Конверсійні події:
-
-- Враховуються у KPI **Conversions** на Dashboard
-- Використовуються для розрахунку **Conversion Rate** у таблиці ефективності кампаній
-- Виділяються у детальному перегляді сесії
-
 ## Список подій
 
-Таблиця подій показує всі визначені події з:
+Таблиця подій показує всі визначені події з ключовими метриками:
 
 | Колонка | Опис |
 |---|---|
 | **Name** | Назва події |
-| **Type** | Тип події |
+| **Type** | Тип події (Click, Scroll, Form Submit, Visibility, Custom) |
 | **Fires** | Загальна кількість спрацювань |
 | **Conversion** | Чи є подія конверсійною ціллю |
+| **Status** | Активна або неактивна |
 | **Actions** | Редагувати або видалити подію |
+
+### Фільтри
+
+Фільтруйте список подій за:
+
+| Фільтр | Опис |
+|---|---|
+| **Type** | Показати лише події певного типу |
+| **Conversion** | Показати лише конверсійні події |
+| **Status** | Показати активні або неактивні події |
+| **Search** | Пошук подій за назвою |
+
+---
+
+## Створення події
+
+Натисніть **Create Event**, щоб визначити нову подію. Кожна подія потребує:
+
+| Поле | Обов'язкове | Опис |
+|---|---|---|
+| **Name** | Так | Назва події для ідентифікації (наприклад, «CTA Button Click», «Contact Form Submit») |
+| **Type** | Так | Як спрацьовує подія (див. Типи подій нижче) |
+| **CSS Selector** | Залежить | CSS-селектор цільового елемента (обов'язковий для Click, Form Submit, Visibility) |
+| **Page URL** | Ні | Обмежити спрацювання лише на конкретній сторінці |
+| **Conversion Goal** | Ні | Увімкнути для підрахунку як конверсія в аналітиці |
+
+---
+
+## Типи подій
+
+Кожен тип події відстежує інший вид взаємодії відвідувача. Скрипт трекера обробляє всі автоматичні типи — кодування не потрібне.
+
+### Click
+
+Спрацьовує коли відвідувач **натискає** на елемент, що відповідає CSS-селектору.
+
+| Налаштування | Опис |
+|---|---|
+| **CSS Selector** | Селектор цільового елемента (наприклад, `#cta-button`, `.buy-now`, `a[href="/contact"]`) |
+| **Page URL** | Необов'язково — обмежити трекінг конкретною сторінкою |
+
+**Що фіксується:**
+- Текстовий вміст елемента (перші 100 символів)
+- Тег елемента (`button`, `a`, `div` тощо)
+- CSS-селектор, який спрацював
+- Поточний URL сторінки
+
+<Tip>
+  Використовуйте DevTools браузера, щоб знайти правильний CSS-селектор. Клацніть правою кнопкою на елемент → **Інспектувати** → клацніть правою кнопкою на HTML-тег → **Copy** → **Copy selector**.
+</Tip>
+
+**Приклади CSS-селекторів:**
+
+```css
+/* Кнопка за ID */
+#buy-now-btn
+
+/* Всі кнопки з певним класом */
+.add-to-cart
+
+/* Посилання на конкретну сторінку */
+a[href="/pricing"]
+
+/* Кнопка всередині певної секції */
+.hero-section .cta-button
+
+/* Будь-який елемент з data-атрибутом */
+[data-action="subscribe"]
+```
+
+### Scroll (Visibility)
+
+Спрацьовує коли відвідувач **прокручує** до певного елемента на сторінці. Використовує IntersectionObserver для виявлення входу елемента у viewport.
+
+| Налаштування | Опис |
+|---|---|
+| **CSS Selector** | Цільовий елемент для спостереження (наприклад, `#pricing-section`, `.testimonials`) |
+| **Scroll Threshold** | Відсоток елемента, який повинен бути видимим (за замовчуванням: 50%) |
+
+**Сценарії використання:**
+- Відстеження скільки відвідувачів бачать секцію з цінами
+- Вимірювання залучення до конкретних блоків контенту
+- Виявлення чи відвідувачі досягають низу довгої сторінки
+
+<Note>
+  Кожна подія прокрутки спрацьовує **лише один раз** за сесію на елемент — навіть якщо відвідувач прокручує повз нього кілька разів. Це запобігає завищеним підрахункам.
+</Note>
+
+### Form Submit
+
+Спрацьовує коли відвідувач **відправляє форму**, що відповідає CSS-селектору.
+
+| Налаштування | Опис |
+|---|---|
+| **CSS Selector** | Цільовий елемент форми (наприклад, `#contact-form`, `.signup-form`) |
+| **Form Fields** | Необов'язково — список дозволених полів для збору (наприклад, `email, phone, name`) |
+
+**Що фіксується:**
+- Значення з `<input>`, `<select>` та `<textarea>` полів
+- Назви полів та їх значення (до 500 символів на поле)
+- Поля паролів та приховані поля **автоматично виключаються**
+
+<Warning>
+  За замовчуванням збираються всі видимі поля форми. Використовуйте список **Form Fields**, щоб обмежити збір даних конкретними полями та уникнути збору конфіденційної інформації.
+</Warning>
+
+### Element Visibility
+
+Спрацьовує коли певний елемент **стає видимим** у viewport браузера. Подібно до Scroll, але фокусується на відстеженні чи був побачений конкретний UI-елемент.
+
+| Налаштування | Опис |
+|---|---|
+| **CSS Selector** | Цільовий елемент (наприклад, `.promo-banner`, `#special-offer`) |
+
+**Сценарії використання:**
+- Відстеження показів рекламних банерів
+- Вимірювання видимості важливих CTA
+- Виявлення чи динамічно завантажений контент був побачений (працює з SPA)
+
+<Note>
+  Трекер використовує MutationObserver для спостереження за динамічно доданими елементами. Якщо цільовий елемент рендериться JavaScript після завантаження сторінки (React, Vue тощо), він все одно буде виявлений.
+</Note>
+
+### Custom (Manual)
+
+Спрацьовує коли ви викликаєте **JavaScript API** з власного коду. Це найгнучкіший тип подій — ви контролюєте коли саме та з якими даними подія спрацьовує.
+
+| Налаштування | Опис |
+|---|---|
+| **Name** | Назва події, що збігається з назвою у виклику `RevolTracker.track()` |
+
+Кастомні події детально описані у розділі [Custom Events API](#custom-events-api) нижче.
+
+---
+
+## Конверсійна ціль (Conversion Goal)
+
+Будь-яку подію можна позначити як **Conversion Goal** увімкненням перемикача. Коли увімкнено:
+
+- Подія враховується у KPI **Conversions** на Dashboard
+- Використовується для розрахунку **Conversion Rate** у таблиці ефективності кампаній
+- Сесії з цією подією виділяються у детальному перегляді
+- Подія з'являється у конверсійних воронках та звітах
+
+### Що робити конверсійною ціллю?
+
+<AccordionGroup>
+  <Accordion title="Лідогенерація">
+    Позначте **відправлення форм** як конверсії — контактні форми, запити на розрахунок, підписки на розсилку. Це чіткі індикатори того, що відвідувач став лідом.
+  </Accordion>
+  <Accordion title="E-commerce">
+    Позначте кастомні події **додавання в кошик** або **завершення покупки** як конверсії. Відстежуйте повну воронку від перегляду до покупки.
+  </Accordion>
+  <Accordion title="Залучення">
+    Позначте події **прокрутка до цін** або **запуск відео** як мікро-конверсії. Вони вказують на сильний інтерес навіть без відправлення форми.
+  </Accordion>
+  <Accordion title="Дзвінки та чати">
+    Позначте події **клік на номер телефону** або **відкриття чат-віджета** як конверсії. Вони показують намір прямої взаємодії.
+  </Accordion>
+</AccordionGroup>
+
+<Tip>
+  Можна мати кілька активних конверсійних цілей одночасно. KPI Conversions на Dashboard рахує унікальні сесії з **хоча б однією** конверсійною подією — тому сесія, що спрацювала 3 конверсійні події, все одно рахується як 1 конверсія.
+</Tip>
+
+---
+
+## Custom Events API
+
+Кастомні події дають вам повний контроль над трекінгом з вашого власного JavaScript-коду. Використовуйте їх коли автоматичний трекінг (кліки, форми, видимість) недостатній — для динамічних взаємодій, багатокрокових процесів або бізнес-специфічних дій.
+
+### Базове використання
+
+```javascript
+// Проста подія — без додаткових даних
+RevolTracker.track('button_clicked');
+
+// Подія з кастомними даними
+RevolTracker.track('item_added_to_cart', {
+    item_id: 'SKU-12345',
+    item_name: 'Running Shoes',
+    price: 89.99,
+    currency: 'USD'
+});
+```
+
+### API Reference
+
+```javascript
+RevolTracker.track(eventName, data)
+```
+
+| Параметр | Тип | Обов'язковий | Опис |
+|---|---|---|---|
+| `eventName` | `string` | Так | Назва події — повинна збігатися з назвою у вкладці Events, якщо потрібна прив'язка до визначення |
+| `data` | `object` | Ні | Кастомний payload — будь-які JSON-серіалізовані дані (об'єкти, масиви, рядки, числа) |
+
+**Автоматично фіксується** (не потрібно передавати):
+- Поточний URL сторінки
+- ID сесії
+- Часова мітка
+- ID компанії
+
+### Приклади E-Commerce
+
+Відстеження повної воронки покупок:
+
+```javascript
+// Перегляд товару
+RevolTracker.track('product_viewed', {
+    product_id: 'SKU-12345',
+    product_name: 'Running Shoes Pro',
+    category: 'Footwear',
+    price: 89.99
+});
+
+// Додавання в кошик
+RevolTracker.track('add_to_cart', {
+    product_id: 'SKU-12345',
+    quantity: 1,
+    price: 89.99
+});
+
+// Початок оформлення замовлення
+RevolTracker.track('checkout_started', {
+    cart_total: 89.99,
+    items_count: 1
+});
+
+// Покупка завершена
+RevolTracker.track('purchase_completed', {
+    order_id: 'ORD-9876',
+    total: 89.99,
+    currency: 'USD',
+    items: [
+        { id: 'SKU-12345', name: 'Running Shoes Pro', qty: 1, price: 89.99 }
+    ]
+});
+```
+
+### Інтеграція «Додати в кошик»
+
+Повний приклад інтеграції кастомних подій з кнопкою «Додати в кошик»:
+
+```html
+<button class="add-to-cart-btn"
+        data-product-id="SKU-12345"
+        data-product-name="Running Shoes Pro"
+        data-price="89.99">
+    Додати в кошик
+</button>
+
+<script>
+document.querySelectorAll('.add-to-cart-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+        // Ваша існуюча логіка кошика
+        addItemToCart(this.dataset.productId);
+
+        // Відстеження події в Revol
+        RevolTracker.track('add_to_cart', {
+            product_id: this.dataset.productId,
+            product_name: this.dataset.productName,
+            price: parseFloat(this.dataset.price)
+        });
+    });
+});
+</script>
+```
+
+### Приклад форми лідогенерації
+
+Відстеження відправлення форм з даними полів:
+
+```html
+<form id="contact-form">
+    <input name="name" type="text" placeholder="Ваше ім'я">
+    <input name="email" type="email" placeholder="Email">
+    <input name="phone" type="tel" placeholder="Телефон">
+    <textarea name="message" placeholder="Повідомлення"></textarea>
+    <button type="submit">Надіслати</button>
+</form>
+
+<script>
+document.getElementById('contact-form').addEventListener('submit', function(e) {
+    var formData = new FormData(this);
+
+    RevolTracker.track('contact_form_submitted', {
+        name: formData.get('name'),
+        email: formData.get('email'),
+        has_phone: !!formData.get('phone'),
+        message_length: (formData.get('message') || '').length
+    });
+});
+</script>
+```
+
+### Приклад SPA / React
+
+Для single-page додатків — відправлення подій при зміні маршрутів або взаємодії з компонентами:
+
+```javascript
+// React — відстеження перегляду сторінки при зміні маршруту
+useEffect(() => {
+    RevolTracker.track('page_view', {
+        page: location.pathname,
+        title: document.title
+    });
+}, [location.pathname]);
+
+// React — відстеження кліку на кнопку
+function handlePricingClick(plan) {
+    RevolTracker.track('pricing_plan_selected', {
+        plan: plan,
+        page: '/pricing'
+    });
+}
+```
+
+### Як відправляються події
+
+Події **буферизуються та відправляються пакетами** для продуктивності:
+
+1. Кожен виклик `RevolTracker.track()` додає подію у внутрішній буфер
+2. Кожні **5 секунд** всі буферизовані події відправляються на сервер одним запитом
+3. При **закритті сторінки** залишкові події відправляються через `sendBeacon()` для надійності
+4. Максимум **50 подій** на пакет — зайві події відкидаються
+
+<Note>
+  Не обов'язково створювати визначення події у дашборді, щоб кастомні події записувалися. Невизначені кастомні події все одно зберігаються з даними — але не матимуть лічильника спрацювань у списку Events. Для повного трекінгу створіть відповідне визначення з тією самою назвою.
+</Note>
+
+---
+
+## Аналіз сайту за допомогою Claude Code
+
+Якщо ви не впевнені які елементи відстежувати, ви можете використати **Claude Code** для аналізу вашого сайту та рекомендації оптимального набору подій.
+
+<Accordion title="Промпт для аналізу сайту">
+```text
+Analyze the website at [YOUR_WEBSITE_URL] and create a comprehensive
+event tracking plan for Revol Tracker. I need you to:
+
+1. Identify all interactive elements on the page:
+   - CTA buttons (purchases, signups, demos)
+   - Navigation links that indicate intent
+   - Forms (contact, subscribe, login)
+   - Media elements (video plays, image galleries)
+   - Scroll landmarks (pricing section, testimonials, FAQ)
+
+2. For each element, provide:
+   - A descriptive event name (snake_case)
+   - The event type (click, form_submit, scroll, visibility, custom)
+   - The exact CSS selector
+   - Whether it should be a conversion goal (and why)
+   - Priority (high/medium/low) based on business impact
+
+3. Generate ready-to-use event definitions that I can create
+   in the Revol Tracker Events tab.
+
+4. For any elements that need custom JavaScript tracking,
+   provide the complete RevolTracker.track() code snippets.
+
+5. Suggest a conversion funnel with 3-5 key stages
+   (e.g., Visit → View Pricing → Submit Form → Start Chat).
+
+Format the output as a table with columns:
+Event Name | Type | CSS Selector | Conversion | Priority
+
+My website is: [PASTE URL]
+My business type is: [e.g., e-commerce, SaaS, service business, agency]
+My main conversion action is: [e.g., form submission, purchase, demo request]
+```
+</Accordion>
