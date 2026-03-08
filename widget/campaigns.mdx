@@ -154,9 +154,14 @@ The AI Agent Behavior field is a free-text prompt. Write instructions as if you'
 
 ---
 
-## Generated Link
+## Generated Link & QR Code
 
-The left side of the campaign panel shows a **preview area** with:
+The left side of the campaign panel shows a **preview area** with the campaign's QR code, info summary, and generated tracking link.
+
+<Frame>
+  <img className="block dark:hidden" src="/images/campaign-qr-card-light.png" alt="Campaign QR code card" />
+  <img className="hidden dark:block" src="/images/campaign-qr-card-dark.png" alt="Campaign QR code card" />
+</Frame>
 
 - **QR Code** — scannable code linking to the generated campaign URL
 - **Campaign Info** — summary table with campaign ID, status, source/medium, phone swap status, and creation date
@@ -171,7 +176,50 @@ Select your website URL from the dropdown, and the system generates the full tra
 https://yoursite.com/?utm_source=google&utm_medium=cpc&utm_campaign=spring-sale&rvl_ref=partner123
 ```
 
-Click **Copy** to copy the link to your clipboard, or scan the QR code to test on mobile.
+Click **Copy** to copy the link to your clipboard.
+
+### QR Code
+
+Every campaign automatically generates a **QR code** that encodes the full tracking URL with all UTM and Revol parameters. When someone scans the code, they land on your website and the session is immediately attributed to this campaign — just like clicking a link.
+
+#### Customization
+
+You can customize the QR code appearance directly in the campaign panel:
+
+| Setting | Description |
+|---|---|
+| **Color** | Change the QR code color to match your brand |
+| **Background** | Set a background color or keep it transparent |
+| **Logo** | Add your company logo in the center of the QR code |
+| **Size** | Adjust the resolution for different use cases (print vs. screen) |
+
+Click **Download** to save the QR code as an image file ready for use in any material.
+
+#### Use Cases
+
+The QR code is a powerful offline-to-online bridge. Here are practical ways to use it:
+
+<AccordionGroup>
+  <Accordion title="Print materials">
+    Add the QR code to **brochures, flyers, business cards, catalogs, or packaging**. Customers scan it and land on your website with full campaign attribution. You see exactly how many visitors came from each printed material.
+  </Accordion>
+  <Accordion title="Referral partners">
+    Give each referral partner their own campaign with a unique QR code. Partners print it on their materials or share it digitally. You track how many leads each partner brings — with full session data, page flows, and conversation history.
+  </Accordion>
+  <Accordion title="Events and exhibitions">
+    Display the QR code on **banners, posters, or screens** at events. Attendees scan it to learn more about your product. Combined with AI Agent Behavior, your agent can greet them with event-specific messaging: *"Welcome from [Event Name]! Here's a special offer for attendees..."*
+  </Accordion>
+  <Accordion title="Triggers and popups">
+    Use the QR code inside **website triggers** — modal windows, slide-ins, or overlays that appear based on visitor behavior. For example, show a popup with a QR code that visitors can scan on their phone to continue the conversation later. Learn more in the [Triggers](/widget/triggers) section.
+  </Accordion>
+  <Accordion title="Product packaging">
+    Print QR codes on product labels or packaging. Customers scan to access support, documentation, or warranty registration — all tracked as a campaign session with AI agent available for instant help.
+  </Accordion>
+</AccordionGroup>
+
+<Tip>
+  Combine QR codes with **AI Agent Behavior** for maximum impact. Create a campaign for your trade show brochure, set the AI prompt to *"This visitor scanned a QR code from our brochure at [Event]. Offer the event discount and focus on [Product]"* — and every scan starts a personalized AI conversation.
+</Tip>
 
 ---
 
