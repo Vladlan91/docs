@@ -6,84 +6,99 @@ description: "Create intelligent AI assistants with custom workflows, knowledge 
 
 ## What Are AI Agents?
 
-AI Agents in Revol are intelligent assistants that handle customer interactions across multiple channels — your website widget, phone calls, Telegram, WhatsApp, Viber, and Instagram. Each agent has its own personality, knowledge base, conversation workflow, and set of tools. You configure how the agent thinks, what it knows, and where it communicates — Revol handles the rest.
+AI Agents in Revol are intelligent assistants that handle customer interactions across multiple channels — your website widget, phone calls, Telegram, WhatsApp, Viber, and Instagram. Each agent has its own personality, knowledge base, conversation workflow, and set of tools.
 
 ---
 
 ## Creating an Agent
 
-Click **Create Agent** to start the wizard. You'll provide:
+Click **Create Agent** to start a 2-step wizard:
 
-| Field | Required | Description |
-|---|---|---|
-| **Name** | Yes | Agent name (3–255 characters) |
-| **First Message** | No | Greeting shown to visitors when the chat opens (max 1000 characters) |
-| **Use Case** | Yes | Predefined scenario that sets the agent's icon and default behavior |
+**Step 1** — enter agent name (min 3 characters) and optional first message (greeting text).
 
-### Use Cases
+**Step 2** — select a use case: Customer Support, Outbound Sales, Lead Qualification, Answering Service, Consultation Booking, Client Intake, Service Recommendations, Scheduling, Billing Inquiries, Project Updates, Resource Library, Learning & Development, or Other.
 
-Choose the scenario that best matches your agent's purpose:
-
-| Use Case | Description |
-|---|---|
-| **Customer Support** | Answer questions, resolve issues, guide users |
-| **Outbound Sales** | Proactive selling, lead nurturing |
-| **Lead Qualification** | Qualify leads with structured questions |
-| **Answering Service** | 24/7 answering and message taking |
-| **Consultation Booking** | Schedule consultations and appointments |
-| **Client Intake** | Collect client information for onboarding |
-| **Service Recommendations** | Suggest services based on needs |
-| **Scheduling** | Manage appointments and availability |
-| **Billing Inquiries** | Handle payment and billing questions |
-| **Project Updates** | Provide status updates on projects |
-| **Resource Library** | Help users find documents and resources |
-| **Learning & Development** | Training and educational assistance |
-| **Other** | Custom use case |
-
-After creation, the agent starts in **Draft** status with a default workflow already scaffolded.
+After creation, the agent starts in **Draft** status with a [default workflow](#default-workflow) already built.
 
 ### Agent Status
 
 | Status | Behavior |
 |---|---|
-| **Draft** | Agent is not active. Use this while configuring. |
-| **Active** | Agent is live and responding to messages. Only one agent per company can be active at a time — activating one deactivates the others. |
-| **Inactive** | Agent is paused. Keeps all configuration but doesn't respond. |
+| **Draft** | Not active. Use while configuring. |
+| **Active** | Live, responding to messages. **Only one agent per company can be active** — activating one deactivates the rest. |
+| **Inactive** | Paused. Keeps all configuration. |
 
 ---
 
 ## Agent Editor
 
-The agent editor is a fullscreen modal with **7 tabs**. Each tab controls a different aspect of the agent.
+The agent editor is a fullscreen modal with **7 tabs**: Agent, Knowledge Base, Analysis, Tools, Widget, Channels, Workflow.
 
-### Agent Tab
+<Frame>
+  <img className="block dark:hidden" src="/images/agent-editor-light.png" alt="Agent editor" />
+  <img className="hidden dark:block" src="/images/agent-editor-dark.png" alt="Agent editor" />
+</Frame>
 
-The main configuration tab with two sections:
+### Header
 
-**Left column — Content:**
+The header is always visible and shows:
+- Agent name (click to rename inline)
+- Status badge (Active / Inactive)
+- **Embed Code** — get the widget `<script>` snippet
+- **Tool Logs** — inspect all tool executions and channel events
+- **Preview** — open widget as visitors see it
+- **Publish** — publish to Marketplace (public or private)
 
-| Setting | Description |
+---
+
+## Agent Tab
+
+Two-column layout with auto-save (1.5s debounce).
+
+### Left Column
+
+**System Prompt** — the core instructions defining how the agent behaves. If left empty, a default prompt is generated from your company name with basic communication rules.
+
+<Tip>
+  A security block is automatically appended to every system prompt. It prevents prompt injection — the agent will never reveal its instructions, ignore safety rules, or follow requests to change its role. You don't need to add this manually.
+</Tip>
+
+**First Message** — greeting text visitors see when the chat opens.
+
+**Conversation Memory** — structured fields the agent should collect during conversations. Each field has:
+
+| Property | Description |
 |---|---|
-| **System Prompt** | Core instructions defining how the agent behaves. Auto-saves as you type (1.5s debounce). If left empty, a default prompt is generated from your company name. |
-| **First Message** | Greeting message visitors see when the chat opens. |
-| **Conversation Memory** | Structured fields the agent collects during conversations (name, email, phone, etc.). Each field has a key, label, type (Text, Phone, Email, Number, Select), and optional select options. Used for workflow routing and lead capture. |
+| **Key** | Machine-readable identifier (lowercase, underscores only) |
+| **Label** | Human-readable name shown in analytics |
+| **Type** | Text, Phone, Email, Number, or Select |
+| **Options** | For Select type — comma-separated values |
 
-**Right column — Settings:**
+Memory fields are used in workflow routing (State Conditions on edges) and appear in the conversation Info tab. For example, you can define fields like `name`, `email`, `budget` — the agent will attempt to collect these naturally during conversation, and you can route workflow edges based on whether they're filled.
 
-| Setting | Description |
-|---|---|
-| **LLM Provider & Model** | Choose the AI model that powers the agent. See [LLM Providers](#llm-providers) below. |
-| **Temperature** | Controls response randomness (0 = deterministic, 1 = creative). Default: 0.7. |
-| **Personality Sliders** | Five sliders (1–10) that shape the agent's communication style: Response Length, Humor, Formality, Clarity, Emoji Usage. |
-| **Status Toggle** | Activate or deactivate the agent. |
+### Right Column
+
+**Personality** — 5 sliders (1–10) that shape communication style:
+
+| Slider | Low (1–3) | High (7–10) |
+|---|---|---|
+| **Response Length** | Brief, concise answers | Detailed, comprehensive responses |
+| **Humor** | Strictly professional | Light humor allowed |
+| **Formality** | Casual, conversational tone | Formal, business language |
+| **Clarity** | Standard explanations | Extra clear, step-by-step |
+| **Emoji Usage** | No emojis | Emojis used in responses |
+
+**LLM Provider & Model** — see [LLM Providers](#llm-providers).
+
+**Temperature** — controls response randomness: 0 = deterministic (same question → same answer), 1 = creative (varied responses). Default: 0.7.
 
 ---
 
 ## LLM Providers
 
-Revol supports 4 LLM providers. Each offers a standard and premium model tier:
+4 providers, each with a standard (faster, cheaper) and premium (higher quality) model:
 
-| Provider | Standard Model | Premium Model |
+| Provider | Standard | Premium |
 |---|---|---|
 | **OpenAI** | GPT-4o Mini | GPT-4o |
 | **Anthropic** | Claude 3.5 Haiku | Claude 3.5 Sonnet |
@@ -91,431 +106,515 @@ Revol supports 4 LLM providers. Each offers a standard and premium model tier:
 | **Groq** | Llama 3.1 8B Instant | Llama 3.3 70B Versatile |
 
 <Note>
-  **Premium models** (GPT-4o, Claude 3.5 Sonnet, Gemini 2.5 Pro, Llama 3.3 70B) require an upgraded plan. On standard plans, these models are locked in the selector with an upgrade prompt.
+  Premium models require an upgraded plan. On standard plans, premium models are locked with an upgrade prompt.
 </Note>
 
-### Provider Features
+All providers support function calling (tools), streaming, circuit breaker (auto-failover when a provider is down), and retry with exponential backoff on rate limits.
 
-All 4 providers support:
-- **Function calling** (tools) — the agent can invoke tools during conversations
-- **Streaming** — responses stream token-by-token for a real-time feel
-- **Circuit breaker** — automatic failover if a provider is down (cache-based, recovers after configurable cooldown)
-- **Retry with backoff** — exponential backoff on rate limits (429) and server errors (503)
-
-### Choosing a Model
-
-<AccordionGroup>
-  <Accordion title="Speed vs Quality">
-    Standard models (GPT-4o Mini, Gemini Flash, Llama 8B) are faster and cheaper — ideal for high-volume support. Premium models (GPT-4o, Sonnet, Gemini Pro, Llama 70B) produce higher-quality responses — ideal for complex sales or consultation scenarios.
-  </Accordion>
-  <Accordion title="Language support">
-    All models handle Ukrainian, English, and other languages well. The agent automatically detects the visitor's language and responds in the same language.
-  </Accordion>
-  <Accordion title="Cost considerations">
-    Standard and premium models consume tokens from separate quotas on your plan. Monitor usage in the Analysis tab to optimize cost.
-  </Accordion>
-</AccordionGroup>
-
----
-
-## Knowledge Base (RAG)
-
-The Knowledge tab lets you connect data sources that the agent uses to answer questions. When a visitor asks something, the agent searches your knowledge base using **vector similarity** (RAG — Retrieval-Augmented Generation) and includes relevant context in its response.
-
-### Source Types
-
-| Source | Description |
-|---|---|
-| **Documents** | PDFs, Word, Excel files uploaded to the File Manager (only files marked "Available for AI" are included) |
-| **Products** | Products from your company catalog — name, description, parameters, pricing |
-| **Photos** | Image files with titles and descriptions |
-| **Videos** | Video files with titles and descriptions |
-| **Text** | Free-text knowledge snippets entered directly |
-| **Links** | Web page URLs — content is fetched and embedded |
-| **Company** | Company profile information (name, contacts, description) |
-
-### How RAG Works
-
-<Steps>
-  <Step title="Training">
-    When you add sources and save, the system chunks each source into segments (max 4000 chars, 200 char overlap at sentence boundaries), generates vector embeddings using OpenAI's `text-embedding-ada-002` model, and stores them in a PostgreSQL database with pgvector.
-  </Step>
-  <Step title="Query">
-    When a visitor sends a message, the system embeds the message into the same vector space and searches for the most similar chunks using cosine similarity.
-  </Step>
-  <Step title="Context injection">
-    The top matching chunks (up to 5 by default, similarity threshold ≥ 0.6) are injected into the agent's prompt as "Relevant information from the knowledge base."
-  </Step>
-  <Step title="Response">
-    The LLM sees the visitor's message alongside the relevant knowledge and generates an informed response.
-  </Step>
-</Steps>
-
-Training starts automatically when you add or change knowledge sources. Progress is shown in the Knowledge tab with a status indicator.
-
-<Tip>
-  For best results, use specific, well-structured content. Short, focused documents perform better than long, general ones. Product descriptions with clear parameters give the agent precise answers to specific questions.
-</Tip>
+The LLM is set globally on the Agent tab but can be **overridden per workflow node** — for example, use a fast model for product search and a premium model for the final response formatting.
 
 ---
 
 ## Workflow
 
-The Workflow tab is a visual node editor where you design the agent's conversation logic. Instead of a single monolithic prompt, the workflow splits processing across specialized nodes — each with its own prompt, tools, and knowledge base.
+The Workflow tab is a visual canvas where you design the agent's conversation logic. Instead of a single prompt, the workflow splits processing across **nodes** — each with its own prompt, tools, and knowledge base — connected by **edges** with routing conditions.
+
+<Frame>
+  <img className="block dark:hidden" src="/images/agent-workflow-light.png" alt="Workflow editor" />
+  <img className="hidden dark:block" src="/images/agent-workflow-dark.png" alt="Workflow editor" />
+</Frame>
 
 ### Default Workflow
 
-Every new agent starts with a pre-built workflow:
+Every new agent starts with this pre-built workflow:
 
 ```
 [Voice Input*] → [Start] → [Product Agent] ──→ [Formatter] → [Voice Output*]
-                          → [Media Agent]   ──→ ↗
-                          → [Company Agent] ──→ ↗
+                           → [Media Agent]   ──↗
+                           → [Company Agent] ──↗
 ```
 
-*Voice nodes are inactive by default — they activate when you enable voice mode.*
+*Voice nodes are inactive by default — they activate when you enable voice.*
 
-The Start node routes the visitor's message to three parallel agents (Product, Media, Company). Each agent processes the message with its own tools and knowledge. The Formatter combines their results into a single coherent response.
+The **Start** node routes the message to three parallel system agents. Each processes the message with its own tools and knowledge. The **Formatter** combines their results into a single response.
 
 ### Node Types
 
-| Node | Description | Deletable |
+| Node | Type | Description |
 |---|---|---|
-| **Start** | Entry point for every conversation. Required. | No |
-| **Product Agent** | Searches products, checks availability, shows details | No |
-| **Media Agent** | Retrieves photos, videos, and documents | No |
-| **Company Agent** | Provides company information and support | No |
-| **Formatter** | Aggregates results from parallel nodes into a final response | No |
-| **Voice Input (STT)** | Speech-to-Text — converts voice to text. Inactive by default. | No |
-| **Voice Output (TTS)** | Text-to-Speech — converts text to audio. Inactive by default. | No |
-| **Custom** | User-defined node with its own prompt, tools, and knowledge base. Add as many as needed. | Yes |
+| **Start** | `start` | Entry point. Always present, cannot be deleted. |
+| **Product Agent** | `system_product` | Searches products, checks availability, shows details. Has access to product tools. |
+| **Media Agent** | `system_media` | Retrieves photos, videos, and documents. |
+| **Company Agent** | `system_company` | Company info, support questions. |
+| **Response Formatter** | `system_formatter` | Combines outputs from parallel nodes into a coherent final response. |
+| **Voice Input (STT)** | `system_stt` | Speech-to-Text conversion. Inactive by default. |
+| **Voice Output (TTS)** | `system_tts` | Text-to-Speech synthesis. Inactive by default. |
+| **Custom** | `custom` | Your own node with custom prompt, tools, KB, and LLM settings. |
 
-### Node Settings
+### Adding Custom Nodes
 
-Click any node in the canvas to open its settings panel:
+Click **+ Add Node** in the canvas toolbar → enter a name → a new Custom node appears on the canvas. You can add as many custom nodes as needed.
 
-| Setting | Available On | Description |
-|---|---|---|
-| **Name** | All | Display name of the node |
-| **System Prompt** | All except Start, Formatter | Instructions for this node's behavior (max 5000 chars) |
-| **LLM Provider & Model** | All except STT, TTS | Override the agent's default model for this specific node |
-| **Temperature** | All except STT, TTS | Override temperature for this node |
-| **Enabled/Disabled** | All | Toggle whether this node participates in the workflow |
-| **Knowledge Base** | Custom, system nodes | Select specific sources for this node's RAG context |
-| **Tools** | Custom, system nodes | Enable/disable specific tools for this node |
+Custom nodes are the most powerful part of the workflow. Each custom node is essentially its own mini-agent with:
 
-### Custom Nodes
+- **Conversation Goal** — a system prompt specific to this node (e.g., "Help users choose the right subscription plan based on their team size and budget")
+- **Tools** — select which tools this node can call (independent from the agent-level tools)
+- **Knowledge Base** — select specific knowledge sources for this node's RAG context
+- **LLM Override** — use a different model for this node
+- **Agent Mode** — enable multi-turn tool calling (see below)
 
-Custom nodes let you add specialized processing steps to the workflow. Each custom node has:
-- Its own **system prompt** (conversation goal)
-- Its own **knowledge base** (falls back to agent KB → company-wide if not set)
-- Its own **tools** selection
-- Its own **LLM model** (optional override)
-- **Multi-round tool calling** — configurable max rounds (1–10) with timeout (10–60s)
+### Node Settings Panel
+
+Click any node on the canvas to open its settings panel on the right. The panel has tabs that vary by node type:
+
+**General tab** (all nodes):
+
+| Setting | Description |
+|---|---|
+| **Name** | Display name (disabled for Start node) |
+| **Active** | Toggle whether this node participates in the workflow |
+| **Conversation Goal** | System prompt for this node. Available on all nodes except Start and Formatter. |
+
+**Agent Mode** (custom nodes with tools only):
+
+When enabled, the node can make **multiple rounds of tool calls** before responding. Without Agent Mode, the node makes at most 1 tool call per message.
+
+| Setting | Range | Default | Description |
+|---|---|---|---|
+| **Max Rounds** | 2–10 | 5 | How many tool-calling rounds the LLM can make before it must respond |
+| **Timeout** | 10–60s | 30s | Maximum time for the entire agent mode execution |
+
+<Tip>
+  Use Agent Mode when a node needs to chain multiple tools — for example, first search products, then check availability of the best match, then get detailed specs. Without Agent Mode, the node would need 3 separate conversation turns to do this.
+</Tip>
+
+**LLM Override** (all except Start):
+
+Toggle to use a different LLM provider and model for this specific node. When off, the node uses the agent's global LLM setting. The dropdown shows "Default (agent setting)" when not overridden.
+
+**Tools tab** (custom and system nodes):
+
+Lists all available tools grouped by category (Products, Support, Documents). Each tool has a toggle switch. Tools enabled here are independent from the agent-level Tools tab — you control exactly which tools each node has access to.
+
+**Knowledge Base tab** (custom nodes only):
+
+Select specific knowledge sources for this node's RAG context. Has an "Add document" dropdown with search and type filtering. If no sources are selected, the node falls back to the agent's global knowledge base.
+
+<Note>
+  A hint at the bottom links to the agent's Knowledge Base tab: "To make more data available for this node, add files to the agent's Knowledge Base."
+</Note>
+
+**Edges tab** (all nodes):
+
+Configure outgoing connections to other nodes. See [Edge Conditions](#edge-conditions) below.
+
+**Voice Settings tab** (STT and TTS nodes only):
+
+Configure speech recognition and synthesis — see [Voice](#voice) section.
+
+**Delete Node** — available only for custom nodes. System nodes cannot be deleted.
 
 ### Edge Conditions
 
-Edges connect nodes and control message routing. Each edge has a condition type:
+Edges connect nodes and control message routing. Each edge has a **target node**, a **condition type**, and a **priority**. The workflow evaluates edges from highest to lowest priority — **the first match wins**.
 
-| Condition | Priority | Description |
+Click **+ Add Edge** in a node's Edges tab to create a connection.
+
+| Condition | Priority | When It Routes |
 |---|---|---|
-| **Keyword** | 100 | Routes if the message contains any of the listed keywords (regex, case-insensitive) |
-| **State** | 95 | Routes based on memory field values (operators: filled, empty, =, !=, contains, >, <) |
-| **Always** | 90 | Always routes through this edge |
-| **Intent** | 50 | Routes based on detected intent |
-| **Fallback** | 10 | Routes only if no other edge matches |
+| **Keyword** | 100 (highest) | Message contains **any** of the specified keywords. Case-insensitive, word-boundary matching. |
+| **State Condition** | 95 | All specified memory field conditions are met (AND logic). |
+| **Always** | 90 | Always routes — use for unconditional connections. |
+| **Intent** | 50 | Based on detected message intent. |
+| **Fallback** | 10 (lowest) | Routes only if **no other edge** from this node matched. |
 
-Higher priority conditions are evaluated first.
+#### Keyword Condition
+
+Enter comma-separated keywords. The workflow checks if the visitor's message contains any of them using case-insensitive word matching.
+
+**Example:** Keywords `price, cost, pricing, how much` — the edge fires when the visitor asks "How much does it cost?" or "What's the pricing?"
+
+#### State Condition
+
+Check values of [Conversation Memory](#conversation-memory) fields. You build rules with:
+
+| Operator | Meaning | Example |
+|---|---|---|
+| **is filled** | Field has any value | `email` is filled → route to "Send offer" node |
+| **is empty** | Field has no value | `name` is empty → route to "Ask name" node |
+| **equals** | Exact match | `budget` equals `enterprise` |
+| **not equals** | Does not match | `plan` not equals `free` |
+| **contains** | Substring match | `interests` contains `premium` |
+| **greater than** | Numeric comparison | `budget` > `5000` |
+| **less than** | Numeric comparison | `team_size` < `10` |
+
+Multiple conditions within one edge use **AND logic** — all must be true.
+
+**Example workflow with State Conditions:**
+
+```
+[Start] → (name is empty)     → [Ask Name Node]
+        → (name is filled,     → [Send Offer Node]
+           email is filled)
+        → (fallback)           → [General Chat Node]
+```
+
+#### Always Condition
+
+The edge always fires. Used for unconditional connections — the default in the pre-built workflow where Start routes to all three system agents.
+
+#### Fallback Condition
+
+Routes only when no higher-priority edge matched. Always add a fallback edge from routing nodes to avoid dead ends.
+
+<Warning>
+  If no edge matches and there's no fallback, the node's output may not reach the Formatter and the visitor won't get a response from that branch.
+</Warning>
 
 ### Merge Strategy
 
-When multiple nodes produce results in parallel, the Formatter combines them:
+When multiple nodes produce results in parallel (like the 3 system agents in the default workflow), the **Formatter** combines them:
 
-| Strategy | Description |
-|---|---|
-| **Concat** | Free — concatenates all node outputs into context |
-| **LLM** | Uses an additional LLM call to synthesize a coherent response from all node outputs. Falls back to concat on error. |
+| Strategy | Cost | How It Works |
+|---|---|---|
+| **Concat** | Free | Concatenates all node outputs into context for the Formatter |
+| **LLM** | Additional LLM call | Uses an LLM to synthesize a single coherent response from all outputs |
 
 ### Canvas Controls
 
-- **Pan**: Drag empty canvas area, scroll, or two-finger touchpad
-- **Zoom**: Ctrl+scroll or pinch-to-zoom (range: 0.3x–2.0x)
-- **Reset**: Button to return to 1:1 zoom and re-center
-- **Templates**: Apply a pre-built workflow template
-- **Reset Workflow**: Rebuild the default workflow (confirmation required)
+| Control | Action |
+|---|---|
+| **Drag** empty area | Pan the canvas |
+| **Ctrl + Scroll** or pinch | Zoom (0.3x–2.0x) |
+| **Two-finger scroll** | Pan |
+| **+ Add Node** | Create a new custom node |
+| **Template** | Apply a pre-built workflow template from the marketplace |
+| **Reset** | Rebuild the default workflow (confirmation dialog) |
+| **Test** | Open the test chat panel at the bottom of the canvas |
 
 ---
 
 ## Tools
 
-The Tools tab lets you enable functions the agent can call during conversations. Tools extend the agent's capabilities beyond text generation.
+Tools are functions the agent can call during conversations. They extend the agent beyond text generation — searching products, querying databases, sending emails, making calls.
 
-### Built-In Tools
+### How Tools Work
+
+<Steps>
+  <Step title="LLM decides to use a tool">
+    Based on the visitor's message and the tool descriptions in its prompt, the LLM generates a tool call with parameters (e.g., `get_products({ query: "running shoes", available_only: true })`).
+  </Step>
+  <Step title="Tool executes">
+    The system runs the tool function with the provided parameters and gets a result.
+  </Step>
+  <Step title="Result goes back to LLM">
+    The tool result is injected back into the conversation. The LLM uses it to formulate a natural response.
+  </Step>
+  <Step title="Multi-round (Agent Mode)">
+    If the node has Agent Mode enabled, the LLM can make another tool call based on the first result — up to the configured max rounds.
+  </Step>
+</Steps>
+
+Every tool call is logged with input, output, execution time, and status. View logs via **Tool Logs** in the agent header.
+
+### Built-In Tools (9)
 
 Always available, no integration required:
 
-| Tool | Description |
-|---|---|
-| **Get Products** | Search products by name or description (max 20 results) |
-| **Get Product Details** | Full details for a specific product |
-| **Check Availability** | Check product stock/availability |
-| **Get Company Info** | Company name, contacts, description |
-| **Search Documents** | Semantic RAG search across the knowledge base |
-| **Get Photos** | Retrieve company photos with titles and descriptions |
-| **Get Videos** | Retrieve company videos |
-| **Get Documents** | Retrieve PDF/Word/Excel files (filtered by format) |
-| **Search by Parameters** | Filter products by parameter key-value pairs |
+| Tool | Category | What It Does |
+|---|---|---|
+| **get_products** | Products | Search products by name/description. Returns list with prices and availability. |
+| **get_product_details** | Products | Full details for one product — all parameters, pricing, description. |
+| **check_availability** | Products | Check if a specific product is in stock. |
+| **search_by_parameters** | Products | Filter products by attribute values with operators: `=`, `<=`, `>=`, `<`, `>`, `like`. |
+| **get_company_info** | Support | Company name, description, phone, contacts. |
+| **search_documents** | Documents | Semantic RAG search — finds relevant passages across the knowledge base. |
+| **get_photos** | Documents | Retrieve photos by query or product ID. |
+| **get_videos** | Documents | Retrieve videos by query or product ID. |
+| **get_documents** | Documents | Retrieve PDF/Word/Excel files, filterable by format. |
 
-### Integration Tools
+### Integration Tools (60+)
 
-Connect external services to unlock additional tools. Tools are organized by provider:
+Connect external services in [Integrations](/integrations/overview) to unlock tools:
 
 <AccordionGroup>
-  <Accordion title="VoIP (Twilio, Binotel, Ringostat)">
-    Make calls, send SMS, get call history
+  <Accordion title="VoIP — Twilio, Binotel, Ringostat">
+    Make outbound calls, send SMS, retrieve call history.
   </Accordion>
-  <Accordion title="Messengers (Telegram, WhatsApp, Instagram, Facebook)">
-    Send messages, send media, get chat info, get message history, send template messages (WhatsApp), send buttons (Facebook)
+  <Accordion title="Telegram">
+    Send messages, send files, edit/delete messages, get chat history and info.
   </Accordion>
-  <Accordion title="Google Suite">
-    - **Gmail**: Send emails, read inbox, search, reply, create drafts
-    - **Google Docs**: Create, read, append, export, search documents
-    - **Google Sheets**: Read/write ranges, append rows, search, create spreadsheets
-    - **Google Drive**: List, read, create, update, delete files and folders
-    - **Google Calendar**: Create, list, update, delete events; check availability; find free slots
-    - **Google Meet**: Create meeting links
+  <Accordion title="WhatsApp">
+    Send messages, send media, send template messages, get profile, mark as read.
   </Accordion>
-  <Accordion title="Advertising (Facebook Ads, Google Ads)">
-    Get campaigns, get insights, get keywords, pause campaigns
+  <Accordion title="Facebook & Instagram">
+    Send messages, send media, send buttons (Facebook), get profile. Facebook Ads: get campaigns, ad sets, insights, pause campaigns.
+  </Accordion>
+  <Accordion title="Gmail">
+    Read inbox, send emails, reply, create drafts, search, get attachments.
+  </Accordion>
+  <Accordion title="Google Calendar">
+    List/create/update/delete events, check availability, find free time slots.
+  </Accordion>
+  <Accordion title="Google Docs">
+    Read/create/append/export/search documents.
+  </Accordion>
+  <Accordion title="Google Sheets">
+    Read/write ranges, append rows, update cells, search rows, create spreadsheets.
+  </Accordion>
+  <Accordion title="Google Drive">
+    List/read/create/update/delete files, create folders, share files, search.
+  </Accordion>
+  <Accordion title="Google Meet">
+    Create meeting links.
+  </Accordion>
+  <Accordion title="Google Ads">
+    Get campaigns, get keywords, pause campaigns.
   </Accordion>
   <Accordion title="Webhooks">
-    Send custom payloads to any URL, test webhook connections
+    Send custom JSON payloads to any URL, test webhook connections.
   </Accordion>
 </AccordionGroup>
 
-To use integration tools, first connect the provider in the [Integrations](/integrations) page, then enable specific tools in the agent's Tools tab.
+### Tools Tab vs Node-Level Tools
 
-Every tool execution is logged in the **Tool Logs** panel (accessible from the agent header) with input, output, execution time, and status.
+There are **two places** to manage tools:
+
+1. **Agent → Tools tab** — shows all integration tools grouped by provider. Toggle tools on/off at the agent level. Tools here become available to all workflow nodes.
+
+2. **Workflow → Node Settings → Tools tab** — toggle tools per node. A node can only use tools that are enabled at the agent level. This lets you restrict which nodes have access to which tools.
+
+**Example:** Enable Gmail tools at the agent level, but only give the "Send Follow-up" custom node access to `send_email` — other nodes won't trigger emails.
+
+---
+
+## Knowledge Base (RAG)
+
+The Knowledge Base tab connects data sources that the agent uses to answer questions. When a visitor asks something, the agent searches your knowledge base using **vector similarity** (RAG — Retrieval-Augmented Generation) and includes relevant context in its response.
+
+### Source Types
+
+| Source | What Gets Indexed |
+|---|---|
+| **Products** | Name, description, additional prompt, price |
+| **Documents** | File name + extracted text content (PDF, Word, Excel, TXT) |
+| **Photos** | Photo name + description |
+| **Videos** | Video name + description/content |
+| **Text** | Name + free-text content |
+| **Links** | URL name + fetched page content |
+| **Company** | Company name, promo text, description, phone |
+
+### How RAG Works
+
+<Steps>
+  <Step title="Add sources">
+    In the Knowledge Base tab, click "Add document" and select sources from your company's data — products, files, text snippets, links.
+  </Step>
+  <Step title="Training">
+    The system chunks each source into segments (default max 2000 chars per chunk, 20% overlap at sentence boundaries), generates vector embeddings using OpenAI `text-embedding-ada-002` (1536 dimensions), and stores them in PostgreSQL with pgvector.
+  </Step>
+  <Step title="Visitor sends a message">
+    The visitor's message is embedded into the same vector space. The system finds the most similar chunks using cosine similarity.
+  </Step>
+  <Step title="Context injection">
+    Top matching chunks (default: up to 5, minimum similarity 0.6) are injected into the agent's prompt as knowledge base context.
+  </Step>
+  <Step title="Response">
+    The LLM sees the visitor's question alongside relevant knowledge and generates an informed answer.
+  </Step>
+</Steps>
+
+Training runs automatically when you add or change sources. Progress is shown in the Knowledge Base tab (percentage, items processed).
+
+### Agent-Level vs Node-Level Knowledge
+
+- **Agent-level KB** (Knowledge Base tab) — sources available to all workflow nodes
+- **Node-level KB** (Workflow → Node → Knowledge Base tab) — restrict RAG to specific sources for this node only
+
+**Example:** Your "Technical Support" custom node only sees product manuals and FAQ documents, while the "Sales" node sees product catalogs with pricing.
+
+<Tip>
+  Specific, well-structured content performs better than long general documents. Product descriptions with clear parameters give the agent precise answers. Short FAQ entries work better than lengthy manuals.
+</Tip>
 
 ---
 
 ## Voice
 
-Enable voice conversations with Speech-to-Text (STT) and Text-to-Speech (TTS). Voice settings are configured in the Widget tab's **Voice** sub-tab or directly in the workflow's STT/TTS nodes.
+Voice settings are configured in the Widget tab's **Voice** sub-tab or directly in the workflow's STT/TTS nodes.
 
 ### Speech-to-Text (STT)
 
-Converts visitor's voice to text.
-
 | Setting | Options |
 |---|---|
-| **Provider** | OpenAI Whisper (active), Google Speech (coming soon) |
+| **Provider** | OpenAI Whisper, Google Speech (coming soon) |
 | **Language** | Ukrainian, English |
-| **Greeting Audio** | Pre-synthesized welcome message played when voice starts |
-| **Farewell Audio** | Pre-synthesized goodbye message played when voice ends |
+| **Greeting** | Text + pre-synthesized audio played when voice starts |
+| **Farewell** | Text + pre-synthesized audio played when voice ends |
 
 ### Text-to-Speech (TTS)
 
-Converts the agent's text response to spoken audio.
-
 | Setting | Options |
 |---|---|
-| **Provider** | OpenAI TTS |
-| **Model** | `tts-1` (standard), `tts-1-hd` (high definition) |
-| **Voice** | Alloy, Echo, Fable, Onyx, Nova (default), Shimmer |
+| **Provider** | OpenAI TTS (ElevenLabs and Google Cloud coming soon) |
+| **Voice** | Alloy (neutral), Echo (warm), Fable (expressive), Onyx (deep), Nova (friendly, default), Shimmer (gentle) |
+| **Model** | `tts-1` (standard), `tts-1-hd` (HD quality) |
 | **Speed** | 0.5x – 2.0x |
 
 ### Voice Pipeline
 
-When a visitor sends a voice message:
-
 <Steps>
   <Step title="Audio received">
-    The visitor's audio is sent to the server (max 10MB, formats: webm, ogg, wav, mp3).
+    Visitor's audio sent to server (max 10MB, formats: webm, ogg, wav, mp3).
   </Step>
   <Step title="STT transcription">
-    The audio is transcribed to text. The transcript is streamed back to the client in real-time.
+    Audio transcribed to text. Transcript streamed back in real-time via SSE.
   </Step>
   <Step title="Workflow processing">
-    The transcript is processed through the same workflow as a text message — RAG search, tools, node routing.
+    Transcript processed through the same workflow as text — RAG, tools, node routing.
   </Step>
   <Step title="TTS synthesis">
-    The agent's text response is split into sentences and each is synthesized to audio. Audio chunks stream back as they're generated.
+    Response split into sentences, each synthesized to audio. Chunks stream back as generated.
   </Step>
-  <Step title="Audio playback">
-    The visitor hears the response as streaming audio while seeing the text transcript.
+  <Step title="Playback">
+    Visitor hears the response as streaming audio while seeing the text.
   </Step>
 </Steps>
 
 <Note>
-  Voice features require a plan that includes voice capabilities. On plans without voice, the voice controls show an upgrade prompt.
+  Voice requires a plan with voice capabilities. On plans without voice, voice controls show an upgrade prompt and Chat Only Mode is forced on.
 </Note>
 
 ---
 
 ## Channels
 
-The Channels tab controls where your agent receives and responds to messages.
+The Channels tab controls where your agent receives messages.
 
-| Channel | Requires Integration | Description |
+| Channel | Requires | Description |
 |---|---|---|
-| **Widget** | No | Chat widget embedded on your website via tracker script |
-| **Phone** | VoIP integration | Inbound/outbound phone calls via Twilio, Binotel, or Ringostat |
+| **Widget** | Nothing (built-in) | Chat widget on your website via tracker script |
+| **Phone** | VoIP integration | Inbound/outbound calls via Twilio, Binotel, or Ringostat |
 | **Telegram** | Telegram integration | Telegram bot conversations |
-| **WhatsApp** | WhatsApp integration | WhatsApp Business API conversations |
-| **Viber** | Viber integration | Viber bot conversations |
-| **Instagram** | Instagram integration | Instagram DM conversations |
+| **WhatsApp** | WhatsApp integration | WhatsApp Business API |
+| **Viber** | Viber integration | Viber bot |
+| **Instagram** | Instagram integration | Instagram DM |
 
-### Enabling a Channel
+### Connecting a Channel
 
-1. **Widget** — click Enable. The widget starts responding on your website immediately.
-2. **Other channels** — first connect the integration in the [Integrations](/integrations) page, then select a resource (phone number, bot, etc.) and enable the channel. A unique webhook URL is generated for each channel.
+**Widget** — click Enable. The widget responds on your website immediately.
 
-Each channel card shows:
-- Connection status and resource name
-- Total conversations handled
-- Webhook URL (for non-widget channels) with a copy button
+**Other channels:**
+1. Connect the integration in [Integrations](/integrations/overview)
+2. In the Channels tab, select a resource from the dropdown (e.g., a phone number, a bot, a page)
+3. Click Enable — a unique **webhook URL** is generated
+
+Each channel card shows connection status, resource name, total conversations, and the webhook URL with a copy button.
 
 ---
 
 ## Widget Customization
 
-The Widget tab lets you customize the chat widget's appearance and behavior. A live preview on the left updates in real-time as you change settings.
+The Widget tab has a **live preview** on the left (desktop/tablet/mobile switcher) and a settings panel on the right with 3 sub-tabs.
 
 ### Appearance
 
 | Setting | Description |
 |---|---|
-| **Colors** | 6 customizable colors: Primary, Chat, Message, Animation, Rating, Status Text |
-| **Text Labels** | Main title, Call button, Chat button, Input placeholder |
-| **Position** | 6 placement options: Bottom Right/Center/Left, Top Right/Center/Left |
+| **Colors** | 6 color pickers: Primary, Chat button, Message background, Animation, Rating stars, Status text |
+| **Labels** | Main title, Call button text, Chat button text, Input placeholder |
+| **Position** | Bottom Right, Bottom Center, Bottom Left, Top Right, Top Center, Top Left |
 | **Theme** | Light or Dark |
-| **Size** | Small, Medium, or Large |
+| **Size** | Small, Medium, Large |
 | **Border Radius** | 0–50px corner roundness |
-| **Background Opacity** | 0–100% |
-| **Avatar** | Custom avatar URL for the agent |
+| **Opacity** | 0–100% background opacity |
+| **Avatar** | Custom avatar URL |
 
 ### Behavior
 
 | Setting | Description |
 |---|---|
 | **Language** | English, Ukrainian, Polish, German, Spanish |
-| **Feedback Collection** | Show rating prompt after conversations |
-| **Chat Only Mode** | Disable voice input (text only) |
-| **Terms & Conditions** | Require acceptance before chatting (with custom text and URL) |
-| **Sound Effects** | Enable/disable notification sounds |
-| **Auto Open** | Automatically open the widget with configurable delay (0–60s) |
-| **Auto Greeting** | Automatically send the first message |
-| **Show on Mobile/Desktop** | Control visibility per device type |
-| **Powered by Revol** | Show or hide branding |
+| **Feedback Collection** | Show star rating after conversation |
+| **Text During Call** | Allow typing while voice call is active |
+| **Chat Only Mode** | Disable voice (text only). Forced on for plans without voice. |
+| **Terms & Conditions** | Require acceptance before chat. Custom text and URL. |
+| **Sound Effects** | Notification sounds on/off |
+| **Auto Open** | Open widget automatically after delay (0–60 seconds) |
+| **Auto Greeting** | Send first message automatically |
+| **Show on Mobile** | Display on mobile devices |
+| **Show on Desktop** | Display on desktop devices |
+| **Powered By** | Show/hide "Powered by Revol" branding |
+| **Welcome Message** | Text shown in the widget header |
+
+### Voice
+
+STT and TTS settings — same as described in the [Voice](#voice) section. Configured here or in the workflow STT/TTS nodes (they sync).
 
 ---
 
 ## Analysis
 
-The Analysis tab provides conversation analytics with a two-column layout.
+Two-column layout: conversation list (left) + conversation detail (right).
 
-### Conversation List
-
-Browse all conversations with filters:
+### Filters
 
 | Filter | Description |
 |---|---|
-| **Search** | Text search across conversation content |
-| **Channel** | Filter by channel type (Web, Phone, Messengers, etc.) |
-| **Status** | Active, Closed, or Archived |
+| **Search** | Text search across conversations |
+| **Channel** | All / Web / Telephony / Messengers / Widget / etc. |
+| **Status** | All / Active / Closed / Archived |
 | **Date Range** | From/To date pickers |
 
-New conversations appear in real-time via WebSocket.
+Conversations list shows 20 per page with "Load more" pagination. New conversations appear in real-time via WebSocket.
 
-### Conversation Detail
+### Conversation Detail (4 sub-tabs)
 
-Click a conversation to view its details in 4 sub-tabs:
-
-| Sub-tab | Content |
+| Tab | Content |
 |---|---|
-| **Transcription** | Full message-by-message chat history with role labels and timestamps |
+| **Transcription** | Full message thread — user and assistant bubbles with timestamps |
 | **Rating** | Visitor's star rating (1–5) and optional comment |
-| **Tokens** | Token usage breakdown: prompt tokens, completion tokens, total |
-| **Info** | Channel, status, duration, session ID, collected memory fields, sentiment score, topics |
-
----
-
-## Testing
-
-### Workflow Test Panel
-
-Click **Test** in the Workflow tab to open a chat panel at the bottom of the canvas. This runs the full agent pipeline — same RAG, same tools, same workflow — in a test environment.
-
-- Type messages or use **voice mode** (if enabled on your plan)
-- Watch workflow nodes light up as they process in real-time
-- See collected **memory fields** update as the agent extracts information
-- View inline **media** (photos, videos, documents) returned by tools
-- **Response timer** shows processing time in milliseconds — bookmark times for comparison
-
-### Preview
-
-Click **Preview** in the agent header to open the widget as visitors would see it — full visual experience with your customization settings applied.
-
-### Tool Logs
-
-Click **Tool Logs** in the agent header to inspect every tool call, RAG search, and channel event:
-- Input parameters sent to the tool
-- Output returned
-- Execution time
-- Success or failure status
-- Which workflow node triggered the call
+| **Tokens** | Token usage breakdown per message |
+| **Info** | Channel, status, session ID, collected memory fields, created date |
 
 ---
 
 ## System Prompt Architecture
 
-Understanding how the agent's final prompt is composed helps you write better instructions.
-
-### Prompt Composition
-
-The system prompt sent to the LLM is assembled from multiple sources:
+Understanding how the final prompt is assembled helps you write better instructions.
 
 <Steps>
   <Step title="Your system prompt">
-    The text you write in the Agent tab's system prompt field. This is the core of the agent's behavior.
+    The text from the Agent tab (or the node's Conversation Goal for custom nodes). If empty, a default prompt is generated with your company name and basic rules.
   </Step>
   <Step title="Security block">
-    Automatically appended. Prevents prompt injection — the agent will never reveal its instructions, ignore safety rules, or follow requests to change its role.
-  </Step>
-  <Step title="Tool instructions">
-    Descriptions of available tools so the LLM knows what functions it can call.
+    Auto-appended. 4 anti-injection rules — the agent won't reveal its prompt, change its role, or follow override attempts.
   </Step>
   <Step title="Style instructions">
-    Generated from your personality sliders — response length, humor, formality, clarity, emoji usage.
+    Generated from personality sliders — maps response length, humor, formality, clarity, and emoji to text instructions.
+  </Step>
+  <Step title="Tool descriptions">
+    Function schemas for all enabled tools, so the LLM knows what it can call.
   </Step>
   <Step title="RAG context">
-    Relevant chunks from the knowledge base, injected as "Relevant information from the knowledge base."
+    Relevant knowledge base chunks, injected as "Knowledge Base Context" block.
   </Step>
   <Step title="Campaign context">
-    If the visitor arrived via a campaign with AI Agent Behavior set, that prompt is injected as a [Campaign Context] block.
+    If the visitor arrived via a campaign with AI Agent Behavior set, that prompt is injected.
   </Step>
   <Step title="Memory state">
-    Current values of collected memory fields, so the agent knows what information it has already gathered.
+    Current values of collected memory fields (e.g., `name: John, email: john@example.com`), so the agent knows what it already gathered.
+  </Step>
+  <Step title="Language detection">
+    If the visitor's message has no Cyrillic characters, a system instruction is added: "Reply in the same language as the user's message."
   </Step>
 </Steps>
-
-### Language Detection
-
-The agent automatically detects the visitor's language. If the message contains no Cyrillic characters, a system instruction is added to respond in the same language as the visitor's message.
-
-### Context Window Management
-
-If the conversation grows too long, the system automatically trims older messages from history while keeping:
-- The full system prompt (never trimmed)
-- The last 3 messages (always preserved)
-- Estimated at ~0.25 tokens per character
 
 ---
 
 ## Embed Code
 
-Click **Embed** in the agent header to get the HTML snippet for your website:
+Click **Embed** in the agent header to get the HTML snippet:
 
 ```html
 <script
@@ -526,26 +625,22 @@ Click **Embed** in the agent header to get the HTML snippet for your website:
 </script>
 ```
 
-This single script loads the tracker (analytics, campaigns, events, triggers, phone swap) and the chat widget with your active agent.
+This loads both the tracker (analytics, campaigns, events, triggers, phone swap) and the chat widget with your active agent. If no API key exists, click **Generate API Key** first.
 
 ---
 
 ## Plan Limits
 
-Agent features are governed by your subscription plan:
-
 | Resource | What It Controls |
 |---|---|
-| **Max Agents** | Total number of agents you can create |
+| **Max Agents** | Total agents you can create |
 | **Max Conversations** | Conversations per billing period |
-| **Standard Token Quota** | Tokens consumed by standard-tier models (GPT-4o Mini, Haiku, Flash, Llama 8B) |
-| **Premium Token Quota** | Tokens consumed by premium-tier models (GPT-4o, Sonnet, Gemini Pro, Llama 70B) |
-| **Daily Token Limit** | Per-day token cap across all models |
-| **STT Minutes** | Speech-to-Text transcription minutes |
+| **Standard Token Quota** | Tokens for standard models (GPT-4o Mini, Haiku, Flash, Llama 8B) |
+| **Premium Token Quota** | Tokens for premium models (GPT-4o, Sonnet, Gemini Pro, Llama 70B) |
+| **Daily Token Limit** | Per-day cap across all models |
+| **STT Minutes** | Speech-to-Text transcription time |
 | **TTS Characters** | Text-to-Speech synthesis characters |
-| **Embedding Tokens** | Tokens used for RAG training (knowledge base indexing) |
+| **Embedding Tokens** | Tokens for knowledge base training |
 | **Storage** | File storage for documents, photos, videos |
 | **Voice** | Feature flag — enables/disables voice pipeline |
-| **Model Access** | `standard` or `premium` — gates access to premium models |
-
-All usage is tracked per LLM call, embedding batch, and STT/TTS operation for accurate billing.
+| **Model Access** | `standard` or `premium` — gates premium model access |
