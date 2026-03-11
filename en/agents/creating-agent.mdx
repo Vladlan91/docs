@@ -5,7 +5,7 @@ description: "Step-by-step guide to creating and configuring an AI agent"
 
 ## Create a New Agent
 
-1. Navigate to **Agents Platform** → **AI Agents**
+1. Open your **Company** page → **AI Agents** tab
 2. Click **Create Agent**
 3. Fill in the basic information:
 
@@ -38,14 +38,24 @@ Rules:
 
 ## Add Knowledge Base
 
-Go to the **Knowledge** tab to add content:
+Go to the **Knowledge Base** tab to select content for this agent.
 
-- **Documents** — PDF, DOCX, TXT files
-- **URLs** — Web pages to scrape and index
-- **Text** — Direct text content
+<Warning>
+  You cannot upload files directly to the agent. All data must first be added to the **company's File Manager** (documents, photos, videos, links, text). In the agent's Knowledge Base tab you then select which sources this specific agent should use.
+</Warning>
+
+Available source types from the company's data:
+
+- **Products** — product name, description, parameters, price
+- **Documents** — PDF, Word, Excel, TXT files
+- **Photos** — photo name and description
+- **Videos** — video name and description
+- **Text** — free-text content
+- **Links** — fetched web page content
+- **Company** — company name, description, phone, contacts
 
 <Note>
-  Documents are split into chunks and converted to vector embeddings for semantic search. The agent retrieves the most relevant chunks during each conversation.
+  Selected sources are split into chunks and converted to vector embeddings for semantic search. The agent retrieves the most relevant chunks during each conversation.
 </Note>
 
 ## Configure Workflow
