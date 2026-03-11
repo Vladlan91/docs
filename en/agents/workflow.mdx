@@ -41,9 +41,9 @@ Click on a node's output port and drag to another node's input port to create a 
 
 ## Best Practices
 
-<Note>
-  You don't need to manually connect every node. The workflow uses **synapses** — automatic path resolution that builds routes to nodes even when no explicit edge exists. If a node has no incoming connections, the system will still attempt to reach it through synapse routing.
-</Note>
+<Tip>
+  Always build explicit paths between nodes with clear conditions. However, in some cases the AI may autonomously route to a node that has no direct edge — this is called a **synapse**. Synapses occur when the AI determines that existing routing conditions are unclear or insufficient and decides to reach a node on its own. While this provides flexibility, frequent synapses usually indicate that your edge conditions need to be more specific.
+</Tip>
 
 - Keep workflows simple — complex flows are harder to debug
 - Use Condition nodes to handle edge cases
