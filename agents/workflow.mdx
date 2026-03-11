@@ -41,9 +41,9 @@ Click on a node's output port and drag to another node's input port to create a 
 
 ## Best Practices
 
-<Warning>
-  Always ensure there is a path from Start to End. Unreachable nodes will never execute.
-</Warning>
+<Note>
+  You don't need to manually connect every node. The workflow uses **synapses** — automatic path resolution that builds routes to nodes even when no explicit edge exists. If a node has no incoming connections, the system will still attempt to reach it through synapse routing.
+</Note>
 
 - Keep workflows simple — complex flows are harder to debug
 - Use Condition nodes to handle edge cases
