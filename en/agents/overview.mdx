@@ -76,6 +76,8 @@ The main configuration tab where you set up the agent's core settings — system
 
 Memory fields are used in workflow routing (State Conditions on edges) and appear in the conversation Info tab. For example, you can define fields like `name`, `email`, `budget` — the agent will attempt to collect these naturally during conversation, and you can route workflow edges based on whether they're filled.
 
+**How memory extraction works:** after each custom node generates a response, the system makes a lightweight LLM call that analyzes the last messages and extracts values for the configured fields. Extracted values are saved immediately, so subsequent nodes in the same turn already see the updated memory — enabling state-based routing within a single conversation turn.
+
 ### Right Column
 
 **Personality** — 5 sliders (1–10) that shape communication style:
@@ -221,7 +223,7 @@ Configure speech recognition and synthesis — see [Voice](#voice) section.
 
 ### Edge Conditions
 
-Edges connect nodes and control message routing. Each edge has a **target node**, a **condition type**, and a **priority**. The workflow evaluates edges from highest to lowest priority — **the first match wins**.
+Edges connect nodes and control message routing. Each edge has a **target node**, a **condition type**, and a **priority**. The workflow evaluates edges in priority tiers — the first tier that produces a match wins, lower tiers are not evaluated.
 
 Click **+ Add Edge** in a node's Edges tab to create a connection.
 
@@ -235,7 +237,9 @@ Click **+ Add Edge** in a node's Edges tab to create a connection.
 
 #### Keyword Condition
 
-Enter comma-separated keywords. The workflow checks if the visitor's message contains any of them using case-insensitive word matching.
+Enter comma-separated keywords. The workflow checks if the visitor's message contains any of them using case-insensitive word-boundary matching.
+
+Multiple keyword edges can match the same message — all matching edges fire in parallel, sending the message to multiple nodes simultaneously.
 
 **Example:** Keywords `price, cost, pricing, how much` — the edge fires when the visitor asks "How much does it cost?" or "What's the pricing?"
 
@@ -255,6 +259,10 @@ Check values of [Conversation Memory](#conversation-memory) fields. You build ru
 
 Multiple conditions within one edge use **AND logic** — all must be true.
 
+<Note>
+  State conditions are skipped entirely if memory is empty (no fields collected yet). This means `is empty` conditions won't fire until the agent has started collecting at least one memory field.
+</Note>
+
 **Example workflow with State Conditions:**
 
 ```
@@ -266,11 +274,11 @@ Multiple conditions within one edge use **AND logic** — all must be true.
 
 #### Always Condition
 
-The edge always fires. Used for unconditional connections — the default in the pre-built workflow where Start routes to all three system agents.
+The edge always fires. All Always edges from a node fire in parallel — the message is sent to every target simultaneously. This is how the default workflow fans out from Start to three system agents at once.
 
 #### Fallback Condition
 
-Routes only when no higher-priority edge matched. Always add a fallback edge from routing nodes to avoid dead ends.
+Routes only when no higher-priority edge matched. Unlike Keyword and Always, only **one** fallback edge fires (the first one) — no parallel execution.
 
 <Warning>
   If no edge matches and there's no fallback, the node's output may not reach the Formatter and the visitor won't get a response from that branch.
