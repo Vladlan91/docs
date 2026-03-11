@@ -1,18 +1,28 @@
 ---
 title: Plans & Pricing
-description: "Revol subscription plans, Stripe payments, and add-on packs"
+description: "Revol subscription plans, Stripe payments, add-on packs, subscription management, and invoices"
 ---
 
 ## Overview
 
-Revol uses a **token-based billing** model powered by **Stripe**. Every AI interaction consumes tokens — the more your agents work, the more tokens are used. Choose a plan that fits your volume, and purchase add-on packs if you need more.
+Revol uses a **token-based billing** model powered by **Stripe**. Every AI interaction consumes tokens — the more your agents work, the more tokens are used. Choose a plan that fits your volume, and purchase add-on packs when you need more resources without upgrading.
+
+---
+
+## Pricing Page
+
+Navigate to **Billing** → **Pricing Plan** to compare plans and subscribe.
 
 <Frame>
   <img className="block dark:hidden" src="/images/billing-plans-light.png" alt="Plans comparison" />
   <img className="hidden dark:block" src="/images/billing-plans-dark.png" alt="Plans comparison" />
 </Frame>
 
-## Plans
+The page displays a hero card at the top with your current plan badge and a **Manage Subscription** button (paid plans only), followed by three plan cards arranged side by side.
+
+Your current plan card is highlighted with a dark border and a green **"Your Plan"** badge. Each card is divided into three feature groups: **Platform**, **AI Resources**, and **Features**. Included capabilities show a green checkmark, while unavailable features show a grey X.
+
+### Plans
 
 <Tabs>
   <Tab title="Free">
@@ -84,7 +94,7 @@ Revol uses a **token-based billing** model powered by **Stripe**. Every AI inter
   The Free plan resets token usage **daily** (UTC midnight). Paid plans reset at the start of each **billing cycle** (the date you subscribed).
 </Note>
 
-## Model Access
+### Model Access
 
 Each plan determines which AI models are available:
 
@@ -93,7 +103,9 @@ Each plan determines which AI models are available:
 | **Standard** | GPT-4o Mini, Claude 3.5 Haiku, Gemini 2.0 Flash, Llama 3.1 8B | All plans |
 | **Premium** | GPT-4o, Claude 3.5 Sonnet, Gemini 2.5 Pro, Llama 3.3 70B | Premium and Professional |
 
-Standard models are faster and consume standard tokens. Premium models offer higher quality responses and consume premium tokens. On the Free plan, premium models are locked with an upgrade prompt.
+Standard models are faster and consume standard tokens. Premium models offer higher-quality responses and consume premium tokens. On the Free plan, premium models are locked — selecting one shows an upgrade prompt with a link to the Pricing page.
+
+---
 
 ## Payment via Stripe
 
@@ -101,19 +113,39 @@ All payments are processed securely through **Stripe**. Revol does not store you
 
 ### Subscribing to a Plan
 
-1. Go to **Billing** → **Plans** and click **Select Plan** on the plan you want
+1. Go to **Billing** → **Pricing Plan** and click **Select Plan** on the desired plan card
 2. You are redirected to a **Stripe Checkout** page — enter your card details and confirm
-3. After successful payment, your plan activates immediately and all new limits apply
+3. After successful payment, your plan activates immediately and all new limits take effect
 4. A subscription is created with automatic monthly renewal
 
 ### Managing Your Subscription
 
-Navigate to **Billing** → **Overview** and click **Manage Subscription**:
+Click the **Manage** button on the Overview or Pricing page to open the Manage Subscription modal.
 
-- **View billing period** — see your current cycle start and end dates
-- **Auto-renewal toggle** — turn off to cancel at the end of the current period (you keep access until then)
-- **Resume** — if you canceled but the period hasn't ended, you can re-enable auto-renewal
-- **Payment methods** — click **Manage Payment Methods** to open the Stripe Customer Portal where you can update cards, view receipts, and manage billing details
+<Frame>
+  <img className="block dark:hidden" src="/images/billing-manage-light.png" alt="Manage Subscription modal" />
+  <img className="hidden dark:block" src="/images/billing-manage-dark.png" alt="Manage Subscription modal" />
+</Frame>
+
+The modal displays three information rows:
+
+| Row | Description |
+|-----|-------------|
+| **Plan** | Your current plan name with a gradient badge, plus the monthly price |
+| **Billing Period** | Start and end dates of the current billing cycle (e.g., 15.03.2026 — 15.04.2026) |
+| **Status** | A colored badge — **Active** (green), **Canceling** (amber), or **Canceled** (red) |
+
+**Auto-renewal toggle** — a switch at the bottom of the modal:
+- **Turning off** cancels the subscription at the end of the current billing period. A confirmation dialog appears before proceeding. You keep full access until the period ends (grace period).
+- **Turning on** resumes a previously canceled subscription if the grace period hasn't expired yet.
+
+During the grace period, a yellow warning appears: *"Your subscription will end on DD.MM.YYYY. Auto-renewal is disabled."*
+
+**Footer buttons:**
+- **Close** — dismiss the modal
+- **Change Plan** — navigate to the Pricing page to upgrade or downgrade
+
+**Payment Methods** — click **Manage Payment Methods** on the Overview page to open the **Stripe Customer Portal**, where you can update cards, view receipts, and manage billing details.
 
 <Warning>
   When you cancel a subscription, it remains active until the end of the current billing period (grace period). After that, you are automatically downgraded to the Free plan. All your data is preserved, but limits are reduced.
@@ -124,9 +156,18 @@ Navigate to **Billing** → **Overview** and click **Manage Subscription**:
 - **Upgrade** — takes effect immediately. You are charged the new plan price, prorated for the remaining days in the current period.
 - **Downgrade** — takes effect at the end of the current billing period. You keep full access to the higher plan until the period ends.
 
+---
+
 ## Add-on Packs
 
-Need more resources without upgrading? Purchase one-time add-on packs:
+Need more resources without upgrading your plan? Purchase one-time add-on packs from **Billing** → **Pricing Plan** (packs section at the bottom) or the dedicated **Add-on Packs** page.
+
+<Frame>
+  <img className="block dark:hidden" src="/images/billing-packs-light.png" alt="Add-on Packs" />
+  <img className="hidden dark:block" src="/images/billing-packs-dark.png" alt="Add-on Packs" />
+</Frame>
+
+The packs page displays a 6-column grid (3 on tablet, 2 on mobile) of available packs:
 
 | Pack | What You Get | Price |
 |------|-------------|-------|
@@ -137,15 +178,19 @@ Need more resources without upgrading? Purchase one-time add-on packs:
 | **Voice Pack** | 60 STT minutes + 100,000 TTS characters | $3 |
 | **Storage Pack** | 10 GB additional storage | $1 |
 
-Packs are purchased via Stripe Checkout (one-time payment, not recurring) and activate immediately after payment.
+Each pack card shows an icon (bolt for tokens, microphone for voice, database for storage), the pack name, a description of what's included, the price, and a **Buy** button.
+
+Clicking **Buy** redirects you to Stripe Checkout for a one-time payment (not recurring). The pack activates immediately after successful payment.
 
 <Note>
-  Add-on packs expire **3 months** after purchase. Unused resources do not roll over. When you have multiple packs, the oldest-expiring pack is consumed first.
+  Add-on packs expire **3 months** after purchase. Unused resources do not roll over. When you have multiple active packs, the oldest-expiring pack is consumed first.
 </Note>
 
 <Tip>
   Packs supplement your plan limits — they are used only after your included plan quota is exhausted. For example, if your Premium plan includes 5M standard tokens and you purchased a Token Pack S (5M), you effectively have 10M tokens for that period.
 </Tip>
+
+---
 
 ## Invoices
 
@@ -156,30 +201,67 @@ All payment history is available in **Billing** → **Invoices**.
   <img className="hidden dark:block" src="/images/billing-invoices-dark.png" alt="Invoices page" />
 </Frame>
 
-Each invoice shows:
+### Summary Cards
 
-| Field | Description |
-|-------|-------------|
-| **Invoice #** | Auto-generated number (e.g., INV-202603-42) |
-| **Date** | Payment date |
-| **Description** | Plan name or pack type |
-| **Period** | Billing period covered |
-| **Amount** | Payment amount in USD |
-| **Status** | Paid, Pending, or Failed |
-| **PDF** | Download link to the Stripe-generated invoice PDF |
+Three cards at the top of the page provide a quick financial overview:
 
-Filter invoices by date range, type (subscription or pack), and payment status.
+| Card | Icon | Description |
+|------|------|-------------|
+| **Total Paid** | Cash (green) | Total amount paid across all transactions, formatted as USD |
+| **Transactions** | Receipt (blue) | Total number of billing transactions |
+| **Active Plan** | Crown (purple) | Your current subscription plan name |
 
-Summary cards at the top show: **Total Paid** (all-time), **Transaction Count**, and **Active Plan**.
+The Total Paid and Transactions values update dynamically when you apply filters — they reflect only the filtered results.
 
-## What Happens at the Limit
+### Invoice Table
 
-| Resource | Behavior |
-|----------|----------|
-| Standard / Premium Tokens | Agent stops responding until the next billing cycle or until you purchase a pack |
-| Storage | Cannot upload new files to the File Manager |
-| Voice (STT/TTS) | Voice features are disabled, text chat continues working |
-| Conversations | New conversations are blocked, existing ones continue |
-| Knowledge Docs | Cannot add new documents to agent knowledge bases |
+A filterable, paginated table of every billing transaction. Click **+ Filter** to add filter chips:
 
-Revol sends notifications at **80%** (warning) and **90%** (critical) usage via email and in-app notification, so you can act before hitting the limit.
+| Filter | Options |
+|--------|---------|
+| **Date From** | Calendar date picker |
+| **Date To** | Calendar date picker |
+| **Type** | Subscription, Pack Purchase, Plan Change |
+| **Status** | Paid, Pending, Failed, Refunded |
+
+**Table columns (7):**
+
+| Column | Description | Format |
+|--------|-------------|--------|
+| **#** | Row number | Sequential index on current page |
+| **Date** | Payment date | `DD.MM.YYYY` |
+| **Description** | What was paid for | Plan name, pack name, or change description |
+| **Period** | Billing period covered | `"Mar 15 – Apr 15"` or `—` for one-time purchases |
+| **Amount** | Payment amount | Pre-formatted USD value (e.g., `$29.00`) |
+| **Status** | Payment status | Color-coded badge with dot indicator |
+| **PDF** | Invoice document | PDF download link or hosted invoice link |
+
+**Status badges:**
+
+| Status | Color | Dot |
+|--------|-------|-----|
+| **Paid** | Green | Green dot |
+| **Pending** | Amber | Amber dot |
+| **Failed** | Red | Red dot |
+| **Refunded** | Grey | Grey dot |
+
+**PDF column:** If a Stripe-generated PDF is available, a PDF icon links to the downloadable file. If only a hosted invoice URL exists, an external-link icon opens it in a new tab. Otherwise, the invoice number is shown as plain text.
+
+The table loads 15 transactions per page with the same pagination system as Usage Events.
+
+---
+
+## Upgrade Modal
+
+When you attempt to perform an action that exceeds your plan limits — such as creating a new agent, starting a conversation, or sending a message when tokens are exhausted — an upgrade modal appears automatically.
+
+The modal shows:
+- **Resource icon and name** — which limit was hit (e.g., "AI Agents", "Standard Tokens")
+- **Current usage** — how much you've used vs. your plan limit (e.g., "5 / 5 agents")
+- **Your plan name** — so you know which plan you're on
+- **Buy a Pack** button — shown for token, storage, and voice resources, links to the Packs page
+- **Upgrade Plan** button — links to the Pricing page
+
+<Tip>
+  The upgrade modal also triggers when API requests return a 429 (rate limit) or 403 (quota exceeded) response, ensuring you're always informed about billing limits regardless of where the interaction originated.
+</Tip>

@@ -1,81 +1,182 @@
 ---
-title: Usage & Billing
-description: "Monitor resource consumption, understand token usage, and track costs"
+title: Usage & Analytics
+description: "Monitor resource consumption in real time, analyze usage events, understand token mechanics, and track costs across all your companies"
 ---
 
-## Usage Dashboard
+## Overview Dashboard
 
-Navigate to **Billing** → **Overview** to see your current resource consumption at a glance.
+Navigate to **Billing** → **Overview** to open the Usage Analytics dashboard — a single page that gives you full visibility into resource consumption, platform limits, and a detailed log of every billable event.
 
 <Frame>
-  <img className="block dark:hidden" src="/images/billing-overview-light.png" alt="Billing overview" />
-  <img className="hidden dark:block" src="/images/billing-overview-dark.png" alt="Billing overview" />
+  <img className="block dark:hidden" src="/images/billing-overview-light.png" alt="Billing overview dashboard" />
+  <img className="hidden dark:block" src="/images/billing-overview-dark.png" alt="Billing overview dashboard" />
 </Frame>
 
-The dashboard has four sections:
+The dashboard is divided into four sections: **Plan Summary**, **Resource Usage**, **Platform Limits**, and **Usage Events**.
 
-### Plan Summary
+---
 
-Shows your current plan name, price, and next payment date. From here you can upgrade, manage your subscription, or open the Stripe Customer Portal.
+## Plan Summary
 
-### Resource Usage
+The top of the page displays a hero card with your current subscription details.
 
-Six progress bars showing real-time consumption:
+**Left side:**
+- A gradient badge showing your plan name (Free, Premium, or Professional) with a crown icon
+- If on a paid plan — the monthly price (e.g., **$29 /mo**) and the next payment date (e.g., "Next payment: 15.04.2026")
+- If on the Free plan — a prompt to upgrade
 
-| Resource | What It Measures |
-|----------|-----------------|
-| **Standard Tokens** | Tokens consumed by standard models (GPT-4o Mini, Haiku, Flash, Llama 8B) |
-| **Premium Tokens** | Tokens consumed by premium models (GPT-4o, Sonnet, Gemini Pro, Llama 70B) |
-| **STT Minutes** | Speech-to-Text transcription time |
-| **TTS Characters** | Text-to-Speech synthesis characters |
-| **Embedding Tokens** | Tokens used for knowledge base training (chunking + vector generation) |
-| **Storage** | Total file storage across all companies |
+**Right side:**
+- **Manage** button — opens the Manage Subscription modal (paid plans only). See [Managing Your Subscription](/billing/plans#managing-your-subscription)
+- **Upgrade Plan** / **Change Plan** button — links to the [Pricing](/billing/plans) page
 
-Each bar is color-coded:
-- **Green** — below 80% usage
-- **Amber** — 80–89% (warning zone)
-- **Red** — 90%+ (critical zone)
+---
 
-### Platform Limits
+## Resource Usage
 
-Four counters showing how many resources you've created vs. your plan maximum:
+Six progress-bar cards arranged in a 3-column grid (2 columns on tablet, 1 on mobile). Each card tracks one billable resource in real time.
 
-- **Companies** — e.g., 2 / 3
-- **AI Agents** — e.g., 4 / 5
-- **Knowledge Documents** — e.g., 45 / 100
-- **Conversations** — e.g., 1,200 / 5,000
+| # | Resource | Icon | What It Measures |
+|---|----------|------|-----------------|
+| 1 | **Standard Tokens** | Bolt (blue) | Tokens consumed by standard models — GPT-4o Mini, Claude 3.5 Haiku, Gemini 2.0 Flash, Llama 3.1 8B |
+| 2 | **Premium Tokens** | Bolt (purple) | Tokens consumed by premium models — GPT-4o, Claude 3.5 Sonnet, Gemini 2.5 Pro, Llama 3.3 70B |
+| 3 | **Voice STT** | Microphone (cyan) | Speech-to-Text transcription time in minutes |
+| 4 | **Voice TTS** | Speaker (amber) | Text-to-Speech synthesis in characters |
+| 5 | **Embeddings** | Database (green) | Tokens used for knowledge base training (chunking + vector generation) |
+| 6 | **Storage** | Folder (rose) | Total file storage across all your companies |
 
-### Usage Events
+Each card displays:
+1. **Header row** — the resource icon and label on the left, a percentage badge on the right
+2. **Progress bar** — an 8px-tall bar showing current consumption as a filled gradient
+3. **Values row** — "**N** used" on the left, "of **N**" (your plan limit) on the right
 
-A detailed, filterable table of every billable action. Each event records:
+### Color Thresholds
 
-| Field | Description |
-|-------|-------------|
-| **Date** | When the event occurred |
-| **Company** | Which company's agent triggered it |
-| **Event** | Type of action — chat, voice, embedding |
-| **Resource** | Token type consumed |
-| **Channel** | Widget, VoIP, Telegram, etc. |
-| **Model** | Which LLM model was used |
-| **Amount** | Number of tokens, minutes, or characters consumed |
-| **Cost** | Estimated cost in USD |
+The percentage badge and progress bar change color based on how much you've consumed:
 
-Filter by date range, company, resource type, or channel. The table is paginated and loads asynchronously.
+| Usage Level | Color | Meaning |
+|-------------|-------|---------|
+| Below 80% | **Green** | Normal — you have plenty of headroom |
+| 80% – 89% | **Amber** | Warning — consider upgrading or buying a pack |
+| 90% and above | **Red** | Critical — approaching the limit, requests may be blocked soon |
+
+<Tip>
+  Storage values are displayed in human-readable units — **MB** for amounts under 1 GB, **GB** for larger values. All other resources show formatted numbers with thousands separators.
+</Tip>
+
+---
+
+## Platform Limits
+
+Four counter cards below the resource meters, arranged in a 4-column grid (2 on tablet, 1 on mobile). These show how many platform resources you've created versus your plan maximum:
+
+| Icon | Counter | Example |
+|------|---------|---------|
+| Building (blue) | **Companies** | 2 / 3 |
+| Wand (purple) | **AI Agents** | 4 / 5 |
+| Document (green) | **Knowledge Documents** | 45 / 100 |
+| Messages (amber) | **Conversations** | 1,200 / 5,000 |
+
+When a limit is unlimited (e.g., AI Agents on the Professional plan), the maximum displays as **∞**.
+
+When you attempt to create a resource that exceeds your plan limit (e.g., creating a 6th agent on the Premium plan), a modal appears explaining the limit and offering to upgrade or purchase a pack.
+
+---
+
+## Usage Events
+
+The bottom section contains a detailed, filterable table logging every billable action across all your companies. This is your audit trail for understanding exactly what consumed your quota.
+
+<Frame>
+  <img className="block dark:hidden" src="/images/billing-events-light.png" alt="Usage Events table" />
+  <img className="hidden dark:block" src="/images/billing-events-dark.png" alt="Usage Events table" />
+</Frame>
+
+### Filtering
+
+Click the **+ Filter** button to add filter chips. Six filter types are available:
+
+| Filter | Type | Options |
+|--------|------|---------|
+| **Date From** | Date picker | Calendar popover — select a start date |
+| **Date To** | Date picker | Calendar popover — select an end date |
+| **Company** | Select dropdown | Lists all your companies by name |
+| **Event Type** | Select dropdown | Chat, Workflow, STT, TTS, Embedding, Storage |
+| **Resource** | Select dropdown | Standard Tokens, Premium Tokens, STT Minutes, TTS Characters, Embedding Tokens, Storage |
+| **Channel** | Select dropdown | Admin, Widget, System |
+
+Active filters appear as removable chips above the table. Removing a chip immediately reloads the table with updated results.
+
+### Table Columns
+
+Each row in the table represents a single billable event with eight columns:
+
+| Column | Description | Format |
+|--------|-------------|--------|
+| **Date** | When the event occurred | `DD.MM.YYYY HH:mm` |
+| **Company** | Which company's agent triggered the event | Company name, or `—` if system-level |
+| **Event** | Type of billable action | Color-coded badge (see below) |
+| **Resource** | Which resource quota was consumed | Plain text label |
+| **Channel** | Where the interaction originated | Grey badge (Admin, Widget, System), or `—` |
+| **Model** | Which LLM model was used | Monospace font (e.g., `gpt-4o-mini`), or `—` for non-LLM events |
+| **Amount** | Quantity consumed | Smart-formatted (see below) |
+| **Cost** | Estimated cost in USD | Bold, tabular numerics (see below) |
+
+### Event Type Badges
+
+Each event type has a distinct color-coded badge for quick visual scanning:
+
+| Event Type | Badge Color | Description |
+|------------|-------------|-------------|
+| **Chat** | Blue | LLM inference from a chat conversation |
+| **Workflow** | Purple | LLM inference from a workflow node execution |
+| **STT** | Cyan | Speech-to-Text transcription |
+| **TTS** | Amber | Text-to-Speech synthesis |
+| **Embedding** | Green | Knowledge base training (vector generation) |
+| **Storage** | Rose | File upload or storage operation |
+
+### Amount Formatting
+
+The Amount column adapts its display format based on the resource type:
+
+| Resource | Format | Example |
+|----------|--------|---------|
+| Tokens (Standard, Premium, Embedding) | Comma-separated number + "tokens" | `4,521 tokens` |
+| STT Minutes | Minutes and seconds | `2m 34s` |
+| TTS Characters | Comma-separated number + "chars" | `1,250 chars` |
+| Storage | MB or KB | `3.2 MB`, `450 KB` |
+
+### Cost Formatting
+
+The Cost column shows estimated USD cost with precision adapted to the value:
+
+- **$0.01 and above** — displayed with 2 decimal places (e.g., `$1.25`)
+- **Below $0.01** — displayed with up to 8 decimal places, trailing zeros removed (e.g., `$0.00042`)
+- **Zero or not applicable** — displayed as `—`
+
+### Pagination
+
+The table loads 25 events per page and uses asynchronous pagination. The bottom bar shows:
+- **"Showing X–Y of Z"** — current range and total count
+- **Page buttons** — first page, last page, and a window of ±2 pages around the current one, with ellipsis (`…`) for gaps
+
+While loading, the table displays an animated skeleton with 8 shimmer rows. If no events match your filters, an empty state message appears: "No usage events found."
+
+---
 
 ## How Tokens Work
 
-Every AI interaction has two parts:
+Every AI interaction consists of two parts:
 
 - **Input tokens** — your message + system prompt + knowledge base context (RAG chunks) + conversation history + tool descriptions
 - **Output tokens** — the agent's response
 
-Both input and output tokens count toward your quota. The total per interaction depends on:
+Both count toward your quota. The total per interaction depends on:
 
-1. **System prompt length** — longer prompts use more input tokens per message
-2. **Knowledge base context** — more RAG chunks = more input tokens
-3. **Conversation history** — longer conversations accumulate context
-4. **Response length** — controlled by the Response Length personality slider
-5. **Tool calls** — each tool call round consumes additional tokens
+1. **System prompt length** — longer prompts consume more input tokens per message
+2. **Knowledge base context** — more RAG chunks retrieved = more input tokens. Control this via **RAG Settings → Chunk Limit**
+3. **Conversation history** — longer conversations accumulate context from previous messages
+4. **Response length** — controlled by the **Response Length** personality slider in agent settings
+5. **Tool calls** — each tool call round adds input tokens (tool descriptions) and output tokens (tool arguments + results)
 
 ### Token Types
 
@@ -89,40 +190,64 @@ Both input and output tokens count toward your quota. The total per interaction 
   To optimize token usage: keep system prompts concise, limit the number of RAG chunks per query (RAG Settings → Chunk Limit), and use standard models for simple tasks while reserving premium models for complex responses.
 </Tip>
 
+---
+
 ## Voice Usage
 
 Voice interactions consume two separate resources:
 
-- **STT (Speech-to-Text)** — measured in minutes. Each voice message is transcribed and the duration (rounded up to the nearest minute) is deducted from your quota.
+- **STT (Speech-to-Text)** — measured in minutes. Each voice message is transcribed, and the duration (rounded up to the nearest minute) is deducted from your quota.
 - **TTS (Text-to-Speech)** — measured in characters. The agent's text response is synthesized to audio, and the character count is deducted.
 
-A single voice conversation turn typically consumes both STT minutes (visitor's audio) and TTS characters (agent's spoken response).
+A single voice conversation turn typically consumes both STT minutes (the visitor's audio) and TTS characters (the agent's spoken response). These appear as separate rows in the Usage Events table — an **STT** event (cyan badge) and a **TTS** event (amber badge).
+
+---
 
 ## Storage Usage
 
-Storage is consumed when you upload files to the File Manager:
+Storage is consumed when you upload files to the [File Manager](/file-manager):
 
 - **Documents** — PDF, Word, Excel, TXT
 - **Photos** — JPG, PNG
 - **Videos** — MP4, WebM, MOV
 - **Audio recordings** — conversation audio files
 
-Storage usage is tracked bidirectionally — uploading increases usage, deleting files decreases it. The dashboard shows your current total.
+Storage usage is tracked bidirectionally — uploading increases usage, deleting files decreases it. The Storage meter on the dashboard shows your current total across all companies.
 
-## Notifications
+---
+
+## Quota Notifications
 
 Revol monitors your usage and sends alerts before you hit limits:
 
 | Threshold | Level | Notification |
 |-----------|-------|-------------|
-| **80%** | Warning | Email + in-app notification: "You've used 80% of your [resource]. Consider upgrading or purchasing a pack." |
-| **90%** | Critical | Email + in-app notification: "You've used 90% of your [resource]. Requests will be blocked at 100%." |
+| **80%** | Warning | Email + in-app banner: "You've used 80% of your [resource]. Consider upgrading or purchasing a pack." |
+| **90%** | Critical | Email + in-app banner: "You've used 90% of your [resource]. Requests will be blocked at 100%." |
 
-Each alert fires **once per billing period** per resource type. Critical alerts take priority — if you jump from 75% to 92%, only the critical notification is sent.
+Each alert fires **once per billing period** per resource type. Critical alerts take priority — if your usage jumps from 75% to 92%, only the critical notification is sent.
+
+In-app banners appear at the top of every page in the dashboard. You can dismiss them for the current session, but they reappear on your next login if the threshold is still exceeded.
+
+---
+
+## What Happens at the Limit
+
+| Resource | Behavior |
+|----------|----------|
+| Standard / Premium Tokens | Agent stops responding until the next billing cycle or until you purchase a pack |
+| Storage | Cannot upload new files to the File Manager |
+| Voice (STT/TTS) | Voice features are disabled, text chat continues working |
+| Conversations | New conversations are blocked, existing ones continue |
+| Knowledge Docs | Cannot add new documents to agent knowledge bases |
+
+When a limit is reached and you attempt to perform a blocked action, a modal appears showing your current usage, plan limit, and options to either upgrade your plan or purchase an add-on pack.
+
+---
 
 ## Billing Period
 
 - **Free plan** — daily billing period. Token usage resets every day at midnight UTC.
 - **Paid plans** — monthly billing period. Usage resets on the anniversary of your subscription date (e.g., if you subscribed on March 15, your next reset is April 15).
 
-Add-on packs are independent of the billing period — they have their own 3-month expiration from the purchase date.
+Add-on packs are independent of the billing period — they have their own 3-month expiration from the purchase date. When your included plan quota is exhausted, consumption automatically switches to your oldest-expiring pack.
