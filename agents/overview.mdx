@@ -6,7 +6,7 @@ description: "Create intelligent AI assistants with custom workflows, knowledge 
 
 ## What Are AI Agents?
 
-AI Agents in Revol are intelligent assistants that handle customer interactions across multiple channels — your website widget, phone calls, Telegram, WhatsApp, Viber, and Instagram. Each agent has its own personality, knowledge base, conversation workflow, and set of tools.
+AI Agents in Revol are intelligent assistants that handle customer interactions across multiple channels — your website widget, phone calls, Telegram, WhatsApp, and Instagram. Each agent has its own personality, knowledge base, conversation workflow, and set of tools.
 
 ---
 
@@ -16,7 +16,7 @@ Click **Create Agent** to start a 2-step wizard:
 
 **Step 1** — enter agent name (min 3 characters) and optional first message (greeting text).
 
-**Step 2** — select a use case: Customer Support, Outbound Sales, Lead Qualification, Answering Service, Consultation Booking, Client Intake, Service Recommendations, Scheduling, Billing Inquiries, Project Updates, Resource Library, Learning & Development, or Other.
+**Step 2** — select a use case: Customer Support, Outbound Sales, Lead Qualification, Answering Service, Consultation Booking, Client Intake, Service Recommendations, Scheduling, Billing Inquiries, Project Updates, Resource Library, Learning & Development, or Other. This is purely visual — the selected use case does not affect the agent's behavior or configuration.
 
 After creation, the agent starts in **Draft** status with a [default workflow](#default-workflow) already built.
 
@@ -46,14 +46,14 @@ The header is always visible and shows:
 - Status badge (Active / Inactive)
 - **Embed Code** — get the widget `<script>` snippet
 - **Tool Logs** — inspect all tool executions and channel events
-- **Preview** — open widget as visitors see it
+- **Preview** — link to the client's website where the widget is installed, to see it as visitors do
 - **Publish** — publish to Marketplace (public or private)
 
 ---
 
 ## Agent Tab
 
-Two-column layout with auto-save (1.5s debounce).
+The main configuration tab where you set up the agent's core settings — system prompt, personality, LLM provider, and conversation memory.
 
 ### Left Column
 
@@ -497,7 +497,6 @@ The Channels tab controls where your agent receives messages.
 | **Phone** | VoIP integration | Inbound/outbound calls via Twilio, Binotel, or Ringostat |
 | **Telegram** | Telegram integration | Telegram bot conversations |
 | **WhatsApp** | WhatsApp integration | WhatsApp Business API |
-| **Viber** | Viber integration | Viber bot |
 | **Instagram** | Instagram integration | Instagram DM |
 
 ### Connecting a Channel
