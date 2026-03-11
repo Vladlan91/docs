@@ -135,33 +135,6 @@
                 ]
               }
             ]
-          },
-          {
-            "tab": "API Reference",
-            "groups": [
-              {
-                "group": "Overview",
-                "pages": [
-                  "en/api-reference/overview",
-                  "en/api-reference/authentication"
-                ]
-              },
-              {
-                "group": "Widget API",
-                "pages": [
-                  "en/api-reference/widget/init",
-                  "en/api-reference/widget/send-message",
-                  "en/api-reference/widget/chat-history"
-                ]
-              },
-              {
-                "group": "Tracking API",
-                "pages": [
-                  "en/api-reference/tracking/collect",
-                  "en/api-reference/tracking/sessions"
-                ]
-              }
-            ]
           }
         ]
       },
@@ -268,33 +241,6 @@
                 "group": "Командна робота",
                 "pages": [
                   "uk/team/overview"
-                ]
-              }
-            ]
-          },
-          {
-            "tab": "API Reference",
-            "groups": [
-              {
-                "group": "Огляд",
-                "pages": [
-                  "uk/api-reference/overview",
-                  "uk/api-reference/authentication"
-                ]
-              },
-              {
-                "group": "Widget API",
-                "pages": [
-                  "uk/api-reference/widget/init",
-                  "uk/api-reference/widget/send-message",
-                  "uk/api-reference/widget/chat-history"
-                ]
-              },
-              {
-                "group": "Tracking API",
-                "pages": [
-                  "uk/api-reference/tracking/collect",
-                  "uk/api-reference/tracking/sessions"
                 ]
               }
             ]
@@ -407,33 +353,6 @@
                 ]
               }
             ]
-          },
-          {
-            "tab": "API Reference",
-            "groups": [
-              {
-                "group": "Overview",
-                "pages": [
-                  "pl/api-reference/overview",
-                  "pl/api-reference/authentication"
-                ]
-              },
-              {
-                "group": "Widget API",
-                "pages": [
-                  "pl/api-reference/widget/init",
-                  "pl/api-reference/widget/send-message",
-                  "pl/api-reference/widget/chat-history"
-                ]
-              },
-              {
-                "group": "Tracking API",
-                "pages": [
-                  "pl/api-reference/tracking/collect",
-                  "pl/api-reference/tracking/sessions"
-                ]
-              }
-            ]
           }
         ]
       },
@@ -543,33 +462,6 @@
                 ]
               }
             ]
-          },
-          {
-            "tab": "API Reference",
-            "groups": [
-              {
-                "group": "Übersicht",
-                "pages": [
-                  "de/api-reference/overview",
-                  "de/api-reference/authentication"
-                ]
-              },
-              {
-                "group": "Widget API",
-                "pages": [
-                  "de/api-reference/widget/init",
-                  "de/api-reference/widget/send-message",
-                  "de/api-reference/widget/chat-history"
-                ]
-              },
-              {
-                "group": "Tracking API",
-                "pages": [
-                  "de/api-reference/tracking/collect",
-                  "de/api-reference/tracking/sessions"
-                ]
-              }
-            ]
           }
         ]
       },
@@ -676,33 +568,6 @@
                 "group": "Trabajo en equipo",
                 "pages": [
                   "es/team/overview"
-                ]
-              }
-            ]
-          },
-          {
-            "tab": "API Reference",
-            "groups": [
-              {
-                "group": "Descripción",
-                "pages": [
-                  "es/api-reference/overview",
-                  "es/api-reference/authentication"
-                ]
-              },
-              {
-                "group": "Widget API",
-                "pages": [
-                  "es/api-reference/widget/init",
-                  "es/api-reference/widget/send-message",
-                  "es/api-reference/widget/chat-history"
-                ]
-              },
-              {
-                "group": "Tracking API",
-                "pages": [
-                  "es/api-reference/tracking/collect",
-                  "es/api-reference/tracking/sessions"
                 ]
               }
             ]
