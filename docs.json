@@ -50,7 +50,8 @@
                   "en/agents/creating-agent",
                   "en/agents/workflow",
                   "en/agents/knowledge-base",
-                  "en/agents/voice"
+                  "en/agents/voice",
+                  "en/agents/tool-logs"
                 ]
               },
               {
@@ -185,7 +186,8 @@
                   "uk/agents/creating-agent",
                   "uk/agents/workflow",
                   "uk/agents/knowledge-base",
-                  "uk/agents/voice"
+                  "uk/agents/voice",
+                  "uk/agents/tool-logs"
                 ]
               },
               {
@@ -320,7 +322,8 @@
                   "pl/agents/creating-agent",
                   "pl/agents/workflow",
                   "pl/agents/knowledge-base",
-                  "pl/agents/voice"
+                  "pl/agents/voice",
+                  "pl/agents/tool-logs"
                 ]
               },
               {
@@ -455,7 +458,8 @@
                   "de/agents/creating-agent",
                   "de/agents/workflow",
                   "de/agents/knowledge-base",
-                  "de/agents/voice"
+                  "de/agents/voice",
+                  "de/agents/tool-logs"
                 ]
               },
               {
@@ -590,7 +594,8 @@
                   "es/agents/creating-agent",
                   "es/agents/workflow",
                   "es/agents/knowledge-base",
-                  "es/agents/voice"
+                  "es/agents/voice",
+                  "es/agents/tool-logs"
                 ]
               },
               {
