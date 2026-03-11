@@ -1,47 +1,128 @@
 ---
 title: Usage & Billing
-description: "Understanding token usage and billing"
+description: "Monitor resource consumption, understand token usage, and track costs"
 ---
 
 ## Usage Dashboard
 
-Monitor your resource consumption in **Admin Panel** → **Billing**.
+Navigate to **Billing** → **Overview** to see your current resource consumption at a glance.
 
-The dashboard shows:
-- Token usage (standard & premium)
-- Voice minutes and characters
-- Storage consumption
-- Platform limits (companies, agents, conversations)
+<Frame>
+  <img className="block dark:hidden" src="/images/billing-overview-light.png" alt="Billing overview" />
+  <img className="hidden dark:block" src="/images/billing-overview-dark.png" alt="Billing overview" />
+</Frame>
+
+The dashboard has four sections:
+
+### Plan Summary
+
+Shows your current plan name, price, and next payment date. From here you can upgrade, manage your subscription, or open the Stripe Customer Portal.
+
+### Resource Usage
+
+Six progress bars showing real-time consumption:
+
+| Resource | What It Measures |
+|----------|-----------------|
+| **Standard Tokens** | Tokens consumed by standard models (GPT-4o Mini, Haiku, Flash, Llama 8B) |
+| **Premium Tokens** | Tokens consumed by premium models (GPT-4o, Sonnet, Gemini Pro, Llama 70B) |
+| **STT Minutes** | Speech-to-Text transcription time |
+| **TTS Characters** | Text-to-Speech synthesis characters |
+| **Embedding Tokens** | Tokens used for knowledge base training (chunking + vector generation) |
+| **Storage** | Total file storage across all companies |
+
+Each bar is color-coded:
+- **Green** — below 80% usage
+- **Amber** — 80–89% (warning zone)
+- **Red** — 90%+ (critical zone)
+
+### Platform Limits
+
+Four counters showing how many resources you've created vs. your plan maximum:
+
+- **Companies** — e.g., 2 / 3
+- **AI Agents** — e.g., 4 / 5
+- **Knowledge Documents** — e.g., 45 / 100
+- **Conversations** — e.g., 1,200 / 5,000
+
+### Usage Events
+
+A detailed, filterable table of every billable action. Each event records:
+
+| Field | Description |
+|-------|-------------|
+| **Date** | When the event occurred |
+| **Company** | Which company's agent triggered it |
+| **Event** | Type of action — chat, voice, embedding |
+| **Resource** | Token type consumed |
+| **Channel** | Widget, VoIP, Telegram, etc. |
+| **Model** | Which LLM model was used |
+| **Amount** | Number of tokens, minutes, or characters consumed |
+| **Cost** | Estimated cost in USD |
+
+Filter by date range, company, resource type, or channel. The table is paginated and loads asynchronously.
 
 ## How Tokens Work
 
-Every AI interaction consumes tokens:
+Every AI interaction has two parts:
 
-- **Input tokens** — Your message + context (knowledge base chunks, system prompt)
-- **Output tokens** — Agent's response
+- **Input tokens** — your message + system prompt + knowledge base context (RAG chunks) + conversation history + tool descriptions
+- **Output tokens** — the agent's response
 
-Different models have different costs per token. Standard models are more affordable, while premium models offer higher quality.
+Both input and output tokens count toward your quota. The total per interaction depends on:
 
-## Usage Events
+1. **System prompt length** — longer prompts use more input tokens per message
+2. **Knowledge base context** — more RAG chunks = more input tokens
+3. **Conversation history** — longer conversations accumulate context
+4. **Response length** — controlled by the Response Length personality slider
+5. **Tool calls** — each tool call round consumes additional tokens
 
-Each billable action creates a **usage event** with:
-- Timestamp
-- Company and agent
-- Event type (chat, voice, embedding)
-- Resource type and amount
-- Calculated cost
+### Token Types
+
+| Token Type | Models | Cost Profile |
+|-----------|--------|-------------|
+| **Standard** | GPT-4o Mini, Claude 3.5 Haiku, Gemini 2.0 Flash, Llama 3.1 8B | Lower cost, faster responses |
+| **Premium** | GPT-4o, Claude 3.5 Sonnet, Gemini 2.5 Pro, Llama 3.3 70B | Higher cost, better quality |
+| **Embedding** | text-embedding-ada-002 | Used only during knowledge base training |
+
+<Tip>
+  To optimize token usage: keep system prompts concise, limit the number of RAG chunks per query (RAG Settings → Chunk Limit), and use standard models for simple tasks while reserving premium models for complex responses.
+</Tip>
+
+## Voice Usage
+
+Voice interactions consume two separate resources:
+
+- **STT (Speech-to-Text)** — measured in minutes. Each voice message is transcribed and the duration (rounded up to the nearest minute) is deducted from your quota.
+- **TTS (Text-to-Speech)** — measured in characters. The agent's text response is synthesized to audio, and the character count is deducted.
+
+A single voice conversation turn typically consumes both STT minutes (visitor's audio) and TTS characters (agent's spoken response).
+
+## Storage Usage
+
+Storage is consumed when you upload files to the File Manager:
+
+- **Documents** — PDF, Word, Excel, TXT
+- **Photos** — JPG, PNG
+- **Videos** — MP4, WebM, MOV
+- **Audio recordings** — conversation audio files
+
+Storage usage is tracked bidirectionally — uploading increases usage, deleting files decreases it. The dashboard shows your current total.
 
 ## Notifications
 
-Revol sends notifications when you approach your limits:
-- **80%** — Warning notification
-- **90%** — Critical notification
+Revol monitors your usage and sends alerts before you hit limits:
 
-## Overage
+| Threshold | Level | Notification |
+|-----------|-------|-------------|
+| **80%** | Warning | Email + in-app notification: "You've used 80% of your [resource]. Consider upgrading or purchasing a pack." |
+| **90%** | Critical | Email + in-app notification: "You've used 90% of your [resource]. Requests will be blocked at 100%." |
 
-When you exceed your plan limits:
-- Standard and premium tokens: agent stops responding
-- Storage: cannot upload new files
-- Voice: voice features disabled
+Each alert fires **once per billing period** per resource type. Critical alerts take priority — if you jump from 75% to 92%, only the critical notification is sent.
 
-Purchase add-on packs to restore access immediately.
+## Billing Period
+
+- **Free plan** — daily billing period. Token usage resets every day at midnight UTC.
+- **Paid plans** — monthly billing period. Usage resets on the anniversary of your subscription date (e.g., if you subscribed on March 15, your next reset is April 15).
+
+Add-on packs are independent of the billing period — they have their own 3-month expiration from the purchase date.
