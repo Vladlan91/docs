@@ -17,11 +17,6 @@ description: "Step-by-step guide to creating and configuring an AI agent"
 | **LLM Provider** | OpenAI, Anthropic, Google, or Groq |
 | **Model** | Specific model to use |
 
-<Frame>
-  <img className="block dark:hidden" src="/images/creating-agent-wizard-light.png" alt="Create agent wizard" />
-  <img className="hidden dark:block" src="/images/creating-agent-wizard-dark.png" alt="Create agent wizard" />
-</Frame>
-
 ## Configure System Prompt
 
 The system prompt is the core instruction set for your agent. Best practices:
@@ -43,11 +38,16 @@ Rules:
 
 ## Add Knowledge Base
 
-Go to the **Knowledge Base** tab to select content for this agent.
+After creating the agent, click on it from the agents list — a side offcanvas panel opens. Navigate to the **Knowledge Base** tab to add sources.
 
 <Warning>
   You cannot upload files directly to the agent. All data must first be added to the **company's File Manager** (documents, photos, videos, links, text). In the agent's Knowledge Base tab you then select which sources this specific agent should use.
 </Warning>
+
+<Frame>
+  <img className="block dark:hidden" src="/images/creating-agent-wizard-light.png" alt="Create agent wizard" />
+  <img className="hidden dark:block" src="/images/creating-agent-wizard-dark.png" alt="Create agent wizard" />
+</Frame>
 
 Available source types from the company's data:
 
@@ -59,9 +59,21 @@ Available source types from the company's data:
 - **Links** — fetched web page content
 - **Company** — company name, description, phone, contacts
 
+When you add sources, the training process starts automatically — you can see the progress on the left side of the panel (status changes from **Training** to **Ready**).
+
 <Note>
   Selected sources are split into chunks and converted to vector embeddings for semantic search. The agent retrieves the most relevant chunks during each conversation.
 </Note>
+
+### RAG Settings
+
+Click the **Settings** icon in the Knowledge Base tab to open RAG Settings — a modal where you fine-tune how the agent searches the knowledge base:
+
+| Setting | Range | Default | Description |
+|---|---|---|---|
+| **Chunk Limit** | 1–20 | 5 | How many text chunks are returned per search |
+| **Character Limit** | 500–10,000 | 2,000 | Maximum characters per chunk |
+| **Similarity Threshold** | 0.1–1.0 | 0.7 | Minimum cosine similarity to include a result — higher values return fewer but more relevant results |
 
 ## Configure Workflow
 
