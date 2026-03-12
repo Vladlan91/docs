@@ -3,7 +3,7 @@ title: Instalación del Widget
 description: "Instale el widget de chat de Revol en su sitio web"
 ---
 
-## Instalación rápida
+## Instalación Rápida
 
 Agregue este único script antes de la etiqueta de cierre `</head>` en su sitio web:
 
@@ -15,26 +15,26 @@ Agregue este único script antes de la etiqueta de cierre `</head>` en su sitio 
 </script>
 ```
 
-Este script gestiona tanto el **widget de chat** como el **seguimiento de visitantes** — no se requiere código adicional.
+Este script gestiona tanto el **widget de chat** como el **seguimiento de visitantes** — no se necesita código adicional.
 
 ## Configuración
 
-| Atributo | Obligatorio | Descripción |
+| Atributo | Requerido | Descripción |
 |-----------|----------|-------------|
 | `data-api-key` | Sí | Su clave API del widget |
 | `data-company-id` | Sí | Su ID de empresa |
 
 <Tip>
-  Encuentre su clave API e ID de empresa en **Panel de administración** → **Configuración general**.
+  Encuentre su clave API y su ID de empresa en **Panel de Administración** → **Configuración General**.
 </Tip>
 
-## Qué se carga
+## Qué Se Carga
 
 El script de seguimiento automáticamente:
 
-1. **Inicializa el seguimiento** — sesiones, vistas de página, eventos
+1. **Inicializa el seguimiento** — sesiones, páginas vistas, eventos
 2. **Carga el widget** — burbuja de chat con su apariencia personalizada
-3. **Carga módulos bajo demanda** — triggers, overlays, intercambio de teléfono (solo cuando se necesitan)
+3. **Carga módulos de forma diferida** — triggers, overlays, sustitución de teléfono (solo cuando se necesitan)
 
 ## Shadow DOM
 
@@ -44,6 +44,6 @@ El widget se renderiza dentro de un contenedor **Shadow DOM**, lo que significa:
 - El CSS del widget no afectará a su sitio
 - Aislamiento completo de estilos
 
-## Aplicaciones de página única (SPA)
+## Aplicaciones de Página Única (SPA)
 
-El rastreador detecta automáticamente los cambios de URL mediante eventos `pushState` y `popstate`. No se necesita configuración adicional para aplicaciones React, Vue o Angular.
+El tracker detecta automáticamente los cambios de URL mediante eventos `pushState` y `popstate`. No se necesita configuración adicional para aplicaciones React, Vue o Angular.

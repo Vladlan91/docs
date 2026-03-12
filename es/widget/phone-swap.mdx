@@ -1,130 +1,130 @@
 ---
-title: Phone Swap
-sidebarTitle: Phone Swap
-description: "Dynamic phone number replacement for call attribution — track which campaigns, ads, and traffic sources generate phone calls"
+title: Sustitución de Teléfono
+sidebarTitle: Sustitución de Teléfono
+description: "Reemplazo dinámico de números de teléfono para atribución de llamadas — rastree qué campañas, anuncios y fuentes de tráfico generan llamadas telefónicas"
 ---
 
-## Overview
+## Descripción General
 
-Phone Swap is a **call attribution** feature that dynamically replaces phone numbers on your website based on the visitor's traffic source. When a visitor arrives from a specific campaign — Google Ads, Facebook, a partner referral, or any UTM-tagged link — the tracker automatically swaps your default phone number with a dedicated tracking number. When the visitor calls that number, you know exactly which campaign drove the call.
+La Sustitución de Teléfono es una función de **atribución de llamadas** que reemplaza dinámicamente los números de teléfono en su sitio web según la fuente de tráfico del visitante. Cuando un visitante llega desde una campaña específica — Google Ads, Facebook, un referido de socio o cualquier enlace etiquetado con UTM — el tracker automáticamente sustituye su número de teléfono predeterminado con un número de seguimiento dedicado. Cuando el visitante llama a ese número, usted sabe exactamente qué campaña generó la llamada.
 
 <Frame>
-  <img className="block dark:hidden" src="/images/tracker-phone-swap-light.png" alt="Phone Swap tab" />
-  <img className="hidden dark:block" src="/images/tracker-phone-swap-dark.png" alt="Phone Swap tab" />
+  <img className="block dark:hidden" src="/images/tracker-phone-swap-light.png" alt="Pestaña de sustitución de teléfono" />
+  <img className="hidden dark:block" src="/images/tracker-phone-swap-dark.png" alt="Pestaña de sustitución de teléfono" />
 </Frame>
 
 ---
 
-## How It Works
+## Cómo Funciona
 
 <Steps>
-  <Step title="Configure phone swap in a campaign">
-    Open a campaign and set the **Original Phone** (the number on your website) and the **Replacement Phone** (a tracking number assigned to this campaign). See [Campaigns — Phone Swap](/widget/campaigns#phone-swap) for setup details.
+  <Step title="Configure la sustitución de teléfono en una campaña">
+    Abra una campaña y establezca el **Teléfono Original** (el número en su sitio web) y el **Teléfono de Reemplazo** (un número de seguimiento asignado a esta campaña). Vea [Campañas — Sustitución de Teléfono](/widget/campaigns#phone-swap) para detalles de configuración.
   </Step>
-  <Step title="Visitor lands on your site">
-    A visitor clicks your campaign link (with UTM parameters) and the tracker script loads. The tracker fetches the active phone swap rules from the server.
+  <Step title="El visitante llega a su sitio">
+    Un visitante hace clic en su enlace de campaña (con parámetros UTM) y el script de seguimiento se carga. El tracker obtiene las reglas activas de sustitución de teléfono del servidor.
   </Step>
-  <Step title="UTM matching">
-    The tracker checks the visitor's UTM parameters against each rule. All non-null match fields (utm_source, utm_medium, utm_campaign, rvl_ref) must match exactly. The first matching rule wins.
+  <Step title="Coincidencia UTM">
+    El tracker compara los parámetros UTM del visitante con cada regla. Todos los campos de coincidencia no nulos (utm_source, utm_medium, utm_campaign, rvl_ref) deben coincidir exactamente. La primera regla coincidente gana.
   </Step>
-  <Step title="Number is replaced">
-    The tracker finds all instances of the original phone number on the page — in `tel:` links, in text with the `data-revol-phone` attribute — and replaces them with the tracking number. The replacement preserves the original number's formatting.
+  <Step title="El número se reemplaza">
+    El tracker encuentra todas las instancias del número de teléfono original en la página — en enlaces `tel:`, en texto con el atributo `data-revol-phone` — y los reemplaza con el número de seguimiento. El reemplazo preserva el formato del número original.
   </Step>
-  <Step title="Event is recorded">
-    A `phone_swap` event is recorded with the original and replacement numbers. This event appears in the Activity Log and Campaign Performance table.
+  <Step title="El evento se registra">
+    Se registra un evento `phone_swap` con los números original y de reemplazo. Este evento aparece en el Registro de Actividad y la tabla de Rendimiento de Campañas.
   </Step>
-  <Step title="Visitor calls">
-    The visitor calls the tracking number. You see the call attributed to the specific campaign — no guesswork needed.
+  <Step title="El visitante llama">
+    El visitante llama al número de seguimiento. Usted ve la llamada atribuida a la campaña específica — sin necesidad de adivinar.
   </Step>
 </Steps>
 
 ---
 
-## Phone Swap Tab
+## Pestaña de Sustitución de Teléfono
 
-The Phone Swap tab shows all active phone swap rules from your campaigns in a single table:
+La pestaña de Sustitución de Teléfono muestra todas las reglas activas de sustitución de teléfono de sus campañas en una sola tabla:
 
-| Column | Description |
+| Columna | Descripción |
 |---|---|
-| **Campaign** | Campaign name with UTM conditions (source, medium, etc.) displayed below |
-| **Phone Swap** | Original number → Replacement number |
-| **Status** | Active or inactive |
+| **Campaña** | Nombre de la campaña con condiciones UTM (fuente, medio, etc.) mostradas debajo |
+| **Sustitución de Teléfono** | Número original → Número de reemplazo |
+| **Estado** | Activo o inactivo |
 
-This tab is a **read-only summary** — to add or edit phone swap rules, open the campaign in the [Campaigns](/widget/campaigns) tab and configure the Phone Swap section.
+Esta pestaña es un **resumen de solo lectura** — para agregar o editar reglas de sustitución de teléfono, abra la campaña en la pestaña [Campañas](/widget/campaigns) y configure la sección de Sustitución de Teléfono.
 
 ---
 
-## Adding Phone Numbers to Your Website
+## Agregar Números de Teléfono a Su Sitio Web
 
-The tracker replaces phone numbers in two ways:
+El tracker reemplaza números de teléfono de dos maneras:
 
-### 1. Tel Links (Automatic)
+### 1. Enlaces Tel (Automático)
 
-Any `<a href="tel:...">` link on your page is automatically detected. If the href matches the original number from a rule, it's swapped — both the `href` attribute and the visible text.
+Cualquier enlace `<a href="tel:...">` en su página se detecta automáticamente. Si el href coincide con el número original de una regla, se sustituye — tanto el atributo `href` como el texto visible.
 
 ```html
-<!-- Before swap -->
+<!-- Antes de la sustitución -->
 <a href="tel:+380441234567">+380 (44) 123-45-67</a>
 
-<!-- After swap (visitor from Google Ads campaign) -->
+<!-- Después de la sustitución (visitante de campaña Google Ads) -->
 <a href="tel:+380449876543">+380 (44) 987-65-43</a>
 ```
 
-No extra attributes needed — the tracker finds `tel:` links automatically.
+No se necesitan atributos adicionales — el tracker encuentra los enlaces `tel:` automáticamente.
 
-### 2. Data Attribute (Explicit)
+### 2. Atributo de Datos (Explícito)
 
-For phone numbers that are not in `tel:` links (plain text, spans, divs), add the `data-revol-phone` attribute:
+Para números de teléfono que no están en enlaces `tel:` (texto plano, spans, divs), agregue el atributo `data-revol-phone`:
 
 ```html
-<!-- Phone in a span -->
+<!-- Teléfono en un span -->
 <span data-revol-phone>+380441234567</span>
 
-<!-- Phone in a div -->
+<!-- Teléfono en un div -->
 <div class="contact-phone" data-revol-phone>+380 44 123 45 67</div>
 ```
 
-Elements with `data-revol-phone` are hidden (`visibility: hidden`) until the swap completes, preventing a flash of the original number.
+Los elementos con `data-revol-phone` se ocultan (`visibility: hidden`) hasta que se completa la sustitución, previniendo un destello del número original.
 
 <Tip>
-  Use `data-revol-phone` for all phone numbers you want to swap — even if they're inside `tel:` links. This gives the tracker explicit control and prevents any flickering.
+  Use `data-revol-phone` para todos los números de teléfono que desee sustituir — incluso si están dentro de enlaces `tel:`. Esto le da al tracker control explícito y previene cualquier parpadeo.
 </Tip>
 
 ---
 
-## Format Preservation
+## Preservación de Formato
 
-The tracker preserves the original number's formatting when replacing. If the original and replacement have the same number of digits, the replacement is formatted using the original's pattern:
+El tracker preserva el formato del número original al reemplazar. Si el original y el reemplazo tienen la misma cantidad de dígitos, el reemplazo se formatea usando el patrón del original:
 
-| Original | Replacement (raw) | Result |
+| Original | Reemplazo (sin formato) | Resultado |
 |---|---|---|
 | `+380 (44) 123-45-67` | `+380949876543` | `+380 (94) 987-65-43` |
 | `044 123 45 67` | `0949876543` | `094 987 65 43` |
 | `+380441234567` | `+380949876543` | `+380949876543` |
 
-If the digit counts differ, the replacement is inserted as-is without formatting.
+Si la cantidad de dígitos difiere, el reemplazo se inserta tal cual sin formato.
 
 ---
 
-## SPA Support
+## Soporte para SPA
 
-The phone swap module uses a **MutationObserver** to watch for dynamically added elements. If your website is built with React, Vue, Angular, or any framework that renders content after page load — the tracker detects new phone elements as they appear in the DOM and swaps them automatically.
+El módulo de sustitución de teléfono usa un **MutationObserver** para vigilar elementos añadidos dinámicamente. Si su sitio web está construido con React, Vue, Angular o cualquier framework que renderiza contenido después de la carga de la página — el tracker detecta nuevos elementos de teléfono a medida que aparecen en el DOM y los sustituye automáticamente.
 
-The observer watches the entire document body for:
-- New `<a href="tel:...">` links
-- New elements with `data-revol-phone` attribute
+El observador vigila todo el cuerpo del documento en busca de:
+- Nuevos enlaces `<a href="tel:...">`
+- Nuevos elementos con atributo `data-revol-phone`
 
-The observer disconnects on page unload to prevent memory leaks.
+El observador se desconecta al descargar la página para prevenir fugas de memoria.
 
 ---
 
-## Matching Rules
+## Reglas de Coincidencia
 
-Phone swap rules are derived from campaigns. Each campaign with both **Original Phone** and **Replacement Phone** set creates a rule.
+Las reglas de sustitución de teléfono se derivan de las campañas. Cada campaña con tanto **Teléfono Original** como **Teléfono de Reemplazo** establecidos crea una regla.
 
-### How Matching Works
+### Cómo Funciona la Coincidencia
 
-The tracker checks the visitor's UTM parameters against the rule's match fields. **All non-null fields must match exactly** (AND logic):
+El tracker compara los parámetros UTM del visitante contra los campos de coincidencia de la regla. **Todos los campos no nulos deben coincidir exactamente** (lógica AND):
 
 ```
 Rule: { utm_source: "google", utm_medium: "cpc" }
@@ -134,17 +134,17 @@ Rule: { utm_source: "google", utm_medium: "cpc" }
 ✗ Visitor with utm_source=facebook, utm_medium=cpc       → NO MATCH
 ```
 
-If a campaign has `utm_source` set but `utm_medium` is empty — only the source needs to match. Empty fields are ignored in matching.
+Si una campaña tiene `utm_source` establecido pero `utm_medium` está vacío — solo la fuente necesita coincidir. Los campos vacíos se ignoran en la coincidencia.
 
-### Priority
+### Prioridad
 
-If multiple campaigns match a visitor's UTM parameters, the **first matching rule** is used. Rules are returned in creation order.
+Si múltiples campañas coinciden con los parámetros UTM de un visitante, se usa la **primera regla coincidente**. Las reglas se devuelven en orden de creación.
 
 ---
 
-## Phone Swap Events
+## Eventos de Sustitución de Teléfono
 
-Each phone swap generates a `phone_swap` event, tracked once per visitor session. The event contains:
+Cada sustitución de teléfono genera un evento `phone_swap`, rastreado una vez por sesión de visitante. El evento contiene:
 
 ```json
 {
@@ -153,111 +153,111 @@ Each phone swap generates a `phone_swap` event, tracked once per visitor session
 }
 ```
 
-Phone swap events appear in:
-- **Activity Log** — as a `phone_swap` event type with the from/to data
-- **Campaign Performance** table — in the **Phone Swaps** column
-- **Session details** — in the event timeline of the visitor's session
+Los eventos de sustitución de teléfono aparecen en:
+- **Registro de Actividad** — como tipo de evento `phone_swap` con datos de origen/destino
+- Tabla de **Rendimiento de Campañas** — en la columna **Sustituciones de Teléfono**
+- **Detalles de sesión** — en la línea de tiempo de eventos de la sesión del visitante
 
 ---
 
-## Use Cases
+## Casos de Uso
 
 <AccordionGroup>
-  <Accordion title="Google Ads call tracking">
-    Create a campaign with `utm_source=google`, `utm_medium=cpc`. Set the original phone to your main business number and the replacement to a dedicated tracking number. Every call from Google Ads visitors is attributed to this campaign.
+  <Accordion title="Seguimiento de llamadas de Google Ads">
+    Cree una campaña con `utm_source=google`, `utm_medium=cpc`. Establezca el teléfono original como su número principal de negocio y el reemplazo como un número de seguimiento dedicado. Cada llamada de visitantes de Google Ads se atribuye a esta campaña.
 
-    **Result:** You see exactly how many calls your Google Ads spend generates — in the same dashboard as chat conversations, form submissions, and page views.
+    **Resultado:** Usted ve exactamente cuántas llamadas genera su inversión en Google Ads — en el mismo panel de control que conversaciones de chat, envíos de formularios y páginas vistas.
   </Accordion>
-  <Accordion title="Multi-channel attribution">
-    Create separate campaigns for each traffic source — Google, Facebook, Instagram, email newsletter — each with its own tracking number. The same original number on your site is replaced differently depending on where the visitor came from.
+  <Accordion title="Atribución multicanal">
+    Cree campañas separadas para cada fuente de tráfico — Google, Facebook, Instagram, boletín por email — cada una con su propio número de seguimiento. El mismo número original en su sitio se reemplaza de forma diferente dependiendo de dónde vino el visitante.
 
-    | Campaign | Source | Tracking Number |
+    | Campaña | Fuente | Número de Seguimiento |
     |---|---|---|
     | Google Brand | google / cpc | +380 44 111 1111 |
     | Facebook Ads | facebook / paid | +380 44 222 2222 |
     | Newsletter | newsletter / email | +380 44 333 3333 |
-    | Organic | — (no swap) | Original number |
+    | Orgánico | — (sin sustitución) | Número original |
   </Accordion>
-  <Accordion title="Offline marketing (print, billboards)">
-    Create a campaign for your print ads with a unique `rvl_ref` parameter. Add a dedicated phone number. When someone calls the number from the flyer — you know it came from print, not digital. Combine with a [QR code](/widget/campaigns#qr-code) for digital tracking of the same material.
+  <Accordion title="Marketing offline (impreso, vallas publicitarias)">
+    Cree una campaña para sus anuncios impresos con un parámetro `rvl_ref` único. Agregue un número de teléfono dedicado. Cuando alguien llama al número del volante — usted sabe que vino del impreso, no digital. Combine con un [código QR](/widget/campaigns#qr-code) para seguimiento digital del mismo material.
   </Accordion>
-  <Accordion title="Partner and referral tracking">
-    Give each referral partner their own campaign with `rvl_ref=partner_name` and a dedicated tracking number. Track exactly how many calls each partner generates — alongside sessions, page views, and AI conversations.
+  <Accordion title="Seguimiento de socios y referidos">
+    Dé a cada socio de referidos su propia campaña con `rvl_ref=partner_name` y un número de seguimiento dedicado. Rastree exactamente cuántas llamadas genera cada socio — junto con sesiones, páginas vistas y conversaciones de IA.
   </Accordion>
-  <Accordion title="A/B testing landing pages">
-    Create two campaigns with the same source but different `utm_content` values (e.g., `landing-v1` vs `landing-v2`), each with a different tracking number. Compare call volumes between landing page variants.
+  <Accordion title="Pruebas A/B de páginas de destino">
+    Cree dos campañas con la misma fuente pero diferentes valores de `utm_content` (por ejemplo, `landing-v1` vs `landing-v2`), cada una con un número de seguimiento diferente. Compare los volúmenes de llamadas entre variantes de páginas de destino.
   </Accordion>
 </AccordionGroup>
 
 ---
 
-## SIP Integration
+## Integración SIP
 
-Phone Swap becomes significantly more powerful when combined with **SIP (VoIP) number integration**. When you use SIP tracking numbers as replacements, the entire call lifecycle is captured inside Revol:
+La Sustitución de Teléfono se vuelve significativamente más poderosa cuando se combina con **integración de números SIP (VoIP)**. Cuando usa números de seguimiento SIP como reemplazos, todo el ciclo de vida de la llamada se captura dentro de Revol:
 
 <Steps>
-  <Step title="Visitor sees the SIP tracking number">
-    The tracker swaps your original number with a SIP-connected tracking number for visitors from a specific campaign.
+  <Step title="El visitante ve el número de seguimiento SIP">
+    El tracker sustituye su número original con un número de seguimiento conectado a SIP para visitantes de una campaña específica.
   </Step>
-  <Step title="Visitor calls the SIP number">
-    The call is routed through your VoIP provider (Binotel, Twilio, etc.) and connected to your team.
+  <Step title="El visitante llama al número SIP">
+    La llamada se enruta a través de su proveedor VoIP (Binotel, Twilio, etc.) y se conecta con su equipo.
   </Step>
-  <Step title="Call is recorded and analyzed">
-    With a VoIP integration active, the call is recorded, transcribed, and linked to the visitor's session. You see the full journey: which ad they clicked, which pages they viewed, and what they said on the call.
+  <Step title="La llamada se graba y analiza">
+    Con una integración VoIP activa, la llamada se graba, transcribe y vincula a la sesión del visitante. Usted ve el recorrido completo: qué anuncio hicieron clic, qué páginas vieron y qué dijeron en la llamada.
   </Step>
-  <Step title="AI analyzes the conversation">
-    If your AI agent is configured for the integration channel, it can analyze the call transcript — identify the visitor's intent, extract lead data, score the call quality, and even suggest follow-up actions.
+  <Step title="La IA analiza la conversación">
+    Si su agente de IA está configurado para el canal de integración, puede analizar la transcripción de la llamada — identificar la intención del visitante, extraer datos del lead, calificar la calidad de la llamada e incluso sugerir acciones de seguimiento.
   </Step>
 </Steps>
 
-### What You Get
+### Lo Que Obtiene
 
-With Phone Swap + SIP integration combined, you have a **complete call attribution pipeline**:
+Con la Sustitución de Teléfono + integración SIP combinadas, tiene un **pipeline completo de atribución de llamadas**:
 
-| Data Point | Source |
+| Dato | Fuente |
 |---|---|
-| **Which campaign** brought the visitor | UTM parameters → Campaign matching |
-| **Which pages** the visitor viewed before calling | Session page flow |
-| **How long** they spent on the site | Session duration |
-| **What they said** on the call | VoIP call recording + transcription |
-| **Lead quality** and intent | AI analysis of the call |
-| **Which tracking number** they called | Phone swap event data |
-| **Cost per call** (if ad spend is known) | Campaign attribution + ad platform data |
+| **Qué campaña** trajo al visitante | Parámetros UTM → Coincidencia de campaña |
+| **Qué páginas** vio el visitante antes de llamar | Flujo de páginas de la sesión |
+| **Cuánto tiempo** pasó en el sitio | Duración de la sesión |
+| **Qué dijeron** en la llamada | Grabación de llamada VoIP + transcripción |
+| **Calidad del lead** e intención | Análisis de IA de la llamada |
+| **Qué número de seguimiento** llamaron | Datos del evento de sustitución de teléfono |
+| **Costo por llamada** (si se conoce la inversión publicitaria) | Atribución de campaña + datos de plataforma publicitaria |
 
 <Tip>
-  This creates a closed feedback loop: you see that a Google Ads click led to 3 page views, a 45-second browse, a phone call where the visitor asked about pricing, and the AI scored it as a high-intent lead — all in one session timeline.
+  Esto crea un ciclo de retroalimentación cerrado: usted ve que un clic en Google Ads llevó a 3 páginas vistas, 45 segundos de navegación, una llamada telefónica donde el visitante preguntó sobre precios, y la IA lo calificó como un lead de alta intención — todo en una línea de tiempo de sesión.
 </Tip>
 
 ---
 
-## Best Practices
+## Mejores Prácticas
 
 <AccordionGroup>
-  <Accordion title="Use dedicated numbers per campaign">
-    Don't reuse the same tracking number across multiple campaigns — it defeats the purpose of attribution. Each campaign should have a unique replacement number.
+  <Accordion title="Use números dedicados por campaña">
+    No reutilice el mismo número de seguimiento en múltiples campañas — esto anula el propósito de la atribución. Cada campaña debe tener un número de reemplazo único.
   </Accordion>
-  <Accordion title="Add data-revol-phone to all phone elements">
-    Even if you use `tel:` links (which are detected automatically), adding `data-revol-phone` prevents any flickering of the original number before the swap completes.
+  <Accordion title="Agregue data-revol-phone a todos los elementos de teléfono">
+    Incluso si usa enlaces `tel:` (que se detectan automáticamente), agregar `data-revol-phone` previene cualquier parpadeo del número original antes de que se complete la sustitución.
   </Accordion>
-  <Accordion title="Keep the original number consistent">
-    Use the same original phone number across all campaigns. The tracker searches for this exact number on the page — if your website shows different phone numbers in different sections, create separate swap rules for each.
+  <Accordion title="Mantenga el número original consistente">
+    Use el mismo número de teléfono original en todas las campañas. El tracker busca este número exacto en la página — si su sitio web muestra diferentes números de teléfono en diferentes secciones, cree reglas de sustitución separadas para cada uno.
   </Accordion>
-  <Accordion title="Test with UTM parameters">
-    After setting up a phone swap rule, visit your site with the matching UTM parameters (e.g., `?utm_source=google&utm_medium=cpc`) and verify that the number changes. Check the Activity Log for the `phone_swap` event.
+  <Accordion title="Pruebe con parámetros UTM">
+    Después de configurar una regla de sustitución de teléfono, visite su sitio con los parámetros UTM coincidentes (por ejemplo, `?utm_source=google&utm_medium=cpc`) y verifique que el número cambia. Revise el Registro de Actividad para el evento `phone_swap`.
   </Accordion>
 </AccordionGroup>
 
 ---
 
-## Technical Details
+## Detalles Técnicos
 
-| Detail | Value |
+| Detalle | Valor |
 |---|---|
-| **Module** | `tracker/modules/phone-swap.js` — lazy-loaded only when rules exist |
-| **Matching** | Exact match on all non-null UTM fields (AND logic) |
-| **Detection** | `<a href="tel:...">` links + `[data-revol-phone]` elements |
-| **SPA support** | MutationObserver on `document.body` (childList + subtree) |
-| **Flickering prevention** | CSS `visibility: hidden` on `[data-revol-phone]` until swap |
-| **Event tracking** | One `phone_swap` event per session (first swap only) |
-| **Config refresh** | Every 5 minutes via background config polling |
-| **Number normalization** | Strips spaces, dashes, parentheses, periods before comparison |
+| **Módulo** | `tracker/modules/phone-swap.js` — cargado de forma diferida solo cuando existen reglas |
+| **Coincidencia** | Coincidencia exacta en todos los campos UTM no nulos (lógica AND) |
+| **Detección** | Enlaces `<a href="tel:...">` + elementos `[data-revol-phone]` |
+| **Soporte SPA** | MutationObserver en `document.body` (childList + subtree) |
+| **Prevención de parpadeo** | CSS `visibility: hidden` en `[data-revol-phone]` hasta la sustitución |
+| **Seguimiento de eventos** | Un evento `phone_swap` por sesión (solo primera sustitución) |
+| **Actualización de configuración** | Cada 5 minutos vía sondeo de configuración en segundo plano |
+| **Normalización de números** | Elimina espacios, guiones, paréntesis, puntos antes de la comparación |

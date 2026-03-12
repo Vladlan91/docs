@@ -1,127 +1,127 @@
 ---
-title: Integrations Overview
-sidebarTitle: Overview
-description: "Connect AI agents to communication channels, productivity tools, and ad platforms"
+title: Integrationen Ueberblick
+sidebarTitle: Ueberblick
+description: "Verbinden Sie KI-Agenten mit Kommunikationskanaelen, Produktivitaetstools und Werbeplattformen"
 ---
 
 <Frame>
-  <img className="block dark:hidden" src="/images/integrations-overview-light.png" alt="Integrations overview" />
-  <img className="hidden dark:block" src="/images/integrations-overview-dark.png" alt="Integrations overview" />
+  <img className="block dark:hidden" src="/images/integrations-overview-light.png" alt="Integrationen Ueberblick" />
+  <img className="hidden dark:block" src="/images/integrations-overview-dark.png" alt="Integrationen Ueberblick" />
 </Frame>
 
-## What Are Integrations?
+## Was sind Integrationen?
 
-Integrations connect your AI agents to external services — so they can answer phone calls, reply in messengers, send emails, create documents, and pull analytics data. Each integration gives your agent a set of **tools** it can call during conversations.
+Integrationen verbinden Ihre KI-Agenten mit externen Diensten — damit sie Telefonanrufe beantworten, in Messengern antworten, E-Mails senden, Dokumente erstellen und Analysedaten abrufen koennen. Jede Integration gibt Ihrem Agenten eine Reihe von **Tools**, die er waehrend Konversationen aufrufen kann.
 
-## Available Integrations
+## Verfuegbare Integrationen
 
 <CardGroup cols={2}>
-  <Card title="Telephony" icon="phone" href="/integrations/voip">
-    Twilio, Ringostat, Binotel — AI-powered phone calls and SMS
+  <Card title="Telefonie" icon="phone" href="/integrations/voip">
+    Twilio, Ringostat, Binotel — KI-gestuetzte Telefonanrufe und SMS
   </Card>
-  <Card title="Messengers" icon="comments" href="/integrations/messengers">
+  <Card title="Messenger" icon="comments" href="/integrations/messengers">
     Telegram, WhatsApp, Instagram DM, Facebook Messenger
   </Card>
   <Card title="Google Workspace" icon="google" href="/integrations/google-workspace">
     Gmail, Docs, Sheets, Drive, Calendar, Meet
   </Card>
-  <Card title="Ad Campaigns" icon="chart-line" href="/integrations/advertising">
-    Google Ads, Facebook Ads — campaign analytics and management
+  <Card title="Werbekampagnen" icon="chart-line" href="/integrations/advertising">
+    Google Ads, Facebook Ads — Kampagnenanalyse und -verwaltung
   </Card>
-  <Card title="Custom Webhook" icon="webhook" href="/integrations/webhook">
-    Send lead data to any CRM or external system
+  <Card title="Benutzerdefinierter Webhook" icon="webhook" href="/integrations/webhook">
+    Lead-Daten an jedes CRM oder externes System senden
   </Card>
 </CardGroup>
 
-## How It Works
+## Funktionsweise
 
-Every integration follows the same pattern:
+Jede Integration folgt demselben Muster:
 
 <Steps>
-  <Step title="Connect">
-    Add an integration from the Integrations page. Depending on the provider, you either enter API credentials (VoIP, Telegram) or go through OAuth (Google, Meta).
+  <Step title="Verbinden">
+    Fuegen Sie eine Integration von der Integrationen-Seite hinzu. Je nach Anbieter geben Sie entweder API-Zugangsdaten ein (VoIP, Telegram) oder durchlaufen OAuth (Google, Meta).
   </Step>
-  <Step title="Verify">
-    Revol tests your credentials against the provider's API and fetches available resources (phone numbers, bot info, connected accounts).
+  <Step title="Verifizieren">
+    Revol testet Ihre Zugangsdaten gegen die API des Anbieters und ruft verfuegbare Ressourcen ab (Telefonnummern, Bot-Info, verbundene Konten).
   </Step>
-  <Step title="Provision Tools">
-    After verification, Revol automatically creates **agent tools** based on the integration type. For example, connecting Gmail gives your agents `send_email`, `read_inbox`, `search_emails`, and other tools.
+  <Step title="Tools bereitstellen">
+    Nach der Verifizierung erstellt Revol automatisch **Agenten-Tools** basierend auf dem Integrationstyp. Zum Beispiel gibt die Verbindung von Gmail Ihren Agenten `send_email`, `read_inbox`, `search_emails` und andere Tools.
   </Step>
-  <Step title="Assign to Agent">
-    In the agent's **Tools** tab, enable the tools you need. Then add them to workflow nodes — the agent can call these tools during conversations via LLM function calling.
+  <Step title="Dem Agenten zuweisen">
+    Im **Tools**-Tab des Agenten aktivieren Sie die benoetigten Tools. Fuegen Sie sie dann zu Workflow-Knoten hinzu — der Agent kann diese Tools waehrend Konversationen ueber LLM-Funktionsaufrufe verwenden.
   </Step>
 </Steps>
 
-## Authentication Methods
+## Authentifizierungsmethoden
 
-| Method | Used by | How it works |
+| Methode | Verwendet von | Funktionsweise |
 |---|---|---|
-| **API Key / Token** | Twilio, Ringostat, Binotel, Telegram | Enter credentials in the wizard. Stored encrypted in the database. |
-| **Google OAuth 2.0** | Gmail, Docs, Sheets, Drive, Calendar, Meet, Google Ads | Click "Connect with Google", authorize in the consent screen. Revol stores a refresh token and auto-refreshes access tokens. |
-| **Meta OAuth** | WhatsApp, Instagram, Facebook Messenger, Facebook Ads | Click "Connect with Meta", authorize via Meta. Revol exchanges the code for a long-lived token (~60 days). |
-| **Webhook URL** | Custom Webhook | No auth needed — you provide the target URL and optional headers. |
+| **API-Schluessel / Token** | Twilio, Ringostat, Binotel, Telegram | Zugangsdaten im Assistenten eingeben. Verschluesselt in der Datenbank gespeichert. |
+| **Google OAuth 2.0** | Gmail, Docs, Sheets, Drive, Calendar, Meet, Google Ads | Klicken Sie auf "Mit Google verbinden", autorisieren Sie im Zustimmungsbildschirm. Revol speichert ein Refresh-Token und aktualisiert Access-Tokens automatisch. |
+| **Meta OAuth** | WhatsApp, Instagram, Facebook Messenger, Facebook Ads | Klicken Sie auf "Mit Meta verbinden", autorisieren Sie ueber Meta. Revol tauscht den Code gegen ein langlebiges Token (~60 Tage). |
+| **Webhook-URL** | Benutzerdefinierter Webhook | Keine Authentifizierung erforderlich — Sie geben die Ziel-URL und optionale Header an. |
 
-## Channels
+## Kanaele
 
-A **channel** is the connection between an integration and a specific AI agent. One integration (e.g., your Twilio account) can serve multiple agents through separate channels.
+Ein **Kanal** ist die Verbindung zwischen einer Integration und einem bestimmten KI-Agenten. Eine Integration (z.B. Ihr Twilio-Konto) kann mehrere Agenten ueber separate Kanaele bedienen.
 
-Available channel types:
+Verfuegbare Kanaltypen:
 
-| Channel | Requires Integration | Description |
+| Kanal | Erfordert Integration | Beschreibung |
 |---|---|---|
-| **Web Widget** | No | Built-in chat widget for your website |
-| **Phone** | VoIP integration | Inbound/outbound voice calls and SMS |
-| **Telegram** | Telegram integration | Bot messages in Telegram |
-| **WhatsApp** | WhatsApp integration | WhatsApp Business messages |
-| **Instagram** | Instagram integration | Instagram Direct Messages |
+| **Web-Widget** | Nein | Eingebautes Chat-Widget fuer Ihre Website |
+| **Telefon** | VoIP-Integration | Ein-/ausgehende Sprachanrufe und SMS |
+| **Telegram** | Telegram-Integration | Bot-Nachrichten in Telegram |
+| **WhatsApp** | WhatsApp-Integration | WhatsApp Business-Nachrichten |
+| **Instagram** | Instagram-Integration | Instagram Direct Messages |
 
-To set up a channel, go to the agent's **Channels** tab, select the channel type, and choose which integration to use.
+Um einen Kanal einzurichten, gehen Sie zum **Kanaele**-Tab des Agenten, waehlen Sie den Kanaltyp und bestimmen Sie, welche Integration verwendet werden soll.
 
-## Webhook Security
+## Webhook-Sicherheit
 
-All inbound webhook endpoints (VoIP calls, messenger messages) are protected with:
+Alle eingehenden Webhook-Endpunkte (VoIP-Anrufe, Messenger-Nachrichten) sind geschuetzt durch:
 
-- **Signature validation** — cryptographic verification of request authenticity per provider
-- **Idempotency** — duplicate webhook detection to prevent double-processing
-- **Rate limiting** — 120 requests per minute per channel
-- **IP allowlisting** — where supported by provider (e.g., Binotel)
+- **Signaturvalidierung** — kryptografische Verifizierung der Anfragenauthentizitaet pro Anbieter
+- **Idempotenz** — Erkennung doppelter Webhooks zur Vermeidung von Doppelverarbeitung
+- **Ratenbegrenzung** — 120 Anfragen pro Minute pro Kanal
+- **IP-Zulassungsliste** — wo vom Anbieter unterstuetzt (z.B. Binotel)
 
-## All Integrations
+## Alle Integrationen
 
-| Integration | Category | Auth | Tools |
+| Integration | Kategorie | Authentifizierung | Tools |
 |---|---|---|---|
-| Twilio | Telephony | API Key | 3 tools — calls, SMS, call history |
-| Ringostat | Telephony | API Key | 2 tools — calls, call history |
-| Binotel | Telephony | API Key | 2 tools — calls, call history |
-| Telegram | Messenger | Bot Token | 6 tools — messages, files, history, edit, delete |
-| WhatsApp Business | Messenger | Meta OAuth | 6 tools — messages, templates, media, history |
-| Instagram DM | Messenger | Meta OAuth | 6 tools — messages, media, history, comments |
-| Facebook Messenger | Messenger | Meta OAuth | 6 tools — messages, templates, media, buttons |
-| Gmail | Productivity | Google OAuth | 6 tools — send, read, search, reply, drafts |
-| Google Docs | Productivity | Google OAuth | 5 tools — create, read, append, search, export |
-| Google Sheets | Productivity | Google OAuth | 7 tools — read, write, append, search, create |
-| Google Drive | Productivity | Google OAuth | 8 tools — list, search, upload, share, folders |
-| Google Calendar | Productivity | Google OAuth | 6 tools — events, availability, free slots |
-| Google Meet | Productivity | Google OAuth | 1 tool — create meeting link |
-| Google Ads | Advertising | Google OAuth | 3 tools — campaigns, keywords, pause |
-| Facebook Ads | Advertising | Meta OAuth | 4 tools — campaigns, ad sets, insights, pause |
-| Custom Webhook | CRM | URL | 2 tools — send payload, test connection |
+| Twilio | Telefonie | API-Schluessel | 3 Tools — Anrufe, SMS, Anrufverlauf |
+| Ringostat | Telefonie | API-Schluessel | 2 Tools — Anrufe, Anrufverlauf |
+| Binotel | Telefonie | API-Schluessel | 2 Tools — Anrufe, Anrufverlauf |
+| Telegram | Messenger | Bot-Token | 6 Tools — Nachrichten, Dateien, Verlauf, Bearbeiten, Loeschen |
+| WhatsApp Business | Messenger | Meta OAuth | 6 Tools — Nachrichten, Vorlagen, Medien, Verlauf |
+| Instagram DM | Messenger | Meta OAuth | 6 Tools — Nachrichten, Medien, Verlauf, Kommentare |
+| Facebook Messenger | Messenger | Meta OAuth | 6 Tools — Nachrichten, Vorlagen, Medien, Schaltflaechen |
+| Gmail | Produktivitaet | Google OAuth | 6 Tools — Senden, Lesen, Suchen, Antworten, Entwuerfe |
+| Google Docs | Produktivitaet | Google OAuth | 5 Tools — Erstellen, Lesen, Anhaengen, Suchen, Exportieren |
+| Google Sheets | Produktivitaet | Google OAuth | 7 Tools — Lesen, Schreiben, Anhaengen, Suchen, Erstellen |
+| Google Drive | Produktivitaet | Google OAuth | 8 Tools — Auflisten, Suchen, Hochladen, Teilen, Ordner |
+| Google Calendar | Produktivitaet | Google OAuth | 6 Tools — Termine, Verfuegbarkeit, Freie Zeitfenster |
+| Google Meet | Produktivitaet | Google OAuth | 1 Tool — Meeting-Link erstellen |
+| Google Ads | Werbung | Google OAuth | 3 Tools — Kampagnen, Keywords, Pausieren |
+| Facebook Ads | Werbung | Meta OAuth | 4 Tools — Kampagnen, Anzeigengruppen, Insights, Pausieren |
+| Benutzerdefinierter Webhook | CRM | URL | 2 Tools — Nutzlast senden, Verbindung testen |
 
-**Total: 67 agent tools** across 16 integrations.
+**Gesamt: 67 Agenten-Tools** ueber 16 Integrationen.
 
-## Next Steps
+## Naechste Schritte
 
 <CardGroup cols={2}>
-  <Card title="VoIP Setup" icon="phone" href="/integrations/voip">
-    Connect Twilio, Ringostat, or Binotel for AI phone calls
+  <Card title="VoIP-Einrichtung" icon="phone" href="/integrations/voip">
+    Verbinden Sie Twilio, Ringostat oder Binotel fuer KI-Telefonanrufe
   </Card>
-  <Card title="Messenger Setup" icon="comments" href="/integrations/messengers">
-    Connect Telegram, WhatsApp, Instagram, or Facebook
+  <Card title="Messenger-Einrichtung" icon="comments" href="/integrations/messengers">
+    Verbinden Sie Telegram, WhatsApp, Instagram oder Facebook
   </Card>
   <Card title="Google Workspace" icon="google" href="/integrations/google-workspace">
-    Connect Gmail, Docs, Sheets, Drive, Calendar, Meet
+    Verbinden Sie Gmail, Docs, Sheets, Drive, Calendar, Meet
   </Card>
-  <Card title="Advertising" icon="chart-line" href="/integrations/advertising">
-    Connect Google Ads or Facebook Ads
+  <Card title="Werbung" icon="chart-line" href="/integrations/advertising">
+    Verbinden Sie Google Ads oder Facebook Ads
   </Card>
 </CardGroup>

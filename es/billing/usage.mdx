@@ -1,253 +1,253 @@
 ---
-title: Usage & Analytics
-description: "Monitor resource consumption in real time, analyze usage events, understand token mechanics, and track costs across all your companies"
+title: Uso y Analíticas
+description: "Monitoree el consumo de recursos en tiempo real, analice eventos de uso, comprenda la mecánica de tokens y rastree costos en todas sus empresas"
 ---
 
-## Overview Dashboard
+## Panel de Descripción General
 
-Navigate to **Billing** → **Overview** to open the Usage Analytics dashboard — a single page that gives you full visibility into resource consumption, platform limits, and a detailed log of every billable event.
+Navegue a **Facturación** → **Descripción General** para abrir el panel de Analíticas de Uso — una única página que le da visibilidad completa sobre el consumo de recursos, límites de la plataforma y un registro detallado de cada evento facturable.
 
 <Frame>
-  <img className="block dark:hidden" src="/images/billing-overview-light.png" alt="Billing overview dashboard" />
-  <img className="hidden dark:block" src="/images/billing-overview-dark.png" alt="Billing overview dashboard" />
+  <img className="block dark:hidden" src="/images/billing-overview-light.png" alt="Panel de descripción general de facturación" />
+  <img className="hidden dark:block" src="/images/billing-overview-dark.png" alt="Panel de descripción general de facturación" />
 </Frame>
 
-The dashboard is divided into four sections: **Plan Summary**, **Resource Usage**, **Platform Limits**, and **Usage Events**.
+El panel se divide en cuatro secciones: **Resumen del Plan**, **Uso de Recursos**, **Límites de Plataforma** y **Eventos de Uso**.
 
 ---
 
-## Plan Summary
+## Resumen del Plan
 
-The top of the page displays a hero card with your current subscription details.
+La parte superior de la página muestra una tarjeta destacada con los detalles de su suscripción actual.
 
-**Left side:**
-- A gradient badge showing your plan name (Free, Premium, or Professional) with a crown icon
-- If on a paid plan — the monthly price (e.g., **$29 /mo**) and the next payment date (e.g., "Next payment: 15.04.2026")
-- If on the Free plan — a prompt to upgrade
+**Lado izquierdo:**
+- Una insignia degradada mostrando el nombre de su plan (Free, Premium o Professional) con un icono de corona
+- Si tiene un plan de pago — el precio mensual (por ejemplo, **$29 /mes**) y la fecha del próximo pago (por ejemplo, "Próximo pago: 15.04.2026")
+- Si tiene el plan Free — una invitación a actualizar
 
-**Right side:**
-- **Manage** button — opens the Manage Subscription modal (paid plans only). See [Managing Your Subscription](/billing/plans#managing-your-subscription)
-- **Upgrade Plan** / **Change Plan** button — links to the [Pricing](/billing/plans) page
+**Lado derecho:**
+- Botón **Gestionar** — abre el modal de Gestionar Suscripción (solo planes de pago). Vea [Gestionar Su Suscripción](/billing/plans#managing-your-subscription)
+- Botón **Actualizar Plan** / **Cambiar Plan** — enlaza a la página de [Precios](/billing/plans)
 
 ---
 
-## Resource Usage
+## Uso de Recursos
 
-Six progress-bar cards arranged in a 3-column grid (2 columns on tablet, 1 on mobile). Each card tracks one billable resource in real time.
+Seis tarjetas con barras de progreso organizadas en una cuadrícula de 3 columnas (2 columnas en tableta, 1 en móvil). Cada tarjeta rastrea un recurso facturable en tiempo real.
 
-| # | Resource | Icon | What It Measures |
+| # | Recurso | Icono | Qué Mide |
 |---|----------|------|-----------------|
-| 1 | **Standard Tokens** | Bolt (blue) | Tokens consumed by standard models — GPT-4o Mini, Claude 3.5 Haiku, Gemini 2.0 Flash, Llama 3.1 8B |
-| 2 | **Premium Tokens** | Bolt (purple) | Tokens consumed by premium models — GPT-4o, Claude 3.5 Sonnet, Gemini 2.5 Pro, Llama 3.3 70B |
-| 3 | **Voice STT** | Microphone (cyan) | Speech-to-Text transcription time in minutes |
-| 4 | **Voice TTS** | Speaker (amber) | Text-to-Speech synthesis in characters |
-| 5 | **Embeddings** | Database (green) | Tokens used for knowledge base training (chunking + vector generation) |
-| 6 | **Storage** | Folder (rose) | Total file storage across all your companies |
+| 1 | **Tokens Estándar** | Rayo (azul) | Tokens consumidos por modelos estándar — GPT-4o Mini, Claude 3.5 Haiku, Gemini 2.0 Flash, Llama 3.1 8B |
+| 2 | **Tokens Premium** | Rayo (púrpura) | Tokens consumidos por modelos premium — GPT-4o, Claude 3.5 Sonnet, Gemini 2.5 Pro, Llama 3.3 70B |
+| 3 | **Voz STT** | Micrófono (cian) | Tiempo de transcripción de voz a texto en minutos |
+| 4 | **Voz TTS** | Altavoz (ámbar) | Síntesis de texto a voz en caracteres |
+| 5 | **Embeddings** | Base de datos (verde) | Tokens usados para entrenamiento de base de conocimientos (fragmentación + generación de vectores) |
+| 6 | **Almacenamiento** | Carpeta (rosa) | Almacenamiento total de archivos en todas sus empresas |
 
-Each card displays:
-1. **Header row** — the resource icon and label on the left, a percentage badge on the right
-2. **Progress bar** — an 8px-tall bar showing current consumption as a filled gradient
-3. **Values row** — "**N** used" on the left, "of **N**" (your plan limit) on the right
+Cada tarjeta muestra:
+1. **Fila de encabezado** — el icono y etiqueta del recurso a la izquierda, una insignia de porcentaje a la derecha
+2. **Barra de progreso** — una barra de 8px de alto mostrando el consumo actual como un degradado relleno
+3. **Fila de valores** — "**N** usado" a la izquierda, "de **N**" (su límite de plan) a la derecha
 
-### Color Thresholds
+### Umbrales de Color
 
-The percentage badge and progress bar change color based on how much you've consumed:
+La insignia de porcentaje y la barra de progreso cambian de color según cuánto ha consumido:
 
-| Usage Level | Color | Meaning |
+| Nivel de Uso | Color | Significado |
 |-------------|-------|---------|
-| Below 80% | **Green** | Normal — you have plenty of headroom |
-| 80% – 89% | **Amber** | Warning — consider upgrading or buying a pack |
-| 90% and above | **Red** | Critical — approaching the limit, requests may be blocked soon |
+| Menor al 80% | **Verde** | Normal — tiene suficiente margen |
+| 80% – 89% | **Ámbar** | Advertencia — considere actualizar o comprar un paquete |
+| 90% y más | **Rojo** | Crítico — acercándose al límite, las solicitudes podrían bloquearse pronto |
 
 <Tip>
-  Storage values are displayed in human-readable units — **MB** for amounts under 1 GB, **GB** for larger values. All other resources show formatted numbers with thousands separators.
+  Los valores de almacenamiento se muestran en unidades legibles — **MB** para cantidades menores a 1 GB, **GB** para valores mayores. Todos los demás recursos muestran números formateados con separadores de miles.
 </Tip>
 
 ---
 
-## Platform Limits
+## Límites de Plataforma
 
-Four counter cards below the resource meters, arranged in a 4-column grid (2 on tablet, 1 on mobile). These show how many platform resources you've created versus your plan maximum:
+Cuatro tarjetas de contador debajo de los medidores de recursos, organizadas en una cuadrícula de 4 columnas (2 en tableta, 1 en móvil). Estas muestran cuántos recursos de plataforma ha creado versus el máximo de su plan:
 
-| Icon | Counter | Example |
+| Icono | Contador | Ejemplo |
 |------|---------|---------|
-| Building (blue) | **Companies** | 2 / 3 |
-| Wand (purple) | **AI Agents** | 4 / 5 |
-| Document (green) | **Knowledge Documents** | 45 / 100 |
-| Messages (amber) | **Conversations** | 1,200 / 5,000 |
+| Edificio (azul) | **Empresas** | 2 / 3 |
+| Varita (púrpura) | **Agentes de IA** | 4 / 5 |
+| Documento (verde) | **Documentos de Conocimiento** | 45 / 100 |
+| Mensajes (ámbar) | **Conversaciones** | 1,200 / 5,000 |
 
-When a limit is unlimited (e.g., AI Agents on the Professional plan), the maximum displays as **∞**.
+Cuando un límite es ilimitado (por ejemplo, Agentes de IA en el plan Professional), el máximo se muestra como **∞**.
 
-When you attempt to create a resource that exceeds your plan limit (e.g., creating a 6th agent on the Premium plan), a modal appears explaining the limit and offering to upgrade or purchase a pack.
+Cuando intenta crear un recurso que excede el límite de su plan (por ejemplo, crear un 6to agente en el plan Premium), aparece un modal explicando el límite y ofreciendo actualizar o comprar un paquete.
 
 ---
 
-## Usage Events
+## Eventos de Uso
 
-The bottom section contains a detailed, filterable table logging every billable action across all your companies. This is your audit trail for understanding exactly what consumed your quota.
+La sección inferior contiene una tabla detallada y filtrable que registra cada acción facturable en todas sus empresas. Este es su registro de auditoría para entender exactamente qué consumió su cuota.
 
 <Frame>
-  <img className="block dark:hidden" src="/images/billing-events-light.png" alt="Usage Events table" />
-  <img className="hidden dark:block" src="/images/billing-events-dark.png" alt="Usage Events table" />
+  <img className="block dark:hidden" src="/images/billing-events-light.png" alt="Tabla de eventos de uso" />
+  <img className="hidden dark:block" src="/images/billing-events-dark.png" alt="Tabla de eventos de uso" />
 </Frame>
 
-### Filtering
+### Filtrado
 
-Click the **+ Filter** button to add filter chips. Six filter types are available:
+Haga clic en el botón **+ Filtro** para agregar chips de filtro. Seis tipos de filtro están disponibles:
 
-| Filter | Type | Options |
+| Filtro | Tipo | Opciones |
 |--------|------|---------|
-| **Date From** | Date picker | Calendar popover — select a start date |
-| **Date To** | Date picker | Calendar popover — select an end date |
-| **Company** | Select dropdown | Lists all your companies by name |
-| **Event Type** | Select dropdown | Chat, Workflow, STT, TTS, Embedding, Storage |
-| **Resource** | Select dropdown | Standard Tokens, Premium Tokens, STT Minutes, TTS Characters, Embedding Tokens, Storage |
-| **Channel** | Select dropdown | Admin, Widget, System |
+| **Fecha Desde** | Selector de fecha | Popover de calendario — seleccione una fecha de inicio |
+| **Fecha Hasta** | Selector de fecha | Popover de calendario — seleccione una fecha de fin |
+| **Empresa** | Desplegable | Lista todas sus empresas por nombre |
+| **Tipo de Evento** | Desplegable | Chat, Workflow, STT, TTS, Embedding, Storage |
+| **Recurso** | Desplegable | Tokens Estándar, Tokens Premium, Minutos STT, Caracteres TTS, Tokens de Embedding, Almacenamiento |
+| **Canal** | Desplegable | Admin, Widget, System |
 
-Active filters appear as removable chips above the table. Removing a chip immediately reloads the table with updated results.
+Los filtros activos aparecen como chips removibles sobre la tabla. Eliminar un chip recarga inmediatamente la tabla con resultados actualizados.
 
-### Table Columns
+### Columnas de la Tabla
 
-Each row in the table represents a single billable event with eight columns:
+Cada fila en la tabla representa un único evento facturable con ocho columnas:
 
-| Column | Description | Format |
+| Columna | Descripción | Formato |
 |--------|-------------|--------|
-| **Date** | When the event occurred | `DD.MM.YYYY HH:mm` |
-| **Company** | Which company's agent triggered the event | Company name, or `—` if system-level |
-| **Event** | Type of billable action | Color-coded badge (see below) |
-| **Resource** | Which resource quota was consumed | Plain text label |
-| **Channel** | Where the interaction originated | Grey badge (Admin, Widget, System), or `—` |
-| **Model** | Which LLM model was used | Monospace font (e.g., `gpt-4o-mini`), or `—` for non-LLM events |
-| **Amount** | Quantity consumed | Smart-formatted (see below) |
-| **Cost** | Estimated cost in USD | Bold, tabular numerics (see below) |
+| **Fecha** | Cuándo ocurrió el evento | `DD.MM.AAAA HH:mm` |
+| **Empresa** | Qué empresa del agente activó el evento | Nombre de la empresa, o `—` si es a nivel del sistema |
+| **Evento** | Tipo de acción facturable | Insignia codificada por color (vea abajo) |
+| **Recurso** | Qué cuota de recurso se consumió | Etiqueta de texto plano |
+| **Canal** | Dónde se originó la interacción | Insignia gris (Admin, Widget, System), o `—` |
+| **Modelo** | Qué modelo LLM se usó | Fuente monoespaciada (por ejemplo, `gpt-4o-mini`), o `—` para eventos no-LLM |
+| **Cantidad** | Cantidad consumida | Formato inteligente (vea abajo) |
+| **Costo** | Costo estimado en USD | Negrita, numéricos tabulares (vea abajo) |
 
-### Event Type Badges
+### Insignias de Tipo de Evento
 
-Each event type has a distinct color-coded badge for quick visual scanning:
+Cada tipo de evento tiene una insignia distintiva codificada por color para escaneo visual rápido:
 
-| Event Type | Badge Color | Description |
+| Tipo de Evento | Color de Insignia | Descripción |
 |------------|-------------|-------------|
-| **Chat** | Blue | LLM inference from a chat conversation |
-| **Workflow** | Purple | LLM inference from a workflow node execution |
-| **STT** | Cyan | Speech-to-Text transcription |
-| **TTS** | Amber | Text-to-Speech synthesis |
-| **Embedding** | Green | Knowledge base training (vector generation) |
-| **Storage** | Rose | File upload or storage operation |
+| **Chat** | Azul | Inferencia LLM de una conversación de chat |
+| **Workflow** | Púrpura | Inferencia LLM de la ejecución de un nodo de workflow |
+| **STT** | Cian | Transcripción de voz a texto |
+| **TTS** | Ámbar | Síntesis de texto a voz |
+| **Embedding** | Verde | Entrenamiento de base de conocimientos (generación de vectores) |
+| **Storage** | Rosa | Carga de archivos u operación de almacenamiento |
 
-### Amount Formatting
+### Formato de Cantidad
 
-The Amount column adapts its display format based on the resource type:
+La columna Cantidad adapta su formato de visualización según el tipo de recurso:
 
-| Resource | Format | Example |
+| Recurso | Formato | Ejemplo |
 |----------|--------|---------|
-| Tokens (Standard, Premium, Embedding) | Comma-separated number + "tokens" | `4,521 tokens` |
-| STT Minutes | Minutes and seconds | `2m 34s` |
-| TTS Characters | Comma-separated number + "chars" | `1,250 chars` |
-| Storage | MB or KB | `3.2 MB`, `450 KB` |
+| Tokens (Estándar, Premium, Embedding) | Número con separadores + "tokens" | `4,521 tokens` |
+| Minutos STT | Minutos y segundos | `2m 34s` |
+| Caracteres TTS | Número con separadores + "chars" | `1,250 chars` |
+| Almacenamiento | MB o KB | `3.2 MB`, `450 KB` |
 
-### Cost Formatting
+### Formato de Costo
 
-The Cost column shows estimated USD cost with precision adapted to the value:
+La columna Costo muestra el costo estimado en USD con precisión adaptada al valor:
 
-- **$0.01 and above** — displayed with 2 decimal places (e.g., `$1.25`)
-- **Below $0.01** — displayed with up to 8 decimal places, trailing zeros removed (e.g., `$0.00042`)
-- **Zero or not applicable** — displayed as `—`
+- **$0.01 y más** — mostrado con 2 decimales (por ejemplo, `$1.25`)
+- **Menor a $0.01** — mostrado con hasta 8 decimales, ceros finales eliminados (por ejemplo, `$0.00042`)
+- **Cero o no aplicable** — mostrado como `—`
 
-### Pagination
+### Paginación
 
-The table loads 25 events per page and uses asynchronous pagination. The bottom bar shows:
-- **"Showing X–Y of Z"** — current range and total count
-- **Page buttons** — first page, last page, and a window of ±2 pages around the current one, with ellipsis (`…`) for gaps
+La tabla carga 25 eventos por página y usa paginación asincrónica. La barra inferior muestra:
+- **"Mostrando X–Y de Z"** — rango actual y conteo total
+- **Botones de página** — primera página, última página, y una ventana de ±2 páginas alrededor de la actual, con puntos suspensivos (`…`) para huecos
 
-While loading, the table displays an animated skeleton with 8 shimmer rows. If no events match your filters, an empty state message appears: "No usage events found."
+Mientras carga, la tabla muestra un esqueleto animado con 8 filas de brillo. Si ningún evento coincide con sus filtros, aparece un mensaje de estado vacío: "No se encontraron eventos de uso."
 
 ---
 
-## How Tokens Work
+## Cómo Funcionan los Tokens
 
-Every AI interaction consists of two parts:
+Cada interacción de IA consiste en dos partes:
 
-- **Input tokens** — your message + system prompt + knowledge base context (RAG chunks) + conversation history + tool descriptions
-- **Output tokens** — the agent's response
+- **Tokens de entrada** — su mensaje + prompt del sistema + contexto de base de conocimientos (fragmentos RAG) + historial de conversación + descripciones de herramientas
+- **Tokens de salida** — la respuesta del agente
 
-Both count toward your quota. The total per interaction depends on:
+Ambos cuentan para su cuota. El total por interacción depende de:
 
-1. **System prompt length** — longer prompts consume more input tokens per message
-2. **Knowledge base context** — more RAG chunks retrieved = more input tokens. Control this via **RAG Settings → Chunk Limit**
-3. **Conversation history** — longer conversations accumulate context from previous messages
-4. **Response length** — controlled by the **Response Length** personality slider in agent settings
-5. **Tool calls** — each tool call round adds input tokens (tool descriptions) and output tokens (tool arguments + results)
+1. **Longitud del prompt del sistema** — prompts más largos consumen más tokens de entrada por mensaje
+2. **Contexto de base de conocimientos** — más fragmentos RAG recuperados = más tokens de entrada. Controle esto vía **Configuración RAG → Límite de Fragmentos**
+3. **Historial de conversación** — conversaciones más largas acumulan contexto de mensajes anteriores
+4. **Longitud de respuesta** — controlada por el deslizador de **Longitud de Respuesta** en la personalidad del agente
+5. **Llamadas a herramientas** — cada ronda de llamada a herramientas agrega tokens de entrada (descripciones de herramientas) y tokens de salida (argumentos de herramientas + resultados)
 
-### Token Types
+### Tipos de Tokens
 
-| Token Type | Models | Cost Profile |
+| Tipo de Token | Modelos | Perfil de Costo |
 |-----------|--------|-------------|
-| **Standard** | GPT-4o Mini, Claude 3.5 Haiku, Gemini 2.0 Flash, Llama 3.1 8B | Lower cost, faster responses |
-| **Premium** | GPT-4o, Claude 3.5 Sonnet, Gemini 2.5 Pro, Llama 3.3 70B | Higher cost, better quality |
-| **Embedding** | text-embedding-ada-002 | Used only during knowledge base training |
+| **Estándar** | GPT-4o Mini, Claude 3.5 Haiku, Gemini 2.0 Flash, Llama 3.1 8B | Menor costo, respuestas más rápidas |
+| **Premium** | GPT-4o, Claude 3.5 Sonnet, Gemini 2.5 Pro, Llama 3.3 70B | Mayor costo, mejor calidad |
+| **Embedding** | text-embedding-ada-002 | Usado solo durante el entrenamiento de base de conocimientos |
 
 <Tip>
-  To optimize token usage: keep system prompts concise, limit the number of RAG chunks per query (RAG Settings → Chunk Limit), and use standard models for simple tasks while reserving premium models for complex responses.
+  Para optimizar el uso de tokens: mantenga los prompts del sistema concisos, limite la cantidad de fragmentos RAG por consulta (Configuración RAG → Límite de Fragmentos), y use modelos estándar para tareas simples reservando modelos premium para respuestas complejas.
 </Tip>
 
 ---
 
-## Voice Usage
+## Uso de Voz
 
-Voice interactions consume two separate resources:
+Las interacciones de voz consumen dos recursos separados:
 
-- **STT (Speech-to-Text)** — measured in minutes. Each voice message is transcribed, and the duration (rounded up to the nearest minute) is deducted from your quota.
-- **TTS (Text-to-Speech)** — measured in characters. The agent's text response is synthesized to audio, and the character count is deducted.
+- **STT (Voz a Texto)** — medido en minutos. Cada mensaje de voz se transcribe, y la duración (redondeada al minuto más cercano) se deduce de su cuota.
+- **TTS (Texto a Voz)** — medido en caracteres. La respuesta de texto del agente se sintetiza a audio, y el conteo de caracteres se deduce.
 
-A single voice conversation turn typically consumes both STT minutes (the visitor's audio) and TTS characters (the agent's spoken response). These appear as separate rows in the Usage Events table — an **STT** event (cyan badge) and a **TTS** event (amber badge).
+Un solo turno de conversación de voz típicamente consume tanto minutos STT (el audio del visitante) como caracteres TTS (la respuesta hablada del agente). Estos aparecen como filas separadas en la tabla de Eventos de Uso — un evento **STT** (insignia cian) y un evento **TTS** (insignia ámbar).
 
 ---
 
-## Storage Usage
+## Uso de Almacenamiento
 
-Storage is consumed when you upload files to the [File Manager](/file-manager):
+El almacenamiento se consume cuando sube archivos al [Gestor de Archivos](/file-manager):
 
-- **Documents** — PDF, Word, Excel, TXT
-- **Photos** — JPG, PNG
+- **Documentos** — PDF, Word, Excel, TXT
+- **Fotos** — JPG, PNG
 - **Videos** — MP4, WebM, MOV
-- **Audio recordings** — conversation audio files
+- **Grabaciones de audio** — archivos de audio de conversaciones
 
-Storage usage is tracked bidirectionally — uploading increases usage, deleting files decreases it. The Storage meter on the dashboard shows your current total across all companies.
+El uso de almacenamiento se rastrea bidireccionalmente — subir incrementa el uso, eliminar archivos lo disminuye. El medidor de Almacenamiento en el panel muestra su total actual en todas las empresas.
 
 ---
 
-## Quota Notifications
+## Notificaciones de Cuota
 
-Revol monitors your usage and sends alerts before you hit limits:
+Revol monitorea su uso y envía alertas antes de que alcance los límites:
 
-| Threshold | Level | Notification |
+| Umbral | Nivel | Notificación |
 |-----------|-------|-------------|
-| **80%** | Warning | Email + in-app banner: "You've used 80% of your [resource]. Consider upgrading or purchasing a pack." |
-| **90%** | Critical | Email + in-app banner: "You've used 90% of your [resource]. Requests will be blocked at 100%." |
+| **80%** | Advertencia | Email + banner en la aplicación: "Ha usado el 80% de su [recurso]. Considere actualizar o comprar un paquete." |
+| **90%** | Crítico | Email + banner en la aplicación: "Ha usado el 90% de su [recurso]. Las solicitudes se bloquearán al 100%." |
 
-Each alert fires **once per billing period** per resource type. Critical alerts take priority — if your usage jumps from 75% to 92%, only the critical notification is sent.
+Cada alerta se dispara **una vez por período de facturación** por tipo de recurso. Las alertas críticas tienen prioridad — si su uso salta del 75% al 92%, solo se envía la notificación crítica.
 
-In-app banners appear at the top of every page in the dashboard. You can dismiss them for the current session, but they reappear on your next login if the threshold is still exceeded.
+Los banners en la aplicación aparecen en la parte superior de cada página del panel. Puede descartarlos para la sesión actual, pero reaparecen en su próximo inicio de sesión si el umbral aún se supera.
 
 ---
 
-## What Happens at the Limit
+## Qué Sucede al Alcanzar el Límite
 
-| Resource | Behavior |
+| Recurso | Comportamiento |
 |----------|----------|
-| Standard / Premium Tokens | Agent stops responding until the next billing cycle or until you purchase a pack |
-| Storage | Cannot upload new files to the File Manager |
-| Voice (STT/TTS) | Voice features are disabled, text chat continues working |
-| Conversations | New conversations are blocked, existing ones continue |
-| Knowledge Docs | Cannot add new documents to agent knowledge bases |
+| Tokens Estándar / Premium | El agente deja de responder hasta el siguiente ciclo de facturación o hasta que compre un paquete |
+| Almacenamiento | No puede subir nuevos archivos al Gestor de Archivos |
+| Voz (STT/TTS) | Las funcionalidades de voz se deshabilitan, el chat de texto continúa funcionando |
+| Conversaciones | Se bloquean nuevas conversaciones, las existentes continúan |
+| Documentos de Conocimiento | No puede agregar nuevos documentos a las bases de conocimiento de los agentes |
 
-When a limit is reached and you attempt to perform a blocked action, a modal appears showing your current usage, plan limit, and options to either upgrade your plan or purchase an add-on pack.
+Cuando se alcanza un límite e intenta realizar una acción bloqueada, aparece un modal mostrando su uso actual, límite del plan y opciones para actualizar su plan o comprar un paquete adicional.
 
 ---
 
-## Billing Period
+## Período de Facturación
 
-- **Free plan** — daily billing period. Token usage resets every day at midnight UTC.
-- **Paid plans** — monthly billing period. Usage resets on the anniversary of your subscription date (e.g., if you subscribed on March 15, your next reset is April 15).
+- **Plan Free** — período de facturación diario. El uso de tokens se restablece cada día a medianoche UTC.
+- **Planes de pago** — período de facturación mensual. El uso se restablece en el aniversario de su fecha de suscripción (por ejemplo, si se suscribió el 15 de marzo, su próximo restablecimiento es el 15 de abril).
 
-Add-on packs are independent of the billing period — they have their own 3-month expiration from the purchase date. When your included plan quota is exhausted, consumption automatically switches to your oldest-expiring pack.
+Los paquetes adicionales son independientes del período de facturación — tienen su propia expiración de 3 meses desde la fecha de compra. Cuando su cuota incluida del plan se agota, el consumo cambia automáticamente a su paquete con la expiración más próxima.

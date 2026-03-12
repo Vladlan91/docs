@@ -1,249 +1,249 @@
 ---
 title: Dashboard
 sidebarTitle: Dashboard
-description: "Real-time analytics dashboard with KPIs, traffic charts, geographic data, and campaign performance"
+description: "Echtzeit-Analyse-Dashboard mit KPIs, Traffic-Diagrammen, geografischen Daten und Kampagnen-Performance"
 ---
 
-## Overview
+## Ueberblick
 
-The Revol Tracker monitors visitor activity on your website. It collects session data, pageviews, custom events, and campaign attribution — all through the same script that powers the chat widget. No additional code needed.
+Der Revol Tracker ueberwacht die Besucheraktivitaet auf Ihrer Website. Er erfasst Sitzungsdaten, Seitenaufrufe, benutzerdefinierte Ereignisse und Kampagnenzuordnung — alles ueber dasselbe Skript, das auch das Chat-Widget betreibt. Kein zusaetzlicher Code erforderlich.
 
-The Dashboard provides a real-time overview of your website's traffic and visitor behavior. Data refreshes automatically every **60 seconds**.
+Das Dashboard bietet einen Echtzeit-Ueberblick ueber den Traffic und das Besucherverhalten auf Ihrer Website. Die Daten werden automatisch alle **60 Sekunden** aktualisiert.
 
 <Frame>
-  <img className="block dark:hidden" src="/images/tracker-analitiks-light.png" alt="Tracker analytics dashboard" />
-  <img className="hidden dark:block" src="/images/tracker-analitiks-dark.png" alt="Tracker analytics dashboard" />
+  <img className="block dark:hidden" src="/images/tracker-analitiks-light.png" alt="Tracker-Analyse-Dashboard" />
+  <img className="hidden dark:block" src="/images/tracker-analitiks-dark.png" alt="Tracker-Analyse-Dashboard" />
 </Frame>
 
-### Data Availability
+### Datenverfuegbarkeit
 
-Analytics data is stored in monthly partitions and cleaned up automatically based on your plan:
+Analysedaten werden in monatlichen Partitionen gespeichert und basierend auf Ihrem Tarif automatisch bereinigt:
 
-| Plan | Data Retention |
+| Tarif | Datenaufbewahrung |
 |---|---|
-| Free | 3 months |
-| Premium | 12 months |
-| Professional | 24 months |
+| Free | 3 Monate |
+| Premium | 12 Monate |
+| Professional | 24 Monate |
 
-### Filters
+### Filter
 
-Use filters to narrow down the dashboard data:
+Verwenden Sie Filter, um die Dashboard-Daten einzugrenzen:
 
-**Quick period selector:**
+**Schnelle Periodenauswahl:**
 
-| Period | Description |
+| Zeitraum | Beschreibung |
 |---|---|
-| **24h** | Last 24 hours |
-| **7d** | Last 7 days (default) |
-| **30d** | Last 30 days |
-| **90d** | Last 90 days |
+| **24h** | Letzte 24 Stunden |
+| **7d** | Letzte 7 Tage (Standard) |
+| **30d** | Letzte 30 Tage |
+| **90d** | Letzte 90 Tage |
 
-**Advanced filters** (dropdown):
+**Erweiterte Filter** (Dropdown):
 
-| Filter | Description |
+| Filter | Beschreibung |
 |---|---|
-| **Device** | Desktop, Mobile, or Tablet |
-| **Country** | Filter by country (2-letter ISO code) |
-| **Source** | UTM source (e.g., google, facebook) |
-| **Page URL** | Filter by specific page |
-| **Browser** | Chrome, Firefox, Safari, etc. |
-| **OS** | Windows, macOS, iOS, Android, etc. |
-| **Bounce** | Show only bounced or non-bounced sessions |
-| **Campaign** | Select from your campaigns list |
+| **Geraet** | Desktop, Mobil oder Tablet |
+| **Land** | Nach Land filtern (2-Buchstaben-ISO-Code) |
+| **Quelle** | UTM-Quelle (z.B. google, facebook) |
+| **Seiten-URL** | Nach bestimmter Seite filtern |
+| **Browser** | Chrome, Firefox, Safari, usw. |
+| **Betriebssystem** | Windows, macOS, iOS, Android, usw. |
+| **Absprung** | Nur abgesprungene oder nicht abgesprungene Sitzungen anzeigen |
+| **Kampagne** | Aus Ihrer Kampagnenliste auswaehlen |
 | **Medium** | cpc, organic, social, email, referral |
-| **Date From** | Custom start date |
-| **Date To** | Custom end date |
+| **Datum von** | Benutzerdefiniertes Startdatum |
+| **Datum bis** | Benutzerdefiniertes Enddatum |
 
 <Tip>
-  Without filters, the dashboard uses pre-aggregated data for fast loading. When filters are applied, it switches to raw queries for accurate results — this may take slightly longer.
+  Ohne Filter verwendet das Dashboard voraggregierte Daten fuer schnelles Laden. Bei angewendeten Filtern wird auf Rohabfragen umgeschaltet, um genaue Ergebnisse zu liefern — dies kann etwas laenger dauern.
 </Tip>
 
 ---
 
-## KPI Cards
+## KPI-Karten
 
-The top row shows 6 key performance indicators. Each card displays the current value, a **trend percentage** compared to the previous period of equal length, and a **7-day sparkline** chart.
+Die obere Reihe zeigt 6 wichtige Leistungskennzahlen. Jede Karte zeigt den aktuellen Wert, einen **Trendprozentsatz** im Vergleich zum vorherigen Zeitraum gleicher Laenge und ein **7-Tage-Sparkline**-Diagramm.
 
 <Frame>
-  <img className="block dark:hidden" src="/images/tracker-kpi-light.png" alt="KPI cards" />
-  <img className="hidden dark:block" src="/images/tracker-kpi-dark.png" alt="KPI cards" />
+  <img className="block dark:hidden" src="/images/tracker-kpi-light.png" alt="KPI-Karten" />
+  <img className="hidden dark:block" src="/images/tracker-kpi-dark.png" alt="KPI-Karten" />
 </Frame>
 
-### Sessions
+### Sitzungen
 
-Total number of visitor sessions in the selected period. A session starts when a visitor loads your website and ends after 30 minutes of inactivity or when they leave.
+Gesamtanzahl der Besuchersitzungen im ausgewaehlten Zeitraum. Eine Sitzung beginnt, wenn ein Besucher Ihre Website laedt, und endet nach 30 Minuten Inaktivitaet oder wenn er die Seite verlaesst.
 
-**Calculation:** `COUNT(*)` from all sessions in the period.
+**Berechnung:** `COUNT(*)` aller Sitzungen im Zeitraum.
 
-### Unique Visitors
+### Einzelbesucher
 
-Number of distinct visitors, identified by a unique browser token. One person visiting your site 5 times = 1 unique visitor but 5 sessions.
+Anzahl der eindeutigen Besucher, identifiziert durch ein einzigartiges Browser-Token. Eine Person, die Ihre Website 5-mal besucht = 1 Einzelbesucher, aber 5 Sitzungen.
 
-**Calculation:** `COUNT(DISTINCT guest_token)` from sessions.
+**Berechnung:** `COUNT(DISTINCT guest_token)` aus Sitzungen.
 
-### Bounce Rate
+### Absprungrate
 
-Percentage of sessions where the visitor viewed only one page and left without further interaction. A lower bounce rate generally indicates better engagement.
+Prozentsatz der Sitzungen, in denen der Besucher nur eine Seite angesehen und ohne weitere Interaktion verlassen hat. Eine niedrigere Absprungrate deutet im Allgemeinen auf besseres Engagement hin.
 
-**Calculation:** `(sessions with 1 pageview / total sessions) × 100%`
+**Berechnung:** `(Sitzungen mit 1 Seitenaufruf / Gesamtsitzungen) × 100%`
 
 <Note>
-  The trend arrow for bounce rate is **inverted** — a decrease (green arrow) means improvement, while an increase (red arrow) means more visitors are leaving after one page.
+  Der Trendpfeil fuer die Absprungrate ist **invertiert** — ein Rueckgang (gruener Pfeil) bedeutet Verbesserung, waehrend ein Anstieg (roter Pfeil) bedeutet, dass mehr Besucher nach einer Seite abspringen.
 </Note>
 
-### Avg Duration
+### Durchschn. Dauer
 
-Average time visitors spend on your website per session, displayed in seconds or minutes.
+Durchschnittliche Zeit, die Besucher pro Sitzung auf Ihrer Website verbringen, angezeigt in Sekunden oder Minuten.
 
-**Calculation:** `AVG(duration_seconds)` across all sessions.
+**Berechnung:** `AVG(duration_seconds)` ueber alle Sitzungen.
 
-### Pages / Visit
+### Seiten / Besuch
 
-Average number of pages viewed per session. Higher values indicate visitors are exploring more of your content.
+Durchschnittliche Anzahl der pro Sitzung angesehenen Seiten. Hoehere Werte deuten darauf hin, dass Besucher mehr Ihrer Inhalte erkunden.
 
-**Calculation:** `AVG(pages_visited)` across all sessions.
+**Berechnung:** `AVG(pages_visited)` ueber alle Sitzungen.
 
 ### Conversions
 
-Number of unique sessions that triggered at least one event marked as a **Conversion Goal**. You define which events count as conversions in the Events tab.
+Anzahl der eindeutigen Sitzungen, die mindestens ein als **Conversion-Ziel** markiertes Ereignis ausgeloest haben. Sie definieren im Ereignisse-Tab, welche Ereignisse als Conversions zaehlen.
 
-**Calculation:** `COUNT(DISTINCT session_id)` where the session contains at least one event with `is_conversion = true`.
+**Berechnung:** `COUNT(DISTINCT session_id)`, wobei die Sitzung mindestens ein Ereignis mit `is_conversion = true` enthaelt.
 
 <Tip>
-  To set up conversions, go to the **Events** tab, create or edit an event, and toggle the **"Conversion Goal"** switch. Any event type can be a conversion — form submissions, button clicks, page views, or custom events.
+  Um Conversions einzurichten, gehen Sie zum **Ereignisse**-Tab, erstellen oder bearbeiten Sie ein Ereignis und aktivieren Sie den Schalter **"Conversion-Ziel"**. Jeder Ereignistyp kann eine Conversion sein — Formulareinreichungen, Schaltflaechenklicks, Seitenaufrufe oder benutzerdefinierte Ereignisse.
 </Tip>
 
 ---
 
-## Sessions Over Time
+## Sitzungen im Zeitverlauf
 
-An area chart showing traffic trends over the selected period. Two overlaid lines:
+Ein Flaechendiagramm, das Traffic-Trends ueber den ausgewaehlten Zeitraum zeigt. Zwei ueberlagerte Linien:
 
-- **Sessions** — total sessions per day
-- **Visitors** — unique visitors per day
+- **Sitzungen** — Gesamtsitzungen pro Tag
+- **Besucher** — Einzelbesucher pro Tag
 
-Use this to identify traffic spikes, trends, and the gap between total visits and unique visitors (repeat visit ratio).
-
-<Frame>
-  <img className="block dark:hidden" src="/images/tracker-sessions-chart-light.png" alt="Sessions over time chart" />
-  <img className="hidden dark:block" src="/images/tracker-sessions-chart-dark.png" alt="Sessions over time chart" />
-</Frame>
-
-## New vs Returning
-
-A donut chart showing the split between:
-
-- **New visitors** — first-time visitors (only 1 session ever)
-- **Returning visitors** — visitors who have been to your site before (2+ sessions)
-
-A healthy mix depends on your business: content sites aim for more returning visitors, while ad-driven landing pages expect mostly new visitors.
-
----
-
-## Top Pages
-
-A table of the 10 most visited pages, showing:
-
-| Column | Description |
-|---|---|
-| **Page URL** | The page path |
-| **Views** | Total pageview count |
-| **Avg Time** | Average time spent on the page (milliseconds converted to readable format) |
-| **Avg Scroll** | Average scroll depth percentage — how far down visitors scroll |
-
-Use this to identify your most popular content and pages where visitors engage the most (or the least).
+Verwenden Sie dies, um Traffic-Spitzen, Trends und die Luecke zwischen Gesamtbesuchen und Einzelbesuchern (Wiederholungsbesuchsrate) zu identifizieren.
 
 <Frame>
-  <img className="block dark:hidden" src="/images/tracker-top-pages-light.png" alt="Top pages table" />
-  <img className="hidden dark:block" src="/images/tracker-top-pages-dark.png" alt="Top pages table" />
+  <img className="block dark:hidden" src="/images/tracker-sessions-chart-light.png" alt="Sitzungen im Zeitverlauf Diagramm" />
+  <img className="hidden dark:block" src="/images/tracker-sessions-chart-dark.png" alt="Sitzungen im Zeitverlauf Diagramm" />
 </Frame>
 
-## Traffic Sources
+## Neue vs. wiederkehrende Besucher
 
-Top 15 traffic sources by visitor count, with source logos (Google, Facebook, TikTok, etc.) and metrics:
+Ein Ringdiagramm, das die Aufteilung zeigt zwischen:
 
-| Column | Description |
-|---|---|
-| **Source** | Where the visitor came from (utm_source or referrer) |
-| **Visitors** | Unique visitor count from this source |
-| **Bounce Rate** | Percentage of single-page sessions from this source |
+- **Neue Besucher** — Erstbesucher (nur 1 Sitzung insgesamt)
+- **Wiederkehrende Besucher** — Besucher, die bereits auf Ihrer Website waren (2+ Sitzungen)
 
-Sessions without a source are grouped as **"direct"** (typed URL or bookmark).
+Eine gesunde Mischung haengt von Ihrem Geschaeft ab: Inhaltsseiten streben mehr wiederkehrende Besucher an, waehrend werbegetriebene Landingpages ueberwiegend neue Besucher erwarten.
 
 ---
 
-## Visitor Globe
+## Top-Seiten
 
-An interactive 3D globe visualization showing where your visitors are located. Countries with more traffic appear as brighter hotspots.
+Eine Tabelle der 10 meistbesuchten Seiten mit:
 
-## All Countries
-
-A detailed list of countries with:
-
-| Column | Description |
+| Spalte | Beschreibung |
 |---|---|
-| **Country** | Flag icon and country name |
-| **Sessions** | Total sessions from this country |
-| **Unique Visitors** | Distinct visitors from this country |
+| **Seiten-URL** | Der Seitenpfad |
+| **Aufrufe** | Gesamtzahl der Seitenaufrufe |
+| **Durchschn. Zeit** | Durchschnittliche Verweildauer auf der Seite (Millisekunden in lesbares Format konvertiert) |
+| **Durchschn. Scrolltiefe** | Durchschnittlicher Scroll-Tiefenprozentsatz — wie weit Besucher nach unten scrollen |
 
-The globe and country list use the visitor's IP-based geolocation data.
+Verwenden Sie dies, um Ihre beliebtesten Inhalte und Seiten zu identifizieren, auf denen Besucher am meisten (oder am wenigsten) interagieren.
+
+<Frame>
+  <img className="block dark:hidden" src="/images/tracker-top-pages-light.png" alt="Top-Seiten-Tabelle" />
+  <img className="hidden dark:block" src="/images/tracker-top-pages-dark.png" alt="Top-Seiten-Tabelle" />
+</Frame>
+
+## Traffic-Quellen
+
+Top 15 Traffic-Quellen nach Besucherzahl, mit Quell-Logos (Google, Facebook, TikTok, usw.) und Metriken:
+
+| Spalte | Beschreibung |
+|---|---|
+| **Quelle** | Herkunft des Besuchers (utm_source oder Referrer) |
+| **Besucher** | Anzahl der Einzelbesucher aus dieser Quelle |
+| **Absprungrate** | Prozentsatz der Einzelseiten-Sitzungen aus dieser Quelle |
+
+Sitzungen ohne Quelle werden als **"direkt"** gruppiert (eingegebene URL oder Lesezeichen).
 
 ---
 
-## Session Duration
+## Besucher-Globus
 
-A histogram showing how long visitors stay on your site, grouped into 6 buckets:
+Eine interaktive 3D-Globus-Visualisierung, die zeigt, woher Ihre Besucher kommen. Laender mit mehr Traffic erscheinen als hellere Hotspots.
 
-| Bucket | Description |
+## Alle Laender
+
+Eine detaillierte Laenderliste mit:
+
+| Spalte | Beschreibung |
 |---|---|
-| **0–10s** | Very short visits (likely bounces) |
-| **10–30s** | Quick glances |
-| **30–60s** | Brief visits |
-| **1–3 min** | Moderate engagement |
-| **3–10 min** | Good engagement |
-| **10+ min** | Deep engagement |
+| **Land** | Flaggen-Symbol und Laendername |
+| **Sitzungen** | Gesamtsitzungen aus diesem Land |
+| **Einzelbesucher** | Eindeutige Besucher aus diesem Land |
 
-## Scroll Depth
-
-A histogram showing how far visitors scroll on your pages, in 4 buckets:
-
-| Bucket | Description |
-|---|---|
-| **0–25%** | Saw only the top of the page |
-| **25–50%** | Scrolled to the middle |
-| **50–75%** | Read most of the page |
-| **75–100%** | Reached the bottom |
-
-Use this to understand if visitors are reading your full content or dropping off early.
-
-## Hourly Traffic
-
-A 24-hour bar chart showing session distribution by hour of day (0–23). Identifies peak traffic hours — useful for scheduling campaigns, support staffing, or content publishing.
+Der Globus und die Laenderliste verwenden die IP-basierte Geolokalisierungsdaten der Besucher.
 
 ---
 
-## Top Events
+## Sitzungsdauer
 
-A bar chart of the 6 most fired event definitions. Events are custom actions you define in the Events tab (clicks, form submissions, scroll triggers, etc.).
+Ein Histogramm, das zeigt, wie lange Besucher auf Ihrer Website bleiben, aufgeteilt in 6 Gruppen:
 
-## Trigger Activity
+| Gruppe | Beschreibung |
+|---|---|
+| **0–10s** | Sehr kurze Besuche (wahrscheinlich Abspruenge) |
+| **10–30s** | Schnelle Blicke |
+| **30–60s** | Kurze Besuche |
+| **1–3 Min.** | Maessiges Engagement |
+| **3–10 Min.** | Gutes Engagement |
+| **10+ Min.** | Intensives Engagement |
 
-A bar chart of the 6 most active triggers. Triggers are automated actions (popups, overlays, alerts) that fire based on visitor behavior rules you define in the Triggers tab.
+## Scrolltiefe
+
+Ein Histogramm, das zeigt, wie weit Besucher auf Ihren Seiten scrollen, in 4 Gruppen:
+
+| Gruppe | Beschreibung |
+|---|---|
+| **0–25%** | Hat nur den oberen Teil der Seite gesehen |
+| **25–50%** | Bis zur Mitte gescrollt |
+| **50–75%** | Den groessten Teil der Seite gelesen |
+| **75–100%** | Das Ende erreicht |
+
+Nutzen Sie dies, um zu verstehen, ob Besucher Ihren gesamten Inhalt lesen oder fruehzeitig abbrechen.
+
+## Stuendlicher Traffic
+
+Ein 24-Stunden-Balkendiagramm, das die Sitzungsverteilung nach Tageszeit (0–23) zeigt. Identifiziert Spitzenverkehrszeiten — nuetzlich fuer die Planung von Kampagnen, die Personalplanung im Support oder die Veroeffentlichung von Inhalten.
 
 ---
 
-## Campaign Performance
+## Top-Ereignisse
 
-A table of the top 10 campaigns plus a **(Direct / Organic)** row for unattributed traffic:
+Ein Balkendiagramm der 6 am haeufigsten ausgeloesten Ereignisdefinitionen. Ereignisse sind benutzerdefinierte Aktionen, die Sie im Ereignisse-Tab definieren (Klicks, Formulareinreichungen, Scroll-Trigger usw.).
 
-| Column | Description |
+## Trigger-Aktivitaet
+
+Ein Balkendiagramm der 6 aktivsten Trigger. Trigger sind automatisierte Aktionen (Popups, Overlays, Hinweise), die basierend auf von Ihnen definierten Besucherverhaltensregeln im Trigger-Tab ausgeloest werden.
+
+---
+
+## Kampagnen-Performance
+
+Eine Tabelle der Top-10-Kampagnen plus einer **(Direkt / Organisch)**-Zeile fuer nicht zugeordneten Traffic:
+
+| Spalte | Beschreibung |
 |---|---|
-| **Campaign** | Campaign name (from UTM parameters or manually created) |
-| **Sessions** | Total sessions attributed to this campaign |
-| **Events** | Number of tracked events fired in campaign sessions |
-| **Triggers** | Number of trigger activations in campaign sessions |
-| **Phone Swaps** | Phone number substitution events |
-| **Bounce Rate** | % of single-page sessions |
-| **Avg Duration** | Average session duration in seconds |
-| **Conversations** | Number of chat conversations started |
-| **Conversion Rate** | % of sessions with at least one conversion event |
+| **Kampagne** | Kampagnenname (aus UTM-Parametern oder manuell erstellt) |
+| **Sitzungen** | Gesamtsitzungen, die dieser Kampagne zugeordnet sind |
+| **Ereignisse** | Anzahl der erfassten Ereignisse in Kampagnensitzungen |
+| **Trigger** | Anzahl der Trigger-Aktivierungen in Kampagnensitzungen |
+| **Rufnummerntausch** | Telefonnummer-Substitutionsereignisse |
+| **Absprungrate** | % der Einzelseiten-Sitzungen |
+| **Durchschn. Dauer** | Durchschnittliche Sitzungsdauer in Sekunden |
+| **Konversationen** | Anzahl der gestarteten Chat-Konversationen |
+| **Conversion-Rate** | % der Sitzungen mit mindestens einem Conversion-Ereignis |

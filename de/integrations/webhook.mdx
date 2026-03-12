@@ -1,43 +1,43 @@
 ---
-title: Custom Webhook
+title: Benutzerdefinierter Webhook
 sidebarTitle: Webhook
-description: "Send lead data to any CRM or external system via HTTP"
+description: "Lead-Daten per HTTP an jedes CRM oder externes System senden"
 ---
 
-## Overview
+## Ueberblick
 
-Custom Webhook is the simplest integration — it sends HTTP requests to any URL you specify. Use it to push lead data to a CRM, trigger automations in Zapier/Make, or connect to any system with an API.
+Benutzerdefinierter Webhook ist die einfachste Integration — er sendet HTTP-Anfragen an eine beliebige von Ihnen angegebene URL. Verwenden Sie ihn, um Lead-Daten an ein CRM zu uebermitteln, Automatisierungen in Zapier/Make auszuloesen oder sich mit jedem System mit einer API zu verbinden.
 
-No OAuth, no SDK — just a target URL and optional headers.
+Kein OAuth, kein SDK — nur eine Ziel-URL und optionale Header.
 
-## Setup
+## Einrichtung
 
 <Steps>
-  <Step title="Add Integration">
-    Go to **Integrations** → **Add Integration** → select **Custom Webhook** from the CRM category.
+  <Step title="Integration hinzufuegen">
+    Gehen Sie zu **Integrationen** → **Integration hinzufuegen** → waehlen Sie **Benutzerdefinierter Webhook** aus der Kategorie CRM.
   </Step>
-  <Step title="Configure">
-    | Field | Required | Description |
+  <Step title="Konfigurieren">
+    | Feld | Erforderlich | Beschreibung |
     |---|---|---|
-    | **Webhook URL** | Yes | The endpoint to send data to |
-    | **Webhook Secret** | No | Secret for HMAC-SHA256 request signing |
-    | **Headers** | No | Custom HTTP headers (JSON format, e.g., `Authorization: Bearer ...`) |
+    | **Webhook-URL** | Ja | Der Endpunkt, an den Daten gesendet werden |
+    | **Webhook-Geheimnis** | Nein | Geheimnis fuer die HMAC-SHA256-Anfragensignierung |
+    | **Header** | Nein | Benutzerdefinierte HTTP-Header (JSON-Format, z.B. `Authorization: Bearer ...`) |
   </Step>
-  <Step title="Test">
-    Click **Test Connection**. Revol sends a test payload and verifies the URL responds with a 2xx status.
+  <Step title="Testen">
+    Klicken Sie auf **Verbindung testen**. Revol sendet eine Test-Nutzlast und ueberpreuft, ob die URL mit einem 2xx-Status antwortet.
   </Step>
 </Steps>
 
-## Agent Tools
+## Agenten-Tools
 
-| Tool | Description |
+| Tool | Beschreibung |
 |---|---|
-| `send_payload` | Send structured JSON data (lead info, form data) to the webhook URL. Signed with HMAC-SHA256 if a secret is configured. |
-| `test_connection` | Verify the webhook URL is reachable and responds correctly |
+| `send_payload` | Strukturierte JSON-Daten (Lead-Informationen, Formulardaten) an die Webhook-URL senden. Mit HMAC-SHA256 signiert, wenn ein Geheimnis konfiguriert ist. |
+| `test_connection` | Ueberpruefen, ob die Webhook-URL erreichbar ist und korrekt antwortet |
 
-## Payload Format
+## Nutzlastformat
 
-When an agent calls `send_payload`, Revol sends a POST request with a JSON body. The content is determined by the AI agent based on what information was collected during the conversation:
+Wenn ein Agent `send_payload` aufruft, sendet Revol eine POST-Anfrage mit einem JSON-Body. Der Inhalt wird vom KI-Agenten basierend auf den waehrend der Konversation gesammelten Informationen bestimmt:
 
 ```json
 {
@@ -57,28 +57,28 @@ When an agent calls `send_payload`, Revol sends a POST request with a JSON body.
 }
 ```
 
-## Request Signing
+## Anfragensignierung
 
-If you provide a **Webhook Secret**, every request is signed with HMAC-SHA256:
+Wenn Sie ein **Webhook-Geheimnis** angeben, wird jede Anfrage mit HMAC-SHA256 signiert:
 
-- The signature is included in the `X-Webhook-Signature` header
-- Verify it on your server by computing `HMAC-SHA256(request_body, your_secret)` and comparing
+- Die Signatur ist im `X-Webhook-Signature`-Header enthalten
+- Verifizieren Sie sie auf Ihrem Server, indem Sie `HMAC-SHA256(request_body, your_secret)` berechnen und vergleichen
 
-## Using in Workflow Nodes
+## Verwendung in Workflow-Knoten
 
-Webhook tools work like any other agent tool:
+Webhook-Tools funktionieren wie jedes andere Agenten-Tool:
 
-1. Connect the webhook integration and test the URL
-2. Tools appear in the agent's **Tools** tab
-3. Add `send_payload` to a **custom node** in the workflow editor
-4. The LLM decides when to send data based on conversation context
+1. Verbinden Sie die Webhook-Integration und testen Sie die URL
+2. Die Tools erscheinen im **Tools**-Tab des Agenten
+3. Fuegen Sie `send_payload` zu einem **benutzerdefinierten Knoten** im Workflow-Editor hinzu
+4. Das LLM entscheidet basierend auf dem Konversationskontext, wann Daten gesendet werden
 
-**Example workflow:** Agent collects lead information (name, email, phone, interest) → on conversation end, uses `send_payload` to push the data to your CRM.
+**Beispiel-Workflow:** Agent sammelt Lead-Informationen (Name, E-Mail, Telefon, Interesse) → am Ende der Konversation verwendet er `send_payload`, um die Daten an Ihr CRM zu uebermitteln.
 
-## Use Cases
+## Anwendungsfaelle
 
-- **CRM integration** — Push qualified leads to Pipedrive, HubSpot, Salesforce, or any CRM with a webhook/API endpoint
-- **Zapier / Make** — Trigger multi-step automations from conversation events
-- **Slack / Discord** — Send notifications when high-value leads are captured
-- **Custom backend** — Call your own API to create orders, update records, or trigger internal workflows
-- **Analytics** — Send conversation outcomes to your data warehouse
+- **CRM-Integration** — Qualifizierte Leads an Pipedrive, HubSpot, Salesforce oder jedes CRM mit einem Webhook-/API-Endpunkt uebermitteln
+- **Zapier / Make** — Mehrstufige Automatisierungen aus Konversationsereignissen ausloesen
+- **Slack / Discord** — Benachrichtigungen senden, wenn hochwertige Leads erfasst werden
+- **Eigenes Backend** — Ihre eigene API aufrufen, um Bestellungen zu erstellen, Datensaetze zu aktualisieren oder interne Workflows auszuloesen
+- **Analyse** — Konversationsergebnisse an Ihr Data Warehouse senden

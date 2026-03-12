@@ -1,117 +1,117 @@
 ---
-title: Activity Log
-sidebarTitle: Activity Log
-description: "Browse and filter raw tracking events — clicks, form submissions, triggers, and custom events with full data payloads"
+title: Registro de Actividad
+sidebarTitle: Registro de Actividad
+description: "Explore y filtre eventos de seguimiento en bruto — clics, envíos de formularios, triggers y eventos personalizados con payloads de datos completos"
 ---
 
-## Overview
+## Descripción General
 
-The Activity Log tab shows the most recent 500 tracking events captured on your website. Use it to monitor visitor interactions, debug event tracking, verify trigger activations, and inspect captured form data — all in one chronological feed.
+La pestaña de Registro de Actividad muestra los 500 eventos de seguimiento más recientes capturados en su sitio web. Úsela para monitorear las interacciones de los visitantes, depurar el seguimiento de eventos, verificar las activaciones de triggers e inspeccionar los datos de formularios capturados — todo en un feed cronológico.
 
 <Frame>
-  <img className="block dark:hidden" src="/images/tracker-activity-log-light.png" alt="Activity log" />
-  <img className="hidden dark:block" src="/images/tracker-activity-log-dark.png" alt="Activity log" />
+  <img className="block dark:hidden" src="/images/tracker-activity-log-light.png" alt="Registro de actividad" />
+  <img className="hidden dark:block" src="/images/tracker-activity-log-dark.png" alt="Registro de actividad" />
 </Frame>
 
 ---
 
-## Events Table
+## Tabla de Eventos
 
-Each row in the activity log represents a single tracked event:
+Cada fila en el registro de actividad representa un único evento rastreado:
 
-| Column | Description |
+| Columna | Descripción |
 |---|---|
-| **Time** | When the event occurred. Recent events show relative time (e.g., "5m ago"), older events show date and time. Hover for the full timestamp. |
-| **Event** | Event icon and name. The name comes from the event definition (if linked), trigger name (if trigger-related), or the raw event type. |
-| **Page** | The page URL where the event fired. Long URLs are truncated to 50 characters — hover to see the full path. |
-| **Data** | Preview of event payload — shows the first 3 key-value pairs. If there are more, a "+N more" badge appears. Events with no data show "—". |
-| **Session** | Session ID linking the event to a specific visitor session. |
+| **Hora** | Cuándo ocurrió el evento. Los eventos recientes muestran tiempo relativo (por ejemplo, "hace 5m"), los eventos más antiguos muestran fecha y hora. Pase el cursor para ver la marca de tiempo completa. |
+| **Evento** | Icono y nombre del evento. El nombre proviene de la definición del evento (si está vinculado), nombre del trigger (si está relacionado con trigger) o el tipo de evento en bruto. |
+| **Página** | La URL de la página donde se disparó el evento. Las URLs largas se truncan a 50 caracteres — pase el cursor para ver la ruta completa. |
+| **Datos** | Vista previa del payload del evento — muestra los primeros 3 pares clave-valor. Si hay más, aparece una insignia "+N más". Los eventos sin datos muestran "—". |
+| **Sesión** | ID de sesión que vincula el evento a una sesión de visitante específica. |
 
-The table displays **15 events per page** with pagination at the bottom.
+La tabla muestra **15 eventos por página** con paginación en la parte inferior.
 
 ---
 
-## Event Types
+## Tipos de Eventos
 
-The activity log captures several categories of events:
+El registro de actividad captura varias categorías de eventos:
 
-### Interaction Events
+### Eventos de Interacción
 
-| Type | Icon | Description |
+| Tipo | Icono | Descripción |
 |---|---|---|
-| **click** | Pointer | Visitor clicked an element matching a CSS selector defined in your events |
-| **scroll** | Arrows | Visitor scrolled past a tracked element (IntersectionObserver) |
-| **form_submit** | Document | Visitor submitted a form matching a CSS selector |
-| **custom** | Code | Custom event fired via `RevolTracker.track()` from your JavaScript code |
+| **click** | Puntero | El visitante hizo clic en un elemento que coincide con un selector CSS definido en sus eventos |
+| **scroll** | Flechas | El visitante se desplazó más allá de un elemento rastreado (IntersectionObserver) |
+| **form_submit** | Documento | El visitante envió un formulario que coincide con un selector CSS |
+| **custom** | Código | Evento personalizado disparado vía `RevolTracker.track()` desde su código JavaScript |
 
-### Trigger Events
+### Eventos de Trigger
 
-| Type | Icon | Description |
+| Tipo | Icono | Descripción |
 |---|---|---|
-| **trigger_shown** | Bell | A trigger was displayed to the visitor (modal, toast, or redirect) |
-| **trigger_clicked** | Cursor | Visitor clicked a button inside a trigger overlay |
-| **trigger_dismissed** | X | Visitor closed or dismissed a trigger overlay |
-| **trigger_promo_copied** | Clipboard | Visitor copied a promo code from a trigger |
+| **trigger_shown** | Campana | Se mostró un trigger al visitante (modal, toast o redireccionamiento) |
+| **trigger_clicked** | Cursor | El visitante hizo clic en un botón dentro de un overlay de trigger |
+| **trigger_dismissed** | X | El visitante cerró o descartó un overlay de trigger |
+| **trigger_promo_copied** | Portapapeles | El visitante copió un código promocional de un trigger |
 
-### Lifecycle Events
+### Eventos de Ciclo de Vida
 
-| Type | Icon | Description |
+| Tipo | Icono | Descripción |
 |---|---|---|
-| **visibility** | Eye | A tracked element became visible in the viewport |
+| **visibility** | Ojo | Un elemento rastreado se hizo visible en el viewport |
 
 <Note>
-  Lifecycle events (trigger_shown, trigger_dismissed, visibility) are **hidden by default** to reduce noise. Use the Lifecycle filter to show them.
+  Los eventos de ciclo de vida (trigger_shown, trigger_dismissed, visibility) están **ocultos por defecto** para reducir el ruido. Use el filtro de Ciclo de Vida para mostrarlos.
 </Note>
 
 ---
 
-## Filters
+## Filtros
 
-The activity log supports a flexible filter system. Click the **+ Filter** button to add filters. Active filters appear as removable chips above the table.
+El registro de actividad soporta un sistema de filtros flexible. Haga clic en el botón **+ Filtro** para agregar filtros. Los filtros activos aparecen como chips removibles sobre la tabla.
 
-### Available Filters
+### Filtros Disponibles
 
-| Filter | Type | Description |
+| Filtro | Tipo | Descripción |
 |---|---|---|
-| **Event Type** | Server-side | Show only events of a specific type: click, scroll, form_submit, visibility, custom, or trigger |
-| **Campaign** | Server-side | Show events only from sessions linked to a specific campaign. The dropdown is populated dynamically from your existing campaigns. |
-| **Has Data** | Hybrid | Filter by event payload: **Any data** (events with payload), **No data** (events without payload), or **Form data only** (events containing form fields like email, phone, name) |
-| **Lifecycle** | Client-side | Toggle visibility of lifecycle events (trigger_shown, trigger_dismissed, visibility). Hidden by default. |
-| **Search** | Client-side | Free-text search across event type and page URL. Filters in real-time with a 200ms debounce. |
+| **Tipo de Evento** | Servidor | Mostrar solo eventos de un tipo específico: click, scroll, form_submit, visibility, custom o trigger |
+| **Campaña** | Servidor | Mostrar eventos solo de sesiones vinculadas a una campaña específica. El desplegable se llena dinámicamente con sus campañas existentes. |
+| **Tiene Datos** | Híbrido | Filtrar por payload del evento: **Cualquier dato** (eventos con payload), **Sin datos** (eventos sin payload) o **Solo datos de formulario** (eventos que contienen campos de formulario como email, teléfono, nombre) |
+| **Ciclo de Vida** | Cliente | Alternar la visibilidad de eventos de ciclo de vida (trigger_shown, trigger_dismissed, visibility). Ocultos por defecto. |
+| **Buscar** | Cliente | Búsqueda de texto libre en tipo de evento y URL de página. Filtra en tiempo real con un debounce de 200ms. |
 
 <Tip>
-  **Server-side filters** (Event Type, Campaign, Any data) trigger a full data reload from the server. **Client-side filters** (Lifecycle, No data, Form data, Search) filter the already-loaded data instantly — no network request needed.
+  Los **filtros del servidor** (Tipo de Evento, Campaña, Cualquier dato) activan una recarga completa de datos desde el servidor. Los **filtros del cliente** (Ciclo de Vida, Sin datos, Datos de formulario, Buscar) filtran los datos ya cargados instantáneamente — sin necesidad de solicitud de red.
 </Tip>
 
-### Filter Behavior
+### Comportamiento de Filtros
 
-- Already-applied filters are disabled in the dropdown to prevent duplicates
-- Each filter chip shows the filter name and selected value
-- Click the **×** on a chip to remove the filter
-- Filters can be combined — for example, show only `form_submit` events from a specific campaign that have form data
+- Los filtros ya aplicados se deshabilitan en el desplegable para prevenir duplicados
+- Cada chip de filtro muestra el nombre del filtro y el valor seleccionado
+- Haga clic en la **×** de un chip para eliminar el filtro
+- Los filtros se pueden combinar — por ejemplo, mostrar solo eventos `form_submit` de una campaña específica que tengan datos de formulario
 
 ---
 
-## Event Detail Panel
+## Panel de Detalle del Evento
 
-Click any event row that has data (the **Data** column shows key-value pairs instead of "—") to expand the detail panel below the row. The panel displays the full event payload as a **syntax-highlighted JSON block**.
+Haga clic en cualquier fila de evento que tenga datos (la columna **Datos** muestra pares clave-valor en lugar de "—") para expandir el panel de detalle debajo de la fila. El panel muestra el payload completo del evento como un **bloque JSON con resaltado de sintaxis**.
 
-### JSON Code Block
+### Bloque de Código JSON
 
-The expanded panel renders the complete `event_data` object with color-coded syntax:
+El panel expandido renderiza el objeto completo `event_data` con sintaxis codificada por colores:
 
-| Element | Color | Example |
+| Elemento | Color | Ejemplo |
 |---|---|---|
-| **Keys** | Purple | `"fields"`, `"email"` |
-| **String values** | Green | `"john@example.com"` |
-| **Numbers, booleans, null** | Orange | `42`, `true`, `null` |
+| **Claves** | Púrpura | `"fields"`, `"email"` |
+| **Valores de cadena** | Verde | `"john@example.com"` |
+| **Números, booleanos, nulo** | Naranja | `42`, `true`, `null` |
 
-### What Data Contains
+### Qué Contienen los Datos
 
-The JSON payload varies by event type:
+El payload JSON varía según el tipo de evento:
 
 <Tabs>
-  <Tab title="Click">
+  <Tab title="Clic">
     ```json
     {
       "selector": "#cta-button",
@@ -120,9 +120,9 @@ The JSON payload varies by event type:
       "y": 320
     }
     ```
-    Contains the CSS selector that matched, the element's text content, and click coordinates.
+    Contiene el selector CSS que coincidió, el contenido de texto del elemento y las coordenadas del clic.
   </Tab>
-  <Tab title="Form Submit">
+  <Tab title="Envío de Formulario">
     ```json
     {
       "fields": {
@@ -132,9 +132,9 @@ The JSON payload varies by event type:
       }
     }
     ```
-    Contains captured form field values. Password and hidden fields are automatically excluded.
+    Contiene los valores capturados de los campos del formulario. Los campos de contraseña y ocultos se excluyen automáticamente.
   </Tab>
-  <Tab title="Custom Event">
+  <Tab title="Evento Personalizado">
     ```json
     {
       "product_id": "SKU-12345",
@@ -143,7 +143,7 @@ The JSON payload varies by event type:
       "currency": "USD"
     }
     ```
-    Contains whatever data was passed to `RevolTracker.track()`. Structure depends on your implementation.
+    Contiene los datos que se pasaron a `RevolTracker.track()`. La estructura depende de su implementación.
   </Tab>
   <Tab title="Trigger">
     ```json
@@ -151,41 +151,41 @@ The JSON payload varies by event type:
       "action_type": "modal"
     }
     ```
-    Contains the trigger's action type (modal, toast, or redirect).
+    Contiene el tipo de acción del trigger (modal, toast o redirect).
   </Tab>
 </Tabs>
 
-### Copy Button
+### Botón de Copiar
 
-Each JSON block has a **Copy** button in the bottom-right corner. Click it to copy the formatted JSON to your clipboard — useful for debugging, sharing with teammates, or importing data into other tools.
+Cada bloque JSON tiene un botón **Copiar** en la esquina inferior derecha. Haga clic para copiar el JSON formateado al portapapeles — útil para depuración, compartir con compañeros de equipo o importar datos a otras herramientas.
 
 ---
 
-## Use Cases
+## Casos de Uso
 
 <AccordionGroup>
-  <Accordion title="Debug event tracking">
-    After setting up a new click or form event, open the Activity Log and interact with the element on your website. The event should appear in the log within seconds. Check the Data column to verify the correct payload is captured.
+  <Accordion title="Depurar seguimiento de eventos">
+    Después de configurar un nuevo evento de clic o formulario, abra el Registro de Actividad e interactúe con el elemento en su sitio web. El evento debería aparecer en el registro en segundos. Revise la columna Datos para verificar que el payload correcto se captura.
   </Accordion>
-  <Accordion title="Verify trigger conditions">
-    Enable the **Lifecycle** filter to show `trigger_shown` events. Navigate your site with different conditions (UTM parameters, device types, scroll depths) to confirm triggers fire when expected.
+  <Accordion title="Verificar condiciones de triggers">
+    Habilite el filtro de **Ciclo de Vida** para mostrar eventos `trigger_shown`. Navegue su sitio con diferentes condiciones (parámetros UTM, tipos de dispositivo, profundidades de scroll) para confirmar que los triggers se disparan cuando se espera.
   </Accordion>
-  <Accordion title="Review form submissions">
-    Use the **Has Data → Form data only** filter to see all form submissions with captured field values. Expand each row to inspect the full payload — verify that the right fields are being captured and no sensitive data is leaking.
+  <Accordion title="Revisar envíos de formularios">
+    Use el filtro **Tiene Datos → Solo datos de formulario** para ver todos los envíos de formularios con valores de campos capturados. Expanda cada fila para inspeccionar el payload completo — verifique que los campos correctos se están capturando y que no se están filtrando datos sensibles.
   </Accordion>
-  <Accordion title="Monitor campaign activity">
-    Select a specific campaign from the **Campaign** filter to see all events from visitors who arrived via that campaign. Useful for verifying that campaign attribution works correctly.
+  <Accordion title="Monitorear actividad de campaña">
+    Seleccione una campaña específica del filtro de **Campaña** para ver todos los eventos de visitantes que llegaron a través de esa campaña. Útil para verificar que la atribución de campaña funciona correctamente.
   </Accordion>
-  <Accordion title="Quick data export">
-    Find the event you need, expand the detail panel, and click **Copy** to grab the JSON payload. Paste it into a spreadsheet, Slack message, or support ticket for quick reference.
+  <Accordion title="Exportación rápida de datos">
+    Encuentre el evento que necesita, expanda el panel de detalle y haga clic en **Copiar** para obtener el payload JSON. Péguelo en una hoja de cálculo, mensaje de Slack o ticket de soporte para referencia rápida.
   </Accordion>
 </AccordionGroup>
 
 ---
 
-## Limits
+## Límites
 
-- The activity log loads the **last 500 events** from the server. Older events are available through session-level event views.
-- **Search** matches event type and page URL only — it does not search inside event data payloads.
-- Events with no `event_data` cannot be expanded (the row is not clickable).
-- Page navigation collapses any open detail panel.
+- El registro de actividad carga los **últimos 500 eventos** del servidor. Los eventos más antiguos están disponibles a través de las vistas de eventos a nivel de sesión.
+- La **Búsqueda** coincide solo con el tipo de evento y la URL de página — no busca dentro de los payloads de datos de eventos.
+- Los eventos sin `event_data` no se pueden expandir (la fila no es clicable).
+- La navegación de página colapsa cualquier panel de detalle abierto.

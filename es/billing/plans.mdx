@@ -1,267 +1,267 @@
 ---
-title: Plans & Pricing
-description: "Revol subscription plans, Stripe payments, add-on packs, subscription management, and invoices"
+title: Planes y Precios
+description: "Planes de suscripción de Revol, pagos con Stripe, paquetes adicionales, gestión de suscripciones y facturas"
 ---
 
-## Overview
+## Descripción General
 
-Revol uses a **token-based billing** model powered by **Stripe**. Every AI interaction consumes tokens — the more your agents work, the more tokens are used. Choose a plan that fits your volume, and purchase add-on packs when you need more resources without upgrading.
+Revol usa un modelo de **facturación basado en tokens** impulsado por **Stripe**. Cada interacción de IA consume tokens — cuanto más trabajan sus agentes, más tokens se usan. Elija un plan que se ajuste a su volumen, y compre paquetes adicionales cuando necesite más recursos sin actualizar su plan.
 
 ---
 
-## Pricing Page
+## Página de Precios
 
-Navigate to **Billing** → **Pricing Plan** to compare plans and subscribe.
+Navegue a **Facturación** → **Plan de Precios** para comparar planes y suscribirse.
 
 <Frame>
-  <img className="block dark:hidden" src="/images/billing-plans-light.png" alt="Plans comparison" />
-  <img className="hidden dark:block" src="/images/billing-plans-dark.png" alt="Plans comparison" />
+  <img className="block dark:hidden" src="/images/billing-plans-light.png" alt="Comparación de planes" />
+  <img className="hidden dark:block" src="/images/billing-plans-dark.png" alt="Comparación de planes" />
 </Frame>
 
-The page displays a hero card at the top with your current plan badge and a **Manage Subscription** button (paid plans only), followed by three plan cards arranged side by side.
+La página muestra una tarjeta destacada en la parte superior con la insignia de su plan actual y un botón **Gestionar Suscripción** (solo planes de pago), seguido de tres tarjetas de plan dispuestas una al lado de la otra.
 
-Your current plan card is highlighted with a dark border and a green **"Your Plan"** badge. Each card is divided into three feature groups: **Platform**, **AI Resources**, and **Features**. Included capabilities show a green checkmark, while unavailable features show a grey X.
+La tarjeta de su plan actual se resalta con un borde oscuro y una insignia verde **"Su Plan"**. Cada tarjeta se divide en tres grupos de funcionalidades: **Plataforma**, **Recursos de IA** y **Funcionalidades**. Las capacidades incluidas muestran una marca verde, mientras que las funcionalidades no disponibles muestran una X gris.
 
-### Plans
+### Planes
 
 <Tabs>
   <Tab title="Free">
-    **$0/month** — get started and explore the platform
+    **$0/mes** — comience y explore la plataforma
 
-    | Resource | Limit |
+    | Recurso | Límite |
     |----------|-------|
-    | Companies | 1 |
-    | AI Agents | 1 |
-    | Standard Tokens | 20,000 / day |
-    | Premium Tokens | — |
-    | Voice (STT) | — |
-    | Voice (TTS) | — |
-    | Embedding Tokens | 100,000 / month |
-    | Storage | 100 MB |
-    | Knowledge Docs | 10 |
-    | Conversations | 100 |
-    | Tracking Retention | 30 days |
-    | Integrations | — |
-    | Widget Branding | Revol branding |
-    | Marketplace | Browse only |
-    | Rate Limit | 10 req/min |
+    | Empresas | 1 |
+    | Agentes de IA | 1 |
+    | Tokens Estándar | 20,000 / día |
+    | Tokens Premium | — |
+    | Voz (STT) | — |
+    | Voz (TTS) | — |
+    | Tokens de Embedding | 100,000 / mes |
+    | Almacenamiento | 100 MB |
+    | Documentos de Conocimiento | 10 |
+    | Conversaciones | 100 |
+    | Retención de Seguimiento | 30 días |
+    | Integraciones | — |
+    | Marca del Widget | Marca Revol |
+    | Marketplace | Solo navegación |
+    | Límite de Velocidad | 10 sol/min |
   </Tab>
   <Tab title="Premium">
-    **$29/month** — for growing businesses
+    **$29/mes** — para negocios en crecimiento
 
-    | Resource | Limit |
+    | Recurso | Límite |
     |----------|-------|
-    | Companies | 3 |
-    | AI Agents | 5 |
-    | Standard Tokens | 5,000,000 / billing cycle |
-    | Premium Tokens | 1,000,000 / billing cycle |
-    | Voice (STT) | 60 min |
-    | Voice (TTS) | 200,000 chars |
-    | Embedding Tokens | 1,000,000 / billing cycle |
-    | Storage | 5 GB |
-    | Knowledge Docs | 100 |
-    | Conversations | 5,000 |
-    | Tracking Retention | 180 days |
-    | Integrations | VoIP + Messengers |
-    | Widget Branding | Custom |
-    | Marketplace | Install + Publish |
-    | Rate Limit | 60 req/min |
+    | Empresas | 3 |
+    | Agentes de IA | 5 |
+    | Tokens Estándar | 5,000,000 / ciclo de facturación |
+    | Tokens Premium | 1,000,000 / ciclo de facturación |
+    | Voz (STT) | 60 min |
+    | Voz (TTS) | 200,000 caracteres |
+    | Tokens de Embedding | 1,000,000 / ciclo de facturación |
+    | Almacenamiento | 5 GB |
+    | Documentos de Conocimiento | 100 |
+    | Conversaciones | 5,000 |
+    | Retención de Seguimiento | 180 días |
+    | Integraciones | VoIP + Mensajeros |
+    | Marca del Widget | Personalizada |
+    | Marketplace | Instalar + Publicar |
+    | Límite de Velocidad | 60 sol/min |
   </Tab>
   <Tab title="Professional">
-    **$79/month** — for agencies and enterprises
+    **$79/mes** — para agencias y empresas
 
-    | Resource | Limit |
+    | Recurso | Límite |
     |----------|-------|
-    | Companies | 10 |
-    | AI Agents | Unlimited |
-    | Standard Tokens | 25,000,000 / billing cycle |
-    | Premium Tokens | 2,000,000 / billing cycle |
-    | Voice (STT) | 300 min |
-    | Voice (TTS) | 500,000 chars |
-    | Embedding Tokens | 5,000,000 / billing cycle |
-    | Storage | 50 GB |
-    | Knowledge Docs | 1,000 |
-    | Conversations | 50,000 |
-    | Tracking Retention | 730 days (2 years) |
-    | Integrations | All (VoIP, Messengers, Google Workspace, Ads, Webhooks) |
-    | Widget Branding | White Label |
-    | Marketplace | Install + Publish + Priority |
-    | Rate Limit | 300 req/min |
+    | Empresas | 10 |
+    | Agentes de IA | Ilimitados |
+    | Tokens Estándar | 25,000,000 / ciclo de facturación |
+    | Tokens Premium | 2,000,000 / ciclo de facturación |
+    | Voz (STT) | 300 min |
+    | Voz (TTS) | 500,000 caracteres |
+    | Tokens de Embedding | 5,000,000 / ciclo de facturación |
+    | Almacenamiento | 50 GB |
+    | Documentos de Conocimiento | 1,000 |
+    | Conversaciones | 50,000 |
+    | Retención de Seguimiento | 730 días (2 años) |
+    | Integraciones | Todas (VoIP, Mensajeros, Google Workspace, Ads, Webhooks) |
+    | Marca del Widget | Marca Blanca |
+    | Marketplace | Instalar + Publicar + Prioridad |
+    | Límite de Velocidad | 300 sol/min |
   </Tab>
 </Tabs>
 
 <Note>
-  The Free plan resets token usage **daily** (UTC midnight). Paid plans reset at the start of each **billing cycle** (the date you subscribed).
+  El plan Free restablece el uso de tokens **diariamente** (medianoche UTC). Los planes de pago se restablecen al inicio de cada **ciclo de facturación** (la fecha en que se suscribió).
 </Note>
 
-### Model Access
+### Acceso a Modelos
 
-Each plan determines which AI models are available:
+Cada plan determina qué modelos de IA están disponibles:
 
-| Tier | Models | Plans |
+| Nivel | Modelos | Planes |
 |------|--------|-------|
-| **Standard** | GPT-4o Mini, Claude 3.5 Haiku, Gemini 2.0 Flash, Llama 3.1 8B | All plans |
-| **Premium** | GPT-4o, Claude 3.5 Sonnet, Gemini 2.5 Pro, Llama 3.3 70B | Premium and Professional |
+| **Estándar** | GPT-4o Mini, Claude 3.5 Haiku, Gemini 2.0 Flash, Llama 3.1 8B | Todos los planes |
+| **Premium** | GPT-4o, Claude 3.5 Sonnet, Gemini 2.5 Pro, Llama 3.3 70B | Premium y Professional |
 
-Standard models are faster and consume standard tokens. Premium models offer higher-quality responses and consume premium tokens. On the Free plan, premium models are locked — selecting one shows an upgrade prompt with a link to the Pricing page.
+Los modelos estándar son más rápidos y consumen tokens estándar. Los modelos premium ofrecen respuestas de mayor calidad y consumen tokens premium. En el plan Free, los modelos premium están bloqueados — seleccionar uno muestra un aviso de actualización con enlace a la página de Precios.
 
 ---
 
-## Payment via Stripe
+## Pago vía Stripe
 
-All payments are processed securely through **Stripe**. Revol does not store your card details — everything is handled by Stripe's PCI-compliant infrastructure.
+Todos los pagos se procesan de forma segura a través de **Stripe**. Revol no almacena los datos de su tarjeta — todo es gestionado por la infraestructura compatible con PCI de Stripe.
 
-### Subscribing to a Plan
+### Suscribirse a un Plan
 
-1. Go to **Billing** → **Pricing Plan** and click **Select Plan** on the desired plan card
-2. You are redirected to a **Stripe Checkout** page — enter your card details and confirm
-3. After successful payment, your plan activates immediately and all new limits take effect
-4. A subscription is created with automatic monthly renewal
+1. Vaya a **Facturación** → **Plan de Precios** y haga clic en **Seleccionar Plan** en la tarjeta del plan deseado
+2. Será redirigido a una página de **Stripe Checkout** — ingrese los datos de su tarjeta y confirme
+3. Después del pago exitoso, su plan se activa inmediatamente y todos los nuevos límites entran en efecto
+4. Se crea una suscripción con renovación automática mensual
 
-### Managing Your Subscription
+### Gestionar Su Suscripción
 
-Click the **Manage** button on the Overview or Pricing page to open the Manage Subscription modal.
+Haga clic en el botón **Gestionar** en la página de Descripción General o Precios para abrir el modal de Gestionar Suscripción.
 
 <Frame>
-  <img className="block dark:hidden" src="/images/billing-manage-light.png" alt="Manage Subscription modal" />
-  <img className="hidden dark:block" src="/images/billing-manage-dark.png" alt="Manage Subscription modal" />
+  <img className="block dark:hidden" src="/images/billing-manage-light.png" alt="Modal de Gestionar Suscripción" />
+  <img className="hidden dark:block" src="/images/billing-manage-dark.png" alt="Modal de Gestionar Suscripción" />
 </Frame>
 
-The modal displays three information rows:
+El modal muestra tres filas de información:
 
-| Row | Description |
+| Fila | Descripción |
 |-----|-------------|
-| **Plan** | Your current plan name with a gradient badge, plus the monthly price |
-| **Billing Period** | Start and end dates of the current billing cycle (e.g., 15.03.2026 — 15.04.2026) |
-| **Status** | A colored badge — **Active** (green), **Canceling** (amber), or **Canceled** (red) |
+| **Plan** | El nombre de su plan actual con una insignia degradada, más el precio mensual |
+| **Período de Facturación** | Fechas de inicio y fin del ciclo de facturación actual (por ejemplo, 15.03.2026 — 15.04.2026) |
+| **Estado** | Una insignia de color — **Activo** (verde), **Cancelando** (ámbar) o **Cancelado** (rojo) |
 
-**Auto-renewal toggle** — a switch at the bottom of the modal:
-- **Turning off** cancels the subscription at the end of the current billing period. A confirmation dialog appears before proceeding. You keep full access until the period ends (grace period).
-- **Turning on** resumes a previously canceled subscription if the grace period hasn't expired yet.
+**Interruptor de renovación automática** — un conmutador en la parte inferior del modal:
+- **Desactivar** cancela la suscripción al final del período de facturación actual. Aparece un diálogo de confirmación antes de proceder. Mantiene acceso completo hasta que termine el período (período de gracia).
+- **Activar** reanuda una suscripción previamente cancelada si el período de gracia no ha expirado.
 
-During the grace period, a yellow warning appears: *"Your subscription will end on DD.MM.YYYY. Auto-renewal is disabled."*
+Durante el período de gracia, aparece una advertencia amarilla: *"Su suscripción terminará el DD.MM.AAAA. La renovación automática está deshabilitada."*
 
-**Footer buttons:**
-- **Close** — dismiss the modal
-- **Change Plan** — navigate to the Pricing page to upgrade or downgrade
+**Botones del pie:**
+- **Cerrar** — descartar el modal
+- **Cambiar Plan** — navegar a la página de Precios para actualizar o bajar de plan
 
-**Payment Methods** — click **Manage Payment Methods** on the Overview page to open the **Stripe Customer Portal**, where you can update cards, view receipts, and manage billing details.
+**Métodos de Pago** — haga clic en **Gestionar Métodos de Pago** en la página de Descripción General para abrir el **Portal de Cliente de Stripe**, donde puede actualizar tarjetas, ver recibos y gestionar detalles de facturación.
 
 <Warning>
-  When you cancel a subscription, it remains active until the end of the current billing period (grace period). After that, you are automatically downgraded to the Free plan. All your data is preserved, but limits are reduced.
+  Cuando cancela una suscripción, permanece activa hasta el final del período de facturación actual (período de gracia). Después de eso, se baja automáticamente al plan Free. Todos sus datos se preservan, pero los límites se reducen.
 </Warning>
 
-### Upgrading and Downgrading
+### Actualización y Degradación
 
-- **Upgrade** — takes effect immediately. You are charged the new plan price, prorated for the remaining days in the current period.
-- **Downgrade** — takes effect at the end of the current billing period. You keep full access to the higher plan until the period ends.
+- **Actualización** — entra en efecto inmediatamente. Se le cobra el nuevo precio del plan, prorrateado por los días restantes del período actual.
+- **Degradación** — entra en efecto al final del período de facturación actual. Mantiene acceso completo al plan superior hasta que termine el período.
 
 ---
 
-## Add-on Packs
+## Paquetes Adicionales
 
-Need more resources without upgrading your plan? Purchase one-time add-on packs from **Billing** → **Pricing Plan** (packs section at the bottom) or the dedicated **Add-on Packs** page.
+¿Necesita más recursos sin actualizar su plan? Compre paquetes adicionales únicos desde **Facturación** → **Plan de Precios** (sección de paquetes en la parte inferior) o la página dedicada de **Paquetes Adicionales**.
 
 <Frame>
-  <img className="block dark:hidden" src="/images/billing-packs-light.png" alt="Add-on Packs" />
-  <img className="hidden dark:block" src="/images/billing-packs-dark.png" alt="Add-on Packs" />
+  <img className="block dark:hidden" src="/images/billing-packs-light.png" alt="Paquetes Adicionales" />
+  <img className="hidden dark:block" src="/images/billing-packs-dark.png" alt="Paquetes Adicionales" />
 </Frame>
 
-The packs page displays a 6-column grid (3 on tablet, 2 on mobile) of available packs:
+La página de paquetes muestra una cuadrícula de 6 columnas (3 en tableta, 2 en móvil) de paquetes disponibles:
 
-| Pack | What You Get | Price |
+| Paquete | Lo Que Obtiene | Precio |
 |------|-------------|-------|
-| **Token Pack S** | 5,000,000 standard tokens | $4 |
-| **Token Pack M** | 20,000,000 standard tokens | $15 |
-| **Token Pack L** | 50,000,000 standard tokens | $35 |
-| **Premium Token Pack** | 2,000,000 premium tokens | $20 |
-| **Voice Pack** | 60 STT minutes + 100,000 TTS characters | $3 |
-| **Storage Pack** | 10 GB additional storage | $1 |
+| **Paquete de Tokens S** | 5,000,000 tokens estándar | $4 |
+| **Paquete de Tokens M** | 20,000,000 tokens estándar | $15 |
+| **Paquete de Tokens L** | 50,000,000 tokens estándar | $35 |
+| **Paquete de Tokens Premium** | 2,000,000 tokens premium | $20 |
+| **Paquete de Voz** | 60 minutos STT + 100,000 caracteres TTS | $3 |
+| **Paquete de Almacenamiento** | 10 GB de almacenamiento adicional | $1 |
 
-Each pack card shows an icon (bolt for tokens, microphone for voice, database for storage), the pack name, a description of what's included, the price, and a **Buy** button.
+Cada tarjeta de paquete muestra un icono (rayo para tokens, micrófono para voz, base de datos para almacenamiento), el nombre del paquete, una descripción de lo incluido, el precio y un botón **Comprar**.
 
-Clicking **Buy** redirects you to Stripe Checkout for a one-time payment (not recurring). The pack activates immediately after successful payment.
+Hacer clic en **Comprar** lo redirige a Stripe Checkout para un pago único (no recurrente). El paquete se activa inmediatamente después del pago exitoso.
 
 <Note>
-  Add-on packs expire **3 months** after purchase. Unused resources do not roll over. When you have multiple active packs, the oldest-expiring pack is consumed first.
+  Los paquetes adicionales expiran **3 meses** después de la compra. Los recursos no utilizados no se transfieren. Cuando tiene múltiples paquetes activos, se consume primero el paquete con la expiración más próxima.
 </Note>
 
 <Tip>
-  Packs supplement your plan limits — they are used only after your included plan quota is exhausted. For example, if your Premium plan includes 5M standard tokens and you purchased a Token Pack S (5M), you effectively have 10M tokens for that period.
+  Los paquetes complementan los límites de su plan — se usan solo después de que su cuota incluida del plan se agota. Por ejemplo, si su plan Premium incluye 5M de tokens estándar y compró un Paquete de Tokens S (5M), efectivamente tiene 10M de tokens para ese período.
 </Tip>
 
 ---
 
-## Invoices
+## Facturas
 
-All payment history is available in **Billing** → **Invoices**.
+Todo el historial de pagos está disponible en **Facturación** → **Facturas**.
 
 <Frame>
-  <img className="block dark:hidden" src="/images/billing-invoices-light.png" alt="Invoices page" />
-  <img className="hidden dark:block" src="/images/billing-invoices-dark.png" alt="Invoices page" />
+  <img className="block dark:hidden" src="/images/billing-invoices-light.png" alt="Página de facturas" />
+  <img className="hidden dark:block" src="/images/billing-invoices-dark.png" alt="Página de facturas" />
 </Frame>
 
-### Summary Cards
+### Tarjetas de Resumen
 
-Three cards at the top of the page provide a quick financial overview:
+Tres tarjetas en la parte superior de la página proporcionan un resumen financiero rápido:
 
-| Card | Icon | Description |
+| Tarjeta | Icono | Descripción |
 |------|------|-------------|
-| **Total Paid** | Cash (green) | Total amount paid across all transactions, formatted as USD |
-| **Transactions** | Receipt (blue) | Total number of billing transactions |
-| **Active Plan** | Crown (purple) | Your current subscription plan name |
+| **Total Pagado** | Efectivo (verde) | Monto total pagado en todas las transacciones, formateado como USD |
+| **Transacciones** | Recibo (azul) | Número total de transacciones de facturación |
+| **Plan Activo** | Corona (púrpura) | Nombre de su plan de suscripción actual |
 
-The Total Paid and Transactions values update dynamically when you apply filters — they reflect only the filtered results.
+Los valores de Total Pagado y Transacciones se actualizan dinámicamente cuando aplica filtros — reflejan solo los resultados filtrados.
 
-### Invoice Table
+### Tabla de Facturas
 
-A filterable, paginated table of every billing transaction. Click **+ Filter** to add filter chips:
+Una tabla filtrable y paginada de cada transacción de facturación. Haga clic en **+ Filtro** para agregar chips de filtro:
 
-| Filter | Options |
+| Filtro | Opciones |
 |--------|---------|
-| **Date From** | Calendar date picker |
-| **Date To** | Calendar date picker |
-| **Type** | Subscription, Pack Purchase, Plan Change |
-| **Status** | Paid, Pending, Failed, Refunded |
+| **Fecha Desde** | Selector de fecha del calendario |
+| **Fecha Hasta** | Selector de fecha del calendario |
+| **Tipo** | Suscripción, Compra de Paquete, Cambio de Plan |
+| **Estado** | Pagado, Pendiente, Fallido, Reembolsado |
 
-**Table columns (7):**
+**Columnas de la tabla (7):**
 
-| Column | Description | Format |
+| Columna | Descripción | Formato |
 |--------|-------------|--------|
-| **#** | Row number | Sequential index on current page |
-| **Date** | Payment date | `DD.MM.YYYY` |
-| **Description** | What was paid for | Plan name, pack name, or change description |
-| **Period** | Billing period covered | `"Mar 15 – Apr 15"` or `—` for one-time purchases |
-| **Amount** | Payment amount | Pre-formatted USD value (e.g., `$29.00`) |
-| **Status** | Payment status | Color-coded badge with dot indicator |
-| **PDF** | Invoice document | PDF download link or hosted invoice link |
+| **#** | Número de fila | Índice secuencial en la página actual |
+| **Fecha** | Fecha de pago | `DD.MM.AAAA` |
+| **Descripción** | Por qué se pagó | Nombre del plan, nombre del paquete o descripción del cambio |
+| **Período** | Período de facturación cubierto | `"Mar 15 – Abr 15"` o `—` para compras únicas |
+| **Monto** | Monto del pago | Valor USD pre-formateado (por ejemplo, `$29.00`) |
+| **Estado** | Estado del pago | Insignia codificada por color con indicador de punto |
+| **PDF** | Documento de factura | Enlace de descarga PDF o enlace de factura hospedada |
 
-**Status badges:**
+**Insignias de estado:**
 
-| Status | Color | Dot |
+| Estado | Color | Punto |
 |--------|-------|-----|
-| **Paid** | Green | Green dot |
-| **Pending** | Amber | Amber dot |
-| **Failed** | Red | Red dot |
-| **Refunded** | Grey | Grey dot |
+| **Pagado** | Verde | Punto verde |
+| **Pendiente** | Ámbar | Punto ámbar |
+| **Fallido** | Rojo | Punto rojo |
+| **Reembolsado** | Gris | Punto gris |
 
-**PDF column:** If a Stripe-generated PDF is available, a PDF icon links to the downloadable file. If only a hosted invoice URL exists, an external-link icon opens it in a new tab. Otherwise, the invoice number is shown as plain text.
+**Columna PDF:** Si hay un PDF generado por Stripe disponible, un icono PDF enlaza al archivo descargable. Si solo existe una URL de factura hospedada, un icono de enlace externo la abre en una nueva pestaña. De lo contrario, el número de factura se muestra como texto plano.
 
-The table loads 15 transactions per page with the same pagination system as Usage Events.
+La tabla carga 15 transacciones por página con el mismo sistema de paginación que Eventos de Uso.
 
 ---
 
-## Upgrade Modal
+## Modal de Actualización
 
-When you attempt to perform an action that exceeds your plan limits — such as creating a new agent, starting a conversation, or sending a message when tokens are exhausted — an upgrade modal appears automatically.
+Cuando intenta realizar una acción que excede los límites de su plan — como crear un nuevo agente, iniciar una conversación o enviar un mensaje cuando los tokens se agotaron — aparece automáticamente un modal de actualización.
 
-The modal shows:
-- **Resource icon and name** — which limit was hit (e.g., "AI Agents", "Standard Tokens")
-- **Current usage** — how much you've used vs. your plan limit (e.g., "5 / 5 agents")
-- **Your plan name** — so you know which plan you're on
-- **Buy a Pack** button — shown for token, storage, and voice resources, links to the Packs page
-- **Upgrade Plan** button — links to the Pricing page
+El modal muestra:
+- **Icono y nombre del recurso** — qué límite se alcanzó (por ejemplo, "Agentes de IA", "Tokens Estándar")
+- **Uso actual** — cuánto ha usado vs. el límite de su plan (por ejemplo, "5 / 5 agentes")
+- **Nombre de su plan** — para que sepa en qué plan está
+- **Botón Comprar un Paquete** — mostrado para recursos de tokens, almacenamiento y voz, enlaza a la página de Paquetes
+- **Botón Actualizar Plan** — enlaza a la página de Precios
 
 <Tip>
-  The upgrade modal also triggers when API requests return a 429 (rate limit) or 403 (quota exceeded) response, ensuring you're always informed about billing limits regardless of where the interaction originated.
+  El modal de actualización también se activa cuando las solicitudes API devuelven un 429 (límite de velocidad) o 403 (cuota excedida), asegurando que siempre esté informado sobre los límites de facturación independientemente de dónde se originó la interacción.
 </Tip>

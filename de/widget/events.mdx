@@ -1,208 +1,208 @@
 ---
-title: Events
-sidebarTitle: Events
-description: "Define custom tracking events — clicks, forms, scroll triggers, visibility — and set conversion goals"
+title: Ereignisse
+sidebarTitle: Ereignisse
+description: "Definieren Sie benutzerdefinierte Tracking-Ereignisse — Klicks, Formulare, Scroll-Trigger, Sichtbarkeit — und legen Sie Conversion-Ziele fest"
 ---
 
-## Overview
+## Ueberblick
 
-The Events tab lets you define tracking events to capture specific visitor actions on your website. Track button clicks, form submissions, scroll milestones, element visibility, or fire custom events from your own code. Any event can be marked as a **conversion goal** to measure campaign effectiveness.
+Der Ereignisse-Tab ermoeglicht es Ihnen, Tracking-Ereignisse zu definieren, um bestimmte Besucheraktionen auf Ihrer Website zu erfassen. Verfolgen Sie Schaltflaechenklicks, Formulareinreichungen, Scroll-Meilensteine, Elementsichtbarkeit oder loesen Sie benutzerdefinierte Ereignisse aus Ihrem eigenen Code aus. Jedes Ereignis kann als **Conversion-Ziel** markiert werden, um die Kampagneneffektivitaet zu messen.
 
 <Frame>
-  <img className="block dark:hidden" src="/images/tracker-events-light.png" alt="Events tab" />
-  <img className="hidden dark:block" src="/images/tracker-events-dark.png" alt="Events tab" />
+  <img className="block dark:hidden" src="/images/tracker-events-light.png" alt="Ereignisse-Tab" />
+  <img className="hidden dark:block" src="/images/tracker-events-dark.png" alt="Ereignisse-Tab" />
 </Frame>
 
-## Events List
+## Ereignisliste
 
-The events table shows all defined events with key metrics:
+Die Ereignistabelle zeigt alle definierten Ereignisse mit wichtigen Metriken:
 
-| Column | Description |
+| Spalte | Beschreibung |
 |---|---|
-| **Name** | Event name |
-| **Type** | Event type (Click, Scroll, Form Submit, Visibility, Custom) |
-| **Fires** | Total number of times this event has been triggered |
-| **Conversion** | Whether this event counts as a conversion goal |
-| **Status** | Active or inactive |
-| **Actions** | Edit or delete the event |
+| **Name** | Ereignisname |
+| **Typ** | Ereignistyp (Klick, Scroll, Formulareinreichung, Sichtbarkeit, Benutzerdefiniert) |
+| **Ausloesungen** | Gesamtanzahl der Ausloesungen dieses Ereignisses |
+| **Conversion** | Ob dieses Ereignis als Conversion-Ziel zaehlt |
+| **Status** | Aktiv oder inaktiv |
+| **Aktionen** | Ereignis bearbeiten oder loeschen |
 
-### Filters
+### Filter
 
-Filter the events list by:
+Filtern Sie die Ereignisliste nach:
 
-| Filter | Description |
+| Filter | Beschreibung |
 |---|---|
-| **Type** | Show only events of a specific type |
-| **Conversion** | Show only conversion goal events |
-| **Status** | Show active or inactive events |
-| **Search** | Search events by name |
+| **Typ** | Nur Ereignisse eines bestimmten Typs anzeigen |
+| **Conversion** | Nur Conversion-Ziel-Ereignisse anzeigen |
+| **Status** | Aktive oder inaktive Ereignisse anzeigen |
+| **Suche** | Ereignisse nach Name suchen |
 
 ---
 
-## Creating an Event
+## Ein Ereignis erstellen
 
-Click **Create Event** to define a new tracking event. Each event requires:
+Klicken Sie auf **Ereignis erstellen**, um ein neues Tracking-Ereignis zu definieren. Jedes Ereignis erfordert:
 
-| Field | Required | Description |
+| Feld | Erforderlich | Beschreibung |
 |---|---|---|
-| **Name** | Yes | Event name for identification (e.g., "CTA Button Click", "Contact Form Submit") |
-| **Type** | Yes | How the event is triggered (see Event Types below) |
-| **CSS Selector** | Depends | CSS selector targeting the element (required for Click, Form Submit, Visibility) |
-| **Page URL** | No | Restrict the event to fire only on a specific page |
-| **Conversion Goal** | No | Toggle to count this event as a conversion in analytics |
+| **Name** | Ja | Ereignisname zur Identifizierung (z.B. "CTA-Button-Klick", "Kontaktformular-Einreichung") |
+| **Typ** | Ja | Wie das Ereignis ausgeloest wird (siehe Ereignistypen unten) |
+| **CSS-Selektor** | Abhaengig | CSS-Selektor fuer das Zielelement (erforderlich fuer Klick, Formulareinreichung, Sichtbarkeit) |
+| **Seiten-URL** | Nein | Das Ereignis nur auf einer bestimmten Seite ausloesen |
+| **Conversion-Ziel** | Nein | Umschalten, um dieses Ereignis als Conversion in der Analyse zu zaehlen |
 
 ---
 
-## Event Types
+## Ereignistypen
 
-Each event type tracks a different kind of visitor interaction. The tracker script handles all automatic types — no coding required.
+Jeder Ereignistyp verfolgt eine andere Art der Besucherinteraktion. Das Tracker-Skript verarbeitet alle automatischen Typen — keine Programmierung erforderlich.
 
-### Click
+### Klick
 
-Fires when a visitor **clicks** on an element matching the CSS selector.
+Wird ausgeloest, wenn ein Besucher auf ein Element **klickt**, das dem CSS-Selektor entspricht.
 
-| Setting | Description |
+| Einstellung | Beschreibung |
 |---|---|
-| **CSS Selector** | Target element selector (e.g., `#cta-button`, `.buy-now`, `a[href="/contact"]`) |
-| **Page URL** | Optional — limit tracking to a specific page |
+| **CSS-Selektor** | Zielelement-Selektor (z.B. `#cta-button`, `.buy-now`, `a[href="/contact"]`) |
+| **Seiten-URL** | Optional — Tracking auf eine bestimmte Seite beschraenken |
 
-**What is captured:**
-- Element text content (first 100 characters)
-- Element tag name (`button`, `a`, `div`, etc.)
-- CSS selector that matched
-- Current page URL
+**Was erfasst wird:**
+- Textinhalt des Elements (erste 100 Zeichen)
+- Tag-Name des Elements (`button`, `a`, `div`, usw.)
+- Uebereinstimmender CSS-Selektor
+- Aktuelle Seiten-URL
 
 <Tip>
-  Use browser DevTools to find the right CSS selector. Right-click the element → **Inspect** → right-click the HTML tag → **Copy** → **Copy selector**.
+  Verwenden Sie die Browser-Entwicklertools, um den richtigen CSS-Selektor zu finden. Klicken Sie mit der rechten Maustaste auf das Element → **Untersuchen** → klicken Sie mit der rechten Maustaste auf das HTML-Tag → **Kopieren** → **Selektor kopieren**.
 </Tip>
 
-**Examples of CSS selectors:**
+**Beispiele fuer CSS-Selektoren:**
 
 ```css
-/* Button by ID */
+/* Schaltflaeche nach ID */
 #buy-now-btn
 
-/* All buttons with a specific class */
+/* Alle Schaltflaechen mit einer bestimmten Klasse */
 .add-to-cart
 
-/* Link to a specific page */
+/* Link zu einer bestimmten Seite */
 a[href="/pricing"]
 
-/* Button inside a specific section */
+/* Schaltflaeche innerhalb eines bestimmten Abschnitts */
 .hero-section .cta-button
 
-/* Any element with a data attribute */
+/* Jedes Element mit einem Datenattribut */
 [data-action="subscribe"]
 ```
 
-### Scroll (Visibility)
+### Scroll (Sichtbarkeit)
 
-Fires when the visitor **scrolls** past a specific element on the page. Uses an IntersectionObserver to detect when the element enters the viewport.
+Wird ausgeloest, wenn der Besucher an einem bestimmten Element auf der Seite **vorbeiscrollt**. Verwendet einen IntersectionObserver, um zu erkennen, wann das Element in den Viewport eintritt.
 
-| Setting | Description |
+| Einstellung | Beschreibung |
 |---|---|
-| **CSS Selector** | Target element to observe (e.g., `#pricing-section`, `.testimonials`) |
-| **Scroll Threshold** | Percentage of the element that must be visible (default: 50%) |
+| **CSS-Selektor** | Zu beobachtendes Zielelement (z.B. `#pricing-section`, `.testimonials`) |
+| **Scroll-Schwellenwert** | Prozentsatz des Elements, der sichtbar sein muss (Standard: 50%) |
 
-**Use cases:**
-- Track how many visitors see your pricing section
-- Measure engagement with specific content blocks
-- Detect if visitors reach the bottom of a long page
+**Anwendungsfaelle:**
+- Verfolgen Sie, wie viele Besucher Ihren Preisbereich sehen
+- Messen Sie das Engagement mit bestimmten Inhaltsbloecken
+- Erkennen Sie, ob Besucher das Ende einer langen Seite erreichen
 
 <Note>
-  Each scroll event fires **only once** per session per element — even if the visitor scrolls past it multiple times. This prevents inflated counts.
+  Jedes Scroll-Ereignis wird **nur einmal** pro Sitzung und Element ausgeloest — auch wenn der Besucher mehrmals daran vorbeiscrollt. Dies verhindert aufgeblaehte Zaehler.
 </Note>
 
-### Form Submit
+### Formulareinreichung
 
-Fires when a visitor **submits a form** matching the CSS selector.
+Wird ausgeloest, wenn ein Besucher ein Formular **einreicht**, das dem CSS-Selektor entspricht.
 
-| Setting | Description |
+| Einstellung | Beschreibung |
 |---|---|
-| **CSS Selector** | Target form element (e.g., `#contact-form`, `.signup-form`) |
-| **Form Fields** | Optional — allowlist of field names to capture (e.g., `email, phone, name`) |
+| **CSS-Selektor** | Zielformularelement (z.B. `#contact-form`, `.signup-form`) |
+| **Formularfelder** | Optional — Erlaubnisliste von Feldnamen zur Erfassung (z.B. `email, phone, name`) |
 
-**What is captured:**
-- Values from `<input>`, `<select>`, and `<textarea>` fields
-- Field names and their values (up to 500 characters per field)
-- Password and hidden fields are **automatically excluded**
+**Was erfasst wird:**
+- Werte aus `<input>`-, `<select>`- und `<textarea>`-Feldern
+- Feldnamen und ihre Werte (bis zu 500 Zeichen pro Feld)
+- Passwort- und versteckte Felder werden **automatisch ausgeschlossen**
 
 <Warning>
-  By default, all visible form fields are captured. Use the **Form Fields** allowlist to limit data collection to specific fields and avoid capturing sensitive information.
+  Standardmaessig werden alle sichtbaren Formularfelder erfasst. Verwenden Sie die **Formularfelder**-Erlaubnisliste, um die Datenerfassung auf bestimmte Felder zu beschraenken und die Erfassung sensibler Informationen zu vermeiden.
 </Warning>
 
-### Element Visibility
+### Elementsichtbarkeit
 
-Fires when a specific element **becomes visible** in the browser viewport. Similar to Scroll, but focused on tracking whether a particular UI element was seen.
+Wird ausgeloest, wenn ein bestimmtes Element im Browser-Viewport **sichtbar wird**. Aehnlich wie Scroll, aber fokussiert auf die Verfolgung, ob ein bestimmtes UI-Element gesehen wurde.
 
-| Setting | Description |
+| Einstellung | Beschreibung |
 |---|---|
-| **CSS Selector** | Target element (e.g., `.promo-banner`, `#special-offer`) |
+| **CSS-Selektor** | Zielelement (z.B. `.promo-banner`, `#special-offer`) |
 
-**Use cases:**
-- Track impressions of promotional banners
-- Measure visibility of important CTAs
-- Detect if dynamically loaded content is seen (works with SPAs)
+**Anwendungsfaelle:**
+- Impressionen von Werbebannern verfolgen
+- Sichtbarkeit wichtiger CTAs messen
+- Erkennen, ob dynamisch geladene Inhalte gesehen werden (funktioniert mit SPAs)
 
 <Note>
-  The tracker uses a MutationObserver to watch for dynamically added elements. If the target element is rendered by JavaScript after page load (React, Vue, etc.), it will still be detected.
+  Der Tracker verwendet einen MutationObserver, um dynamisch hinzugefuegte Elemente zu ueberwachen. Wenn das Zielelement nach dem Seitenladen durch JavaScript gerendert wird (React, Vue usw.), wird es trotzdem erkannt.
 </Note>
 
-### Custom (Manual)
+### Benutzerdefiniert (Manuell)
 
-Fires when you call the **JavaScript API** from your own code. This is the most flexible event type — you control exactly when and with what data the event fires.
+Wird ausgeloest, wenn Sie die **JavaScript-API** aus Ihrem eigenen Code aufrufen. Dies ist der flexibelste Ereignistyp — Sie steuern genau, wann und mit welchen Daten das Ereignis ausgeloest wird.
 
-| Setting | Description |
+| Einstellung | Beschreibung |
 |---|---|
-| **Name** | Event name that matches the name used in `RevolTracker.track()` |
+| **Name** | Ereignisname, der mit dem in `RevolTracker.track()` verwendeten Namen uebereinstimmen muss |
 
-Custom events are covered in detail in the [Custom Events API](#custom-events-api) section below.
+Benutzerdefinierte Ereignisse werden im Abschnitt [Benutzerdefinierte Ereignisse API](#custom-events-api) unten im Detail behandelt.
 
 ---
 
-## Conversion Goal
+## Conversion-Ziel
 
-Any event can be marked as a **Conversion Goal** by enabling the toggle. When enabled:
+Jedes Ereignis kann als **Conversion-Ziel** markiert werden, indem Sie den Schalter aktivieren. Wenn aktiviert:
 
-- The event is counted in the **Conversions** KPI card on the Dashboard
-- It's used to calculate **Conversion Rate** in the Campaign Performance table
-- Sessions containing this event are highlighted in the session detail view
-- The event appears in conversion funnels and reports
+- Das Ereignis wird in der **Conversions**-KPI-Karte auf dem Dashboard gezaehlt
+- Es wird zur Berechnung der **Conversion-Rate** in der Kampagnen-Performance-Tabelle verwendet
+- Sitzungen mit diesem Ereignis werden in der Sitzungsdetailansicht hervorgehoben
+- Das Ereignis erscheint in Conversion-Trichtern und Berichten
 
-### What Makes a Good Conversion Goal?
+### Was ist ein gutes Conversion-Ziel?
 
 <AccordionGroup>
-  <Accordion title="Lead generation">
-    Mark **form submissions** as conversions — contact forms, quote requests, newsletter signups. These are clear indicators that a visitor became a lead.
+  <Accordion title="Lead-Generierung">
+    Markieren Sie **Formulareinreichungen** als Conversions — Kontaktformulare, Angebotsanfragen, Newsletter-Anmeldungen. Dies sind klare Indikatoren dafuer, dass ein Besucher zum Lead geworden ist.
   </Accordion>
-  <Accordion title="E-commerce">
-    Mark **add to cart** or **purchase completed** custom events as conversions. Track the full funnel from page view to purchase.
+  <Accordion title="E-Commerce">
+    Markieren Sie **In den Warenkorb**- oder **Kauf abgeschlossen**-benutzerdefinierte Ereignisse als Conversions. Verfolgen Sie den gesamten Trichter vom Seitenaufruf bis zum Kauf.
   </Accordion>
   <Accordion title="Engagement">
-    Mark **scroll past pricing** or **video play** events as micro-conversions. These indicate strong interest even without a form submission.
+    Markieren Sie **Ueber Preisbereich gescrollt**- oder **Video abgespielt**-Ereignisse als Mikro-Conversions. Diese zeigen starkes Interesse auch ohne Formulareinreichung an.
   </Accordion>
-  <Accordion title="Calls and chats">
-    Mark **phone number click** or **chat widget opened** events as conversions. These show intent to engage directly.
+  <Accordion title="Anrufe und Chats">
+    Markieren Sie **Telefonnummer-Klick**- oder **Chat-Widget geoeffnet**-Ereignisse als Conversions. Diese zeigen die Absicht zur direkten Kontaktaufnahme.
   </Accordion>
 </AccordionGroup>
 
 <Tip>
-  You can have multiple conversion goals active at the same time. The Dashboard Conversions KPI counts unique sessions with **at least one** conversion event — so a session that triggers 3 conversion events still counts as 1 conversion.
+  Sie koennen mehrere Conversion-Ziele gleichzeitig aktiv haben. Die Dashboard-Conversions-KPI zaehlt eindeutige Sitzungen mit **mindestens einem** Conversion-Ereignis — eine Sitzung, die 3 Conversion-Ereignisse ausloest, zaehlt also als 1 Conversion.
 </Tip>
 
 ---
 
-## Custom Events API
+## Benutzerdefinierte Ereignisse API
 
-Custom events give you full control over event tracking from your own JavaScript code. Use them when automatic tracking (clicks, forms, visibility) isn't enough — for dynamic interactions, multi-step processes, or business-specific actions.
+Benutzerdefinierte Ereignisse geben Ihnen die volle Kontrolle ueber das Ereignis-Tracking aus Ihrem eigenen JavaScript-Code. Verwenden Sie sie, wenn automatisches Tracking (Klicks, Formulare, Sichtbarkeit) nicht ausreicht — fuer dynamische Interaktionen, mehrstufige Prozesse oder geschaeftsspezifische Aktionen.
 
-### Basic Usage
+### Grundlegende Verwendung
 
 ```javascript
-// Simple event — no additional data
+// Einfaches Ereignis — keine zusaetzlichen Daten
 RevolTracker.track('button_clicked');
 
-// Event with custom data
+// Ereignis mit benutzerdefinierten Daten
 RevolTracker.track('item_added_to_cart', {
     item_id: 'SKU-12345',
     item_name: 'Running Shoes',
@@ -211,29 +211,29 @@ RevolTracker.track('item_added_to_cart', {
 });
 ```
 
-### API Reference
+### API-Referenz
 
 ```javascript
 RevolTracker.track(eventName, data)
 ```
 
-| Parameter | Type | Required | Description |
+| Parameter | Typ | Erforderlich | Beschreibung |
 |---|---|---|---|
-| `eventName` | `string` | Yes | Event name — must match the name defined in the Events tab if you want it linked to an event definition |
-| `data` | `object` | No | Custom payload — any JSON-serializable data (objects, arrays, strings, numbers) |
+| `eventName` | `string` | Ja | Ereignisname — muss mit dem im Ereignisse-Tab definierten Namen uebereinstimmen, wenn Sie es mit einer Ereignisdefinition verknuepfen moechten |
+| `data` | `object` | Nein | Benutzerdefinierte Nutzlast — beliebige JSON-serialisierbare Daten (Objekte, Arrays, Zeichenketten, Zahlen) |
 
-**Automatically captured** (you don't need to pass these):
-- Current page URL
-- Session ID
-- Timestamp
-- Company ID
+**Automatisch erfasst** (Sie muessen diese nicht uebergeben):
+- Aktuelle Seiten-URL
+- Sitzungs-ID
+- Zeitstempel
+- Unternehmens-ID
 
-### E-Commerce Examples
+### E-Commerce-Beispiele
 
-Track the full shopping funnel:
+Verfolgen Sie den gesamten Einkaufstrichter:
 
 ```javascript
-// Product viewed
+// Produkt angesehen
 RevolTracker.track('product_viewed', {
     product_id: 'SKU-12345',
     product_name: 'Running Shoes Pro',
@@ -241,20 +241,20 @@ RevolTracker.track('product_viewed', {
     price: 89.99
 });
 
-// Added to cart
+// In den Warenkorb gelegt
 RevolTracker.track('add_to_cart', {
     product_id: 'SKU-12345',
     quantity: 1,
     price: 89.99
 });
 
-// Checkout started
+// Checkout gestartet
 RevolTracker.track('checkout_started', {
     cart_total: 89.99,
     items_count: 1
 });
 
-// Purchase completed
+// Kauf abgeschlossen
 RevolTracker.track('purchase_completed', {
     order_id: 'ORD-9876',
     total: 89.99,
@@ -265,9 +265,9 @@ RevolTracker.track('purchase_completed', {
 });
 ```
 
-### Add to Cart Integration
+### In-den-Warenkorb-Integration
 
-A complete example of integrating custom events with an "Add to Cart" button:
+Ein vollstaendiges Beispiel fuer die Integration benutzerdefinierter Ereignisse mit einer "In den Warenkorb"-Schaltflaeche:
 
 ```html
 <button class="add-to-cart-btn"
@@ -280,10 +280,10 @@ A complete example of integrating custom events with an "Add to Cart" button:
 <script>
 document.querySelectorAll('.add-to-cart-btn').forEach(function(btn) {
     btn.addEventListener('click', function() {
-        // Your existing cart logic
+        // Ihre bestehende Warenkorb-Logik
         addItemToCart(this.dataset.productId);
 
-        // Track the event in Revol
+        // Das Ereignis in Revol verfolgen
         RevolTracker.track('add_to_cart', {
             product_id: this.dataset.productId,
             product_name: this.dataset.productName,
@@ -294,9 +294,9 @@ document.querySelectorAll('.add-to-cart-btn').forEach(function(btn) {
 </script>
 ```
 
-### Lead Form Example
+### Lead-Formular-Beispiel
 
-Track form submissions with field data:
+Formulareinreichungen mit Felddaten verfolgen:
 
 ```html
 <form id="contact-form">
@@ -321,12 +321,12 @@ document.getElementById('contact-form').addEventListener('submit', function(e) {
 </script>
 ```
 
-### SPA / React Example
+### SPA / React-Beispiel
 
-For single-page applications, fire events on route changes or component interactions:
+Fuer Single-Page-Anwendungen loesen Sie Ereignisse bei Routenwechseln oder Komponenteninteraktionen aus:
 
 ```javascript
-// React — track page view on route change
+// React — Seitenaufruf bei Routenwechsel verfolgen
 useEffect(() => {
     RevolTracker.track('page_view', {
         page: location.pathname,
@@ -334,7 +334,7 @@ useEffect(() => {
     });
 }, [location.pathname]);
 
-// React — track button click
+// React — Schaltflaechenklick verfolgen
 function handlePricingClick(plan) {
     RevolTracker.track('pricing_plan_selected', {
         plan: plan,
@@ -343,26 +343,26 @@ function handlePricingClick(plan) {
 }
 ```
 
-### How Events Are Sent
+### Wie Ereignisse gesendet werden
 
-Events are **buffered and batched** for performance:
+Ereignisse werden zur Leistungsoptimierung **gepuffert und gebuendelt** gesendet:
 
-1. Each `RevolTracker.track()` call adds the event to an internal buffer
-2. Every **5 seconds**, all buffered events are sent to the server in a single request
-3. On **page unload**, any remaining events are sent via `sendBeacon()` for reliability
-4. Maximum **50 events** per batch — excess events are dropped
+1. Jeder `RevolTracker.track()`-Aufruf fuegt das Ereignis einem internen Puffer hinzu
+2. Alle **5 Sekunden** werden alle gepufferten Ereignisse in einer einzigen Anfrage an den Server gesendet
+3. Beim **Verlassen der Seite** werden verbleibende Ereignisse ueber `sendBeacon()` fuer Zuverlaessigkeit gesendet
+4. Maximal **50 Ereignisse** pro Batch — ueberschuessige Ereignisse werden verworfen
 
 <Note>
-  You don't need to create an event definition in the dashboard for custom events to be recorded. Undefined custom events are still stored with their data — but they won't have a fire count in the Events list. For full tracking, create a matching event definition with the same name.
+  Sie muessen keine Ereignisdefinition im Dashboard erstellen, damit benutzerdefinierte Ereignisse aufgezeichnet werden. Undefinierte benutzerdefinierte Ereignisse werden trotzdem mit ihren Daten gespeichert — sie haben jedoch keine Ausloesungszahl in der Ereignisliste. Fuer vollstaendiges Tracking erstellen Sie eine passende Ereignisdefinition mit demselben Namen.
 </Note>
 
 ---
 
-## Analyze Your Website with Claude Code
+## Analysieren Sie Ihre Website mit Claude Code
 
-If you're not sure which elements to track, you can use **Claude Code** to analyze your website and suggest an optimal event tracking setup.
+Wenn Sie sich nicht sicher sind, welche Elemente Sie verfolgen sollen, koennen Sie **Claude Code** verwenden, um Ihre Website zu analysieren und ein optimales Ereignis-Tracking-Setup vorzuschlagen.
 
-<Accordion title="Prompt for website analysis">
+<Accordion title="Prompt fuer Website-Analyse">
 ```text
 Analyze the website at [YOUR_WEBSITE_URL] and create a comprehensive
 event tracking plan for Revol Tracker. I need you to:

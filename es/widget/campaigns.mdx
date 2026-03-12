@@ -1,136 +1,136 @@
 ---
-title: Campaigns
-sidebarTitle: Campaigns
-description: "Create and manage tracking campaigns with UTM parameters, phone swap, and AI agent behavior"
+title: Campañas
+sidebarTitle: Campañas
+description: "Cree y gestione campañas de seguimiento con parámetros UTM, sustitución de teléfono y comportamiento del agente de IA"
 ---
 
-## Overview
+## Descripción General
 
-The Campaigns tab lets you create and manage tracking campaigns. Each campaign generates a unique tracking URL with UTM parameters that attributes visitor sessions to specific marketing efforts. Beyond attribution, campaigns can swap phone numbers for call tracking and inject custom context into your AI agent's behavior.
+La pestaña Campañas le permite crear y gestionar campañas de seguimiento. Cada campaña genera una URL de seguimiento única con parámetros UTM que atribuye las sesiones de visitantes a esfuerzos de marketing específicos. Más allá de la atribución, las campañas pueden sustituir números de teléfono para el seguimiento de llamadas e inyectar contexto personalizado en el comportamiento de su agente de IA.
 
 <Frame>
-  <img className="block dark:hidden" src="/images/tracker-campaigns-light.png" alt="Campaigns tab" />
-  <img className="hidden dark:block" src="/images/tracker-campaigns-dark.png" alt="Campaigns tab" />
+  <img className="block dark:hidden" src="/images/tracker-campaigns-light.png" alt="Pestaña de campañas" />
+  <img className="hidden dark:block" src="/images/tracker-campaigns-dark.png" alt="Pestaña de campañas" />
 </Frame>
 
-## Campaign List
+## Lista de Campañas
 
-The campaigns table shows all your campaigns with key metrics:
+La tabla de campañas muestra todas sus campañas con métricas clave:
 
-| Column | Description |
+| Columna | Descripción |
 |---|---|
-| **Name** | Campaign name |
-| **Source / Medium** | UTM source and medium values |
-| **Sessions** | Total sessions attributed to this campaign |
-| **Created** | Date the campaign was created |
-| **Actions** | Edit or delete the campaign |
+| **Nombre** | Nombre de la campaña |
+| **Fuente / Medio** | Valores de fuente y medio UTM |
+| **Sesiones** | Total de sesiones atribuidas a esta campaña |
+| **Creada** | Fecha en que se creó la campaña |
+| **Acciones** | Editar o eliminar la campaña |
 
-Click any row to open the campaign details panel.
+Haga clic en cualquier fila para abrir el panel de detalles de la campaña.
 
 ---
 
-## Creating a Campaign
+## Crear una Campaña
 
-Click **Create Campaign** to open the campaign panel. The panel has two sides: a **preview area** on the left and a **settings form** on the right.
+Haga clic en **Crear Campaña** para abrir el panel de campaña. El panel tiene dos lados: un **área de vista previa** a la izquierda y un **formulario de configuración** a la derecha.
 
-### Campaign Info
+### Información de la Campaña
 
-| Field | Required | Description |
+| Campo | Requerido | Descripción |
 |---|---|---|
-| **Name** | Yes | Internal campaign name (e.g., "Spring Sale 2026", "Google Search Brand") |
-| **Description** | No | Notes about the campaign purpose, target audience, or creative details |
+| **Nombre** | Sí | Nombre interno de la campaña (por ejemplo, "Rebajas de Primavera 2026", "Google Search Marca") |
+| **Descripción** | No | Notas sobre el propósito de la campaña, público objetivo o detalles creativos |
 
-### UTM Parameters
+### Parámetros UTM
 
-Standard UTM parameters that will be appended to the generated tracking URL:
+Parámetros UTM estándar que se agregarán a la URL de seguimiento generada:
 
-| Parameter | URL Param | Required | Description |
+| Parámetro | Parámetro URL | Requerido | Descripción |
 |---|---|---|---|
-| **Source** | `utm_source` | Yes | Traffic source — where visitors come from (e.g., `google`, `facebook`, `newsletter`, `instagram`) |
-| **Medium** | `utm_medium` | Yes | Marketing medium — how they get to you (e.g., `cpc`, `email`, `social`, `banner`, `referral`) |
-| **Campaign** | `utm_campaign` | Auto | Campaign identifier — auto-filled from the campaign name |
-| **Content** | `utm_content` | No | Ad content or variant — useful for A/B testing (e.g., `blue-button`, `header-banner`) |
-| **Term** | `utm_term` | No | Paid search keyword (e.g., `buy shoes online`) |
+| **Fuente** | `utm_source` | Sí | Fuente de tráfico — de dónde vienen los visitantes (por ejemplo, `google`, `facebook`, `newsletter`, `instagram`) |
+| **Medio** | `utm_medium` | Sí | Medio de marketing — cómo llegan a usted (por ejemplo, `cpc`, `email`, `social`, `banner`, `referral`) |
+| **Campaña** | `utm_campaign` | Auto | Identificador de campaña — auto-completado a partir del nombre de la campaña |
+| **Contenido** | `utm_content` | No | Contenido del anuncio o variante — útil para pruebas A/B (por ejemplo, `blue-button`, `header-banner`) |
+| **Término** | `utm_term` | No | Palabra clave de búsqueda pagada (por ejemplo, `buy shoes online`) |
 
 <Tip>
-  When a visitor arrives via a URL with UTM parameters, the tracker automatically matches the session to the campaign with the same source + medium + campaign combination.
+  Cuando un visitante llega a través de una URL con parámetros UTM, el tracker automáticamente asocia la sesión con la campaña que tiene la misma combinación de fuente + medio + campaña.
 </Tip>
 
-### Revol Parameters
+### Parámetros de Revol
 
-| Parameter | URL Param | Description |
+| Parámetro | Parámetro URL | Descripción |
 |---|---|---|
-| **Referral ID** | `rvl_ref` | A custom referral identifier. Can be used independently from UTM parameters for internal tracking (e.g., affiliate IDs, partner codes). |
+| **ID de Referido** | `rvl_ref` | Un identificador de referido personalizado. Puede usarse independientemente de los parámetros UTM para seguimiento interno (por ejemplo, IDs de afiliados, códigos de socios). |
 
-If the URL contains a `rvl_cmp` parameter (direct campaign ID), it takes priority over UTM matching.
+Si la URL contiene un parámetro `rvl_cmp` (ID directo de campaña), este tiene prioridad sobre la coincidencia UTM.
 
-**Matching priority:**
+**Prioridad de coincidencia:**
 
-1. `rvl_cmp` — direct campaign ID in URL (highest priority)
-2. UTM combination — matches `utm_source` + `utm_medium` + `utm_campaign`
-3. `rvl_ref` — referral ID fallback
-4. Auto-create — if no campaign matches, a new one is created from the UTM values
+1. `rvl_cmp` — ID directo de campaña en la URL (máxima prioridad)
+2. Combinación UTM — coincide `utm_source` + `utm_medium` + `utm_campaign`
+3. `rvl_ref` — ID de referido como respaldo
+4. Auto-creación — si ninguna campaña coincide, se crea una nueva a partir de los valores UTM
 
 ---
 
-## Phone Swap
+## Sustitución de Teléfono
 
-Phone swap lets you dynamically replace a phone number on your website with a campaign-specific tracking number. This way, when a visitor calls, you know exactly which campaign drove the call.
+La sustitución de teléfono le permite reemplazar dinámicamente un número de teléfono en su sitio web con un número de seguimiento específico de la campaña. De esta manera, cuando un visitante llama, usted sabe exactamente qué campaña generó la llamada.
 
-| Field | Description |
+| Campo | Descripción |
 |---|---|
-| **Original Phone** | The default phone number displayed on your website |
-| **Replacement Phone** | The tracking number that replaces the original for visitors from this campaign |
+| **Teléfono Original** | El número de teléfono predeterminado mostrado en su sitio web |
+| **Teléfono de Reemplazo** | El número de seguimiento que reemplaza al original para visitantes de esta campaña |
 
-When a visitor from this campaign loads your website, the tracker script finds the original phone number in the page content and swaps it with the replacement number. The swap is automatic and invisible to the visitor.
+Cuando un visitante de esta campaña carga su sitio web, el script de seguimiento encuentra el número de teléfono original en el contenido de la página y lo sustituye con el número de reemplazo. La sustitución es automática e invisible para el visitante.
 
 <Note>
-  Phone swap requires the tracker script to be installed on your website. The original phone number must appear as text in the page HTML — numbers inside images or iframes are not replaced.
+  La sustitución de teléfono requiere que el script de seguimiento esté instalado en su sitio web. El número de teléfono original debe aparecer como texto en el HTML de la página — los números dentro de imágenes o iframes no se reemplazan.
 </Note>
 
 ---
 
-## AI Agent Behavior
+## Comportamiento del Agente de IA
 
-This is the most powerful campaign feature. The **AI Agent Behavior** field lets you inject campaign-specific context into your AI agent's system prompt, changing how the agent communicates with visitors from this campaign.
+Esta es la función más poderosa de las campañas. El campo de **Comportamiento del Agente de IA** le permite inyectar contexto específico de la campaña en el prompt del sistema de su agente de IA, cambiando cómo el agente se comunica con los visitantes de esta campaña.
 
-### How It Works
+### Cómo Funciona
 
 <Steps>
-  <Step title="Visitor arrives">
-    A visitor clicks your campaign URL and lands on your website. The tracker identifies the campaign from UTM parameters.
+  <Step title="El visitante llega">
+    Un visitante hace clic en su URL de campaña y llega a su sitio web. El tracker identifica la campaña a partir de los parámetros UTM.
   </Step>
-  <Step title="Campaign is attached">
-    The `campaign_id` is stored in the visitor's session and sent with every chat message to the AI agent.
+  <Step title="La campaña se vincula">
+    El `campaign_id` se almacena en la sesión del visitante y se envía con cada mensaje de chat al agente de IA.
   </Step>
-  <Step title="Prompt is injected">
-    When the agent processes a message, the campaign's AI prompt is appended to the system prompt as a `[Campaign Context]` block. The agent sees this context alongside its regular instructions.
+  <Step title="El prompt se inyecta">
+    Cuando el agente procesa un mensaje, el prompt de IA de la campaña se agrega al prompt del sistema como un bloque `[Campaign Context]`. El agente ve este contexto junto con sus instrucciones regulares.
   </Step>
-  <Step title="Agent adapts">
-    The agent adjusts its responses based on the campaign context — different tone, offers, or focus depending on where the visitor came from.
+  <Step title="El agente se adapta">
+    El agente ajusta sus respuestas basándose en el contexto de la campaña — diferente tono, ofertas o enfoque dependiendo de dónde vino el visitante.
   </Step>
 </Steps>
 
-### What to Write
+### Qué Escribir
 
-The AI Agent Behavior field is a free-text prompt. Write instructions as if you're briefing the agent about this specific audience. Examples:
+El campo de Comportamiento del Agente de IA es un prompt de texto libre. Escriba instrucciones como si estuviera informando al agente sobre esta audiencia específica. Ejemplos:
 
 <AccordionGroup>
-  <Accordion title="Google Ads — Brand Campaign">
+  <Accordion title="Google Ads — Campaña de Marca">
     ```text
     This visitor came from a Google brand search campaign. They already know
     our brand. Focus on converting — offer a demo, highlight pricing advantages,
     and mention current promotions. Don't spend time explaining what we do.
     ```
   </Accordion>
-  <Accordion title="Facebook — Cold Audience">
+  <Accordion title="Facebook — Audiencia Fría">
     ```text
     This visitor came from a Facebook awareness campaign targeting a cold audience.
     They may not know our product well. Start with a brief explanation of key benefits,
     use simple language, and offer a free trial rather than pushing for a purchase.
     ```
   </Accordion>
-  <Accordion title="Email Newsletter — Existing Customers">
+  <Accordion title="Newsletter por Email — Clientes Existentes">
     ```text
     This visitor is an existing customer from our email newsletter.
     Be warm and personal. Ask about their experience with the product.
@@ -138,7 +138,7 @@ The AI Agent Behavior field is a free-text prompt. Write instructions as if you'
     history with us.
     ```
   </Accordion>
-  <Accordion title="Partner Referral">
+  <Accordion title="Referido de Socio">
     ```text
     This visitor was referred by a partner. Mention the partnership,
     offer the special partner discount (15% off first month), and
@@ -149,129 +149,129 @@ The AI Agent Behavior field is a free-text prompt. Write instructions as if you'
 </AccordionGroup>
 
 <Warning>
-  The campaign prompt is appended to the agent's system prompt, not replacing it. The agent still follows its base instructions — the campaign context adds an extra layer of guidance for visitors from that specific campaign.
+  El prompt de la campaña se agrega al prompt del sistema del agente, no lo reemplaza. El agente sigue sus instrucciones base — el contexto de la campaña añade una capa adicional de orientación para los visitantes de esa campaña específica.
 </Warning>
 
 ---
 
-## Generated Link & QR Code
+## Enlace Generado y Código QR
 
-The left side of the campaign panel shows a **preview area** with the campaign's QR code, info summary, and generated tracking link.
+El lado izquierdo del panel de campaña muestra un **área de vista previa** con el código QR de la campaña, resumen de información y enlace de seguimiento generado.
 
 <Frame>
-  <img className="block dark:hidden" src="/images/campaign-qr-card-light.png" alt="Campaign QR code card" />
-  <img className="hidden dark:block" src="/images/campaign-qr-card-dark.png" alt="Campaign QR code card" />
+  <img className="block dark:hidden" src="/images/campaign-qr-card-light.png" alt="Tarjeta de código QR de campaña" />
+  <img className="hidden dark:block" src="/images/campaign-qr-card-dark.png" alt="Tarjeta de código QR de campaña" />
 </Frame>
 
-- **QR Code** — scannable code linking to the generated campaign URL
-- **Campaign Info** — summary table with campaign ID, status, source/medium, phone swap status, and creation date
-- **Active Toggle** — enable or disable the campaign without deleting it
-- **Generated Link** — the full tracking URL built from your website domain + UTM parameters
+- **Código QR** — código escaneable que enlaza a la URL de campaña generada
+- **Información de Campaña** — tabla resumen con ID de campaña, estado, fuente/medio, estado de sustitución de teléfono y fecha de creación
+- **Interruptor Activo** — activar o desactivar la campaña sin eliminarla
+- **Enlace Generado** — la URL completa de seguimiento construida a partir del dominio de su sitio web + parámetros UTM
 
-### Link Builder
+### Constructor de Enlaces
 
-Select your website URL from the dropdown, and the system generates the full tracking link:
+Seleccione la URL de su sitio web del desplegable, y el sistema genera el enlace completo de seguimiento:
 
 ```
 https://yoursite.com/?utm_source=google&utm_medium=cpc&utm_campaign=spring-sale&rvl_ref=partner123
 ```
 
-Click **Copy** to copy the link to your clipboard.
+Haga clic en **Copiar** para copiar el enlace al portapapeles.
 
-### QR Code
+### Código QR
 
-Every campaign automatically generates a **QR code** that encodes the full tracking URL with all UTM and Revol parameters. When someone scans the code, they land on your website and the session is immediately attributed to this campaign — just like clicking a link.
+Cada campaña genera automáticamente un **código QR** que codifica la URL completa de seguimiento con todos los parámetros UTM y Revol. Cuando alguien escanea el código, llega a su sitio web y la sesión se atribuye inmediatamente a esta campaña — igual que al hacer clic en un enlace.
 
-#### Customization
+#### Personalización
 
-You can customize the QR code appearance directly in the campaign panel:
+Puede personalizar la apariencia del código QR directamente en el panel de campaña:
 
-| Setting | Description |
+| Configuración | Descripción |
 |---|---|
-| **Color** | Change the QR code color to match your brand |
-| **Background** | Set a background color or keep it transparent |
-| **Logo** | Add your company logo in the center of the QR code |
-| **Size** | Adjust the resolution for different use cases (print vs. screen) |
+| **Color** | Cambiar el color del código QR para que coincida con su marca |
+| **Fondo** | Establecer un color de fondo o mantenerlo transparente |
+| **Logo** | Agregar el logo de su empresa en el centro del código QR |
+| **Tamaño** | Ajustar la resolución para diferentes casos de uso (impresión vs. pantalla) |
 
-Click **Download** to save the QR code as an image file ready for use in any material.
+Haga clic en **Descargar** para guardar el código QR como archivo de imagen listo para usar en cualquier material.
 
-#### Use Cases
+#### Casos de Uso
 
-The QR code is a powerful offline-to-online bridge. Here are practical ways to use it:
+El código QR es un poderoso puente offline-a-online. Aquí hay formas prácticas de usarlo:
 
 <AccordionGroup>
-  <Accordion title="Print materials">
-    Add the QR code to **brochures, flyers, business cards, catalogs, or packaging**. Customers scan it and land on your website with full campaign attribution. You see exactly how many visitors came from each printed material.
+  <Accordion title="Materiales impresos">
+    Agregue el código QR a **folletos, volantes, tarjetas de presentación, catálogos o empaques**. Los clientes lo escanean y llegan a su sitio web con atribución completa de campaña. Usted ve exactamente cuántos visitantes vinieron de cada material impreso.
   </Accordion>
-  <Accordion title="Referral partners">
-    Give each referral partner their own campaign with a unique QR code. Partners print it on their materials or share it digitally. You track how many leads each partner brings — with full session data, page flows, and conversation history.
+  <Accordion title="Socios de referidos">
+    Dé a cada socio de referidos su propia campaña con un código QR único. Los socios lo imprimen en sus materiales o lo comparten digitalmente. Usted rastrea cuántos leads trae cada socio — con datos completos de sesión, flujos de páginas e historial de conversaciones.
   </Accordion>
-  <Accordion title="Events and exhibitions">
-    Display the QR code on **banners, posters, or screens** at events. Attendees scan it to learn more about your product. Combined with AI Agent Behavior, your agent can greet them with event-specific messaging: *"Welcome from [Event Name]! Here's a special offer for attendees..."*
+  <Accordion title="Eventos y exposiciones">
+    Muestre el código QR en **banners, pósters o pantallas** en eventos. Los asistentes lo escanean para saber más sobre su producto. Combinado con Comportamiento del Agente de IA, su agente puede saludarlos con mensajes específicos del evento: *"¡Bienvenido desde [Nombre del Evento]! Aquí tiene una oferta especial para asistentes..."*
   </Accordion>
-  <Accordion title="Triggers and popups">
-    Use the QR code inside **website triggers** — modal windows, slide-ins, or overlays that appear based on visitor behavior. For example, show a popup with a QR code that visitors can scan on their phone to continue the conversation later. Learn more in the [Triggers](/widget/triggers) section.
+  <Accordion title="Triggers y popups">
+    Use el código QR dentro de **triggers del sitio web** — ventanas modales, deslizantes u overlays que aparecen según el comportamiento del visitante. Por ejemplo, muestre un popup con un código QR que los visitantes pueden escanear en su teléfono para continuar la conversación después. Aprenda más en la sección [Triggers](/widget/triggers).
   </Accordion>
-  <Accordion title="Product packaging">
-    Print QR codes on product labels or packaging. Customers scan to access support, documentation, or warranty registration — all tracked as a campaign session with AI agent available for instant help.
+  <Accordion title="Empaque de productos">
+    Imprima códigos QR en etiquetas de productos o empaques. Los clientes escanean para acceder a soporte, documentación o registro de garantía — todo rastreado como una sesión de campaña con agente de IA disponible para ayuda instantánea.
   </Accordion>
 </AccordionGroup>
 
 <Tip>
-  Combine QR codes with **AI Agent Behavior** for maximum impact. Create a campaign for your trade show brochure, set the AI prompt to *"This visitor scanned a QR code from our brochure at [Event]. Offer the event discount and focus on [Product]"* — and every scan starts a personalized AI conversation.
+  Combine códigos QR con **Comportamiento del Agente de IA** para máximo impacto. Cree una campaña para su folleto de feria comercial, configure el prompt de IA como *"Este visitante escaneó un código QR de nuestro folleto en [Evento]. Ofrecer el descuento del evento y enfocarse en [Producto]"* — y cada escaneo inicia una conversación personalizada con IA.
 </Tip>
 
 ---
 
-## Third-Party Ad Campaigns
+## Campañas Publicitarias de Terceros
 
-When you run ads on platforms like Google Ads or Facebook Ads, those platforms automatically append UTM parameters to your landing page URLs. Revol works seamlessly with these — no conflicts, no extra setup.
+Cuando ejecuta anuncios en plataformas como Google Ads o Facebook Ads, esas plataformas automáticamente agregan parámetros UTM a las URLs de sus páginas de destino. Revol funciona sin problemas con estos — sin conflictos, sin configuración adicional.
 
-### What Happens
+### Qué Sucede
 
-When a visitor clicks a Google or Facebook ad with UTM parameters:
+Cuando un visitante hace clic en un anuncio de Google o Facebook con parámetros UTM:
 
-1. The visitor lands on your website with UTM tags in the URL (e.g., `?utm_source=google&utm_medium=cpc&utm_campaign=brand`)
-2. Revol's tracker reads the UTM parameters **passively** — it does not modify, remove, or redirect them
-3. If a matching campaign exists in Revol, the session is attributed to it. If not, Revol auto-creates a campaign from the UTM values
-4. Other tracking scripts (Google Analytics, Facebook Pixel, TikTok Pixel, etc.) continue to work normally — they read the same URL parameters independently
+1. El visitante llega a su sitio web con etiquetas UTM en la URL (por ejemplo, `?utm_source=google&utm_medium=cpc&utm_campaign=brand`)
+2. El tracker de Revol lee los parámetros UTM **pasivamente** — no modifica, elimina ni redirige
+3. Si existe una campaña coincidente en Revol, la sesión se le atribuye. Si no, Revol auto-crea una campaña a partir de los valores UTM
+4. Otros scripts de seguimiento (Google Analytics, Facebook Pixel, TikTok Pixel, etc.) continúan funcionando normalmente — leen los mismos parámetros de URL de forma independiente
 
-### Why There Are No Conflicts
+### Por Qué No Hay Conflictos
 
-Revol uses two types of URL parameters:
+Revol usa dos tipos de parámetros de URL:
 
-| Type | Parameters | Purpose |
+| Tipo | Parámetros | Propósito |
 |---|---|---|
-| **Standard UTM** | `utm_source`, `utm_medium`, `utm_campaign`, `utm_content`, `utm_term` | Shared with all analytics tools. Revol reads them, never overwrites them. |
-| **Revol-specific** | `rvl_cmp`, `rvl_ref` | Prefixed with `rvl_` — unique to Revol. No other platform uses these, so there is zero chance of collision. |
+| **UTM Estándar** | `utm_source`, `utm_medium`, `utm_campaign`, `utm_content`, `utm_term` | Compartidos con todas las herramientas de analíticas. Revol los lee, nunca los sobrescribe. |
+| **Específicos de Revol** | `rvl_cmp`, `rvl_ref` | Prefijados con `rvl_` — únicos de Revol. Ninguna otra plataforma los usa, por lo que no hay posibilidad de colisión. |
 
-Key points:
+Puntos clave:
 
-- **Read-only approach** — Revol's tracker only reads URL parameters. It never modifies the URL, sets redirects, or strips parameters that other tools need.
-- **Unique prefix** — Revol's own parameters (`rvl_cmp`, `rvl_ref`) use the `rvl_` namespace, which doesn't overlap with any known tracking platform.
-- **Isolated storage** — Revol stores campaign data in its own database. It doesn't interfere with cookies, `dataLayer`, or local storage used by Google Analytics, Facebook Pixel, or other tools.
-- **No tag conflicts** — The `tracker.js` script operates independently. It doesn't modify the DOM in ways that break other tracking tags or interfere with tag managers (GTM, etc.).
+- **Enfoque de solo lectura** — El tracker de Revol solo lee los parámetros de URL. Nunca modifica la URL, establece redirecciones ni elimina parámetros que otras herramientas necesitan.
+- **Prefijo único** — Los parámetros propios de Revol (`rvl_cmp`, `rvl_ref`) usan el espacio de nombres `rvl_`, que no se superpone con ninguna plataforma de seguimiento conocida.
+- **Almacenamiento aislado** — Revol almacena los datos de campaña en su propia base de datos. No interfiere con cookies, `dataLayer` o almacenamiento local usado por Google Analytics, Facebook Pixel u otras herramientas.
+- **Sin conflictos de etiquetas** — El script `tracker.js` opera de forma independiente. No modifica el DOM de maneras que rompan otras etiquetas de seguimiento ni interfiere con gestores de etiquetas (GTM, etc.).
 
 <Tip>
-  You can create a Revol campaign with the same UTM values that your Google Ads or Facebook Ads use. This way, Revol picks up those sessions automatically and you can add AI Agent Behavior instructions specific to each ad campaign — without any changes to your ad platform setup.
+  Puede crear una campaña en Revol con los mismos valores UTM que usa su Google Ads o Facebook Ads. De esta manera, Revol recoge esas sesiones automáticamente y usted puede agregar instrucciones de Comportamiento del Agente de IA específicas para cada campaña publicitaria — sin ningún cambio en la configuración de su plataforma publicitaria.
 </Tip>
 
 ---
 
-## Managing Campaigns
+## Gestión de Campañas
 
-### Edit
+### Editar
 
-Click a campaign row in the table to open the panel. Modify any field and click **Save**.
+Haga clic en una fila de campaña en la tabla para abrir el panel. Modifique cualquier campo y haga clic en **Guardar**.
 
-### Toggle Active / Inactive
+### Alternar Activa / Inactiva
 
-Use the **Active** toggle in the campaign panel. Inactive campaigns stop tracking new sessions but keep historical data.
+Use el interruptor **Activa** en el panel de campaña. Las campañas inactivas dejan de rastrear nuevas sesiones pero conservan los datos históricos.
 
-### Delete
+### Eliminar
 
-Click the **Delete** button at the bottom of the campaign panel. This removes the campaign configuration but keeps the session data already collected.
+Haga clic en el botón **Eliminar** en la parte inferior del panel de campaña. Esto elimina la configuración de la campaña pero conserva los datos de sesión ya recopilados.
 
 <Warning>
-  Deleting a campaign cannot be undone. Sessions already attributed to the campaign will retain the campaign reference in reports.
+  La eliminación de una campaña no se puede deshacer. Las sesiones ya atribuidas a la campaña retendrán la referencia de campaña en los informes.
 </Warning>

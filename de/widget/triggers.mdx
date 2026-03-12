@@ -1,323 +1,323 @@
 ---
-title: Triggers
-sidebarTitle: Triggers
-description: "Create automated popups, overlays, and notification bars based on visitor behavior rules"
+title: Trigger
+sidebarTitle: Trigger
+description: "Erstellen Sie automatisierte Popups, Overlays und Benachrichtigungsleisten basierend auf Besucherverhaltensregeln"
 ---
 
-## Overview
+## Ueberblick
 
-The Triggers tab lets you create automated actions that fire based on visitor behavior. When a visitor meets specific conditions — time on page, scroll depth, UTM source, device type, and more — the trigger displays a modal popup, toast notification, or redirects to a URL. Triggers are a powerful way to engage visitors at the right moment without any coding.
+Der Trigger-Tab ermoeglicht es Ihnen, automatisierte Aktionen zu erstellen, die basierend auf dem Besucherverhalten ausgeloest werden. Wenn ein Besucher bestimmte Bedingungen erfuellt — Verweildauer, Scrolltiefe, UTM-Quelle, Geraetetyp und mehr — zeigt der Trigger ein modales Popup, eine Toast-Benachrichtigung an oder leitet zu einer URL weiter. Trigger sind eine leistungsstarke Moeglichkeit, Besucher zum richtigen Zeitpunkt zu erreichen, ohne Programmierung.
 
 <Frame>
-  <img className="block dark:hidden" src="/images/tracker-triggers-light.png" alt="Triggers tab" />
-  <img className="hidden dark:block" src="/images/tracker-triggers-dark.png" alt="Triggers tab" />
+  <img className="block dark:hidden" src="/images/tracker-triggers-light.png" alt="Trigger-Tab" />
+  <img className="hidden dark:block" src="/images/tracker-triggers-dark.png" alt="Trigger-Tab" />
 </Frame>
 
-## Triggers List
+## Triggerliste
 
-The triggers table shows all defined triggers with key metrics:
+Die Triggertabelle zeigt alle definierten Trigger mit wichtigen Metriken:
 
-| Column | Description |
+| Spalte | Beschreibung |
 |---|---|
-| **Name** | Trigger name |
-| **Type** | Action type — Modal (centered popup), Toast (corner notification), or Redirect (URL navigation) |
-| **Conditions** | Summary of firing conditions |
-| **Fires** | Total number of activations |
-| **Status** | Active or inactive |
-| **Actions** | Edit or delete the trigger |
+| **Name** | Triggername |
+| **Typ** | Aktionstyp — Modal (zentriertes Popup), Toast (Eckenbenachrichtigung) oder Weiterleitung (URL-Navigation) |
+| **Bedingungen** | Zusammenfassung der Ausloesebedingungen |
+| **Ausloesungen** | Gesamtanzahl der Aktivierungen |
+| **Status** | Aktiv oder inaktiv |
+| **Aktionen** | Trigger bearbeiten oder loeschen |
 
 ---
 
-## Creating a Trigger
+## Einen Trigger erstellen
 
-Click **Create Trigger** to open the trigger editor. The editor has two tabs: **Content** for visual content and **Settings** for behavior rules.
+Klicken Sie auf **Trigger erstellen**, um den Trigger-Editor zu oeffnen. Der Editor hat zwei Tabs: **Inhalt** fuer visuellen Inhalt und **Einstellungen** fuer Verhaltensregeln.
 
 <Frame>
-  <img className="block dark:hidden" src="/images/create-trigger-light.png" alt="Create trigger editor" />
-  <img className="hidden dark:block" src="/images/create-trigger-dark.png" alt="Create trigger editor" />
+  <img className="block dark:hidden" src="/images/create-trigger-light.png" alt="Trigger-Editor erstellen" />
+  <img className="hidden dark:block" src="/images/create-trigger-dark.png" alt="Trigger-Editor erstellen" />
 </Frame>
 
 ---
 
-## Content Tab
+## Inhalt-Tab
 
-The Content tab is a visual block editor where you build the trigger's content. Each trigger is composed of **content blocks** that you add, arrange, and style.
+Der Inhalt-Tab ist ein visueller Block-Editor, in dem Sie den Inhalt des Triggers aufbauen. Jeder Trigger besteht aus **Inhaltsbloecken**, die Sie hinzufuegen, anordnen und gestalten.
 
-### Adding Blocks
+### Bloecke hinzufuegen
 
-Click the **+ Add Block** button to open the block picker. Available block types:
+Klicken Sie auf die Schaltflaeche **+ Block hinzufuegen**, um die Blockauswahl zu oeffnen. Verfuegbare Blocktypen:
 
-| Block | Description |
+| Block | Beschreibung |
 |---|---|
-| **Image** | Add an image — upload a file or paste a URL. Great for product photos, banners, or icons. |
-| **Heading** | Large text for titles and headlines. Supports text alignment (left or center). |
-| **Text** | Body text with rich formatting. Use for descriptions, offers, or instructions. |
-| **Feature List** | A bulleted list with check icons — ideal for listing benefits, features, or included items. |
-| **Input Field** | A single-line text input for collecting data (name, email, phone). |
-| **Textarea** | A multi-line text area for longer responses (messages, feedback). |
-| **Button** | A clickable button with customizable text, color, and action (link, close, or submit form data). |
-| **Promo Code** | A styled promo code block with a copy button. Visitors click to copy the code to their clipboard. |
-| **QR Code** | Embeds a campaign QR code directly in the trigger. Visitors scan it on their phone to continue on mobile — with full campaign attribution. See [Campaigns — QR Code](/widget/campaigns#qr-code) for details. |
-| **Divider** | A horizontal line to visually separate sections. |
+| **Bild** | Fuegen Sie ein Bild hinzu — laden Sie eine Datei hoch oder fuegen Sie eine URL ein. Ideal fuer Produktfotos, Banner oder Icons. |
+| **Ueberschrift** | Grosser Text fuer Titel und Schlagzeilen. Unterstuetzt Textausrichtung (links oder zentriert). |
+| **Text** | Fliesstext mit Formatierung. Verwenden Sie ihn fuer Beschreibungen, Angebote oder Anleitungen. |
+| **Funktionsliste** | Eine Aufzaehlungsliste mit Haekchen-Symbolen — ideal zum Auflisten von Vorteilen, Funktionen oder enthaltenen Elementen. |
+| **Eingabefeld** | Ein einzeiliges Texteingabefeld zur Datenerfassung (Name, E-Mail, Telefon). |
+| **Textbereich** | Ein mehrzeiliger Textbereich fuer laengere Antworten (Nachrichten, Feedback). |
+| **Schaltflaeche** | Eine klickbare Schaltflaeche mit anpassbarem Text, Farbe und Aktion (Link, Schliessen oder Formulardaten senden). |
+| **Aktionscode** | Ein gestalteter Aktionscode-Block mit Kopierschaltflaeche. Besucher klicken, um den Code in ihre Zwischenablage zu kopieren. |
+| **QR-Code** | Bettet einen Kampagnen-QR-Code direkt in den Trigger ein. Besucher scannen ihn auf ihrem Telefon, um auf dem Mobilgeraet fortzufahren — mit vollstaendiger Kampagnenzuordnung. Siehe [Kampagnen — QR-Code](/widget/campaigns#qr-code) fuer Details. |
+| **Trennlinie** | Eine horizontale Linie zur visuellen Trennung von Abschnitten. |
 
-### Block Settings
+### Blockeinstellungen
 
-Each block type has its own editable properties. Click a block to select it and configure:
+Jeder Blocktyp hat eigene bearbeitbare Eigenschaften. Klicken Sie auf einen Block, um ihn auszuwaehlen und zu konfigurieren:
 
-**Image:**
-| Setting | Description |
+**Bild:**
+| Einstellung | Beschreibung |
 |---|---|
-| **URL** | Image source URL |
-| **Alt Text** | Alternative text for accessibility |
-| **Border Radius** | Corner roundness in pixels (default: 0) |
+| **URL** | Bildquell-URL |
+| **Alt-Text** | Alternativtext fuer Barrierefreiheit |
+| **Randradius** | Eckenrundung in Pixeln (Standard: 0) |
 
-**Heading:**
-| Setting | Description |
+**Ueberschrift:**
+| Einstellung | Beschreibung |
 |---|---|
-| **Text** | Heading content |
-| **Align** | Left (default) or Center |
+| **Text** | Ueberschrifteninhalt |
+| **Ausrichtung** | Links (Standard) oder Zentriert |
 
 **Text:**
-| Setting | Description |
+| Einstellung | Beschreibung |
 |---|---|
-| **HTML Content** | Rich text with formatting — supports `<b>`, `<i>`, `<u>`, `<a>`, lists, and `<br>` |
+| **HTML-Inhalt** | Formatierter Text — unterstuetzt `<b>`, `<i>`, `<u>`, `<a>`, Listen und `<br>` |
 
-**Feature List:**
-| Setting | Description |
+**Funktionsliste:**
+| Einstellung | Beschreibung |
 |---|---|
-| **Items** | Dynamic list of features. Each item has an icon (emoji), title, and description text. Click "Add Item" to add more. |
+| **Elemente** | Dynamische Liste von Funktionen. Jedes Element hat ein Symbol (Emoji), einen Titel und einen Beschreibungstext. Klicken Sie auf "Element hinzufuegen", um weitere hinzuzufuegen. |
 
-**Input Field:**
-| Setting | Description |
+**Eingabefeld:**
+| Einstellung | Beschreibung |
 |---|---|
-| **Key** | Form field name (e.g., `email`, `phone`) |
-| **Type** | Text, Email, Phone, or Number |
-| **Label** | Field label shown above the input |
-| **Placeholder** | Hint text inside the field |
-| **Required** | Whether the field must be filled before submission |
+| **Schluessel** | Formularfeldname (z.B. `email`, `phone`) |
+| **Typ** | Text, E-Mail, Telefon oder Nummer |
+| **Label** | Feldbeschriftung ueber dem Eingabefeld |
+| **Platzhalter** | Hinweistext innerhalb des Feldes |
+| **Erforderlich** | Ob das Feld vor dem Absenden ausgefuellt werden muss |
 
-**Textarea:**
-| Setting | Description |
+**Textbereich:**
+| Einstellung | Beschreibung |
 |---|---|
-| **Key** | Form field name |
-| **Rows** | Number of visible text rows (1–10, default: 3) |
-| **Label** | Field label |
-| **Placeholder** | Hint text |
-| **Required** | Whether the field must be filled |
+| **Schluessel** | Formularfeldname |
+| **Zeilen** | Anzahl sichtbarer Textzeilen (1–10, Standard: 3) |
+| **Label** | Feldbeschriftung |
+| **Platzhalter** | Hinweistext |
+| **Erforderlich** | Ob das Feld ausgefuellt werden muss |
 
-**Button:**
-| Setting | Description |
+**Schaltflaeche:**
+| Einstellung | Beschreibung |
 |---|---|
-| **Label** | Button text |
-| **Variant** | Primary (solid accent color), Secondary (light tint), or Outline (transparent with border) |
-| **Action** | Close (dismiss trigger), Open Link (navigate to URL), Submit Form (send form data), or Copy Value (copy text to clipboard) |
-| **Value** | URL for links or text for copy action |
+| **Beschriftung** | Schaltflaechentext |
+| **Variante** | Primaer (ausgefuellte Akzentfarbe), Sekundaer (heller Farbton) oder Umriss (transparent mit Rand) |
+| **Aktion** | Schliessen (Trigger verwerfen), Link oeffnen (zu URL navigieren), Formular absenden (Formulardaten senden) oder Wert kopieren (Text in Zwischenablage kopieren) |
+| **Wert** | URL fuer Links oder Text fuer Kopieraktion |
 
-**Promo Code:**
-| Setting | Description |
+**Aktionscode:**
+| Einstellung | Beschreibung |
 |---|---|
-| **Code** | The promo code text (e.g., `SPRING20`) |
-| **Label** | Optional label above the code |
+| **Code** | Der Aktionscode-Text (z.B. `SPRING20`) |
+| **Label** | Optionales Label ueber dem Code |
 
-**QR Code:**
-| Setting | Description |
+**QR-Code:**
+| Einstellung | Beschreibung |
 |---|---|
-| **QR Data** | URL or text to encode. Use the "Create QR" button to generate. |
-| **Size** | QR code size in pixels (default: 160) |
+| **QR-Daten** | URL oder Text zum Codieren. Verwenden Sie die Schaltflaeche "QR erstellen" zum Generieren. |
+| **Groesse** | QR-Code-Groesse in Pixeln (Standard: 160) |
 
-**Divider:**
-No settings — renders a horizontal line separator.
+**Trennlinie:**
+Keine Einstellungen — rendert eine horizontale Trennlinie.
 
-### Trigger Style
+### Trigger-Stil
 
-The trigger container has global style settings that apply to the entire popup/toast:
+Der Trigger-Container hat globale Stileinstellungen, die auf das gesamte Popup/Toast angewendet werden:
 
-| Setting | Description |
+| Einstellung | Beschreibung |
 |---|---|
-| **Background Color** | Container background (default: `#ffffff`) |
-| **Text Color** | Default text color for all blocks (default: `#1a1a1a`) |
-| **Accent Color** | Color for buttons, feature icons, and promo code copy button (default: `#4680ff`) |
-| **Border Radius** | Corner roundness of the entire trigger in pixels (default: 16) |
-| **Position** | For toast-style triggers: top-right, top-left, bottom-right, or bottom-left. For modals: centered with a dark backdrop. |
+| **Hintergrundfarbe** | Container-Hintergrund (Standard: `#ffffff`) |
+| **Textfarbe** | Standard-Textfarbe fuer alle Bloecke (Standard: `#1a1a1a`) |
+| **Akzentfarbe** | Farbe fuer Schaltflaechen, Funktionssymbole und Aktionscode-Kopierschaltflaeche (Standard: `#4680ff`) |
+| **Randradius** | Eckenrundung des gesamten Triggers in Pixeln (Standard: 16) |
+| **Position** | Fuer Toast-Trigger: oben rechts, oben links, unten rechts oder unten links. Fuer Modals: zentriert mit dunklem Hintergrund. |
 
-### Content Examples
+### Inhaltsbeispiele
 
 <AccordionGroup>
-  <Accordion title="Welcome discount popup">
-    - **Heading**: "Get 10% Off Your First Order"
-    - **Text**: "Subscribe to our newsletter and receive an exclusive discount code."
-    - **Input Field**: Email
-    - **Button**: "Get My Discount" (submit action)
-    - **Promo Code**: Revealed after form submission
+  <Accordion title="Willkommensrabatt-Popup">
+    - **Ueberschrift**: "Erhalten Sie 10% Rabatt auf Ihre erste Bestellung"
+    - **Text**: "Abonnieren Sie unseren Newsletter und erhalten Sie einen exklusiven Rabattcode."
+    - **Eingabefeld**: E-Mail
+    - **Schaltflaeche**: "Meinen Rabatt erhalten" (Absende-Aktion)
+    - **Aktionscode**: Wird nach Formulareinreichung angezeigt
   </Accordion>
-  <Accordion title="Exit intent offer">
-    - **Image**: Product photo
-    - **Heading**: "Wait! Don't miss this."
-    - **Text**: "Free shipping on orders over $50 — today only."
-    - **Button**: "Shop Now" (link to store)
-    - **Button**: "No thanks" (close action)
+  <Accordion title="Exit-Intent-Angebot">
+    - **Bild**: Produktfoto
+    - **Ueberschrift**: "Warten Sie! Verpassen Sie das nicht."
+    - **Text**: "Kostenloser Versand bei Bestellungen ueber 50 EUR — nur heute."
+    - **Schaltflaeche**: "Jetzt einkaufen" (Link zum Shop)
+    - **Schaltflaeche**: "Nein danke" (Schliessen-Aktion)
   </Accordion>
-  <Accordion title="QR code for mobile continuation">
-    - **Heading**: "Continue on your phone"
-    - **Text**: "Scan the QR code to chat with our AI agent on mobile."
-    - **QR Code**: Campaign QR code with UTM tracking
-    - **Text**: "Or click the chat button below."
+  <Accordion title="QR-Code fuer mobile Fortsetzung">
+    - **Ueberschrift**: "Auf dem Telefon fortfahren"
+    - **Text**: "Scannen Sie den QR-Code, um auf dem Mobilgeraet mit unserem KI-Agenten zu chatten."
+    - **QR-Code**: Kampagnen-QR-Code mit UTM-Tracking
+    - **Text**: "Oder klicken Sie auf die Chat-Schaltflaeche unten."
   </Accordion>
-  <Accordion title="Feature announcement">
-    - **Image**: Feature screenshot
-    - **Heading**: "New: AI-Powered Recommendations"
-    - **Feature List**: 3-4 key benefits
-    - **Button**: "Learn More" (link to feature page)
-    - **Divider**
-    - **Text**: Small print disclaimer
+  <Accordion title="Funktionsankuendigung">
+    - **Bild**: Funktions-Screenshot
+    - **Ueberschrift**: "Neu: KI-gestuetzte Empfehlungen"
+    - **Funktionsliste**: 3-4 wichtige Vorteile
+    - **Schaltflaeche**: "Mehr erfahren" (Link zur Funktionsseite)
+    - **Trennlinie**
+    - **Text**: Kleingedruckter Haftungsausschluss
   </Accordion>
 </AccordionGroup>
 
 ---
 
-## Settings Tab
+## Einstellungen-Tab
 
-The Settings tab controls **when**, **how often**, and **to whom** the trigger is shown.
+Der Einstellungen-Tab steuert **wann**, **wie oft** und **wem** der Trigger angezeigt wird.
 
-### Conditions
+### Bedingungen
 
-Conditions define the rules that must be met for the trigger to fire. You can add multiple conditions and choose the logic mode: **AND** (all conditions must be true) or **OR** (any condition is enough) for the trigger to activate.
+Bedingungen definieren die Regeln, die erfuellt sein muessen, damit der Trigger ausgeloest wird. Sie koennen mehrere Bedingungen hinzufuegen und den Logikmodus waehlen: **UND** (alle Bedingungen muessen wahr sein) oder **ODER** (eine Bedingung genuegt), damit der Trigger aktiviert wird.
 
-| Condition | Operator | Description |
+| Bedingung | Operator | Beschreibung |
 |---|---|---|
-| **Time on page (seconds)** | `>=`, `<=`, `=` | Fire after the visitor spends X seconds on the current page. Example: show a popup after 30 seconds of reading. |
-| **Pages visited** | `>=`, `<=`, `=` | Fire after the visitor views X pages in the session. Example: show an offer after they browse 3+ pages. |
-| **Scroll depth (%)** | `>=`, `<=`, `=` | Fire when the visitor scrolls past a percentage of the page. Example: show a CTA after 70% scroll. |
-| **UTM Source** | `=`, `contains` | Fire only for visitors from a specific traffic source. Example: show a special offer only for `google` visitors. |
-| **UTM Medium** | `=`, `contains` | Fire only for a specific marketing medium. Example: trigger only for `cpc` (paid) traffic. |
-| **UTM Campaign** | `=`, `contains` | Fire only for visitors from a specific campaign. Example: show a seasonal banner only for `summer-sale` campaign. |
-| **Referral ID** | `=`, `!=` | Fire based on the `rvl_ref` parameter. Example: show a partner welcome message for a specific referral. |
-| **Referrer contains** | `contains` | Fire based on the referring URL. Example: show a competitor comparison for visitors coming from a competitor's site. |
-| **Page URL** | `=`, `contains`, `starts_with`, `matches` | Fire only on specific pages. Use `matches` for regex patterns. Example: show a pricing popup only on `/pricing`. |
-| **Device type** | `=` | Fire only on Desktop, Mobile, or Tablet. Example: show a mobile app download banner only on mobile. |
-| **Event fired** | `=` | Fire after a specific tracking event occurs. Example: show a cross-sell popup after `add_to_cart` event. |
-| **Day of week (0=Sun)** | `=`, `in` | Fire only on specific days. Example: show weekend deals on Saturday (6) and Sunday (0). |
-| **Hour range [from, to]** | `between` | Fire only during specific hours. Example: show "Call us now" only during business hours 9-18. |
+| **Verweildauer (Sekunden)** | `>=`, `<=`, `=` | Ausloesen, nachdem der Besucher X Sekunden auf der aktuellen Seite verbracht hat. Beispiel: Ein Popup nach 30 Sekunden Lesen anzeigen. |
+| **Besuchte Seiten** | `>=`, `<=`, `=` | Ausloesen, nachdem der Besucher X Seiten in der Sitzung angesehen hat. Beispiel: Ein Angebot nach 3+ Seiten anzeigen. |
+| **Scrolltiefe (%)** | `>=`, `<=`, `=` | Ausloesen, wenn der Besucher einen Prozentsatz der Seite ueberschritten hat. Beispiel: Einen CTA nach 70% Scroll anzeigen. |
+| **UTM-Quelle** | `=`, `contains` | Nur fuer Besucher aus einer bestimmten Traffic-Quelle ausloesen. Beispiel: Ein Sonderangebot nur fuer `google`-Besucher anzeigen. |
+| **UTM-Medium** | `=`, `contains` | Nur fuer ein bestimmtes Marketing-Medium ausloesen. Beispiel: Nur fuer `cpc`-Traffic (bezahlt) ausloesen. |
+| **UTM-Kampagne** | `=`, `contains` | Nur fuer Besucher aus einer bestimmten Kampagne ausloesen. Beispiel: Ein saisonales Banner nur fuer die `summer-sale`-Kampagne anzeigen. |
+| **Empfehlungs-ID** | `=`, `!=` | Basierend auf dem `rvl_ref`-Parameter ausloesen. Beispiel: Eine Partner-Willkommensnachricht fuer eine bestimmte Empfehlung anzeigen. |
+| **Referrer enthaelt** | `contains` | Basierend auf der verweisenden URL ausloesen. Beispiel: Einen Wettbewerbsvergleich fuer Besucher anzeigen, die von der Website eines Wettbewerbers kommen. |
+| **Seiten-URL** | `=`, `contains`, `starts_with`, `matches` | Nur auf bestimmten Seiten ausloesen. Verwenden Sie `matches` fuer Regex-Muster. Beispiel: Ein Preis-Popup nur auf `/pricing` anzeigen. |
+| **Geraetetyp** | `=` | Nur auf Desktop, Mobil oder Tablet ausloesen. Beispiel: Ein Mobile-App-Download-Banner nur auf Mobilgeraeten anzeigen. |
+| **Ereignis ausgeloest** | `=` | Nach einem bestimmten Tracking-Ereignis ausloesen. Beispiel: Ein Cross-Sell-Popup nach dem `add_to_cart`-Ereignis anzeigen. |
+| **Wochentag (0=So)** | `=`, `in` | Nur an bestimmten Tagen ausloesen. Beispiel: Wochenendangebote am Samstag (6) und Sonntag (0) anzeigen. |
+| **Stundenbereich [von, bis]** | `between` | Nur waehrend bestimmter Stunden ausloesen. Beispiel: "Rufen Sie uns jetzt an" nur waehrend der Geschaeftszeiten 9-18 Uhr anzeigen. |
 
-### Condition Examples
+### Bedingungsbeispiele
 
 <Tabs>
-  <Tab title="Engaged reader">
-    Show a newsletter popup to visitors who are actively reading:
+  <Tab title="Engagierter Leser">
+    Ein Newsletter-Popup fuer Besucher anzeigen, die aktiv lesen:
 
-    | Condition | Operator | Value |
+    | Bedingung | Operator | Wert |
     |---|---|---|
-    | Time on page | `>=` | `30` |
-    | Scroll depth | `>=` | `50` |
-    | Device type | `=` | `desktop` |
+    | Verweildauer | `>=` | `30` |
+    | Scrolltiefe | `>=` | `50` |
+    | Geraetetyp | `=` | `desktop` |
   </Tab>
-  <Tab title="Paid traffic offer">
-    Show a special discount for Google Ads visitors on the pricing page:
+  <Tab title="Bezahlter Traffic-Angebot">
+    Einen Sonderrabatt fuer Google Ads-Besucher auf der Preisseite anzeigen:
 
-    | Condition | Operator | Value |
+    | Bedingung | Operator | Wert |
     |---|---|---|
-    | UTM Source | `=` | `google` |
-    | UTM Medium | `=` | `cpc` |
-    | Page URL | `contains` | `/pricing` |
+    | UTM-Quelle | `=` | `google` |
+    | UTM-Medium | `=` | `cpc` |
+    | Seiten-URL | `contains` | `/pricing` |
   </Tab>
-  <Tab title="Cart abandonment">
-    Show a reminder after an add-to-cart event with time delay:
+  <Tab title="Warenkorbabbruch">
+    Eine Erinnerung nach einem Warenkorb-Ereignis mit Zeitverzoegerung anzeigen:
 
-    | Condition | Operator | Value |
+    | Bedingung | Operator | Wert |
     |---|---|---|
-    | Event fired | `=` | `add_to_cart` |
-    | Time on page | `>=` | `60` |
-    | Pages visited | `>=` | `2` |
+    | Ereignis ausgeloest | `=` | `add_to_cart` |
+    | Verweildauer | `>=` | `60` |
+    | Besuchte Seiten | `>=` | `2` |
   </Tab>
-  <Tab title="Business hours only">
-    Show a "Call us" bar only during working hours on weekdays:
+  <Tab title="Nur Geschaeftszeiten">
+    Eine "Rufen Sie uns an"-Leiste nur waehrend der Arbeitszeiten an Werktagen anzeigen:
 
-    | Condition | Operator | Value |
+    | Bedingung | Operator | Wert |
     |---|---|---|
-    | Hour range | `between` | `[9, 18]` |
-    | Day of week | `in` | `[1, 2, 3, 4, 5]` |
-    | Device type | `=` | `desktop` |
+    | Stundenbereich | `between` | `[9, 18]` |
+    | Wochentag | `in` | `[1, 2, 3, 4, 5]` |
+    | Geraetetyp | `=` | `desktop` |
   </Tab>
 </Tabs>
 
-### Frequency
+### Haeufigkeit
 
-Controls how often the trigger is shown to the same visitor:
+Steuert, wie oft der Trigger demselben Besucher angezeigt wird:
 
-| Option | Description |
+| Option | Beschreibung |
 |---|---|
-| **Once per session** | Show once during the current browser tab session. The trigger won't show again even after page reload or navigation — only closing the tab resets it. |
-| **Once per day** | Show once per calendar day. The visitor won't see it again until tomorrow, regardless of how many sessions they have today. |
-| **Once per visitor (ever)** | Show only once — ever. Once a visitor has seen this trigger, it will never show again (tracked via browser token). Ideal for one-time announcements. |
-| **Every visit** | Show on every session. The trigger fires every time the conditions are met, regardless of how many times the visitor has seen it before. Use sparingly. |
+| **Einmal pro Sitzung** | Einmal waehrend der aktuellen Browser-Tab-Sitzung anzeigen. Der Trigger wird auch nach Seitenneuladung oder Navigation nicht erneut angezeigt — nur das Schliessen des Tabs setzt ihn zurueck. |
+| **Einmal pro Tag** | Einmal pro Kalendertag anzeigen. Der Besucher sieht ihn erst morgen wieder, unabhaengig davon, wie viele Sitzungen er heute hat. |
+| **Einmal pro Besucher (jemals)** | Nur einmal anzeigen — jemals. Sobald ein Besucher diesen Trigger gesehen hat, wird er nie wieder angezeigt (ueber Browser-Token verfolgt). Ideal fuer einmalige Ankuendigungen. |
+| **Bei jedem Besuch** | Bei jeder Sitzung anzeigen. Der Trigger wird jedes Mal ausgeloest, wenn die Bedingungen erfuellt sind, unabhaengig davon, wie oft der Besucher ihn schon gesehen hat. Sparsam verwenden. |
 
 <Tip>
-  For most use cases, **Once per session** or **Once per visitor** is the right choice. "Every visit" can be annoying — use it only for critical, time-sensitive information like maintenance notices or urgent promotions.
+  Fuer die meisten Anwendungsfaelle ist **Einmal pro Sitzung** oder **Einmal pro Besucher** die richtige Wahl. "Bei jedem Besuch" kann stoerend sein — verwenden Sie es nur fuer kritische, zeitkritische Informationen wie Wartungshinweise oder dringende Aktionen.
 </Tip>
 
-### Schedule
+### Zeitplan
 
-Optionally restrict the trigger to a specific date and time range:
+Optional den Trigger auf einen bestimmten Datums- und Zeitbereich beschraenken:
 
-| Field | Description |
+| Feld | Beschreibung |
 |---|---|
-| **Start At** | Date and time when the trigger becomes active. Before this moment, the trigger won't fire even if conditions are met. |
-| **End At** | Date and time when the trigger stops. After this moment, the trigger is automatically deactivated. |
+| **Start um** | Datum und Uhrzeit, ab wann der Trigger aktiv wird. Vor diesem Zeitpunkt wird der Trigger nicht ausgeloest, auch wenn die Bedingungen erfuellt sind. |
+| **Ende um** | Datum und Uhrzeit, wann der Trigger stoppt. Nach diesem Zeitpunkt wird der Trigger automatisch deaktiviert. |
 
-Both fields are optional:
-- **Start only** — the trigger activates on the start date and runs indefinitely
-- **End only** — the trigger runs immediately and stops on the end date
-- **Both** — the trigger runs only during the specified window
-- **Neither** — the trigger runs as long as it's enabled
+Beide Felder sind optional:
+- **Nur Start** — der Trigger wird am Startdatum aktiviert und laeuft unbegrenzt
+- **Nur Ende** — der Trigger laeuft sofort und stoppt am Enddatum
+- **Beides** — der Trigger laeuft nur waehrend des angegebenen Zeitfensters
+- **Keines** — der Trigger laeuft, solange er aktiviert ist
 
-**Use cases for scheduling:**
+**Anwendungsfaelle fuer Zeitplanung:**
 
-| Scenario | Start | End |
+| Szenario | Start | Ende |
 |---|---|---|
-| Black Friday sale popup | Nov 29, 00:00 | Dec 2, 23:59 |
-| New Year promo banner | Dec 25, 00:00 | Jan 5, 23:59 |
-| Product launch announcement | Mar 15, 10:00 | Mar 22, 23:59 |
-| Maintenance notice | — | Apr 1, 06:00 |
+| Black-Friday-Verkaufspopup | 29. Nov, 00:00 | 2. Dez, 23:59 |
+| Neujahrs-Aktionsbanner | 25. Dez, 00:00 | 5. Jan, 23:59 |
+| Produktstart-Ankuendigung | 15. Maerz, 10:00 | 22. Maerz, 23:59 |
+| Wartungshinweis | — | 1. Apr, 06:00 |
 
 ---
 
-## How Triggers Work
+## Wie Trigger funktionieren
 
-When the tracker script loads on your website, it fetches the active trigger definitions and evaluates them in the background:
+Wenn das Tracker-Skript auf Ihrer Website geladen wird, ruft es die aktiven Trigger-Definitionen ab und wertet sie im Hintergrund aus:
 
 <Steps>
-  <Step title="Active triggers are loaded">
-    The tracker fetches active trigger definitions from the server. The server filters by schedule (start/end dates) and active status before sending them to the client.
+  <Step title="Aktive Trigger werden geladen">
+    Der Tracker ruft aktive Trigger-Definitionen vom Server ab. Der Server filtert nach Zeitplan (Start-/Enddaten) und aktivem Status, bevor er sie an den Client sendet.
   </Step>
-  <Step title="Frequency is checked">
-    Every 2 seconds, the tracker checks each trigger's frequency setting. If the visitor has already seen the trigger (based on localStorage or sessionStorage), the trigger is skipped.
+  <Step title="Haeufigkeit wird geprueft">
+    Alle 2 Sekunden prueft der Tracker die Haeufigkeitseinstellung jedes Triggers. Wenn der Besucher den Trigger bereits gesehen hat (basierend auf localStorage oder sessionStorage), wird der Trigger uebersprungen.
   </Step>
-  <Step title="Conditions are evaluated">
-    For triggers that pass the frequency check, the tracker evaluates all conditions — time on page, scroll depth, UTM parameters, device type, fired events, and more. Conditions use AND or OR logic depending on configuration.
+  <Step title="Bedingungen werden ausgewertet">
+    Fuer Trigger, die die Haeufigkeitspruefung bestehen, wertet der Tracker alle Bedingungen aus — Verweildauer, Scrolltiefe, UTM-Parameter, Geraetetyp, ausgeloeste Ereignisse und mehr. Bedingungen verwenden je nach Konfiguration UND- oder ODER-Logik.
   </Step>
-  <Step title="Trigger is displayed">
-    The trigger content (modal or toast) is rendered on the page inside a Shadow DOM with the configured styling and animation. The activation is recorded as a `trigger_shown` event. For redirect triggers, the visitor is navigated to the target URL.
+  <Step title="Trigger wird angezeigt">
+    Der Trigger-Inhalt (Modal oder Toast) wird auf der Seite innerhalb eines Shadow DOM mit dem konfigurierten Styling und Animation gerendert. Die Aktivierung wird als `trigger_shown`-Ereignis aufgezeichnet. Bei Weiterleitungs-Triggern wird der Besucher zur Ziel-URL navigiert.
   </Step>
-  <Step title="Visitor interacts">
-    The visitor can interact with the trigger — click buttons, fill in fields, copy promo codes, scan QR codes, or close it. Each interaction is tracked as a separate event (`trigger_clicked`, `trigger_dismissed`, `trigger_promo_copied`).
+  <Step title="Besucher interagiert">
+    Der Besucher kann mit dem Trigger interagieren — Schaltflaechen klicken, Felder ausfuellen, Aktionscodes kopieren, QR-Codes scannen oder ihn schliessen. Jede Interaktion wird als separates Ereignis verfolgt (`trigger_clicked`, `trigger_dismissed`, `trigger_promo_copied`).
   </Step>
 </Steps>
 
 <Note>
-  Triggers are rendered inside their own **Shadow DOM** container, so their styles are fully isolated from your website. No CSS conflicts.
+  Trigger werden in ihrem eigenen **Shadow DOM**-Container gerendert, sodass ihre Stile vollstaendig von Ihrer Website isoliert sind. Keine CSS-Konflikte.
 </Note>
 
 ---
 
-## Triggers and Events Integration
+## Integration von Triggern und Ereignissen
 
-Triggers create tracking events automatically. Every trigger activation is recorded as a `trigger_shown` event with the trigger ID and action type. You can:
+Trigger erstellen automatisch Tracking-Ereignisse. Jede Trigger-Aktivierung wird als `trigger_shown`-Ereignis mit der Trigger-ID und dem Aktionstyp aufgezeichnet. Sie koennen:
 
-- See trigger activity in the **Trigger Activity** chart on the Dashboard
-- View trigger activations in the **Campaign Performance** table
-- Use the `event_fired` condition to chain triggers — e.g., show Trigger B only after Trigger A was seen
-- Combine with [Custom Events](/widget/events#custom-events-api) for complex flows
+- Trigger-Aktivitaet im **Trigger-Aktivitaet**-Diagramm auf dem Dashboard sehen
+- Trigger-Aktivierungen in der **Kampagnen-Performance**-Tabelle anzeigen
+- Die Bedingung `event_fired` verwenden, um Trigger zu verketten — z.B. Trigger B nur anzeigen, nachdem Trigger A gesehen wurde
+- Mit [Benutzerdefinierten Ereignissen](/widget/events#custom-events-api) fuer komplexe Ablaeufe kombinieren
 
 <Tip>
-  Use the **Event fired** condition to create multi-step sequences. For example: Trigger 1 shows a teaser after 10 seconds. Trigger 2 shows the full offer only if the visitor clicked Trigger 1's button (tracked as a custom event).
+  Verwenden Sie die Bedingung **Ereignis ausgeloest**, um mehrstufige Sequenzen zu erstellen. Beispiel: Trigger 1 zeigt einen Teaser nach 10 Sekunden. Trigger 2 zeigt das vollstaendige Angebot nur, wenn der Besucher auf die Schaltflaeche von Trigger 1 geklickt hat (als benutzerdefiniertes Ereignis verfolgt).
 </Tip>

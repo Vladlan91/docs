@@ -1,199 +1,199 @@
 ---
-title: Messenger Integrations
-sidebarTitle: Messengers
-description: "Connect Telegram, WhatsApp, Instagram, and Facebook Messenger"
+title: Messenger-Integrationen
+sidebarTitle: Messenger
+description: "Verbinden Sie Telegram, WhatsApp, Instagram und Facebook Messenger"
 ---
 
-## Supported Messengers
+## Unterstuetzte Messenger
 
-| Messenger | Auth Method | Inbound | Outbound | Tools |
+| Messenger | Authentifizierung | Eingehend | Ausgehend | Tools |
 |---|---|---|---|---|
-| **Telegram** | Bot Token | Yes | Yes | 6 |
-| **WhatsApp Business** | Meta OAuth | Yes | Yes | 6 |
-| **Instagram DM** | Meta OAuth | Yes | Yes | 6 |
-| **Facebook Messenger** | Meta OAuth | Yes | Yes | 6 |
+| **Telegram** | Bot-Token | Ja | Ja | 6 |
+| **WhatsApp Business** | Meta OAuth | Ja | Ja | 6 |
+| **Instagram DM** | Meta OAuth | Ja | Ja | 6 |
+| **Facebook Messenger** | Meta OAuth | Ja | Ja | 6 |
 
 ## Telegram
 
-Telegram is the simplest integration — no OAuth, no SDK dependencies. Just a bot token from BotFather.
+Telegram ist die einfachste Integration — kein OAuth, keine SDK-Abhaengigkeiten. Nur ein Bot-Token von BotFather.
 
-### Setup
+### Einrichtung
 
 <Steps>
-  <Step title="Create a Bot">
-    Open [@BotFather](https://t.me/BotFather) in Telegram, send `/newbot`, and follow the instructions. You'll receive a **bot token** like `123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11`.
+  <Step title="Einen Bot erstellen">
+    Oeffnen Sie [@BotFather](https://t.me/BotFather) in Telegram, senden Sie `/newbot` und folgen Sie den Anweisungen. Sie erhalten ein **Bot-Token** wie `123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11`.
   </Step>
-  <Step title="Add Integration">
-    Go to **Integrations** → **Add Integration** → select **Telegram** from the Messengers category.
+  <Step title="Integration hinzufuegen">
+    Gehen Sie zu **Integrationen** → **Integration hinzufuegen** → waehlen Sie **Telegram** aus der Kategorie Messenger.
   </Step>
-  <Step title="Enter Token">
-    Choose a company, name the integration, and paste your bot token.
+  <Step title="Token eingeben">
+    Waehlen Sie ein Unternehmen, benennen Sie die Integration und fuegen Sie Ihr Bot-Token ein.
   </Step>
-  <Step title="Verify & Save">
-    Revol calls the Telegram Bot API to verify the token and automatically sets up the webhook. Your bot starts receiving messages immediately.
+  <Step title="Verifizieren und speichern">
+    Revol ruft die Telegram Bot API auf, um das Token zu verifizieren, und richtet den Webhook automatisch ein. Ihr Bot beginnt sofort, Nachrichten zu empfangen.
   </Step>
 </Steps>
 
-### Agent Tools
+### Agenten-Tools
 
-| Tool | Description |
+| Tool | Beschreibung |
 |---|---|
-| `send_message` | Send a text message (HTML or Markdown formatting) with optional reply-to |
-| `send_file` | Send a photo, document, audio, or video by public URL |
-| `get_chat_history` | Retrieve recent messages from a chat |
-| `get_chat_info` | Get chat/user metadata (name, bio, member count) |
-| `edit_message` | Edit a previously sent bot message |
-| `delete_message` | Delete a message from the chat |
+| `send_message` | Eine Textnachricht senden (HTML- oder Markdown-Formatierung) mit optionaler Antwort-auf |
+| `send_file` | Ein Foto, Dokument, Audio oder Video per oeffentlicher URL senden |
+| `get_chat_history` | Aktuelle Nachrichten aus einem Chat abrufen |
+| `get_chat_info` | Chat-/Benutzer-Metadaten abrufen (Name, Bio, Mitgliederzahl) |
+| `edit_message` | Eine zuvor gesendete Bot-Nachricht bearbeiten |
+| `delete_message` | Eine Nachricht aus dem Chat loeschen |
 
 ---
 
 ## WhatsApp Business
 
-WhatsApp Business API is accessed through Meta's Graph API. Requires a Meta Business account with WhatsApp Business API access.
+Die WhatsApp Business API wird ueber Metas Graph API aufgerufen. Erfordert ein Meta Business-Konto mit WhatsApp Business API-Zugang.
 
-### Setup
+### Einrichtung
 
 <Steps>
-  <Step title="Meta Business Setup">
-    Create a [Meta Business Account](https://business.facebook.com/) and set up WhatsApp Business API access.
+  <Step title="Meta Business-Setup">
+    Erstellen Sie ein [Meta Business-Konto](https://business.facebook.com/) und richten Sie den WhatsApp Business API-Zugang ein.
   </Step>
-  <Step title="Add Integration">
-    Go to **Integrations** → **Add Integration** → select **WhatsApp Business**.
+  <Step title="Integration hinzufuegen">
+    Gehen Sie zu **Integrationen** → **Integration hinzufuegen** → waehlen Sie **WhatsApp Business**.
   </Step>
   <Step title="OAuth">
-    Click "Connect with Meta" — you'll be redirected to Meta's consent screen. Authorize access to your WhatsApp Business account.
+    Klicken Sie auf "Mit Meta verbinden" — Sie werden zum Meta-Zustimmungsbildschirm weitergeleitet. Autorisieren Sie den Zugriff auf Ihr WhatsApp Business-Konto.
   </Step>
-  <Step title="Configure">
-    Enter your Phone Number ID and App Secret. Revol exchanges the OAuth code for a long-lived token (~60 days).
+  <Step title="Konfigurieren">
+    Geben Sie Ihre Telefonnummer-ID und Ihr App-Geheimnis ein. Revol tauscht den OAuth-Code gegen ein langlebiges Token (~60 Tage).
   </Step>
 </Steps>
 
 <Note>
-  WhatsApp has a **24-hour messaging window**. You can send free-form messages only within 24 hours of the last customer message. Outside this window, use `send_template_message` with pre-approved templates.
+  WhatsApp hat ein **24-Stunden-Nachrichtenfenster**. Sie koennen Freitext-Nachrichten nur innerhalb von 24 Stunden nach der letzten Kundennachricht senden. Ausserhalb dieses Fensters verwenden Sie `send_template_message` mit vorab genehmigten Vorlagen.
 </Note>
 
-### Agent Tools
+### Agenten-Tools
 
-| Tool | Description |
+| Tool | Beschreibung |
 |---|---|
-| `send_message` | Send a text message within the 24-hour window |
-| `send_template_message` | Send a pre-approved template (works outside 24h window) |
-| `send_media` | Send an image, document, video, or audio by URL |
-| `get_message_history` | Retrieve conversation messages |
-| `get_contact_info` | Get contact profile information |
-| `mark_as_read` | Send read receipts for a message |
+| `send_message` | Eine Textnachricht innerhalb des 24-Stunden-Fensters senden |
+| `send_template_message` | Eine vorab genehmigte Vorlage senden (funktioniert ausserhalb des 24h-Fensters) |
+| `send_media` | Ein Bild, Dokument, Video oder Audio per URL senden |
+| `get_message_history` | Konversationsnachrichten abrufen |
+| `get_contact_info` | Kontaktprofilinformationen abrufen |
+| `mark_as_read` | Lesebestaetigungen fuer eine Nachricht senden |
 
 ---
 
 ## Instagram DM
 
-Instagram Direct Messages are accessed through Meta's Graph API with the same OAuth flow as WhatsApp.
+Instagram Direct Messages werden ueber Metas Graph API mit demselben OAuth-Flow wie WhatsApp aufgerufen.
 
-### Setup
+### Einrichtung
 
 <Steps>
-  <Step title="Connect Facebook Page">
-    Your Instagram Business account must be linked to a Facebook Page.
+  <Step title="Facebook-Seite verbinden">
+    Ihr Instagram Business-Konto muss mit einer Facebook-Seite verknuepft sein.
   </Step>
-  <Step title="Add Integration">
-    Go to **Integrations** → **Add Integration** → select **Instagram**.
+  <Step title="Integration hinzufuegen">
+    Gehen Sie zu **Integrationen** → **Integration hinzufuegen** → waehlen Sie **Instagram**.
   </Step>
   <Step title="OAuth">
-    Click "Connect with Meta" and authorize access to your Instagram account.
+    Klicken Sie auf "Mit Meta verbinden" und autorisieren Sie den Zugriff auf Ihr Instagram-Konto.
   </Step>
-  <Step title="Configure">
-    Enter your App Secret and Verify Token.
+  <Step title="Konfigurieren">
+    Geben Sie Ihr App-Geheimnis und Ihr Verifizierungs-Token ein.
   </Step>
 </Steps>
 
-### Agent Tools
+### Agenten-Tools
 
-| Tool | Description |
+| Tool | Beschreibung |
 |---|---|
-| `send_message` | Send a direct message to an Instagram user |
-| `send_media` | Send a media attachment in DM |
-| `get_message_history` | Retrieve DM thread messages |
-| `get_profile` | Get public Instagram profile info |
-| `get_comments` | Get comments on a specific post |
-| `reply_to_comment` | Post a threaded reply to a comment |
+| `send_message` | Eine Direktnachricht an einen Instagram-Benutzer senden |
+| `send_media` | Einen Medienanhang per DM senden |
+| `get_message_history` | DM-Thread-Nachrichten abrufen |
+| `get_profile` | Oeffentliche Instagram-Profilinformationen abrufen |
+| `get_comments` | Kommentare zu einem bestimmten Beitrag abrufen |
+| `reply_to_comment` | Eine verschachtelte Antwort auf einen Kommentar posten |
 
 ---
 
 ## Facebook Messenger
 
-Facebook Messenger connects via your Facebook Page. Same Meta OAuth flow as WhatsApp and Instagram.
+Facebook Messenger verbindet sich ueber Ihre Facebook-Seite. Derselbe Meta OAuth-Flow wie WhatsApp und Instagram.
 
-### Setup
+### Einrichtung
 
 <Steps>
-  <Step title="Facebook Page">
-    You need a Facebook Page linked to your Meta Business Account.
+  <Step title="Facebook-Seite">
+    Sie benoetigen eine Facebook-Seite, die mit Ihrem Meta Business-Konto verknuepft ist.
   </Step>
-  <Step title="Add Integration">
-    Go to **Integrations** → **Add Integration** → select **Facebook Messenger**.
+  <Step title="Integration hinzufuegen">
+    Gehen Sie zu **Integrationen** → **Integration hinzufuegen** → waehlen Sie **Facebook Messenger**.
   </Step>
   <Step title="OAuth">
-    Click "Connect with Meta" and authorize access to your Page.
+    Klicken Sie auf "Mit Meta verbinden" und autorisieren Sie den Zugriff auf Ihre Seite.
   </Step>
-  <Step title="Configure">
-    Enter your App Secret and Verify Token.
+  <Step title="Konfigurieren">
+    Geben Sie Ihr App-Geheimnis und Ihr Verifizierungs-Token ein.
   </Step>
 </Steps>
 
-### Agent Tools
+### Agenten-Tools
 
-| Tool | Description |
+| Tool | Beschreibung |
 |---|---|
-| `send_message` | Send a text message to a Facebook user |
-| `send_template_message` | Send a structured template (buttons, generic, receipt) |
-| `send_media` | Send an image, video, audio, or file |
-| `get_message_history` | Retrieve conversation thread |
-| `get_profile` | Get user profile from page-scoped ID |
-| `send_buttons` | Send quick reply options to the user |
+| `send_message` | Eine Textnachricht an einen Facebook-Benutzer senden |
+| `send_template_message` | Eine strukturierte Vorlage senden (Schaltflaechen, Generisch, Quittung) |
+| `send_media` | Ein Bild, Video, Audio oder eine Datei senden |
+| `get_message_history` | Konversationsthread abrufen |
+| `get_profile` | Benutzerprofil anhand der seitenbezogenen ID abrufen |
+| `send_buttons` | Schnellantwort-Optionen an den Benutzer senden |
 
 ---
 
-## Message Flow
+## Nachrichtenfluss
 
-Regardless of the messenger, the processing flow is identical:
+Unabhaengig vom Messenger ist der Verarbeitungsfluss identisch:
 
 <Steps>
-  <Step title="Incoming Message">
-    Messenger platform sends a webhook to Revol with the message content and sender info.
+  <Step title="Eingehende Nachricht">
+    Die Messenger-Plattform sendet einen Webhook an Revol mit dem Nachrichteninhalt und Absenderinformationen.
   </Step>
-  <Step title="Route to Agent">
-    Revol identifies the channel, finds the assigned AI agent, and creates or continues a conversation session. The same sender always gets the same conversation thread.
+  <Step title="An Agenten weiterleiten">
+    Revol identifiziert den Kanal, findet den zugewiesenen KI-Agenten und erstellt oder setzt eine Konversationssitzung fort. Derselbe Absender erhaelt immer denselben Konversationsthread.
   </Step>
-  <Step title="AI Processing">
-    The message is processed through the agent's workflow — LLM nodes, RAG knowledge base lookup, tool calls, and conditions.
+  <Step title="KI-Verarbeitung">
+    Die Nachricht wird durch den Workflow des Agenten verarbeitet — LLM-Knoten, RAG-Wissensdatenbank-Abfrage, Tool-Aufrufe und Bedingungen.
   </Step>
-  <Step title="Outbound Reply">
-    Agent's response is sent back through the same messenger's API. The user sees the reply in their chat.
+  <Step title="Ausgehende Antwort">
+    Die Antwort des Agenten wird ueber dieselbe Messenger-API zurueckgesendet. Der Benutzer sieht die Antwort in seinem Chat.
   </Step>
 </Steps>
 
 <Tip>
-  Messenger messages are processed asynchronously via a background job. This ensures the webhook returns a quick 200 response, preventing timeouts and retries from the messenger platform.
+  Messenger-Nachrichten werden asynchron ueber einen Hintergrund-Job verarbeitet. Dies stellt sicher, dass der Webhook eine schnelle 200-Antwort zurueckgibt und Timeouts sowie Wiederholungen von der Messenger-Plattform verhindert werden.
 </Tip>
 
-## Using Tools in Workflow Nodes
+## Tools in Workflow-Knoten verwenden
 
-Messenger tools work like any other agent tool:
+Messenger-Tools funktionieren wie jedes andere Agenten-Tool:
 
-1. Connect the integration and verify credentials
-2. In the agent's **Tools** tab, you'll see the provisioned tools
-3. Add tools to **custom nodes** in the workflow editor
-4. The LLM decides when to use them based on conversation context
+1. Verbinden Sie die Integration und verifizieren Sie die Zugangsdaten
+2. Im **Tools**-Tab des Agenten sehen Sie die bereitgestellten Tools
+3. Fuegen Sie Tools zu **benutzerdefinierten Knoten** im Workflow-Editor hinzu
+4. Das LLM entscheidet basierend auf dem Konversationskontext, wann sie verwendet werden
 
-**Example:** A customer asks "Send me the brochure on WhatsApp". The agent uses `send_media` to send a PDF document, then confirms delivery in the chat.
+**Beispiel:** Ein Kunde fragt "Senden Sie mir die Broschuere auf WhatsApp". Der Agent verwendet `send_media`, um ein PDF-Dokument zu senden, und bestaetigt dann die Zustellung im Chat.
 
-## Webhook Security
+## Webhook-Sicherheit
 
-| Messenger | Validation |
+| Messenger | Validierung |
 |---|---|
-| Telegram | Secret token in webhook URL (SHA-256 hash of bot token) |
-| WhatsApp | HMAC-SHA256 signature (`X-Hub-Signature-256` header with `app_secret`) |
-| Instagram | HMAC-SHA256 signature (`X-Hub-Signature-256` header with `app_secret`) |
-| Facebook | HMAC-SHA256 signature (`X-Hub-Signature-256` header with `app_secret`) |
+| Telegram | Geheimes Token in der Webhook-URL (SHA-256-Hash des Bot-Tokens) |
+| WhatsApp | HMAC-SHA256-Signatur (`X-Hub-Signature-256`-Header mit `app_secret`) |
+| Instagram | HMAC-SHA256-Signatur (`X-Hub-Signature-256`-Header mit `app_secret`) |
+| Facebook | HMAC-SHA256-Signatur (`X-Hub-Signature-256`-Header mit `app_secret`) |
 
-All messenger webhooks are rate-limited to **120 requests per minute** per channel.
+Alle Messenger-Webhooks sind auf **120 Anfragen pro Minute** pro Kanal ratenbegrenzt.

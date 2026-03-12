@@ -1,120 +1,120 @@
 ---
-title: Ad Campaigns
-sidebarTitle: Ad Campaigns
-description: "Connect Google Ads and Facebook Ads for campaign analytics and management"
+title: Werbekampagnen
+sidebarTitle: Werbekampagnen
+description: "Verbinden Sie Google Ads und Facebook Ads fuer Kampagnenanalyse und -verwaltung"
 ---
 
-## Overview
+## Ueberblick
 
-Ad campaign integrations give your AI agents access to advertising data. Agents can analyze campaign performance, report on metrics, pause underperforming campaigns, and answer questions about ad spend — all through natural conversation.
+Werbekampagnen-Integrationen geben Ihren KI-Agenten Zugriff auf Werbedaten. Agenten koennen die Kampagnen-Performance analysieren, ueber Metriken berichten, leistungsschwache Kampagnen pausieren und Fragen zu Werbeausgaben beantworten — alles ueber natuerliche Konversation.
 
-## Supported Platforms
+## Unterstuetzte Plattformen
 
-| Platform | Auth | Tools | Capabilities |
+| Plattform | Authentifizierung | Tools | Funktionen |
 |---|---|---|---|
-| **Google Ads** | Google OAuth | 3 | Campaigns, keywords, pause campaigns |
-| **Facebook Ads** | Meta OAuth | 4 | Campaigns, ad sets, insights, pause campaigns |
+| **Google Ads** | Google OAuth | 3 | Kampagnen, Keywords, Kampagnen pausieren |
+| **Facebook Ads** | Meta OAuth | 4 | Kampagnen, Anzeigengruppen, Insights, Kampagnen pausieren |
 
 ## Google Ads
 
-### Authentication
+### Authentifizierung
 
-Uses the same Google OAuth flow as Google Workspace, with additional requirements:
+Verwendet denselben Google OAuth-Flow wie Google Workspace, mit zusaetzlichen Anforderungen:
 
-| Field | Description |
+| Feld | Beschreibung |
 |---|---|
-| **OAuth** | Google account with access to the Ads account |
-| **Customer ID** | Your Google Ads account ID (format: `123-456-7890`) |
-| **Developer Token** | Obtained from [Google Ads API Center](https://ads.google.com/aw/apicenter) |
+| **OAuth** | Google-Konto mit Zugriff auf das Ads-Konto |
+| **Kunden-ID** | Ihre Google Ads-Konto-ID (Format: `123-456-7890`) |
+| **Entwickler-Token** | Erhaeltlich ueber das [Google Ads API Center](https://ads.google.com/aw/apicenter) |
 
-### Setup
+### Einrichtung
 
 <Steps>
-  <Step title="Add Integration">
-    Go to **Integrations** → **Add Integration** → select **Google Ads** from the Advertising category.
+  <Step title="Integration hinzufuegen">
+    Gehen Sie zu **Integrationen** → **Integration hinzufuegen** → waehlen Sie **Google Ads** aus der Kategorie Werbung.
   </Step>
   <Step title="OAuth">
-    Click "Connect with Google" and authorize access to your Google Ads account.
+    Klicken Sie auf "Mit Google verbinden" und autorisieren Sie den Zugriff auf Ihr Google Ads-Konto.
   </Step>
-  <Step title="Enter Details">
-    Enter your Customer ID and Developer Token.
+  <Step title="Details eingeben">
+    Geben Sie Ihre Kunden-ID und Ihr Entwickler-Token ein.
   </Step>
-  <Step title="Verify">
-    Revol tests the connection by fetching your campaigns.
+  <Step title="Verifizieren">
+    Revol testet die Verbindung, indem es Ihre Kampagnen abruft.
   </Step>
 </Steps>
 
-### Agent Tools
+### Agenten-Tools
 
-| Tool | Description |
+| Tool | Beschreibung |
 |---|---|
-| `get_campaigns` | List campaigns with status, budget, impressions, clicks, cost, and conversions |
-| `get_keywords` | Keyword performance data by ad group — impressions, clicks, cost, quality score |
-| `pause_campaign` | Pause a campaign by its ID |
+| `get_campaigns` | Kampagnen mit Status, Budget, Impressionen, Klicks, Kosten und Conversions auflisten |
+| `get_keywords` | Keyword-Performance-Daten nach Anzeigengruppe — Impressionen, Klicks, Kosten, Qualitaetsfaktor |
+| `pause_campaign` | Eine Kampagne anhand ihrer ID pausieren |
 
 ---
 
 ## Facebook Ads
 
-### Authentication
+### Authentifizierung
 
-Uses Meta OAuth with the `ads_management` scope. Supports both Facebook and Instagram ad campaigns managed through Meta Ads Manager.
+Verwendet Meta OAuth mit dem Bereich `ads_management`. Unterstuetzt sowohl Facebook- als auch Instagram-Werbekampagnen, die ueber Meta Ads Manager verwaltet werden.
 
-| Field | Description |
+| Feld | Beschreibung |
 |---|---|
-| **OAuth** | Meta account with access to the ad account |
-| **Ad Account ID** | Format: `act_XXXXXXXXX` (found in Meta Ads Manager) |
+| **OAuth** | Meta-Konto mit Zugriff auf das Werbekonto |
+| **Werbekonto-ID** | Format: `act_XXXXXXXXX` (zu finden im Meta Ads Manager) |
 
-### Setup
+### Einrichtung
 
 <Steps>
-  <Step title="Add Integration">
-    Go to **Integrations** → **Add Integration** → select **Facebook Ads**.
+  <Step title="Integration hinzufuegen">
+    Gehen Sie zu **Integrationen** → **Integration hinzufuegen** → waehlen Sie **Facebook Ads**.
   </Step>
   <Step title="OAuth">
-    Click "Connect with Meta" and authorize access to your ad account.
+    Klicken Sie auf "Mit Meta verbinden" und autorisieren Sie den Zugriff auf Ihr Werbekonto.
   </Step>
-  <Step title="Enter Details">
-    Enter your Ad Account ID.
+  <Step title="Details eingeben">
+    Geben Sie Ihre Werbekonto-ID ein.
   </Step>
-  <Step title="Verify">
-    Revol tests the connection by fetching your campaigns.
+  <Step title="Verifizieren">
+    Revol testet die Verbindung, indem es Ihre Kampagnen abruft.
   </Step>
 </Steps>
 
-### Agent Tools
+### Agenten-Tools
 
-| Tool | Description |
+| Tool | Beschreibung |
 |---|---|
-| `get_campaigns` | List campaigns with status, budget, and 30-day performance (impressions, clicks, spend, CTR) |
-| `get_ad_sets` | List ad sets within a campaign with targeting and scheduling info |
-| `get_insights` | Detailed performance insights by custom date range |
-| `pause_campaign` | Pause a campaign by its ID |
+| `get_campaigns` | Kampagnen mit Status, Budget und 30-Tage-Performance auflisten (Impressionen, Klicks, Ausgaben, CTR) |
+| `get_ad_sets` | Anzeigengruppen innerhalb einer Kampagne mit Targeting- und Zeitplanungsinformationen auflisten |
+| `get_insights` | Detaillierte Performance-Insights nach benutzerdefiniertem Datumsbereich |
+| `pause_campaign` | Eine Kampagne anhand ihrer ID pausieren |
 
-## Using Tools in Workflow Nodes
+## Tools in Workflow-Knoten verwenden
 
-Ad campaign tools work like any other agent tool:
+Werbekampagnen-Tools funktionieren wie jedes andere Agenten-Tool:
 
-1. Connect the ad platform and verify via OAuth
-2. Tools appear in the agent's **Tools** tab
-3. Add them to **custom nodes** in the workflow editor
-4. The LLM calls them when the user asks about campaign data
+1. Verbinden Sie die Werbeplattform und verifizieren Sie per OAuth
+2. Die Tools erscheinen im **Tools**-Tab des Agenten
+3. Fuegen Sie sie zu **benutzerdefinierten Knoten** im Workflow-Editor hinzu
+4. Das LLM ruft sie auf, wenn der Benutzer nach Kampagnendaten fragt
 
-**Example:** A user asks "How are our Google Ads doing this week?" → the agent calls `get_campaigns` with a date filter and returns a summary of spend, clicks, and conversions in plain language.
+**Beispiel:** Ein Benutzer fragt "Wie laufen unsere Google Ads diese Woche?" → der Agent ruft `get_campaigns` mit einem Datumsfilter auf und liefert eine Zusammenfassung von Ausgaben, Klicks und Conversions in Klartext.
 
-## Use Cases
+## Anwendungsfaelle
 
 <AccordionGroup>
-  <Accordion title="Performance reporting">
-    "What's our ROAS on Google Ads this month?" → agent calls `get_campaigns` and calculates return on ad spend from the metrics.
+  <Accordion title="Performance-Reporting">
+    "Was ist unser ROAS bei Google Ads diesen Monat?" → Agent ruft `get_campaigns` auf und berechnet den Return on Ad Spend aus den Metriken.
   </Accordion>
-  <Accordion title="Cross-platform comparison">
-    Agent pulls data from both Google Ads and Facebook Ads to compare cost-per-lead across platforms.
+  <Accordion title="Plattformuebergreifender Vergleich">
+    Agent ruft Daten sowohl von Google Ads als auch von Facebook Ads ab, um die Kosten pro Lead plattformuebergreifend zu vergleichen.
   </Accordion>
-  <Accordion title="Campaign management">
-    "Pause the Spring Promo campaign on Facebook" → agent calls `pause_campaign` with the campaign ID.
+  <Accordion title="Kampagnenverwaltung">
+    "Pausiere die Fruehlingsaktions-Kampagne auf Facebook" → Agent ruft `pause_campaign` mit der Kampagnen-ID auf.
   </Accordion>
-  <Accordion title="Lead source attribution">
-    When a lead comes through the website widget, the agent checks UTM parameters from the tracking session and correlates with campaign data to identify which ad generated the lead.
+  <Accordion title="Lead-Quellen-Zuordnung">
+    Wenn ein Lead ueber das Website-Widget kommt, prueft der Agent die UTM-Parameter aus der Tracking-Sitzung und korreliert sie mit Kampagnendaten, um zu identifizieren, welche Anzeige den Lead generiert hat.
   </Accordion>
 </AccordionGroup>

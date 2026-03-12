@@ -1,11 +1,11 @@
 ---
-title: Widget Installation
-description: "Install the Revol chat widget on your website"
+title: Widget-Installation
+description: "Installieren Sie das Revol-Chat-Widget auf Ihrer Website"
 ---
 
-## Quick Install
+## Schnellinstallation
 
-Add this single script before the closing `</head>` tag on your website:
+Fuegen Sie dieses einzelne Skript vor dem schliessenden `</head>`-Tag auf Ihrer Website ein:
 
 ```html
 <script src="https://app.revol.com/tracker.js"
@@ -15,35 +15,35 @@ Add this single script before the closing `</head>` tag on your website:
 </script>
 ```
 
-This script handles both the **chat widget** and **visitor tracking** — no additional code needed.
+Dieses Skript uebernimmt sowohl das **Chat-Widget** als auch das **Besucher-Tracking** — kein zusaetzlicher Code erforderlich.
 
-## Configuration
+## Konfiguration
 
-| Attribute | Required | Description |
+| Attribut | Erforderlich | Beschreibung |
 |-----------|----------|-------------|
-| `data-api-key` | Yes | Your widget API key |
-| `data-company-id` | Yes | Your company ID |
+| `data-api-key` | Ja | Ihr Widget-API-Schluessel |
+| `data-company-id` | Ja | Ihre Unternehmens-ID |
 
 <Tip>
-  Find your API key and Company ID in **Admin Panel** → **General Settings**.
+  Sie finden Ihren API-Schluessel und Ihre Unternehmens-ID unter **Admin-Panel** → **Allgemeine Einstellungen**.
 </Tip>
 
-## What Gets Loaded
+## Was geladen wird
 
-The tracker script automatically:
+Das Tracker-Skript fuehrt automatisch folgende Schritte aus:
 
-1. **Initializes tracking** — sessions, pageviews, events
-2. **Loads the widget** — chat bubble with your customized appearance
-3. **Lazy-loads modules** — triggers, overlays, phone swap (only when needed)
+1. **Tracking initialisieren** — Sitzungen, Seitenaufrufe, Ereignisse
+2. **Widget laden** — Chat-Schaltflaeche mit Ihrem individuellen Erscheinungsbild
+3. **Module nachladen** — Trigger, Overlays, Rufnummerntausch (nur bei Bedarf)
 
 ## Shadow DOM
 
-The widget renders inside a **Shadow DOM** container, which means:
+Das Widget wird innerhalb eines **Shadow DOM**-Containers gerendert, was bedeutet:
 
-- Your site's CSS won't affect the widget
-- The widget's CSS won't affect your site
-- Complete style isolation
+- Das CSS Ihrer Website beeinflusst das Widget nicht
+- Das CSS des Widgets beeinflusst Ihre Website nicht
+- Vollstaendige Stilisolierung
 
 ## Single Page Applications (SPA)
 
-The tracker automatically detects URL changes via `pushState` and `popstate` events. No additional configuration needed for React, Vue, or Angular apps.
+Der Tracker erkennt URL-Aenderungen automatisch ueber `pushState`- und `popstate`-Ereignisse. Keine zusaetzliche Konfiguration fuer React-, Vue- oder Angular-Apps erforderlich.
