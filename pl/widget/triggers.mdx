@@ -1,323 +1,323 @@
 ---
-title: Triggers
-sidebarTitle: Triggers
-description: "Create automated popups, overlays, and notification bars based on visitor behavior rules"
+title: Wyzwalacze
+sidebarTitle: Wyzwalacze
+description: "Twórz automatyczne wyskakujące okna, nakładki i paski powiadomień na podstawie reguł zachowania odwiedzających"
 ---
 
-## Overview
+## Przegląd
 
-The Triggers tab lets you create automated actions that fire based on visitor behavior. When a visitor meets specific conditions — time on page, scroll depth, UTM source, device type, and more — the trigger displays a modal popup, toast notification, or redirects to a URL. Triggers are a powerful way to engage visitors at the right moment without any coding.
+Zakładka Wyzwalacze pozwala tworzyć automatyczne akcje wywoływane na podstawie zachowania odwiedzających. Gdy odwiedzający spełnia określone warunki — czas na stronie, głębokość przewijania, źródło UTM, typ urządzenia i inne — wyzwalacz wyświetla modalne okno, powiadomienie toast lub przekierowuje na URL. Wyzwalacze to potężny sposób angażowania odwiedzających w odpowiednim momencie bez kodowania.
 
 <Frame>
-  <img className="block dark:hidden" src="/images/tracker-triggers-light.png" alt="Triggers tab" />
-  <img className="hidden dark:block" src="/images/tracker-triggers-dark.png" alt="Triggers tab" />
+  <img className="block dark:hidden" src="/images/tracker-triggers-light.png" alt="Zakładka Wyzwalacze" />
+  <img className="hidden dark:block" src="/images/tracker-triggers-dark.png" alt="Zakładka Wyzwalacze" />
 </Frame>
 
-## Triggers List
+## Lista wyzwalaczy
 
-The triggers table shows all defined triggers with key metrics:
+Tabela wyzwalaczy pokazuje wszystkie zdefiniowane wyzwalacze z kluczowymi metrykami:
 
-| Column | Description |
+| Kolumna | Opis |
 |---|---|
-| **Name** | Trigger name |
-| **Type** | Action type — Modal (centered popup), Toast (corner notification), or Redirect (URL navigation) |
-| **Conditions** | Summary of firing conditions |
-| **Fires** | Total number of activations |
-| **Status** | Active or inactive |
-| **Actions** | Edit or delete the trigger |
+| **Nazwa** | Nazwa wyzwalacza |
+| **Typ** | Typ akcji — Modal (wyśrodkowane okno), Toast (powiadomienie w rogu) lub Redirect (przekierowanie URL) |
+| **Warunki** | Podsumowanie warunków wywoływania |
+| **Wywołania** | Łączna liczba aktywacji |
+| **Status** | Aktywny lub nieaktywny |
+| **Akcje** | Edytuj lub usuń wyzwalacz |
 
 ---
 
-## Creating a Trigger
+## Tworzenie wyzwalacza
 
-Click **Create Trigger** to open the trigger editor. The editor has two tabs: **Content** for visual content and **Settings** for behavior rules.
+Kliknij **Utwórz wyzwalacz**, aby otworzyć edytor wyzwalaczy. Edytor ma dwie zakładki: **Treść** dla zawartości wizualnej i **Ustawienia** dla reguł zachowania.
 
 <Frame>
-  <img className="block dark:hidden" src="/images/create-trigger-light.png" alt="Create trigger editor" />
-  <img className="hidden dark:block" src="/images/create-trigger-dark.png" alt="Create trigger editor" />
+  <img className="block dark:hidden" src="/images/create-trigger-light.png" alt="Edytor tworzenia wyzwalacza" />
+  <img className="hidden dark:block" src="/images/create-trigger-dark.png" alt="Edytor tworzenia wyzwalacza" />
 </Frame>
 
 ---
 
-## Content Tab
+## Zakładka Treść
 
-The Content tab is a visual block editor where you build the trigger's content. Each trigger is composed of **content blocks** that you add, arrange, and style.
+Zakładka Treść to wizualny edytor blokowy, w którym budujesz zawartość wyzwalacza. Każdy wyzwalacz składa się z **bloków treści**, które dodajesz, układasz i stylujesz.
 
-### Adding Blocks
+### Dodawanie bloków
 
-Click the **+ Add Block** button to open the block picker. Available block types:
+Kliknij przycisk **+ Dodaj blok**, aby otworzyć wybór bloków. Dostępne typy bloków:
 
-| Block | Description |
+| Blok | Opis |
 |---|---|
-| **Image** | Add an image — upload a file or paste a URL. Great for product photos, banners, or icons. |
-| **Heading** | Large text for titles and headlines. Supports text alignment (left or center). |
-| **Text** | Body text with rich formatting. Use for descriptions, offers, or instructions. |
-| **Feature List** | A bulleted list with check icons — ideal for listing benefits, features, or included items. |
-| **Input Field** | A single-line text input for collecting data (name, email, phone). |
-| **Textarea** | A multi-line text area for longer responses (messages, feedback). |
-| **Button** | A clickable button with customizable text, color, and action (link, close, or submit form data). |
-| **Promo Code** | A styled promo code block with a copy button. Visitors click to copy the code to their clipboard. |
-| **QR Code** | Embeds a campaign QR code directly in the trigger. Visitors scan it on their phone to continue on mobile — with full campaign attribution. See [Campaigns — QR Code](/widget/campaigns#qr-code) for details. |
-| **Divider** | A horizontal line to visually separate sections. |
+| **Obraz** | Dodaj obraz — załaduj plik lub wklej URL. Idealny do zdjęć produktów, banerów lub ikon. |
+| **Nagłówek** | Duży tekst dla tytułów i nagłówków. Obsługuje wyrównanie tekstu (do lewej lub do środka). |
+| **Tekst** | Tekst treści z bogatym formatowaniem. Użyj do opisów, ofert lub instrukcji. |
+| **Lista funkcji** | Lista punktowana z ikonami ✓ — idealna do wymieniania korzyści, funkcji lub elementów w zestawie. |
+| **Pole wprowadzania** | Jednowierszowe pole tekstowe do zbierania danych (imię, e-mail, telefon). |
+| **Pole tekstowe** | Wielowierszowe pole tekstowe do dłuższych odpowiedzi (wiadomości, opinie). |
+| **Przycisk** | Klikalny przycisk z konfigurowalnym tekstem, kolorem i akcją (link, zamknij lub wyślij dane formularza). |
+| **Kod promocyjny** | Stylizowany blok z kodem promocyjnym z przyciskiem kopiowania. Odwiedzający klikają, aby skopiować kod do schowka. |
+| **Kod QR** | Osadza kod QR kampanii bezpośrednio w wyzwalaczu. Odwiedzający skanują go telefonem, aby kontynuować na urządzeniu mobilnym — z pełną atrybucją kampanii. Zobacz [Kampanie — Kod QR](/widget/campaigns#qr-code) po szczegóły. |
+| **Separator** | Linia pozioma do wizualnego oddzielenia sekcji. |
 
-### Block Settings
+### Ustawienia bloków
 
-Each block type has its own editable properties. Click a block to select it and configure:
+Każdy typ bloku ma własne edytowalne właściwości. Kliknij blok, aby go wybrać i skonfigurować:
 
-**Image:**
-| Setting | Description |
+**Obraz:**
+| Ustawienie | Opis |
 |---|---|
-| **URL** | Image source URL |
-| **Alt Text** | Alternative text for accessibility |
-| **Border Radius** | Corner roundness in pixels (default: 0) |
+| **URL** | URL źródła obrazu |
+| **Tekst alternatywny** | Tekst alternatywny dla dostępności |
+| **Zaokrąglenie rogów** | Zaokrąglenie rogów w pikselach (domyślnie: 0) |
 
-**Heading:**
-| Setting | Description |
+**Nagłówek:**
+| Ustawienie | Opis |
 |---|---|
-| **Text** | Heading content |
-| **Align** | Left (default) or Center |
+| **Tekst** | Treść nagłówka |
+| **Wyrównanie** | Do lewej (domyślnie) lub Do środka |
 
-**Text:**
-| Setting | Description |
+**Tekst:**
+| Ustawienie | Opis |
 |---|---|
-| **HTML Content** | Rich text with formatting — supports `<b>`, `<i>`, `<u>`, `<a>`, lists, and `<br>` |
+| **Treść HTML** | Tekst z formatowaniem — obsługuje `<b>`, `<i>`, `<u>`, `<a>`, listy i `<br>` |
 
-**Feature List:**
-| Setting | Description |
+**Lista funkcji:**
+| Ustawienie | Opis |
 |---|---|
-| **Items** | Dynamic list of features. Each item has an icon (emoji), title, and description text. Click "Add Item" to add more. |
+| **Elementy** | Dynamiczna lista funkcji. Każdy element ma ikonę (emoji), tytuł i tekst opisu. Kliknij "Dodaj element", aby dodać więcej. |
 
-**Input Field:**
-| Setting | Description |
+**Pole wprowadzania:**
+| Ustawienie | Opis |
 |---|---|
-| **Key** | Form field name (e.g., `email`, `phone`) |
-| **Type** | Text, Email, Phone, or Number |
-| **Label** | Field label shown above the input |
-| **Placeholder** | Hint text inside the field |
-| **Required** | Whether the field must be filled before submission |
+| **Klucz** | Nazwa pola formularza (np. `email`, `phone`) |
+| **Typ** | Tekst, E-mail, Telefon lub Numer |
+| **Etykieta** | Etykieta pola wyświetlana nad polem |
+| **Placeholder** | Tekst podpowiedzi wewnątrz pola |
+| **Wymagane** | Czy pole musi być wypełnione przed wysłaniem |
 
-**Textarea:**
-| Setting | Description |
+**Pole tekstowe:**
+| Ustawienie | Opis |
 |---|---|
-| **Key** | Form field name |
-| **Rows** | Number of visible text rows (1–10, default: 3) |
-| **Label** | Field label |
-| **Placeholder** | Hint text |
-| **Required** | Whether the field must be filled |
+| **Klucz** | Nazwa pola formularza |
+| **Wiersze** | Liczba widocznych wierszy tekstu (1–10, domyślnie: 3) |
+| **Etykieta** | Etykieta pola |
+| **Placeholder** | Tekst podpowiedzi |
+| **Wymagane** | Czy pole musi być wypełnione |
 
-**Button:**
-| Setting | Description |
+**Przycisk:**
+| Ustawienie | Opis |
 |---|---|
-| **Label** | Button text |
-| **Variant** | Primary (solid accent color), Secondary (light tint), or Outline (transparent with border) |
-| **Action** | Close (dismiss trigger), Open Link (navigate to URL), Submit Form (send form data), or Copy Value (copy text to clipboard) |
-| **Value** | URL for links or text for copy action |
+| **Etykieta** | Tekst przycisku |
+| **Wariant** | Główny (jednolity kolor akcentu), Drugorzędny (jasny odcień) lub Kontur (przezroczysty z obramowaniem) |
+| **Akcja** | Zamknij (odrzuć wyzwalacz), Otwórz link (przejdź do URL), Wyślij formularz (wyślij dane formularza) lub Kopiuj wartość (skopiuj tekst do schowka) |
+| **Wartość** | URL dla linków lub tekst do skopiowania |
 
-**Promo Code:**
-| Setting | Description |
+**Kod promocyjny:**
+| Ustawienie | Opis |
 |---|---|
-| **Code** | The promo code text (e.g., `SPRING20`) |
-| **Label** | Optional label above the code |
+| **Kod** | Tekst kodu promocyjnego (np. `SPRING20`) |
+| **Etykieta** | Opcjonalna etykieta nad kodem |
 
-**QR Code:**
-| Setting | Description |
+**Kod QR:**
+| Ustawienie | Opis |
 |---|---|
-| **QR Data** | URL or text to encode. Use the "Create QR" button to generate. |
-| **Size** | QR code size in pixels (default: 160) |
+| **Dane QR** | URL lub tekst do zakodowania. Użyj przycisku "Utwórz QR", aby wygenerować. |
+| **Rozmiar** | Rozmiar kodu QR w pikselach (domyślnie: 160) |
 
-**Divider:**
-No settings — renders a horizontal line separator.
+**Separator:**
+Brak ustawień — renderuje poziomą linię separatora.
 
-### Trigger Style
+### Styl wyzwalacza
 
-The trigger container has global style settings that apply to the entire popup/toast:
+Kontener wyzwalacza ma globalne ustawienia stylu, które dotyczą całego okna/toastu:
 
-| Setting | Description |
+| Ustawienie | Opis |
 |---|---|
-| **Background Color** | Container background (default: `#ffffff`) |
-| **Text Color** | Default text color for all blocks (default: `#1a1a1a`) |
-| **Accent Color** | Color for buttons, feature icons, and promo code copy button (default: `#4680ff`) |
-| **Border Radius** | Corner roundness of the entire trigger in pixels (default: 16) |
-| **Position** | For toast-style triggers: top-right, top-left, bottom-right, or bottom-left. For modals: centered with a dark backdrop. |
+| **Kolor tła** | Tło kontenera (domyślnie: `#ffffff`) |
+| **Kolor tekstu** | Domyślny kolor tekstu dla wszystkich bloków (domyślnie: `#1a1a1a`) |
+| **Kolor akcentu** | Kolor przycisków, ikon funkcji i przycisku kopiowania kodu promocyjnego (domyślnie: `#4680ff`) |
+| **Zaokrąglenie rogów** | Zaokrąglenie rogów całego wyzwalacza w pikselach (domyślnie: 16) |
+| **Pozycja** | Dla wyzwalaczy toast: prawy-górny, lewy-górny, prawy-dolny lub lewy-dolny. Dla modali: wyśrodkowany z ciemnym tłem. |
 
-### Content Examples
+### Przykłady treści
 
 <AccordionGroup>
-  <Accordion title="Welcome discount popup">
-    - **Heading**: "Get 10% Off Your First Order"
-    - **Text**: "Subscribe to our newsletter and receive an exclusive discount code."
-    - **Input Field**: Email
-    - **Button**: "Get My Discount" (submit action)
-    - **Promo Code**: Revealed after form submission
+  <Accordion title="Wyskakujące okno ze zniżką powitalną">
+    - **Nagłówek**: "Odbierz 10% zniżki na pierwsze zamówienie"
+    - **Tekst**: "Zapisz się na nasz newsletter i otrzymaj ekskluzywny kod rabatowy."
+    - **Pole wprowadzania**: E-mail
+    - **Przycisk**: "Odbierz zniżkę" (akcja wysyłki)
+    - **Kod promocyjny**: Wyświetlany po wysłaniu formularza
   </Accordion>
-  <Accordion title="Exit intent offer">
-    - **Image**: Product photo
-    - **Heading**: "Wait! Don't miss this."
-    - **Text**: "Free shipping on orders over $50 — today only."
-    - **Button**: "Shop Now" (link to store)
-    - **Button**: "No thanks" (close action)
+  <Accordion title="Oferta przy zamiarze wyjścia">
+    - **Obraz**: Zdjęcie produktu
+    - **Nagłówek**: "Poczekaj! Nie przegap tego."
+    - **Tekst**: "Darmowa dostawa przy zamówieniach powyżej 200 zł — tylko dziś."
+    - **Przycisk**: "Kup teraz" (link do sklepu)
+    - **Przycisk**: "Nie, dziękuję" (akcja zamknięcia)
   </Accordion>
-  <Accordion title="QR code for mobile continuation">
-    - **Heading**: "Continue on your phone"
-    - **Text**: "Scan the QR code to chat with our AI agent on mobile."
-    - **QR Code**: Campaign QR code with UTM tracking
-    - **Text**: "Or click the chat button below."
+  <Accordion title="Kod QR do kontynuacji na telefonie">
+    - **Nagłówek**: "Kontynuuj na telefonie"
+    - **Tekst**: "Zeskanuj kod QR, aby porozmawiać z naszym agentem AI na urządzeniu mobilnym."
+    - **Kod QR**: Kod QR kampanii ze śledzeniem UTM
+    - **Tekst**: "Lub kliknij przycisk czatu poniżej."
   </Accordion>
-  <Accordion title="Feature announcement">
-    - **Image**: Feature screenshot
-    - **Heading**: "New: AI-Powered Recommendations"
-    - **Feature List**: 3-4 key benefits
-    - **Button**: "Learn More" (link to feature page)
-    - **Divider**
-    - **Text**: Small print disclaimer
+  <Accordion title="Ogłoszenie nowej funkcji">
+    - **Obraz**: Zrzut ekranu funkcji
+    - **Nagłówek**: "Nowość: Rekomendacje oparte na AI"
+    - **Lista funkcji**: 3-4 kluczowe korzyści
+    - **Przycisk**: "Dowiedz się więcej" (link do strony funkcji)
+    - **Separator**
+    - **Tekst**: Drobny druk z zastrzeżeniem
   </Accordion>
 </AccordionGroup>
 
 ---
 
-## Settings Tab
+## Zakładka Ustawienia
 
-The Settings tab controls **when**, **how often**, and **to whom** the trigger is shown.
+Zakładka Ustawienia kontroluje **kiedy**, **jak często** i **komu** wyzwalacz jest wyświetlany.
 
-### Conditions
+### Warunki
 
-Conditions define the rules that must be met for the trigger to fire. You can add multiple conditions and choose the logic mode: **AND** (all conditions must be true) or **OR** (any condition is enough) for the trigger to activate.
+Warunki definiują reguły, które muszą być spełnione, aby wyzwalacz się uruchomił. Możesz dodać wiele warunków i wybrać tryb logiki: **AND** (wszystkie warunki muszą być prawdziwe) lub **OR** (wystarczy dowolny warunek), aby wyzwalacz się aktywował.
 
-| Condition | Operator | Description |
+| Warunek | Operator | Opis |
 |---|---|---|
-| **Time on page (seconds)** | `>=`, `<=`, `=` | Fire after the visitor spends X seconds on the current page. Example: show a popup after 30 seconds of reading. |
-| **Pages visited** | `>=`, `<=`, `=` | Fire after the visitor views X pages in the session. Example: show an offer after they browse 3+ pages. |
-| **Scroll depth (%)** | `>=`, `<=`, `=` | Fire when the visitor scrolls past a percentage of the page. Example: show a CTA after 70% scroll. |
-| **UTM Source** | `=`, `contains` | Fire only for visitors from a specific traffic source. Example: show a special offer only for `google` visitors. |
-| **UTM Medium** | `=`, `contains` | Fire only for a specific marketing medium. Example: trigger only for `cpc` (paid) traffic. |
-| **UTM Campaign** | `=`, `contains` | Fire only for visitors from a specific campaign. Example: show a seasonal banner only for `summer-sale` campaign. |
-| **Referral ID** | `=`, `!=` | Fire based on the `rvl_ref` parameter. Example: show a partner welcome message for a specific referral. |
-| **Referrer contains** | `contains` | Fire based on the referring URL. Example: show a competitor comparison for visitors coming from a competitor's site. |
-| **Page URL** | `=`, `contains`, `starts_with`, `matches` | Fire only on specific pages. Use `matches` for regex patterns. Example: show a pricing popup only on `/pricing`. |
-| **Device type** | `=` | Fire only on Desktop, Mobile, or Tablet. Example: show a mobile app download banner only on mobile. |
-| **Event fired** | `=` | Fire after a specific tracking event occurs. Example: show a cross-sell popup after `add_to_cart` event. |
-| **Day of week (0=Sun)** | `=`, `in` | Fire only on specific days. Example: show weekend deals on Saturday (6) and Sunday (0). |
-| **Hour range [from, to]** | `between` | Fire only during specific hours. Example: show "Call us now" only during business hours 9-18. |
+| **Czas na stronie (sekundy)** | `>=`, `<=`, `=` | Uruchom po spędzeniu X sekund na bieżącej stronie. Przykład: pokaż wyskakujące okno po 30 sekundach czytania. |
+| **Odwiedzone strony** | `>=`, `<=`, `=` | Uruchom po obejrzeniu X stron w sesji. Przykład: pokaż ofertę po przeglądnięciu 3+ stron. |
+| **Głębokość przewijania (%)** | `>=`, `<=`, `=` | Uruchom, gdy odwiedzający przewinie obok procentu strony. Przykład: pokaż CTA po 70% przewinięcia. |
+| **Źródło UTM** | `=`, `contains` | Uruchom tylko dla odwiedzających z konkretnego źródła ruchu. Przykład: pokaż specjalną ofertę tylko dla odwiedzających z `google`. |
+| **Medium UTM** | `=`, `contains` | Uruchom tylko dla konkretnego medium marketingowego. Przykład: wyzwalaj tylko dla ruchu `cpc` (płatnego). |
+| **Kampania UTM** | `=`, `contains` | Uruchom tylko dla odwiedzających z konkretnej kampanii. Przykład: pokaż sezonowy baner tylko dla kampanii `summer-sale`. |
+| **ID polecenia** | `=`, `!=` | Uruchom na podstawie parametru `rvl_ref`. Przykład: pokaż powitalną wiadomość od partnera dla konkretnego polecenia. |
+| **Referrer zawiera** | `contains` | Uruchom na podstawie URL strony odsyłającej. Przykład: pokaż porównanie z konkurencją dla odwiedzających ze strony konkurenta. |
+| **URL strony** | `=`, `contains`, `starts_with`, `matches` | Uruchom tylko na konkretnych stronach. Użyj `matches` dla wzorców regex. Przykład: pokaż wyskakujące okno z cennikiem tylko na `/pricing`. |
+| **Typ urządzenia** | `=` | Uruchom tylko na Komputerze, Telefonie lub Tablecie. Przykład: pokaż baner do pobrania aplikacji mobilnej tylko na telefonie. |
+| **Zdarzenie wywołane** | `=` | Uruchom po wystąpieniu konkretnego zdarzenia śledzenia. Przykład: pokaż wyskakujące okno cross-sell po zdarzeniu `add_to_cart`. |
+| **Dzień tygodnia (0=Niedz.)** | `=`, `in` | Uruchom tylko w konkretne dni. Przykład: pokaż weekendowe promocje w sobotę (6) i niedzielę (0). |
+| **Zakres godzin [od, do]** | `between` | Uruchom tylko w konkretnych godzinach. Przykład: pokaż "Zadzwoń do nas" tylko w godzinach pracy 9-18. |
 
-### Condition Examples
+### Przykłady warunków
 
 <Tabs>
-  <Tab title="Engaged reader">
-    Show a newsletter popup to visitors who are actively reading:
+  <Tab title="Zaangażowany czytelnik">
+    Pokaż wyskakujące okno z newsletterem odwiedzającym, którzy aktywnie czytają:
 
-    | Condition | Operator | Value |
+    | Warunek | Operator | Wartość |
     |---|---|---|
-    | Time on page | `>=` | `30` |
-    | Scroll depth | `>=` | `50` |
-    | Device type | `=` | `desktop` |
+    | Czas na stronie | `>=` | `30` |
+    | Głębokość przewijania | `>=` | `50` |
+    | Typ urządzenia | `=` | `desktop` |
   </Tab>
-  <Tab title="Paid traffic offer">
-    Show a special discount for Google Ads visitors on the pricing page:
+  <Tab title="Oferta dla ruchu płatnego">
+    Pokaż specjalną zniżkę dla odwiedzających z Google Ads na stronie cennika:
 
-    | Condition | Operator | Value |
+    | Warunek | Operator | Wartość |
     |---|---|---|
-    | UTM Source | `=` | `google` |
-    | UTM Medium | `=` | `cpc` |
-    | Page URL | `contains` | `/pricing` |
+    | Źródło UTM | `=` | `google` |
+    | Medium UTM | `=` | `cpc` |
+    | URL strony | `contains` | `/pricing` |
   </Tab>
-  <Tab title="Cart abandonment">
-    Show a reminder after an add-to-cart event with time delay:
+  <Tab title="Porzucenie koszyka">
+    Pokaż przypomnienie po zdarzeniu dodania do koszyka z opóźnieniem:
 
-    | Condition | Operator | Value |
+    | Warunek | Operator | Wartość |
     |---|---|---|
-    | Event fired | `=` | `add_to_cart` |
-    | Time on page | `>=` | `60` |
-    | Pages visited | `>=` | `2` |
+    | Zdarzenie wywołane | `=` | `add_to_cart` |
+    | Czas na stronie | `>=` | `60` |
+    | Odwiedzone strony | `>=` | `2` |
   </Tab>
-  <Tab title="Business hours only">
-    Show a "Call us" bar only during working hours on weekdays:
+  <Tab title="Tylko godziny pracy">
+    Pokaż pasek "Zadzwoń do nas" tylko w godzinach pracy w dni robocze:
 
-    | Condition | Operator | Value |
+    | Warunek | Operator | Wartość |
     |---|---|---|
-    | Hour range | `between` | `[9, 18]` |
-    | Day of week | `in` | `[1, 2, 3, 4, 5]` |
-    | Device type | `=` | `desktop` |
+    | Zakres godzin | `between` | `[9, 18]` |
+    | Dzień tygodnia | `in` | `[1, 2, 3, 4, 5]` |
+    | Typ urządzenia | `=` | `desktop` |
   </Tab>
 </Tabs>
 
-### Frequency
+### Częstotliwość
 
-Controls how often the trigger is shown to the same visitor:
+Kontroluje, jak często wyzwalacz jest wyświetlany temu samemu odwiedzającemu:
 
-| Option | Description |
+| Opcja | Opis |
 |---|---|
-| **Once per session** | Show once during the current browser tab session. The trigger won't show again even after page reload or navigation — only closing the tab resets it. |
-| **Once per day** | Show once per calendar day. The visitor won't see it again until tomorrow, regardless of how many sessions they have today. |
-| **Once per visitor (ever)** | Show only once — ever. Once a visitor has seen this trigger, it will never show again (tracked via browser token). Ideal for one-time announcements. |
-| **Every visit** | Show on every session. The trigger fires every time the conditions are met, regardless of how many times the visitor has seen it before. Use sparingly. |
+| **Raz na sesję** | Pokaż raz podczas bieżącej sesji w karcie przeglądarki. Wyzwalacz nie pokaże się ponownie nawet po przeładowaniu strony — tylko zamknięcie karty go resetuje. |
+| **Raz dziennie** | Pokaż raz na dzień kalendarzowy. Odwiedzający nie zobaczy go ponownie do jutra, niezależnie od liczby sesji. |
+| **Raz na odwiedzającego (na zawsze)** | Pokaż tylko raz — na zawsze. Gdy odwiedzający zobaczył ten wyzwalacz, nigdy się nie pokaże ponownie (śledzone przez token przeglądarki). Idealne dla jednorazowych ogłoszeń. |
+| **Przy każdej wizycie** | Pokaż przy każdej sesji. Wyzwalacz uruchamia się za każdym razem, gdy warunki są spełnione, niezależnie od tego, ile razy odwiedzający go widział. Używaj oszczędnie. |
 
 <Tip>
-  For most use cases, **Once per session** or **Once per visitor** is the right choice. "Every visit" can be annoying — use it only for critical, time-sensitive information like maintenance notices or urgent promotions.
+  W większości przypadków **Raz na sesję** lub **Raz na odwiedzającego** to właściwy wybór. "Przy każdej wizycie" może być irytujące — używaj go tylko do kluczowych, pilnych informacji, takich jak powiadomienia o konserwacji lub pilne promocje.
 </Tip>
 
-### Schedule
+### Harmonogram
 
-Optionally restrict the trigger to a specific date and time range:
+Opcjonalnie ogranicz wyzwalacz do konkretnego zakresu dat i godzin:
 
-| Field | Description |
+| Pole | Opis |
 |---|---|
-| **Start At** | Date and time when the trigger becomes active. Before this moment, the trigger won't fire even if conditions are met. |
-| **End At** | Date and time when the trigger stops. After this moment, the trigger is automatically deactivated. |
+| **Rozpoczęcie** | Data i godzina aktywacji wyzwalacza. Przed tym momentem wyzwalacz nie uruchomi się, nawet jeśli warunki są spełnione. |
+| **Zakończenie** | Data i godzina zatrzymania wyzwalacza. Po tym momencie wyzwalacz jest automatycznie dezaktywowany. |
 
-Both fields are optional:
-- **Start only** — the trigger activates on the start date and runs indefinitely
-- **End only** — the trigger runs immediately and stops on the end date
-- **Both** — the trigger runs only during the specified window
-- **Neither** — the trigger runs as long as it's enabled
+Oba pola są opcjonalne:
+- **Tylko rozpoczęcie** — wyzwalacz aktywuje się w dacie rozpoczęcia i działa bezterminowo
+- **Tylko zakończenie** — wyzwalacz uruchamia się natychmiast i zatrzymuje w dacie zakończenia
+- **Oba** — wyzwalacz działa tylko w określonym oknie czasowym
+- **Żadne** — wyzwalacz działa tak długo, jak jest włączony
 
-**Use cases for scheduling:**
+**Przypadki użycia harmonogramu:**
 
-| Scenario | Start | End |
+| Scenariusz | Rozpoczęcie | Zakończenie |
 |---|---|---|
-| Black Friday sale popup | Nov 29, 00:00 | Dec 2, 23:59 |
-| New Year promo banner | Dec 25, 00:00 | Jan 5, 23:59 |
-| Product launch announcement | Mar 15, 10:00 | Mar 22, 23:59 |
-| Maintenance notice | — | Apr 1, 06:00 |
+| Wyskakujące okno Black Friday | 29 lis, 00:00 | 2 gru, 23:59 |
+| Baner promocyjny noworoczny | 25 gru, 00:00 | 5 sty, 23:59 |
+| Ogłoszenie premiery produktu | 15 mar, 10:00 | 22 mar, 23:59 |
+| Powiadomienie o konserwacji | — | 1 kwi, 06:00 |
 
 ---
 
-## How Triggers Work
+## Jak działają wyzwalacze
 
-When the tracker script loads on your website, it fetches the active trigger definitions and evaluates them in the background:
+Gdy skrypt trackera ładuje się na Twojej stronie, pobiera aktywne definicje wyzwalaczy i ewaluuje je w tle:
 
 <Steps>
-  <Step title="Active triggers are loaded">
-    The tracker fetches active trigger definitions from the server. The server filters by schedule (start/end dates) and active status before sending them to the client.
+  <Step title="Aktywne wyzwalacze są ładowane">
+    Tracker pobiera aktywne definicje wyzwalaczy z serwera. Serwer filtruje według harmonogramu (daty rozpoczęcia/zakończenia) i statusu aktywności przed wysłaniem ich do klienta.
   </Step>
-  <Step title="Frequency is checked">
-    Every 2 seconds, the tracker checks each trigger's frequency setting. If the visitor has already seen the trigger (based on localStorage or sessionStorage), the trigger is skipped.
+  <Step title="Częstotliwość jest sprawdzana">
+    Co 2 sekundy tracker sprawdza ustawienie częstotliwości każdego wyzwalacza. Jeśli odwiedzający już widział wyzwalacz (na podstawie localStorage lub sessionStorage), wyzwalacz jest pomijany.
   </Step>
-  <Step title="Conditions are evaluated">
-    For triggers that pass the frequency check, the tracker evaluates all conditions — time on page, scroll depth, UTM parameters, device type, fired events, and more. Conditions use AND or OR logic depending on configuration.
+  <Step title="Warunki są ewaluowane">
+    Dla wyzwalaczy, które przeszły sprawdzenie częstotliwości, tracker ewaluuje wszystkie warunki — czas na stronie, głębokość przewijania, parametry UTM, typ urządzenia, wywołane zdarzenia i inne. Warunki używają logiki AND lub OR w zależności od konfiguracji.
   </Step>
-  <Step title="Trigger is displayed">
-    The trigger content (modal or toast) is rendered on the page inside a Shadow DOM with the configured styling and animation. The activation is recorded as a `trigger_shown` event. For redirect triggers, the visitor is navigated to the target URL.
+  <Step title="Wyzwalacz jest wyświetlany">
+    Treść wyzwalacza (modal lub toast) jest renderowana na stronie wewnątrz Shadow DOM z skonfigurowanymi stylami i animacją. Aktywacja jest rejestrowana jako zdarzenie `trigger_shown`. Dla wyzwalaczy redirect odwiedzający jest przekierowywany na docelowy URL.
   </Step>
-  <Step title="Visitor interacts">
-    The visitor can interact with the trigger — click buttons, fill in fields, copy promo codes, scan QR codes, or close it. Each interaction is tracked as a separate event (`trigger_clicked`, `trigger_dismissed`, `trigger_promo_copied`).
+  <Step title="Odwiedzający wchodzi w interakcję">
+    Odwiedzający może wchodzić w interakcję z wyzwalaczem — klikać przyciski, wypełniać pola, kopiować kody promocyjne, skanować kody QR lub go zamknąć. Każda interakcja jest śledzona jako osobne zdarzenie (`trigger_clicked`, `trigger_dismissed`, `trigger_promo_copied`).
   </Step>
 </Steps>
 
 <Note>
-  Triggers are rendered inside their own **Shadow DOM** container, so their styles are fully isolated from your website. No CSS conflicts.
+  Wyzwalacze są renderowane wewnątrz własnego kontenera **Shadow DOM**, więc ich style są w pełni izolowane od Twojej strony. Brak konfliktów CSS.
 </Note>
 
 ---
 
-## Triggers and Events Integration
+## Integracja wyzwalaczy i zdarzeń
 
-Triggers create tracking events automatically. Every trigger activation is recorded as a `trigger_shown` event with the trigger ID and action type. You can:
+Wyzwalacze tworzą zdarzenia śledzenia automatycznie. Każda aktywacja wyzwalacza jest rejestrowana jako zdarzenie `trigger_shown` z identyfikatorem wyzwalacza i typem akcji. Możesz:
 
-- See trigger activity in the **Trigger Activity** chart on the Dashboard
-- View trigger activations in the **Campaign Performance** table
-- Use the `event_fired` condition to chain triggers — e.g., show Trigger B only after Trigger A was seen
-- Combine with [Custom Events](/widget/events#custom-events-api) for complex flows
+- Zobaczyć aktywność wyzwalaczy na wykresie **Aktywność wyzwalaczy** w Panelu analitycznym
+- Przeglądać aktywacje wyzwalaczy w tabeli **Wydajność kampanii**
+- Używać warunku `event_fired` do łączenia wyzwalaczy w łańcuchy — np. pokaż Wyzwalacz B dopiero po tym, jak Wyzwalacz A został zobaczony
+- Łączyć z [Zdarzeniami niestandardowymi](/widget/events#custom-events-api) dla złożonych przepływów
 
 <Tip>
-  Use the **Event fired** condition to create multi-step sequences. For example: Trigger 1 shows a teaser after 10 seconds. Trigger 2 shows the full offer only if the visitor clicked Trigger 1's button (tracked as a custom event).
+  Użyj warunku **Zdarzenie wywołane**, aby tworzyć wieloetapowe sekwencje. Na przykład: Wyzwalacz 1 pokazuje teaser po 10 sekundach. Wyzwalacz 2 pokazuje pełną ofertę tylko wtedy, gdy odwiedzający kliknął przycisk Wyzwalacza 1 (śledzony jako zdarzenie niestandardowe).
 </Tip>

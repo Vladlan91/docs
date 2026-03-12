@@ -1,117 +1,117 @@
 ---
-title: Activity Log
-sidebarTitle: Activity Log
-description: "Browse and filter raw tracking events — clicks, form submissions, triggers, and custom events with full data payloads"
+title: Dziennik aktywności
+sidebarTitle: Dziennik aktywności
+description: "Przeglądaj i filtruj surowe zdarzenia śledzenia — kliknięcia, wysyłki formularzy, wyzwalacze i zdarzenia niestandardowe z pełnymi ładunkami danych"
 ---
 
-## Overview
+## Przegląd
 
-The Activity Log tab shows the most recent 500 tracking events captured on your website. Use it to monitor visitor interactions, debug event tracking, verify trigger activations, and inspect captured form data — all in one chronological feed.
+Zakładka Dziennik aktywności pokazuje 500 najnowszych zdarzeń śledzenia zarejestrowanych na Twojej stronie. Użyj go do monitorowania interakcji odwiedzających, debugowania śledzenia zdarzeń, weryfikacji aktywacji wyzwalaczy i inspekcji przechwyconych danych formularzy — wszystko w jednym chronologicznym strumieniu.
 
 <Frame>
-  <img className="block dark:hidden" src="/images/tracker-activity-log-light.png" alt="Activity log" />
-  <img className="hidden dark:block" src="/images/tracker-activity-log-dark.png" alt="Activity log" />
+  <img className="block dark:hidden" src="/images/tracker-activity-log-light.png" alt="Dziennik aktywności" />
+  <img className="hidden dark:block" src="/images/tracker-activity-log-dark.png" alt="Dziennik aktywności" />
 </Frame>
 
 ---
 
-## Events Table
+## Tabela zdarzeń
 
-Each row in the activity log represents a single tracked event:
+Każdy wiersz w dzienniku aktywności reprezentuje pojedyncze śledzone zdarzenie:
 
-| Column | Description |
+| Kolumna | Opis |
 |---|---|
-| **Time** | When the event occurred. Recent events show relative time (e.g., "5m ago"), older events show date and time. Hover for the full timestamp. |
-| **Event** | Event icon and name. The name comes from the event definition (if linked), trigger name (if trigger-related), or the raw event type. |
-| **Page** | The page URL where the event fired. Long URLs are truncated to 50 characters — hover to see the full path. |
-| **Data** | Preview of event payload — shows the first 3 key-value pairs. If there are more, a "+N more" badge appears. Events with no data show "—". |
-| **Session** | Session ID linking the event to a specific visitor session. |
+| **Czas** | Kiedy zdarzenie wystąpiło. Najnowsze zdarzenia pokazują czas względny (np. "5m temu"), starsze pokazują datę i godzinę. Najedź kursorem, aby zobaczyć pełny znacznik czasu. |
+| **Zdarzenie** | Ikona i nazwa zdarzenia. Nazwa pochodzi z definicji zdarzenia (jeśli powiązane), nazwy wyzwalacza (jeśli związane z wyzwalaczem) lub surowego typu zdarzenia. |
+| **Strona** | URL strony, na której zdarzenie zostało wywołane. Długie URL-e są obcinane do 50 znaków — najedź kursorem, aby zobaczyć pełną ścieżkę. |
+| **Dane** | Podgląd ładunku zdarzenia — pokazuje pierwsze 3 pary klucz-wartość. Jeśli jest więcej, pojawia się plakietka "+N więcej". Zdarzenia bez danych pokazują "—". |
+| **Sesja** | Identyfikator sesji łączący zdarzenie z konkretną sesją odwiedzającego. |
 
-The table displays **15 events per page** with pagination at the bottom.
+Tabela wyświetla **15 zdarzeń na stronę** z paginacją na dole.
 
 ---
 
-## Event Types
+## Typy zdarzeń
 
-The activity log captures several categories of events:
+Dziennik aktywności rejestruje kilka kategorii zdarzeń:
 
-### Interaction Events
+### Zdarzenia interakcji
 
-| Type | Icon | Description |
+| Typ | Ikona | Opis |
 |---|---|---|
-| **click** | Pointer | Visitor clicked an element matching a CSS selector defined in your events |
-| **scroll** | Arrows | Visitor scrolled past a tracked element (IntersectionObserver) |
-| **form_submit** | Document | Visitor submitted a form matching a CSS selector |
-| **custom** | Code | Custom event fired via `RevolTracker.track()` from your JavaScript code |
+| **click** | Wskaźnik | Odwiedzający kliknął element pasujący do selektora CSS zdefiniowanego w zdarzeniach |
+| **scroll** | Strzałki | Odwiedzający przewinął obok śledzonego elementu (IntersectionObserver) |
+| **form_submit** | Dokument | Odwiedzający wysłał formularz pasujący do selektora CSS |
+| **custom** | Kod | Zdarzenie niestandardowe wywołane przez `RevolTracker.track()` z Twojego kodu JavaScript |
 
-### Trigger Events
+### Zdarzenia wyzwalaczy
 
-| Type | Icon | Description |
+| Typ | Ikona | Opis |
 |---|---|---|
-| **trigger_shown** | Bell | A trigger was displayed to the visitor (modal, toast, or redirect) |
-| **trigger_clicked** | Cursor | Visitor clicked a button inside a trigger overlay |
-| **trigger_dismissed** | X | Visitor closed or dismissed a trigger overlay |
-| **trigger_promo_copied** | Clipboard | Visitor copied a promo code from a trigger |
+| **trigger_shown** | Dzwonek | Wyzwalacz został wyświetlony odwiedzającemu (modal, toast lub przekierowanie) |
+| **trigger_clicked** | Kursor | Odwiedzający kliknął przycisk wewnątrz nakładki wyzwalacza |
+| **trigger_dismissed** | X | Odwiedzający zamknął lub odrzucił nakładkę wyzwalacza |
+| **trigger_promo_copied** | Schowek | Odwiedzający skopiował kod promocyjny z wyzwalacza |
 
-### Lifecycle Events
+### Zdarzenia cyklu życia
 
-| Type | Icon | Description |
+| Typ | Ikona | Opis |
 |---|---|---|
-| **visibility** | Eye | A tracked element became visible in the viewport |
+| **visibility** | Oko | Śledzony element stał się widoczny w oknie widoku |
 
 <Note>
-  Lifecycle events (trigger_shown, trigger_dismissed, visibility) are **hidden by default** to reduce noise. Use the Lifecycle filter to show them.
+  Zdarzenia cyklu życia (trigger_shown, trigger_dismissed, visibility) są **domyślnie ukryte** aby ograniczyć szum. Użyj filtra Cykl życia, aby je wyświetlić.
 </Note>
 
 ---
 
-## Filters
+## Filtry
 
-The activity log supports a flexible filter system. Click the **+ Filter** button to add filters. Active filters appear as removable chips above the table.
+Dziennik aktywności obsługuje elastyczny system filtrów. Kliknij przycisk **+ Filtr**, aby dodać filtry. Aktywne filtry pojawiają się jako usuwalne chipy nad tabelą.
 
-### Available Filters
+### Dostępne filtry
 
-| Filter | Type | Description |
+| Filtr | Typ | Opis |
 |---|---|---|
-| **Event Type** | Server-side | Show only events of a specific type: click, scroll, form_submit, visibility, custom, or trigger |
-| **Campaign** | Server-side | Show events only from sessions linked to a specific campaign. The dropdown is populated dynamically from your existing campaigns. |
-| **Has Data** | Hybrid | Filter by event payload: **Any data** (events with payload), **No data** (events without payload), or **Form data only** (events containing form fields like email, phone, name) |
-| **Lifecycle** | Client-side | Toggle visibility of lifecycle events (trigger_shown, trigger_dismissed, visibility). Hidden by default. |
-| **Search** | Client-side | Free-text search across event type and page URL. Filters in real-time with a 200ms debounce. |
+| **Typ zdarzenia** | Serwerowy | Pokaż tylko zdarzenia określonego typu: click, scroll, form_submit, visibility, custom lub trigger |
+| **Kampania** | Serwerowy | Pokaż zdarzenia tylko z sesji powiązanych z konkretną kampanią. Lista rozwijana jest wypełniana dynamicznie z istniejących kampanii. |
+| **Zawiera dane** | Hybrydowy | Filtruj według ładunku zdarzenia: **Dowolne dane** (zdarzenia z ładunkiem), **Bez danych** (zdarzenia bez ładunku) lub **Tylko dane formularza** (zdarzenia zawierające pola formularza jak e-mail, telefon, imię) |
+| **Cykl życia** | Kliencki | Przełącz widoczność zdarzeń cyklu życia (trigger_shown, trigger_dismissed, visibility). Domyślnie ukryte. |
+| **Wyszukiwanie** | Kliencki | Wyszukiwanie pełnotekstowe po typie zdarzenia i URL strony. Filtruje w czasie rzeczywistym z 200ms debounce. |
 
 <Tip>
-  **Server-side filters** (Event Type, Campaign, Any data) trigger a full data reload from the server. **Client-side filters** (Lifecycle, No data, Form data, Search) filter the already-loaded data instantly — no network request needed.
+  **Filtry serwerowe** (Typ zdarzenia, Kampania, Dowolne dane) powodują pełne przeładowanie danych z serwera. **Filtry klienckie** (Cykl życia, Bez danych, Dane formularza, Wyszukiwanie) filtrują już załadowane dane natychmiast — bez potrzeby żądania sieciowego.
 </Tip>
 
-### Filter Behavior
+### Zachowanie filtrów
 
-- Already-applied filters are disabled in the dropdown to prevent duplicates
-- Each filter chip shows the filter name and selected value
-- Click the **×** on a chip to remove the filter
-- Filters can be combined — for example, show only `form_submit` events from a specific campaign that have form data
+- Już zastosowane filtry są wyłączone w rozwijanej liście, aby zapobiec duplikatom
+- Każdy chip filtra pokazuje nazwę filtra i wybraną wartość
+- Kliknij **×** na chipie, aby usunąć filtr
+- Filtry mogą być łączone — na przykład pokaż tylko zdarzenia `form_submit` z konkretnej kampanii, które mają dane formularza
 
 ---
 
-## Event Detail Panel
+## Panel szczegółów zdarzenia
 
-Click any event row that has data (the **Data** column shows key-value pairs instead of "—") to expand the detail panel below the row. The panel displays the full event payload as a **syntax-highlighted JSON block**.
+Kliknij dowolny wiersz zdarzenia, który ma dane (kolumna **Dane** pokazuje pary klucz-wartość zamiast "—"), aby rozwinąć panel szczegółów pod wierszem. Panel wyświetla pełny ładunek zdarzenia jako **blok JSON z podświetleniem składni**.
 
-### JSON Code Block
+### Blok kodu JSON
 
-The expanded panel renders the complete `event_data` object with color-coded syntax:
+Rozwinięty panel renderuje kompletny obiekt `event_data` z kolorowaniem składni:
 
-| Element | Color | Example |
+| Element | Kolor | Przykład |
 |---|---|---|
-| **Keys** | Purple | `"fields"`, `"email"` |
-| **String values** | Green | `"john@example.com"` |
-| **Numbers, booleans, null** | Orange | `42`, `true`, `null` |
+| **Klucze** | Fioletowy | `"fields"`, `"email"` |
+| **Wartości tekstowe** | Zielony | `"john@example.com"` |
+| **Liczby, boolean, null** | Pomarańczowy | `42`, `true`, `null` |
 
-### What Data Contains
+### Co zawierają dane
 
-The JSON payload varies by event type:
+Ładunek JSON różni się w zależności od typu zdarzenia:
 
 <Tabs>
-  <Tab title="Click">
+  <Tab title="Kliknięcie">
     ```json
     {
       "selector": "#cta-button",
@@ -120,9 +120,9 @@ The JSON payload varies by event type:
       "y": 320
     }
     ```
-    Contains the CSS selector that matched, the element's text content, and click coordinates.
+    Zawiera selektor CSS, który pasował, treść tekstową elementu i współrzędne kliknięcia.
   </Tab>
-  <Tab title="Form Submit">
+  <Tab title="Wysyłka formularza">
     ```json
     {
       "fields": {
@@ -132,9 +132,9 @@ The JSON payload varies by event type:
       }
     }
     ```
-    Contains captured form field values. Password and hidden fields are automatically excluded.
+    Zawiera przechwycone wartości pól formularza. Pola hasła i ukryte są automatycznie wykluczane.
   </Tab>
-  <Tab title="Custom Event">
+  <Tab title="Zdarzenie niestandardowe">
     ```json
     {
       "product_id": "SKU-12345",
@@ -143,49 +143,49 @@ The JSON payload varies by event type:
       "currency": "USD"
     }
     ```
-    Contains whatever data was passed to `RevolTracker.track()`. Structure depends on your implementation.
+    Zawiera dane przekazane do `RevolTracker.track()`. Struktura zależy od Twojej implementacji.
   </Tab>
-  <Tab title="Trigger">
+  <Tab title="Wyzwalacz">
     ```json
     {
       "action_type": "modal"
     }
     ```
-    Contains the trigger's action type (modal, toast, or redirect).
+    Zawiera typ akcji wyzwalacza (modal, toast lub redirect).
   </Tab>
 </Tabs>
 
-### Copy Button
+### Przycisk kopiowania
 
-Each JSON block has a **Copy** button in the bottom-right corner. Click it to copy the formatted JSON to your clipboard — useful for debugging, sharing with teammates, or importing data into other tools.
+Każdy blok JSON ma przycisk **Kopiuj** w prawym dolnym rogu. Kliknij go, aby skopiować sformatowany JSON do schowka — przydatne do debugowania, udostępniania współpracownikom lub importowania danych do innych narzędzi.
 
 ---
 
-## Use Cases
+## Przypadki użycia
 
 <AccordionGroup>
-  <Accordion title="Debug event tracking">
-    After setting up a new click or form event, open the Activity Log and interact with the element on your website. The event should appear in the log within seconds. Check the Data column to verify the correct payload is captured.
+  <Accordion title="Debugowanie śledzenia zdarzeń">
+    Po skonfigurowaniu nowego zdarzenia kliknięcia lub formularza otwórz Dziennik aktywności i wejdź w interakcję z elementem na swojej stronie. Zdarzenie powinno pojawić się w dzienniku w ciągu kilku sekund. Sprawdź kolumnę Dane, aby zweryfikować czy przechwycony ładunek jest poprawny.
   </Accordion>
-  <Accordion title="Verify trigger conditions">
-    Enable the **Lifecycle** filter to show `trigger_shown` events. Navigate your site with different conditions (UTM parameters, device types, scroll depths) to confirm triggers fire when expected.
+  <Accordion title="Weryfikacja warunków wyzwalaczy">
+    Włącz filtr **Cykl życia**, aby wyświetlić zdarzenia `trigger_shown`. Nawiguj po stronie z różnymi warunkami (parametry UTM, typy urządzeń, głębokości przewijania), aby potwierdzić, że wyzwalacze uruchamiają się zgodnie z oczekiwaniami.
   </Accordion>
-  <Accordion title="Review form submissions">
-    Use the **Has Data → Form data only** filter to see all form submissions with captured field values. Expand each row to inspect the full payload — verify that the right fields are being captured and no sensitive data is leaking.
+  <Accordion title="Przegląd wysyłek formularzy">
+    Użyj filtra **Zawiera dane → Tylko dane formularza**, aby zobaczyć wszystkie wysyłki formularzy z przechwyconym wartościami pól. Rozwiń każdy wiersz, aby sprawdzić pełny ładunek — zweryfikuj, że odpowiednie pola są przechwytywane i żadne wrażliwe dane nie wyciekają.
   </Accordion>
-  <Accordion title="Monitor campaign activity">
-    Select a specific campaign from the **Campaign** filter to see all events from visitors who arrived via that campaign. Useful for verifying that campaign attribution works correctly.
+  <Accordion title="Monitorowanie aktywności kampanii">
+    Wybierz konkretną kampanię z filtra **Kampania**, aby zobaczyć wszystkie zdarzenia od odwiedzających, którzy przybyli z tej kampanii. Przydatne do weryfikacji, czy atrybucja kampanii działa prawidłowo.
   </Accordion>
-  <Accordion title="Quick data export">
-    Find the event you need, expand the detail panel, and click **Copy** to grab the JSON payload. Paste it into a spreadsheet, Slack message, or support ticket for quick reference.
+  <Accordion title="Szybki eksport danych">
+    Znajdź potrzebne zdarzenie, rozwiń panel szczegółów i kliknij **Kopiuj**, aby pobrać ładunek JSON. Wklej go do arkusza kalkulacyjnego, wiadomości Slack lub zgłoszenia w celu szybkiego odniesienia.
   </Accordion>
 </AccordionGroup>
 
 ---
 
-## Limits
+## Limity
 
-- The activity log loads the **last 500 events** from the server. Older events are available through session-level event views.
-- **Search** matches event type and page URL only — it does not search inside event data payloads.
-- Events with no `event_data` cannot be expanded (the row is not clickable).
-- Page navigation collapses any open detail panel.
+- Dziennik aktywności ładuje **ostatnich 500 zdarzeń** z serwera. Starsze zdarzenia są dostępne przez widoki zdarzeń na poziomie sesji.
+- **Wyszukiwanie** dopasowuje tylko typ zdarzenia i URL strony — nie przeszukuje ładunków danych zdarzeń.
+- Zdarzenia bez `event_data` nie mogą być rozwinięte (wiersz nie jest klikalny).
+- Nawigacja po stronie zwija każdy otwarty panel szczegółów.

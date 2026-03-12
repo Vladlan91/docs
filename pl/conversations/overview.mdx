@@ -1,184 +1,184 @@
 ---
-title: Conversations
-description: "Monitor and manage AI agent conversations across all channels"
+title: Konwersacje
+description: "Monitoruj i zarządzaj konwersacjami agentów AI we wszystkich kanałach"
 ---
 
-## Overview
+## Przegląd
 
-The Conversations page is a unified dashboard for all interactions between your AI agents and customers — regardless of which agent handled the conversation or which channel the visitor used (widget, phone, Telegram, WhatsApp, etc.).
+Strona Konwersacje to ujednolicony panel dla wszystkich interakcji między Twoimi agentami AI a klientami — niezależnie od tego, który agent prowadził rozmowę i z jakiego kanału korzystał odwiedzający (widget, telefon, Telegram, WhatsApp itp.).
 
-This page works the same for all agent operating modes. In **Active** mode, you see conversations handled by the AI. In **Passive** mode, you see conversations handled by your team with the agent's audit and analysis data attached. In **Hybrid** mode, both types appear in one unified view.
+Ta strona działa tak samo dla wszystkich trybów pracy agenta. W trybie **Active** widzisz konwersacje obsługiwane przez AI. W trybie **Passive** widzisz konwersacje obsługiwane przez Twój zespół z dołączonymi danymi audytu i analizy agenta. W trybie **Hybrid** oba typy pojawiają się w jednym ujednoliconym widoku.
 
-Navigate to **Conversations** in the sidebar menu to open this page.
+Przejdź do **Conversations** w menu bocznym, aby otworzyć tę stronę.
 
 <Frame>
-  <img className="block dark:hidden" src="/images/conversations-list-light.png" alt="Conversations list" />
-  <img className="hidden dark:block" src="/images/conversations-list-dark.png" alt="Conversations list" />
+  <img className="block dark:hidden" src="/images/conversations-list-light.png" alt="Lista konwersacji" />
+  <img className="hidden dark:block" src="/images/conversations-list-dark.png" alt="Lista konwersacji" />
 </Frame>
 
-## Conversations Table
+## Tabela konwersacji
 
-The table displays all conversations across all your agents, sorted by date (newest first). Each row shows:
+Tabela wyświetla wszystkie konwersacje ze wszystkich agentów, posortowane według daty (najnowsze najpierw). Każdy wiersz zawiera:
 
-| Column | Description |
-|--------|-------------|
-| **Agent** | Agent name and company, with a channel icon |
-| **Session** | Visitor session identifier |
-| **Channel** | Communication channel badge — Widget, Web, Telegram, WhatsApp, VoIP, Messenger, CRM |
-| **Status** | Current state — Active (ongoing), Closed (ended), or Archived |
-| **Messages** | Total message count in the conversation |
-| **Rating** | Client rating from 1 to 5, or `—` if not rated |
-| **Date** | When the conversation started |
-| **Actions** | Delete button |
+| Kolumna | Opis |
+|---------|------|
+| **Agent** | Nazwa agenta i firma z ikoną kanału |
+| **Sesja** | Identyfikator sesji odwiedzającego |
+| **Kanał** | Plakietka kanału komunikacji — Widget, Web, Telegram, WhatsApp, VoIP, Messenger, CRM |
+| **Status** | Aktualny stan — Active (trwająca), Closed (zakończona) lub Archived |
+| **Wiadomości** | Łączna liczba wiadomości w konwersacji |
+| **Ocena** | Ocena klienta od 1 do 5 lub `—` jeśli nie oceniono |
+| **Data** | Kiedy rozpoczęła się konwersacja |
+| **Akcje** | Przycisk usuwania |
 
-Click any column header (Agent, Status, Messages, Rating, Date) to change the sort order.
+Kliknij nagłówek dowolnej kolumny (Agent, Status, Wiadomości, Ocena, Data), aby zmienić kolejność sortowania.
 
-### Filtering
+### Filtrowanie
 
-Click the **Filter** button to add filter chips. Each filter narrows the results:
+Kliknij przycisk **Filter**, aby dodać filtry. Każdy filtr zawęża wyniki:
 
-| Filter | Options |
-|--------|---------|
+| Filtr | Opcje |
+|-------|-------|
 | **Status** | Active, Closed, Archived |
-| **Channel** | Web, Widget, Telegram, WhatsApp, VoIP, Messenger, CRM |
-| **Agent** | Select from all your agents |
-| **Min Rating** | 1+, 2+, 3+, 4+, 5 |
-| **Date From** | Calendar date picker |
-| **Date To** | Calendar date picker |
+| **Kanał** | Web, Widget, Telegram, WhatsApp, VoIP, Messenger, CRM |
+| **Agent** | Wybierz spośród wszystkich swoich agentów |
+| **Min. ocena** | 1+, 2+, 3+, 4+, 5 |
+| **Data od** | Wybór daty z kalendarza |
+| **Data do** | Wybór daty z kalendarza |
 
-Multiple filters work together (AND logic). Remove a filter by clicking the `×` on its chip.
+Wiele filtrów działa jednocześnie (logika AND). Usuń filtr klikając `×` na jego etykiecie.
 
-### Search
+### Wyszukiwanie
 
-The search field performs a case-insensitive search across three dimensions simultaneously:
-- **Session ID** — partial match
-- **Agent name** — partial match
-- **Message content** — searches inside all messages of the conversation
+Pole wyszukiwania wykonuje wyszukiwanie bez rozróżniania wielkości liter w trzech wymiarach jednocześnie:
+- **ID sesji** — częściowe dopasowanie
+- **Nazwa agenta** — częściowe dopasowanie
+- **Treść wiadomości** — przeszukuje wszystkie wiadomości konwersacji
 
-## Conversation Detail
+## Szczegóły konwersacji
 
-Click any row to open the detail panel — a side offcanvas sliding from the right. The panel has two columns: the main content area (left) and a metadata sidebar (right).
+Kliknij dowolny wiersz, aby otworzyć panel szczegółów — boczny panel wysuwający się z prawej strony. Panel ma dwie kolumny: główny obszar treści (lewy) i pasek boczny z metadanymi (prawy).
 
 <Frame>
-  <img className="block dark:hidden" src="/images/conversations-detail-light.png" alt="Conversation detail" />
-  <img className="hidden dark:block" src="/images/conversations-detail-dark.png" alt="Conversation detail" />
+  <img className="block dark:hidden" src="/images/conversations-detail-light.png" alt="Szczegóły konwersacji" />
+  <img className="hidden dark:block" src="/images/conversations-detail-dark.png" alt="Szczegóły konwersacji" />
 </Frame>
 
-### Audio Player
+### Odtwarzacz audio
 
-For voice conversations (VoIP, voice widget), a built-in audio player appears at the top of the panel. Features:
+Dla konwersacji głosowych (VoIP, widget głosowy) na górze panelu pojawia się wbudowany odtwarzacz audio. Funkcje:
 
-- **Play/Pause** with a visual waveform
-- **Playback speed** — cycle through 0.5×, 1.0×, 1.5×, 2.0×
-- **Skip** forward and back by 5 seconds
-- **Seek** by clicking anywhere on the waveform
-- **Auto-advance** — when one message ends, the next audio message plays automatically
+- **Odtwarzanie/Pauza** z wizualną falą dźwiękową
+- **Prędkość odtwarzania** — przełączanie między 0.5×, 1.0×, 1.5×, 2.0×
+- **Przeskakiwanie** do przodu i do tyłu o 5 sekund
+- **Przewijanie** przez kliknięcie w dowolne miejsce na fali dźwiękowej
+- **Automatyczne przechodzenie** — gdy jedna wiadomość się kończy, następna wiadomość audio odtwarza się automatycznie
 
-Audio files are stored on the server for each conversation and loaded on demand when you open the detail panel.
+Pliki audio są przechowywane na serwerze dla każdej konwersacji i ładowane na żądanie po otwarciu panelu szczegółów.
 
-For text-only conversations, the player is replaced with a text-only indicator.
+Dla konwersacji tekstowych odtwarzacz jest zastępowany wskaźnikiem „tylko tekst".
 
-### Metadata Sidebar
+### Pasek boczny z metadanymi
 
-Always visible on the right side of the panel:
+Zawsze widoczny po prawej stronie panelu:
 
-| Field | Description |
-|-------|-------------|
-| **Date** | When the conversation started |
-| **Text-only** | Whether the conversation has voice messages |
-| **Channel** | Communication channel |
-| **Duration** | Total conversation time, or "Ongoing" if still active |
-| **Messages** | Total message count |
-| **Tokens** | Total LLM tokens used (prompt + completion) |
-| **Rating** | Client rating as stars (1–5) or "No rating" |
-| **Agent** | Which agent handled the conversation |
+| Pole | Opis |
+|------|------|
+| **Data** | Kiedy rozpoczęła się konwersacja |
+| **Tylko tekst** | Czy konwersacja zawiera wiadomości głosowe |
+| **Kanał** | Kanał komunikacji |
+| **Czas trwania** | Łączny czas konwersacji lub „Ongoing" jeśli nadal aktywna |
+| **Wiadomości** | Łączna liczba wiadomości |
+| **Tokeny** | Łączna liczba tokenów LLM (prompt + completion) |
+| **Ocena** | Ocena klienta w gwiazdkach (1–5) lub „No rating" |
+| **Agent** | Który agent prowadził konwersację |
 
-## Three Tabs
+## Trzy zakładki
 
-The main content area has three tabs:
+Główny obszar treści zawiera trzy zakładki:
 
-### Overview
+### Przegląd
 
-A quick summary of the conversation:
+Szybkie podsumowanie konwersacji:
 
-- **Call status** — Active, Closed, or Archived
-- **How the call ended** — end reason or "Completed"
-- **Sentiment** — AI-analyzed conversation tone (positive, negative, neutral) or "Not analyzed"
-- **Session ID** — unique visitor session identifier
+- **Status rozmowy** — Active, Closed lub Archived
+- **Jak zakończyła się rozmowa** — powód zakończenia lub „Completed"
+- **Sentyment** — ton konwersacji analizowany przez AI (pozytywny, negatywny, neutralny) lub „Not analyzed"
+- **ID sesji** — unikalny identyfikator sesji odwiedzającego
 
-### Transcription
+### Transkrypcja
 
-Full message history displayed as chat bubbles. Only user and assistant messages are shown — system and tool messages are hidden. User messages appear as plain text; assistant messages support rich formatting (bold, links, lists, tables, code blocks, images).
+Pełna historia wiadomości wyświetlana jako dymki czatu. Pokazywane są tylko wiadomości użytkownika i asystenta — wiadomości systemowe i narzędziowe są ukryte. Wiadomości użytkownika pojawiają się jako zwykły tekst; wiadomości asystenta obsługują bogate formatowanie (pogrubienie, linki, listy, tabele, bloki kodu, obrazy).
 
 <Note>
-  Messages are paginated at 50 per page. For long conversations, the most recent messages are displayed first.
+  Wiadomości są paginowane po 50 na stronę. Dla długich konwersacji najnowsze wiadomości wyświetlane są jako pierwsze.
 </Note>
 
-### Client Data
+### Dane klienta
 
-The most detailed tab — combines conversation metadata, AI-extracted memory, and linked tracking analytics.
+Najbardziej szczegółowa zakładka — łączy metadane konwersacji, pamięć wyodrębnioną przez AI oraz powiązaną analitykę śledzenia.
 
 <Frame>
-  <img className="block dark:hidden" src="/images/conversations-client-data-light.png" alt="Client data tab" />
-  <img className="hidden dark:block" src="/images/conversations-client-data-dark.png" alt="Client data tab" />
+  <img className="block dark:hidden" src="/images/conversations-client-data-light.png" alt="Zakładka danych klienta" />
+  <img className="hidden dark:block" src="/images/conversations-client-data-dark.png" alt="Zakładka danych klienta" />
 </Frame>
 
-#### Conversation
+#### Konwersacja
 
-An 8-cell info grid: Channel, Status, Duration, Messages, Sentiment, Converted (Yes/No), Session ID, and Start date.
+Siatka informacyjna z 8 komórkami: Kanał, Status, Czas trwania, Wiadomości, Sentyment, Konwersja (Tak/Nie), ID sesji i Data rozpoczęcia.
 
-#### Memory
+#### Pamięć
 
 <Tip>
-  Memory fields are extracted by the AI agent during the conversation based on instructions in the system prompt. They can include any data the agent is configured to collect — client name, phone, email, order ID, product interest, qualification status, etc.
+  Pola pamięci są wyodrębniane przez agenta AI podczas konwersacji na podstawie instrukcji w prompcie systemowym. Mogą zawierać dowolne dane, które agent jest skonfigurowany do zbierania — imię klienta, telefon, e-mail, numer zamówienia, zainteresowanie produktem, status kwalifikacji itp.
 </Tip>
 
-If the conversation has extracted memory data, it appears as a grid of key-value cards. The keys and values are displayed exactly as the AI wrote them. Memory data is stored as JSON on the conversation record and updated in real-time as the agent extracts new information.
+Jeśli konwersacja ma wyodrębnione dane pamięci, pojawiają się jako siatka kart klucz-wartość. Klucze i wartości są wyświetlane dokładnie tak, jak zapisał je AI. Dane pamięci są przechowywane jako JSON w rekordzie konwersacji i aktualizowane w czasie rzeczywistym w miarę wyodrębniania nowych informacji przez agenta.
 
-#### Session (from Tracker)
+#### Sesja (z Trackera)
 
-If the visitor's conversation is linked to a tracking session (via the website widget), the panel shows the session analytics:
+Jeśli konwersacja odwiedzającego jest powiązana z sesją śledzenia (przez widget na stronie), panel pokazuje analitykę sesji:
 
-- **Device** — desktop, mobile, or tablet
-- **Browser** and **OS**
-- **Country** and **City** — geo-location of the visitor
-- **Landing page** — the first URL the visitor opened
-- **Traffic source** — where the visitor came from
-- **UTM source** and **UTM medium** — campaign attribution parameters
-- **Session duration** — total time on site
-- **Pages visited** — number of pages viewed
-- **Bounce** — whether the visitor left after one page
+- **Urządzenie** — komputer, telefon lub tablet
+- **Przeglądarka** i **System operacyjny**
+- **Kraj** i **Miasto** — geolokalizacja odwiedzającego
+- **Strona docelowa** — pierwszy URL otwarty przez odwiedzającego
+- **Źródło ruchu** — skąd przyszedł odwiedzający
+- **UTM source** i **UTM medium** — parametry atrybucji kampanii
+- **Czas sesji** — łączny czas na stronie
+- **Odwiedzone strony** — liczba wyświetlonych stron
+- **Odrzucenie** — czy odwiedzający opuścił stronę po jednej stronie
 
-#### Pageviews
+#### Odsłony stron
 
-If the linked session has pageviews, each page is shown with its title, time spent, and scroll depth percentage.
+Jeśli powiązana sesja ma odsłony, każda strona jest wyświetlana z tytułem, czasem spędzonym i procentem przewinięcia.
 
-#### Events
+#### Zdarzenia
 
-Non-trigger events captured during the session — clicks, form submissions, custom events — with their names, types, and timestamps.
+Zdarzenia nie-wyzwalające zarejestrowane podczas sesji — kliknięcia, przesłania formularzy, zdarzenia niestandardowe — z ich nazwami, typami i znacznikami czasu.
 
-#### Triggers
+#### Wyzwalacze
 
-Trigger events that collected form data or other structured information. Each trigger shows the trigger name, action type, timestamp, and an expandable JSON block with the captured data fields. A copy button allows copying the raw JSON.
+Zdarzenia wyzwalające, które zebrały dane formularza lub inne ustrukturyzowane informacje. Każdy wyzwalacz pokazuje nazwę, typ akcji, znacznik czasu i rozwijany blok JSON z zebranymi polami danych. Przycisk kopiowania pozwala skopiować surowy JSON.
 
-## Rating
+## Ocena
 
-### Client Rating
+### Ocena klienta
 
-Visitors can rate their conversation from 1 to 5 stars through the widget. The rating and optional comment are displayed in both the table and the detail panel. You can remove a client rating from the detail panel if needed.
+Odwiedzający mogą ocenić konwersację od 1 do 5 gwiazdek przez widget. Ocena i opcjonalny komentarz wyświetlane są zarówno w tabeli, jak i w panelu szczegółów. W razie potrzeby można usunąć ocenę klienta z panelu szczegółów.
 
-### Token Usage
+### Zużycie tokenów
 
-Each conversation tracks LLM token usage — prompt tokens (input) and completion tokens (output). The total is shown in the metadata sidebar. This helps monitor AI costs per conversation.
+Każda konwersacja śledzi zużycie tokenów LLM — tokeny promptu (wejściowe) i tokeny odpowiedzi (wyjściowe). Suma jest pokazywana na pasku bocznym z metadanymi. Pomaga to monitorować koszty AI na konwersację.
 
-## Deleting Conversations
+## Usuwanie konwersacji
 
-Click the trash icon in the table row to delete a conversation. A confirmation dialog appears before deletion. Deleting a conversation permanently removes:
+Kliknij ikonę kosza w wierszu tabeli, aby usunąć konwersację. Przed usunięciem pojawia się okno potwierdzenia. Usunięcie konwersacji trwale usuwa:
 
-- All messages and their content
-- All audio files stored on the server
-- Any associated ratings
+- Wszystkie wiadomości i ich treść
+- Wszystkie pliki audio przechowywane na serwerze
+- Wszystkie powiązane oceny
 
 <Warning>
-  Deletion is irreversible. Audio recordings and message history cannot be recovered.
+  Usunięcie jest nieodwracalne. Nagrań audio i historii wiadomości nie można odzyskać.
 </Warning>
