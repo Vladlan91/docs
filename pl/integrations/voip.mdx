@@ -1,161 +1,161 @@
 ---
-title: Telephony (VoIP)
-sidebarTitle: Telephony
-description: "Connect Twilio, Ringostat, or Binotel for AI-powered phone calls"
+title: Telefonia (VoIP)
+sidebarTitle: Telefonia
+description: "Połącz Twilio, Ringostat lub Binotel dla połączeń telefonicznych obsługiwanych przez AI"
 ---
 
-## Supported Providers
+## Obsługiwani dostawcy
 
-| Provider | Inbound Calls | Outbound Calls | SMS | Webhook Auto-Setup |
+| Dostawca | Połączenia przychodzące | Połączenia wychodzące | SMS | Automatyczna konfiguracja webhooków |
 |---|---|---|---|---|
-| **Twilio** | Yes | Yes | Yes | Automatic |
-| **Ringostat** | Yes | Yes | No | Manual |
-| **Binotel** | Yes | Yes | No | Manual |
+| **Twilio** | Tak | Tak | Tak | Automatyczna |
+| **Ringostat** | Tak | Tak | Nie | Ręczna |
+| **Binotel** | Tak | Tak | Nie | Ręczna |
 
-## Setup
+## Konfiguracja
 
 <Tabs>
   <Tab title="Twilio">
-    ### Credentials
+    ### Dane uwierzytelniające
 
-    You need two values from the [Twilio Console](https://console.twilio.com/):
+    Potrzebujesz dwóch wartości z [Twilio Console](https://console.twilio.com/):
 
-    | Field | Where to find |
+    | Pole | Gdzie znaleźć |
     |---|---|
     | **Account SID** | Dashboard → Account Info |
     | **Auth Token** | Dashboard → Account Info |
 
-    ### Steps
+    ### Kroki
 
     <Steps>
-      <Step title="Add Integration">
-        Go to **Integrations** → **Add Integration** → select **Twilio** from the Telephony category.
+      <Step title="Dodaj integrację">
+        Przejdź do **Integracje** → **Dodaj integrację** → wybierz **Twilio** z kategorii Telefonia.
       </Step>
-      <Step title="Enter Credentials">
-        Choose a company, give the integration a name (e.g., "Main Phone Line"), and enter your Account SID and Auth Token.
+      <Step title="Wprowadź dane uwierzytelniające">
+        Wybierz firmę, nadaj integracji nazwę (np. „Główna linia telefoniczna") i wprowadź Account SID oraz Auth Token.
       </Step>
-      <Step title="Verify & Select Number">
-        Click **Test Connection**. Revol fetches your available phone numbers. Select the number to use.
+      <Step title="Zweryfikuj i wybierz numer">
+        Kliknij **Testuj połączenie**. Revol pobierze dostępne numery telefonów. Wybierz numer, którego chcesz użyć.
       </Step>
-      <Step title="Save">
-        Revol automatically configures the webhook URL on the selected Twilio number. Incoming calls and SMS are routed to your agent.
+      <Step title="Zapisz">
+        Revol automatycznie konfiguruje URL webhooka na wybranym numerze Twilio. Połączenia przychodzące i SMS są kierowane do Twojego agenta.
       </Step>
     </Steps>
 
     <Note>
-      Twilio webhook URLs are configured automatically. You don't need to set anything in the Twilio Console.
+      URL-e webhooków Twilio są konfigurowane automatycznie. Nie musisz niczego ustawiać w Twilio Console.
     </Note>
   </Tab>
   <Tab title="Ringostat">
-    ### Credentials
+    ### Dane uwierzytelniające
 
-    | Field | Where to find |
+    | Pole | Gdzie znaleźć |
     |---|---|
-    | **API Key (Auth-key)** | Ringostat Dashboard → API Settings |
-    | **Project ID** | Ringostat Dashboard → Project Settings |
+    | **API Key (Auth-key)** | Ringostat Dashboard → Ustawienia API |
+    | **Project ID** | Ringostat Dashboard → Ustawienia projektu |
 
-    ### Steps
+    ### Kroki
 
     <Steps>
-      <Step title="Add Integration">
-        Go to **Integrations** → **Add Integration** → select **Ringostat**.
+      <Step title="Dodaj integrację">
+        Przejdź do **Integracje** → **Dodaj integrację** → wybierz **Ringostat**.
       </Step>
-      <Step title="Enter Credentials">
-        Enter your API Key and Project ID.
+      <Step title="Wprowadź dane uwierzytelniające">
+        Wprowadź swój API Key i Project ID.
       </Step>
-      <Step title="Verify">
-        Revol fetches your SIP accounts to confirm the connection.
+      <Step title="Zweryfikuj">
+        Revol pobierze Twoje konta SIP, aby potwierdzić połączenie.
       </Step>
-      <Step title="Configure Webhook">
-        In the Ringostat dashboard, set the webhook URL displayed in Revol after verification.
+      <Step title="Skonfiguruj webhook">
+        W panelu Ringostat ustaw URL webhooka wyświetlony w Revol po weryfikacji.
       </Step>
     </Steps>
   </Tab>
   <Tab title="Binotel">
-    ### Credentials
+    ### Dane uwierzytelniające
 
-    | Field | Where to find |
+    | Pole | Gdzie znaleźć |
     |---|---|
-    | **API Key** | Binotel Dashboard → Settings → API |
-    | **API Secret** | Binotel Dashboard → Settings → API |
+    | **API Key** | Binotel Dashboard → Ustawienia → API |
+    | **API Secret** | Binotel Dashboard → Ustawienia → API |
 
-    ### Steps
+    ### Kroki
 
     <Steps>
-      <Step title="Add Integration">
-        Go to **Integrations** → **Add Integration** → select **Binotel**.
+      <Step title="Dodaj integrację">
+        Przejdź do **Integracje** → **Dodaj integrację** → wybierz **Binotel**.
       </Step>
-      <Step title="Enter Credentials">
-        Enter your API Key and API Secret.
+      <Step title="Wprowadź dane uwierzytelniające">
+        Wprowadź swój API Key i API Secret.
       </Step>
-      <Step title="Verify">
-        Revol fetches your internal phone numbers to confirm the connection.
+      <Step title="Zweryfikuj">
+        Revol pobierze Twoje wewnętrzne numery telefonów, aby potwierdzić połączenie.
       </Step>
-      <Step title="Configure Webhook">
-        In the Binotel dashboard, set the webhook URL displayed in Revol after verification.
+      <Step title="Skonfiguruj webhook">
+        W panelu Binotel ustaw URL webhooka wyświetlony w Revol po weryfikacji.
       </Step>
     </Steps>
 
     <Warning>
-      Binotel webhooks are validated by IP allowlist. Only requests from Binotel's servers are accepted in production.
+      Webhooki Binotel są walidowane za pomocą listy dozwolonych IP. W środowisku produkcyjnym akceptowane są tylko żądania z serwerów Binotel.
     </Warning>
   </Tab>
 </Tabs>
 
-## Agent Tools
+## Narzędzia agenta
 
-After connecting a VoIP provider, the following tools are automatically provisioned:
+Po połączeniu dostawcy VoIP automatycznie udostępniane są następujące narzędzia:
 
-| Tool | Twilio | Ringostat | Binotel | Description |
+| Narzędzie | Twilio | Ringostat | Binotel | Opis |
 |---|---|---|---|---|
-| **make_call** | Yes | Yes | Yes | Initiate an outbound call with optional greeting message |
-| **send_sms** | Yes | — | — | Send an SMS message (auto-selects sender number) |
-| **get_call_history** | Yes | Yes | Yes | Retrieve recent call logs with filters (phone, status, date range) |
+| **make_call** | Tak | Tak | Tak | Zainicjowanie połączenia wychodzącego z opcjonalną wiadomością powitalną |
+| **send_sms** | Tak | — | — | Wysłanie wiadomości SMS (automatyczny wybór numeru nadawcy) |
+| **get_call_history** | Tak | Tak | Tak | Pobranie ostatnich logów połączeń z filtrami (numer, status, zakres dat) |
 
-These tools become available in the agent's **Tools** tab and can be added to workflow nodes.
+Te narzędzia stają się dostępne w zakładce **Narzędzia** agenta i mogą być dodawane do węzłów workflow.
 
-## Voice Call Flow
+## Przebieg połączenia głosowego
 
-When an incoming call arrives, Revol processes it through the assigned agent's workflow:
+Gdy nadchodzi połączenie przychodzące, Revol przetwarza je przez workflow przypisanego agenta:
 
 <Steps>
-  <Step title="Incoming Call">
-    VoIP provider sends a webhook notification to Revol with caller information.
+  <Step title="Połączenie przychodzące">
+    Dostawca VoIP wysyła powiadomienie webhook do Revol z informacjami o dzwoniącym.
   </Step>
-  <Step title="Greeting">
-    Revol generates an audio greeting using Text-to-Speech (configurable voice and language) and plays it to the caller.
+  <Step title="Powitanie">
+    Revol generuje powitanie audio za pomocą Text-to-Speech (konfigurowalny głos i język) i odtwarza je dzwoniącemu.
   </Step>
-  <Step title="Speech-to-Text">
-    Caller's speech is captured and transcribed using Whisper or Google STT.
+  <Step title="Zamiana mowy na tekst">
+    Mowa dzwoniącego jest przechwytywana i transkrybowana za pomocą Whisper lub Google STT.
   </Step>
-  <Step title="AI Processing">
-    Transcribed text is sent to the agent's workflow. The agent processes it through LLM nodes, knowledge base lookups, and tool calls.
+  <Step title="Przetwarzanie AI">
+    Transkrybowany tekst jest wysyłany do workflow agenta. Agent przetwarza go przez węzły LLM, wyszukiwanie w bazie wiedzy i wywołania narzędzi.
   </Step>
-  <Step title="Text-to-Speech">
-    Agent's text response is converted to audio using OpenAI TTS with configurable voice and speed.
+  <Step title="Zamiana tekstu na mowę">
+    Tekstowa odpowiedź agenta jest konwertowana na audio za pomocą OpenAI TTS z konfigurowalnym głosem i szybkością.
   </Step>
-  <Step title="Response">
-    Audio is played back to the caller. The conversation continues in a loop until the call ends.
+  <Step title="Odpowiedź">
+    Audio jest odtwarzane dzwoniącemu. Rozmowa trwa w pętli aż do zakończenia połączenia.
   </Step>
 </Steps>
 
-## Using Tools in Workflow Nodes
+## Używanie narzędzi w węzłach workflow
 
-To make your agent use VoIP tools during conversations:
+Aby agent mógł korzystać z narzędzi VoIP podczas rozmów:
 
-1. Go to the agent's **Workflow** tab
-2. Create or select a **custom node** (LLM-powered)
-3. In the node settings, enable the VoIP tools (e.g., `make_call`, `get_call_history`)
-4. The LLM will automatically decide when to call these tools based on the conversation context
+1. Przejdź do zakładki **Workflow** agenta
+2. Utwórz lub wybierz **węzeł niestandardowy** (oparty na LLM)
+3. W ustawieniach węzła włącz narzędzia VoIP (np. `make_call`, `get_call_history`)
+4. LLM automatycznie zdecyduje, kiedy wywołać te narzędzia na podstawie kontekstu rozmowy
 
-For example, if a customer asks "Can you call me back at +380501234567?", the agent will use the `make_call` tool to initiate an outbound call.
+Na przykład, jeśli klient zapyta „Czy możecie do mnie oddzwonić na +380501234567?", agent użyje narzędzia `make_call`, aby zainicjować połączenie wychodzące.
 
-## Webhook Security
+## Bezpieczeństwo webhooków
 
-| Provider | Validation Method |
+| Dostawca | Metoda walidacji |
 |---|---|
-| Twilio | HMAC-SHA1 signature verification (`X-Twilio-Signature` header) |
-| Ringostat | Structural parameter validation |
-| Binotel | IP allowlist (Binotel server IPs only in production) |
+| Twilio | Weryfikacja podpisu HMAC-SHA1 (nagłówek `X-Twilio-Signature`) |
+| Ringostat | Walidacja strukturalna parametrów |
+| Binotel | Lista dozwolonych IP (tylko adresy IP serwerów Binotel w środowisku produkcyjnym) |
 
-All VoIP webhooks are rate-limited to **120 requests per minute** per channel.
+Wszystkie webhooki VoIP mają ograniczenie częstotliwości do **120 żądań na minutę** na kanał.

@@ -1,160 +1,160 @@
 ---
 title: Google Workspace
 sidebarTitle: Google Workspace
-description: "Connect Gmail, Google Docs, Sheets, Drive, Calendar, and Meet"
+description: "Połącz Gmail, Google Docs, Sheets, Drive, Calendar i Meet"
 ---
 
-## Overview
+## Przegląd
 
-Six Google services are available through a shared OAuth flow. Connect once with your Google account — and your AI agents get access to email, documents, spreadsheets, files, calendar, and video meetings.
+Sześć usług Google jest dostępnych przez wspólny przepływ OAuth. Połącz się raz ze swoim kontem Google — a Twoi agenci AI uzyskają dostęp do poczty, dokumentów, arkuszy kalkulacyjnych, plików, kalendarza i wideokonferencji.
 
-## Supported Services
+## Obsługiwane usługi
 
-| Service | Tools | Description |
+| Usługa | Narzędzia | Opis |
 |---|---|---|
-| **Gmail** | 6 | Send emails, read inbox, search, reply, create drafts, get attachments |
-| **Google Docs** | 5 | Create, read, append, search, and export documents |
-| **Google Sheets** | 7 | Read/write ranges, append rows, search, create spreadsheets |
-| **Google Drive** | 8 | List, search, upload, download, share files and folders |
-| **Google Calendar** | 6 | Create events, check availability, find free slots |
-| **Google Meet** | 1 | Create video meeting links |
+| **Gmail** | 6 | Wysyłanie e-maili, czytanie skrzynki, wyszukiwanie, odpowiadanie, tworzenie szkiców, pobieranie załączników |
+| **Google Docs** | 5 | Tworzenie, czytanie, dopisywanie, wyszukiwanie i eksportowanie dokumentów |
+| **Google Sheets** | 7 | Czytanie/pisanie zakresów, dopisywanie wierszy, wyszukiwanie, tworzenie arkuszy |
+| **Google Drive** | 8 | Lista, wyszukiwanie, przesyłanie, pobieranie, udostępnianie plików i folderów |
+| **Google Calendar** | 6 | Tworzenie wydarzeń, sprawdzanie dostępności, znajdowanie wolnych terminów |
+| **Google Meet** | 1 | Tworzenie linków do wideokonferencji |
 
-## Authentication
+## Uwierzytelnianie
 
-All Google Workspace integrations use **OAuth 2.0** with offline access:
+Wszystkie integracje Google Workspace używają **OAuth 2.0** z dostępem offline:
 
 <Steps>
-  <Step title="Add Integration">
-    Go to **Integrations** → **Add Integration** → select any Google service (e.g., Gmail).
+  <Step title="Dodaj integrację">
+    Przejdź do **Integracje** → **Dodaj integrację** → wybierz dowolną usługę Google (np. Gmail).
   </Step>
-  <Step title="OAuth Consent">
-    Click "Connect with Google". You'll be redirected to Google's consent screen where you authorize access to the specific service.
+  <Step title="Ekran zgody OAuth">
+    Kliknij „Połącz z Google". Zostaniesz przekierowany na ekran zgody Google, gdzie autoryzujesz dostęp do konkretnej usługi.
   </Step>
-  <Step title="Token Storage">
-    Revol receives an access token and a refresh token. Both are encrypted and stored in the database. The refresh token provides long-term access — Revol automatically refreshes expired access tokens.
+  <Step title="Przechowywanie tokenów">
+    Revol otrzymuje token dostępu i refresh token. Oba są szyfrowane i przechowywane w bazie danych. Refresh token zapewnia długoterminowy dostęp — Revol automatycznie odświeża wygasłe tokeny dostępu.
   </Step>
-  <Step title="Tools Provisioned">
-    After successful OAuth, agent tools are created automatically based on the integration type.
+  <Step title="Udostępnienie narzędzi">
+    Po pomyślnym uwierzytelnieniu OAuth narzędzia agenta są tworzone automatycznie na podstawie typu integracji.
   </Step>
 </Steps>
 
-### OAuth Scopes
+### Zakresy OAuth
 
-Each service requests only the scopes it needs:
+Każda usługa żąda tylko potrzebnych zakresów:
 
-| Service | Scope |
+| Usługa | Zakres |
 |---|---|
 | Gmail | `gmail.modify` |
 | Google Docs | `documents`, `drive.file` |
 | Google Sheets | `spreadsheets`, `drive.file` |
 | Google Drive | `drive` |
 | Google Calendar | `calendar` |
-| Google Meet | `calendar` (Meet links are created via Calendar API) |
+| Google Meet | `calendar` (linki Meet są tworzone przez Calendar API) |
 
-## Agent Tools
+## Narzędzia agenta
 
 <Tabs>
   <Tab title="Gmail">
-    | Tool | Description |
+    | Narzędzie | Opis |
     |---|---|
-    | `send_email` | Compose and send an email with subject, body, optional CC/BCC |
-    | `read_inbox` | List recent emails from inbox |
-    | `search_emails` | Search emails by Gmail query syntax (from, subject, date, keywords) |
-    | `reply_to_email` | Reply to a specific email thread |
-    | `create_draft` | Create a draft email without sending |
-    | `get_attachments` | Download or inspect email attachments |
+    | `send_email` | Utwórz i wyślij e-mail z tematem, treścią, opcjonalnym CC/BCC |
+    | `read_inbox` | Wyświetl ostatnie e-maile ze skrzynki odbiorczej |
+    | `search_emails` | Wyszukaj e-maile za pomocą składni zapytań Gmail (od, temat, data, słowa kluczowe) |
+    | `reply_to_email` | Odpowiedz na konkretny wątek e-mailowy |
+    | `create_draft` | Utwórz szkic e-maila bez wysyłania |
+    | `get_attachments` | Pobierz lub sprawdź załączniki e-maila |
   </Tab>
   <Tab title="Google Docs">
-    | Tool | Description |
+    | Narzędzie | Opis |
     |---|---|
-    | `create_document` | Create a new Google Doc |
-    | `read_document` | Read the content of a document by ID |
-    | `append_to_document` | Append text to the end of a document |
-    | `search_documents` | Search documents by title or content in Drive |
-    | `export_document` | Export document to PDF, DOCX, or plain text |
+    | `create_document` | Utwórz nowy dokument Google |
+    | `read_document` | Przeczytaj zawartość dokumentu po ID |
+    | `append_to_document` | Dopisz tekst na końcu dokumentu |
+    | `search_documents` | Wyszukaj dokumenty po tytule lub treści na Drive |
+    | `export_document` | Eksportuj dokument do PDF, DOCX lub zwykłego tekstu |
   </Tab>
   <Tab title="Google Sheets">
-    | Tool | Description |
+    | Narzędzie | Opis |
     |---|---|
-    | `read_range` | Read data from a cell range (e.g., A1:D10) |
-    | `write_range` | Write data to a cell range |
-    | `append_rows` | Append rows to the end of a sheet |
-    | `search_rows` | Search for rows matching a column value |
-    | `create_spreadsheet` | Create a new spreadsheet |
-    | `get_info` | Get spreadsheet metadata (sheets, row count) |
-    | `update_cells` | Update specific cells |
+    | `read_range` | Odczytaj dane z zakresu komórek (np. A1:D10) |
+    | `write_range` | Zapisz dane w zakresie komórek |
+    | `append_rows` | Dopisz wiersze na końcu arkusza |
+    | `search_rows` | Wyszukaj wiersze pasujące do wartości kolumny |
+    | `create_spreadsheet` | Utwórz nowy arkusz kalkulacyjny |
+    | `get_info` | Pobierz metadane arkusza (arkusze, liczba wierszy) |
+    | `update_cells` | Zaktualizuj konkretne komórki |
   </Tab>
   <Tab title="Google Drive">
-    | Tool | Description |
+    | Narzędzie | Opis |
     |---|---|
-    | `list_files` | List files in a folder |
-    | `search_files` | Search files by name, type, or content |
-    | `read_file` | Download or read file content |
-    | `create_file` | Upload a new file |
-    | `update_file` | Update an existing file's content or metadata |
-    | `delete_file` | Move a file to trash |
-    | `create_folder` | Create a new folder |
-    | `share_file` | Share a file with specific users or make public |
+    | `list_files` | Wyświetl pliki w folderze |
+    | `search_files` | Wyszukaj pliki po nazwie, typie lub treści |
+    | `read_file` | Pobierz lub odczytaj zawartość pliku |
+    | `create_file` | Prześlij nowy plik |
+    | `update_file` | Zaktualizuj zawartość lub metadane istniejącego pliku |
+    | `delete_file` | Przenieś plik do kosza |
+    | `create_folder` | Utwórz nowy folder |
+    | `share_file` | Udostępnij plik konkretnym użytkownikom lub ustaw jako publiczny |
   </Tab>
-  <Tab title="Calendar & Meet">
+  <Tab title="Calendar i Meet">
     **Google Calendar:**
 
-    | Tool | Description |
+    | Narzędzie | Opis |
     |---|---|
-    | `create_event` | Create a calendar event with attendees and reminders |
-    | `list_events` | List upcoming events in a date range |
-    | `update_event` | Update an existing event's details |
-    | `delete_event` | Cancel/delete a calendar event |
-    | `check_availability` | Check if a time slot is free or busy |
-    | `find_free_slots` | Find available time slots in a date range |
+    | `create_event` | Utwórz wydarzenie z uczestnikami i przypomnieniami |
+    | `list_events` | Wyświetl nadchodzące wydarzenia w zakresie dat |
+    | `update_event` | Zaktualizuj szczegóły istniejącego wydarzenia |
+    | `delete_event` | Anuluj/usuń wydarzenie z kalendarza |
+    | `check_availability` | Sprawdź, czy termin jest wolny czy zajęty |
+    | `find_free_slots` | Znajdź dostępne terminy w zakresie dat |
 
     **Google Meet:**
 
-    | Tool | Description |
+    | Narzędzie | Opis |
     |---|---|
-    | `create_meeting` | Create a Google Meet link (via Calendar event with conferenceData) |
+    | `create_meeting` | Utwórz link Google Meet (przez wydarzenie Calendar z conferenceData) |
   </Tab>
 </Tabs>
 
-## Using Tools in Workflow Nodes
+## Używanie narzędzi w węzłach workflow
 
-Google Workspace tools are especially powerful in workflow nodes where the agent can combine multiple tools in a single conversation:
+Narzędzia Google Workspace są szczególnie skuteczne w węzłach workflow, gdzie agent może łączyć wiele narzędzi w jednej rozmowie:
 
-1. Connect a Google service and verify via OAuth
-2. The tools appear in the agent's **Tools** tab
-3. Add them to **custom nodes** in the workflow editor
-4. The LLM calls them automatically when relevant
+1. Połącz usługę Google i zweryfikuj przez OAuth
+2. Narzędzia pojawią się w zakładce **Narzędzia** agenta
+3. Dodaj je do **węzłów niestandardowych** w edytorze workflow
+4. LLM wywołuje je automatycznie, gdy jest to potrzebne
 
-**Example workflow:** A customer asks to schedule a demo →
-- Agent calls `check_availability` to find free slots
-- Customer picks a time → agent calls `create_event` to book it
-- Agent calls `create_meeting` to generate a Google Meet link
-- Agent calls `send_email` to send a confirmation email with the link
+**Przykładowy workflow:** Klient prosi o zaplanowanie demo →
+- Agent wywołuje `check_availability`, aby znaleźć wolne terminy
+- Klient wybiera godzinę → agent wywołuje `create_event`, aby zarezerwować termin
+- Agent wywołuje `create_meeting`, aby wygenerować link Google Meet
+- Agent wywołuje `send_email`, aby wysłać e-mail z potwierdzeniem i linkiem
 
-## Use Cases
+## Przypadki użycia
 
 <AccordionGroup>
-  <Accordion title="Automated follow-up emails">
-    Agent qualifies a lead via chat → uses `send_email` to send a follow-up with pricing → logs the interaction in Google Sheets via `append_rows`.
+  <Accordion title="Automatyczne e-maile follow-up">
+    Agent kwalifikuje leada przez czat → używa `send_email` do wysłania follow-upu z cennikiem → loguje interakcję w Google Sheets przez `append_rows`.
   </Accordion>
-  <Accordion title="Appointment booking">
-    Customer asks to schedule a meeting → agent uses `check_availability` to find free slots → `create_event` to book it → `create_meeting` to generate a Meet link → sends confirmation via chat or email.
+  <Accordion title="Rezerwacja spotkań">
+    Klient prosi o umówienie spotkania → agent używa `check_availability`, aby znaleźć wolne terminy → `create_event`, aby je zarezerwować → `create_meeting`, aby wygenerować link Meet → wysyła potwierdzenie przez czat lub e-mail.
   </Accordion>
-  <Accordion title="Document generation">
-    Agent collects information from the customer → uses `create_document` to generate a proposal or report → `share_file` to give the customer access.
+  <Accordion title="Generowanie dokumentów">
+    Agent zbiera informacje od klienta → używa `create_document`, aby wygenerować ofertę lub raport → `share_file`, aby dać klientowi dostęp.
   </Accordion>
-  <Accordion title="CRM-like lead tracking">
-    Every conversation ending with a lead → agent uses `append_rows` to add lead data to a Google Sheet → `send_email` to notify the sales team.
+  <Accordion title="Śledzenie leadów w stylu CRM">
+    Każda rozmowa zakończona leadem → agent używa `append_rows`, aby dodać dane leada do Google Sheet → `send_email`, aby powiadomić zespół sprzedaży.
   </Accordion>
 </AccordionGroup>
 
-## Token Refresh
+## Odświeżanie tokenów
 
-Google access tokens expire after 1 hour. Revol handles this automatically:
+Tokeny dostępu Google wygasają po 1 godzinie. Revol obsługuje to automatycznie:
 
-1. Before each API call, Revol checks if the token is within 5 minutes of expiry
-2. If expired, uses the stored refresh token to obtain a new access token
-3. The new token is encrypted and saved back to the database
-4. The API call proceeds with the fresh token
+1. Przed każdym wywołaniem API Revol sprawdza, czy token wygasa w ciągu 5 minut
+2. Jeśli wygasł, używa zapisanego refresh tokena do uzyskania nowego tokena dostępu
+3. Nowy token jest szyfrowany i zapisywany z powrotem w bazie danych
+4. Wywołanie API jest wykonywane z nowym tokenem
 
-If a refresh token becomes invalid (user revoked access), the integration is marked as **disconnected** and needs to be re-authorized.
+Jeśli refresh token stanie się nieważny (użytkownik cofnął dostęp), integracja jest oznaczana jako **rozłączona** i wymaga ponownej autoryzacji.
