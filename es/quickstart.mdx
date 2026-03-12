@@ -1,226 +1,226 @@
 ---
-title: Quick Start
-description: "Quick start with Revol — from registration to your first AI agent"
+title: Inicio Rapido
+description: "Inicio rapido con Revol — desde el registro hasta su primer agente de IA"
 ---
 
-## Registration and Login
+## Registro e Inicio de Sesion
 
-Revol supports two ways to create an account:
+Revol ofrece dos formas de crear una cuenta:
 
-- **Google OAuth** — click "Continue with Google" and authorize with your Google account. The fastest way.
-- **Email + password** — fill out the form: first name, last name, email, password, and password confirmation. You need to accept the Terms of Service and Privacy Policy.
+- **Google OAuth** — haga clic en "Continuar con Google" y autorice con su cuenta de Google. La forma mas rapida.
+- **Correo electronico + contrasena** — complete el formulario: nombre, apellido, correo electronico, contrasena y confirmacion de contrasena. Debe aceptar los Terminos de Servicio y la Politica de Privacidad.
 
-After registration, you land on the dashboard, where the first step is to create a company.
+Despues del registro, llegara al panel de control, donde el primer paso es crear una empresa.
 
 <Note>
-  If you already have an account, use the login page — the same Google OAuth or email/password options. There is a "Remember me" feature and password recovery via email.
+  Si ya tiene una cuenta, utilice la pagina de inicio de sesion — las mismas opciones de Google OAuth o correo electronico/contrasena. Hay una funcion de "Recordarme" y recuperacion de contrasena por correo electronico.
 </Note>
 
 <Frame>
-  <img className="block dark:hidden" src="/images/register-light.png" alt="Registration form" />
-  <img className="hidden dark:block" src="/images/register-dark.png" alt="Registration form" />
+  <img className="block dark:hidden" src="/images/register-light.png" alt="Formulario de registro" />
+  <img className="hidden dark:block" src="/images/register-dark.png" alt="Formulario de registro" />
 </Frame>
 
 ---
 
-## Creating a Company
+## Creacion de una Empresa
 
-After logging in, the first thing you need to do is **create a company**. A company is the central entity in Revol, to which all other elements are linked: products, files, agents, integrations, analytics.
+Despues de iniciar sesion, lo primero que debe hacer es **crear una empresa**. Una empresa es la entidad central en Revol, a la cual se vinculan todos los demas elementos: productos, archivos, agentes, integraciones, analiticas.
 
-To create a company, fill in:
+Para crear una empresa, complete:
 
-| Field | Description |
+| Campo | Descripcion |
 |-------|-------------|
-| **Company Name** | Brand or business name |
-| **Website** | Your website URL (used for widget domain validation) |
-| **Phone** | Company contact number |
-| **Logo** | Image that will be displayed in the widget and dashboard |
-| **Promo Description** | Short description of your business |
+| **Nombre de la Empresa** | Marca o nombre comercial |
+| **Sitio Web** | URL de su sitio web (utilizado para la validacion del dominio del widget) |
+| **Telefono** | Numero de contacto de la empresa |
+| **Logotipo** | Imagen que se mostrara en el widget y el panel de control |
+| **Descripcion Promocional** | Breve descripcion de su negocio |
 
 <Frame>
-  <img className="block dark:hidden" src="/images/company-setup-light.png" alt="Company setup" />
-  <img className="hidden dark:block" src="/images/company-setup-dark.png" alt="Company setup" />
+  <img className="block dark:hidden" src="/images/company-setup-light.png" alt="Configuracion de empresa" />
+  <img className="hidden dark:block" src="/images/company-setup-dark.png" alt="Configuracion de empresa" />
 </Frame>
 
-### Why a company and not just an agent?
+### Por que una empresa y no solo un agente?
 
-Most AI chatbot platforms work with a simple approach: you create an agent, upload PDF files, and it answers questions based on those documents. This works for simple FAQ bots but quickly becomes a limitation for real businesses.
+La mayoria de las plataformas de chatbots con IA funcionan con un enfoque simple: usted crea un agente, sube archivos PDF y este responde preguntas basandose en esos documentos. Esto funciona para bots de preguntas frecuentes simples, pero rapidamente se convierte en una limitacion para negocios reales.
 
-Revol is built differently. We use a **structured data model**: company → products/services → product parameters. Here's why:
+Revol esta construido de manera diferente. Utilizamos un **modelo de datos estructurado**: empresa -> productos/servicios -> parametros de producto. He aqui por que:
 
 <AccordionGroup>
-  <Accordion title="Structured data = more accurate answers">
-    When an AI agent knows that "iPhone 15 Pro" is a specific product priced at $999, with 8 colors, and a status of "in stock," it responds with **facts** rather than interpreting text from a PDF. No hallucinations about prices that have changed or products that are out of stock.
+  <Accordion title="Datos estructurados = respuestas mas precisas">
+    Cuando un agente de IA sabe que "iPhone 15 Pro" es un producto especifico con un precio de $999, con 8 colores y un estado de "en stock", responde con **hechos** en lugar de interpretar texto de un PDF. Sin alucinaciones sobre precios que han cambiado o productos que estan agotados.
   </Accordion>
-  <Accordion title="Parameters are the language of your business">
-    Every business has its own key characteristics. For an online store — size, color, material. For a clinic — procedure duration, contraindications. For SaaS — plan limits, supported integrations. Product parameters allow you to describe these details in a structured way, and the agent uses them for precise, contextual answers.
+  <Accordion title="Los parametros son el lenguaje de su negocio">
+    Cada negocio tiene sus propias caracteristicas clave. Para una tienda en linea — talla, color, material. Para una clinica — duracion del procedimiento, contraindicaciones. Para SaaS — limites del plan, integraciones compatibles. Los parametros de producto le permiten describir estos detalles de forma estructurada, y el agente los utiliza para respuestas precisas y contextuales.
   </Accordion>
-  <Accordion title="One dataset — multiple agents">
-    You fill in the product catalog once, then create multiple agents with different roles: one for sales, another for support, a third for internal training. Each agent chooses which specific products and files it uses. No data duplication.
+  <Accordion title="Un conjunto de datos — multiples agentes">
+    Usted completa el catalogo de productos una vez, luego crea multiples agentes con diferentes roles: uno para ventas, otro para soporte, un tercero para capacitacion interna. Cada agente elige que productos y archivos especificos utiliza. Sin duplicacion de datos.
   </Accordion>
-  <Accordion title="Scaling for agencies">
-    If you manage multiple businesses or work as an agency — each company has isolated data, separate agents, and its own analytics. A single Revol account can serve dozens of companies.
+  <Accordion title="Escalabilidad para agencias">
+    Si gestiona multiples negocios o trabaja como agencia — cada empresa tiene datos aislados, agentes separados y sus propias analiticas. Una unica cuenta de Revol puede atender a docenas de empresas.
   </Accordion>
 </AccordionGroup>
 
 ---
 
-## Products and Services
+## Productos y Servicios
 
-After creating a company, add **products or services** — these are the core units that your AI agent will know about and tell customers about.
+Despues de crear una empresa, agregue **productos o servicios** — estas son las unidades fundamentales que su agente de IA conocera y sobre las que informara a los clientes.
 
-To create a product, specify:
+Para crear un producto, especifique:
 
-| Field | Description |
+| Campo | Descripcion |
 |-------|-------------|
-| **Name** | Service or product name |
-| **Link** | Product page URL on your website (optional) |
-| **Availability** | Whether the product is available for order |
+| **Nombre** | Nombre del servicio o producto |
+| **Enlace** | URL de la pagina del producto en su sitio web (opcional) |
+| **Disponibilidad** | Si el producto esta disponible para pedidos |
 
-After creation, a product side panel opens where you can:
+Despues de la creacion, se abre un panel lateral del producto donde puede:
 
-- Add a **detailed description** (prompt) — extended text about the product that the agent will use for responses
-- Set the **price**
-- Upload product **photos**
-- Add **files** to the product's knowledge base (documents, links, text, videos)
+- Agregar una **descripcion detallada** (prompt) — texto extenso sobre el producto que el agente utilizara para las respuestas
+- Establecer el **precio**
+- Cargar **fotos** del producto
+- Agregar **archivos** a la base de conocimientos del producto (documentos, enlaces, texto, videos)
 
 <Frame>
-  <img className="block dark:hidden" src="/images/product-card-light.png" alt="Product card" />
-  <img className="hidden dark:block" src="/images/product-card-dark.png" alt="Product card" />
+  <img className="block dark:hidden" src="/images/product-card-light.png" alt="Ficha de producto" />
+  <img className="hidden dark:block" src="/images/product-card-dark.png" alt="Ficha de producto" />
 </Frame>
 
-### Product Parameters
+### Parametros de Producto
 
-The most powerful part of the product model is **parameters**. These are structured "name — value" pairs that describe specific product characteristics.
+La parte mas potente del modelo de producto son los **parametros**. Estos son pares estructurados de "nombre — valor" que describen caracteristicas especificas del producto.
 
-**Parameter examples for different businesses:**
+**Ejemplos de parametros para diferentes negocios:**
 
 <Tabs>
-  <Tab title="Online Store">
-    | Parameter | Value |
+  <Tab title="Tienda en Linea">
+    | Parametro | Valor |
     |-----------|-------|
-    | Size | S, M, L, XL |
-    | Color | Black, White, Blue |
-    | Material | 100% cotton |
-    | Weight | 250 g |
-    | Warranty | 12 months |
+    | Talla | S, M, L, XL |
+    | Color | Negro, Blanco, Azul |
+    | Material | 100% algodon |
+    | Peso | 250 g |
+    | Garantia | 12 meses |
   </Tab>
-  <Tab title="Clinic / Salon">
-    | Parameter | Value |
+  <Tab title="Clinica / Salon">
+    | Parametro | Valor |
     |-----------|-------|
-    | Duration | 60 minutes |
-    | Contraindications | Pregnancy, latex allergy |
-    | Preparation | Do not eat 2 hours before the procedure |
-    | Recovery | 3-5 days |
+    | Duracion | 60 minutos |
+    | Contraindicaciones | Embarazo, alergia al latex |
+    | Preparacion | No comer 2 horas antes del procedimiento |
+    | Recuperacion | 3-5 dias |
   </Tab>
-  <Tab title="SaaS / IT">
-    | Parameter | Value |
+  <Tab title="SaaS / TI">
+    | Parametro | Valor |
     |-----------|-------|
-    | Users | Up to 50 |
-    | Storage | 100 GB |
-    | API Requests | 10,000 / month |
-    | Support | Email + chat, response within 4 hours |
-    | Integrations | Slack, Jira, GitHub |
+    | Usuarios | Hasta 50 |
+    | Almacenamiento | 100 GB |
+    | Solicitudes API | 10,000 / mes |
+    | Soporte | Correo electronico + chat, respuesta en 4 horas |
+    | Integraciones | Slack, Jira, GitHub |
   </Tab>
 </Tabs>
 
-**Why is this needed?** When a customer asks "What sizes are available?" or "How long does the procedure take?" — the agent takes the answer directly from the product parameters rather than trying to find this information in a long text. This provides:
+**Para que se necesita esto?** Cuando un cliente pregunta "Que tallas estan disponibles?" o "Cuanto dura el procedimiento?" — el agente toma la respuesta directamente de los parametros del producto en lugar de intentar encontrar esta informacion en un texto largo. Esto proporciona:
 
-- **Accuracy** — specific values instead of vague wording
-- **Up-to-date info** — change a parameter in one place, and the agent immediately responds with the updated information
-- **Comparison** — the agent can compare products by specific parameters
+- **Precision** — valores especificos en lugar de formulaciones vagas
+- **Informacion actualizada** — cambie un parametro en un solo lugar y el agente responde inmediatamente con la informacion actualizada
+- **Comparacion** — el agente puede comparar productos por parametros especificos
 
 ---
 
-## File Manager
+## Gestor de Archivos
 
-**File Manager** is the centralized storage for all your company's files. This is where you upload content that will be used to train AI agents.
+El **Gestor de Archivos** es el almacenamiento centralizado de todos los archivos de su empresa. Aqui es donde carga el contenido que se utilizara para entrenar a los agentes de IA.
 
-Go to **File Manager** in the side menu. You will see a list of companies — select the one you need to open its files.
+Vaya al **Gestor de Archivos** en el menu lateral. Vera una lista de empresas — seleccione la que necesite para abrir sus archivos.
 
-### Content Types
+### Tipos de Contenido
 
 <Tabs>
-  <Tab title="Documents">
-    Upload files in **PDF**, **DOCX**, **TXT** formats. Revol will automatically extract the text, split it into chunks, and create vector embeddings for semantic search.
+  <Tab title="Documentos">
+    Cargue archivos en formatos **PDF**, **DOCX**, **TXT**. Revol extraera automaticamente el texto, lo dividira en fragmentos y creara embeddings vectoriales para la busqueda semantica.
 
-    | Format | Max Size | What is Extracted |
-    |--------|----------|-------------------|
-    | PDF | 10 MB | Text from all pages |
-    | DOCX | 10 MB | Text with formatting |
-    | TXT | 5 MB | Full text |
+    | Formato | Tamano Maximo | Que se Extrae |
+    |---------|---------------|---------------|
+    | PDF | 10 MB | Texto de todas las paginas |
+    | DOCX | 10 MB | Texto con formato |
+    | TXT | 5 MB | Texto completo |
   </Tab>
-  <Tab title="Links">
-    Paste the URL of any web page. Revol will automatically download the page content, extract the text, and add it to the knowledge base.
+  <Tab title="Enlaces">
+    Pegue la URL de cualquier pagina web. Revol descargara automaticamente el contenido de la pagina, extraera el texto y lo anadira a la base de conocimientos.
 
-    This is convenient for:
-    - Website pages with service descriptions
-    - FAQ sections
-    - Blog posts and articles
-    - External resources
+    Esto es conveniente para:
+    - Paginas del sitio web con descripciones de servicios
+    - Secciones de preguntas frecuentes
+    - Publicaciones de blog y articulos
+    - Recursos externos
   </Tab>
-  <Tab title="Text">
-    Add content directly as a text block. Ideal for:
-    - Frequently asked questions (FAQ)
-    - Company policies
-    - Agent scripts
-    - Short instructions
+  <Tab title="Texto">
+    Agregue contenido directamente como un bloque de texto. Ideal para:
+    - Preguntas frecuentes (FAQ)
+    - Politicas de la empresa
+    - Guiones para agentes
+    - Instrucciones breves
   </Tab>
   <Tab title="Video">
-    Upload a video — Revol will automatically transcribe the audio track into text and add it to the knowledge base. Supported formats: **MP4**, **WebM**, **MOV**.
+    Cargue un video — Revol transcribira automaticamente la pista de audio en texto y lo anadira a la base de conocimientos. Formatos compatibles: **MP4**, **WebM**, **MOV**.
   </Tab>
-  <Tab title="Photos">
-    Upload images with text — Revol will use OCR to extract text. Useful for screenshots, document photos, infographics.
+  <Tab title="Fotos">
+    Cargue imagenes con texto — Revol utilizara OCR para extraer el texto. Util para capturas de pantalla, fotos de documentos, infografias.
   </Tab>
 </Tabs>
 
 <Frame>
-  <img className="block dark:hidden" src="/images/file-manager-light.png" alt="File Manager" />
-  <img className="hidden dark:block" src="/images/file-manager-dark.png" alt="File Manager" />
+  <img className="block dark:hidden" src="/images/file-manager-light.png" alt="Gestor de Archivos" />
+  <img className="hidden dark:block" src="/images/file-manager-dark.png" alt="Gestor de Archivos" />
 </Frame>
 
 <Note>
-  Files can be added both at the company level (available to all agents) and at the individual product level (linked to a specific product/service).
+  Los archivos se pueden agregar tanto a nivel de empresa (disponibles para todos los agentes) como a nivel de producto individual (vinculados a un producto/servicio especifico).
 </Note>
 
 ---
 
-## Creating an AI Agent
+## Creacion de un Agente de IA
 
-Now that you have a company with products and files — it's time to create an AI agent.
+Ahora que tiene una empresa con productos y archivos — es hora de crear un agente de IA.
 
-Go to **AI Agents** in the side menu and click **Create Agent**.
+Vaya a **Agentes de IA** en el menu lateral y haga clic en **Crear Agente**.
 
-### Basic Settings
+### Configuracion Basica
 
-| Field | Description |
+| Campo | Descripcion |
 |-------|-------------|
-| **Name** | Agent name (e.g., "Sales Consultant") |
-| **Company** | Which company the agent belongs to |
-| **Use Case** | Agent role: Sales, Support, Lead Generation, Scheduling, Custom |
-| **LLM Provider** | AI model provider |
-| **Model** | Specific model to use |
+| **Nombre** | Nombre del agente (ej., "Consultor de Ventas") |
+| **Empresa** | A que empresa pertenece el agente |
+| **Caso de Uso** | Rol del agente: Ventas, Soporte, Generacion de Leads, Programacion de Citas, Personalizado |
+| **Proveedor LLM** | Proveedor del modelo de IA |
+| **Modelo** | Modelo especifico a utilizar |
 
-### Available LLM Providers
+### Proveedores LLM Disponibles
 
 <CardGroup cols={2}>
   <Card title="OpenAI" icon="bolt">
-    GPT-4o, GPT-4o-mini — the most popular choice for most tasks
+    GPT-4o, GPT-4o-mini — la opcion mas popular para la mayoria de las tareas
   </Card>
   <Card title="Anthropic" icon="brain">
-    Claude Sonnet, Claude Haiku — excellent response quality and safety
+    Claude Sonnet, Claude Haiku — excelente calidad de respuesta y seguridad
   </Card>
   <Card title="Google" icon="google">
-    Gemini 2.0 Flash, Gemini 2.5 Pro — fast and efficient models
+    Gemini 2.0 Flash, Gemini 2.5 Pro — modelos rapidos y eficientes
   </Card>
   <Card title="Groq" icon="microchip">
-    Llama 3.1 8B, Llama 3.3 70B — fastest inference, open-source models
+    Llama 3.1 8B, Llama 3.3 70B — inferencia mas rapida, modelos de codigo abierto
   </Card>
 </CardGroup>
 
-### System Prompt
+### Prompt del Sistema
 
-After creating the agent, a full-screen settings panel opens. The first step is to write a **System Prompt** — the core instruction that defines the agent's behavior.
+Despues de crear el agente, se abre un panel de configuracion a pantalla completa. El primer paso es escribir un **Prompt del Sistema** — la instruccion principal que define el comportamiento del agente.
 
 ```text
 You are a sales consultant for [Company Name].
@@ -235,55 +235,55 @@ Rules:
 ```
 
 <Tip>
-  The more specific the system prompt, the more accurate the agent's responses. Specify the role, tone of communication, limitations, and response examples.
+  Cuanto mas especifico sea el prompt del sistema, mas precisas seran las respuestas del agente. Especifique el rol, el tono de comunicacion, las limitaciones y ejemplos de respuestas.
 </Tip>
 
 ---
 
-## Agent Knowledge Base
+## Base de Conocimientos del Agente
 
-Navigate to the **Knowledge** tab in the agent panel. Here you choose which specific data the agent will use for responses.
+Navegue a la pestana **Conocimiento** en el panel del agente. Aqui elige que datos especificos utilizara el agente para las respuestas.
 
-### Knowledge Sources
+### Fuentes de Conocimiento
 
-The agent can learn from two types of sources:
+El agente puede aprender de dos tipos de fuentes:
 
 <AccordionGroup>
-  <Accordion title="Company Products">
-    Select specific products or services the agent should know about. The agent will get access to names, descriptions, prices, parameters, and photos of the selected products.
+  <Accordion title="Productos de la Empresa">
+    Seleccione productos o servicios especificos que el agente debe conocer. El agente obtendra acceso a nombres, descripciones, precios, parametros y fotos de los productos seleccionados.
   </Accordion>
-  <Accordion title="Knowledge Base Files">
-    Select documents, links, texts, and videos from the File Manager. You can choose files both at the company level and those linked to specific products.
+  <Accordion title="Archivos de la Base de Conocimientos">
+    Seleccione documentos, enlaces, textos y videos del Gestor de Archivos. Puede elegir archivos tanto a nivel de empresa como los vinculados a productos especificos.
   </Accordion>
 </AccordionGroup>
 
-### Training
+### Entrenamiento
 
-After selecting sources, click **Train**. Revol will:
+Despues de seleccionar las fuentes, haga clic en **Entrenar**. Revol:
 
-1. Extract all text content from the selected sources
-2. Split it into optimal chunks
-3. Create vector embeddings via OpenAI text-embedding-3-small
-4. Store them in PostgreSQL with pgvector for semantic search
+1. Extraera todo el contenido de texto de las fuentes seleccionadas
+2. Lo dividira en fragmentos optimos
+3. Creara embeddings vectoriales a traves de OpenAI text-embedding-3-small
+4. Los almacenara en PostgreSQL con pgvector para busqueda semantica
 
 <Frame>
-  <img className="block dark:hidden" src="/images/agents-knowledge-base-light.png" alt="Agent knowledge base" />
-  <img className="hidden dark:block" src="/images/agents-knowledge-base-dark.png" alt="Agent knowledge base" />
+  <img className="block dark:hidden" src="/images/agents-knowledge-base-light.png" alt="Base de conocimientos del agente" />
+  <img className="hidden dark:block" src="/images/agents-knowledge-base-dark.png" alt="Base de conocimientos del agente" />
 </Frame>
 
 <Warning>
-  After changing files or products, you need to click **Train** again so the agent receives the updated data.
+  Despues de modificar archivos o productos, debe hacer clic en **Entrenar** nuevamente para que el agente reciba los datos actualizados.
 </Warning>
 
 ---
 
-## Testing the Agent
+## Prueba del Agente
 
-Before publishing, test the agent right in the dashboard. Click the **Preview** button in the agent's top panel — a built-in chat window will open.
+Antes de publicar, pruebe el agente directamente en el panel de control. Haga clic en el boton **Vista Previa** en el panel superior del agente — se abrira una ventana de chat integrada.
 
-### Basic Workflow
+### Flujo de Trabajo Basico
 
-Every new agent comes with a **ready-made workflow** that covers basic needs without additional configuration. Its structure:
+Cada nuevo agente viene con un **flujo de trabajo predefinido** que cubre las necesidades basicas sin configuracion adicional. Su estructura:
 
 ```
 Voice Input (STT) → Start → Product Agent  ─┐
@@ -291,61 +291,61 @@ Voice Input (STT) → Start → Product Agent  ─┐
                          └→ Company Agent  ─┘
 ```
 
-| Node | What It Does | Tools |
-|------|-------------|-------|
-| **Start** | Entry point — receives the user's message | — |
-| **Product Agent** | Searches for products, details, availability, parameters | `get_products`, `get_product_details`, `check_availability`, `search_by_parameters` |
-| **Media Agent** | Finds photos, videos, and documents from the knowledge base | `get_photos`, `get_videos`, `get_documents`, `search_documents` |
-| **Company Agent** | Answers general questions about the company | `get_company_info` |
-| **Response Formatter** | Collects responses from all agents and forms the final message | — |
-| **Voice Input / Output** | STT and TTS for voice mode (disabled by default) | — |
+| Nodo | Que Hace | Herramientas |
+|------|----------|--------------|
+| **Start** | Punto de entrada — recibe el mensaje del usuario | — |
+| **Product Agent** | Busca productos, detalles, disponibilidad, parametros | `get_products`, `get_product_details`, `check_availability`, `search_by_parameters` |
+| **Media Agent** | Encuentra fotos, videos y documentos de la base de conocimientos | `get_photos`, `get_videos`, `get_documents`, `search_documents` |
+| **Company Agent** | Responde preguntas generales sobre la empresa | `get_company_info` |
+| **Response Formatter** | Recopila respuestas de todos los agentes y forma el mensaje final | — |
+| **Voice Input / Output** | STT y TTS para modo de voz (desactivado por defecto) | — |
 
-Three specialized agents work **in parallel** — Start distributes the query among them, each searches for relevant information in its area, and the Formatter combines the results into a single coherent response.
+Tres agentes especializados trabajan **en paralelo** — Start distribuye la consulta entre ellos, cada uno busca informacion relevante en su area, y el Formatter combina los resultados en una unica respuesta coherente.
 
 <Tip>
-  The basic workflow is sufficient for most scenarios: product consultations, FAQ answers, knowledge base search. For more complex scenarios (conditions, branches, custom tool calls), use the [Workflow Editor](/agents/workflow).
+  El flujo de trabajo basico es suficiente para la mayoria de los escenarios: consultas de productos, respuestas a preguntas frecuentes, busqueda en la base de conocimientos. Para escenarios mas complejos (condiciones, ramificaciones, llamadas a herramientas personalizadas), utilice el [Editor de Flujos de Trabajo](/agents/workflow).
 </Tip>
 
-### What to Check
+### Que Verificar
 
 <Steps>
-  <Step title="Basic Answers">
-    Ask about your products and services. Make sure the agent responds accurately and uses data from the knowledge base.
+  <Step title="Respuestas Basicas">
+    Pregunte sobre sus productos y servicios. Asegurese de que el agente responda con precision y utilice datos de la base de conocimientos.
   </Step>
-  <Step title="Knowledge Boundaries">
-    Ask something that is not in the knowledge base. The agent should honestly say it doesn't have that information rather than making up an answer.
+  <Step title="Limites del Conocimiento">
+    Pregunte algo que no este en la base de conocimientos. El agente debe decir honestamente que no tiene esa informacion en lugar de inventar una respuesta.
   </Step>
-  <Step title="Tone and Style">
-    Check whether the communication tone matches your system prompt — politeness, language, formality.
+  <Step title="Tono y Estilo">
+    Verifique si el tono de comunicacion coincide con su prompt del sistema — cortesia, idioma, formalidad.
   </Step>
-  <Step title="Multilingual Support">
-    Write in different languages — the agent should respond in the customer's language.
+  <Step title="Soporte Multilingue">
+    Escriba en diferentes idiomas — el agente debe responder en el idioma del cliente.
   </Step>
 </Steps>
 
 <Tip>
-  Use the **Analysis** tab to view conversation history, ratings, and agent statistics.
+  Utilice la pestana **Analisis** para ver el historial de conversaciones, calificaciones y estadisticas del agente.
 </Tip>
 
 ---
 
-## Installing the Widget
+## Instalacion del Widget
 
-When the agent is ready — install the widget on your website. Click the **Embed** button in the agent's top panel.
+Cuando el agente este listo — instale el widget en su sitio web. Haga clic en el boton **Integrar** en el panel superior del agente.
 
 <Frame>
-  <img className="block dark:hidden" src="/images/embed-code-light.png" alt="Embed code modal" />
-  <img className="hidden dark:block" src="/images/embed-code-dark.png" alt="Embed code modal" />
+  <img className="block dark:hidden" src="/images/embed-code-light.png" alt="Modal de codigo de integracion" />
+  <img className="hidden dark:block" src="/images/embed-code-dark.png" alt="Modal de codigo de integracion" />
 </Frame>
 
-### Getting the Code
+### Obtener el Codigo
 
-1. Click **Generate API Key** (if a key hasn't been created yet)
-2. Copy the widget HTML code
+1. Haga clic en **Generar Clave API** (si aun no se ha creado una clave)
+2. Copie el codigo HTML del widget
 
-### Adding to Your Website
+### Agregar a su Sitio Web
 
-Add this code before the closing `</head>` tag on your website:
+Agregue este codigo antes de la etiqueta de cierre `</head>` en su sitio web:
 
 ```html
 <script src="https://app.revol.com/tracker.js"
@@ -355,35 +355,35 @@ Add this code before the closing `</head>` tag on your website:
 </script>
 ```
 
-A single script provides:
+Un unico script proporciona:
 
-- **Chat widget** — a button in the corner of the site for communicating with the agent
-- **Visitor tracking** — sessions, pages, events, UTM tags
-- **Voice communication** — if enabled for the agent
+- **Widget de chat** — un boton en la esquina del sitio para comunicarse con el agente
+- **Seguimiento de visitantes** — sesiones, paginas, eventos, etiquetas UTM
+- **Comunicacion por voz** — si esta habilitada para el agente
 
 <Note>
-  The widget renders in **Shadow DOM** — its styles are fully isolated from your website and vice versa. No CSS conflicts.
+  El widget se renderiza en **Shadow DOM** — sus estilos estan completamente aislados de su sitio web y viceversa. Sin conflictos de CSS.
 </Note>
 
-### Checking the Connection
+### Verificar la Conexion
 
-After installing the script, return to the Embed Code modal and click **Check Connection**. Revol will verify that the widget is correctly connected to your website.
+Despues de instalar el script, regrese al modal de Codigo de Integracion y haga clic en **Verificar Conexion**. Revol verificara que el widget esta correctamente conectado a su sitio web.
 
 ---
 
-## Next Steps
+## Proximos Pasos
 
 <CardGroup cols={2}>
-  <Card title="Workflow Editor" icon="diagram-project" href="/agents/workflow">
-    Create complex conversation scenarios with conditions, branches, and tool calls
+  <Card title="Editor de Flujos de Trabajo" icon="diagram-project" href="/agents/workflow">
+    Cree escenarios de conversacion complejos con condiciones, ramificaciones y llamadas a herramientas
   </Card>
-  <Card title="Integrations" icon="plug" href="/integrations/overview">
-    Connect Telegram, WhatsApp, telephony, and other channels
+  <Card title="Integraciones" icon="plug" href="/integrations/overview">
+    Conecte Telegram, WhatsApp, telefonia y otros canales
   </Card>
-  <Card title="Widget Customization" icon="palette" href="/widget/customization">
-    Change colors, texts, placement, and the appearance of the widget
+  <Card title="Personalizacion del Widget" icon="palette" href="/widget/customization">
+    Cambie colores, textos, ubicacion y la apariencia del widget
   </Card>
-  <Card title="Analytics and Tracking" icon="chart-line" href="/widget/tracker">
-    Track visitor sessions, events, and conversions
+  <Card title="Analiticas y Seguimiento" icon="chart-line" href="/widget/tracker">
+    Rastree sesiones de visitantes, eventos y conversiones
   </Card>
 </CardGroup>

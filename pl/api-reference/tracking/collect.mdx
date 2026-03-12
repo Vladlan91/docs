@@ -1,32 +1,32 @@
 ---
-title: Collect Events
+title: Zbieranie zdarzeń
 api: "POST /api/tracker/collect"
-description: "Send tracking data (pageviews, events)"
+description: "Wysyłanie danych śledzenia (odsłony stron, zdarzenia)"
 ---
 
-## Request
+## Żądanie
 
 <ParamField body="api_key" type="string" required>
-  Your widget API key
+  Twój klucz Widget API
 </ParamField>
 
 <ParamField body="company_id" type="integer" required>
-  Your company ID
+  Identyfikator Twojej firmy
 </ParamField>
 
 <ParamField body="session_token" type="string" required>
-  Unique session identifier
+  Unikalny identyfikator sesji
 </ParamField>
 
 <ParamField body="pageviews" type="array">
-  Array of pageview objects (max 50)
+  Tablica obiektów odsłon stron (maks. 50)
 </ParamField>
 
 <ParamField body="events" type="array">
-  Array of event objects (max 50)
+  Tablica obiektów zdarzeń (maks. 50)
 </ParamField>
 
-## Pageview Object
+## Obiekt odsłony strony
 
 ```json
 {
@@ -37,7 +37,7 @@ description: "Send tracking data (pageviews, events)"
 }
 ```
 
-## Event Object
+## Obiekt zdarzenia
 
 ```json
 {
@@ -51,7 +51,7 @@ description: "Send tracking data (pageviews, events)"
 }
 ```
 
-## Response
+## Odpowiedź
 
 ```json
 {
@@ -60,5 +60,5 @@ description: "Send tracking data (pageviews, events)"
 ```
 
 <Warning>
-  Arrays are limited to 50 items each to prevent abuse.
+  Tablice są ograniczone do 50 elementów każda, aby zapobiec nadużyciom.
 </Warning>

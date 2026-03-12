@@ -1,60 +1,60 @@
 ---
-title: Knowledge Base
-description: "Train your agent with documents and content"
+title: Wissensdatenbank
+description: "Trainieren Sie Ihren Agenten mit Dokumenten und Inhalten"
 ---
 
-## Overview
+## Überblick
 
-The Knowledge Base uses **RAG (Retrieval-Augmented Generation)** to give your agent access to your business content. Documents are split into chunks, converted to vector embeddings, and stored for semantic search.
+Die Wissensdatenbank verwendet **RAG (Retrieval-Augmented Generation)**, um Ihrem Agenten Zugang zu Ihren Geschäftsinhalten zu geben. Dokumente werden in Chunks aufgeteilt, in Vektor-Embeddings umgewandelt und für die semantische Suche gespeichert.
 
-Navigate to the **Knowledge Base** tab in the agent panel. Here you choose which data the agent will use for its responses.
+Navigieren Sie zum Tab **Wissensdatenbank** im Agenten-Panel. Hier wählen Sie aus, welche Daten der Agent für seine Antworten verwenden soll.
 
 <Frame>
-  <img className="block dark:hidden" src="/images/knowledge-base-light.png" alt="Knowledge Base" />
-  <img className="hidden dark:block" src="/images/knowledge-base-dark.png" alt="Knowledge Base" />
+  <img className="block dark:hidden" src="/images/knowledge-base-light.png" alt="Wissensdatenbank" />
+  <img className="hidden dark:block" src="/images/knowledge-base-dark.png" alt="Wissensdatenbank" />
 </Frame>
 
-## Adding Content
+## Inhalte hinzufügen
 
-### Documents
-Upload files in supported formats:
+### Dokumente
+Laden Sie Dateien in unterstützten Formaten hoch:
 - PDF
 - DOCX
 - TXT
 
 ### URLs
-Provide web page URLs. Revol will scrape the content and add it to the knowledge base.
+Geben Sie Webseiten-URLs an. Revol wird den Inhalt extrahieren und zur Wissensdatenbank hinzufügen.
 
 ### Text
-Add content directly as text blocks.
+Fügen Sie Inhalte direkt als Textblöcke hinzu.
 
-## How RAG Works
+## Wie RAG funktioniert
 
 <Steps>
-  <Step title="Upload">
-    You upload a document or add content.
+  <Step title="Hochladen">
+    Sie laden ein Dokument hoch oder fügen Inhalte hinzu.
   </Step>
   <Step title="Chunking">
-    Content is split into manageable chunks.
+    Der Inhalt wird in handhabbare Chunks aufgeteilt.
   </Step>
   <Step title="Embedding">
-    Each chunk is converted to a vector embedding using OpenAI's text-embedding-3-small model.
+    Jeder Chunk wird mithilfe des OpenAI text-embedding-3-small Modells in ein Vektor-Embedding umgewandelt.
   </Step>
-  <Step title="Storage">
-    Embeddings are stored in PostgreSQL with pgvector extension.
+  <Step title="Speicherung">
+    Embeddings werden in PostgreSQL mit der pgvector-Erweiterung gespeichert.
   </Step>
-  <Step title="Retrieval">
-    When a user asks a question, the most similar chunks are retrieved using cosine similarity.
+  <Step title="Abruf">
+    Wenn ein Benutzer eine Frage stellt, werden die ähnlichsten Chunks mittels Kosinusähnlichkeit abgerufen.
   </Step>
-  <Step title="Generation">
-    Retrieved chunks are injected into the LLM prompt as context.
+  <Step title="Generierung">
+    Abgerufene Chunks werden als Kontext in den LLM-Prompt injiziert.
   </Step>
 </Steps>
 
-## Storage Limits
+## Speicherlimits
 
-| Plan | Knowledge Docs | Embedding Tokens |
-|------|---------------|-----------------|
-| Free | 10 | 100,000 |
-| Premium | 100 | 1,000,000 |
-| Professional | 1,000 | 5,000,000 |
+| Plan | Wissensdokumente | Embedding-Tokens |
+|------|-----------------|-----------------|
+| Free | 10 | 100.000 |
+| Premium | 100 | 1.000.000 |
+| Professional | 1.000 | 5.000.000 |

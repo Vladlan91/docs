@@ -1,32 +1,32 @@
 ---
-title: Collect Events
+title: Ereignisse erfassen
 api: "POST /api/tracker/collect"
-description: "Send tracking data (pageviews, events)"
+description: "Tracking-Daten senden (Seitenaufrufe, Ereignisse)"
 ---
 
-## Request
+## Anfrage
 
 <ParamField body="api_key" type="string" required>
-  Your widget API key
+  Ihr Widget API-Schluessel
 </ParamField>
 
 <ParamField body="company_id" type="integer" required>
-  Your company ID
+  Ihre Unternehmens-ID
 </ParamField>
 
 <ParamField body="session_token" type="string" required>
-  Unique session identifier
+  Eindeutiger Sitzungsbezeichner
 </ParamField>
 
 <ParamField body="pageviews" type="array">
-  Array of pageview objects (max 50)
+  Array von Seitenaufruf-Objekten (max. 50)
 </ParamField>
 
 <ParamField body="events" type="array">
-  Array of event objects (max 50)
+  Array von Ereignis-Objekten (max. 50)
 </ParamField>
 
-## Pageview Object
+## Seitenaufruf-Objekt
 
 ```json
 {
@@ -37,7 +37,7 @@ description: "Send tracking data (pageviews, events)"
 }
 ```
 
-## Event Object
+## Ereignis-Objekt
 
 ```json
 {
@@ -51,7 +51,7 @@ description: "Send tracking data (pageviews, events)"
 }
 ```
 
-## Response
+## Antwort
 
 ```json
 {
@@ -60,5 +60,5 @@ description: "Send tracking data (pageviews, events)"
 ```
 
 <Warning>
-  Arrays are limited to 50 items each to prevent abuse.
+  Arrays sind auf jeweils 50 Eintraege begrenzt, um Missbrauch zu verhindern.
 </Warning>

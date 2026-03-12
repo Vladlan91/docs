@@ -1,50 +1,50 @@
 ---
-title: Workflow Editor
-description: "Build conversation flows with the visual workflow editor"
+title: Editor de flujo de trabajo
+description: "Construya flujos de conversación con el editor visual de flujo de trabajo"
 ---
 
-## Overview
+## Descripción general
 
-The Workflow Editor is a visual node-based tool for designing conversation logic. Drag, drop, and connect nodes to create complex conversation flows.
+El Editor de flujo de trabajo es una herramienta visual basada en nodos para diseñar la lógica de conversación. Arrastre, suelte y conecte nodos para crear flujos de conversación complejos.
 
-## Node Types
+## Tipos de nodos
 
-### Start Node
-The entry point for every workflow. Each workflow has exactly one Start node.
+### Nodo de inicio
+El punto de entrada de cada flujo de trabajo. Cada flujo de trabajo tiene exactamente un nodo de inicio.
 
-### LLM Node
-Sends a message to the configured AI model and returns the response.
+### Nodo LLM
+Envía un mensaje al modelo de IA configurado y devuelve la respuesta.
 
-**Settings:**
-- Temperature (0.0 - 1.0)
-- Max tokens
-- Custom system prompt override
+**Configuración:**
+- Temperatura (0.0 - 1.0)
+- Máximo de tokens
+- Anulación personalizada del prompt del sistema
 
-### Condition Node
-Branches the workflow based on conditions. Supports:
-- Keyword matching
-- Sentiment analysis
-- Custom expressions
+### Nodo de condición
+Ramifica el flujo de trabajo según condiciones. Soporta:
+- Coincidencia de palabras clave
+- Análisis de sentimiento
+- Expresiones personalizadas
 
-### Tool Call Node
-Executes an external function or API call. Results are passed back to the conversation context.
+### Nodo de llamada a herramienta
+Ejecuta una función externa o llamada API. Los resultados se pasan de vuelta al contexto de la conversación.
 
-### Voice Call Node
-Handles voice-specific interactions — speech recognition and synthesis.
+### Nodo de llamada de voz
+Gestiona interacciones específicas de voz — reconocimiento y síntesis de voz.
 
-### End Node
-Terminates the conversation with an optional closing message.
+### Nodo final
+Termina la conversación con un mensaje de cierre opcional.
 
-## Connecting Nodes
+## Conexión de nodos
 
-Click on a node's output port and drag to another node's input port to create a connection. Each connection represents a possible conversation path.
+Haga clic en el puerto de salida de un nodo y arrastre hasta el puerto de entrada de otro nodo para crear una conexión. Cada conexión representa una ruta posible de la conversación.
 
-## Best Practices
+## Mejores prácticas
 
 <Tip>
-  Always build explicit paths between nodes with clear conditions. However, in some cases the AI may autonomously route to a node that has no direct edge — this is called a **synapse**. Synapses occur when the AI determines that existing routing conditions are unclear or insufficient and decides to reach a node on its own. While this provides flexibility, frequent synapses usually indicate that your edge conditions need to be more specific.
+  Construya siempre rutas explícitas entre nodos con condiciones claras. Sin embargo, en algunos casos la IA puede enrutar autónomamente a un nodo que no tiene arista directa — esto se denomina **sinapsis**. Las sinapsis ocurren cuando la IA determina que las condiciones de enrutamiento existentes son poco claras o insuficientes y decide alcanzar un nodo por su cuenta. Si bien esto proporciona flexibilidad, las sinapsis frecuentes generalmente indican que sus condiciones de arista necesitan ser más específicas.
 </Tip>
 
-- Keep workflows simple — complex flows are harder to debug
-- Use Condition nodes to handle edge cases
-- Test each path individually before publishing
+- Mantenga los flujos de trabajo simples — los flujos complejos son más difíciles de depurar
+- Use nodos de condición para manejar casos límite
+- Pruebe cada ruta individualmente antes de publicar

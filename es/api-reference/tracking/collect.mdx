@@ -1,32 +1,32 @@
 ---
-title: Collect Events
+title: Recopilar eventos
 api: "POST /api/tracker/collect"
-description: "Send tracking data (pageviews, events)"
+description: "Enviar datos de seguimiento (vistas de pagina, eventos)"
 ---
 
-## Request
+## Solicitud
 
 <ParamField body="api_key" type="string" required>
-  Your widget API key
+  Su clave de API del widget
 </ParamField>
 
 <ParamField body="company_id" type="integer" required>
-  Your company ID
+  Su ID de empresa
 </ParamField>
 
 <ParamField body="session_token" type="string" required>
-  Unique session identifier
+  Identificador unico de sesion
 </ParamField>
 
 <ParamField body="pageviews" type="array">
-  Array of pageview objects (max 50)
+  Arreglo de objetos de vista de pagina (maximo 50)
 </ParamField>
 
 <ParamField body="events" type="array">
-  Array of event objects (max 50)
+  Arreglo de objetos de evento (maximo 50)
 </ParamField>
 
-## Pageview Object
+## Objeto de vista de pagina
 
 ```json
 {
@@ -37,7 +37,7 @@ description: "Send tracking data (pageviews, events)"
 }
 ```
 
-## Event Object
+## Objeto de evento
 
 ```json
 {
@@ -51,7 +51,7 @@ description: "Send tracking data (pageviews, events)"
 }
 ```
 
-## Response
+## Respuesta
 
 ```json
 {
@@ -60,5 +60,5 @@ description: "Send tracking data (pageviews, events)"
 ```
 
 <Warning>
-  Arrays are limited to 50 items each to prevent abuse.
+  Los arreglos estan limitados a 50 elementos cada uno para prevenir abusos.
 </Warning>

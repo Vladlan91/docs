@@ -1,50 +1,50 @@
 ---
-title: Workflow Editor
-description: "Build conversation flows with the visual workflow editor"
+title: Workflow-Editor
+description: "Erstellen Sie Konversationsabläufe mit dem visuellen Workflow-Editor"
 ---
 
-## Overview
+## Überblick
 
-The Workflow Editor is a visual node-based tool for designing conversation logic. Drag, drop, and connect nodes to create complex conversation flows.
+Der Workflow-Editor ist ein visuelles, knotenbasiertes Werkzeug zur Gestaltung von Konversationslogik. Ziehen, platzieren und verbinden Sie Knoten, um komplexe Konversationsabläufe zu erstellen.
 
-## Node Types
+## Knotentypen
 
-### Start Node
-The entry point for every workflow. Each workflow has exactly one Start node.
+### Start-Knoten
+Der Einstiegspunkt für jeden Workflow. Jeder Workflow hat genau einen Start-Knoten.
 
-### LLM Node
-Sends a message to the configured AI model and returns the response.
+### LLM-Knoten
+Sendet eine Nachricht an das konfigurierte KI-Modell und gibt die Antwort zurück.
 
-**Settings:**
-- Temperature (0.0 - 1.0)
-- Max tokens
-- Custom system prompt override
+**Einstellungen:**
+- Temperatur (0,0 - 1,0)
+- Maximale Tokens
+- Benutzerdefinierte System-Prompt-Überschreibung
 
-### Condition Node
-Branches the workflow based on conditions. Supports:
-- Keyword matching
-- Sentiment analysis
-- Custom expressions
+### Bedingungs-Knoten
+Verzweigt den Workflow basierend auf Bedingungen. Unterstützt:
+- Schlüsselwort-Abgleich
+- Sentimentanalyse
+- Benutzerdefinierte Ausdrücke
 
-### Tool Call Node
-Executes an external function or API call. Results are passed back to the conversation context.
+### Tool-Aufruf-Knoten
+Führt eine externe Funktion oder einen API-Aufruf aus. Ergebnisse werden an den Konversationskontext zurückgegeben.
 
-### Voice Call Node
-Handles voice-specific interactions — speech recognition and synthesis.
+### Sprachanruf-Knoten
+Verarbeitet sprachspezifische Interaktionen — Spracherkennung und -synthese.
 
-### End Node
-Terminates the conversation with an optional closing message.
+### End-Knoten
+Beendet die Konversation mit einer optionalen Abschlussnachricht.
 
-## Connecting Nodes
+## Knoten verbinden
 
-Click on a node's output port and drag to another node's input port to create a connection. Each connection represents a possible conversation path.
+Klicken Sie auf den Ausgangsport eines Knotens und ziehen Sie zum Eingangsport eines anderen Knotens, um eine Verbindung zu erstellen. Jede Verbindung stellt einen möglichen Konversationspfad dar.
 
 ## Best Practices
 
 <Tip>
-  Always build explicit paths between nodes with clear conditions. However, in some cases the AI may autonomously route to a node that has no direct edge — this is called a **synapse**. Synapses occur when the AI determines that existing routing conditions are unclear or insufficient and decides to reach a node on its own. While this provides flexibility, frequent synapses usually indicate that your edge conditions need to be more specific.
+  Erstellen Sie immer explizite Pfade zwischen Knoten mit klaren Bedingungen. In einigen Fällen kann die KI jedoch eigenständig zu einem Knoten routen, der keine direkte Kante hat — dies wird als **Synapse** bezeichnet. Synapsen treten auf, wenn die KI feststellt, dass bestehende Routing-Bedingungen unklar oder unzureichend sind, und selbst entscheidet, einen Knoten zu erreichen. Obwohl dies Flexibilität bietet, deuten häufige Synapsen in der Regel darauf hin, dass Ihre Kantenbedingungen spezifischer sein müssen.
 </Tip>
 
-- Keep workflows simple — complex flows are harder to debug
-- Use Condition nodes to handle edge cases
-- Test each path individually before publishing
+- Halten Sie Workflows einfach — komplexe Abläufe sind schwieriger zu debuggen
+- Verwenden Sie Bedingungs-Knoten für Sonderfälle
+- Testen Sie jeden Pfad einzeln, bevor Sie veröffentlichen

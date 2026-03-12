@@ -1,28 +1,28 @@
 ---
-title: Creating an Agent
-description: "Step-by-step guide to creating and configuring an AI agent"
+title: Einen Agenten erstellen
+description: "Schritt-für-Schritt-Anleitung zur Erstellung und Konfiguration eines KI-Agenten"
 ---
 
-## Create a New Agent
+## Neuen Agenten erstellen
 
-1. Open your **Company** page → **AI Agents** tab
-2. Click **Create Agent**
-3. Fill in the basic information:
+1. Öffnen Sie Ihre **Unternehmens**-Seite → Tab **KI-Agenten**
+2. Klicken Sie auf **Agent erstellen**
+3. Geben Sie die grundlegenden Informationen ein:
 
-| Field | Description |
-|-------|-------------|
-| **Name** | Agent display name |
-| **Company** | Which company this agent belongs to |
-| **Use Case** | Sales, Support, Lead Generation, etc. |
-| **LLM Provider** | OpenAI, Anthropic, Google, or Groq |
-| **Model** | Specific model to use |
+| Feld | Beschreibung |
+|------|-------------|
+| **Name** | Anzeigename des Agenten |
+| **Unternehmen** | Welchem Unternehmen dieser Agent zugeordnet ist |
+| **Anwendungsfall** | Vertrieb, Support, Lead-Generierung usw. |
+| **LLM-Anbieter** | OpenAI, Anthropic, Google oder Groq |
+| **Modell** | Spezifisches zu verwendendes Modell |
 
-## Configure System Prompt
+## System-Prompt konfigurieren
 
-The system prompt is the core instruction set for your agent. Best practices:
+Der System-Prompt ist der zentrale Anweisungssatz für Ihren Agenten. Bewährte Vorgehensweisen:
 
 <Tip>
-  Be specific about the agent's role, tone, and boundaries. Include examples of how it should respond.
+  Seien Sie spezifisch in Bezug auf die Rolle, den Ton und die Grenzen des Agenten. Fügen Sie Beispiele hinzu, wie er antworten soll.
 </Tip>
 
 ```text
@@ -36,47 +36,47 @@ Rules:
 - Suggest relevant products from the knowledge base
 ```
 
-## Add Knowledge Base
+## Wissensdatenbank hinzufügen
 
-After creating the agent, click on it from the agents list — a side offcanvas panel opens. Navigate to the **Knowledge Base** tab to add sources.
+Nachdem Sie den Agenten erstellt haben, klicken Sie in der Agentenliste darauf — ein seitliches Offcanvas-Panel öffnet sich. Navigieren Sie zum Tab **Wissensdatenbank**, um Quellen hinzuzufügen.
 
 <Warning>
-  You cannot upload files directly to the agent. All data must first be added to the **company's File Manager** (documents, photos, videos, links, text). In the agent's Knowledge Base tab you then select which sources this specific agent should use.
+  Sie können Dateien nicht direkt zum Agenten hochladen. Alle Daten müssen zuerst im **Dateimanager des Unternehmens** hinzugefügt werden (Dokumente, Fotos, Videos, Links, Text). Im Wissensdatenbank-Tab des Agenten wählen Sie dann aus, welche Quellen dieser spezifische Agent verwenden soll.
 </Warning>
 
 <Frame>
-  <img className="block dark:hidden" src="/images/creating-agent-wizard-light.png" alt="Create agent wizard" />
-  <img className="hidden dark:block" src="/images/creating-agent-wizard-dark.png" alt="Create agent wizard" />
+  <img className="block dark:hidden" src="/images/creating-agent-wizard-light.png" alt="Agenten-Erstellungsassistent" />
+  <img className="hidden dark:block" src="/images/creating-agent-wizard-dark.png" alt="Agenten-Erstellungsassistent" />
 </Frame>
 
-Available source types from the company's data:
+Verfügbare Quellentypen aus den Unternehmensdaten:
 
-- **Products** — product name, description, parameters, price
-- **Documents** — PDF, Word, Excel, TXT files
-- **Photos** — photo name and description
-- **Videos** — video name and description
-- **Text** — free-text content
-- **Links** — fetched web page content
-- **Company** — company name, description, phone, contacts
+- **Produkte** — Produktname, Beschreibung, Parameter, Preis
+- **Dokumente** — PDF, Word, Excel, TXT-Dateien
+- **Fotos** — Fotoname und Beschreibung
+- **Videos** — Videoname und Beschreibung
+- **Text** — Freitext-Inhalte
+- **Links** — abgerufene Webseiteninhalte
+- **Unternehmen** — Firmenname, Beschreibung, Telefon, Kontakte
 
-When you add sources, the training process starts automatically — you can see the progress on the left side of the panel (status changes from **Training** to **Ready**).
+Wenn Sie Quellen hinzufügen, startet der Trainingsprozess automatisch — Sie können den Fortschritt auf der linken Seite des Panels sehen (Status wechselt von **Training** zu **Bereit**).
 
 <Note>
-  Selected sources are split into chunks and converted to vector embeddings for semantic search. The agent retrieves the most relevant chunks during each conversation.
+  Ausgewählte Quellen werden in Segmente aufgeteilt und in Vektor-Embeddings für die semantische Suche umgewandelt. Der Agent ruft während jeder Konversation die relevantesten Segmente ab.
 </Note>
 
-### RAG Settings
+### RAG-Einstellungen
 
-Hover over the **RAG Storage** indicator (shows used/total storage) — a settings icon will appear. Click it to open RAG Settings — a modal where you fine-tune how the agent searches the knowledge base:
+Bewegen Sie den Mauszeiger über die **RAG-Speicher**-Anzeige (zeigt belegten/Gesamtspeicher) — ein Einstellungssymbol erscheint. Klicken Sie darauf, um die RAG-Einstellungen zu öffnen — ein Modal, in dem Sie die Wissensdatenbanksuche des Agenten feinabstimmen können:
 
-| Setting | Range | Default | Description |
+| Einstellung | Bereich | Standard | Beschreibung |
 |---|---|---|---|
-| **Chunk Limit** | 1–20 | 5 | How many text chunks are returned per search |
-| **Character Limit** | 500–10,000 | 2,000 | Maximum characters per chunk |
-| **Similarity Threshold** | 0.1–1.0 | 0.7 | Minimum cosine similarity to include a result — higher values return fewer but more relevant results |
+| **Segment-Limit** | 1–20 | 5 | Wie viele Textsegmente pro Suche zurückgegeben werden |
+| **Zeichenlimit** | 500–10.000 | 2.000 | Maximale Zeichen pro Segment |
+| **Ähnlichkeitsschwelle** | 0,1–1,0 | 0,7 | Minimale Kosinusähnlichkeit für ein Ergebnis — höhere Werte liefern weniger, aber relevantere Ergebnisse |
 
-## Configure Workflow
+## Workflow konfigurieren
 
-After training is complete, navigate to **AI Agents** in the sidebar menu, select your agent, and click to open the full-screen agent editor modal. Go to the **Workflow** tab — a visual canvas where you design the conversation logic.
+Nachdem das Training abgeschlossen ist, navigieren Sie zu **KI-Agenten** im Seitenmenü, wählen Sie Ihren Agenten und klicken Sie, um den Vollbild-Agenten-Editor zu öffnen. Gehen Sie zum Tab **Workflow** — eine visuelle Arbeitsfläche, auf der Sie die Gesprächslogik entwerfen.
 
-For a detailed guide on workflow nodes, edges, conditions, and the default workflow, see [AI Agents → Workflow](/agents/workflow).
+Eine ausführliche Anleitung zu Workflow-Knoten, Kanten, Bedingungen und dem Standard-Workflow finden Sie unter [KI-Agenten → Workflow](/agents/workflow).

@@ -1,50 +1,50 @@
 ---
-title: Workflow Editor
-description: "Build conversation flows with the visual workflow editor"
+title: Edytor przepływu pracy
+description: "Buduj przepływy konwersacji za pomocą wizualnego edytora przepływu pracy"
 ---
 
-## Overview
+## Przegląd
 
-The Workflow Editor is a visual node-based tool for designing conversation logic. Drag, drop, and connect nodes to create complex conversation flows.
+Edytor przepływu pracy to wizualne narzędzie oparte na węzłach do projektowania logiki konwersacji. Przeciągaj, upuszczaj i łącz węzły, aby tworzyć złożone przepływy konwersacji.
 
-## Node Types
+## Typy węzłów
 
-### Start Node
-The entry point for every workflow. Each workflow has exactly one Start node.
+### Węzeł Start
+Punkt wejścia dla każdego przepływu pracy. Każdy przepływ ma dokładnie jeden węzeł Start.
 
-### LLM Node
-Sends a message to the configured AI model and returns the response.
+### Węzeł LLM
+Wysyła wiadomość do skonfigurowanego modelu AI i zwraca odpowiedź.
 
-**Settings:**
-- Temperature (0.0 - 1.0)
-- Max tokens
-- Custom system prompt override
+**Ustawienia:**
+- Temperatura (0.0 - 1.0)
+- Maksymalna liczba tokenów
+- Niestandardowe nadpisanie promptu systemowego
 
-### Condition Node
-Branches the workflow based on conditions. Supports:
-- Keyword matching
-- Sentiment analysis
-- Custom expressions
+### Węzeł warunkowy
+Rozgałęzia przepływ pracy na podstawie warunków. Obsługuje:
+- Dopasowanie słów kluczowych
+- Analizę sentymentu
+- Wyrażenia niestandardowe
 
-### Tool Call Node
-Executes an external function or API call. Results are passed back to the conversation context.
+### Węzeł wywołania narzędzia
+Wykonuje zewnętrzną funkcję lub wywołanie API. Wyniki są przekazywane z powrotem do kontekstu rozmowy.
 
-### Voice Call Node
-Handles voice-specific interactions — speech recognition and synthesis.
+### Węzeł połączenia głosowego
+Obsługuje interakcje specyficzne dla głosu — rozpoznawanie i syntezę mowy.
 
-### End Node
-Terminates the conversation with an optional closing message.
+### Węzeł końcowy
+Kończy rozmowę z opcjonalną wiadomością zamykającą.
 
-## Connecting Nodes
+## Łączenie węzłów
 
-Click on a node's output port and drag to another node's input port to create a connection. Each connection represents a possible conversation path.
+Kliknij port wyjściowy węzła i przeciągnij do portu wejściowego innego węzła, aby utworzyć połączenie. Każde połączenie reprezentuje możliwą ścieżkę konwersacji.
 
-## Best Practices
+## Najlepsze praktyki
 
 <Tip>
-  Always build explicit paths between nodes with clear conditions. However, in some cases the AI may autonomously route to a node that has no direct edge — this is called a **synapse**. Synapses occur when the AI determines that existing routing conditions are unclear or insufficient and decides to reach a node on its own. While this provides flexibility, frequent synapses usually indicate that your edge conditions need to be more specific.
+  Zawsze buduj jawne ścieżki między węzłami z jasnymi warunkami. Jednak w niektórych przypadkach AI może autonomicznie skierować się do węzła, który nie ma bezpośredniej krawędzi — nazywa się to **synapsą**. Synapsy występują, gdy AI stwierdzi, że istniejące warunki routingu są niejasne lub niewystarczające i postanowi dotrzeć do węzła samodzielnie. Choć zapewnia to elastyczność, częste synapsy zwykle wskazują, że warunki krawędzi powinny być bardziej szczegółowe.
 </Tip>
 
-- Keep workflows simple — complex flows are harder to debug
-- Use Condition nodes to handle edge cases
-- Test each path individually before publishing
+- Utrzymuj przepływy pracy prostymi — złożone przepływy są trudniejsze do debugowania
+- Używaj węzłów warunkowych do obsługi przypadków brzegowych
+- Testuj każdą ścieżkę osobno przed publikacją

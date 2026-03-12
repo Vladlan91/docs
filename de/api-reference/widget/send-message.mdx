@@ -1,30 +1,30 @@
 ---
-title: Send Message
+title: Nachricht senden
 api: "POST /api/widget/send-message"
-description: "Send a message to the AI agent"
+description: "Eine Nachricht an den KI-Agenten senden"
 ---
 
-## Request
+## Anfrage
 
 <ParamField body="api_key" type="string" required>
-  Your widget API key
+  Ihr Widget API-Schluessel
 </ParamField>
 
 <ParamField body="company_id" type="integer" required>
-  Your company ID
+  Ihre Unternehmens-ID
 </ParamField>
 
 <ParamField body="message" type="string" required>
-  User message text (max 2000 characters)
+  Nachrichtentext des Benutzers (max. 2000 Zeichen)
 </ParamField>
 
 <ParamField body="session_id" type="string">
-  Session identifier for conversation continuity
+  Sitzungsbezeichner fuer die Gespraechskontinuitaet
 </ParamField>
 
-## Response
+## Antwort
 
-The response is streamed as Server-Sent Events (SSE):
+Die Antwort wird als Server-Sent Events (SSE) gestreamt:
 
 ```
 data: {"chunk": "Hello"}
@@ -34,7 +34,7 @@ data: {"chunk": " help you?"}
 data: [DONE]
 ```
 
-## Example
+## Beispiel
 
 ```javascript
 const response = await fetch('/api/widget/send-message', {

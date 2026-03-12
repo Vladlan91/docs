@@ -1,120 +1,120 @@
 ---
-title: AI Agents
-sidebarTitle: Overview
-description: "Create intelligent AI assistants with custom workflows, knowledge bases, voice capabilities, and multi-channel deployment"
+title: Agentes de IA
+sidebarTitle: Descripción general
+description: "Cree asistentes de IA inteligentes con flujos de trabajo personalizados, bases de conocimiento, capacidades de voz e implementación multicanal"
 ---
 
-## What Are AI Agents?
+## ¿Qué son los Agentes de IA?
 
-AI Agents in Revol are intelligent assistants that work with customer interactions across multiple channels — your website widget, phone calls, Telegram, WhatsApp, and Instagram. Each agent has its own personality, knowledge base, conversation workflow, and set of tools.
+Los Agentes de IA en Revol son asistentes inteligentes que trabajan con las interacciones de los clientes a través de múltiples canales: el widget de su sitio web, llamadas telefónicas, Telegram, WhatsApp e Instagram. Cada agente tiene su propia personalidad, base de conocimiento, flujo de trabajo conversacional y conjunto de herramientas.
 
-### Operating Modes
+### Modos de operación
 
-Agents can operate in three modes depending on your business needs:
+Los agentes pueden operar en tres modos según las necesidades de su negocio:
 
-| Mode | Who Communicates | Agent's Role |
-|------|-----------------|--------------|
-| **Active** | AI Agent | The agent fully handles customer communication — responds to messages, calls tools, follows the workflow, and resolves requests autonomously |
-| **Passive** | Your Team | Your team handles all customer communication. The agent monitors every conversation in the background — auditing compliance with communication standards, tracking quality metrics, and providing analysis without ever responding to customers |
-| **Hybrid** | Both | The AI handles routine interactions (FAQ, product inquiries, scheduling) while your team takes over complex or sensitive cases. The agent continuously analyzes all conversations regardless of who responds |
+| Modo | Quién se comunica | Rol del agente |
+|------|-------------------|----------------|
+| **Activo** | Agente de IA | El agente gestiona completamente la comunicación con el cliente: responde mensajes, utiliza herramientas, sigue el flujo de trabajo y resuelve solicitudes de forma autónoma |
+| **Pasivo** | Su equipo | Su equipo gestiona toda la comunicación con el cliente. El agente monitorea cada conversación en segundo plano: auditando el cumplimiento de los estándares de comunicación, rastreando métricas de calidad y proporcionando análisis sin responder nunca a los clientes |
+| **Híbrido** | Ambos | La IA maneja las interacciones rutinarias (preguntas frecuentes, consultas de productos, programación) mientras su equipo se encarga de los casos complejos o sensibles. El agente analiza continuamente todas las conversaciones independientemente de quién responda |
 
 <Tip>
-  **Passive mode** is powerful for teams that already have established communication processes. The agent becomes an always-on quality auditor — it checks whether operators follow scripts, identifies missed opportunities, monitors response times, and surfaces conversation insights. All analytics, memory extraction, and tracking work the same as in Active mode.
+  El **modo pasivo** es poderoso para equipos que ya tienen procesos de comunicación establecidos. El agente se convierte en un auditor de calidad permanente: verifica si los operadores siguen los guiones, identifica oportunidades perdidas, monitorea los tiempos de respuesta y revela información valiosa de las conversaciones. Todos los análisis, la extracción de memoria y el seguimiento funcionan igual que en el modo Activo.
 </Tip>
 
 ---
 
-## Creating an Agent
+## Creación de un agente
 
-Click **Create Agent** to start a 2-step wizard:
+Haga clic en **Crear agente** para iniciar un asistente de 2 pasos:
 
-**Step 1** — enter agent name (min 3 characters) and optional first message (greeting text).
+**Paso 1** — ingrese el nombre del agente (mínimo 3 caracteres) y un mensaje inicial opcional (texto de saludo).
 
-**Step 2** — select a use case: Customer Support, Outbound Sales, Lead Qualification, Answering Service, Consultation Booking, Client Intake, Service Recommendations, Scheduling, Billing Inquiries, Project Updates, Resource Library, Learning & Development, or Other. This is purely visual — the selected use case does not affect the agent's behavior or configuration.
+**Paso 2** — seleccione un caso de uso: Atención al cliente, Ventas salientes, Calificación de leads, Servicio de atención, Reserva de consultas, Recepción de clientes, Recomendaciones de servicios, Programación, Consultas de facturación, Actualizaciones de proyectos, Biblioteca de recursos, Aprendizaje y desarrollo, u Otro. Esto es puramente visual — el caso de uso seleccionado no afecta el comportamiento ni la configuración del agente.
 
-After creation, the agent starts in **Draft** status with a [default workflow](#default-workflow) already built.
+Después de la creación, el agente comienza en estado **Borrador** con un [flujo de trabajo predeterminado](#flujo-de-trabajo-predeterminado) ya construido.
 
-### Agent Status
+### Estado del agente
 
-| Status | Behavior |
+| Estado | Comportamiento |
 |---|---|
-| **Draft** | Not active. Use while configuring. |
-| **Active** | Live, responding to messages. **Only one agent per company can be active** — activating one deactivates the rest. |
-| **Inactive** | Paused. Keeps all configuration. |
+| **Borrador** | No activo. Úselo mientras configura. |
+| **Activo** | En vivo, respondiendo mensajes. **Solo un agente por empresa puede estar activo** — activar uno desactiva el resto. |
+| **Inactivo** | Pausado. Conserva toda la configuración. |
 
 ---
 
-## Agent Editor
+## Editor de agentes
 
-The agent editor is a fullscreen modal with **7 tabs**: Agent, Knowledge Base, Analysis, Tools, Widget, Channels, Workflow.
+El editor de agentes es un modal de pantalla completa con **7 pestañas**: Agente, Base de conocimiento, Análisis, Herramientas, Widget, Canales, Flujo de trabajo.
 
 <Frame>
-  <img className="block dark:hidden" src="/images/agent-editor-light.png" alt="Agent editor" />
-  <img className="hidden dark:block" src="/images/agent-editor-dark.png" alt="Agent editor" />
+  <img className="block dark:hidden" src="/images/agent-editor-light.png" alt="Editor de agentes" />
+  <img className="hidden dark:block" src="/images/agent-editor-dark.png" alt="Editor de agentes" />
 </Frame>
 
-### Header
+### Encabezado
 
-The header is always visible and shows:
-- Agent name (click to rename inline)
-- Status badge (Active / Inactive)
-- **Embed Code** — get the widget `<script>` snippet
-- **Tool Logs** — inspect all tool executions and channel events
-- **Preview** — link to the client's website where the widget is installed, to see it as visitors do
-- **Publish** — publish to Marketplace (public or private)
+El encabezado siempre está visible y muestra:
+- Nombre del agente (haga clic para renombrar en línea)
+- Insignia de estado (Activo / Inactivo)
+- **Código de inserción** — obtenga el fragmento `<script>` del widget
+- **Registros de herramientas** — inspeccione todas las ejecuciones de herramientas y eventos de canales
+- **Vista previa** — enlace al sitio web del cliente donde está instalado el widget, para verlo como lo ven los visitantes
+- **Publicar** — publicar en el Marketplace (público o privado)
 
 ---
 
-## Agent Tab
+## Pestaña Agente
 
-The main configuration tab where you set up the agent's core settings — system prompt, personality, LLM provider, and conversation memory.
+La pestaña de configuración principal donde usted establece los ajustes centrales del agente: prompt del sistema, personalidad, proveedor LLM y memoria de conversación.
 
-### Left Column
+### Columna izquierda
 
-**System Prompt** — the core instructions defining how the agent behaves. If left empty, a default prompt is generated from your company name with basic communication rules.
+**Prompt del sistema** — las instrucciones centrales que definen cómo se comporta el agente. Si se deja vacío, se genera un prompt predeterminado a partir del nombre de su empresa con reglas básicas de comunicación.
 
 <Tip>
-  A security block is automatically appended to every system prompt. It prevents prompt injection — the agent will never reveal its instructions, ignore safety rules, or follow requests to change its role. You don't need to add this manually.
+  Un bloque de seguridad se añade automáticamente a cada prompt del sistema. Previene la inyección de prompts — el agente nunca revelará sus instrucciones, ignorará las reglas de seguridad ni seguirá solicitudes para cambiar su rol. No necesita añadir esto manualmente.
 </Tip>
 
-**First Message** — greeting text visitors see when the chat opens.
+**Primer mensaje** — texto de saludo que los visitantes ven cuando se abre el chat.
 
-**Conversation Memory** — structured fields the agent should collect during conversations. Each field has:
+**Memoria de conversación** — campos estructurados que el agente debe recopilar durante las conversaciones. Cada campo tiene:
 
-| Property | Description |
+| Propiedad | Descripción |
 |---|---|
-| **Key** | Machine-readable identifier (lowercase, underscores only) |
-| **Label** | Human-readable name shown in analytics |
-| **Type** | Text, Phone, Email, Number, or Select |
-| **Options** | For Select type — comma-separated values |
+| **Clave** | Identificador legible por máquina (solo minúsculas y guiones bajos) |
+| **Etiqueta** | Nombre legible por personas que se muestra en los análisis |
+| **Tipo** | Texto, Teléfono, Correo electrónico, Número o Selección |
+| **Opciones** | Para el tipo Selección — valores separados por comas |
 
-Memory fields are used in workflow routing (State Conditions on edges) and appear in the conversation Info tab. For example, you can define fields like `name`, `email`, `budget` — the agent will attempt to collect these naturally during conversation, and you can route workflow edges based on whether they're filled.
+Los campos de memoria se utilizan en el enrutamiento del flujo de trabajo (Condiciones de estado en las aristas) y aparecen en la pestaña Información de la conversación. Por ejemplo, puede definir campos como `name`, `email`, `budget` — el agente intentará recopilarlos naturalmente durante la conversación, y puede enrutar las aristas del flujo de trabajo según si están completados.
 
-**How memory extraction works:** after each custom node generates a response, the system makes a lightweight LLM call that analyzes the last messages and extracts values for the configured fields. Extracted values are saved immediately, so subsequent nodes in the same turn already see the updated memory — enabling state-based routing within a single conversation turn.
+**Cómo funciona la extracción de memoria:** después de que cada nodo personalizado genera una respuesta, el sistema realiza una llamada ligera al LLM que analiza los últimos mensajes y extrae valores para los campos configurados. Los valores extraídos se guardan inmediatamente, de modo que los nodos subsiguientes en el mismo turno ya ven la memoria actualizada, lo que permite el enrutamiento basado en estado dentro de un solo turno de conversación.
 
-### Right Column
+### Columna derecha
 
-**Personality** — 5 sliders (1–10) that shape communication style:
+**Personalidad** — 5 controles deslizantes (1–10) que dan forma al estilo de comunicación:
 
-| Slider | Low (1–3) | High (7–10) |
+| Control | Bajo (1–3) | Alto (7–10) |
 |---|---|---|
-| **Response Length** | Brief, concise answers | Detailed, comprehensive responses |
-| **Humor** | Strictly professional | Light humor allowed |
-| **Formality** | Casual, conversational tone | Formal, business language |
-| **Clarity** | Standard explanations | Extra clear, step-by-step |
-| **Emoji Usage** | No emojis | Emojis used in responses |
+| **Longitud de respuesta** | Respuestas breves y concisas | Respuestas detalladas y completas |
+| **Humor** | Estrictamente profesional | Se permite humor ligero |
+| **Formalidad** | Tono casual y conversacional | Lenguaje formal y empresarial |
+| **Claridad** | Explicaciones estándar | Extra claro, paso a paso |
+| **Uso de emojis** | Sin emojis | Se utilizan emojis en las respuestas |
 
-**LLM Provider & Model** — see [LLM Providers](#llm-providers).
+**Proveedor y modelo LLM** — consulte [Proveedores LLM](#proveedores-llm).
 
-**Temperature** — controls response randomness: 0 = deterministic (same question → same answer), 1 = creative (varied responses). Default: 0.7.
+**Temperatura** — controla la aleatoriedad de las respuestas: 0 = determinista (misma pregunta = misma respuesta), 1 = creativo (respuestas variadas). Predeterminado: 0.7.
 
 ---
 
-## LLM Providers
+## Proveedores LLM
 
-4 providers, each with a standard (faster, cheaper) and premium (higher quality) model:
+4 proveedores, cada uno con un modelo estándar (más rápido, más económico) y uno premium (mayor calidad):
 
-| Provider | Standard | Premium |
+| Proveedor | Estándar | Premium |
 |---|---|---|
 | **OpenAI** | GPT-4o Mini | GPT-4o |
 | **Anthropic** | Claude 3.5 Haiku | Claude 3.5 Sonnet |
@@ -122,525 +122,525 @@ Memory fields are used in workflow routing (State Conditions on edges) and appea
 | **Groq** | Llama 3.1 8B Instant | Llama 3.3 70B Versatile |
 
 <Note>
-  Premium models require an upgraded plan. On standard plans, premium models are locked with an upgrade prompt.
+  Los modelos premium requieren un plan mejorado. En los planes estándar, los modelos premium están bloqueados con un aviso de actualización.
 </Note>
 
-All providers support function calling (tools), streaming, circuit breaker (auto-failover when a provider is down), and retry with exponential backoff on rate limits.
+Todos los proveedores soportan llamadas a funciones (herramientas), streaming, circuit breaker (conmutación automática por error cuando un proveedor está caído) y reintentos con retroceso exponencial en límites de tasa.
 
-The LLM is set globally on the Agent tab but can be **overridden per workflow node** — for example, use a fast model for product search and a premium model for the final response formatting.
+El LLM se configura globalmente en la pestaña Agente pero puede ser **anulado por nodo del flujo de trabajo** — por ejemplo, utilice un modelo rápido para la búsqueda de productos y un modelo premium para el formato de la respuesta final.
 
 ---
 
-## Workflow
+## Flujo de trabajo
 
-The Workflow tab is a visual canvas where you design the agent's conversation logic. Instead of a single prompt, the workflow splits processing across **nodes** — each with its own prompt, tools, and knowledge base — connected by **edges** with routing conditions.
-
-<Frame>
-  <img className="block dark:hidden" src="/images/agent-workflow-light.png" alt="Workflow editor" />
-  <img className="hidden dark:block" src="/images/agent-workflow-dark.png" alt="Workflow editor" />
-</Frame>
-
-### Default Workflow
-
-Every new agent starts with this pre-built workflow:
-
-```
-[Voice Input*] → [Start] → [Product Agent] ──→ [Formatter] → [Voice Output*]
-                           → [Media Agent]   ──↗
-                           → [Company Agent] ──↗
-```
-
-*Voice nodes are inactive by default — they activate when you enable voice.*
+La pestaña Flujo de trabajo es un lienzo visual donde usted diseña la lógica de conversación del agente. En lugar de un solo prompt, el flujo de trabajo divide el procesamiento en **nodos** — cada uno con su propio prompt, herramientas y base de conocimiento — conectados por **aristas** con condiciones de enrutamiento.
 
 <Frame>
-  <img className="block dark:hidden" src="/images/agent-default-workflow-light.png" alt="Default workflow" />
-  <img className="hidden dark:block" src="/images/agent-default-workflow-dark.png" alt="Default workflow" />
+  <img className="block dark:hidden" src="/images/agent-workflow-light.png" alt="Editor de flujo de trabajo" />
+  <img className="hidden dark:block" src="/images/agent-workflow-dark.png" alt="Editor de flujo de trabajo" />
 </Frame>
 
-The **Start** node routes the message to three parallel system agents. Each processes the message with its own tools and knowledge. The **Formatter** combines their results into a single response.
+### Flujo de trabajo predeterminado
 
-### Node Types
+Cada nuevo agente comienza con este flujo de trabajo preconstruido:
 
-| Node | Type | Description |
+```
+[Entrada de voz*] → [Inicio] → [Agente de productos] ──→ [Formateador] → [Salida de voz*]
+                                → [Agente de medios]   ──↗
+                                → [Agente de empresa]  ──↗
+```
+
+*Los nodos de voz están inactivos por defecto — se activan cuando usted habilita la voz.*
+
+<Frame>
+  <img className="block dark:hidden" src="/images/agent-default-workflow-light.png" alt="Flujo de trabajo predeterminado" />
+  <img className="hidden dark:block" src="/images/agent-default-workflow-dark.png" alt="Flujo de trabajo predeterminado" />
+</Frame>
+
+El nodo **Inicio** enruta el mensaje a tres agentes del sistema en paralelo. Cada uno procesa el mensaje con sus propias herramientas y conocimiento. El **Formateador** combina sus resultados en una sola respuesta.
+
+### Tipos de nodos
+
+| Nodo | Tipo | Descripción |
 |---|---|---|
-| **Start** | `start` | Entry point. Always present, cannot be deleted. |
-| **Product Agent** | `system_product` | Searches products, checks availability, shows details. Has access to product tools. |
-| **Media Agent** | `system_media` | Retrieves photos, videos, and documents. |
-| **Company Agent** | `system_company` | Company info, support questions. |
-| **Response Formatter** | `system_formatter` | Combines outputs from parallel nodes into a coherent final response. |
-| **Voice Input (STT)** | `system_stt` | Speech-to-Text conversion. Inactive by default. |
-| **Voice Output (TTS)** | `system_tts` | Text-to-Speech synthesis. Inactive by default. |
-| **Custom** | `custom` | Your own node with custom prompt, tools, KB, and LLM settings. |
+| **Inicio** | `start` | Punto de entrada. Siempre presente, no se puede eliminar. |
+| **Agente de productos** | `system_product` | Busca productos, verifica disponibilidad, muestra detalles. Tiene acceso a herramientas de productos. |
+| **Agente de medios** | `system_media` | Recupera fotos, videos y documentos. |
+| **Agente de empresa** | `system_company` | Información de la empresa, preguntas de soporte. |
+| **Formateador de respuestas** | `system_formatter` | Combina las salidas de nodos paralelos en una respuesta final coherente. |
+| **Entrada de voz (STT)** | `system_stt` | Conversión de voz a texto. Inactivo por defecto. |
+| **Salida de voz (TTS)** | `system_tts` | Síntesis de texto a voz. Inactivo por defecto. |
+| **Personalizado** | `custom` | Su propio nodo con prompt personalizado, herramientas, base de conocimiento y configuración de LLM. |
 
-### Adding Custom Nodes
+### Agregar nodos personalizados
 
-Click **+ Add Node** in the canvas toolbar → enter a name → a new Custom node appears on the canvas. You can add as many custom nodes as needed.
+Haga clic en **+ Agregar nodo** en la barra de herramientas del lienzo → ingrese un nombre → un nuevo nodo Personalizado aparece en el lienzo. Puede agregar tantos nodos personalizados como necesite.
 
-Custom nodes are the most powerful part of the workflow. Each custom node is essentially its own mini-agent with:
+Los nodos personalizados son la parte más poderosa del flujo de trabajo. Cada nodo personalizado es esencialmente su propio mini-agente con:
 
-- **Conversation Goal** — a system prompt specific to this node (e.g., "Help users choose the right subscription plan based on their team size and budget")
-- **Tools** — select which tools this node can call (independent from the agent-level tools)
-- **Knowledge Base** — select specific knowledge sources for this node's RAG context
-- **LLM Override** — use a different model for this node
-- **Agent Mode** — enable multi-turn tool calling (see below)
+- **Objetivo de conversación** — un prompt del sistema específico para este nodo (p. ej., "Ayudar a los usuarios a elegir el plan de suscripción correcto según el tamaño de su equipo y presupuesto")
+- **Herramientas** — seleccione qué herramientas puede llamar este nodo (independiente de las herramientas a nivel de agente)
+- **Base de conocimiento** — seleccione fuentes de conocimiento específicas para el contexto RAG de este nodo
+- **Anulación de LLM** — use un modelo diferente para este nodo
+- **Modo agente** — habilite las llamadas de herramientas de múltiples turnos (ver más abajo)
 
-### Node Settings Panel
+### Panel de configuración de nodos
 
-Click any node on the canvas to open its settings panel on the right. The panel has tabs that vary by node type:
+Haga clic en cualquier nodo del lienzo para abrir su panel de configuración a la derecha. El panel tiene pestañas que varían según el tipo de nodo:
 
-**General tab** (all nodes):
+**Pestaña General** (todos los nodos):
 
-| Setting | Description |
+| Configuración | Descripción |
 |---|---|
-| **Name** | Display name (disabled for Start node) |
-| **Active** | Toggle whether this node participates in the workflow |
-| **Conversation Goal** | System prompt for this node. Available on all nodes except Start and Formatter. |
+| **Nombre** | Nombre para mostrar (deshabilitado para el nodo Inicio) |
+| **Activo** | Alternar si este nodo participa en el flujo de trabajo |
+| **Objetivo de conversación** | Prompt del sistema para este nodo. Disponible en todos los nodos excepto Inicio y Formateador. |
 
-**Agent Mode** (custom nodes with tools only):
+**Modo agente** (solo nodos personalizados con herramientas):
 
-When enabled, the node can make **multiple rounds of tool calls** before responding. Without Agent Mode, the node makes at most 1 tool call per message.
+Cuando está habilitado, el nodo puede realizar **múltiples rondas de llamadas a herramientas** antes de responder. Sin el Modo agente, el nodo realiza como máximo 1 llamada a herramienta por mensaje.
 
-| Setting | Range | Default | Description |
+| Configuración | Rango | Predeterminado | Descripción |
 |---|---|---|---|
-| **Max Rounds** | 2–10 | 5 | How many tool-calling rounds the LLM can make before it must respond |
-| **Timeout** | 10–60s | 30s | Maximum time for the entire agent mode execution |
+| **Rondas máximas** | 2–10 | 5 | Cuántas rondas de llamadas a herramientas puede hacer el LLM antes de responder |
+| **Tiempo de espera** | 10–60s | 30s | Tiempo máximo para toda la ejecución del modo agente |
 
 <Tip>
-  Use Agent Mode when a node needs to chain multiple tools — for example, first search products, then check availability of the best match, then get detailed specs. Without Agent Mode, the node would need 3 separate conversation turns to do this.
+  Utilice el Modo agente cuando un nodo necesite encadenar múltiples herramientas — por ejemplo, primero buscar productos, luego verificar la disponibilidad de la mejor coincidencia, y después obtener las especificaciones detalladas. Sin el Modo agente, el nodo necesitaría 3 turnos de conversación separados para hacer esto.
 </Tip>
 
-**LLM Override** (all except Start):
+**Anulación de LLM** (todos excepto Inicio):
 
-Toggle to use a different LLM provider and model for this specific node. When off, the node uses the agent's global LLM setting. The dropdown shows "Default (agent setting)" when not overridden.
+Alterne para usar un proveedor y modelo LLM diferente para este nodo específico. Cuando está desactivado, el nodo usa la configuración global de LLM del agente. El menú desplegable muestra "Predeterminado (configuración del agente)" cuando no está anulado.
 
-**Tools tab** (custom and system nodes):
+**Pestaña Herramientas** (nodos personalizados y del sistema):
 
-Lists all available tools grouped by category (Products, Support, Documents). Each tool has a toggle switch. Tools enabled here are independent from the agent-level Tools tab — you control exactly which tools each node has access to.
+Lista todas las herramientas disponibles agrupadas por categoría (Productos, Soporte, Documentos). Cada herramienta tiene un interruptor. Las herramientas habilitadas aquí son independientes de la pestaña Herramientas a nivel de agente — usted controla exactamente qué herramientas tiene cada nodo.
 
-**Knowledge Base tab** (custom nodes only):
+**Pestaña Base de conocimiento** (solo nodos personalizados):
 
-Select specific knowledge sources for this node's RAG context. Has an "Add document" dropdown with search and type filtering. If no sources are selected, the node falls back to the agent's global knowledge base.
-
-<Note>
-  A hint at the bottom links to the agent's Knowledge Base tab: "To make more data available for this node, add files to the agent's Knowledge Base."
-</Note>
-
-**Edges tab** (all nodes):
-
-Configure outgoing connections to other nodes. See [Edge Conditions](#edge-conditions) below.
-
-**Voice Settings tab** (STT and TTS nodes only):
-
-Configure speech recognition and synthesis — see [Voice](#voice) section.
-
-**Delete Node** — available only for custom nodes. System nodes cannot be deleted.
-
-### Edge Conditions
-
-Edges connect nodes and control message routing. Each edge has a **target node**, a **condition type**, and a **priority**. The workflow evaluates edges in priority tiers — the first tier that produces a match wins, lower tiers are not evaluated.
-
-Click **+ Add Edge** in a node's Edges tab to create a connection.
-
-| Condition | Priority | When It Routes |
-|---|---|---|
-| **Keyword** | 100 (highest) | Message contains **any** of the specified keywords. Case-insensitive, word-boundary matching. |
-| **State Condition** | 95 | All specified memory field conditions are met (AND logic). |
-| **Always** | 90 | Always routes — use for unconditional connections. |
-| **Intent** | 50 | Based on detected message intent. |
-| **Fallback** | 10 (lowest) | Routes only if **no other edge** from this node matched. |
-
-#### Keyword Condition
-
-Enter comma-separated keywords. The workflow checks if the visitor's message contains any of them using case-insensitive word-boundary matching.
-
-Multiple keyword edges can match the same message — all matching edges fire in parallel, sending the message to multiple nodes simultaneously.
-
-**Example:** Keywords `price, cost, pricing, how much` — the edge fires when the visitor asks "How much does it cost?" or "What's the pricing?"
-
-#### State Condition
-
-Check values of [Conversation Memory](#conversation-memory) fields. You build rules with:
-
-| Operator | Meaning | Example |
-|---|---|---|
-| **is filled** | Field has any value | `email` is filled → route to "Send offer" node |
-| **is empty** | Field has no value | `name` is empty → route to "Ask name" node |
-| **equals** | Exact match | `budget` equals `enterprise` |
-| **not equals** | Does not match | `plan` not equals `free` |
-| **contains** | Substring match | `interests` contains `premium` |
-| **greater than** | Numeric comparison | `budget` > `5000` |
-| **less than** | Numeric comparison | `team_size` < `10` |
-
-Multiple conditions within one edge use **AND logic** — all must be true.
+Seleccione fuentes de conocimiento específicas para el contexto RAG de este nodo. Tiene un menú desplegable "Agregar documento" con búsqueda y filtrado por tipo. Si no se seleccionan fuentes, el nodo recurre a la base de conocimiento global del agente.
 
 <Note>
-  State conditions are skipped entirely if memory is empty (no fields collected yet). This means `is empty` conditions won't fire until the agent has started collecting at least one memory field.
+  Una nota en la parte inferior enlaza a la pestaña Base de conocimiento del agente: "Para que más datos estén disponibles para este nodo, agregue archivos a la Base de conocimiento del agente."
 </Note>
 
-**Example workflow with State Conditions:**
+**Pestaña Aristas** (todos los nodos):
+
+Configure las conexiones salientes hacia otros nodos. Consulte [Condiciones de aristas](#condiciones-de-aristas) más abajo.
+
+**Pestaña Configuración de voz** (solo nodos STT y TTS):
+
+Configure el reconocimiento y síntesis de voz — consulte la sección [Voz](#voz).
+
+**Eliminar nodo** — disponible solo para nodos personalizados. Los nodos del sistema no se pueden eliminar.
+
+### Condiciones de aristas
+
+Las aristas conectan nodos y controlan el enrutamiento de mensajes. Cada arista tiene un **nodo destino**, un **tipo de condición** y una **prioridad**. El flujo de trabajo evalúa las aristas en niveles de prioridad — el primer nivel que produce una coincidencia gana, los niveles inferiores no se evalúan.
+
+Haga clic en **+ Agregar arista** en la pestaña Aristas de un nodo para crear una conexión.
+
+| Condición | Prioridad | Cuándo enruta |
+|---|---|---|
+| **Palabra clave** | 100 (más alta) | El mensaje contiene **cualquiera** de las palabras clave especificadas. Coincidencia insensible a mayúsculas, límites de palabra. |
+| **Condición de estado** | 95 | Todas las condiciones de campos de memoria especificadas se cumplen (lógica AND). |
+| **Siempre** | 90 | Siempre enruta — úselo para conexiones incondicionales. |
+| **Intención** | 50 | Basado en la intención detectada del mensaje. |
+| **Respaldo** | 10 (más baja) | Enruta solo si **ninguna otra arista** de este nodo coincidió. |
+
+#### Condición de palabra clave
+
+Ingrese palabras clave separadas por comas. El flujo de trabajo verifica si el mensaje del visitante contiene alguna de ellas utilizando coincidencia insensible a mayúsculas con límites de palabra.
+
+Múltiples aristas de palabras clave pueden coincidir con el mismo mensaje — todas las aristas coincidentes se activan en paralelo, enviando el mensaje a múltiples nodos simultáneamente.
+
+**Ejemplo:** Palabras clave `precio, costo, tarifas, cuánto cuesta` — la arista se activa cuando el visitante pregunta "¿Cuánto cuesta?" o "¿Cuáles son las tarifas?"
+
+#### Condición de estado
+
+Verifica los valores de los campos de [Memoria de conversación](#memoria-de-conversación). Usted construye reglas con:
+
+| Operador | Significado | Ejemplo |
+|---|---|---|
+| **está completado** | El campo tiene algún valor | `email` está completado → enrutar al nodo "Enviar oferta" |
+| **está vacío** | El campo no tiene valor | `name` está vacío → enrutar al nodo "Preguntar nombre" |
+| **es igual a** | Coincidencia exacta | `budget` es igual a `enterprise` |
+| **no es igual a** | No coincide | `plan` no es igual a `free` |
+| **contiene** | Coincidencia de subcadena | `interests` contiene `premium` |
+| **mayor que** | Comparación numérica | `budget` > `5000` |
+| **menor que** | Comparación numérica | `team_size` < `10` |
+
+Múltiples condiciones dentro de una arista usan **lógica AND** — todas deben ser verdaderas.
+
+<Note>
+  Las condiciones de estado se omiten completamente si la memoria está vacía (aún no se han recopilado campos). Esto significa que las condiciones "está vacío" no se activarán hasta que el agente haya comenzado a recopilar al menos un campo de memoria.
+</Note>
+
+**Ejemplo de flujo de trabajo con Condiciones de estado:**
 
 ```
-[Start] → (name is empty)     → [Ask Name Node]
-        → (name is filled,     → [Send Offer Node]
-           email is filled)
-        → (fallback)           → [General Chat Node]
+[Inicio] → (name está vacío)     → [Nodo Preguntar nombre]
+         → (name está completado, → [Nodo Enviar oferta]
+            email está completado)
+         → (respaldo)             → [Nodo Chat general]
 ```
 
-#### Always Condition
+#### Condición Siempre
 
-The edge always fires. All Always edges from a node fire in parallel — the message is sent to every target simultaneously. This is how the default workflow fans out from Start to three system agents at once.
+La arista siempre se activa. Todas las aristas Siempre de un nodo se activan en paralelo — el mensaje se envía a todos los destinos simultáneamente. Así es como el flujo de trabajo predeterminado se ramifica desde Inicio hacia tres agentes del sistema a la vez.
 
-#### Fallback Condition
+#### Condición de respaldo
 
-Routes only when no higher-priority edge matched. Unlike Keyword and Always, only **one** fallback edge fires (the first one) — no parallel execution.
+Enruta solo cuando ninguna arista de mayor prioridad coincidió. A diferencia de Palabra clave y Siempre, solo **una** arista de respaldo se activa (la primera) — sin ejecución en paralelo.
 
 <Warning>
-  If no edge matches and there's no fallback, the node's output may not reach the Formatter and the visitor won't get a response from that branch.
+  Si ninguna arista coincide y no hay respaldo, la salida del nodo puede no llegar al Formateador y el visitante no recibirá una respuesta de esa rama.
 </Warning>
 
-### Merge Strategy
+### Estrategia de fusión
 
-When multiple nodes produce results in parallel (like the 3 system agents in the default workflow), the **Formatter** combines them:
+Cuando múltiples nodos producen resultados en paralelo (como los 3 agentes del sistema en el flujo de trabajo predeterminado), el **Formateador** los combina:
 
-| Strategy | Cost | How It Works |
+| Estrategia | Costo | Cómo funciona |
 |---|---|---|
-| **Concat** | Free | Concatenates all node outputs into context for the Formatter |
-| **LLM** | Additional LLM call | Uses an LLM to synthesize a single coherent response from all outputs |
+| **Concatenar** | Gratis | Concatena todas las salidas de los nodos en contexto para el Formateador |
+| **LLM** | Llamada adicional al LLM | Usa un LLM para sintetizar una sola respuesta coherente a partir de todas las salidas |
 
-### Canvas Controls
+### Controles del lienzo
 
-| Control | Action |
+| Control | Acción |
 |---|---|
-| **Drag** empty area | Pan the canvas |
-| **Ctrl + Scroll** or pinch | Zoom (0.3x–2.0x) |
-| **Two-finger scroll** | Pan |
-| **+ Add Node** | Create a new custom node |
-| **Template** | Apply a pre-built workflow template from the marketplace |
-| **Reset** | Rebuild the default workflow (confirmation dialog) |
-| **Test** | Open the test chat panel at the bottom of the canvas |
+| **Arrastrar** área vacía | Desplazar el lienzo |
+| **Ctrl + Scroll** o pellizcar | Zoom (0.3x–2.0x) |
+| **Scroll con dos dedos** | Desplazar |
+| **+ Agregar nodo** | Crear un nuevo nodo personalizado |
+| **Plantilla** | Aplicar una plantilla de flujo de trabajo preconstruida del marketplace |
+| **Restablecer** | Reconstruir el flujo de trabajo predeterminado (diálogo de confirmación) |
+| **Probar** | Abrir el panel de chat de prueba en la parte inferior del lienzo |
 
 ---
 
-## Tools
+## Herramientas
 
-Tools are functions the agent can call during conversations. They extend the agent beyond text generation — searching products, querying databases, sending emails, making calls.
+Las herramientas son funciones que el agente puede llamar durante las conversaciones. Extienden al agente más allá de la generación de texto: buscar productos, consultar bases de datos, enviar correos electrónicos, realizar llamadas.
 
-### How Tools Work
+### Cómo funcionan las herramientas
 
 <Steps>
-  <Step title="LLM decides to use a tool">
-    Based on the visitor's message and the tool descriptions in its prompt, the LLM generates a tool call with parameters (e.g., `get_products({ query: "running shoes", available_only: true })`).
+  <Step title="El LLM decide usar una herramienta">
+    Basándose en el mensaje del visitante y las descripciones de herramientas en su prompt, el LLM genera una llamada a herramienta con parámetros (p. ej., `get_products({ query: "zapatillas deportivas", available_only: true })`).
   </Step>
-  <Step title="Tool executes">
-    The system runs the tool function with the provided parameters and gets a result.
+  <Step title="La herramienta se ejecuta">
+    El sistema ejecuta la función de la herramienta con los parámetros proporcionados y obtiene un resultado.
   </Step>
-  <Step title="Result goes back to LLM">
-    The tool result is injected back into the conversation. The LLM uses it to formulate a natural response.
+  <Step title="El resultado vuelve al LLM">
+    El resultado de la herramienta se inyecta de vuelta en la conversación. El LLM lo usa para formular una respuesta natural.
   </Step>
-  <Step title="Multi-round (Agent Mode)">
-    If the node has Agent Mode enabled, the LLM can make another tool call based on the first result — up to the configured max rounds.
+  <Step title="Múltiples rondas (Modo agente)">
+    Si el nodo tiene el Modo agente habilitado, el LLM puede hacer otra llamada a herramienta basándose en el primer resultado — hasta las rondas máximas configuradas.
   </Step>
 </Steps>
 
-Every tool call is logged with input, output, execution time, and status. View logs via **Tool Logs** in the agent header.
+Cada llamada a herramienta se registra con entrada, salida, tiempo de ejecución y estado. Vea los registros a través de **Registros de herramientas** en el encabezado del agente.
 
-### Built-In Tools (9)
+### Herramientas integradas (9)
 
-Always available, no integration required:
+Siempre disponibles, no requieren integración:
 
-| Tool | Category | What It Does |
+| Herramienta | Categoría | Qué hace |
 |---|---|---|
-| **get_products** | Products | Search products by name/description. Returns list with prices and availability. |
-| **get_product_details** | Products | Full details for one product — all parameters, pricing, description. |
-| **check_availability** | Products | Check if a specific product is in stock. |
-| **search_by_parameters** | Products | Filter products by attribute values with operators: `=`, `<=`, `>=`, `<`, `>`, `like`. |
-| **get_company_info** | Support | Company name, description, phone, contacts. |
-| **search_documents** | Documents | Semantic RAG search — finds relevant passages across the knowledge base. |
-| **get_photos** | Documents | Retrieve photos by query or product ID. |
-| **get_videos** | Documents | Retrieve videos by query or product ID. |
-| **get_documents** | Documents | Retrieve PDF/Word/Excel files, filterable by format. |
+| **get_products** | Productos | Busca productos por nombre/descripción. Devuelve lista con precios y disponibilidad. |
+| **get_product_details** | Productos | Detalles completos de un producto — todos los parámetros, precios, descripción. |
+| **check_availability** | Productos | Verifica si un producto específico está en stock. |
+| **search_by_parameters** | Productos | Filtra productos por valores de atributos con operadores: `=`, `<=`, `>=`, `<`, `>`, `like`. |
+| **get_company_info** | Soporte | Nombre de la empresa, descripción, teléfono, contactos. |
+| **search_documents** | Documentos | Búsqueda semántica RAG — encuentra pasajes relevantes en la base de conocimiento. |
+| **get_photos** | Documentos | Recupera fotos por consulta o ID de producto. |
+| **get_videos** | Documentos | Recupera videos por consulta o ID de producto. |
+| **get_documents** | Documentos | Recupera archivos PDF/Word/Excel, filtrables por formato. |
 
-### Integration Tools (60+)
+### Herramientas de integración (más de 60)
 
-Connect external services in [Integrations](/integrations/overview) to unlock tools:
+Conecte servicios externos en [Integraciones](/integrations/overview) para desbloquear herramientas:
 
 <AccordionGroup>
   <Accordion title="VoIP — Twilio, Binotel, Ringostat">
-    Make outbound calls, send SMS, retrieve call history.
+    Realice llamadas salientes, envíe SMS, recupere el historial de llamadas.
   </Accordion>
   <Accordion title="Telegram">
-    Send messages, send files, edit/delete messages, get chat history and info.
+    Envíe mensajes, envíe archivos, edite/elimine mensajes, obtenga historial de chat e información.
   </Accordion>
   <Accordion title="WhatsApp">
-    Send messages, send media, send template messages, get profile, mark as read.
+    Envíe mensajes, envíe medios, envíe mensajes de plantilla, obtenga perfil, marque como leído.
   </Accordion>
-  <Accordion title="Facebook & Instagram">
-    Send messages, send media, send buttons (Facebook), get profile. Facebook Ads: get campaigns, ad sets, insights, pause campaigns.
+  <Accordion title="Facebook e Instagram">
+    Envíe mensajes, envíe medios, envíe botones (Facebook), obtenga perfil. Facebook Ads: obtenga campañas, conjuntos de anuncios, estadísticas, pause campañas.
   </Accordion>
   <Accordion title="Gmail">
-    Read inbox, send emails, reply, create drafts, search, get attachments.
+    Lea la bandeja de entrada, envíe correos electrónicos, responda, cree borradores, busque, obtenga archivos adjuntos.
   </Accordion>
   <Accordion title="Google Calendar">
-    List/create/update/delete events, check availability, find free time slots.
+    Liste/cree/actualice/elimine eventos, verifique disponibilidad, encuentre franjas horarias libres.
   </Accordion>
   <Accordion title="Google Docs">
-    Read/create/append/export/search documents.
+    Lea/cree/añada/exporte/busque documentos.
   </Accordion>
   <Accordion title="Google Sheets">
-    Read/write ranges, append rows, update cells, search rows, create spreadsheets.
+    Lea/escriba rangos, añada filas, actualice celdas, busque filas, cree hojas de cálculo.
   </Accordion>
   <Accordion title="Google Drive">
-    List/read/create/update/delete files, create folders, share files, search.
+    Liste/lea/cree/actualice/elimine archivos, cree carpetas, comparta archivos, busque.
   </Accordion>
   <Accordion title="Google Meet">
-    Create meeting links.
+    Cree enlaces de reunión.
   </Accordion>
   <Accordion title="Google Ads">
-    Get campaigns, get keywords, pause campaigns.
+    Obtenga campañas, obtenga palabras clave, pause campañas.
   </Accordion>
   <Accordion title="Webhooks">
-    Send custom JSON payloads to any URL, test webhook connections.
+    Envíe cargas JSON personalizadas a cualquier URL, pruebe conexiones de webhook.
   </Accordion>
 </AccordionGroup>
 
-### Tools Tab vs Node-Level Tools
+### Pestaña Herramientas vs Herramientas a nivel de nodo
 
-There are **two places** to manage tools:
+Hay **dos lugares** para gestionar herramientas:
 
-1. **Agent → Tools tab** — shows all integration tools grouped by provider. Toggle tools on/off at the agent level. Tools here become available to all workflow nodes.
+1. **Agente → pestaña Herramientas** — muestra todas las herramientas de integración agrupadas por proveedor. Active/desactive herramientas a nivel de agente. Las herramientas aquí quedan disponibles para todos los nodos del flujo de trabajo.
 
-2. **Workflow → Node Settings → Tools tab** — toggle tools per node. A node can only use tools that are enabled at the agent level. This lets you restrict which nodes have access to which tools.
+2. **Flujo de trabajo → Configuración de nodo → pestaña Herramientas** — active/desactive herramientas por nodo. Un nodo solo puede usar herramientas que estén habilitadas a nivel de agente. Esto le permite restringir qué nodos tienen acceso a qué herramientas.
 
-**Example:** Enable Gmail tools at the agent level, but only give the "Send Follow-up" custom node access to `send_email` — other nodes won't trigger emails.
+**Ejemplo:** Habilite las herramientas de Gmail a nivel de agente, pero solo dé al nodo personalizado "Enviar seguimiento" acceso a `send_email` — los demás nodos no activarán correos electrónicos.
 
 ---
 
-## Knowledge Base (RAG)
+## Base de conocimiento (RAG)
 
-The Knowledge Base tab connects data sources that the agent uses to answer questions. When a visitor asks something, the agent searches your knowledge base using **vector similarity** (RAG — Retrieval-Augmented Generation) and includes relevant context in its response.
+La pestaña Base de conocimiento conecta fuentes de datos que el agente utiliza para responder preguntas. Cuando un visitante pregunta algo, el agente busca en su base de conocimiento utilizando **similitud vectorial** (RAG — Generación Aumentada por Recuperación) e incluye el contexto relevante en su respuesta.
 
-### Source Types
+### Tipos de fuentes
 
-| Source | What Gets Indexed |
+| Fuente | Qué se indexa |
 |---|---|
-| **Products** | Name, description, additional prompt, price |
-| **Documents** | File name + extracted text content (PDF, Word, Excel, TXT) |
-| **Photos** | Photo name + description |
-| **Videos** | Video name + description/content |
-| **Text** | Name + free-text content |
-| **Links** | URL name + fetched page content |
-| **Company** | Company name, promo text, description, phone |
+| **Productos** | Nombre, descripción, prompt adicional, precio |
+| **Documentos** | Nombre del archivo + contenido de texto extraído (PDF, Word, Excel, TXT) |
+| **Fotos** | Nombre de la foto + descripción |
+| **Videos** | Nombre del video + descripción/contenido |
+| **Texto** | Nombre + contenido de texto libre |
+| **Enlaces** | Nombre de la URL + contenido de la página obtenido |
+| **Empresa** | Nombre de la empresa, texto promocional, descripción, teléfono |
 
-### How RAG Works
+### Cómo funciona RAG
 
 <Steps>
-  <Step title="Add sources">
-    In the Knowledge Base tab, click "Add document" and select sources from your company's data — products, files, text snippets, links.
+  <Step title="Agregar fuentes">
+    En la pestaña Base de conocimiento, haga clic en "Agregar documento" y seleccione fuentes de los datos de su empresa — productos, archivos, fragmentos de texto, enlaces.
   </Step>
-  <Step title="Training">
-    The system chunks each source into segments (default max 2000 chars per chunk, 20% overlap at sentence boundaries), generates vector embeddings using OpenAI `text-embedding-ada-002` (1536 dimensions), and stores them in PostgreSQL with pgvector.
+  <Step title="Entrenamiento">
+    El sistema divide cada fuente en segmentos (máximo predeterminado de 2000 caracteres por segmento, 20% de superposición en los límites de oración), genera embeddings vectoriales utilizando OpenAI `text-embedding-ada-002` (1536 dimensiones) y los almacena en PostgreSQL con pgvector.
   </Step>
-  <Step title="Visitor sends a message">
-    The visitor's message is embedded into the same vector space. The system finds the most similar chunks using cosine similarity.
+  <Step title="El visitante envía un mensaje">
+    El mensaje del visitante se convierte en embedding en el mismo espacio vectorial. El sistema encuentra los segmentos más similares utilizando similitud del coseno.
   </Step>
-  <Step title="Context injection">
-    Top matching chunks (default: up to 5, minimum similarity 0.6) are injected into the agent's prompt as knowledge base context.
+  <Step title="Inyección de contexto">
+    Los segmentos más coincidentes (predeterminado: hasta 5, similitud mínima 0.6) se inyectan en el prompt del agente como contexto de la base de conocimiento.
   </Step>
-  <Step title="Response">
-    The LLM sees the visitor's question alongside relevant knowledge and generates an informed answer.
+  <Step title="Respuesta">
+    El LLM ve la pregunta del visitante junto con el conocimiento relevante y genera una respuesta informada.
   </Step>
 </Steps>
 
-Training runs automatically when you add or change sources. Progress is shown in the Knowledge Base tab (percentage, items processed).
+El entrenamiento se ejecuta automáticamente cuando usted agrega o cambia fuentes. El progreso se muestra en la pestaña Base de conocimiento (porcentaje, elementos procesados).
 
-### Agent-Level vs Node-Level Knowledge
+### Conocimiento a nivel de agente vs a nivel de nodo
 
-- **Agent-level KB** (Knowledge Base tab) — sources available to all workflow nodes
-- **Node-level KB** (Workflow → Node → Knowledge Base tab) — restrict RAG to specific sources for this node only
+- **Base de conocimiento a nivel de agente** (pestaña Base de conocimiento) — fuentes disponibles para todos los nodos del flujo de trabajo
+- **Base de conocimiento a nivel de nodo** (Flujo de trabajo → Nodo → pestaña Base de conocimiento) — restrinja RAG a fuentes específicas solo para este nodo
 
-**Example:** Your "Technical Support" custom node only sees product manuals and FAQ documents, while the "Sales" node sees product catalogs with pricing.
+**Ejemplo:** Su nodo personalizado "Soporte técnico" solo ve los manuales de productos y documentos de preguntas frecuentes, mientras que el nodo "Ventas" ve los catálogos de productos con precios.
 
 <Tip>
-  Specific, well-structured content performs better than long general documents. Product descriptions with clear parameters give the agent precise answers. Short FAQ entries work better than lengthy manuals.
+  El contenido específico y bien estructurado funciona mejor que los documentos generales extensos. Las descripciones de productos con parámetros claros dan al agente respuestas precisas. Las entradas cortas de preguntas frecuentes funcionan mejor que los manuales extensos.
 </Tip>
 
 ---
 
-## Voice
+## Voz
 
-Voice settings are configured in the Widget tab's **Voice** sub-tab or directly in the workflow's STT/TTS nodes.
+La configuración de voz se establece en la sub-pestaña **Voz** de la pestaña Widget o directamente en los nodos STT/TTS del flujo de trabajo.
 
-### Speech-to-Text (STT)
+### Voz a texto (STT)
 
-| Setting | Options |
+| Configuración | Opciones |
 |---|---|
-| **Provider** | OpenAI Whisper, Google Speech (coming soon) |
-| **Language** | Ukrainian, English |
-| **Greeting** | Text + pre-synthesized audio played when voice starts |
-| **Farewell** | Text + pre-synthesized audio played when voice ends |
+| **Proveedor** | OpenAI Whisper, Google Speech (próximamente) |
+| **Idioma** | Ucraniano, Inglés |
+| **Saludo** | Texto + audio pre-sintetizado que se reproduce cuando comienza la voz |
+| **Despedida** | Texto + audio pre-sintetizado que se reproduce cuando termina la voz |
 
-### Text-to-Speech (TTS)
+### Texto a voz (TTS)
 
-| Setting | Options |
+| Configuración | Opciones |
 |---|---|
-| **Provider** | OpenAI TTS (ElevenLabs and Google Cloud coming soon) |
-| **Voice** | Alloy (neutral), Echo (warm), Fable (expressive), Onyx (deep), Nova (friendly, default), Shimmer (gentle) |
-| **Model** | `tts-1` (standard), `tts-1-hd` (HD quality) |
-| **Speed** | 0.5x – 2.0x |
+| **Proveedor** | OpenAI TTS (ElevenLabs y Google Cloud próximamente) |
+| **Voz** | Alloy (neutral), Echo (cálida), Fable (expresiva), Onyx (profunda), Nova (amigable, predeterminada), Shimmer (suave) |
+| **Modelo** | `tts-1` (estándar), `tts-1-hd` (calidad HD) |
+| **Velocidad** | 0.5x – 2.0x |
 
-### Voice Pipeline
+### Pipeline de voz
 
 <Steps>
-  <Step title="Audio received">
-    Visitor's audio sent to server (max 10MB, formats: webm, ogg, wav, mp3).
+  <Step title="Audio recibido">
+    El audio del visitante se envía al servidor (máximo 10MB, formatos: webm, ogg, wav, mp3).
   </Step>
-  <Step title="STT transcription">
-    Audio transcribed to text. Transcript streamed back in real-time via SSE.
+  <Step title="Transcripción STT">
+    El audio se transcribe a texto. La transcripción se transmite en tiempo real vía SSE.
   </Step>
-  <Step title="Workflow processing">
-    Transcript processed through the same workflow as text — RAG, tools, node routing.
+  <Step title="Procesamiento del flujo de trabajo">
+    La transcripción se procesa a través del mismo flujo de trabajo que el texto — RAG, herramientas, enrutamiento de nodos.
   </Step>
-  <Step title="TTS synthesis">
-    Response split into sentences, each synthesized to audio. Chunks stream back as generated.
+  <Step title="Síntesis TTS">
+    La respuesta se divide en oraciones, cada una se sintetiza a audio. Los fragmentos se transmiten a medida que se generan.
   </Step>
-  <Step title="Playback">
-    Visitor hears the response as streaming audio while seeing the text.
+  <Step title="Reproducción">
+    El visitante escucha la respuesta como audio en streaming mientras ve el texto.
   </Step>
 </Steps>
 
 <Note>
-  Voice requires a plan with voice capabilities. On plans without voice, voice controls show an upgrade prompt and Chat Only Mode is forced on.
+  La voz requiere un plan con capacidades de voz. En los planes sin voz, los controles de voz muestran un aviso de actualización y el Modo solo chat se activa obligatoriamente.
 </Note>
 
 ---
 
-## Channels
+## Canales
 
-The Channels tab controls where your agent receives messages.
+La pestaña Canales controla dónde recibe mensajes su agente.
 
-| Channel | Requires | Description |
+| Canal | Requiere | Descripción |
 |---|---|---|
-| **Widget** | Nothing (built-in) | Chat widget on your website via tracker script |
-| **Phone** | VoIP integration | Inbound/outbound calls via Twilio, Binotel, or Ringostat |
-| **Telegram** | Telegram integration | Telegram bot conversations |
-| **WhatsApp** | WhatsApp integration | WhatsApp Business API |
-| **Instagram** | Instagram integration | Instagram DM |
+| **Widget** | Nada (integrado) | Widget de chat en su sitio web mediante el script de seguimiento |
+| **Teléfono** | Integración VoIP | Llamadas entrantes/salientes vía Twilio, Binotel o Ringostat |
+| **Telegram** | Integración de Telegram | Conversaciones con bot de Telegram |
+| **WhatsApp** | Integración de WhatsApp | API de WhatsApp Business |
+| **Instagram** | Integración de Instagram | Mensajes directos de Instagram |
 
-### Connecting a Channel
+### Conexión de un canal
 
-**Widget** — click Enable. The widget responds on your website immediately.
+**Widget** — haga clic en Habilitar. El widget responde en su sitio web inmediatamente.
 
-**Other channels:**
-1. Connect the integration in [Integrations](/integrations/overview)
-2. In the Channels tab, select a resource from the dropdown (e.g., a phone number, a bot, a page)
-3. Click Enable — a unique **webhook URL** is generated
+**Otros canales:**
+1. Conecte la integración en [Integraciones](/integrations/overview)
+2. En la pestaña Canales, seleccione un recurso del menú desplegable (p. ej., un número de teléfono, un bot, una página)
+3. Haga clic en Habilitar — se genera una **URL de webhook** única
 
-Each channel card shows connection status, resource name, total conversations, and the webhook URL with a copy button.
-
----
-
-## Widget Customization
-
-The Widget tab has a **live preview** on the left (desktop/tablet/mobile switcher) and a settings panel on the right with 3 sub-tabs.
-
-### Appearance
-
-| Setting | Description |
-|---|---|
-| **Colors** | 6 color pickers: Primary, Chat button, Message background, Animation, Rating stars, Status text |
-| **Labels** | Main title, Call button text, Chat button text, Input placeholder |
-| **Position** | Bottom Right, Bottom Center, Bottom Left, Top Right, Top Center, Top Left |
-| **Theme** | Light or Dark |
-| **Size** | Small, Medium, Large |
-| **Border Radius** | 0–50px corner roundness |
-| **Opacity** | 0–100% background opacity |
-| **Avatar** | Custom avatar URL |
-
-### Behavior
-
-| Setting | Description |
-|---|---|
-| **Language** | English, Ukrainian, Polish, German, Spanish |
-| **Feedback Collection** | Show star rating after conversation |
-| **Text During Call** | Allow typing while voice call is active |
-| **Chat Only Mode** | Disable voice (text only). Forced on for plans without voice. |
-| **Terms & Conditions** | Require acceptance before chat. Custom text and URL. |
-| **Sound Effects** | Notification sounds on/off |
-| **Auto Open** | Open widget automatically after delay (0–60 seconds) |
-| **Auto Greeting** | Send first message automatically |
-| **Show on Mobile** | Display on mobile devices |
-| **Show on Desktop** | Display on desktop devices |
-| **Powered By** | Show/hide "Powered by Revol" branding |
-| **Welcome Message** | Text shown in the widget header |
-
-### Voice
-
-STT and TTS settings — same as described in the [Voice](#voice) section. Configured here or in the workflow STT/TTS nodes (they sync).
+Cada tarjeta de canal muestra el estado de conexión, nombre del recurso, total de conversaciones y la URL de webhook con un botón de copiar.
 
 ---
 
-## Analysis
+## Personalización del widget
 
-Two-column layout: conversation list (left) + conversation detail (right).
+La pestaña Widget tiene una **vista previa en vivo** a la izquierda (selector de escritorio/tablet/móvil) y un panel de configuración a la derecha con 3 sub-pestañas.
 
-### Filters
+### Apariencia
 
-| Filter | Description |
+| Configuración | Descripción |
 |---|---|
-| **Search** | Text search across conversations |
-| **Channel** | All / Web / Telephony / Messengers / Widget / etc. |
-| **Status** | All / Active / Closed / Archived |
-| **Date Range** | From/To date pickers |
+| **Colores** | 6 selectores de color: Primario, Botón de chat, Fondo de mensaje, Animación, Estrellas de calificación, Texto de estado |
+| **Etiquetas** | Título principal, Texto del botón de llamada, Texto del botón de chat, Marcador de posición del campo de entrada |
+| **Posición** | Inferior derecha, Inferior centro, Inferior izquierda, Superior derecha, Superior centro, Superior izquierda |
+| **Tema** | Claro u Oscuro |
+| **Tamaño** | Pequeño, Mediano, Grande |
+| **Radio de borde** | Redondez de esquinas de 0–50px |
+| **Opacidad** | Opacidad del fondo de 0–100% |
+| **Avatar** | URL de avatar personalizado |
 
-Conversations list shows 20 per page with "Load more" pagination. New conversations appear in real-time via WebSocket.
+### Comportamiento
 
-### Conversation Detail (4 sub-tabs)
-
-| Tab | Content |
+| Configuración | Descripción |
 |---|---|
-| **Transcription** | Full message thread — user and assistant bubbles with timestamps |
-| **Rating** | Visitor's star rating (1–5) and optional comment |
-| **Tokens** | Token usage breakdown per message |
-| **Info** | Channel, status, session ID, collected memory fields, created date |
+| **Idioma** | Inglés, Ucraniano, Polaco, Alemán, Español |
+| **Recopilación de comentarios** | Mostrar calificación por estrellas después de la conversación |
+| **Texto durante la llamada** | Permitir escribir mientras la llamada de voz está activa |
+| **Modo solo chat** | Deshabilitar voz (solo texto). Se activa obligatoriamente en los planes sin voz. |
+| **Términos y condiciones** | Requerir aceptación antes del chat. Texto y URL personalizados. |
+| **Efectos de sonido** | Sonidos de notificación activados/desactivados |
+| **Apertura automática** | Abrir el widget automáticamente después de un retraso (0–60 segundos) |
+| **Saludo automático** | Enviar el primer mensaje automáticamente |
+| **Mostrar en móvil** | Mostrar en dispositivos móviles |
+| **Mostrar en escritorio** | Mostrar en dispositivos de escritorio |
+| **Powered By** | Mostrar/ocultar el branding "Powered by Revol" |
+| **Mensaje de bienvenida** | Texto mostrado en el encabezado del widget |
+
+### Voz
+
+Configuraciones de STT y TTS — las mismas descritas en la sección [Voz](#voz). Se configuran aquí o en los nodos STT/TTS del flujo de trabajo (se sincronizan).
 
 ---
 
-## System Prompt Architecture
+## Análisis
 
-Understanding how the final prompt is assembled helps you write better instructions.
+Diseño de dos columnas: lista de conversaciones (izquierda) + detalle de conversación (derecha).
+
+### Filtros
+
+| Filtro | Descripción |
+|---|---|
+| **Búsqueda** | Búsqueda de texto en las conversaciones |
+| **Canal** | Todos / Web / Telefonía / Mensajería / Widget / etc. |
+| **Estado** | Todos / Activo / Cerrado / Archivado |
+| **Rango de fechas** | Selectores de fecha Desde/Hasta |
+
+La lista de conversaciones muestra 20 por página con paginación "Cargar más". Las nuevas conversaciones aparecen en tiempo real vía WebSocket.
+
+### Detalle de conversación (4 sub-pestañas)
+
+| Pestaña | Contenido |
+|---|---|
+| **Transcripción** | Hilo completo de mensajes — burbujas de usuario y asistente con marcas de tiempo |
+| **Calificación** | Calificación por estrellas del visitante (1–5) y comentario opcional |
+| **Tokens** | Desglose del uso de tokens por mensaje |
+| **Información** | Canal, estado, ID de sesión, campos de memoria recopilados, fecha de creación |
+
+---
+
+## Arquitectura del prompt del sistema
+
+Comprender cómo se ensambla el prompt final le ayuda a escribir mejores instrucciones.
 
 <Steps>
-  <Step title="Your system prompt">
-    The text from the Agent tab (or the node's Conversation Goal for custom nodes). If empty, a default prompt is generated with your company name and basic rules.
+  <Step title="Su prompt del sistema">
+    El texto de la pestaña Agente (o el Objetivo de conversación del nodo para nodos personalizados). Si está vacío, se genera un prompt predeterminado con el nombre de su empresa y reglas básicas.
   </Step>
-  <Step title="Security block">
-    Auto-appended. 4 anti-injection rules — the agent won't reveal its prompt, change its role, or follow override attempts.
+  <Step title="Bloque de seguridad">
+    Se añade automáticamente. 4 reglas anti-inyección — el agente no revelará su prompt, cambiará su rol ni seguirá intentos de anulación.
   </Step>
-  <Step title="Style instructions">
-    Generated from personality sliders — maps response length, humor, formality, clarity, and emoji to text instructions.
+  <Step title="Instrucciones de estilo">
+    Generadas a partir de los controles deslizantes de personalidad — mapea la longitud de respuesta, humor, formalidad, claridad y emojis a instrucciones de texto.
   </Step>
-  <Step title="Tool descriptions">
-    Function schemas for all enabled tools, so the LLM knows what it can call.
+  <Step title="Descripciones de herramientas">
+    Esquemas de funciones para todas las herramientas habilitadas, para que el LLM sepa qué puede llamar.
   </Step>
-  <Step title="RAG context">
-    Relevant knowledge base chunks, injected as "Knowledge Base Context" block.
+  <Step title="Contexto RAG">
+    Segmentos relevantes de la base de conocimiento, inyectados como bloque "Contexto de la base de conocimiento".
   </Step>
-  <Step title="Campaign context">
-    If the visitor arrived via a campaign with AI Agent Behavior set, that prompt is injected.
+  <Step title="Contexto de campaña">
+    Si el visitante llegó a través de una campaña con Comportamiento del agente de IA configurado, ese prompt se inyecta.
   </Step>
-  <Step title="Memory state">
-    Current values of collected memory fields (e.g., `name: John, email: john@example.com`), so the agent knows what it already gathered.
+  <Step title="Estado de la memoria">
+    Valores actuales de los campos de memoria recopilados (p. ej., `name: Juan, email: juan@ejemplo.com`), para que el agente sepa lo que ya ha recopilado.
   </Step>
-  <Step title="Language detection">
-    If the visitor's message has no Cyrillic characters, a system instruction is added: "Reply in the same language as the user's message."
+  <Step title="Detección de idioma">
+    Si el mensaje del visitante no tiene caracteres cirílicos, se añade una instrucción del sistema: "Responda en el mismo idioma que el mensaje del usuario."
   </Step>
 </Steps>
 
 ---
 
-## Embed Code
+## Código de inserción
 
-Click **Embed** in the agent header to get the HTML snippet:
+Haga clic en **Insertar** en el encabezado del agente para obtener el fragmento HTML:
 
 ```html
 <script
@@ -651,22 +651,22 @@ Click **Embed** in the agent header to get the HTML snippet:
 </script>
 ```
 
-This loads both the tracker (analytics, campaigns, events, triggers, phone swap) and the chat widget with your active agent. If no API key exists, click **Generate API Key** first.
+Esto carga tanto el rastreador (analíticas, campañas, eventos, triggers, intercambio de teléfono) como el widget de chat con su agente activo. Si no existe una clave API, haga clic primero en **Generar clave API**.
 
 ---
 
-## Plan Limits
+## Límites del plan
 
-| Resource | What It Controls |
+| Recurso | Qué controla |
 |---|---|
-| **Max Agents** | Total agents you can create |
-| **Max Conversations** | Conversations per billing period |
-| **Standard Token Quota** | Tokens for standard models (GPT-4o Mini, Haiku, Flash, Llama 8B) |
-| **Premium Token Quota** | Tokens for premium models (GPT-4o, Sonnet, Gemini Pro, Llama 70B) |
-| **Daily Token Limit** | Per-day cap across all models |
-| **STT Minutes** | Speech-to-Text transcription time |
-| **TTS Characters** | Text-to-Speech synthesis characters |
-| **Embedding Tokens** | Tokens for knowledge base training |
-| **Storage** | File storage for documents, photos, videos |
-| **Voice** | Feature flag — enables/disables voice pipeline |
-| **Model Access** | `standard` or `premium` — gates premium model access |
+| **Máximo de agentes** | Total de agentes que puede crear |
+| **Máximo de conversaciones** | Conversaciones por período de facturación |
+| **Cuota de tokens estándar** | Tokens para modelos estándar (GPT-4o Mini, Haiku, Flash, Llama 8B) |
+| **Cuota de tokens premium** | Tokens para modelos premium (GPT-4o, Sonnet, Gemini Pro, Llama 70B) |
+| **Límite diario de tokens** | Tope diario para todos los modelos |
+| **Minutos de STT** | Tiempo de transcripción de voz a texto |
+| **Caracteres de TTS** | Caracteres de síntesis de texto a voz |
+| **Tokens de embedding** | Tokens para el entrenamiento de la base de conocimiento |
+| **Almacenamiento** | Almacenamiento de archivos para documentos, fotos, videos |
+| **Voz** | Indicador de función — habilita/deshabilita el pipeline de voz |
+| **Acceso a modelos** | `standard` o `premium` — controla el acceso a modelos premium |

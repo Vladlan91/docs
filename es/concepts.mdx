@@ -1,140 +1,140 @@
 ---
-title: Core Concepts
-description: "Key concepts and terminology in Revol"
+title: Conceptos Fundamentales
+description: "Conceptos clave y terminologia en Revol"
 ---
 
-## Companies
+## Empresas
 
-A **Company** is the central entity in Revol. Everything — products, files, agents, integrations, and analytics — belongs to a company.
+Una **Empresa** es la entidad central en Revol. Todo — productos, archivos, agentes, integraciones y analiticas — pertenece a una empresa.
 
-Each company has:
+Cada empresa tiene:
 
-- **Products & Services** — structured catalog with descriptions, pricing, photos, and parameters
-- **File Manager** — documents, links, text, video, and photos for knowledge bases
-- **AI Agents** — one or more intelligent assistants trained on company data
-- **Integrations** — connected channels (widget, VoIP, messengers, ads, CRM)
-- **Analytics** — visitor tracking, session data, and conversation history
+- **Productos y Servicios** — catalogo estructurado con descripciones, precios, fotos y parametros
+- **Gestor de Archivos** — documentos, enlaces, texto, video y fotos para bases de conocimiento
+- **Agentes de IA** — uno o mas asistentes inteligentes entrenados con datos de la empresa
+- **Integraciones** — canales conectados (widget, VoIP, mensajeros, publicidad, CRM)
+- **Analiticas** — seguimiento de visitantes, datos de sesiones e historial de conversaciones
 
 <Note>
-  One Revol account can manage multiple companies with fully isolated data — ideal for agencies or multi-brand businesses.
+  Una unica cuenta de Revol puede gestionar multiples empresas con datos completamente aislados — ideal para agencias o negocios multimarca.
 </Note>
 
 ---
 
-## Products & Services
+## Productos y Servicios
 
-**Products** are structured data models describing what your business offers. Unlike raw text documents, products give AI agents precise, queryable information.
+Los **Productos** son modelos de datos estructurados que describen lo que su negocio ofrece. A diferencia de los documentos de texto sin formato, los productos proporcionan a los agentes de IA informacion precisa y consultable.
 
-Each product includes:
+Cada producto incluye:
 
-| Field | Purpose |
-|-------|---------|
-| **Name** | Product or service title |
-| **Description** | Detailed text the agent uses for answers |
-| **Price** | Pricing information |
-| **URL** | Link to product page on your website |
-| **Availability** | Whether the product is currently available |
-| **Photos** | Product images the agent can share |
-| **Parameters** | Structured key-value pairs (size, color, duration, etc.) |
+| Campo | Proposito |
+|-------|-----------|
+| **Nombre** | Titulo del producto o servicio |
+| **Descripcion** | Texto detallado que el agente utiliza para las respuestas |
+| **Precio** | Informacion de precios |
+| **URL** | Enlace a la pagina del producto en su sitio web |
+| **Disponibilidad** | Si el producto esta actualmente disponible |
+| **Fotos** | Imagenes del producto que el agente puede compartir |
+| **Parametros** | Pares estructurados clave-valor (talla, color, duracion, etc.) |
 
-**Parameters** are the most powerful part — structured characteristics that let agents give exact answers instead of interpreting unstructured text. See [Quick Start → Product Parameters](/quickstart#product-parameters) for examples.
-
----
-
-## Knowledge Base
-
-The **Knowledge Base** is the content your AI agents learn from. It uses **RAG (Retrieval-Augmented Generation)** — documents are split into chunks, converted to vector embeddings, and searched semantically during conversations.
-
-### Content Types
-
-| Type | Formats | How it works |
-|------|---------|--------------|
-| **Documents** | PDF, DOCX, TXT | Text extracted and chunked |
-| **Links** | Any URL | Web page content fetched and indexed |
-| **Text** | Free-form text | Added directly as knowledge chunks |
-| **Video** | MP4, WebM, MOV | Audio transcribed to text via STT |
-| **Photos** | JPG, PNG | Text extracted via OCR |
-
-### Two Levels of Knowledge
-
-- **Company-level files** — available to all agents in the company
-- **Product-level files** — attached to a specific product, used when the agent discusses that product
+Los **Parametros** son la parte mas potente — caracteristicas estructuradas que permiten a los agentes dar respuestas exactas en lugar de interpretar texto no estructurado. Consulte [Inicio Rapido -> Parametros de Producto](/quickstart#product-parameters) para ver ejemplos.
 
 ---
 
-## AI Agents
+## Base de Conocimientos
 
-An **AI Agent** is an intelligent assistant configured independently with its own personality, knowledge, and behavior. Agents can operate in three modes:
+La **Base de Conocimientos** es el contenido del que aprenden sus agentes de IA. Utiliza **RAG (Retrieval-Augmented Generation)** — los documentos se dividen en fragmentos, se convierten en embeddings vectoriales y se buscan semanticamente durante las conversaciones.
 
-| Mode | Description |
+### Tipos de Contenido
+
+| Tipo | Formatos | Como funciona |
+|------|----------|---------------|
+| **Documentos** | PDF, DOCX, TXT | Texto extraido y fragmentado |
+| **Enlaces** | Cualquier URL | Contenido de la pagina web obtenido e indexado |
+| **Texto** | Texto libre | Agregado directamente como fragmentos de conocimiento |
+| **Video** | MP4, WebM, MOV | Audio transcrito a texto via STT |
+| **Fotos** | JPG, PNG | Texto extraido via OCR |
+
+### Dos Niveles de Conocimiento
+
+- **Archivos a nivel de empresa** — disponibles para todos los agentes de la empresa
+- **Archivos a nivel de producto** — adjuntos a un producto especifico, utilizados cuando el agente habla sobre ese producto
+
+---
+
+## Agentes de IA
+
+Un **Agente de IA** es un asistente inteligente configurado de forma independiente con su propia personalidad, conocimiento y comportamiento. Los agentes pueden operar en tres modos:
+
+| Modo | Descripcion |
 |------|-------------|
-| **Active** | The AI fully handles customer communication — responds to messages, makes tool calls, follows the workflow |
-| **Passive** | Your team handles all communication. The agent runs in the background — monitoring conversations, auditing compliance with communication standards, and providing analysis |
-| **Hybrid** | A combination: the AI handles routine interactions automatically, while your team takes over for complex cases. The agent continuously analyzes all conversations regardless of who responds |
+| **Activo** | La IA gestiona completamente la comunicacion con el cliente — responde mensajes, realiza llamadas a herramientas, sigue el flujo de trabajo |
+| **Pasivo** | Su equipo gestiona toda la comunicacion. El agente funciona en segundo plano — supervisando conversaciones, auditando el cumplimiento de los estandares de comunicacion y proporcionando analisis |
+| **Hibrido** | Una combinacion: la IA maneja las interacciones rutinarias automaticamente, mientras su equipo se encarga de los casos complejos. El agente analiza continuamente todas las conversaciones independientemente de quien responda |
 
 <Tip>
-  Passive mode is ideal for teams that want AI-powered quality control without replacing human operators. The agent monitors every conversation, checks adherence to scripts and standards, and surfaces insights — without ever responding to customers directly.
+  El modo pasivo es ideal para equipos que desean control de calidad impulsado por IA sin reemplazar a los operadores humanos. El agente supervisa cada conversacion, verifica el cumplimiento de guiones y estandares, y genera informacion util — sin responder directamente a los clientes.
 </Tip>
 
-### Agent Components
+### Componentes del Agente
 
 <AccordionGroup>
-  <Accordion title="System Prompt">
-    The core instruction set — defines the agent's role, tone, language, and boundaries. The more specific your prompt, the better the agent performs.
+  <Accordion title="Prompt del Sistema">
+    El conjunto de instrucciones principal — define el rol del agente, el tono, el idioma y los limites. Cuanto mas especifico sea su prompt, mejor funcionara el agente.
   </Accordion>
-  <Accordion title="Knowledge Base (RAG)">
-    Select which products and files the agent should learn from. After selection, click **Train** to generate vector embeddings for semantic search.
+  <Accordion title="Base de Conocimientos (RAG)">
+    Seleccione que productos y archivos debe aprender el agente. Despues de la seleccion, haga clic en **Entrenar** para generar embeddings vectoriales para la busqueda semantica.
   </Accordion>
-  <Accordion title="Workflow">
-    Visual node-based editor for conversation logic. Every agent gets a [default workflow](/quickstart#default-workflow) that handles most use cases out of the box.
+  <Accordion title="Flujo de Trabajo">
+    Editor visual basado en nodos para la logica de conversacion. Cada agente obtiene un [flujo de trabajo predeterminado](/quickstart#default-workflow) que maneja la mayoria de los casos de uso de forma inmediata.
   </Accordion>
-  <Accordion title="Tools">
-    Functions the agent can call during conversations — search products, check availability, get photos, retrieve documents, fetch company info.
+  <Accordion title="Herramientas">
+    Funciones que el agente puede ejecutar durante las conversaciones — buscar productos, verificar disponibilidad, obtener fotos, recuperar documentos, consultar informacion de la empresa.
   </Accordion>
   <Accordion title="Widget">
-    Customize the chat widget appearance — colors, labels, placement, greeting messages, terms & conditions.
+    Personalice la apariencia del widget de chat — colores, etiquetas, ubicacion, mensajes de bienvenida, terminos y condiciones.
   </Accordion>
-  <Accordion title="Channels">
-    Connect the agent to communication channels — website widget, Telegram, WhatsApp, Instagram, Facebook Messenger, VoIP.
+  <Accordion title="Canales">
+    Conecte el agente a canales de comunicacion — widget del sitio web, Telegram, WhatsApp, Instagram, Facebook Messenger, VoIP.
   </Accordion>
 </AccordionGroup>
 
-### LLM Providers
+### Proveedores LLM
 
-Each agent (or individual workflow node) can use a different AI model:
+Cada agente (o nodo individual del flujo de trabajo) puede utilizar un modelo de IA diferente:
 
-| Provider | Standard Models | Premium Models |
-|----------|----------------|----------------|
+| Proveedor | Modelos Estandar | Modelos Premium |
+|-----------|-----------------|-----------------|
 | **OpenAI** | GPT-4o-mini | GPT-4o |
 | **Anthropic** | Claude 3.5 Haiku | Claude 3.5 Sonnet |
 | **Google** | Gemini 2.0 Flash | Gemini 2.5 Pro |
 | **Groq** | Llama 3.1 8B | Llama 3.3 70B |
 
 <Info>
-  Standard models are faster and consume standard tokens. Premium models offer higher quality and consume premium tokens.
+  Los modelos estandar son mas rapidos y consumen tokens estandar. Los modelos premium ofrecen mayor calidad y consumen tokens premium.
 </Info>
 
 ---
 
-## Workflows
+## Flujos de Trabajo
 
-A **Workflow** is a visual node-based editor for defining how your agent processes conversations. Nodes are connected with edges that define the flow of data.
+Un **Flujo de Trabajo** es un editor visual basado en nodos para definir como su agente procesa las conversaciones. Los nodos se conectan con aristas que definen el flujo de datos.
 
-### Node Types
+### Tipos de Nodos
 
-| Node | Description |
+| Nodo | Descripcion |
 |------|-------------|
-| **Start** | Entry point — receives the user's message |
-| **LLM** | Sends context to an AI model and gets a response |
-| **Condition** | Branches the flow based on rules (keywords, intent, variables) |
-| **Tool Call** | Executes an external function (search products, check availability) |
-| **Voice Input (STT)** | Converts speech to text for voice interactions |
-| **Voice Output (TTS)** | Converts text response to speech |
-| **Response Formatter** | Combines outputs from multiple nodes into a single response |
+| **Start** | Punto de entrada — recibe el mensaje del usuario |
+| **LLM** | Envia el contexto a un modelo de IA y obtiene una respuesta |
+| **Condition** | Ramifica el flujo segun reglas (palabras clave, intencion, variables) |
+| **Tool Call** | Ejecuta una funcion externa (buscar productos, verificar disponibilidad) |
+| **Voice Input (STT)** | Convierte voz a texto para interacciones de voz |
+| **Voice Output (TTS)** | Convierte la respuesta de texto a voz |
+| **Response Formatter** | Combina las salidas de multiples nodos en una unica respuesta |
 
-### Default Workflow
+### Flujo de Trabajo Predeterminado
 
-Every new agent comes with a pre-built workflow:
+Cada nuevo agente viene con un flujo de trabajo preconstruido:
 
 ```
 Start → Product Agent  ─┐
@@ -142,190 +142,190 @@ Start → Product Agent  ─┐
      └→ Company Agent  ─┘
 ```
 
-Three specialized agents work **in parallel** — each handles its domain (products, media, company info), and the Formatter merges their outputs. This covers most use cases without any configuration.
+Tres agentes especializados trabajan **en paralelo** — cada uno maneja su dominio (productos, multimedia, informacion de la empresa), y el Formatter fusiona sus salidas. Esto cubre la mayoria de los casos de uso sin ninguna configuracion.
 
-For complex scenarios — conditional branching, custom tool calls, multi-step flows — use the [Workflow Editor](/agents/workflow).
-
----
-
-## Conversations
-
-A **Conversation** is a chat session between a visitor and an AI agent. All conversations are stored and accessible from the **Conversations** page.
-
-### Channels
-
-Conversations can happen through:
-
-- **Website widget** — embedded chat on your site
-- **VoIP** — phone calls via Twilio, Ringostat, or Binotel
-- **Messengers** — Telegram, WhatsApp Business, Instagram DM, Facebook Messenger
-- **API** — programmatic access
-
-### Features
-
-- **Unified inbox** — all conversations across all agents and channels in one place
-- **Filters** — by agent, status, date, channel
-- **Transcripts** — full message history with timestamps
-- **Audio playback** — listen to voice call recordings
-- **Ratings** — customer satisfaction scores per conversation
+Para escenarios complejos — ramificacion condicional, llamadas a herramientas personalizadas, flujos de multiples pasos — utilice el [Editor de Flujos de Trabajo](/agents/workflow).
 
 ---
 
-## Tracking
+## Conversaciones
 
-The **Tracker** is built into the same widget script and monitors visitor activity on your website automatically.
+Una **Conversacion** es una sesion de chat entre un visitante y un agente de IA. Todas las conversaciones se almacenan y son accesibles desde la pagina de **Conversaciones**.
 
-### What Gets Tracked
+### Canales
 
-| Data | Description |
-|------|-------------|
-| **Sessions** | Visitor browsing sessions — device, browser, OS, location, referrer |
-| **Pageviews** | Individual page visits within a session |
-| **Events** | Custom events — clicks, form submissions, phone calls |
-| **Campaigns** | UTM-based grouping (source, medium, campaign, term, content) |
+Las conversaciones pueden ocurrir a traves de:
 
-### Automation
+- **Widget del sitio web** — chat integrado en su sitio
+- **VoIP** — llamadas telefonicas via Twilio, Ringostat o Binotel
+- **Mensajeros** — Telegram, WhatsApp Business, Instagram DM, Facebook Messenger
+- **API** — acceso programatico
 
-- **Triggers** — automated actions based on visitor behavior (time on page, scroll depth, UTM match, device type). Can show chat overlays or custom messages.
-- **Phone Swap** — dynamic phone number replacement for call tracking and attribution.
+### Caracteristicas
 
----
-
-## Integrations
-
-**Integrations** connect your AI agents to external services and communication channels.
-
-| Category | Providers | What it does |
-|----------|-----------|-------------|
-| **VoIP** | Twilio, Ringostat, Binotel | Phone calls — agent answers incoming calls |
-| **Messengers** | Telegram, WhatsApp, Instagram, Facebook Messenger | Chat via messaging apps |
-| **Google Workspace** | Gmail, Docs, Sheets, Drive, Calendar, Meet | Read and interact with Google services |
-| **Advertising** | Google Ads, Facebook Ads | View campaign performance and manage ads |
-| **Webhook** | Any HTTP endpoint | Send lead data, events, or notifications to CRM or other systems |
-
-Each integration is configured per company and can be connected to one or more agents.
+- **Bandeja de entrada unificada** — todas las conversaciones de todos los agentes y canales en un solo lugar
+- **Filtros** — por agente, estado, fecha, canal
+- **Transcripciones** — historial completo de mensajes con marcas de tiempo
+- **Reproduccion de audio** — escuche grabaciones de llamadas de voz
+- **Calificaciones** — puntuaciones de satisfaccion del cliente por conversacion
 
 ---
 
-## Billing & Plans
+## Seguimiento
 
-Revol uses a **token-based billing** model. Every AI interaction consumes tokens — input tokens (your message + context) and output tokens (agent's response).
+El **Tracker** esta integrado en el mismo script del widget y supervisa automaticamente la actividad de los visitantes en su sitio web.
 
-### Plans
+### Que se Rastrea
+
+| Datos | Descripcion |
+|-------|-------------|
+| **Sesiones** | Sesiones de navegacion de visitantes — dispositivo, navegador, sistema operativo, ubicacion, referente |
+| **Vistas de Pagina** | Visitas individuales a paginas dentro de una sesion |
+| **Eventos** | Eventos personalizados — clics, envios de formularios, llamadas telefonicas |
+| **Campanas** | Agrupacion basada en UTM (fuente, medio, campana, termino, contenido) |
+
+### Automatizacion
+
+- **Disparadores** — acciones automatizadas basadas en el comportamiento del visitante (tiempo en la pagina, profundidad de desplazamiento, coincidencia UTM, tipo de dispositivo). Pueden mostrar superposiciones de chat o mensajes personalizados.
+- **Intercambio de Telefono** — reemplazo dinamico de numeros telefonicos para seguimiento y atribucion de llamadas.
+
+---
+
+## Integraciones
+
+Las **Integraciones** conectan sus agentes de IA con servicios externos y canales de comunicacion.
+
+| Categoria | Proveedores | Que hace |
+|-----------|-------------|----------|
+| **VoIP** | Twilio, Ringostat, Binotel | Llamadas telefonicas — el agente atiende llamadas entrantes |
+| **Mensajeros** | Telegram, WhatsApp, Instagram, Facebook Messenger | Chat a traves de aplicaciones de mensajeria |
+| **Google Workspace** | Gmail, Docs, Sheets, Drive, Calendar, Meet | Leer e interactuar con servicios de Google |
+| **Publicidad** | Google Ads, Facebook Ads | Ver rendimiento de campanas y gestionar anuncios |
+| **Webhook** | Cualquier endpoint HTTP | Enviar datos de leads, eventos o notificaciones a CRM u otros sistemas |
+
+Cada integracion se configura por empresa y puede conectarse a uno o mas agentes.
+
+---
+
+## Facturacion y Planes
+
+Revol utiliza un modelo de **facturacion basado en tokens**. Cada interaccion con IA consume tokens — tokens de entrada (su mensaje + contexto) y tokens de salida (respuesta del agente).
+
+### Planes
 
 <Tabs>
-  <Tab title="Free">
-    **$0/month** — try Revol with basic limits
+  <Tab title="Gratuito">
+    **$0/mes** — pruebe Revol con limites basicos
 
-    | Resource | Limit |
-    |----------|-------|
-    | Companies | 1 |
-    | AI Agents | 1 |
-    | Standard Tokens | 20K / day |
-    | Premium Tokens | — |
-    | Voice | — |
-    | Storage | 100 MB |
-    | Knowledge Docs | 10 |
-    | Conversations | 100 |
-    | Tracking Retention | 30 days |
-    | Integrations | — |
-    | Widget Branding | Revol branding |
+    | Recurso | Limite |
+    |---------|--------|
+    | Empresas | 1 |
+    | Agentes de IA | 1 |
+    | Tokens Estandar | 20K / dia |
+    | Tokens Premium | — |
+    | Voz | — |
+    | Almacenamiento | 100 MB |
+    | Documentos de Conocimiento | 10 |
+    | Conversaciones | 100 |
+    | Retencion de Seguimiento | 30 dias |
+    | Integraciones | — |
+    | Marca del Widget | Marca Revol |
   </Tab>
   <Tab title="Premium">
-    **$29/month** — for growing businesses
+    **$29/mes** — para negocios en crecimiento
 
-    | Resource | Limit |
-    |----------|-------|
-    | Companies | 3 |
-    | AI Agents | 5 |
-    | Standard Tokens | 5M / month |
-    | Premium Tokens | 1M / month |
-    | Voice (STT) | 60 min |
-    | Voice (TTS) | 200K chars |
-    | Storage | 5 GB |
-    | Knowledge Docs | 100 |
-    | Conversations | 5,000 |
-    | Tracking Retention | 180 days |
-    | Integrations | VoIP, Messengers |
-    | Widget Branding | Custom branding |
+    | Recurso | Limite |
+    |---------|--------|
+    | Empresas | 3 |
+    | Agentes de IA | 5 |
+    | Tokens Estandar | 5M / mes |
+    | Tokens Premium | 1M / mes |
+    | Voz (STT) | 60 min |
+    | Voz (TTS) | 200K caracteres |
+    | Almacenamiento | 5 GB |
+    | Documentos de Conocimiento | 100 |
+    | Conversaciones | 5,000 |
+    | Retencion de Seguimiento | 180 dias |
+    | Integraciones | VoIP, Mensajeros |
+    | Marca del Widget | Marca personalizada |
   </Tab>
-  <Tab title="Professional">
-    **$79/month** — for agencies and enterprises
+  <Tab title="Profesional">
+    **$79/mes** — para agencias y empresas grandes
 
-    | Resource | Limit |
-    |----------|-------|
-    | Companies | 10 |
-    | AI Agents | Unlimited |
-    | Standard Tokens | 25M / month |
-    | Premium Tokens | 2M / month |
-    | Voice (STT) | 300 min |
-    | Voice (TTS) | 500K chars |
-    | Storage | 50 GB |
-    | Knowledge Docs | 1,000 |
-    | Conversations | 50,000 |
-    | Tracking Retention | 730 days (2 years) |
-    | Integrations | All (incl. Google Workspace, Ads) |
-    | Widget Branding | White Label |
+    | Recurso | Limite |
+    |---------|--------|
+    | Empresas | 10 |
+    | Agentes de IA | Ilimitados |
+    | Tokens Estandar | 25M / mes |
+    | Tokens Premium | 2M / mes |
+    | Voz (STT) | 300 min |
+    | Voz (TTS) | 500K caracteres |
+    | Almacenamiento | 50 GB |
+    | Documentos de Conocimiento | 1,000 |
+    | Conversaciones | 50,000 |
+    | Retencion de Seguimiento | 730 dias (2 anos) |
+    | Integraciones | Todas (incl. Google Workspace, Ads) |
+    | Marca del Widget | Marca Blanca |
   </Tab>
 </Tabs>
 
-### What Counts as a Token
+### Que Cuenta como Token
 
-Every AI interaction has two parts:
+Cada interaccion con IA tiene dos partes:
 
-- **Input tokens** — your message + system prompt + retrieved knowledge base chunks + conversation history
-- **Output tokens** — the agent's response
+- **Tokens de entrada** — su mensaje + prompt del sistema + fragmentos recuperados de la base de conocimientos + historial de conversacion
+- **Tokens de salida** — la respuesta del agente
 
-Different models consume different token types:
+Diferentes modelos consumen diferentes tipos de tokens:
 
-| Token Type | Models | Plans |
-|-----------|--------|-------|
-| **Standard** | GPT-4o-mini, Claude 3.5 Haiku, Gemini 2.0 Flash, Llama 3.1 8B | All plans |
+| Tipo de Token | Modelos | Planes |
+|---------------|---------|--------|
+| **Estandar** | GPT-4o-mini, Claude 3.5 Haiku, Gemini 2.0 Flash, Llama 3.1 8B | Todos los planes |
 | **Premium** | GPT-4o, Claude 3.5 Sonnet, Gemini 2.5 Pro, Llama 3.3 70B | Premium+ |
 
-### Add-on Packs
+### Paquetes Adicionales
 
-Need more resources? Purchase add-on packs without upgrading your plan:
+Necesita mas recursos? Adquiera paquetes adicionales sin actualizar su plan:
 
-| Pack | What you get | Price |
-|------|-------------|-------|
-| Token Pack S | 5M standard tokens | $4 |
-| Token Pack M | 20M standard tokens | $15 |
-| Token Pack L | 50M standard tokens | $35 |
-| Premium Token Pack | 2M premium tokens | $20 |
-| Voice Pack | 60 STT min + 100K TTS chars | $3 |
-| Storage Pack | 10 GB storage | $1 |
+| Paquete | Que obtiene | Precio |
+|---------|-------------|--------|
+| Paquete de Tokens S | 5M tokens estandar | $4 |
+| Paquete de Tokens M | 20M tokens estandar | $15 |
+| Paquete de Tokens L | 50M tokens estandar | $35 |
+| Paquete de Tokens Premium | 2M tokens premium | $20 |
+| Paquete de Voz | 60 min STT + 100K caracteres TTS | $3 |
+| Paquete de Almacenamiento | 10 GB de almacenamiento | $1 |
 
 <Note>
-  Add-on packs expire **3 months** after purchase. Unused tokens do not roll over between billing periods.
+  Los paquetes adicionales expiran **3 meses** despues de la compra. Los tokens no utilizados no se transfieren entre periodos de facturacion.
 </Note>
 
-### What Happens When You Hit the Limit
+### Que Sucede Cuando Alcanza el Limite
 
-| Resource | Behavior |
-|----------|----------|
-| Standard / Premium Tokens | Agent stops responding until next billing cycle or pack purchase |
-| Storage | Cannot upload new files |
-| Voice | Voice features disabled |
-| Conversations | New conversations blocked |
+| Recurso | Comportamiento |
+|---------|----------------|
+| Tokens Estandar / Premium | El agente deja de responder hasta el siguiente ciclo de facturacion o la compra de un paquete |
+| Almacenamiento | No se pueden cargar nuevos archivos |
+| Voz | Las funciones de voz se desactivan |
+| Conversaciones | Se bloquean las nuevas conversaciones |
 
-Revol sends notifications at **80%** (warning) and **90%** (critical) usage so you can act before hitting the limit.
+Revol envia notificaciones al **80%** (advertencia) y **90%** (critico) de uso para que pueda actuar antes de alcanzar el limite.
 
 ---
 
-## Next Steps
+## Proximos Pasos
 
 <CardGroup cols={2}>
-  <Card title="Quick Start" icon="rocket" href="/quickstart">
-    Set up your company and first agent in minutes
+  <Card title="Inicio Rapido" icon="rocket" href="/quickstart">
+    Configure su empresa y su primer agente en minutos
   </Card>
-  <Card title="AI Agents" icon="robot" href="/agents/overview">
-    Deep dive into agent configuration and capabilities
+  <Card title="Agentes de IA" icon="robot" href="/agents/overview">
+    Profundice en la configuracion y capacidades de los agentes
   </Card>
   <Card title="Widget" icon="window" href="/widget/installation">
-    Install the chat widget on your website
+    Instale el widget de chat en su sitio web
   </Card>
-  <Card title="API Reference" icon="square-terminal" href="/api-reference/overview">
-    Integrate Revol programmatically
+  <Card title="Referencia de API" icon="square-terminal" href="/api-reference/overview">
+    Integre Revol programaticamente
   </Card>
 </CardGroup>

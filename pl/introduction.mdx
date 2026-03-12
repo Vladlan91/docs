@@ -1,187 +1,187 @@
 ---
-title: Introduction
-sidebarTitle: Introduction
-description: "Revol — AI-powered platform for automating customer interactions across chat, voice, and messaging channels"
+title: Wprowadzenie
+sidebarTitle: Wprowadzenie
+description: "Revol — platforma oparta na AI do automatyzacji interakcji z klientami przez czat, telefon i komunikatory"
 ---
 
 <Frame>
   <img
     className="block dark:hidden"
     src="/images/hero-light.png"
-    alt="Revol Platform"
+    alt="Platforma Revol"
   />
   <img
     className="hidden dark:block"
     src="/images/hero-dark.png"
-    alt="Revol Platform"
+    alt="Platforma Revol"
   />
 
 
-## What is Revol?
+## Czym jest Revol?
 
-Revol is an AI-first platform for managing customer interactions through intelligent agents. It serves two fundamentally different use cases from a single dashboard:
+Revol to platforma AI-first do zarządzania interakcjami z klientami za pomocą inteligentnych agentów. Obsługuje dwa zasadniczo różne scenariusze użycia z jednego panelu:
 
-1. **AI handles communication** — the agent autonomously responds to customers across all channels: website chat, phone calls, messengers. It follows your workflow, searches the knowledge base, calls tools, and resolves requests without human involvement.
+1. **AI prowadzi komunikację** — agent autonomicznie odpowiada klientom we wszystkich kanałach: czat na stronie, rozmowy telefoniczne, komunikatory. Realizuje Twój workflow, przeszukuje bazę wiedzy, wywołuje narzędzia i rozwiązuje zapytania bez udziału człowieka.
 
-2. **Your team handles communication, AI monitors** — your operators talk to customers as usual, while the agent works in the background as a quality auditor. It analyzes every conversation for compliance with communication standards, tracks whether scripts are followed, identifies missed opportunities, and surfaces insights — without ever responding to customers directly.
+2. **Twój zespół prowadzi komunikację, AI monitoruje** — Twoi operatorzy rozmawiają z klientami jak zwykle, a agent działa w tle jako audytor jakości. Analizuje każdą rozmowę pod kątem zgodności ze standardami komunikacji, śledzi przestrzeganie skryptów, identyfikuje utracone szanse i dostarcza wnioski — bez bezpośredniego odpowiadania klientom.
 
-These two approaches can be combined — the AI handles routine interactions (FAQ, product questions, scheduling) while your team takes over for complex or sensitive cases, with the agent continuously analyzing everything.
+Te dwa podejścia można łączyć — AI obsługuje rutynowe interakcje (FAQ, pytania o produkty, rezerwacje), a Twój zespół przejmuje skomplikowane lub wrażliwe przypadki, podczas gdy agent nieprzerwanie analizuje wszystko.
 
-Unlike generic chatbot builders, Revol combines a **visual workflow editor**, **RAG-powered knowledge bases**, **real-time voice capabilities**, and **visitor analytics** into one unified platform. Whether your agent is actively communicating or passively monitoring, it knows your products, follows configurable conversation flows, calls external tools, and tracks every interaction for optimization.
+W przeciwieństwie do typowych kreatorów chatbotów, Revol łączy **wizualny edytor workflow**, **bazy wiedzy oparte na RAG**, **możliwości głosowe w czasie rzeczywistym** i **analitykę odwiedzających** w jednej zintegrowanej platformie. Niezależnie od tego, czy agent aktywnie komunikuje się, czy pasywnie monitoruje, zna Twoje produkty, realizuje konfigurowalne scenariusze rozmów, wywołuje zewnętrzne narzędzia i śledzi każdą interakcję w celu optymalizacji.
 
 <CardGroup cols={3}>
-  <Card title="Company & Products" icon="building" href="/concepts">
-    Set up your company, add products, services, and upload knowledge base files
+  <Card title="Firma i produkty" icon="building" href="/concepts">
+    Skonfiguruj firmę, dodaj produkty, usługi i prześlij pliki bazy wiedzy
   </Card>
-  <Card title="AI Agents" icon="robot" href="/agents/overview">
-    Create agents, choose data sources, train on your content with RAG
+  <Card title="Agenci AI" icon="robot" href="/agents/overview">
+    Twórz agentów, wybieraj źródła danych, trenuj na swoich treściach z RAG
   </Card>
-  <Card title="Widget & Tracker" icon="window" href="/widget/installation">
-    Single script embed for chat, voice, and visitor analytics on your website
+  <Card title="Widget i Tracker" icon="window" href="/widget/installation">
+    Jeden skrypt do czatu, głosu i analityki odwiedzających na Twojej stronie
   </Card>
-  <Card title="Integrations" icon="plug" href="/integrations/overview">
-    Connect VoIP, messengers, Google Workspace, ad platforms, and CRM via webhooks
+  <Card title="Integracje" icon="plug" href="/integrations/overview">
+    Połącz VoIP, komunikatory, Google Workspace, platformy reklamowe i CRM przez webhooki
   </Card>
-  <Card title="Conversations" icon="messages" href="/conversations/overview">
-    Unified inbox across all agents with filtering, transcription, and audio playback
+  <Card title="Rozmowy" icon="messages" href="/conversations/overview">
+    Wspólna skrzynka odbiorcza dla wszystkich agentów z filtrowaniem, transkrypcją i odtwarzaniem audio
   </Card>
   <Card title="Marketplace" icon="store" href="/agents/overview">
-    Install ready-made workflow templates or publish your own
+    Instaluj gotowe szablony workflow lub publikuj własne
   </Card>
 </CardGroup>
 
-## How It Works
+## Jak to działa
 
 <Steps>
-  <Step title="Create a Company">
-    Register and set up your company — add your business name, website, phone number, and logo. The company is the foundation: all products, files, agents, and integrations belong to it.
+  <Step title="Utwórz firmę">
+    Zarejestruj się i skonfiguruj firmę — dodaj nazwę firmy, stronę internetową, numer telefonu i logo. Firma jest fundamentem: wszystkie produkty, pliki, agenci i integracje należą do niej.
 
-    
-      <img className="block dark:hidden" src="/images/company-setup-light.png" alt="Company creation" />
-      <img className="hidden dark:block" src="/images/company-setup-dark.png" alt="Company creation" />
-    
+
+      <img className="block dark:hidden" src="/images/company-setup-light.png" alt="Tworzenie firmy" />
+      <img className="hidden dark:block" src="/images/company-setup-dark.png" alt="Tworzenie firmy" />
+
   </Step>
-  <Step title="Add Products & Knowledge Base">
-    Fill your company with data that your AI agent will learn from:
+  <Step title="Dodaj produkty i bazę wiedzy">
+    Uzupełnij firmę danymi, z których Twój agent AI będzie się uczył:
 
-    - **Products & services** — name, description, photos, pricing, availability
-    - **Documents** — PDFs, Word files, spreadsheets
-    - **Links** — website pages and external resources (content fetched automatically)
-    - **Text snippets** — FAQ, policies, custom instructions
-    - **Media** — videos (transcribed to text) and photos (OCR extracted)
+    - **Produkty i usługi** — nazwa, opis, zdjęcia, ceny, dostępność
+    - **Dokumenty** — pliki PDF, Word, arkusze kalkulacyjne
+    - **Linki** — strony internetowe i zasoby zewnętrzne (treść pobierana automatycznie)
+    - **Fragmenty tekstowe** — FAQ, regulaminy, niestandardowe instrukcje
+    - **Media** — filmy (transkrybowane na tekst) i zdjęcia (tekst wyodrębniany przez OCR)
 
-    All uploaded content is automatically chunked and converted into vector embeddings for RAG retrieval.
+    Wszystkie przesłane treści są automatycznie dzielone na fragmenty i konwertowane na wektorowe embeddingi do wyszukiwania RAG.
 
-    
-      <img className="block dark:hidden" src="/images/file-manager-light.png" alt="File Manager" />
-      <img className="hidden dark:block" src="/images/file-manager-dark.png" alt="File Manager" />
-    
+
+      <img className="block dark:hidden" src="/images/file-manager-light.png" alt="Menedżer plików" />
+      <img className="hidden dark:block" src="/images/file-manager-dark.png" alt="Menedżer plików" />
+
   </Step>
-  <Step title="Create & Train an AI Agent">
-    Create an agent, choose a use case (customer support, sales, scheduling, lead qualification), and select an LLM provider — OpenAI, Anthropic, Gemini, or Groq.
+  <Step title="Utwórz i wytrenuj agenta AI">
+    Utwórz agenta, wybierz przypadek użycia (obsługa klienta, sprzedaż, rezerwacje, kwalifikacja leadów) i dostawcę LLM — OpenAI, Anthropic, Gemini lub Groq.
 
-    Then pick which **knowledge sources** your agent should learn from — specific products, documents, links, or text. Hit **Train** and Revol generates vector embeddings so your agent can answer questions based on your actual data.
+    Następnie wybierz **źródła wiedzy**, z których agent ma się uczyć — konkretne produkty, dokumenty, linki lub teksty. Kliknij **Trenuj**, a Revol wygeneruje wektorowe embeddingi, dzięki czemu agent będzie odpowiadać na pytania na podstawie Twoich rzeczywistych danych.
 
-    
-      <img className="block dark:hidden" src="/images/agents-knowledge-base-light.png" alt="Agent knowledge base configuration" />
-      <img className="hidden dark:block" src="/images/agents-knowledge-base-dark.png" alt="Agent knowledge base configuration" />
-    
+
+      <img className="block dark:hidden" src="/images/agents-knowledge-base-light.png" alt="Konfiguracja bazy wiedzy agenta" />
+      <img className="hidden dark:block" src="/images/agents-knowledge-base-dark.png" alt="Konfiguracja bazy wiedzy agenta" />
+
   </Step>
-  <Step title="Configure Workflow (Optional)">
-    For complex conversation scenarios, use the visual workflow editor. Build multi-step flows with LLM nodes, conditions, tool calls, and voice interactions — all connected via drag-and-drop.
+  <Step title="Skonfiguruj workflow (opcjonalnie)">
+    Do złożonych scenariuszy rozmów użyj wizualnego edytora workflow. Buduj wieloetapowe przepływy z węzłami LLM, warunkami, wywołaniami narzędzi i interakcjami głosowymi — wszystko łączone metodą przeciągnij i upuść.
 
-    
-      <img className="block dark:hidden" src="/images/agents-workflow-editor-light.png" alt="Workflow editor" />
-      <img className="hidden dark:block" src="/images/agents-workflow-editor-dark.png" alt="Workflow editor" />
-    
+
+      <img className="block dark:hidden" src="/images/agents-workflow-editor-light.png" alt="Edytor workflow" />
+      <img className="hidden dark:block" src="/images/agents-workflow-editor-dark.png" alt="Edytor workflow" />
+
   </Step>
-  <Step title="Connect Communication Channels">
-    Integrate your agent with the channels your customers use:
+  <Step title="Połącz kanały komunikacji">
+    Zintegruj agenta z kanałami, z których korzystają Twoi klienci:
 
-    - **Website widget** — embed a single script for chat and voice
-    - **Telephony** — Twilio, Ringostat, or Binotel for phone calls
-    - **Messengers** — Telegram, WhatsApp Business, Instagram DM, Facebook Messenger
-    - **CRM** — Custom Webhook to send lead data to any system
-    - **Google Workspace** — Gmail, Google Docs, Sheets, Drive, Calendar, and Meet
-    - **Ad Campaigns** — Google Ads and Facebook Ads analytics
+    - **Widget na stronie** — osadź jeden skrypt do czatu i głosu
+    - **Telefonia** — Twilio, Ringostat lub Binotel do rozmów telefonicznych
+    - **Komunikatory** — Telegram, WhatsApp Business, Instagram DM, Facebook Messenger
+    - **CRM** — niestandardowy Webhook do wysyłania danych o leadach do dowolnego systemu
+    - **Google Workspace** — Gmail, Google Docs, Sheets, Drive, Calendar i Meet
+    - **Kampanie reklamowe** — analityka Google Ads i Facebook Ads
 
-    Each agent can be connected to multiple channels simultaneously.
+    Każdy agent może być jednocześnie podłączony do wielu kanałów.
   </Step>
-  <Step title="Deploy & Monitor">
-    Install the widget script on your website. In **Active** mode, your agent handles conversations autonomously. In **Passive** mode, your team communicates while the agent audits and analyzes every interaction. Monitor everything in real time — read transcripts, listen to call recordings, track visitor sessions, and optimize based on analytics.
+  <Step title="Wdróż i monitoruj">
+    Zainstaluj skrypt widgetu na swojej stronie. W trybie **Aktywnym** agent prowadzi rozmowy autonomicznie. W trybie **Pasywnym** Twój zespół komunikuje się, a agent audytuje i analizuje każdą interakcję. Monitoruj wszystko w czasie rzeczywistym — czytaj transkrypcje, słuchaj nagrań rozmów, śledź sesje odwiedzających i optymalizuj na podstawie analityki.
 
-    
-      <img className="block dark:hidden" src="/images/conversations-dashboard-light.png" alt="Widget script installation" />
-      <img className="hidden dark:block" src="/images/conversations-dashboard-dark.png" alt="Widget script installation" />
-    
+
+      <img className="block dark:hidden" src="/images/conversations-dashboard-light.png" alt="Instalacja skryptu widgetu" />
+      <img className="hidden dark:block" src="/images/conversations-dashboard-dark.png" alt="Instalacja skryptu widgetu" />
+
   </Step>
 </Steps>
 
-## Who Is Revol For?
+## Dla kogo jest Revol?
 
 <AccordionGroup>
   <Accordion title="E-commerce" icon="cart-shopping">
-    Automate product questions, order tracking, and recommendations. Your agent knows your entire product catalog — descriptions, photos, availability, pricing — and can guide customers through purchases using real-time data via tool calls.
+    Automatyzuj pytania o produkty, śledzenie zamówień i rekomendacje. Twój agent zna cały katalog produktów — opisy, zdjęcia, dostępność, ceny — i może prowadzić klientów przez zakupy, korzystając z danych w czasie rzeczywistym poprzez wywołania narzędzi.
   </Accordion>
-  <Accordion title="Service Companies" icon="headset">
-    Handle appointment booking, FAQ, and support requests 24/7. Upload your service descriptions, pricing lists, and policies. Voice-enabled agents can answer phone calls and route complex issues to human operators.
+  <Accordion title="Firmy usługowe" icon="headset">
+    Obsługuj rezerwację wizyt, FAQ i zapytania supportowe 24/7. Prześlij opisy usług, cenniki i regulaminy. Agenci z obsługą głosu mogą odbierać rozmowy telefoniczne i przekierowywać skomplikowane sprawy do operatorów.
   </Accordion>
-  <Accordion title="Agencies" icon="buildings">
-    Manage multiple client accounts from one dashboard. Each company gets isolated agents, knowledge bases, and analytics. Use the Marketplace to reuse proven workflow templates across clients.
+  <Accordion title="Agencje" icon="buildings">
+    Zarządzaj wieloma kontami klientów z jednego panelu. Każda firma ma izolowanych agentów, bazy wiedzy i analitykę. Korzystaj z Marketplace, aby ponownie wykorzystywać sprawdzone szablony workflow u różnych klientów.
   </Accordion>
-  <Accordion title="SaaS Products" icon="cloud">
-    Embed an AI support agent in your product. Train it on your documentation, API reference, and changelog. Reduce support tickets while improving response quality.
+  <Accordion title="Produkty SaaS" icon="cloud">
+    Osadź agenta wsparcia AI w swoim produkcie. Wytrenuj go na dokumentacji, referencji API i changelogu. Zmniejsz liczbę zgłoszeń supportowych, jednocześnie poprawiając jakość odpowiedzi.
   </Accordion>
 </AccordionGroup>
 
-## Key Capabilities
+## Kluczowe możliwości
 
 <Tabs>
-  <Tab title="Customer-Facing AI">
-    | Capability | Description |
+  <Tab title="AI dla klientów">
+    | Możliwość | Opis |
     |---|---|
-    | **Multi-Provider LLM** | Choose per-agent or per-node: OpenAI, Anthropic, Gemini, or Groq |
-    | **RAG Knowledge Base** | Vector search via pgvector — train on products, docs, links, text |
-    | **Visual Workflow** | Drag-and-drop node editor with conditions, tool calls, and branching |
-    | **Voice** | Real-time STT/TTS with interrupt detection and streaming |
-    | **Tool Calling** | Agents can call external APIs, query databases, and perform actions |
-    | **Multi-Channel** | Website widget, VoIP (Twilio, Ringostat, Binotel), Telegram, WhatsApp, Instagram, Facebook Messenger |
+    | **Multi-Provider LLM** | Wybór na agenta lub na węzeł: OpenAI, Anthropic, Gemini lub Groq |
+    | **Baza wiedzy RAG** | Wyszukiwanie wektorowe przez pgvector — trenowanie na produktach, dokumentach, linkach, tekstach |
+    | **Wizualny workflow** | Edytor węzłowy z przeciąganiem, warunkami, wywołaniami narzędzi i rozgałęzieniami |
+    | **Głos** | STT/TTS w czasie rzeczywistym z detekcją przerwań i streamingiem |
+    | **Wywoływanie narzędzi** | Agenci mogą wywoływać zewnętrzne API, odpytywać bazy danych i wykonywać akcje |
+    | **Multi-kanałowość** | Widget na stronie, VoIP (Twilio, Ringostat, Binotel), Telegram, WhatsApp, Instagram, Facebook Messenger |
   </Tab>
-  <Tab title="Analytics & Tracking">
-    | Capability | Description |
+  <Tab title="Analityka i śledzenie">
+    | Możliwość | Opis |
     |---|---|
-    | **Session Tracking** | Visitor sessions with device, location, and UTM data |
-    | **Event Tracking** | Custom events — clicks, form submissions, phone calls |
-    | **Campaign Analytics** | UTM-based campaign grouping and conversion tracking |
-    | **Triggers** | Automated overlays based on time, scroll, UTM, device type |
-    | **Phone Swap** | Dynamic phone number replacement for call tracking |
-    | **Conversation Linking** | Connect tracking sessions with chat conversations |
+    | **Śledzenie sesji** | Sesje odwiedzających z danymi o urządzeniu, lokalizacji i UTM |
+    | **Śledzenie zdarzeń** | Niestandardowe zdarzenia — kliknięcia, wysłanie formularzy, połączenia telefoniczne |
+    | **Analityka kampanii** | Grupowanie kampanii na podstawie UTM i śledzenie konwersji |
+    | **Triggery** | Automatyczne nakładki na podstawie czasu, przewijania, UTM, typu urządzenia |
+    | **Podmiana numerów** | Dynamiczna podmiana numerów telefonów do śledzenia połączeń |
+    | **Łączenie rozmów** | Powiązanie sesji śledzenia z rozmowami czatowymi |
   </Tab>
-  <Tab title="Platform">
-    | Capability | Description |
+  <Tab title="Platforma">
+    | Możliwość | Opis |
     |---|---|
-    | **Company Management** | Multi-company support with isolated data per company |
-    | **Product Catalog** | Manage products and services that agents learn from |
-    | **File Manager** | Upload documents, links, text, video, and photos for knowledge bases |
-    | **Marketplace** | Browse, install, and publish workflow templates |
-    | **Billing** | Token-based metering with separate quotas for standard and premium models |
-    | **Widget Customization** | Colors, labels, placement, terms & conditions — configurable per agent |
+    | **Zarządzanie firmami** | Obsługa wielu firm z izolacją danych |
+    | **Katalog produktów** | Zarządzaj produktami i usługami, z których agenci się uczą |
+    | **Menedżer plików** | Przesyłanie dokumentów, linków, tekstów, wideo i zdjęć do baz wiedzy |
+    | **Marketplace** | Przeglądaj, instaluj i publikuj szablony workflow |
+    | **Billing** | Rozliczanie tokenowe z oddzielnymi limitami dla modeli standardowych i premium |
+    | **Personalizacja widgetu** | Kolory, etykiety, pozycja, regulamin — konfigurowalne per agent |
   </Tab>
 </Tabs>
 
-## Next Steps
+## Następne kroki
 
 <CardGroup cols={2}>
-  <Card title="Quick Start" icon="rocket" href="/quickstart">
-    Set up your company and create your first agent in minutes
+  <Card title="Szybki start" icon="rocket" href="/quickstart">
+    Skonfiguruj firmę i utwórz pierwszego agenta w kilka minut
   </Card>
-  <Card title="Core Concepts" icon="book" href="/concepts">
-    Learn the key terminology — companies, agents, workflows, tracking
+  <Card title="Kluczowe pojęcia" icon="book" href="/concepts">
+    Poznaj podstawową terminologię — firmy, agenci, workflow, śledzenie
   </Card>
-  <Card title="Widget Installation" icon="code" href="/widget/installation">
-    Embed the chat widget and tracker on your website
+  <Card title="Instalacja widgetu" icon="code" href="/widget/installation">
+    Osadź widget czatu i tracker na swojej stronie
   </Card>
-  <Card title="API Reference" icon="square-terminal" href="/api-reference/overview">
-    Integrate programmatically with the Revol API
+  <Card title="Dokumentacja API" icon="square-terminal" href="/api-reference/overview">
+    Integruj programistycznie z API Revol
   </Card>
 </CardGroup>

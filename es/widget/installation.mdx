@@ -1,11 +1,11 @@
 ---
-title: Widget Installation
-description: "Install the Revol chat widget on your website"
+title: Instalación del Widget
+description: "Instale el widget de chat de Revol en su sitio web"
 ---
 
-## Quick Install
+## Instalación rápida
 
-Add this single script before the closing `</head>` tag on your website:
+Agregue este único script antes de la etiqueta de cierre `</head>` en su sitio web:
 
 ```html
 <script src="https://app.revol.com/tracker.js"
@@ -15,35 +15,35 @@ Add this single script before the closing `</head>` tag on your website:
 </script>
 ```
 
-This script handles both the **chat widget** and **visitor tracking** — no additional code needed.
+Este script gestiona tanto el **widget de chat** como el **seguimiento de visitantes** — no se requiere código adicional.
 
-## Configuration
+## Configuración
 
-| Attribute | Required | Description |
+| Atributo | Obligatorio | Descripción |
 |-----------|----------|-------------|
-| `data-api-key` | Yes | Your widget API key |
-| `data-company-id` | Yes | Your company ID |
+| `data-api-key` | Sí | Su clave API del widget |
+| `data-company-id` | Sí | Su ID de empresa |
 
 <Tip>
-  Find your API key and Company ID in **Admin Panel** → **General Settings**.
+  Encuentre su clave API e ID de empresa en **Panel de administración** → **Configuración general**.
 </Tip>
 
-## What Gets Loaded
+## Qué se carga
 
-The tracker script automatically:
+El script de seguimiento automáticamente:
 
-1. **Initializes tracking** — sessions, pageviews, events
-2. **Loads the widget** — chat bubble with your customized appearance
-3. **Lazy-loads modules** — triggers, overlays, phone swap (only when needed)
+1. **Inicializa el seguimiento** — sesiones, vistas de página, eventos
+2. **Carga el widget** — burbuja de chat con su apariencia personalizada
+3. **Carga módulos bajo demanda** — triggers, overlays, intercambio de teléfono (solo cuando se necesitan)
 
 ## Shadow DOM
 
-The widget renders inside a **Shadow DOM** container, which means:
+El widget se renderiza dentro de un contenedor **Shadow DOM**, lo que significa:
 
-- Your site's CSS won't affect the widget
-- The widget's CSS won't affect your site
-- Complete style isolation
+- El CSS de su sitio no afectará al widget
+- El CSS del widget no afectará a su sitio
+- Aislamiento completo de estilos
 
-## Single Page Applications (SPA)
+## Aplicaciones de página única (SPA)
 
-The tracker automatically detects URL changes via `pushState` and `popstate` events. No additional configuration needed for React, Vue, or Angular apps.
+El rastreador detecta automáticamente los cambios de URL mediante eventos `pushState` y `popstate`. No se necesita configuración adicional para aplicaciones React, Vue o Angular.

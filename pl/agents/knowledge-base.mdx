@@ -1,60 +1,60 @@
 ---
-title: Knowledge Base
-description: "Train your agent with documents and content"
+title: Baza wiedzy
+description: "Trenuj swojego agenta dokumentami i treściami"
 ---
 
-## Overview
+## Przegląd
 
-The Knowledge Base uses **RAG (Retrieval-Augmented Generation)** to give your agent access to your business content. Documents are split into chunks, converted to vector embeddings, and stored for semantic search.
+Baza wiedzy wykorzystuje **RAG (Retrieval-Augmented Generation)**, aby dać Twojemu agentowi dostęp do treści biznesowych. Dokumenty są dzielone na fragmenty, konwertowane na osadzenia wektorowe i przechowywane do wyszukiwania semantycznego.
 
-Navigate to the **Knowledge Base** tab in the agent panel. Here you choose which data the agent will use for its responses.
+Przejdź do zakładki **Baza wiedzy** w panelu agenta. Tutaj wybierasz, które dane agent będzie wykorzystywał w swoich odpowiedziach.
 
 <Frame>
-  <img className="block dark:hidden" src="/images/knowledge-base-light.png" alt="Knowledge Base" />
-  <img className="hidden dark:block" src="/images/knowledge-base-dark.png" alt="Knowledge Base" />
+  <img className="block dark:hidden" src="/images/knowledge-base-light.png" alt="Baza wiedzy" />
+  <img className="hidden dark:block" src="/images/knowledge-base-dark.png" alt="Baza wiedzy" />
 </Frame>
 
-## Adding Content
+## Dodawanie treści
 
-### Documents
-Upload files in supported formats:
+### Dokumenty
+Przesyłaj pliki w obsługiwanych formatach:
 - PDF
 - DOCX
 - TXT
 
-### URLs
-Provide web page URLs. Revol will scrape the content and add it to the knowledge base.
+### Adresy URL
+Podaj adresy URL stron internetowych. Revol pobierze treść i doda ją do bazy wiedzy.
 
-### Text
-Add content directly as text blocks.
+### Tekst
+Dodawaj treść bezpośrednio jako bloki tekstowe.
 
-## How RAG Works
+## Jak działa RAG
 
 <Steps>
-  <Step title="Upload">
-    You upload a document or add content.
+  <Step title="Przesyłanie">
+    Przesyłasz dokument lub dodajesz treść.
   </Step>
-  <Step title="Chunking">
-    Content is split into manageable chunks.
+  <Step title="Fragmentacja">
+    Treść jest dzielona na zarządzalne fragmenty.
   </Step>
-  <Step title="Embedding">
-    Each chunk is converted to a vector embedding using OpenAI's text-embedding-3-small model.
+  <Step title="Osadzanie">
+    Każdy fragment jest konwertowany na osadzenie wektorowe za pomocą modelu text-embedding-3-small od OpenAI.
   </Step>
-  <Step title="Storage">
-    Embeddings are stored in PostgreSQL with pgvector extension.
+  <Step title="Przechowywanie">
+    Osadzenia są przechowywane w PostgreSQL z rozszerzeniem pgvector.
   </Step>
-  <Step title="Retrieval">
-    When a user asks a question, the most similar chunks are retrieved using cosine similarity.
+  <Step title="Pobieranie">
+    Gdy użytkownik zadaje pytanie, najbardziej podobne fragmenty są pobierane za pomocą podobieństwa kosinusowego.
   </Step>
-  <Step title="Generation">
-    Retrieved chunks are injected into the LLM prompt as context.
+  <Step title="Generowanie">
+    Pobrane fragmenty są wstrzykiwane do promptu LLM jako kontekst.
   </Step>
 </Steps>
 
-## Storage Limits
+## Limity przechowywania
 
-| Plan | Knowledge Docs | Embedding Tokens |
-|------|---------------|-----------------|
-| Free | 10 | 100,000 |
-| Premium | 100 | 1,000,000 |
-| Professional | 1,000 | 5,000,000 |
+| Plan | Dokumenty wiedzy | Tokeny osadzeń |
+|------|-----------------|----------------|
+| Darmowy | 10 | 100 000 |
+| Premium | 100 | 1 000 000 |
+| Profesjonalny | 1 000 | 5 000 000 |

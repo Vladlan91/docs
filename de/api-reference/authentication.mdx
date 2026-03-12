@@ -1,11 +1,11 @@
 ---
-title: Authentication
-description: "API authentication methods"
+title: Authentifizierung
+description: "API-Authentifizierungsmethoden"
 ---
 
-## Widget API Key
+## Widget API-Schluessel
 
-The Widget API uses a company-specific API key for authentication. This key is used by the tracker script and widget.
+Die Widget API verwendet einen unternehmensspezifischen API-Schluessel zur Authentifizierung. Dieser Schluessel wird vom Tracker-Skript und Widget verwendet.
 
 ```html
 <script src="https://app.revol.com/tracker.js"
@@ -15,19 +15,19 @@ The Widget API uses a company-specific API key for authentication. This key is u
 </script>
 ```
 
-### Domain Validation
+### Domain-Validierung
 
-Widget API requests are validated against the **Origin** header. Only requests from domains registered in your company settings will be accepted.
+Widget API-Anfragen werden anhand des **Origin**-Headers validiert. Nur Anfragen von Domains, die in Ihren Unternehmenseinstellungen registriert sind, werden akzeptiert.
 
 ## API Endpoints
 
-Widget API endpoints accept the API key via:
+Widget API endpoints akzeptieren den API-Schluessel ueber:
 
 ```bash
 # Query parameter
 GET /api/widget/init?api_key=YOUR_API_KEY&company_id=YOUR_COMPANY_ID
 
-# Or in request body
+# Oder im Anfrage-Body
 POST /api/widget/send-message
 Content-Type: application/json
 
