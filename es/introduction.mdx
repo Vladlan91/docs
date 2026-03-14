@@ -1,7 +1,7 @@
 ---
-title: Introduccion
-sidebarTitle: Introduccion
-description: "Revol — plataforma impulsada por IA para automatizar las interacciones con clientes a traves de chat, voz y canales de mensajeria"
+title: Introducción
+sidebarTitle: Introducción
+description: "Revol — plataforma para construir un departamento de ventas gestionado donde tu equipo e IA trabajan juntos bajo las mismas reglas"
 ---
 
 <Frame>
@@ -17,171 +17,175 @@ description: "Revol — plataforma impulsada por IA para automatizar las interac
   />
 
 
-## Que es Revol?
+## ¿Qué es Revol?
 
-Revol es una plataforma AI-first para gestionar las interacciones con clientes a traves de agentes inteligentes. Atiende dos casos de uso fundamentalmente diferentes desde un unico panel de control:
+Revol es una plataforma para construir un departamento de ventas gestionado. Tus gerentes e IA trabajan en un solo sistema — siguen los mismos guiones de ventas, usan la misma base de conocimientos y se comunican con los clientes a través de los mismos canales.
 
-1. **La IA gestiona la comunicacion** — el agente responde de forma autonoma a los clientes en todos los canales: chat del sitio web, llamadas telefonicas, mensajeros. Sigue su flujo de trabajo, busca en la base de conocimientos, ejecuta herramientas y resuelve solicitudes sin intervencion humana.
+Revol **no es un chatbot**. Es un sistema de gestión del proceso de ventas con IA como multiplicador de fuerza. Tres modos de operación te permiten elegir el equilibrio adecuado:
 
-2. **Su equipo gestiona la comunicacion, la IA supervisa** — sus operadores hablan con los clientes como de costumbre, mientras el agente trabaja en segundo plano como auditor de calidad. Analiza cada conversacion para verificar el cumplimiento de los estandares de comunicacion, rastrea si se siguen los guiones, identifica oportunidades perdidas y genera informacion util — sin responder directamente a los clientes.
+1. **Pasivo** — los gerentes llevan las conversaciones, la IA da sugerencias en tiempo real: qué decir a continuación, qué producto sugerir, dónde se desvía del guión.
 
-Estos dos enfoques se pueden combinar — la IA maneja las interacciones rutinarias (preguntas frecuentes, consultas sobre productos, programacion de citas) mientras su equipo se encarga de los casos complejos o delicados, con el agente analizando continuamente todo.
+2. **Activo** — la IA lleva la conversación de forma autónoma: sigue el guión de ventas, califica leads, responde preguntas sobre productos, agenda reuniones. Tu equipo revisa resultados, no chats.
 
-A diferencia de los constructores de chatbots genericos, Revol combina un **editor visual de flujos de trabajo**, **bases de conocimiento impulsadas por RAG**, **capacidades de voz en tiempo real** y **analiticas de visitantes** en una unica plataforma unificada. Ya sea que su agente este comunicandose activamente o supervisando pasivamente, conoce sus productos, sigue flujos de conversacion configurables, ejecuta herramientas externas y rastrea cada interaccion para optimizacion.
+3. **Híbrido** — los gerentes trabajan en horario laboral, la IA cubre noches y fines de semana. O la IA maneja el tráfico publicitario mientras los gerentes se enfocan en clientes VIP. Tú decides qué va dónde.
+
+Los tres modos comparten la misma base de conocimientos, los mismos guiones de ventas y la misma analítica — por lo que cambiar entre ellos es fluido.
 
 <CardGroup cols={3}>
-  <Card title="Empresa y Productos" icon="building" href="/concepts">
-    Configure su empresa, agregue productos, servicios y cargue archivos de base de conocimientos
+  <Card title="Guiones de ventas" icon="diagram-project" href="/agents/workflow">
+    Construye escenarios de conversación visualmente — saludo, calificación, oferta, cierre
   </Card>
-  <Card title="Agentes de IA" icon="robot" href="/agents/overview">
-    Cree agentes, elija fuentes de datos, entrene con su contenido usando RAG
+  <Card title="Base de conocimientos" icon="book-open" href="/agents/knowledge-base">
+    Listas de precios, FAQ, políticas — una fuente de verdad para el equipo y la IA
   </Card>
-  <Card title="Widget y Tracker" icon="window" href="/widget/installation">
-    Un unico script para chat, voz y analiticas de visitantes en su sitio web
+  <Card title="Canales" icon="plug" href="/integrations/overview">
+    Widget web, teléfono, Telegram, WhatsApp — todo en una bandeja de entrada
   </Card>
-  <Card title="Integraciones" icon="plug" href="/integrations/overview">
-    Conecte VoIP, mensajeros, Google Workspace, plataformas de publicidad y CRM mediante webhooks
+  <Card title="Agentes IA" icon="robot" href="/agents/overview">
+    4 proveedores LLM, 67 herramientas, voz — la IA adecuada para cada tarea
   </Card>
   <Card title="Conversaciones" icon="messages" href="/conversations/overview">
-    Bandeja de entrada unificada para todos los agentes con filtros, transcripcion y reproduccion de audio
+    Cada conversación auditada — cumplimiento del guión, KPI, desviaciones
   </Card>
-  <Card title="Marketplace" icon="store" href="/agents/overview">
-    Instale plantillas de flujo de trabajo predefinidas o publique las suyas propias
+  <Card title="Analítica" icon="chart-mixed" href="/widget/campaigns">
+    Conversiones por gerente, canal y campaña en un solo dashboard
   </Card>
 </CardGroup>
 
-## Como Funciona
+## Cómo funciona
 
 <Steps>
-  <Step title="Crear una Empresa">
-    Registrese y configure su empresa — agregue el nombre de su negocio, sitio web, numero de telefono y logotipo. La empresa es la base: todos los productos, archivos, agentes e integraciones pertenecen a ella.
+  <Step title="Crea una empresa">
+    Regístrate y configura tu empresa — añade el nombre, sitio web, número de teléfono y logo. La empresa es la base: todos los productos, archivos, agentes e integraciones pertenecen a ella.
 
 
-      <img className="block dark:hidden" src="/images/company-setup-light.png" alt="Creacion de empresa" />
-      <img className="hidden dark:block" src="/images/company-setup-dark.png" alt="Creacion de empresa" />
-
-  </Step>
-  <Step title="Agregar Productos y Base de Conocimientos">
-    Complete su empresa con datos de los que su agente de IA aprendera:
-
-    - **Productos y servicios** — nombre, descripcion, fotos, precios, disponibilidad
-    - **Documentos** — PDFs, archivos Word, hojas de calculo
-    - **Enlaces** — paginas web y recursos externos (el contenido se obtiene automaticamente)
-    - **Fragmentos de texto** — preguntas frecuentes, politicas, instrucciones personalizadas
-    - **Multimedia** — videos (transcritos a texto) y fotos (texto extraido por OCR)
-
-    Todo el contenido cargado se divide automaticamente en fragmentos y se convierte en embeddings vectoriales para la recuperacion RAG.
-
-
-      <img className="block dark:hidden" src="/images/file-manager-light.png" alt="Gestor de Archivos" />
-      <img className="hidden dark:block" src="/images/file-manager-dark.png" alt="Gestor de Archivos" />
+      <img className="block dark:hidden" src="/images/company-setup-light.png" alt="Creación de empresa" />
+      <img className="hidden dark:block" src="/images/company-setup-dark.png" alt="Creación de empresa" />
 
   </Step>
-  <Step title="Crear y Entrenar un Agente de IA">
-    Cree un agente, elija un caso de uso (atencion al cliente, ventas, programacion de citas, calificacion de leads) y seleccione un proveedor LLM — OpenAI, Anthropic, Gemini o Groq.
+  <Step title="Construye tu base de conocimientos">
+    Añade todo lo que tu equipo e IA necesitan para vender:
 
-    Luego elija que **fuentes de conocimiento** debe aprender su agente — productos especificos, documentos, enlaces o texto. Haga clic en **Entrenar** y Revol generara embeddings vectoriales para que su agente pueda responder preguntas basandose en sus datos reales.
+    - **Productos y servicios** — nombre, descripción, fotos, precios, disponibilidad
+    - **Documentos** — PDFs, archivos Word, hojas de cálculo, listas de precios
+    - **Enlaces** — páginas web y recursos externos (contenido obtenido automáticamente)
+    - **Fragmentos de texto** — FAQ, guiones de manejo de objeciones, políticas
+    - **Media** — videos (transcritos a texto) y fotos (OCR)
 
-
-      <img className="block dark:hidden" src="/images/agents-knowledge-base-light.png" alt="Configuracion de base de conocimientos del agente" />
-      <img className="hidden dark:block" src="/images/agents-knowledge-base-dark.png" alt="Configuracion de base de conocimientos del agente" />
-
-  </Step>
-  <Step title="Configurar Flujo de Trabajo (Opcional)">
-    Para escenarios de conversacion complejos, utilice el editor visual de flujos de trabajo. Construya flujos de multiples pasos con nodos LLM, condiciones, llamadas a herramientas e interacciones de voz — todo conectado mediante arrastrar y soltar.
+    Todo el contenido se divide automáticamente en fragmentos y se convierte en embeddings vectoriales. Los gerentes encuentran respuestas en segundos, la IA cita tus materiales reales.
 
 
-      <img className="block dark:hidden" src="/images/agents-workflow-editor-light.png" alt="Editor de flujos de trabajo" />
-      <img className="hidden dark:block" src="/images/agents-workflow-editor-dark.png" alt="Editor de flujos de trabajo" />
+      <img className="block dark:hidden" src="/images/file-manager-light.png" alt="Gestor de archivos" />
+      <img className="hidden dark:block" src="/images/file-manager-dark.png" alt="Gestor de archivos" />
 
   </Step>
-  <Step title="Conectar Canales de Comunicacion">
-    Integre su agente con los canales que sus clientes utilizan:
+  <Step title="Configura el guión de ventas">
+    Usa el editor visual de workflow para construir tu escenario de conversación: saludo → calificación → oferta → cierre. Cada paso puede incluir condiciones, llamadas a herramientas y ramificaciones.
 
-    - **Widget del sitio web** — integre un unico script para chat y voz
-    - **Telefonia** — Twilio, Ringostat o Binotel para llamadas telefonicas
+    Construye el guión una vez — tanto gerentes como IA lo siguen automáticamente. Los nuevos miembros del equipo reciben un playbook listo desde el primer día.
+
+
+      <img className="block dark:hidden" src="/images/agents-workflow-editor-light.png" alt="Editor de workflow" />
+      <img className="hidden dark:block" src="/images/agents-workflow-editor-dark.png" alt="Editor de workflow" />
+
+  </Step>
+  <Step title="Crea y entrena un agente IA">
+    Crea un agente, elige un proveedor LLM (OpenAI, Anthropic, Gemini o Groq) e indica de qué fuentes de conocimiento debe aprender — productos específicos, documentos, enlaces o textos.
+
+    Haz clic en **Entrenar** y Revol genera embeddings vectoriales para que el agente responda preguntas basándose en tus datos reales — no con respuestas genéricas.
+
+
+      <img className="block dark:hidden" src="/images/agents-knowledge-base-light.png" alt="Configuración de base de conocimientos" />
+      <img className="hidden dark:block" src="/images/agents-knowledge-base-dark.png" alt="Configuración de base de conocimientos" />
+
+  </Step>
+  <Step title="Conecta canales de comunicación">
+    Reúne todos los puntos de contacto con clientes en una bandeja de entrada:
+
+    - **Widget web** — un script para chat y voz
+    - **Telefonía** — Twilio, Ringostat o Binotel
     - **Mensajeros** — Telegram, WhatsApp Business, Instagram DM, Facebook Messenger
-    - **CRM** — Webhook personalizado para enviar datos de leads a cualquier sistema
+    - **CRM** — Custom Webhook para enviar leads a cualquier sistema
     - **Google Workspace** — Gmail, Google Docs, Sheets, Drive, Calendar y Meet
-    - **Campanas publicitarias** — analiticas de Google Ads y Facebook Ads
+    - **Campañas publicitarias** — analítica de Google Ads y Facebook Ads
 
-    Cada agente puede conectarse a multiples canales simultaneamente.
+    El equipo y la IA trabajan en los mismos canales con historial de conversaciones compartido.
   </Step>
-  <Step title="Implementar y Supervisar">
-    Instale el script del widget en su sitio web. En modo **Activo**, su agente gestiona las conversaciones de forma autonoma. En modo **Pasivo**, su equipo se comunica mientras el agente audita y analiza cada interaccion. Supervise todo en tiempo real — lea transcripciones, escuche grabaciones de llamadas, rastree sesiones de visitantes y optimice basandose en las analiticas.
+  <Step title="Lanza y monitorea">
+    Elige tu modo de operación — pasivo, activo o híbrido — y comienza. Monitorea todo en tiempo real: quién cerró cuánto, dónde se pierden los leads, qué guiones convierten mejor. La IA toma el relevo cuando el equipo no puede — noches, fines de semana, picos de tráfico.
 
 
-      <img className="block dark:hidden" src="/images/conversations-dashboard-light.png" alt="Instalacion del script del widget" />
-      <img className="hidden dark:block" src="/images/conversations-dashboard-dark.png" alt="Instalacion del script del widget" />
+      <img className="block dark:hidden" src="/images/conversations-dashboard-light.png" alt="Dashboard de conversaciones" />
+      <img className="hidden dark:block" src="/images/conversations-dashboard-dark.png" alt="Dashboard de conversaciones" />
 
   </Step>
 </Steps>
 
-## Para Quien es Revol?
+## ¿Para quién es Revol?
 
 <AccordionGroup>
-  <Accordion title="Comercio Electronico" icon="cart-shopping">
-    Automatice consultas sobre productos, seguimiento de pedidos y recomendaciones. Su agente conoce todo su catalogo de productos — descripciones, fotos, disponibilidad, precios — y puede guiar a los clientes durante las compras utilizando datos en tiempo real mediante llamadas a herramientas.
+  <Accordion title="Equipos de ventas" icon="users">
+    Estandariza el proceso de ventas con guiones, da a los gerentes sugerencias IA en tiempo real y rastrea KPI por persona. Los nuevos empleados reciben base de conocimientos + asistencia IA desde el primer día — sin semanas de capacitación.
   </Accordion>
-  <Accordion title="Empresas de Servicios" icon="headset">
-    Gestione reservas de citas, preguntas frecuentes y solicitudes de soporte 24/7. Cargue las descripciones de sus servicios, listas de precios y politicas. Los agentes con capacidad de voz pueden atender llamadas telefonicas y derivar problemas complejos a operadores humanos.
+  <Accordion title="E-commerce" icon="cart-shopping">
+    La IA conoce todo el catálogo — descripciones, fotos, disponibilidad, precios. Maneja preguntas sobre productos, recomienda alternativas y califica leads 24/7. El equipo se enfoca en cerrar.
+  </Accordion>
+  <Accordion title="Empresas de servicios" icon="headset">
+    Reserva de citas, FAQ y solicitudes de soporte — las 24 horas. Agentes de voz responden llamadas. Casos complejos se redirigen automáticamente a operadores.
   </Accordion>
   <Accordion title="Agencias" icon="buildings">
-    Gestione multiples cuentas de clientes desde un unico panel de control. Cada empresa obtiene agentes aislados, bases de conocimiento y analiticas propias. Utilice el Marketplace para reutilizar plantillas de flujo de trabajo probadas entre clientes.
-  </Accordion>
-  <Accordion title="Productos SaaS" icon="cloud">
-    Integre un agente de soporte con IA en su producto. Entrenelo con su documentacion, referencia de API y registro de cambios. Reduzca los tickets de soporte mientras mejora la calidad de las respuestas.
+    Gestiona hasta 10 empresas clientes desde una cuenta. Cada una obtiene agentes aislados, bases de conocimiento, guiones y analítica. Reutiliza plantillas de workflow probadas a través del Marketplace.
   </Accordion>
 </AccordionGroup>
 
-## Capacidades Principales
+## Capacidades clave
 
 <Tabs>
-  <Tab title="IA Orientada al Cliente">
-    | Capacidad | Descripcion |
+  <Tab title="Equipo + IA">
+    | Capacidad | Descripción |
     |---|---|
-    | **LLM Multi-Proveedor** | Elija por agente o por nodo: OpenAI, Anthropic, Gemini o Groq |
-    | **Base de Conocimientos RAG** | Busqueda vectorial via pgvector — entrene con productos, documentos, enlaces, texto |
-    | **Flujo de Trabajo Visual** | Editor de nodos con arrastrar y soltar con condiciones, llamadas a herramientas y ramificaciones |
-    | **Voz** | STT/TTS en tiempo real con deteccion de interrupciones y streaming |
-    | **Llamadas a Herramientas** | Los agentes pueden llamar APIs externas, consultar bases de datos y realizar acciones |
-    | **Multicanal** | Widget del sitio web, VoIP (Twilio, Ringostat, Binotel), Telegram, WhatsApp, Instagram, Facebook Messenger |
+    | **Guiones de ventas** | Editor visual de workflow — construye escenarios de conversación con drag-and-drop |
+    | **3 modos de operación** | Pasivo (IA sugiere), Activo (IA lidera), Híbrido (división por canales/horarios) |
+    | **Cumplimiento del guión** | La IA rastrea desviaciones del guión y marca oportunidades perdidas |
+    | **Onboarding** | Nuevos gerentes reciben base de conocimientos + sugerencias IA desde el día uno |
+    | **Auditoría de conversaciones** | Cada conversación grabada, analizada, calificada |
+    | **KPI de gerentes** | Conversiones, tiempo de respuesta, adherencia al guión — por persona |
   </Tab>
-  <Tab title="Analiticas y Seguimiento">
-    | Capacidad | Descripcion |
+  <Tab title="Capacidades IA">
+    | Capacidad | Descripción |
     |---|---|
-    | **Seguimiento de Sesiones** | Sesiones de visitantes con datos de dispositivo, ubicacion y UTM |
-    | **Seguimiento de Eventos** | Eventos personalizados — clics, envios de formularios, llamadas telefonicas |
-    | **Analiticas de Campanas** | Agrupacion de campanas basada en UTM y seguimiento de conversiones |
-    | **Disparadores** | Superposiciones automatizadas basadas en tiempo, desplazamiento, UTM, tipo de dispositivo |
-    | **Intercambio de Telefono** | Reemplazo dinamico de numeros telefonicos para seguimiento de llamadas |
-    | **Vinculacion de Conversaciones** | Conecte sesiones de seguimiento con conversaciones de chat |
+    | **Multi-Provider LLM** | Elige por agente o por nodo: OpenAI, Anthropic, Gemini o Groq |
+    | **Base de conocimientos RAG** | Búsqueda vectorial vía pgvector — entrena con productos, documentos, enlaces, textos |
+    | **67 herramientas** | Desde búsqueda de productos hasta Google Calendar, Gmail, Ads |
+    | **Voz** | STT/TTS en tiempo real con detección de interrupciones y streaming |
+    | **Multicanal** | Widget, VoIP, Telegram, WhatsApp, Instagram, Facebook Messenger |
+    | **Marketplace** | Instala plantillas de workflow listas o publica las tuyas |
   </Tab>
-  <Tab title="Plataforma">
-    | Capacidad | Descripcion |
+  <Tab title="Analítica y tracking">
+    | Capacidad | Descripción |
     |---|---|
-    | **Gestion de Empresas** | Soporte multi-empresa con datos aislados por empresa |
-    | **Catalogo de Productos** | Gestione productos y servicios de los que los agentes aprenden |
-    | **Gestor de Archivos** | Cargue documentos, enlaces, texto, video y fotos para bases de conocimiento |
-    | **Marketplace** | Explore, instale y publique plantillas de flujo de trabajo |
-    | **Facturacion** | Medicion basada en tokens con cuotas separadas para modelos estandar y premium |
-    | **Personalizacion del Widget** | Colores, etiquetas, ubicacion, terminos y condiciones — configurable por agente |
+    | **Tracking de sesiones** | Sesiones de visitantes con datos de dispositivo, ubicación y UTM |
+    | **Analítica de campañas** | Agrupación de campañas por UTM y seguimiento de conversiones |
+    | **Tracking de eventos** | Eventos personalizados — clics, envíos de formularios, llamadas |
+    | **Triggers** | Overlays automáticos basados en tiempo, scroll, UTM, tipo de dispositivo |
+    | **Intercambio de números** | Reemplazo dinámico de números telefónicos para rastreo de llamadas |
+    | **ROI por canal** | Ve qué funciona — escala, qué no — desactiva |
   </Tab>
 </Tabs>
 
-## Proximos Pasos
+## Próximos pasos
 
 <CardGroup cols={2}>
-  <Card title="Inicio Rapido" icon="rocket" href="/quickstart">
-    Configure su empresa y cree su primer agente en minutos
+  <Card title="Inicio rápido" icon="rocket" href="/quickstart">
+    Configura tu empresa y lanza tu primer agente de ventas en 15 minutos
   </Card>
-  <Card title="Conceptos Fundamentales" icon="book" href="/concepts">
-    Aprenda la terminologia clave — empresas, agentes, flujos de trabajo, seguimiento
+  <Card title="Conceptos clave" icon="book" href="/concepts">
+    Aprende la terminología — empresas, agentes, workflows, tracking
   </Card>
-  <Card title="Instalacion del Widget" icon="code" href="/widget/installation">
-    Integre el widget de chat y el tracker en su sitio web
+  <Card title="Instalación del Widget" icon="code" href="/widget/installation">
+    Integra el widget de chat y tracker en tu sitio web
   </Card>
-  <Card title="Referencia de API" icon="square-terminal" href="/api-reference/overview">
-    Integre programaticamente con la API de Revol
+  <Card title="Referencia API" icon="square-terminal" href="/api-reference/overview">
+    Integra programáticamente a través de la API de Revol
   </Card>
 </CardGroup>

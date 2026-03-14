@@ -1,118 +1,122 @@
 ---
 title: Einführung
 sidebarTitle: Einführung
-description: "Revol — KI-gestützte Plattform zur Automatisierung von Kundeninteraktionen über Chat, Sprache und Messaging-Kanäle"
+description: "Revol — Plattform zum Aufbau einer gesteuerten Vertriebsabteilung, in der Team und KI nach denselben Regeln zusammenarbeiten"
 ---
 
 <Frame>
   <img
     className="block dark:hidden"
     src="/images/hero-light.png"
-    alt="Revol Plattform"
+    alt="Revol Platform"
   />
   <img
     className="hidden dark:block"
     src="/images/hero-dark.png"
-    alt="Revol Plattform"
+    alt="Revol Platform"
   />
 
 
 ## Was ist Revol?
 
-Revol ist eine KI-first-Plattform zur Verwaltung von Kundeninteraktionen durch intelligente Agenten. Sie bedient zwei grundlegend verschiedene Anwendungsfälle über ein einziges Dashboard:
+Revol ist eine Plattform zum Aufbau einer gesteuerten Vertriebsabteilung. Ihre Manager und KI arbeiten in einem System — sie folgen denselben Verkaufsskripten, nutzen dieselbe Wissensdatenbank und kommunizieren mit Kunden über dieselben Kanäle.
 
-1. **KI übernimmt die Kommunikation** — der Agent antwortet autonom auf Kunden über alle Kanäle: Website-Chat, Telefonanrufe, Messenger. Er folgt Ihrem Workflow, durchsucht die Wissensdatenbank, ruft Tools auf und löst Anfragen ohne menschliches Eingreifen.
+Revol ist **kein Chatbot**. Es ist ein Vertriebsprozess-Management-System mit KI als Kraftverstärker. Drei Betriebsmodi ermöglichen die richtige Balance:
 
-2. **Ihr Team kommuniziert, KI überwacht** — Ihre Mitarbeiter sprechen wie gewohnt mit Kunden, während der Agent im Hintergrund als Qualitätsprüfer arbeitet. Er analysiert jedes Gespräch auf Einhaltung der Kommunikationsstandards, überprüft ob Skripte befolgt werden, identifiziert verpasste Chancen und liefert Erkenntnisse — ohne jemals direkt auf Kunden zu antworten.
+1. **Passiv** — Manager führen Gespräche, KI gibt Echtzeit-Hinweise: was als nächstes zu sagen ist, welches Produkt vorgeschlagen werden soll, wo vom Skript abgewichen wird.
 
-Diese beiden Ansätze können kombiniert werden — die KI übernimmt Routineinteraktionen (FAQ, Produktfragen, Terminplanung), während Ihr Team bei komplexen oder sensiblen Fällen einspringt, wobei der Agent kontinuierlich alles analysiert.
+2. **Aktiv** — KI führt das Gespräch selbstständig: folgt dem Verkaufsskript, qualifiziert Leads, beantwortet Produktfragen, vereinbart Termine. Das Team überprüft Ergebnisse, nicht Chats.
 
-Im Gegensatz zu generischen Chatbot-Baukästen kombiniert Revol einen **visuellen Workflow-Editor**, **RAG-gestützte Wissensdatenbanken**, **Echtzeit-Sprachfunktionen** und **Besucheranalysen** in einer einheitlichen Plattform. Ob Ihr Agent aktiv kommuniziert oder passiv überwacht — er kennt Ihre Produkte, folgt konfigurierbaren Gesprächsabläufen, ruft externe Tools auf und verfolgt jede Interaktion zur Optimierung.
+3. **Hybrid** — Manager arbeiten während der Geschäftszeiten, KI übernimmt Nächte und Wochenenden. Oder KI bearbeitet Werbetraffic, während Manager sich auf VIP-Kunden konzentrieren. Sie entscheiden, was wohin geht.
+
+Alle drei Modi nutzen dieselbe Wissensdatenbank, dieselben Verkaufsskripte und dieselbe Analytik — der Wechsel zwischen ihnen ist nahtlos.
 
 <CardGroup cols={3}>
-  <Card title="Unternehmen & Produkte" icon="building" href="/concepts">
-    Richten Sie Ihr Unternehmen ein, fügen Sie Produkte und Dienstleistungen hinzu und laden Sie Wissensdatenbank-Dateien hoch
+  <Card title="Verkaufsskripte" icon="diagram-project" href="/agents/workflow">
+    Erstellen Sie Gesprächsszenarien visuell — Begrüßung, Qualifizierung, Angebot, Abschluss
+  </Card>
+  <Card title="Wissensdatenbank" icon="book-open" href="/agents/knowledge-base">
+    Preislisten, FAQ, Richtlinien — eine Wahrheitsquelle für Team und KI
+  </Card>
+  <Card title="Kanäle" icon="plug" href="/integrations/overview">
+    Website-Widget, Telefon, Telegram, WhatsApp — alles in einem Posteingang
   </Card>
   <Card title="KI-Agenten" icon="robot" href="/agents/overview">
-    Erstellen Sie Agenten, wählen Sie Datenquellen und trainieren Sie mit Ihren Inhalten über RAG
+    4 LLM-Anbieter, 67 Tools, Sprache — die richtige KI für jede Aufgabe
   </Card>
-  <Card title="Widget & Tracker" icon="window" href="/widget/installation">
-    Ein einziges Skript-Embed für Chat, Sprache und Besucheranalysen auf Ihrer Website
+  <Card title="Gespräche" icon="messages" href="/conversations/overview">
+    Jedes Gespräch auditiert — Skript-Compliance, KPI, Abweichungen
   </Card>
-  <Card title="Integrationen" icon="plug" href="/integrations/overview">
-    Verbinden Sie VoIP, Messenger, Google Workspace, Werbeplattformen und CRM über Webhooks
-  </Card>
-  <Card title="Konversationen" icon="messages" href="/conversations/overview">
-    Einheitlicher Posteingang über alle Agenten mit Filterung, Transkription und Audiowiedergabe
-  </Card>
-  <Card title="Marktplatz" icon="store" href="/agents/overview">
-    Installieren Sie fertige Workflow-Vorlagen oder veröffentlichen Sie Ihre eigenen
+  <Card title="Analytik" icon="chart-mixed" href="/widget/campaigns">
+    Conversions nach Manager, Kanal und Kampagne auf einem Dashboard
   </Card>
 </CardGroup>
 
-## So funktioniert es
+## Wie es funktioniert
 
 <Steps>
   <Step title="Unternehmen erstellen">
-    Registrieren Sie sich und richten Sie Ihr Unternehmen ein — fügen Sie Ihren Firmennamen, Website, Telefonnummer und Logo hinzu. Das Unternehmen ist die Grundlage: Alle Produkte, Dateien, Agenten und Integrationen gehören dazu.
+    Registrieren Sie sich und richten Sie Ihr Unternehmen ein — fügen Sie Firmenname, Website, Telefonnummer und Logo hinzu. Das Unternehmen ist das Fundament: alle Produkte, Dateien, Agenten und Integrationen gehören dazu.
 
 
       <img className="block dark:hidden" src="/images/company-setup-light.png" alt="Unternehmenserstellung" />
       <img className="hidden dark:block" src="/images/company-setup-dark.png" alt="Unternehmenserstellung" />
 
   </Step>
-  <Step title="Produkte & Wissensdatenbank hinzufügen">
-    Füllen Sie Ihr Unternehmen mit Daten, aus denen Ihr KI-Agent lernen wird:
+  <Step title="Wissensdatenbank aufbauen">
+    Fügen Sie alles hinzu, was Ihr Team und KI zum Verkaufen brauchen:
 
     - **Produkte & Dienstleistungen** — Name, Beschreibung, Fotos, Preise, Verfügbarkeit
-    - **Dokumente** — PDFs, Word-Dateien, Tabellenkalkulationen
-    - **Links** — Website-Seiten und externe Ressourcen (Inhalte werden automatisch abgerufen)
-    - **Textbausteine** — FAQ, Richtlinien, benutzerdefinierte Anweisungen
-    - **Medien** — Videos (zu Text transkribiert) und Fotos (OCR-Extraktion)
+    - **Dokumente** — PDFs, Word-Dateien, Tabellen, Preislisten
+    - **Links** — Webseiten und externe Ressourcen (Inhalte werden automatisch abgerufen)
+    - **Textfragmente** — FAQ, Einwandbehandlungs-Skripte, Richtlinien
+    - **Medien** — Videos (in Text transkribiert) und Fotos (OCR-Erkennung)
 
-    Alle hochgeladenen Inhalte werden automatisch in Abschnitte unterteilt und in Vektor-Embeddings für den RAG-Abruf umgewandelt.
+    Alle Inhalte werden automatisch in Fragmente aufgeteilt und in Vektor-Embeddings konvertiert. Manager finden Antworten in Sekunden, KI zitiert Ihre tatsächlichen Materialien.
 
 
       <img className="block dark:hidden" src="/images/file-manager-light.png" alt="Dateimanager" />
       <img className="hidden dark:block" src="/images/file-manager-dark.png" alt="Dateimanager" />
 
   </Step>
-  <Step title="KI-Agent erstellen & trainieren">
-    Erstellen Sie einen Agenten, wählen Sie einen Anwendungsfall (Kundensupport, Vertrieb, Terminplanung, Lead-Qualifizierung) und wählen Sie einen LLM-Anbieter — OpenAI, Anthropic, Gemini oder Groq.
+  <Step title="Verkaufsskript einrichten">
+    Verwenden Sie den visuellen Workflow-Editor, um Ihr Gesprächsszenario zu erstellen: Begrüßung → Qualifizierung → Angebot → Abschluss. Jeder Schritt kann Bedingungen, Tool-Aufrufe und Verzweigungen enthalten.
 
-    Dann wählen Sie, aus welchen **Wissensquellen** Ihr Agent lernen soll — bestimmte Produkte, Dokumente, Links oder Texte. Klicken Sie auf **Trainieren** und Revol generiert Vektor-Embeddings, damit Ihr Agent Fragen basierend auf Ihren tatsächlichen Daten beantworten kann.
-
-
-      <img className="block dark:hidden" src="/images/agents-knowledge-base-light.png" alt="Konfiguration der Agenten-Wissensdatenbank" />
-      <img className="hidden dark:block" src="/images/agents-knowledge-base-dark.png" alt="Konfiguration der Agenten-Wissensdatenbank" />
-
-  </Step>
-  <Step title="Workflow konfigurieren (Optional)">
-    Für komplexe Gesprächsszenarien verwenden Sie den visuellen Workflow-Editor. Erstellen Sie mehrstufige Abläufe mit LLM-Knoten, Bedingungen, Tool-Aufrufen und Sprachinteraktionen — alles per Drag-and-Drop verbunden.
+    Erstellen Sie das Skript einmal — sowohl Manager als auch KI folgen ihm automatisch. Neue Mitarbeiter erhalten ein fertiges Playbook vom ersten Tag an.
 
 
       <img className="block dark:hidden" src="/images/agents-workflow-editor-light.png" alt="Workflow-Editor" />
       <img className="hidden dark:block" src="/images/agents-workflow-editor-dark.png" alt="Workflow-Editor" />
 
   </Step>
-  <Step title="Kommunikationskanäle verbinden">
-    Integrieren Sie Ihren Agenten mit den Kanälen, die Ihre Kunden nutzen:
+  <Step title="KI-Agent erstellen und trainieren">
+    Erstellen Sie einen Agenten, wählen Sie einen LLM-Anbieter (OpenAI, Anthropic, Gemini oder Groq) und geben Sie an, aus welchen Wissensquellen er lernen soll — bestimmte Produkte, Dokumente, Links oder Texte.
 
-    - **Website-Widget** — betten Sie ein einziges Skript für Chat und Sprache ein
-    - **Telefonie** — Twilio, Ringostat oder Binotel für Telefonanrufe
-    - **Messenger** — Telegram, WhatsApp Business, Instagram DM, Facebook Messenger
-    - **CRM** — Benutzerdefinierter Webhook zum Senden von Lead-Daten an jedes System
-    - **Google Workspace** — Gmail, Google Docs, Sheets, Drive, Calendar und Meet
-    - **Werbekampagnen** — Google Ads und Facebook Ads Analysen
+    Klicken Sie auf **Trainieren**, und Revol generiert Vektor-Embeddings, damit der Agent Fragen basierend auf Ihren tatsächlichen Daten beantwortet — nicht mit allgemeinen Phrasen.
 
-    Jeder Agent kann gleichzeitig mit mehreren Kanälen verbunden werden.
+
+      <img className="block dark:hidden" src="/images/agents-knowledge-base-light.png" alt="Wissensdatenbank-Konfiguration" />
+      <img className="hidden dark:block" src="/images/agents-knowledge-base-dark.png" alt="Wissensdatenbank-Konfiguration" />
+
   </Step>
-  <Step title="Bereitstellen & Überwachen">
-    Installieren Sie das Widget-Skript auf Ihrer Website. Im **Aktiv**-Modus übernimmt Ihr Agent Gespräche eigenständig. Im **Passiv**-Modus kommuniziert Ihr Team, während der Agent jede Interaktion prüft und analysiert. Überwachen Sie alles in Echtzeit — lesen Sie Transkripte, hören Sie Anrufaufzeichnungen, verfolgen Sie Besuchersitzungen und optimieren Sie basierend auf Analysen.
+  <Step title="Kommunikationskanäle verbinden">
+    Bringen Sie alle Kundenkontaktpunkte in einen Posteingang:
+
+    - **Website-Widget** — ein Skript für Chat und Sprache
+    - **Telefonie** — Twilio, Ringostat oder Binotel
+    - **Messenger** — Telegram, WhatsApp Business, Instagram DM, Facebook Messenger
+    - **CRM** — Custom Webhook zur Lead-Übertragung an jedes System
+    - **Google Workspace** — Gmail, Google Docs, Sheets, Drive, Calendar und Meet
+    - **Werbekampagnen** — Google Ads und Facebook Ads Analytik
+
+    Team und KI arbeiten in denselben Kanälen mit gemeinsamer Gesprächshistorie.
+  </Step>
+  <Step title="Starten und überwachen">
+    Wählen Sie den Betriebsmodus — passiv, aktiv oder hybrid — und starten Sie. Überwachen Sie alles in Echtzeit: wer wie viel abgeschlossen hat, wo Leads verloren gehen, welche Skripte am besten konvertieren. KI übernimmt, wenn das Team nicht kann — Nächte, Wochenenden, Stoßzeiten.
 
 
-      <img className="block dark:hidden" src="/images/conversations-dashboard-light.png" alt="Widget-Skript-Installation" />
-      <img className="hidden dark:block" src="/images/conversations-dashboard-dark.png" alt="Widget-Skript-Installation" />
+      <img className="block dark:hidden" src="/images/conversations-dashboard-light.png" alt="Gesprächs-Dashboard" />
+      <img className="hidden dark:block" src="/images/conversations-dashboard-dark.png" alt="Gesprächs-Dashboard" />
 
   </Step>
 </Steps>
@@ -120,52 +124,52 @@ Im Gegensatz zu generischen Chatbot-Baukästen kombiniert Revol einen **visuelle
 ## Für wen ist Revol?
 
 <AccordionGroup>
+  <Accordion title="Vertriebsteams" icon="users">
+    Standardisieren Sie den Verkaufsprozess mit Skripten, geben Sie Managern KI-Hinweise in Echtzeit und verfolgen Sie KPI pro Person. Neue Mitarbeiter erhalten Wissensdatenbank + KI-Unterstützung vom ersten Tag an — ohne wochenlange Einarbeitung.
+  </Accordion>
   <Accordion title="E-Commerce" icon="cart-shopping">
-    Automatisieren Sie Produktfragen, Bestellverfolgung und Empfehlungen. Ihr Agent kennt Ihren gesamten Produktkatalog — Beschreibungen, Fotos, Verfügbarkeit, Preise — und kann Kunden durch Einkäufe mit Echtzeitdaten über Tool-Aufrufe führen.
+    KI kennt den gesamten Katalog — Beschreibungen, Fotos, Verfügbarkeit, Preise. Bearbeitet Produktfragen, empfiehlt Alternativen und qualifiziert Leads 24/7. Das Team konzentriert sich auf den Abschluss.
   </Accordion>
   <Accordion title="Dienstleistungsunternehmen" icon="headset">
-    Übernehmen Sie Terminbuchungen, FAQ und Supportanfragen rund um die Uhr. Laden Sie Ihre Leistungsbeschreibungen, Preislisten und Richtlinien hoch. Sprachfähige Agenten können Telefonanrufe entgegennehmen und komplexe Anliegen an menschliche Mitarbeiter weiterleiten.
+    Terminbuchung, FAQ und Support-Anfragen — rund um die Uhr. Sprachagenten beantworten Anrufe. Komplexe Fälle werden automatisch an Operatoren weitergeleitet.
   </Accordion>
   <Accordion title="Agenturen" icon="buildings">
-    Verwalten Sie mehrere Kundenkonten über ein Dashboard. Jedes Unternehmen erhält isolierte Agenten, Wissensdatenbanken und Analysen. Nutzen Sie den Marktplatz, um bewährte Workflow-Vorlagen kundenübergreifend wiederzuverwenden.
-  </Accordion>
-  <Accordion title="SaaS-Produkte" icon="cloud">
-    Integrieren Sie einen KI-Support-Agenten in Ihr Produkt. Trainieren Sie ihn mit Ihrer Dokumentation, API-Referenz und Ihrem Changelog. Reduzieren Sie Support-Tickets bei gleichzeitiger Verbesserung der Antwortqualität.
+    Verwalten Sie bis zu 10 Kundenfirmen von einem Konto. Jede erhält isolierte Agenten, Wissensdatenbanken, Skripte und Analytik. Nutzen Sie bewährte Workflow-Vorlagen über den Marketplace.
   </Accordion>
 </AccordionGroup>
 
-## Kernfunktionen
+## Schlüsselfähigkeiten
 
 <Tabs>
-  <Tab title="Kundenorientierte KI">
-    | Funktion | Beschreibung |
+  <Tab title="Team + KI">
+    | Fähigkeit | Beschreibung |
     |---|---|
-    | **Multi-Provider LLM** | Wählen Sie pro Agent oder pro Knoten: OpenAI, Anthropic, Gemini oder Groq |
-    | **RAG-Wissensdatenbank** | Vektorsuche über pgvector — trainieren Sie mit Produkten, Dokumenten, Links, Text |
-    | **Visueller Workflow** | Drag-and-Drop-Knoteneditor mit Bedingungen, Tool-Aufrufen und Verzweigungen |
+    | **Verkaufsskripte** | Visueller Workflow-Editor — Gesprächsszenarien per Drag-and-Drop erstellen |
+    | **3 Betriebsmodi** | Passiv (KI gibt Hinweise), Aktiv (KI führt), Hybrid (Aufteilung nach Kanälen/Zeiten) |
+    | **Skript-Compliance** | KI verfolgt Abweichungen vom Skript und markiert verpasste Chancen |
+    | **Onboarding** | Neue Manager erhalten Wissensdatenbank + KI-Hinweise vom ersten Tag |
+    | **Gesprächs-Audit** | Jedes Gespräch aufgezeichnet, analysiert, bewertet |
+    | **Manager-KPI** | Conversions, Antwortzeit, Skript-Einhaltung — pro Person |
+  </Tab>
+  <Tab title="KI-Fähigkeiten">
+    | Fähigkeit | Beschreibung |
+    |---|---|
+    | **Multi-Provider LLM** | Pro Agent oder Knoten wählbar: OpenAI, Anthropic, Gemini oder Groq |
+    | **RAG Wissensdatenbank** | Vektorsuche über pgvector — trainiert auf Produkten, Dokumenten, Links, Texten |
+    | **67 Tools** | Von Produktsuche bis Google Calendar, Gmail, Ads |
     | **Sprache** | Echtzeit-STT/TTS mit Unterbrechungserkennung und Streaming |
-    | **Tool-Aufrufe** | Agenten können externe APIs aufrufen, Datenbanken abfragen und Aktionen ausführen |
-    | **Multi-Channel** | Website-Widget, VoIP (Twilio, Ringostat, Binotel), Telegram, WhatsApp, Instagram, Facebook Messenger |
+    | **Multi-Channel** | Widget, VoIP, Telegram, WhatsApp, Instagram, Facebook Messenger |
+    | **Marketplace** | Fertige Workflow-Vorlagen installieren oder eigene veröffentlichen |
   </Tab>
-  <Tab title="Analysen & Tracking">
-    | Funktion | Beschreibung |
+  <Tab title="Analytik & Tracking">
+    | Fähigkeit | Beschreibung |
     |---|---|
-    | **Sitzungsverfolgung** | Besuchersitzungen mit Geräte-, Standort- und UTM-Daten |
-    | **Ereignisverfolgung** | Benutzerdefinierte Ereignisse — Klicks, Formularübermittlungen, Telefonanrufe |
-    | **Kampagnenanalysen** | UTM-basierte Kampagnengruppierung und Konversionsverfolgung |
-    | **Trigger** | Automatisierte Overlays basierend auf Zeit, Scrolltiefe, UTM, Gerätetyp |
-    | **Rufnummerntausch** | Dynamischer Telefonnummernaustausch für Anrufverfolgung |
-    | **Konversationsverknüpfung** | Verbindung von Tracking-Sitzungen mit Chat-Konversationen |
-  </Tab>
-  <Tab title="Plattform">
-    | Funktion | Beschreibung |
-    |---|---|
-    | **Unternehmensverwaltung** | Multi-Unternehmen-Support mit isolierten Daten pro Unternehmen |
-    | **Produktkatalog** | Verwalten Sie Produkte und Dienstleistungen, aus denen Agenten lernen |
-    | **Dateimanager** | Laden Sie Dokumente, Links, Text, Video und Fotos für Wissensdatenbanken hoch |
-    | **Marktplatz** | Durchsuchen, installieren und veröffentlichen Sie Workflow-Vorlagen |
-    | **Abrechnung** | Token-basierte Messung mit separaten Kontingenten für Standard- und Premium-Modelle |
-    | **Widget-Anpassung** | Farben, Beschriftungen, Platzierung, AGB — pro Agent konfigurierbar |
+    | **Session-Tracking** | Besuchersitzungen mit Geräte-, Standort- und UTM-Daten |
+    | **Kampagnen-Analytik** | UTM-basierte Kampagnengruppierung und Conversion-Tracking |
+    | **Event-Tracking** | Benutzerdefinierte Ereignisse — Klicks, Formularübermittlungen, Anrufe |
+    | **Trigger** | Automatische Overlays basierend auf Zeit, Scroll, UTM, Gerätetyp |
+    | **Nummernwechsel** | Dynamischer Telefonnummerntausch zur Anrufverfolgung |
+    | **ROI pro Kanal** | Sehen Sie, was funktioniert — skalieren, was nicht — abschalten |
   </Tab>
 </Tabs>
 
@@ -173,15 +177,15 @@ Im Gegensatz zu generischen Chatbot-Baukästen kombiniert Revol einen **visuelle
 
 <CardGroup cols={2}>
   <Card title="Schnellstart" icon="rocket" href="/quickstart">
-    Richten Sie Ihr Unternehmen ein und erstellen Sie Ihren ersten Agenten in wenigen Minuten
+    Richten Sie Ihr Unternehmen ein und starten Sie Ihren ersten Verkaufsagenten in 15 Minuten
   </Card>
   <Card title="Kernkonzepte" icon="book" href="/concepts">
-    Lernen Sie die wichtigsten Begriffe — Unternehmen, Agenten, Workflows, Tracking
+    Lernen Sie die Terminologie — Unternehmen, Agenten, Workflows, Tracking
   </Card>
   <Card title="Widget-Installation" icon="code" href="/widget/installation">
-    Betten Sie das Chat-Widget und den Tracker auf Ihrer Website ein
+    Betten Sie Chat-Widget und Tracker auf Ihrer Website ein
   </Card>
   <Card title="API-Referenz" icon="square-terminal" href="/api-reference/overview">
-    Integrieren Sie programmgesteuert mit der Revol API
+    Integrieren Sie programmatisch über die Revol API
   </Card>
 </CardGroup>

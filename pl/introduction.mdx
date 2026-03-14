@@ -1,52 +1,54 @@
 ---
 title: Wprowadzenie
 sidebarTitle: Wprowadzenie
-description: "Revol — platforma oparta na AI do automatyzacji interakcji z klientami przez czat, telefon i komunikatory"
+description: "Revol — platforma do budowania zarządzanego działu sprzedaży, gdzie zespół i AI pracują razem według tych samych zasad"
 ---
 
 <Frame>
   <img
     className="block dark:hidden"
     src="/images/hero-light.png"
-    alt="Platforma Revol"
+    alt="Revol Platform"
   />
   <img
     className="hidden dark:block"
     src="/images/hero-dark.png"
-    alt="Platforma Revol"
+    alt="Revol Platform"
   />
 
 
 ## Czym jest Revol?
 
-Revol to platforma AI-first do zarządzania interakcjami z klientami za pomocą inteligentnych agentów. Obsługuje dwa zasadniczo różne scenariusze użycia z jednego panelu:
+Revol to platforma do budowania zarządzanego działu sprzedaży. Twoi menedżerowie i AI pracują w jednym systemie — stosują te same skrypty sprzedażowe, korzystają z tej samej bazy wiedzy i komunikują się z klientami przez te same kanały.
 
-1. **AI prowadzi komunikację** — agent autonomicznie odpowiada klientom we wszystkich kanałach: czat na stronie, rozmowy telefoniczne, komunikatory. Realizuje Twój workflow, przeszukuje bazę wiedzy, wywołuje narzędzia i rozwiązuje zapytania bez udziału człowieka.
+Revol to **nie chatbot**. To system zarządzania procesem sprzedaży z AI jako wzmocnieniem zespołu. Trzy tryby pracy pozwalają wybrać odpowiednią równowagę:
 
-2. **Twój zespół prowadzi komunikację, AI monitoruje** — Twoi operatorzy rozmawiają z klientami jak zwykle, a agent działa w tle jako audytor jakości. Analizuje każdą rozmowę pod kątem zgodności ze standardami komunikacji, śledzi przestrzeganie skryptów, identyfikuje utracone szanse i dostarcza wnioski — bez bezpośredniego odpowiadania klientom.
+1. **Pasywny** — menedżerowie prowadzą rozmowy, AI podpowiada w czasie rzeczywistym: co powiedzieć dalej, jaki produkt zaproponować, gdzie następuje odchylenie od skryptu.
 
-Te dwa podejścia można łączyć — AI obsługuje rutynowe interakcje (FAQ, pytania o produkty, rezerwacje), a Twój zespół przejmuje skomplikowane lub wrażliwe przypadki, podczas gdy agent nieprzerwanie analizuje wszystko.
+2. **Aktywny** — AI prowadzi rozmowę samodzielnie: stosuje skrypt sprzedażowy, kwalifikuje leady, odpowiada na pytania o produkty, umawia spotkania. Zespół przegląda wyniki, nie czaty.
 
-W przeciwieństwie do typowych kreatorów chatbotów, Revol łączy **wizualny edytor workflow**, **bazy wiedzy oparte na RAG**, **możliwości głosowe w czasie rzeczywistym** i **analitykę odwiedzających** w jednej zintegrowanej platformie. Niezależnie od tego, czy agent aktywnie komunikuje się, czy pasywnie monitoruje, zna Twoje produkty, realizuje konfigurowalne scenariusze rozmów, wywołuje zewnętrzne narzędzia i śledzi każdą interakcję w celu optymalizacji.
+3. **Hybrydowy** — menedżerowie pracują w godzinach pracy, AI przejmuje noce i weekendy. Lub AI obsługuje ruch reklamowy, a menedżerowie skupiają się na klientach VIP. Ty decydujesz, co gdzie trafia.
+
+Wszystkie trzy tryby korzystają z tej samej bazy wiedzy, tych samych skryptów sprzedażowych i tej samej analityki — więc przełączanie między nimi jest bezproblemowe.
 
 <CardGroup cols={3}>
-  <Card title="Firma i produkty" icon="building" href="/concepts">
-    Skonfiguruj firmę, dodaj produkty, usługi i prześlij pliki bazy wiedzy
+  <Card title="Skrypty sprzedaży" icon="diagram-project" href="/agents/workflow">
+    Buduj scenariusze rozmów wizualnie — powitanie, kwalifikacja, oferta, zamknięcie
+  </Card>
+  <Card title="Baza wiedzy" icon="book-open" href="/agents/knowledge-base">
+    Cenniki, FAQ, regulaminy — jedno źródło prawdy dla zespołu i AI
+  </Card>
+  <Card title="Kanały" icon="plug" href="/integrations/overview">
+    Widget na stronę, telefon, Telegram, WhatsApp — wszystko w jednym panelu
   </Card>
   <Card title="Agenci AI" icon="robot" href="/agents/overview">
-    Twórz agentów, wybieraj źródła danych, trenuj na swoich treściach z RAG
-  </Card>
-  <Card title="Widget i Tracker" icon="window" href="/widget/installation">
-    Jeden skrypt do czatu, głosu i analityki odwiedzających na Twojej stronie
-  </Card>
-  <Card title="Integracje" icon="plug" href="/integrations/overview">
-    Połącz VoIP, komunikatory, Google Workspace, platformy reklamowe i CRM przez webhooki
+    4 dostawców LLM, 67 narzędzi, głos — odpowiedni AI do każdego zadania
   </Card>
   <Card title="Rozmowy" icon="messages" href="/conversations/overview">
-    Wspólna skrzynka odbiorcza dla wszystkich agentów z filtrowaniem, transkrypcją i odtwarzaniem audio
+    Każda rozmowa audytowana — zgodność ze skryptem, KPI, odchylenia
   </Card>
-  <Card title="Marketplace" icon="store" href="/agents/overview">
-    Instaluj gotowe szablony workflow lub publikuj własne
+  <Card title="Analityka" icon="chart-mixed" href="/widget/campaigns">
+    Konwersje według menedżerów, kanałów i kampanii na jednym dashboardzie
   </Card>
 </CardGroup>
 
@@ -54,65 +56,67 @@ W przeciwieństwie do typowych kreatorów chatbotów, Revol łączy **wizualny e
 
 <Steps>
   <Step title="Utwórz firmę">
-    Zarejestruj się i skonfiguruj firmę — dodaj nazwę firmy, stronę internetową, numer telefonu i logo. Firma jest fundamentem: wszystkie produkty, pliki, agenci i integracje należą do niej.
+    Zarejestruj się i skonfiguruj swoją firmę — dodaj nazwę, stronę internetową, numer telefonu i logo. Firma jest fundamentem: wszystkie produkty, pliki, agenci i integracje należą do niej.
 
 
       <img className="block dark:hidden" src="/images/company-setup-light.png" alt="Tworzenie firmy" />
       <img className="hidden dark:block" src="/images/company-setup-dark.png" alt="Tworzenie firmy" />
 
   </Step>
-  <Step title="Dodaj produkty i bazę wiedzy">
-    Uzupełnij firmę danymi, z których Twój agent AI będzie się uczył:
+  <Step title="Zbuduj bazę wiedzy">
+    Dodaj wszystko, czego Twój zespół i AI potrzebują do sprzedaży:
 
     - **Produkty i usługi** — nazwa, opis, zdjęcia, ceny, dostępność
-    - **Dokumenty** — pliki PDF, Word, arkusze kalkulacyjne
+    - **Dokumenty** — PDF, pliki Word, arkusze kalkulacyjne, cenniki
     - **Linki** — strony internetowe i zasoby zewnętrzne (treść pobierana automatycznie)
-    - **Fragmenty tekstowe** — FAQ, regulaminy, niestandardowe instrukcje
-    - **Media** — filmy (transkrybowane na tekst) i zdjęcia (tekst wyodrębniany przez OCR)
+    - **Fragmenty tekstowe** — FAQ, skrypty obsługi obiekcji, polityki
+    - **Media** — filmy (transkrybowane na tekst) i zdjęcia (OCR)
 
-    Wszystkie przesłane treści są automatycznie dzielone na fragmenty i konwertowane na wektorowe embeddingi do wyszukiwania RAG.
+    Cała zawartość jest automatycznie dzielona na fragmenty i konwertowana na embeddingi wektorowe. Menedżerowie znajdują odpowiedzi w sekundy, AI cytuje Twoje rzeczywiste materiały.
 
 
       <img className="block dark:hidden" src="/images/file-manager-light.png" alt="Menedżer plików" />
       <img className="hidden dark:block" src="/images/file-manager-dark.png" alt="Menedżer plików" />
 
   </Step>
-  <Step title="Utwórz i wytrenuj agenta AI">
-    Utwórz agenta, wybierz przypadek użycia (obsługa klienta, sprzedaż, rezerwacje, kwalifikacja leadów) i dostawcę LLM — OpenAI, Anthropic, Gemini lub Groq.
+  <Step title="Ustaw skrypt sprzedaży">
+    Użyj wizualnego edytora workflow, aby zbudować scenariusz rozmowy: powitanie → kwalifikacja → oferta → zamknięcie. Każdy krok może zawierać warunki, wywołania narzędzi i rozgałęzienia.
 
-    Następnie wybierz **źródła wiedzy**, z których agent ma się uczyć — konkretne produkty, dokumenty, linki lub teksty. Kliknij **Trenuj**, a Revol wygeneruje wektorowe embeddingi, dzięki czemu agent będzie odpowiadać na pytania na podstawie Twoich rzeczywistych danych.
-
-
-      <img className="block dark:hidden" src="/images/agents-knowledge-base-light.png" alt="Konfiguracja bazy wiedzy agenta" />
-      <img className="hidden dark:block" src="/images/agents-knowledge-base-dark.png" alt="Konfiguracja bazy wiedzy agenta" />
-
-  </Step>
-  <Step title="Skonfiguruj workflow (opcjonalnie)">
-    Do złożonych scenariuszy rozmów użyj wizualnego edytora workflow. Buduj wieloetapowe przepływy z węzłami LLM, warunkami, wywołaniami narzędzi i interakcjami głosowymi — wszystko łączone metodą przeciągnij i upuść.
+    Zbuduj skrypt raz — zarówno menedżerowie, jak i AI stosują go automatycznie. Nowi pracownicy otrzymują gotowy playbook od pierwszego dnia.
 
 
       <img className="block dark:hidden" src="/images/agents-workflow-editor-light.png" alt="Edytor workflow" />
       <img className="hidden dark:block" src="/images/agents-workflow-editor-dark.png" alt="Edytor workflow" />
 
   </Step>
-  <Step title="Połącz kanały komunikacji">
-    Zintegruj agenta z kanałami, z których korzystają Twoi klienci:
+  <Step title="Utwórz i wytrenuj agenta AI">
+    Utwórz agenta, wybierz dostawcę LLM (OpenAI, Anthropic, Gemini lub Groq) i wskaż, z jakich źródeł wiedzy ma się uczyć — konkretne produkty, dokumenty, linki lub teksty.
 
-    - **Widget na stronie** — osadź jeden skrypt do czatu i głosu
-    - **Telefonia** — Twilio, Ringostat lub Binotel do rozmów telefonicznych
+    Kliknij **Trenuj**, a Revol wygeneruje embeddingi wektorowe, dzięki czemu agent odpowiada na pytania na podstawie Twoich rzeczywistych danych — nie ogólnikami.
+
+
+      <img className="block dark:hidden" src="/images/agents-knowledge-base-light.png" alt="Konfiguracja bazy wiedzy agenta" />
+      <img className="hidden dark:block" src="/images/agents-knowledge-base-dark.png" alt="Konfiguracja bazy wiedzy agenta" />
+
+  </Step>
+  <Step title="Podłącz kanały komunikacji">
+    Zbierz wszystkie punkty kontaktu z klientami w jednym panelu:
+
+    - **Widget na stronę** — jeden skrypt dla czatu i głosu
+    - **Telefonia** — Twilio, Ringostat lub Binotel
     - **Komunikatory** — Telegram, WhatsApp Business, Instagram DM, Facebook Messenger
-    - **CRM** — niestandardowy Webhook do wysyłania danych o leadach do dowolnego systemu
+    - **CRM** — Custom Webhook do przesyłania leadów do dowolnego systemu
     - **Google Workspace** — Gmail, Google Docs, Sheets, Drive, Calendar i Meet
     - **Kampanie reklamowe** — analityka Google Ads i Facebook Ads
 
-    Każdy agent może być jednocześnie podłączony do wielu kanałów.
+    Zespół i AI pracują w tych samych kanałach ze wspólną historią rozmów.
   </Step>
-  <Step title="Wdróż i monitoruj">
-    Zainstaluj skrypt widgetu na swojej stronie. W trybie **Aktywnym** agent prowadzi rozmowy autonomicznie. W trybie **Pasywnym** Twój zespół komunikuje się, a agent audytuje i analizuje każdą interakcję. Monitoruj wszystko w czasie rzeczywistym — czytaj transkrypcje, słuchaj nagrań rozmów, śledź sesje odwiedzających i optymalizuj na podstawie analityki.
+  <Step title="Uruchom i monitoruj">
+    Wybierz tryb pracy — pasywny, aktywny lub hybrydowy — i startuj. Monitoruj wszystko w czasie rzeczywistym: kto ile zamknął, gdzie tracą się leady, które skrypty konwertują najlepiej. AI przejmuje, gdy zespół nie może — noce, weekendy, szczyty ruchu.
 
 
-      <img className="block dark:hidden" src="/images/conversations-dashboard-light.png" alt="Instalacja skryptu widgetu" />
-      <img className="hidden dark:block" src="/images/conversations-dashboard-dark.png" alt="Instalacja skryptu widgetu" />
+      <img className="block dark:hidden" src="/images/conversations-dashboard-light.png" alt="Dashboard rozmów" />
+      <img className="hidden dark:block" src="/images/conversations-dashboard-dark.png" alt="Dashboard rozmów" />
 
   </Step>
 </Steps>
@@ -120,52 +124,52 @@ W przeciwieństwie do typowych kreatorów chatbotów, Revol łączy **wizualny e
 ## Dla kogo jest Revol?
 
 <AccordionGroup>
+  <Accordion title="Zespoły sprzedaży" icon="users">
+    Standaryzuj proces sprzedaży skryptami, daj menedżerom podpowiedzi AI w czasie rzeczywistym i śledź KPI na osobę. Nowi pracownicy otrzymują bazę wiedzy + wsparcie AI od pierwszego dnia — bez tygodni szkolenia.
+  </Accordion>
   <Accordion title="E-commerce" icon="cart-shopping">
-    Automatyzuj pytania o produkty, śledzenie zamówień i rekomendacje. Twój agent zna cały katalog produktów — opisy, zdjęcia, dostępność, ceny — i może prowadzić klientów przez zakupy, korzystając z danych w czasie rzeczywistym poprzez wywołania narzędzi.
+    AI zna cały katalog — opisy, zdjęcia, dostępność, ceny. Obsługuje pytania o produkty, rekomenduje alternatywy i kwalifikuje leady 24/7. Zespół skupia się na zamykaniu.
   </Accordion>
   <Accordion title="Firmy usługowe" icon="headset">
-    Obsługuj rezerwację wizyt, FAQ i zapytania supportowe 24/7. Prześlij opisy usług, cenniki i regulaminy. Agenci z obsługą głosu mogą odbierać rozmowy telefoniczne i przekierowywać skomplikowane sprawy do operatorów.
+    Rezerwacja wizyt, FAQ i zapytania wsparcia — całodobowo. Agenci głosowi odpowiadają na połączenia. Złożone przypadki automatycznie przekierowywane do operatorów.
   </Accordion>
   <Accordion title="Agencje" icon="buildings">
-    Zarządzaj wieloma kontami klientów z jednego panelu. Każda firma ma izolowanych agentów, bazy wiedzy i analitykę. Korzystaj z Marketplace, aby ponownie wykorzystywać sprawdzone szablony workflow u różnych klientów.
-  </Accordion>
-  <Accordion title="Produkty SaaS" icon="cloud">
-    Osadź agenta wsparcia AI w swoim produkcie. Wytrenuj go na dokumentacji, referencji API i changelogu. Zmniejsz liczbę zgłoszeń supportowych, jednocześnie poprawiając jakość odpowiedzi.
+    Zarządzaj do 10 firmami klientów z jednego konta. Każda otrzymuje izolowanych agentów, bazy wiedzy, skrypty i analitykę. Ponownie wykorzystuj sprawdzone szablony workflow przez Marketplace.
   </Accordion>
 </AccordionGroup>
 
 ## Kluczowe możliwości
 
 <Tabs>
-  <Tab title="AI dla klientów">
+  <Tab title="Zespół + AI">
     | Możliwość | Opis |
     |---|---|
-    | **Multi-Provider LLM** | Wybór na agenta lub na węzeł: OpenAI, Anthropic, Gemini lub Groq |
-    | **Baza wiedzy RAG** | Wyszukiwanie wektorowe przez pgvector — trenowanie na produktach, dokumentach, linkach, tekstach |
-    | **Wizualny workflow** | Edytor węzłowy z przeciąganiem, warunkami, wywołaniami narzędzi i rozgałęzieniami |
-    | **Głos** | STT/TTS w czasie rzeczywistym z detekcją przerwań i streamingiem |
-    | **Wywoływanie narzędzi** | Agenci mogą wywoływać zewnętrzne API, odpytywać bazy danych i wykonywać akcje |
-    | **Multi-kanałowość** | Widget na stronie, VoIP (Twilio, Ringostat, Binotel), Telegram, WhatsApp, Instagram, Facebook Messenger |
+    | **Skrypty sprzedaży** | Wizualny edytor workflow — buduj scenariusze rozmów drag-and-drop |
+    | **3 tryby pracy** | Pasywny (AI podpowiada), Aktywny (AI prowadzi), Hybrydowy (podział na kanały/godziny) |
+    | **Zgodność ze skryptem** | AI śledzi odchylenia od skryptu i oznacza utracone szanse |
+    | **Onboarding** | Nowi menedżerowie otrzymują bazę wiedzy + podpowiedzi AI od pierwszego dnia |
+    | **Audyt rozmów** | Każda rozmowa nagrana, przeanalizowana, oceniona |
+    | **KPI menedżerów** | Konwersje, czas odpowiedzi, zgodność ze skryptem — na osobę |
   </Tab>
-  <Tab title="Analityka i śledzenie">
+  <Tab title="Możliwości AI">
     | Możliwość | Opis |
     |---|---|
-    | **Śledzenie sesji** | Sesje odwiedzających z danymi o urządzeniu, lokalizacji i UTM |
-    | **Śledzenie zdarzeń** | Niestandardowe zdarzenia — kliknięcia, wysłanie formularzy, połączenia telefoniczne |
+    | **Multi-Provider LLM** | Wybieraj na agenta lub węzeł: OpenAI, Anthropic, Gemini lub Groq |
+    | **Baza wiedzy RAG** | Wyszukiwanie wektorowe przez pgvector — trenuj na produktach, dokumentach, linkach, tekstach |
+    | **67 narzędzi** | Od wyszukiwania produktów po Google Calendar, Gmail, Ads |
+    | **Głos** | STT/TTS w czasie rzeczywistym z wykrywaniem przerywania i streamingiem |
+    | **Wielokanałowość** | Widget, VoIP, Telegram, WhatsApp, Instagram, Facebook Messenger |
+    | **Marketplace** | Instaluj gotowe szablony workflow lub publikuj własne |
+  </Tab>
+  <Tab title="Analityka i tracking">
+    | Możliwość | Opis |
+    |---|---|
+    | **Tracking sesji** | Sesje odwiedzających z danymi o urządzeniu, lokalizacji i UTM |
     | **Analityka kampanii** | Grupowanie kampanii na podstawie UTM i śledzenie konwersji |
-    | **Triggery** | Automatyczne nakładki na podstawie czasu, przewijania, UTM, typu urządzenia |
-    | **Podmiana numerów** | Dynamiczna podmiana numerów telefonów do śledzenia połączeń |
-    | **Łączenie rozmów** | Powiązanie sesji śledzenia z rozmowami czatowymi |
-  </Tab>
-  <Tab title="Platforma">
-    | Możliwość | Opis |
-    |---|---|
-    | **Zarządzanie firmami** | Obsługa wielu firm z izolacją danych |
-    | **Katalog produktów** | Zarządzaj produktami i usługami, z których agenci się uczą |
-    | **Menedżer plików** | Przesyłanie dokumentów, linków, tekstów, wideo i zdjęć do baz wiedzy |
-    | **Marketplace** | Przeglądaj, instaluj i publikuj szablony workflow |
-    | **Billing** | Rozliczanie tokenowe z oddzielnymi limitami dla modeli standardowych i premium |
-    | **Personalizacja widgetu** | Kolory, etykiety, pozycja, regulamin — konfigurowalne per agent |
+    | **Tracking zdarzeń** | Niestandardowe zdarzenia — kliknięcia, wysyłki formularzy, połączenia |
+    | **Triggery** | Automatyczne overlaye na podstawie czasu, scrollu, UTM, typu urządzenia |
+    | **Zamiana numerów** | Dynamiczna zamiana numerów telefonów do śledzenia połączeń |
+    | **ROI na kanał** | Widzisz co działa — skalujesz, co nie — wyłączasz |
   </Tab>
 </Tabs>
 
@@ -173,15 +177,15 @@ W przeciwieństwie do typowych kreatorów chatbotów, Revol łączy **wizualny e
 
 <CardGroup cols={2}>
   <Card title="Szybki start" icon="rocket" href="/quickstart">
-    Skonfiguruj firmę i utwórz pierwszego agenta w kilka minut
+    Skonfiguruj firmę i uruchom pierwszego agenta sprzedaży w 15 minut
   </Card>
   <Card title="Kluczowe pojęcia" icon="book" href="/concepts">
-    Poznaj podstawową terminologię — firmy, agenci, workflow, śledzenie
+    Poznaj terminologię — firmy, agenci, workflow, tracking
   </Card>
-  <Card title="Instalacja widgetu" icon="code" href="/widget/installation">
+  <Card title="Instalacja Widgetu" icon="code" href="/widget/installation">
     Osadź widget czatu i tracker na swojej stronie
   </Card>
-  <Card title="Dokumentacja API" icon="square-terminal" href="/api-reference/overview">
-    Integruj programistycznie z API Revol
+  <Card title="API Reference" icon="square-terminal" href="/api-reference/overview">
+    Integruj programistycznie przez Revol API
   </Card>
 </CardGroup>
