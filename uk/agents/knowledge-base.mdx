@@ -58,3 +58,155 @@ description: "Навчайте вашого агента за допомогою
 | Free | 10 | 100,000 |
 | Premium | 100 | 1,000,000 |
 | Professional | 1,000 | 5,000,000 |
+
+---
+
+## Генерація бази знань за допомогою Claude Code
+
+Якщо у вас є документація проекту (сторінки сайту, портал документації, README файли, wiki) і ви хочете перетворити її на структуровану базу знань для вашого AI-агента Revol, ви можете використати **Claude Code** для аналізу документації та генерації готових до завантаження TXT файлів.
+
+<Accordion title="Промпт для генерації бази знань">
+```text
+# Instruction: Generate Knowledge Base Files from Documentation
+
+## Context
+
+I use Revol — a platform for building AI sales agents with RAG
+(Retrieval-Augmented Generation). My agent answers questions
+using a knowledge base: uploaded files are chunked (max 2000
+chars, 20% overlap), embedded via OpenAI text-embedding-ada-002
+(1536 dimensions), stored in PostgreSQL with pgvector, and
+searched by cosine similarity at inference time.
+
+I need to convert my project documentation into a set of .txt
+files optimized for this RAG pipeline — so the agent can find
+and cite accurate answers.
+
+## How RAG Chunking Works (important for file structure)
+
+- Each file is split into chunks of ~2000 characters with 20%
+  overlap at sentence boundaries
+- The file name becomes part of the embedding metadata — use
+  descriptive names so the system can identify the source
+- Shorter, focused files perform better than one giant file
+- Each chunk should be self-contained — a reader should
+  understand the chunk without needing the surrounding text
+- Structured content (lists, tables as text, clear headers)
+  chunks better than long prose paragraphs
+
+## Your Task
+
+### Step 1: Analyze All Documentation
+
+Read every documentation file in the project. For each file,
+identify:
+
+1. The topic it covers
+2. Key facts, settings, configurations, and values
+3. Step-by-step procedures
+4. Feature descriptions with specifics (limits, options, formats)
+5. Pricing, plans, and quotas (if applicable)
+6. Technical details (APIs, parameters, integrations)
+
+### Step 2: Plan the File Structure
+
+Group related content into logical topics. Each file should
+cover ONE cohesive topic. Target file sizes:
+
+- Ideal: 2,000–6,000 characters per file (1–3 chunks)
+- Maximum: 10,000 characters (5 chunks)
+- If a topic is larger, split it into sub-topics
+
+Naming convention: {Topic-Name}.txt
+- Use descriptive English names with hyphens
+- No numbering prefixes (ordering doesn't matter for RAG)
+- Name should hint at the content for metadata
+
+Examples:
+- Platform-Overview.txt
+- Getting-Started.txt
+- Pricing-Plans.txt
+- API-Authentication.txt
+- Webhook-Integration.txt
+
+### Step 3: Write the Files
+
+For each file, follow these rules:
+
+Content rules:
+- Start with a clear topic heading as plain text
+- Write in plain text — no Markdown formatting, no HTML,
+  no JSX components
+- Convert tables to readable text lists or key-value pairs
+- Convert step-by-step guides to numbered lists
+- Include specific values: numbers, limits, prices, options,
+  defaults, formats, URLs
+- Each paragraph or section should be understandable on its
+  own (self-contained chunks)
+- Remove navigation elements, "Next Steps" links, and
+  cross-references that don't add informational value
+- Keep the original language of the documentation
+
+Optimization for RAG:
+- Front-load important information — put the answer before
+  the explanation
+- Use consistent terminology throughout all files
+- Repeat key terms naturally so they appear in multiple
+  chunks (improves retrieval)
+- For features with settings: list setting name, type,
+  default value, options, and description
+- For integrations: list provider, auth method, setup steps,
+  available tools/functions
+
+What to exclude:
+- Screenshots and image references
+- UI component markup (tabs, accordions, cards, frames)
+- "See also" and navigation links
+- Decorative text and marketing fluff
+- Duplicate content (don't repeat the same info in
+  multiple files)
+
+### Step 4: Create the Output
+
+1. Create a temporary directory (e.g., temp-knowledge-base/)
+2. Write all .txt files into it
+3. List all files with their sizes and topic descriptions
+4. Provide a summary of total files and total size
+
+## Optional: Generate a Workflow Agent Seeder
+
+If the project uses Revol and you also need to create an AI
+agent with a workflow to answer questions about this
+documentation, generate a Laravel database seeder that:
+
+1. Creates an AiAgent with:
+   - Appropriate system prompt for documentation support
+   - LLM: gpt-4o-mini, temperature: 0.3 (accuracy)
+   - Personality: high clarity (8-9), high formality (6-7),
+     low humor (2-3), low emoji (1-2)
+
+2. Builds a Smart Router workflow:
+   - Start node with keyword-based edges to expert nodes
+   - 3-6 custom "expert" nodes, each covering a topic group
+   - Each expert has a specific conversation_goal describing
+     its domain
+   - Each expert has search_documents + get_company_info tools
+   - One fallback edge to a General Assistant node
+   - All experts connect to a Formatter node
+   - Voice nodes (STT/TTS) inactive by default
+
+3. Keywords on edges should match the natural vocabulary
+   users would use when asking about each topic
+
+## Input
+
+My documentation is located at: [PATH OR URL]
+Project name: [NAME]
+Project description: [BRIEF DESCRIPTION]
+Target company_id for seeder: [ID or skip seeder]
+```
+</Accordion>
+
+<Tip>
+  Цей промпт найкраще працює з комплексними порталами документації, документацією продуктів, довідниками API та базами знань. Згенеровані .txt файли готові для завантаження безпосередньо у File Manager Revol — просто перетягніть та натисніть **Train**.
+</Tip>
