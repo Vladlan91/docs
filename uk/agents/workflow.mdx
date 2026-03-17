@@ -48,3 +48,215 @@ description: "Створюйте потоки розмов за допомого
 - Зберігайте workflow простими — складні потоки важче відлагоджувати
 - Використовуйте вузли Condition для обробки граничних випадків
 - Тестуйте кожен шлях окремо перед публікацією
+
+---
+
+## Генерація воркфлоу за допомогою Claude Code
+
+Якщо ви хочете створити кастомний воркфлоу для вашого AI-агента на основі бізнес-вимог, ви можете використати **Claude Code** для генерації готового JSON-шаблону воркфлоу.
+
+<Accordion title="Промпт для генерації воркфлоу">
+```text
+# Instruction: Generate a Revol Workflow Template JSON
+
+## Context
+
+I use Revol — a platform for building AI sales agents. Each agent
+has a visual workflow editor with nodes and edges that define
+conversation logic.
+
+I need you to generate a workflow template as a JSON object that
+I can import into my Revol agent. The JSON follows a strict schema
+used by Revol's template system.
+
+## JSON Schema
+
+The output must be a single JSON object with these top-level keys:
+
+{
+  "nodes_data": [...],
+  "edges_data": [...],
+  "tools_data": {...},
+  "memory_fields_data": [...]   // optional
+}
+
+### nodes_data (array of objects)
+
+Each node object has these fields:
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| index | integer | yes | Unique index (0-based), used for edge references |
+| node_type | string | yes | One of: start, custom, system_stt, system_tts, system_product, system_media, system_company, system_formatter |
+| name | string | yes | Display name on the canvas |
+| position_x | integer | yes | Canvas X coordinate |
+| position_y | integer | yes | Canvas Y coordinate |
+| is_active | boolean | yes | Whether this node is active |
+| conversation_goal | string | no | System prompt for this node (custom nodes only) |
+| config | object | no | Node-specific configuration (see below) |
+| llm_provider_override | string | no | Override LLM provider: openai, anthropic, gemini, groq |
+| llm_model_override | string | no | Override model name |
+| temperature_override | number | no | Override temperature (0.0-2.0) |
+
+Node types and their purpose:
+- start — entry point, exactly one per workflow, no conversation_goal
+- custom — LLM-powered node with its own prompt, tools, and knowledge base
+- system_product — searches products, checks availability, shows details
+- system_media — retrieves photos, videos, documents
+- system_company — company info and support questions
+- system_formatter — combines outputs from parallel nodes into final response
+- system_stt — speech-to-text (voice input), usually inactive by default
+- system_tts — text-to-speech (voice output), usually inactive by default
+
+Config for system_stt:
+{
+  "provider": "openai",
+  "language": "en",
+  "greeting_text": "Hi! How can I help you?",
+  "greeting_audio_url": null,
+  "farewell_text": "Thanks! Goodbye!",
+  "farewell_audio_url": null
+}
+
+Config for system_tts:
+{
+  "provider": "openai",
+  "voice": "nova",
+  "model": "tts-1",
+  "speed": 1.0
+}
+
+Config for custom nodes (optional):
+{
+  "save_to_memory": ["field_key1", "field_key2"],
+  "max_tool_rounds": 3,
+  "tool_timeout_seconds": 30
+}
+
+### edges_data (array of objects)
+
+Each edge object connects two nodes:
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| source_index | integer | yes | Index of the source node |
+| target_index | integer | yes | Index of the target node |
+| condition_type | string | yes | One of: always, keyword, intent, state, fallback |
+| condition_value | object | no | Condition parameters (null for always/fallback) |
+| priority | integer | no | Evaluation priority (default: 90 for always) |
+
+Condition types and priorities:
+- keyword (priority: 100) — matches words in the message
+  condition_value: { "keywords": ["word1", "word2", ...] }
+- state (priority: 95) — checks memory field values
+  condition_value: { "conditions": [{"field": "name", "operator": "filled|empty|=|!=|contains|>|<", "value": ""}] }
+- always (priority: 90) — unconditional, enables parallel fan-out
+  condition_value: null
+- intent (priority: 50) — LLM classifies the message intent
+  condition_value: { "intents": ["intent_name"] }
+- fallback (priority: 10) — routes only when nothing else matches
+  condition_value: null
+
+### tools_data (object, keys are node indexes as strings)
+
+Maps node index to an array of tool names:
+
+{
+  "2": ["search_documents", "get_company_info"],
+  "3": ["get_products", "get_product_details"]
+}
+
+Available built-in tools (9):
+- get_products — search products by name/description
+- get_product_details — full details for one product
+- check_availability — check if product is in stock
+- search_by_parameters — filter products by attributes
+- get_company_info — company name, description, contacts
+- search_documents — semantic RAG search in knowledge base
+- get_photos — retrieve photos
+- get_videos — retrieve videos
+- get_documents — retrieve PDF/Word/Excel files
+
+### memory_fields_data (optional array)
+
+Define structured fields the agent should collect:
+
+[
+  {"key": "client_name", "label": "Client Name", "type": "text"},
+  {"key": "client_phone", "label": "Phone", "type": "phone"},
+  {"key": "topic", "label": "Topic", "type": "select", "options": ["sales", "support"]}
+]
+
+Field types: text, phone, email, number, select (with options array).
+
+## Workflow Patterns
+
+### Pattern 1: Simple (single expert)
+Start → Custom Node → Formatter
+Best for: FAQ bots, simple support, single-topic agents.
+
+### Pattern 2: Parallel experts (always routing)
+Start → Expert A → Formatter
+      → Expert B → Formatter
+      → Expert C → Formatter
+Best for: agents that need to search products + documents + company info simultaneously.
+
+### Pattern 3: Smart router (intent/keyword routing)
+Start → (intent: sales) → Sales Expert → Formatter
+      → (intent: support) → Support Expert → Formatter
+      → (fallback) → General Expert → Formatter
+Best for: multi-topic agents where different questions need different expertise.
+
+### Pattern 4: Lead collection (state routing)
+Start → (name empty) → Collect Name → Formatter
+      → (name filled, phone empty) → Collect Phone → Formatter
+      → (all filled) → Final Response → Formatter
+Best for: lead qualification, appointment booking, form-filling flows.
+
+### Pattern 5: Voice agent
+STT → Start → Expert → Formatter → TTS
+Same as any pattern above, but with STT/TTS nodes active.
+
+## Layout Guidelines
+
+- Start node at position (0, 0)
+- STT node to the left: (-200, 0)
+- Expert nodes to the right: (200, -100), (200, 0), (200, 100)
+- Formatter further right: (400, 0)
+- TTS node furthest right: (600, 0)
+- Vertical spacing between parallel nodes: 100-200px
+
+## Rules
+
+1. Every workflow MUST have exactly one "start" node
+2. Every workflow MUST have exactly one "system_formatter" node
+3. STT and TTS nodes should be included but set to is_active: false
+   unless voice is specifically requested
+4. Custom nodes should have clear, focused conversation_goal text
+5. Each custom node should have at least search_documents tool
+6. Use intent routing instead of keyword for multilingual agents
+7. The fallback edge ensures no message goes unanswered
+8. Node indexes must be sequential starting from 0
+9. All edge source_index and target_index must reference valid node indexes
+10. conversation_goal should be written in the language the agent will use
+
+## Output
+
+Return ONLY the JSON object — no markdown, no explanation, no
+code fences. The JSON must be valid and parseable.
+
+## Input
+
+My business: [DESCRIBE YOUR BUSINESS]
+Agent role: [e.g., sales consultant, support agent, lead collector]
+Languages: [e.g., English, Ukrainian, multilingual]
+Voice enabled: [yes/no]
+Key topics/departments: [e.g., products, billing, technical support]
+Memory fields to collect: [e.g., name, phone, email, or none]
+Special requirements: [any additional requirements]
+```
+</Accordion>
+
+<Tip>
+  Після генерації JSON ви можете переглянути та змінити назви нод, conversation goals або інструменти перед імпортом. Формат шаблону воркфлоу буде доступний для прямого імпорту в наступному оновленні Revol.
+</Tip>
