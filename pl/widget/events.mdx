@@ -364,37 +364,143 @@ Jeśli nie jesteś pewien, które elementy śledzić, możesz użyć **Claude Co
 
 <Accordion title="Prompt do analizy strony">
 ```text
-Analyze the website at [YOUR_WEBSITE_URL] and create a comprehensive
-event tracking plan for Revol Tracker. I need you to:
+# Instrukcja: Generowanie klas CSS do sledzenia zdarzen na stronie
 
-1. Identify all interactive elements on the page:
-   - CTA buttons (purchases, signups, demos)
-   - Navigation links that indicate intent
-   - Forms (contact, subscribe, login)
-   - Media elements (video plays, image galleries)
-   - Scroll landmarks (pricing section, testimonials, FAQ)
+## Kontekst
 
-2. For each element, provide:
-   - A descriptive event name (snake_case)
-   - The event type (click, form_submit, scroll, visibility, custom)
-   - The exact CSS selector
-   - Whether it should be a conversion goal (and why)
-   - Priority (high/medium/low) based on business impact
+Uzywam systemu sledzenia Revol, ktory monitoruje dzialania
+uzytkownikow na stronach za pomoca selektorow CSS. Tracker jest
+osadzany jednym skryptem i automatycznie nasluchuje zdarzen na
+elementach pasujacych do podanych selektorow CSS. Zaden dodatkowy
+kod JS na stronie nie jest potrzebny (z wyjatkiem formularzy AJAX,
+patrz nizej).
 
-3. Generate ready-to-use event definitions that I can create
-   in the Revol Tracker Events tab.
+## Jak dziala sledzenie zdarzen
 
-4. For any elements that need custom JavaScript tracking,
-   provide the complete RevolTracker.track() code snippets.
+System obsluguje 5 typow zdarzen:
 
-5. Suggest a conversion funnel with 3-5 key stages
-   (e.g., Visit → View Pricing → Submit Form → Start Chat).
+- click — klikniecie elementu. Uzywa
+  document.addEventListener('click') + e.target.closest(css_selector),
+  delegacja na document w fazie przechwytywania.
+- form_submit — wyslanie formularza. Uzywa
+  document.addEventListener('submit') + sprawdza css_selector
+  na tagu <form>.
+- scroll — przewiniecie do elementu. IntersectionObserver
+  z threshold (0-100%), wyzwala sie raz na sesje.
+- visibility — element pojawil sie w viewport. IntersectionObserver,
+  jednorazowo.
+- custom — reczne wywolanie JS: RevolTracker.track('Nazwa', {data})
 
-Format the output as a table with columns:
-Event Name | Type | CSS Selector | Conversion | Priority
+## Twoje Zadanie
 
-My website is: [PASTE URL]
-My business type is: [e.g., e-commerce, SaaS, service business, agency]
-My main conversion action is: [e.g., form submission, purchase, demo request]
+### Krok 1: Przeanalizuj wszystkie strony
+
+Przejrzyj wszystkie pliki HTML/szablonow i znajdz:
+
+1. Przyciski (buttons/links) — CTA, nawigacja, akcje
+2. Numery telefonow — <a href="tel:...">, bloki tekstu z numerami
+3. Linki email — <a href="mailto:...">
+4. Komunikatory — Telegram, Viber, WhatsApp linki
+5. Formularze — kontaktowe, zgloszenia, subskrypcje, zamowienia
+6. Klikalne bloki — karty, bannery, sekcje z linkami
+7. Elementy konwersji — koszyk, zamowienie, rejestracja
+
+### Krok 2: Dodaj klasy CSS do sledzenia
+
+Dla kazdego znalezionego elementu dodaj klase CSS z prefiksem rv-:
+
+Konwencja nazewnictwa: rv-{typ}-{sekcja}-{akcja}
+Typy: btn, link, form, block, scroll
+
+Przyklady:
+- rv-btn-hero-cta — przycisk CTA w sekcji hero
+- rv-btn-header-phone — klikniecie telefonu w naglowku
+- rv-btn-footer-phone — klikniecie telefonu w stopce
+- rv-btn-pricing-order — przycisk zamowienia na cennik
+- rv-btn-header-telegram — klikniecie Telegram w naglowku
+- rv-form-contact — formularz kontaktowy
+- rv-form-callback — formularz oddzwonienia
+- rv-block-services-card — klikniecie karty uslugi
+- rv-link-nav-about — link nawigacyjny "O nas"
+- rv-scroll-testimonials — przewiniecie do opinii
+
+Zasady:
+- Klasa rv-* jest dodawana DODATKOWO do istniejacych klas
+- Jeden element = jedna klasa rv-
+- Klasa powinna byc unikalna na stronie (lub celowo wspolna
+  dla podobnych elementow, np. wszystkie karty uslug)
+
+### Krok 3: Zasady dla formularzy
+
+Klasa rv-form-* idzie na tag <form>, NIE na przycisk submit:
+
+  Poprawnie:
+  <form class="contact-form rv-form-contact" action="/submit">
+    <input name="phone" type="tel">
+    <button type="submit">Wyslij</button>
+  </form>
+
+  Niepoprawnie:
+  <form class="contact-form">
+    <button class="rv-form-contact" type="submit">Wyslij</button>
+  </form>
+
+Formularze AJAX (bez natywnego submit):
+
+Jesli formularz jest wysylany przez JS (fetch, axios, $.ajax) bez
+natywnego zdarzenia submit, tracker go NIE przechwyci. Oznaki:
+- e.preventDefault() + fetch/axios/$.ajax w handlerze
+- Formularz bez action lub z action="javascript:void(0)"
+- Przycisk ma type="button" zamiast type="submit"
+
+Dla takich formularzy dodaj reczne wywolanie obok AJAX:
+  RevolTracker.track('Formularz kontaktowy', { form: 'contact' });
+
+W tabeli zdarzen oznacz takie jako typ custom zamiast form_submit
+i zaznacz, ze potrzebne jest reczne wywolanie.
+
+### Krok 4: Utworz tabele zdarzen
+
+Nazwy zdarzen po polsku. Format tabeli:
+
+# | Nazwa zdarzenia | Selektor CSS | Typ | Konwersja? | Strona | Opis
+
+Przyklad:
+1 | Klik CTA Hero | .rv-btn-hero-cta | click | Tak | Glowna | Glowny CTA w hero
+2 | Klik telefon naglowek | .rv-btn-header-phone | click | Tak | Wszystkie | Klik telefonu w naglowku
+3 | Klik telefon stopka | .rv-btn-footer-phone | click | Tak | Wszystkie | Klik telefonu w stopce
+4 | Klik Telegram | .rv-btn-header-telegram | click | Tak | Wszystkie | Klik linku Telegram
+5 | Formularz kontaktowy | .rv-form-contact | form_submit | Tak | Kontakt | Wyslanie formularza
+6 | Formularz oddzwonienia | .rv-form-callback | form_submit | Tak | Glowna | Formularz "Oddzwon"
+7 | Klik karta uslugi | .rv-block-services-card | click | Nie | Uslugi | Klik na karte uslugi
+8 | Nav — O nas | .rv-link-nav-about | click | Nie | Wszystkie | Przejscie do "O nas"
+9 | Scroll do opinii | .rv-scroll-testimonials | scroll (80%) | Nie | Glowna | Przewiniecie do opinii
+10 | Formularz zgloszenia (AJAX) | — | custom | Tak | Uslugi | AJAX, potrzebuje RevolTracker.track()
+
+### Co liczy sie jako konwersja
+
+Tak — konwersja:
+- Klik telefonu (<a href="tel:...">)
+- Klik emaila (<a href="mailto:...">)
+- Klik komunikatorow (Telegram, Viber, WhatsApp)
+- Wyslanie dowolnego formularza (zgloszenie, zamowienie, kontakt)
+- Klik przyciskow CTA ("Zamow", "Kup", "Zarezerwuj")
+
+Nie — nie konwersja:
+- Linki nawigacyjne
+- Klikniecia na bloki informacyjne (jesli nie CTA)
+- Zdarzenia scroll/visibility
+- Klikniecia social media (jesli nie CTA)
+
+## Format odpowiedzi
+
+1. Zmiany w plikach — jakie klasy rv-* dodac, z diff
+2. Tabela zdarzen — pelna lista ze wszystkimi kolumnami
+3. Formularze AJAX — osobno wymienic formularze wymagajace
+   recznego wywolania RevolTracker.track(), z gotowym kodem
+
+Moja strona: [WKLEJ URL]
+Typ biznesu: [np. e-commerce, SaaS, uslugi, agencja]
+Glowna akcja konwersji: [np. formularz, zakup, rezerwacja]
 ```
 </Accordion>

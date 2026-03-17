@@ -364,37 +364,142 @@ function handlePricingClick(plan) {
 
 <Accordion title="Промпт для аналізу сайту">
 ```text
-Analyze the website at [YOUR_WEBSITE_URL] and create a comprehensive
-event tracking plan for Revol Tracker. I need you to:
+# Інструкція: Генерація класів для відстеження подій на сайті
 
-1. Identify all interactive elements on the page:
-   - CTA buttons (purchases, signups, demos)
-   - Navigation links that indicate intent
-   - Forms (contact, subscribe, login)
-   - Media elements (video plays, image galleries)
-   - Scroll landmarks (pricing section, testimonials, FAQ)
+## Контекст
 
-2. For each element, provide:
-   - A descriptive event name (snake_case)
-   - The event type (click, form_submit, scroll, visibility, custom)
-   - The exact CSS selector
-   - Whether it should be a conversion goal (and why)
-   - Priority (high/medium/low) based on business impact
+Я використовую систему трекінгу Revol, яка відстежує дії
+користувачів на сайті через CSS-селектори. Трекер підключається
+одним скриптом і автоматично слухає події на елементах, які
+відповідають заданим CSS-селекторам. Ніякого додаткового JS-коду
+на сайті не потрібно (за винятком AJAX-форм, про це нижче).
 
-3. Generate ready-to-use event definitions that I can create
-   in the Revol Tracker Events tab.
+## Як працює трекінг подій
 
-4. For any elements that need custom JavaScript tracking,
-   provide the complete RevolTracker.track() code snippets.
+Система підтримує 5 типів подій:
 
-5. Suggest a conversion funnel with 3-5 key stages
-   (e.g., Visit → View Pricing → Submit Form → Start Chat).
+- click — клік на елемент. Працює через
+  document.addEventListener('click') + e.target.closest(css_selector),
+  делегування на document у capture phase.
+- form_submit — відправка форми. Працює через
+  document.addEventListener('submit') + перевірка css_selector
+  на тезі <form>.
+- scroll — прокрутка до елемента. IntersectionObserver з threshold
+  (0-100%), спрацьовує один раз за сесію.
+- visibility — елемент з'явився у viewport. IntersectionObserver,
+  одноразово.
+- custom — ручний виклик з JS: RevolTracker.track('Назва', {data})
 
-Format the output as a table with columns:
-Event Name | Type | CSS Selector | Conversion | Priority
+## Твоє завдання
 
-My website is: [PASTE URL]
-My business type is: [e.g., e-commerce, SaaS, service business, agency]
-My main conversion action is: [e.g., form submission, purchase, demo request]
+### Крок 1: Проаналізуй всі сторінки сайту
+
+Пройди по всіх HTML/шаблонних файлах і знайди:
+
+1. Кнопки (buttons/links) — CTA, навігація, дії
+2. Телефонні номери — <a href="tel:...">, текстові блоки з номерами
+3. Email-посилання — <a href="mailto:...">
+4. Месенджери — Telegram, Viber, WhatsApp посилання
+5. Форми — контактні, заявки, підписки, замовлення
+6. Клікабельні блоки — картки, банери, секції з посиланнями
+7. Елементи конверсії — кошик, замовлення, реєстрація
+
+### Крок 2: Додай CSS-класи для трекінгу
+
+Для кожного знайденого елемента додай CSS-клас з префіксом rv-:
+
+Конвенція іменування: rv-{тип}-{секція}-{дія}
+Типи: btn, link, form, block, scroll
+
+Приклади:
+- rv-btn-hero-cta — кнопка CTA в hero-секції
+- rv-btn-header-phone — клік на телефон у хедері
+- rv-btn-footer-phone — клік на телефон у футері
+- rv-btn-pricing-order — кнопка замовлення
+- rv-btn-header-telegram — клік на Telegram у хедері
+- rv-form-contact — контактна форма
+- rv-form-callback — форма зворотного дзвінка
+- rv-block-services-card — клік на картку послуги
+- rv-link-nav-about — навігаційне посилання "Про нас"
+- rv-scroll-testimonials — прокрутка до відгуків
+
+Правила:
+- Клас rv-* додається ДОДАТКОВО до існуючих класів
+- Один елемент = один rv- клас
+- Клас має бути унікальним на сторінці (або спільним
+  для однотипних елементів, наприклад всі картки послуг)
+
+### Крок 3: Правила для форм
+
+Клас rv-form-* ставиться на тег <form>, НЕ на кнопку submit:
+
+  Правильно:
+  <form class="contact-form rv-form-contact" action="/submit">
+    <input name="phone" type="tel">
+    <button type="submit">Надіслати</button>
+  </form>
+
+  Неправильно:
+  <form class="contact-form">
+    <button class="rv-form-contact" type="submit">Надіслати</button>
+  </form>
+
+AJAX-форми (без нативного submit):
+
+Якщо форма відправляється через JS (fetch, axios, $.ajax) без
+нативної події submit, трекер НЕ зловить її автоматично. Ознаки:
+- e.preventDefault() + fetch/axios/$.ajax в обробнику
+- Форма без action або з action="javascript:void(0)"
+- Кнопка має type="button" замість type="submit"
+
+Для таких форм додай ручний виклик поряд з AJAX-відправкою:
+  RevolTracker.track('Контактна форма', { form: 'contact' });
+
+В таблиці подій такі форми позначай типом custom замість
+form_submit і вказуй що потрібен ручний виклик.
+
+### Крок 4: Сформуй таблицю подій
+
+Назви подій — українською мовою. Формат таблиці:
+
+№ | Назва події | CSS-селектор | Тип | Конверсія? | Сторінка | Опис
+
+Приклад:
+1 | Клік CTA Hero | .rv-btn-hero-cta | click | Так | Головна | Основна кнопка в hero-банері
+2 | Клік телефон хедер | .rv-btn-header-phone | click | Так | Всі | Клік на телефон у шапці
+3 | Клік телефон футер | .rv-btn-footer-phone | click | Так | Всі | Клік на телефон у підвалі
+4 | Клік Telegram | .rv-btn-header-telegram | click | Так | Всі | Клік на Telegram
+5 | Контактна форма | .rv-form-contact | form_submit | Так | Контакти | Відправка контактної форми
+6 | Форма зворотного дзвінка | .rv-form-callback | form_submit | Так | Головна | Форма "Передзвоніть мені"
+7 | Клік картка послуги | .rv-block-services-card | click | Ні | Послуги | Клік на картку послуги
+8 | Навігація Про нас | .rv-link-nav-about | click | Ні | Всі | Перехід на сторінку "Про нас"
+9 | Скрол до відгуків | .rv-scroll-testimonials | scroll (80%) | Ні | Головна | Доскролив до відгуків
+10 | Форма заявки (AJAX) | — | custom | Так | Послуги | AJAX-форма, потрібен RevolTracker.track()
+
+### Що вважати конверсією
+
+Так — конверсія:
+- Клік на телефон (<a href="tel:...">)
+- Клік на email (<a href="mailto:...">)
+- Клік на месенджери (Telegram, Viber, WhatsApp)
+- Відправка будь-якої форми (заявка, замовлення, зв'язок)
+- Клік на CTA-кнопки ("Замовити", "Купити", "Записатись")
+
+Ні — не конверсія:
+- Навігаційні посилання
+- Кліки на інформаційні блоки/картки (якщо це не CTA)
+- Scroll/visibility події
+- Кліки на соцмережі (якщо це не CTA)
+
+## Формат відповіді
+
+1. Список змін у файлах — які класи rv-* додати, з diff
+2. Таблиця подій — повний перелік подій з усіма колонками
+3. AJAX-форми — окремо перелічи форми що потребують ручного
+   виклику RevolTracker.track(), з готовим кодом вставки
+
+Мій сайт: [ВСТАВТЕ URL]
+Тип бізнесу: [напр. e-commerce, SaaS, послуги, агенція]
+Основна конверсійна дія: [напр. заповнення форми, покупка, запис]
 ```
 </Accordion>
