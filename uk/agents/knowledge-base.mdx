@@ -67,143 +67,144 @@ description: "Навчайте вашого агента за допомогою
 
 <Accordion title="Промпт для генерації бази знань">
 ```text
-# Instruction: Generate Knowledge Base Files from Documentation
+# Інструкція: Генерація файлів бази знань із документації
 
-## Context
+## Контекст
 
-I use Revol — a platform for building AI sales agents with RAG
-(Retrieval-Augmented Generation). My agent answers questions
-using a knowledge base: uploaded files are chunked (max 2000
-chars, 20% overlap), embedded via OpenAI text-embedding-ada-002
-(1536 dimensions), stored in PostgreSQL with pgvector, and
-searched by cosine similarity at inference time.
+Я використовую Revol — платформу для створення AI-агентів
+продажів з RAG (Retrieval-Augmented Generation). Мій агент
+відповідає на питання, використовуючи базу знань: завантажені
+файли розбиваються на частини (chunks, макс. 2000 символів,
+20% перекриття), перетворюються на вектори через OpenAI
+text-embedding-ada-002 (1536 вимірів), зберігаються в
+PostgreSQL з pgvector і шукаються за косинусною подібністю
+під час інференсу.
 
-I need to convert my project documentation into a set of .txt
-files optimized for this RAG pipeline — so the agent can find
-and cite accurate answers.
+Мені потрібно перетворити документацію мого проекту на набір
+.txt файлів, оптимізованих для цього RAG-пайплайну — щоб
+агент міг знаходити й цитувати точні відповіді.
 
-## How RAG Chunking Works (important for file structure)
+## Як працює RAG-розбиття (важливо для структури файлів)
 
-- Each file is split into chunks of ~2000 characters with 20%
-  overlap at sentence boundaries
-- The file name becomes part of the embedding metadata — use
-  descriptive names so the system can identify the source
-- Shorter, focused files perform better than one giant file
-- Each chunk should be self-contained — a reader should
-  understand the chunk without needing the surrounding text
-- Structured content (lists, tables as text, clear headers)
-  chunks better than long prose paragraphs
+- Кожен файл розбивається на частини по ~2000 символів з 20%
+  перекриттям на межах речень
+- Назва файлу стає частиною метаданих embedding — використовуйте
+  описові назви, щоб система могла ідентифікувати джерело
+- Короткі, сфокусовані файли працюють краще, ніж один великий
+- Кожна частина (chunk) має бути самодостатньою — читач повинен
+  розуміти частину без оточуючого тексту
+- Структурований контент (списки, таблиці як текст, чіткі
+  заголовки) розбивається краще, ніж суцільні абзаци
 
-## Your Task
+## Твоє завдання
 
-### Step 1: Analyze All Documentation
+### Крок 1: Аналіз усієї документації
 
-Read every documentation file in the project. For each file,
-identify:
+Прочитай кожен файл документації проекту. Для кожного файлу
+визнач:
 
-1. The topic it covers
-2. Key facts, settings, configurations, and values
-3. Step-by-step procedures
-4. Feature descriptions with specifics (limits, options, formats)
-5. Pricing, plans, and quotas (if applicable)
-6. Technical details (APIs, parameters, integrations)
+1. Тему, яку він охоплює
+2. Ключові факти, налаштування, конфігурації та значення
+3. Покрокові процедури
+4. Описи функцій з конкретикою (ліміти, опції, формати)
+5. Тарифи, плани та квоти (якщо є)
+6. Технічні деталі (API, параметри, інтеграції)
 
-### Step 2: Plan the File Structure
+### Крок 2: Планування структури файлів
 
-Group related content into logical topics. Each file should
-cover ONE cohesive topic. Target file sizes:
+Згрупуй пов'язаний контент за логічними темами. Кожен файл
+має охоплювати ОДНУ цілісну тему. Цільові розміри файлів:
 
-- Ideal: 2,000–6,000 characters per file (1–3 chunks)
-- Maximum: 10,000 characters (5 chunks)
-- If a topic is larger, split it into sub-topics
+- Ідеально: 2 000–6 000 символів на файл (1–3 chunks)
+- Максимум: 10 000 символів (5 chunks)
+- Якщо тема більша — розбий на підтеми
 
-Naming convention: {Topic-Name}.txt
-- Use descriptive English names with hyphens
-- No numbering prefixes (ordering doesn't matter for RAG)
-- Name should hint at the content for metadata
+Конвенція іменування: {Назва-Теми}.txt
+- Описові назви з дефісами
+- Без числових префіксів (порядок не важливий для RAG)
+- Назва має натякати на вміст для метаданих
 
-Examples:
+Приклади:
 - Platform-Overview.txt
 - Getting-Started.txt
 - Pricing-Plans.txt
 - API-Authentication.txt
 - Webhook-Integration.txt
 
-### Step 3: Write the Files
+### Крок 3: Написання файлів
 
-For each file, follow these rules:
+Для кожного файлу дотримуйся цих правил:
 
-Content rules:
-- Start with a clear topic heading as plain text
-- Write in plain text — no Markdown formatting, no HTML,
-  no JSX components
-- Convert tables to readable text lists or key-value pairs
-- Convert step-by-step guides to numbered lists
-- Include specific values: numbers, limits, prices, options,
-  defaults, formats, URLs
-- Each paragraph or section should be understandable on its
-  own (self-contained chunks)
-- Remove navigation elements, "Next Steps" links, and
-  cross-references that don't add informational value
-- Keep the original language of the documentation
+Правила контенту:
+- Починай з чіткого заголовка теми як звичайний текст
+- Пиши звичайним текстом — без Markdown, без HTML,
+  без JSX-компонентів
+- Перетворюй таблиці на читабельні списки або пари ключ-значення
+- Перетворюй покрокові інструкції на нумеровані списки
+- Включай конкретні значення: числа, ліміти, ціни, опції,
+  значення за замовчуванням, формати, URL
+- Кожен абзац або розділ має бути зрозумілим окремо
+  (самодостатні chunks)
+- Видаляй навігаційні елементи, посилання "Далі" та
+  перехресні посилання без інформаційної цінності
+- Зберігай мову оригіналу документації
 
-Optimization for RAG:
-- Front-load important information — put the answer before
-  the explanation
-- Use consistent terminology throughout all files
-- Repeat key terms naturally so they appear in multiple
-  chunks (improves retrieval)
-- For features with settings: list setting name, type,
-  default value, options, and description
-- For integrations: list provider, auth method, setup steps,
-  available tools/functions
+Оптимізація для RAG:
+- Виноси важливу інформацію на початок — спочатку відповідь,
+  потім пояснення
+- Використовуй єдину термінологію в усіх файлах
+- Природно повторюй ключові терміни, щоб вони з'являлися
+  в декількох chunks (покращує пошук)
+- Для функцій з налаштуваннями: вказуй назву, тип, значення
+  за замовчуванням, опції та опис
+- Для інтеграцій: вказуй провайдера, метод авторизації,
+  кроки налаштування, доступні інструменти/функції
 
-What to exclude:
-- Screenshots and image references
-- UI component markup (tabs, accordions, cards, frames)
-- "See also" and navigation links
-- Decorative text and marketing fluff
-- Duplicate content (don't repeat the same info in
-  multiple files)
+Що виключати:
+- Скріншоти та посилання на зображення
+- Розмітку UI-компонентів (tabs, accordions, cards, frames)
+- Посилання "Див. також" та навігаційні блоки
+- Декоративний текст та маркетинговий вміст
+- Дублікат контенту (не повторюй одну інформацію в різних
+  файлах)
 
-### Step 4: Create the Output
+### Крок 4: Створення результату
 
-1. Create a temporary directory (e.g., temp-knowledge-base/)
-2. Write all .txt files into it
-3. List all files with their sizes and topic descriptions
-4. Provide a summary of total files and total size
+1. Створи тимчасову директорію (напр., temp-knowledge-base/)
+2. Запиши всі .txt файли в неї
+3. Перелічи всі файли з розмірами та описами тем
+4. Надай підсумок: загальна кількість файлів і розмір
 
-## Optional: Generate a Workflow Agent Seeder
+## Опціонально: Генерація сідера Workflow-агента
 
-If the project uses Revol and you also need to create an AI
-agent with a workflow to answer questions about this
-documentation, generate a Laravel database seeder that:
+Якщо проект використовує Revol і тобі також потрібно створити
+AI-агента з workflow для відповідей на запитання щодо цієї
+документації, згенеруй Laravel database seeder, який:
 
-1. Creates an AiAgent with:
-   - Appropriate system prompt for documentation support
-   - LLM: gpt-4o-mini, temperature: 0.3 (accuracy)
-   - Personality: high clarity (8-9), high formality (6-7),
-     low humor (2-3), low emoji (1-2)
+1. Створює AiAgent з:
+   - Відповідним system prompt для підтримки документації
+   - LLM: gpt-4o-mini, temperature: 0.3 (точність)
+   - Personality: висока ясність (8-9), висока формальність (6-7),
+     низький гумор (2-3), мало емодзі (1-2)
 
-2. Builds a Smart Router workflow:
-   - Start node with keyword-based edges to expert nodes
-   - 3-6 custom "expert" nodes, each covering a topic group
-   - Each expert has a specific conversation_goal describing
-     its domain
-   - Each expert has search_documents + get_company_info tools
-   - One fallback edge to a General Assistant node
-   - All experts connect to a Formatter node
-   - Voice nodes (STT/TTS) inactive by default
+2. Будує Smart Router workflow:
+   - Start-нода з keyword-edges до нод-експертів
+   - 3-6 кастомних нод "експертів", кожна для групи тем
+   - Кожен експерт має свій conversation_goal з описом домену
+   - Кожен експерт має інструменти search_documents + get_company_info
+   - Один fallback-edge до ноди General Assistant
+   - Всі експерти з'єднані з Formatter-нодою
+   - Voice-ноди (STT/TTS) неактивні за замовчуванням
 
-3. Keywords on edges should match the natural vocabulary
-   users would use when asking about each topic
+3. Ключові слова на edges мають відповідати природній лексиці,
+   яку використовують користувачі при запитаннях з кожної теми
 
-## Input
+## Вхідні дані
 
-My documentation is located at: [PATH OR URL]
-Project name: [NAME]
-Project description: [BRIEF DESCRIPTION]
-Target company_id for seeder: [ID or skip seeder]
+Моя документація знаходиться тут: [ШЛЯХ АБО URL]
+Назва проекту: [НАЗВА]
+Опис проекту: [КОРОТКИЙ ОПИС]
+Target company_id для сідера: [ID або пропустити сідер]
 ```
 </Accordion>
 

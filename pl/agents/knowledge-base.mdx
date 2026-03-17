@@ -67,143 +67,139 @@ Jeśli masz dokumentację projektu (strony internetowe, portal dokumentacji, pli
 
 <Accordion title="Prompt do generowania bazy wiedzy">
 ```text
-# Instruction: Generate Knowledge Base Files from Documentation
+# Instrukcja: Generowanie plików bazy wiedzy z dokumentacji
 
-## Context
+## Kontekst
 
-I use Revol — a platform for building AI sales agents with RAG
-(Retrieval-Augmented Generation). My agent answers questions
-using a knowledge base: uploaded files are chunked (max 2000
-chars, 20% overlap), embedded via OpenAI text-embedding-ada-002
-(1536 dimensions), stored in PostgreSQL with pgvector, and
-searched by cosine similarity at inference time.
+Używam Revol — platformy do tworzenia agentów sprzedaży AI
+z RAG (Retrieval-Augmented Generation). Mój agent odpowiada
+na pytania korzystając z bazy wiedzy: przesłane pliki są
+dzielone na fragmenty (chunks, maks. 2000 znaków, 20%
+nakładania się), konwertowane na wektory przez OpenAI
+text-embedding-ada-002 (1536 wymiarów), przechowywane w
+PostgreSQL z pgvector i przeszukiwane za pomocą podobieństwa
+kosinusowego podczas inferencji.
 
-I need to convert my project documentation into a set of .txt
-files optimized for this RAG pipeline — so the agent can find
-and cite accurate answers.
+Muszę przekształcić dokumentację mojego projektu w zestaw
+plików .txt zoptymalizowanych pod ten pipeline RAG — aby
+agent mógł znajdować i cytować dokładne odpowiedzi.
 
-## How RAG Chunking Works (important for file structure)
+## Jak działa chunking RAG (ważne dla struktury plików)
 
-- Each file is split into chunks of ~2000 characters with 20%
-  overlap at sentence boundaries
-- The file name becomes part of the embedding metadata — use
-  descriptive names so the system can identify the source
-- Shorter, focused files perform better than one giant file
-- Each chunk should be self-contained — a reader should
-  understand the chunk without needing the surrounding text
-- Structured content (lists, tables as text, clear headers)
-  chunks better than long prose paragraphs
+- Każdy plik jest dzielony na fragmenty po ~2000 znaków
+  z 20% nakładaniem na granicach zdań
+- Nazwa pliku staje się częścią metadanych embeddingu —
+  używaj opisowych nazw
+- Krótsze, skoncentrowane pliki działają lepiej niż jeden duży
+- Każdy chunk powinien być zrozumiały sam w sobie
+- Strukturyzowana treść (listy, tabele jako tekst, jasne
+  nagłówki) dzieli się lepiej niż ciągły tekst
 
-## Your Task
+## Twoje zadanie
 
-### Step 1: Analyze All Documentation
+### Krok 1: Analiza całej dokumentacji
 
-Read every documentation file in the project. For each file,
-identify:
+Przeczytaj każdy plik dokumentacji projektu. Dla każdego
+pliku zidentyfikuj:
 
-1. The topic it covers
-2. Key facts, settings, configurations, and values
-3. Step-by-step procedures
-4. Feature descriptions with specifics (limits, options, formats)
-5. Pricing, plans, and quotas (if applicable)
-6. Technical details (APIs, parameters, integrations)
+1. Temat, który obejmuje
+2. Kluczowe fakty, ustawienia, konfiguracje i wartości
+3. Procedury krok po kroku
+4. Opisy funkcji ze szczegółami (limity, opcje, formaty)
+5. Ceny, plany i limity (jeśli dotyczy)
+6. Szczegóły techniczne (API, parametry, integracje)
 
-### Step 2: Plan the File Structure
+### Krok 2: Planowanie struktury plików
 
-Group related content into logical topics. Each file should
-cover ONE cohesive topic. Target file sizes:
+Pogrupuj powiązaną treść w logiczne tematy. Każdy plik
+powinien obejmować JEDEN spójny temat. Docelowe rozmiary:
 
-- Ideal: 2,000–6,000 characters per file (1–3 chunks)
-- Maximum: 10,000 characters (5 chunks)
-- If a topic is larger, split it into sub-topics
+- Idealnie: 2 000–6 000 znaków na plik (1–3 chunki)
+- Maksymalnie: 10 000 znaków (5 chunków)
+- Jeśli temat jest większy, podziel na podtematy
 
-Naming convention: {Topic-Name}.txt
-- Use descriptive English names with hyphens
-- No numbering prefixes (ordering doesn't matter for RAG)
-- Name should hint at the content for metadata
+Konwencja nazewnictwa: {Nazwa-Tematu}.txt
+- Opisowe nazwy z myślnikami
+- Bez prefiksów numerycznych (kolejność nie ma znaczenia dla RAG)
+- Nazwa powinna wskazywać na zawartość
 
-Examples:
+Przykłady:
 - Platform-Overview.txt
 - Getting-Started.txt
 - Pricing-Plans.txt
 - API-Authentication.txt
 - Webhook-Integration.txt
 
-### Step 3: Write the Files
+### Krok 3: Pisanie plików
 
-For each file, follow these rules:
+Dla każdego pliku przestrzegaj tych zasad:
 
-Content rules:
-- Start with a clear topic heading as plain text
-- Write in plain text — no Markdown formatting, no HTML,
-  no JSX components
-- Convert tables to readable text lists or key-value pairs
-- Convert step-by-step guides to numbered lists
-- Include specific values: numbers, limits, prices, options,
-  defaults, formats, URLs
-- Each paragraph or section should be understandable on its
-  own (self-contained chunks)
-- Remove navigation elements, "Next Steps" links, and
-  cross-references that don't add informational value
-- Keep the original language of the documentation
+Zasady treści:
+- Zacznij od jasnego nagłówka tematu jako zwykły tekst
+- Pisz zwykłym tekstem — bez Markdown, bez HTML,
+  bez komponentów JSX
+- Konwertuj tabele na czytelne listy lub pary klucz-wartość
+- Konwertuj instrukcje krok po kroku na listy numerowane
+- Podawaj konkretne wartości: liczby, limity, ceny, opcje,
+  wartości domyślne, formaty, URL
+- Każdy akapit powinien być zrozumiały sam w sobie
+  (samodzielne chunki)
+- Usuń elementy nawigacyjne i linki bez wartości informacyjnej
+- Zachowaj oryginalny język dokumentacji
 
-Optimization for RAG:
-- Front-load important information — put the answer before
-  the explanation
-- Use consistent terminology throughout all files
-- Repeat key terms naturally so they appear in multiple
-  chunks (improves retrieval)
-- For features with settings: list setting name, type,
-  default value, options, and description
-- For integrations: list provider, auth method, setup steps,
-  available tools/functions
+Optymalizacja pod RAG:
+- Umieszczaj ważne informacje na początku — odpowiedź
+  przed wyjaśnieniem
+- Używaj spójnej terminologii we wszystkich plikach
+- Naturalnie powtarzaj kluczowe terminy (poprawia wyszukiwanie)
+- Dla funkcji z ustawieniami: nazwa, typ, wartość domyślna,
+  opcje i opis
+- Dla integracji: dostawca, metoda auth, kroki konfiguracji,
+  dostępne narzędzia/funkcje
 
-What to exclude:
-- Screenshots and image references
-- UI component markup (tabs, accordions, cards, frames)
-- "See also" and navigation links
-- Decorative text and marketing fluff
-- Duplicate content (don't repeat the same info in
-  multiple files)
+Co wykluczyć:
+- Zrzuty ekranu i odniesienia do obrazów
+- Markup komponentów UI (tabs, accordions, cards, frames)
+- Linki "Zobacz też" i nawigacja
+- Tekst dekoracyjny i treści marketingowe
+- Zduplikowana treść
 
-### Step 4: Create the Output
+### Krok 4: Utworzenie wyniku
 
-1. Create a temporary directory (e.g., temp-knowledge-base/)
-2. Write all .txt files into it
-3. List all files with their sizes and topic descriptions
-4. Provide a summary of total files and total size
+1. Utwórz tymczasowy katalog (np. temp-knowledge-base/)
+2. Zapisz wszystkie pliki .txt
+3. Wylistuj pliki z rozmiarami i opisami tematów
+4. Podaj podsumowanie: łączna liczba plików i rozmiar
 
-## Optional: Generate a Workflow Agent Seeder
+## Opcjonalnie: Generowanie seedera agenta z workflow
 
-If the project uses Revol and you also need to create an AI
-agent with a workflow to answer questions about this
-documentation, generate a Laravel database seeder that:
+Jeśli projekt używa Revol i potrzebujesz też stworzyć
+agenta AI z workflow, wygeneruj Laravel database seeder, który:
 
-1. Creates an AiAgent with:
-   - Appropriate system prompt for documentation support
-   - LLM: gpt-4o-mini, temperature: 0.3 (accuracy)
-   - Personality: high clarity (8-9), high formality (6-7),
-     low humor (2-3), low emoji (1-2)
+1. Tworzy AiAgent z:
+   - Odpowiednim system promptem do wsparcia dokumentacji
+   - LLM: gpt-4o-mini, temperature: 0.3 (dokładność)
+   - Osobowość: wysoka jasność (8-9), wysoka formalność (6-7),
+     mało humoru (2-3), mało emoji (1-2)
 
-2. Builds a Smart Router workflow:
-   - Start node with keyword-based edges to expert nodes
-   - 3-6 custom "expert" nodes, each covering a topic group
-   - Each expert has a specific conversation_goal describing
-     its domain
-   - Each expert has search_documents + get_company_info tools
-   - One fallback edge to a General Assistant node
-   - All experts connect to a Formatter node
-   - Voice nodes (STT/TTS) inactive by default
+2. Buduje workflow Smart Router:
+   - Node Start z keyword-edges do node'ów ekspertów
+   - 3-6 custom node'ów "ekspertów", każdy dla grupy tematycznej
+   - Każdy ekspert ma conversation_goal opisujący domenę
+   - Każdy ekspert ma narzędzia search_documents + get_company_info
+   - Jeden fallback-edge do node'a General Assistant
+   - Wszyscy eksperci połączeni z node'em Formatter
+   - Node'y głosowe (STT/TTS) domyślnie nieaktywne
 
-3. Keywords on edges should match the natural vocabulary
-   users would use when asking about each topic
+3. Słowa kluczowe na edges powinny odpowiadać naturalnemu
+   słownictwu użytkowników
 
-## Input
+## Dane wejściowe
 
-My documentation is located at: [PATH OR URL]
-Project name: [NAME]
-Project description: [BRIEF DESCRIPTION]
-Target company_id for seeder: [ID or skip seeder]
+Moja dokumentacja znajduje się tu: [ŚCIEŻKA LUB URL]
+Nazwa projektu: [NAZWA]
+Opis projektu: [KRÓTKI OPIS]
+company_id dla seedera: [ID lub pomiń seeder]
 ```
 </Accordion>
 

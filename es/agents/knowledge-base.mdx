@@ -67,143 +67,141 @@ Si tiene documentación del proyecto (páginas web, portal de documentación, ar
 
 <Accordion title="Prompt para generación de base de conocimiento">
 ```text
-# Instruction: Generate Knowledge Base Files from Documentation
+# Instrucción: Generar archivos de base de conocimiento desde documentación
 
-## Context
+## Contexto
 
-I use Revol — a platform for building AI sales agents with RAG
-(Retrieval-Augmented Generation). My agent answers questions
-using a knowledge base: uploaded files are chunked (max 2000
-chars, 20% overlap), embedded via OpenAI text-embedding-ada-002
-(1536 dimensions), stored in PostgreSQL with pgvector, and
-searched by cosine similarity at inference time.
+Uso Revol — una plataforma para crear agentes de ventas con IA
+y RAG (Retrieval-Augmented Generation). Mi agente responde
+preguntas usando una base de conocimiento: los archivos subidos
+se dividen en fragmentos (chunks, máx. 2000 caracteres, 20%
+de superposición), se convierten en vectores mediante OpenAI
+text-embedding-ada-002 (1536 dimensiones), se almacenan en
+PostgreSQL con pgvector y se buscan por similitud coseno
+durante la inferencia.
 
-I need to convert my project documentation into a set of .txt
-files optimized for this RAG pipeline — so the agent can find
-and cite accurate answers.
+Necesito convertir la documentación de mi proyecto en un
+conjunto de archivos .txt optimizados para este pipeline RAG —
+para que el agente pueda encontrar y citar respuestas precisas.
 
-## How RAG Chunking Works (important for file structure)
+## Cómo funciona el chunking de RAG (importante para la estructura)
 
-- Each file is split into chunks of ~2000 characters with 20%
-  overlap at sentence boundaries
-- The file name becomes part of the embedding metadata — use
-  descriptive names so the system can identify the source
-- Shorter, focused files perform better than one giant file
-- Each chunk should be self-contained — a reader should
-  understand the chunk without needing the surrounding text
-- Structured content (lists, tables as text, clear headers)
-  chunks better than long prose paragraphs
+- Cada archivo se divide en chunks de ~2000 caracteres con
+  20% de superposición en los límites de oraciones
+- El nombre del archivo se convierte en metadatos del embedding —
+  usa nombres descriptivos
+- Los archivos cortos y enfocados funcionan mejor que uno grande
+- Cada chunk debe ser autónomo — un lector debe entenderlo
+  sin necesitar el texto circundante
+- El contenido estructurado (listas, tablas como texto,
+  encabezados claros) se divide mejor que los párrafos largos
 
-## Your Task
+## Tu tarea
 
-### Step 1: Analyze All Documentation
+### Paso 1: Analizar toda la documentación
 
-Read every documentation file in the project. For each file,
-identify:
+Lee cada archivo de documentación del proyecto. Para cada
+archivo, identifica:
 
-1. The topic it covers
-2. Key facts, settings, configurations, and values
-3. Step-by-step procedures
-4. Feature descriptions with specifics (limits, options, formats)
-5. Pricing, plans, and quotas (if applicable)
-6. Technical details (APIs, parameters, integrations)
+1. El tema que cubre
+2. Datos clave, configuraciones y valores
+3. Procedimientos paso a paso
+4. Descripciones de funciones con detalles (límites, opciones, formatos)
+5. Precios, planes y cuotas (si aplica)
+6. Detalles técnicos (APIs, parámetros, integraciones)
 
-### Step 2: Plan the File Structure
+### Paso 2: Planificar la estructura de archivos
 
-Group related content into logical topics. Each file should
-cover ONE cohesive topic. Target file sizes:
+Agrupa contenido relacionado en temas lógicos. Cada archivo
+debe cubrir UN tema coherente. Tamaños objetivo:
 
-- Ideal: 2,000–6,000 characters per file (1–3 chunks)
-- Maximum: 10,000 characters (5 chunks)
-- If a topic is larger, split it into sub-topics
+- Ideal: 2.000–6.000 caracteres por archivo (1–3 chunks)
+- Máximo: 10.000 caracteres (5 chunks)
+- Si un tema es más grande, divídelo en subtemas
 
-Naming convention: {Topic-Name}.txt
-- Use descriptive English names with hyphens
-- No numbering prefixes (ordering doesn't matter for RAG)
-- Name should hint at the content for metadata
+Convención de nombres: {Nombre-Tema}.txt
+- Nombres descriptivos con guiones
+- Sin prefijos numéricos (el orden no importa para RAG)
+- El nombre debe indicar el contenido
 
-Examples:
+Ejemplos:
 - Platform-Overview.txt
 - Getting-Started.txt
 - Pricing-Plans.txt
 - API-Authentication.txt
 - Webhook-Integration.txt
 
-### Step 3: Write the Files
+### Paso 3: Escribir los archivos
 
-For each file, follow these rules:
+Para cada archivo, sigue estas reglas:
 
-Content rules:
-- Start with a clear topic heading as plain text
-- Write in plain text — no Markdown formatting, no HTML,
-  no JSX components
-- Convert tables to readable text lists or key-value pairs
-- Convert step-by-step guides to numbered lists
-- Include specific values: numbers, limits, prices, options,
-  defaults, formats, URLs
-- Each paragraph or section should be understandable on its
-  own (self-contained chunks)
-- Remove navigation elements, "Next Steps" links, and
-  cross-references that don't add informational value
-- Keep the original language of the documentation
+Reglas de contenido:
+- Comienza con un encabezado claro del tema en texto plano
+- Escribe en texto plano — sin Markdown, sin HTML,
+  sin componentes JSX
+- Convierte tablas en listas legibles o pares clave-valor
+- Convierte guías paso a paso en listas numeradas
+- Incluye valores específicos: números, límites, precios,
+  opciones, valores predeterminados, formatos, URLs
+- Cada párrafo debe ser comprensible por sí solo
+  (chunks autónomos)
+- Elimina elementos de navegación y enlaces sin valor
+  informativo
+- Mantén el idioma original de la documentación
 
-Optimization for RAG:
-- Front-load important information — put the answer before
-  the explanation
-- Use consistent terminology throughout all files
-- Repeat key terms naturally so they appear in multiple
-  chunks (improves retrieval)
-- For features with settings: list setting name, type,
-  default value, options, and description
-- For integrations: list provider, auth method, setup steps,
-  available tools/functions
+Optimización para RAG:
+- Coloca la información importante primero — respuesta
+  antes de explicación
+- Usa terminología consistente en todos los archivos
+- Repite términos clave naturalmente (mejora la búsqueda)
+- Para funciones con configuración: nombre, tipo, valor
+  predeterminado, opciones y descripción
+- Para integraciones: proveedor, método de auth, pasos
+  de configuración, herramientas disponibles
 
-What to exclude:
-- Screenshots and image references
-- UI component markup (tabs, accordions, cards, frames)
-- "See also" and navigation links
-- Decorative text and marketing fluff
-- Duplicate content (don't repeat the same info in
-  multiple files)
+Qué excluir:
+- Capturas de pantalla y referencias a imágenes
+- Markup de componentes UI (tabs, accordions, cards, frames)
+- Enlaces "Ver también" y navegación
+- Texto decorativo y contenido de marketing
+- Contenido duplicado
 
-### Step 4: Create the Output
+### Paso 4: Crear la salida
 
-1. Create a temporary directory (e.g., temp-knowledge-base/)
-2. Write all .txt files into it
-3. List all files with their sizes and topic descriptions
-4. Provide a summary of total files and total size
+1. Crea un directorio temporal (ej., temp-knowledge-base/)
+2. Escribe todos los archivos .txt en él
+3. Lista todos los archivos con tamaños y descripciones
+4. Proporciona un resumen: total de archivos y tamaño
 
-## Optional: Generate a Workflow Agent Seeder
+## Opcional: Generar un Seeder de Agente con Workflow
 
-If the project uses Revol and you also need to create an AI
-agent with a workflow to answer questions about this
-documentation, generate a Laravel database seeder that:
+Si el proyecto usa Revol y también necesitas crear un agente
+de IA con workflow, genera un Laravel database seeder que:
 
-1. Creates an AiAgent with:
-   - Appropriate system prompt for documentation support
-   - LLM: gpt-4o-mini, temperature: 0.3 (accuracy)
-   - Personality: high clarity (8-9), high formality (6-7),
-     low humor (2-3), low emoji (1-2)
+1. Cree un AiAgent con:
+   - System prompt apropiado para soporte de documentación
+   - LLM: gpt-4o-mini, temperature: 0.3 (precisión)
+   - Personalidad: alta claridad (8-9), alta formalidad (6-7),
+     poco humor (2-3), pocos emojis (1-2)
 
-2. Builds a Smart Router workflow:
-   - Start node with keyword-based edges to expert nodes
-   - 3-6 custom "expert" nodes, each covering a topic group
-   - Each expert has a specific conversation_goal describing
-     its domain
-   - Each expert has search_documents + get_company_info tools
-   - One fallback edge to a General Assistant node
-   - All experts connect to a Formatter node
-   - Voice nodes (STT/TTS) inactive by default
+2. Construya un workflow Smart Router:
+   - Nodo Start con edges basados en keywords hacia nodos expertos
+   - 3-6 nodos custom "expertos", cada uno para un grupo temático
+   - Cada experto con su conversation_goal describiendo su dominio
+   - Cada experto con herramientas search_documents + get_company_info
+   - Un edge fallback hacia un nodo General Assistant
+   - Todos los expertos conectados a un nodo Formatter
+   - Nodos de voz (STT/TTS) inactivos por defecto
 
-3. Keywords on edges should match the natural vocabulary
-   users would use when asking about each topic
+3. Las keywords en los edges deben coincidir con el vocabulario
+   natural que usan los usuarios
 
-## Input
+## Entrada
 
-My documentation is located at: [PATH OR URL]
-Project name: [NAME]
-Project description: [BRIEF DESCRIPTION]
-Target company_id for seeder: [ID or skip seeder]
+Mi documentación está en: [RUTA O URL]
+Nombre del proyecto: [NOMBRE]
+Descripción del proyecto: [DESCRIPCIÓN BREVE]
+company_id para el seeder: [ID o saltar seeder]
 ```
 </Accordion>
 
