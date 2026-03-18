@@ -38,7 +38,7 @@ Fügen Sie Inhalte direkt als Textblöcke hinzu.
     Der Inhalt wird in handhabbare Chunks aufgeteilt.
   </Step>
   <Step title="Embedding">
-    Jeder Chunk wird mithilfe des OpenAI text-embedding-3-small Modells in ein Vektor-Embedding umgewandelt.
+    Jeder Chunk wird mithilfe des ausgewählten Embedding-Modells in ein Vektor-Embedding umgewandelt.
   </Step>
   <Step title="Speicherung">
     Embeddings werden in PostgreSQL mit der pgvector-Erweiterung gespeichert.
@@ -50,6 +50,44 @@ Fügen Sie Inhalte direkt als Textblöcke hinzu.
     Abgerufene Chunks werden als Kontext in den LLM-Prompt injiziert.
   </Step>
 </Steps>
+
+## RAG-Einstellungen
+
+Öffnen Sie die RAG-Einstellungen über das **Zahnrad-Symbol** (⚙) im Speicherpanel der Wissensdatenbank. Alle Einstellungen gelten pro Unternehmen und werden automatisch gespeichert.
+
+### Embedding-Modell
+
+Wählen Sie das Modell zur Umwandlung Ihres Textes in Vektor-Embeddings:
+
+| Modell | Anbieter | Dimensionen | Preis | Ideal für |
+|--------|----------|------------|-------|-----------|
+| text-embedding-3-small | OpenAI | 1536 | $0.02/1M Token | Allgemeine Nutzung, englischer Inhalt |
+| text-embedding-3-large | OpenAI | 1536 | $0.13/1M Token | Höhere Genauigkeit, englischer Inhalt |
+| BGE-M3 | DeepInfra | 1024 | $0.01/1M Token | Mehrsprachiger Inhalt (100+ Sprachen) |
+
+<Warning>
+  Das Ändern des Embedding-Modells **löscht alle bestehenden Embeddings** des Unternehmens. Nach dem Wechsel müssen alle Agenten neu trainiert werden. Vor der Änderung erscheint ein Bestätigungsdialog.
+</Warning>
+
+### Chunk-Limit
+Wie viele Textfragmente pro RAG-Suche zurückgegeben werden (1–20). Standard: **5**.
+
+Höhere Werte liefern mehr Kontext für das LLM, erhöhen aber den Token-Verbrauch.
+
+### Zeichenlimit
+Maximale Zeichen pro Fragment beim Aufteilen von Dokumenten (500–10.000). Standard: **1.500**.
+
+Kleinere Fragmente ermöglichen präziseres Retrieval. Größere bewahren mehr Kontext pro Ergebnis.
+
+### Chunk-Überlappung
+Überlappung zwischen aufeinanderfolgenden Fragmenten (0–40%). Standard: **15%**.
+
+Überlappung stellt sicher, dass wichtiger Kontext an Fragment-Grenzen nicht verloren geht. Mehr Überlappung erzeugt mehr Chunks und verbraucht mehr Speicher.
+
+### Ähnlichkeitsschwelle
+Minimale Kosinus-Ähnlichkeit für ein Ergebnis (0,1–1,0). Standard: **0,35**.
+
+Niedrigere Werte liefern mehr Ergebnisse (besserer Recall). Höhere Werte liefern nur hochrelevante Ergebnisse (bessere Präzision). Für mehrsprachige Inhalte verwenden Sie niedrigere Schwellen (0,3–0,4).
 
 ## Speicherlimits
 

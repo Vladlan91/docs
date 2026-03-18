@@ -38,7 +38,7 @@ Agregue contenido directamente como bloques de texto.
     El contenido se divide en segmentos manejables.
   </Step>
   <Step title="Embedding">
-    Cada segmento se convierte en un embedding vectorial utilizando el modelo text-embedding-3-small de OpenAI.
+    Cada segmento se convierte en un embedding vectorial utilizando el modelo de embedding seleccionado.
   </Step>
   <Step title="Almacenamiento">
     Los embeddings se almacenan en PostgreSQL con la extensión pgvector.
@@ -50,6 +50,44 @@ Agregue contenido directamente como bloques de texto.
     Los segmentos recuperados se inyectan en el prompt del LLM como contexto.
   </Step>
 </Steps>
+
+## Configuración de RAG
+
+Abra la configuración de RAG a través del **icono de engranaje** (⚙) en el panel de almacenamiento de la base de conocimientos. Todas las configuraciones son por empresa y se guardan automáticamente.
+
+### Modelo de embedding
+
+Elija qué modelo convierte su texto en embeddings vectoriales:
+
+| Modelo | Proveedor | Dimensiones | Precio | Ideal para |
+|--------|-----------|------------|--------|-----------|
+| text-embedding-3-small | OpenAI | 1536 | $0.02/1M tokens | Uso general, contenido en inglés |
+| text-embedding-3-large | OpenAI | 1536 | $0.13/1M tokens | Mayor precisión, contenido en inglés |
+| BGE-M3 | DeepInfra | 1024 | $0.01/1M tokens | Contenido multilingüe (100+ idiomas) |
+
+<Warning>
+  Cambiar el modelo de embedding **elimina todos los embeddings existentes** de la empresa. Debe reentrenar todos los agentes después del cambio. Aparecerá un diálogo de confirmación antes de aplicar el cambio.
+</Warning>
+
+### Límite de chunks
+Cuántos fragmentos de texto se devuelven por búsqueda RAG (1–20). Predeterminado: **5**.
+
+Valores más altos proporcionan más contexto al LLM pero aumentan el uso de tokens.
+
+### Límite de caracteres
+Máximo de caracteres por fragmento al dividir documentos (500–10.000). Predeterminado: **1.500**.
+
+Fragmentos más pequeños dan una recuperación más precisa. Más grandes preservan más contexto por resultado.
+
+### Superposición de chunks
+Superposición entre fragmentos consecutivos (0–40%). Predeterminado: **15%**.
+
+La superposición asegura que el contexto importante en los límites de los fragmentos no se pierda. Mayor superposición crea más chunks y usa más almacenamiento.
+
+### Umbral de similitud
+Puntuación mínima de similitud coseno para incluir un resultado (0,1–1,0). Predeterminado: **0,35**.
+
+Valores más bajos devuelven más resultados (mejor recall). Valores más altos devuelven solo resultados altamente relevantes (mejor precisión). Para contenido multilingüe, use umbrales más bajos (0,3–0,4).
 
 ## Límites de almacenamiento
 

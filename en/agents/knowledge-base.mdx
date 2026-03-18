@@ -38,7 +38,7 @@ Add content directly as text blocks.
     Content is split into manageable chunks.
   </Step>
   <Step title="Embedding">
-    Each chunk is converted to a vector embedding using OpenAI's text-embedding-3-small model.
+    Each chunk is converted to a vector embedding using the selected embedding model.
   </Step>
   <Step title="Storage">
     Embeddings are stored in PostgreSQL with pgvector extension.
@@ -50,6 +50,44 @@ Add content directly as text blocks.
     Retrieved chunks are injected into the LLM prompt as context.
   </Step>
 </Steps>
+
+## RAG Settings
+
+Open RAG settings via the **gear icon** (⚙) in the Knowledge Base storage panel. All settings are per-company and auto-saved.
+
+### Embedding Model
+
+Choose which model converts your text into vector embeddings:
+
+| Model | Provider | Dimensions | Price | Best for |
+|-------|----------|-----------|-------|----------|
+| text-embedding-3-small | OpenAI | 1536 | $0.02/1M tokens | General use, English content |
+| text-embedding-3-large | OpenAI | 1536 | $0.13/1M tokens | Higher accuracy, English content |
+| BGE-M3 | DeepInfra | 1024 | $0.01/1M tokens | Multilingual content (100+ languages) |
+
+<Warning>
+  Changing the embedding model **deletes all existing embeddings** for the company. You must re-train all agents after switching. A confirmation dialog will appear before the change is applied.
+</Warning>
+
+### Chunk Limit
+How many text chunks are returned per RAG search (1–20). Default: **5**.
+
+Higher values provide more context to the LLM but increase token usage.
+
+### Character Limit
+Maximum characters per chunk when splitting documents (500–10,000). Default: **1,500**.
+
+Smaller chunks give more precise retrieval. Larger chunks preserve more context per result.
+
+### Chunk Overlap
+Overlap between consecutive chunks (0–40%). Default: **15%**.
+
+Overlap ensures important context at chunk boundaries is not lost. Higher overlap creates more chunks and uses more storage.
+
+### Similarity Threshold
+Minimum cosine similarity score to include a result (0.1–1.0). Default: **0.35**.
+
+Lower values return more results (better recall). Higher values return only highly relevant results (better precision). For multilingual content, use lower thresholds (0.3–0.4).
 
 ## Storage Limits
 
@@ -73,10 +111,10 @@ If you have project documentation (website pages, docs portal, README files, wik
 
 I use Revol — a platform for building AI sales agents with RAG
 (Retrieval-Augmented Generation). My agent answers questions
-using a knowledge base: uploaded files are chunked (max 2000
-chars, 20% overlap), embedded via OpenAI text-embedding-ada-002
-(1536 dimensions), stored in PostgreSQL with pgvector, and
-searched by cosine similarity at inference time.
+using a knowledge base: uploaded files are chunked (configurable
+size and overlap), embedded via a selectable model (OpenAI
+text-embedding-3-small/large or BGE-M3), stored in PostgreSQL
+with pgvector, and searched by cosine similarity at inference time.
 
 I need to convert my project documentation into a set of .txt
 files optimized for this RAG pipeline — so the agent can find

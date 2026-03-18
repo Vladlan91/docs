@@ -38,7 +38,7 @@ Dodawaj treść bezpośrednio jako bloki tekstowe.
     Treść jest dzielona na zarządzalne fragmenty.
   </Step>
   <Step title="Osadzanie">
-    Każdy fragment jest konwertowany na osadzenie wektorowe za pomocą modelu text-embedding-3-small od OpenAI.
+    Każdy fragment jest konwertowany na osadzenie wektorowe za pomocą wybranego modelu embeddingu.
   </Step>
   <Step title="Przechowywanie">
     Osadzenia są przechowywane w PostgreSQL z rozszerzeniem pgvector.
@@ -50,6 +50,44 @@ Dodawaj treść bezpośrednio jako bloki tekstowe.
     Pobrane fragmenty są wstrzykiwane do promptu LLM jako kontekst.
   </Step>
 </Steps>
+
+## Ustawienia RAG
+
+Otwórz ustawienia RAG przez **ikonę koła zębatego** (⚙) w panelu przechowywania bazy wiedzy. Wszystkie ustawienia są per firma i zapisują się automatycznie.
+
+### Model embeddingu
+
+Wybierz model do konwersji tekstu na embeddingi wektorowe:
+
+| Model | Dostawca | Wymiary | Cena | Najlepszy do |
+|-------|----------|---------|------|-------------|
+| text-embedding-3-small | OpenAI | 1536 | $0.02/1M tokenów | Ogólne użycie, treści angielskie |
+| text-embedding-3-large | OpenAI | 1536 | $0.13/1M tokenów | Wyższa dokładność, treści angielskie |
+| BGE-M3 | DeepInfra | 1024 | $0.01/1M tokenów | Treści wielojęzyczne (100+ języków) |
+
+<Warning>
+  Zmiana modelu embeddingu **usuwa wszystkie istniejące embeddingi** firmy. Po zmianie musisz ponownie wytrenować wszystkich agentów. Przed zastosowaniem zmiany pojawi się okno potwierdzenia.
+</Warning>
+
+### Limit chunków
+Ile fragmentów tekstu jest zwracanych na jedno wyszukiwanie RAG (1–20). Domyślnie: **5**.
+
+Wyższe wartości dostarczają więcej kontekstu dla LLM, ale zwiększają zużycie tokenów.
+
+### Limit znaków
+Maksymalna liczba znaków na fragment przy dzieleniu dokumentów (500–10 000). Domyślnie: **1 500**.
+
+Mniejsze fragmenty dają dokładniejsze wyszukiwanie. Większe zachowują więcej kontekstu w każdym wyniku.
+
+### Nakładanie chunków
+Nakładanie między kolejnymi fragmentami (0–40%). Domyślnie: **15%**.
+
+Nakładanie zapewnia, że ważny kontekst na granicach fragmentów nie zostanie utracony. Większe nakładanie tworzy więcej chunków i zużywa więcej miejsca.
+
+### Próg podobieństwa
+Minimalne podobieństwo kosinusowe do uwzględnienia wyniku (0,1–1,0). Domyślnie: **0,35**.
+
+Niższe wartości zwracają więcej wyników (lepszy recall). Wyższe wartości zwracają tylko wysoko trafne wyniki (lepsza precyzja). Dla treści wielojęzycznych używaj niższych progów (0,3–0,4).
 
 ## Limity przechowywania
 
