@@ -17,13 +17,13 @@
     "links": [
       {
         "label": "Dashboard",
-        "href": "https://app.revol.com"
+        "href": "https://revol-ai.app"
       }
     ],
     "primary": {
       "type": "button",
       "label": "Get Started",
-      "href": "https://app.revol.com/register"
+      "href": "https://revol-ai.app/register"
     }
   },
   "navigation": {
