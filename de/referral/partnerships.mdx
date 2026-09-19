@@ -1,0 +1,57 @@
+---
+title: Partnerschaften
+description: "Partner per Token anbinden, per Zahl bestätigen, Pool, Rabatt und Provision festlegen, Lebenszyklus der Partnerschaft"
+---
+
+Öffnen Sie **Meine Partner → Partner**. Die Seite zeigt Ihren Partner-Token, das Anbindungsformular und alle Partnerschaften mit Konditionen, Salden und Journalen.
+
+## Partner anbinden
+
+<Steps>
+  <Step title="Token des Partners besorgen">Jedes Unternehmen hat auf seiner Partnerseite einen **Partner-Token** (`PT_…`). Bitten Sie das Unternehmen, mit dem Sie arbeiten möchten, darum — oder geben Sie ihm Ihren. Der Token kann jederzeit erneuert werden; bestehende Partnerschaften bleiben.</Step>
+  <Step title="Anfrage senden">Fügen Sie den Token in **Partner anbinden** ein und klicken Sie **Anbinden**. Das andere Unternehmen erhält eine E-Mail und eine Benachrichtigung im System.</Step>
+  <Step title="Per Zahl bestätigen">Die Partnerschaft beginnt im Status *Wartet auf Verifizierung*. Der Initiator sieht eine Zahl; der Partner öffnet die Anfrage und wählt innerhalb von **15 Minuten** dieselbe Zahl. Das verhindert die Anbindung an das falsche Unternehmen über einen kopierten Token.</Step>
+  <Step title="Beide Seiten setzen Konditionen">Nach der Verifizierung steht die Partnerschaft auf *Konditionen abstimmen*. Jede Seite speichert ihre eigenen Konditionen; die Partnerschaft wird **Aktiv**, sobald beide bestätigt haben. In diesem Moment werden die Promo-Codes ausgegeben.</Step>
+</Steps>
+
+<Warning>Eine Partnerschaft pro Unternehmenspaar. Eine Gegenanfrage der anderen Seite, während Ihre wartet, wird als Duplikat abgelehnt.</Warning>
+
+## Konditionen: Pool und Aufteilung
+
+| Einstellung | Wer setzt sie | Bedeutung |
+|---|---|---|
+| **Ihr Pool für den Partner, %** | Sie | Der Anteil *Ihres* Bestellbetrags, den Sie für einen vom Partner gebrachten Kunden abgeben |
+| **Kundenrabatt, %** | Der Partner (aus Ihrem Pool) | Teil Ihres Pools, den der Partner dem Kunden als Rabatt an Ihrer Kasse gibt |
+| **Provision, %** | Der Partner (aus Ihrem Pool) | Teil Ihres Pools, den der Partner als Vergütung behält |
+| **Gültig bis** | Jede Seite | Optionales Enddatum der Konditionen dieser Seite |
+
+Rabatt + Provision dürfen den Pool nicht übersteigen. Sie können Ihren Pool nicht unter das senken, was der Partner bereits aufteilt. Die Währung wird einmal pro Partnerschaft festgelegt (siehe [Provisionen und Abrechnungen](/de/referral/settlements#währung)).
+
+### Satz ändern
+
+| Richtlinie | Wirkung |
+|---|---|
+| **Behalten** | Bestehende Codes behalten den alten Satz, neue erhalten den neuen |
+| **Aktualisieren** | Aktive Codes erhalten den neuen Satz |
+| **Beenden** | Alte Codes werden deaktiviert, ein neuer Code wird ausgegeben |
+
+Jede Änderung wird mit der angewandten Richtlinie in der **Konditionshistorie** gespeichert. Bereits eingelöste Bestellungen behalten die eingefrorenen Konditionen.
+
+## Lebenszyklus
+
+| Status | Bedeutung |
+|---|---|
+| Wartet auf Verifizierung | Anfrage gesendet, Zahl noch nicht bestätigt (verfällt nach 15 Minuten) |
+| Konditionen abstimmen | Verifiziert, beide Seiten müssen die Konditionen bestätigen |
+| Aktiv | Codes gelten, Provisionen entstehen |
+| Pausiert | Codes gelten nicht; bereits ausgegebene Kundenrechte gelten weiter |
+| Beendet | Codes gelten nicht; Kundenrechte gelten noch für die **Karenzfrist** (standardmäßig 30 Tage, ein Feld der Partnerschaft) |
+| Abgelehnt / Abgelaufen | Anfrage abgelehnt oder nicht rechtzeitig bestätigt |
+
+Das Beenden einer Partnerschaft berührt weder entstandene Provisionen noch Salden oder Auszahlungen. Eine spätere Neuanbindung desselben Paars gibt neue Codes aus und überschreibt nie die Konditionen bereits an Kunden gegebener Codes.
+
+## Zugriff
+
+- Inhaber und Mitglieder mit der Plattform `referral` verwalten Partnerschaften: Anbindung, Bestätigung, Konditionen, Status, Codes, Partner-Token, Währung.
+- Mitglieder ohne die Plattform sehen diese Seite nicht.
+- Auszahlungen, Zurückhaltungen und das Schließen von Abweichungen — nur der Inhaber.

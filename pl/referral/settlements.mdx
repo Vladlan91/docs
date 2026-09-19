@@ -1,0 +1,69 @@
+---
+title: Prowizje i rozliczenia
+description: "Naliczenia, okres karencji, wstrzymania, wypłaty z dokładnym składem, rozbieżności po wypłacie, raporty, eksport i narzędzia MCP"
+---
+
+## Naliczenia
+
+Zdarzenie prowizji powstaje, gdy zamówienie z kodem partnerskim (lub prawem klienta) zostaje **opłacone**. Jego stawka i podstawa pochodzą z migawki użycia, nigdy z bieżącego kodu.
+
+| Status zdarzenia | Znaczenie |
+|---|---|
+| Potwierdzone | Naliczone; wchodzi do salda |
+| Stornowane | Płatność cofnięta, zamówienie anulowane lub usunięte przed wypłatą |
+| Wypłacone | Wypłacone; nigdy później nie zmieniane |
+
+Obie firmy widzą **dziennik naliczeń** umowy: kierunek (naliczone Tobie / do wypłaty partnerowi), kwotę, walutę, status, zamówienie i znacznik wstrzymania.
+
+## Salda i okres karencji
+
+| Pozycja | Znaczenie |
+|---|---|
+| Naliczone Tobie | Suma potwierdzonych zdarzeń, w których jesteś beneficjentem |
+| Gotowe do wypłaty | Potwierdzone zdarzenia starsze niż **okres karencji** (30 dni) i niewstrzymane |
+| Jesteś winien partnerowi | Potwierdzone zdarzenia, w których jesteś gospodarzem |
+| Razem | Naliczone − winien, w każdej walucie |
+
+Waluty nigdy nie są mieszane: każde saldo, wypłata i raport pokazywane są w danej walucie.
+
+## Wstrzymania
+
+**Właściciel firmy-gospodarza** może **wstrzymać** potwierdzoną, niewypłaconą prowizję z obowiązkowym powodem. Wstrzymane zdarzenie nie wchodzi do wypłat, dopóki wstrzymanie nie zostanie zdjęte; partner otrzymuje powiadomienie z powodem. Zgoda drugiej strony nie jest potrzebna.
+
+## Wypłaty
+
+<Steps>
+  <Step title="Podgląd">Na stronie rozliczeń wybierz umowę i okres. Podgląd pokazuje dokładnie te dojrzałe, niewstrzymane zdarzenia, które zostaną rozliczone, ich sumę i kierunek (kto komu płaci).</Step>
+  <Step title="Potwierdzenie">Właściciel potwierdza **ten sam skład**, który widział. Jeśli cokolwiek zmieniło się w międzyczasie — nowe naliczenie, wstrzymanie, storno, nawet inny zestaw o tej samej sumie — wypłata jest odrzucana, a podgląd pokazywany ponownie.</Step>
+  <Step title="Zapis">Wypłata jest zapisywana z każdym zdarzeniem, które zawiera; zdarzenie nigdy nie trafi do dwóch wypłat. Skład widzą obie strony. Same pieniądze przepływają między firmami poza Revol; menedżerowie uzgadniają się z zapisem wypłaty.</Step>
+</Steps>
+
+Co tydzień właściciel otrzymuje przypomnienie o dojrzałych kwotach gotowych do wypłaty.
+
+## Rozbieżności po wypłacie
+
+Wypłacone zdarzenia nigdy nie są nadpisywane. Jeśli wypłacone zamówienie zmieni się później — kwota, anulowanie, usunięcie — Revol otwiera **sprawę rozbieżności** widoczną dla obu firm, z kwotą oczekiwaną i wypłaconą. Właściciel gospodarza zamyka ją ręcznie z komentarzem; nie ma automatycznego zwrotu.
+
+## Waluta
+
+Umowa ma jedną walutę. Kody i zamówienia w innej walucie są odrzucane, a zamówienie bez waluty jest odrzucane zamiast cicho traktowane jako UAH. Historyczne umowy bez waluty właściciel doprecyzowuje na podstawie dowodów; do tego czasu nie wchodzą do sald i wypłat.
+
+## Raporty i eksport
+
+- **Lejek** per waluta: kody → użycia → opłacone → wypłacone.
+- **Historia warunków** każdej umowy z polityką dla wydanych kodów.
+- Lista **Użyć** z informacją, kto, kiedy, jakim kanałem i z jakimi kwotami; eksport CSV.
+- Eksport **składu wypłaty** dla obu stron.
+
+## Narzędzia MCP
+
+Pracownicy korzystający z Claude lub innego klienta MCP mają te same operacje co w web, z tymi samymi zasadami dostępu:
+
+| Narzędzie | Robi |
+|---|---|
+| `revol_promo_preview` | Podgląd kodu na zamówieniu |
+| `revol_promo_redeem` | Zastosowanie kodu (`confirm=true`, opcjonalny klucz idempotencji) |
+| `revol_promo_release` | Zdjęcie kodu z nieopłaconego zamówienia |
+| `revol_redemptions_list` | Lista użyć z migawkami warunków |
+
+Każde użycie przez MCP jest zapisywane z kanałem `mcp`.

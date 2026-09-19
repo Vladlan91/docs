@@ -1,0 +1,60 @@
+---
+title: Partner groups and the Wallet app
+description: "One QR for all partners, customer rights in Revol Wallet, the card at the till, transfers, grace period and revocation"
+---
+
+## The flow
+
+<Steps>
+  <Step title="A company builds a group">
+    A developer, a designer studio or a store collects its **active deals** into a partner group on the Partners page and gets **one QR**. Each item of the group is a deal; the terms come from that deal's code.
+  </Step>
+  <Step title="A manager shows the QR">
+    The customer scans it with the **Revol Wallet** app (a phone camera opens a preview page with the group's discounts and a link to the app).
+  </Step>
+  <Step title="The customer receives rights">
+    Every active item becomes a **right** in the customer's wallet with the terms frozen at that moment: discount, commission rate, currency, validity, one use, one transfer.
+  </Step>
+  <Step title="The card at the till">
+    At a partner, the customer opens the discount and shows a **QR card that refreshes every 2 minutes**. The manager scans it with the order scanner — the discount is applied exactly like a promo code, and the commission goes to the company that issued the group.
+  </Step>
+</Steps>
+
+<Frame caption="Group preview, wallet and the card at the till in Revol Wallet">
+  <img src="/images/referral-app-claimed.png" alt="Group claimed in Revol Wallet" width="220" />
+  <img src="/images/referral-app-wallet.png" alt="Revol Wallet" width="220" />
+  <img src="/images/referral-app-card.png" alt="Card at the till" width="220" />
+</Frame>
+
+## Rights rules
+
+| Rule | Default |
+|---|---|
+| Validity | 12 months from receipt, not longer than the code's end date |
+| Uses | 1 |
+| Transfers | 1 — by scanning a transfer QR in the app; no phone number is entered |
+| Transfer invite | 30 minutes, then the right returns to the sender |
+| Transfer from a new device | Not before 24 hours after signing in on that device |
+| Card token | 2 minutes, single use, a new one cancels the previous |
+| One right per deal and partner | Repeated scans and rights received by transfer do not create duplicates |
+
+A right is **not cashback**: it is a list of discounts. The customer never sees the commission rate — that is a matter between companies.
+
+### After payment
+
+Once an order with a right has been paid, the use stays used: cancelling, un-paying or deleting the order later does not revive the right. Cancelling an **unpaid** order returns the use if the right is still valid.
+
+### When a deal changes
+
+- **Pause** stops issuing new rights; issued rights keep working.
+- **Rate change** with code re-issue does not shorten issued rights.
+- **End** of the deal starts the **grace period** (30 days by default): rights still work and commissions still accrue to the source; afterwards the rights lapse.
+- **Emergency revocation** — the host company's owner revokes all rights of a deal (or one right) immediately, with a reason the customer sees. Orders where the right was already applied keep their discount.
+
+## Managing groups
+
+On the Partners page: create a group, choose deals, name it, download or print the QR, **rotate the token** (the old QR stops working), archive the group. The group summary shows how many customers claimed, how many rights are live, used and revoked.
+
+## The app for customers
+
+Revol Wallet signs the customer in by phone number and SMS code, keeps the rights, shows the card, handles transfers and lists the savings history. Customers can see their devices, sign out remotely and **delete the account** in the app. Landing and support: [revol-wallet.app](https://revol-wallet.app).

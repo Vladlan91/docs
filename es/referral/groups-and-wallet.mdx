@@ -1,0 +1,52 @@
+---
+title: Grupos de socios y la app
+description: "Un QR para todos los socios, derechos del cliente en Revol Wallet, la tarjeta en caja, traspasos, periodo de gracia y revocación"
+---
+
+## El flujo
+
+<Steps>
+  <Step title="Una empresa crea un grupo">Una promotora, un estudio de diseño o una tienda reúne sus **acuerdos activos** en un grupo de socios en la página de Socios y obtiene **un QR**. Cada elemento del grupo es un acuerdo; las condiciones vienen del código de ese acuerdo.</Step>
+  <Step title="Un gestor muestra el QR">El cliente lo escanea con la app **Revol Wallet** (la cámara del móvil abre una página de vista previa con los descuentos del grupo y un enlace a la app).</Step>
+  <Step title="El cliente recibe derechos">Cada elemento activo se convierte en un **derecho** en la cartera del cliente con las condiciones congeladas en ese momento: descuento, tasa de comisión, moneda, validez, un uso, un traspaso.</Step>
+  <Step title="La tarjeta en caja">En un socio, el cliente abre el descuento y muestra una **tarjeta QR que se renueva cada 2 minutos**. El gestor la escanea con el escáner de pedidos — el descuento se aplica exactamente como un código promocional, y la comisión va a la empresa que emitió el grupo.</Step>
+</Steps>
+
+<Frame caption="Vista previa del grupo, cartera y tarjeta en caja en Revol Wallet">
+  <img src="/images/referral-app-claimed.png" alt="Descuentos del grupo recibidos" width="220" />
+  <img src="/images/referral-app-wallet.png" alt="Revol Wallet" width="220" />
+  <img src="/images/referral-app-card.png" alt="Tarjeta en caja" width="220" />
+</Frame>
+
+## Reglas de los derechos
+
+| Regla | Por defecto |
+|---|---|
+| Validez | 12 meses desde la recepción, no más que la fecha de fin del código |
+| Usos | 1 |
+| Traspasos | 1 — escaneando un QR de traspaso en la app; no se introduce ningún número de teléfono |
+| Invitación de traspaso | 30 minutos, luego el derecho vuelve al remitente |
+| Traspaso desde un dispositivo nuevo | No antes de 24 horas tras iniciar sesión en ese dispositivo |
+| Token de tarjeta | 2 minutos, de un solo uso, uno nuevo anula el anterior |
+| Un derecho por acuerdo y socio | Escaneos repetidos y derechos recibidos por traspaso no crean duplicados |
+
+Un derecho **no es cashback**: es una lista de descuentos. El cliente nunca ve la tasa de comisión — eso es asunto entre empresas.
+
+### Tras el pago
+
+Una vez pagado un pedido con un derecho, el uso queda consumido: cancelar, anular el pago o eliminar el pedido después no revive el derecho. Cancelar un pedido **sin pagar** devuelve el uso si el derecho sigue vigente.
+
+### Cuando cambia un acuerdo
+
+- **Pausar** detiene la emisión de nuevos derechos; los emitidos siguen funcionando.
+- **Cambiar la tasa** con reemisión del código no acorta los derechos emitidos.
+- **Terminar** el acuerdo inicia el **periodo de gracia** (30 días por defecto): los derechos siguen funcionando y las comisiones siguen devengándose a la fuente; después los derechos caducan.
+- **Revocación de emergencia** — el propietario de la empresa anfitriona revoca todos los derechos de un acuerdo (o uno solo) de inmediato, con un motivo que el cliente ve. Los pedidos donde el derecho ya se aplicó conservan su descuento.
+
+## Gestionar grupos
+
+En la página de Socios: crear un grupo, elegir acuerdos, nombrarlo, descargar o imprimir el QR, **rotar el token** (el QR antiguo deja de funcionar), archivar el grupo. El resumen del grupo muestra cuántos clientes lo reclamaron y cuántos derechos están vigentes, usados y revocados.
+
+## La app para clientes
+
+Revol Wallet identifica al cliente por número de teléfono y código SMS, guarda los derechos, muestra la tarjeta, gestiona traspasos y lleva el historial de ahorro. El cliente ve sus dispositivos, puede cerrar sesión a distancia y **eliminar la cuenta** en la app. Landing y soporte: [revol-wallet.app](https://revol-wallet.app).

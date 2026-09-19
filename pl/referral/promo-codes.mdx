@@ -1,0 +1,62 @@
+---
+title: Kody promocyjne na zamówieniu
+description: "Jak kod trafia do klienta, jak menedżer go podgląda i stosuje do zamówienia oraz zasady kwot"
+---
+
+## Kody i karty
+
+Aktywna umowa wydaje **partnerski kod promocyjny** w każdą stronę: Twój kod działa u partnera, kod partnera — u Ciebie. Firma może mieć też **własne kody** ze stałym rabatem bez partnera.
+
+Kody mają 8 znaków, `XXXX-XXXX`, bez mylących `0 O 1 I L U`. Klient może je dyktować: wejście jest normalizowane — wielkość liter, spacje, myślniki i cyrylickie sobowtóry są poprawiane.
+
+Dla każdego kodu Revol generuje **kartę z QR** i link `/p/{code}`. Kartę można zapisać w zdjęciach, przesłać na czacie lub wydrukować. Blok **Pokaż klientowi** na stronie „Partnerzy” wyjaśnia, gdzie kod się pojawia: na stronie partnera po linku lub QR, na czacie z asystentem lub gdziekolwiek indziej.
+
+<Tip>Gdy klient pisze do asystenta i podaje kod, asystent go rozpoznaje i podpowiada menedżerowi na zamówieniu.</Tip>
+
+## Zastosowanie kodu do zamówienia
+
+<Steps>
+  <Step title="Otwórz zamówienie leada">Zamówienie musi być *Nowe* lub *Opłacone* i bez innego aktywnego kodu. Pracownik musi zarządzać zamówieniami leada (właściciel zespołu, właściciel lub autor leada).</Step>
+  <Step title="Podgląd">Kliknij **Kod promocyjny**, wpisz lub zeskanuj kod. Podgląd pokazuje partnera, typ i wysokość rabatu, **kwotę rabatu dla tego zamówienia, kwotę do zapłaty**, walutę, ważność, pozostałe użycia i czy naliczy się prowizja — albo czytelną odmowę.</Step>
+  <Step title="Zastosuj">Potwierdź. Rabat jest ustalony na zamówieniu, warunki zamrożone w migawce. Jeśli zamówienie jest już opłacone, prowizja nalicza się od razu.</Step>
+  <Step title="Płatność">Gdy zamówienie staje się *Opłacone*, nalicza się prowizja partnera i pojawia się w dziennikach obu firm.</Step>
+</Steps>
+
+Podgląd i zastosowanie używają tych samych kontroli, więc podgląd nigdy nie powie „tak” tam, gdzie zastosowanie odmówi.
+
+### Odmowy
+
+| Powód | Znaczenie |
+|---|---|
+| `not_found` | Brak takiego kodu w Twojej firmie |
+| `redeem_elsewhere` | Kod należy do drugiej strony Twojej umowy i działa tam, nie u Ciebie |
+| `order_has_promo` | Zamówienie ma już aktywny kod — najpierw go zdejmij |
+| `order_not_applicable` | Zamówienie usunięte lub anulowane |
+| `code_inactive`, `code_expired`, `code_exhausted` | Kod wyłączony, przeterminowany lub wyczerpany |
+| `deal_inactive` | Umowa wstrzymana lub zakończona |
+| `currency_mismatch` | Waluta zamówienia różni się od waluty kodu |
+| `rate_limited` | Za dużo prób — 30 na minutę na pracownika, 120 na firmę |
+
+Odrzucone próby są zapisywane; właściciel widzi serie odmów na stronie „Partnerzy”.
+
+## Kwoty
+
+| Termin | Wzór |
+|---|---|
+| Cena | `amount` — cena bez żadnych rabatów |
+| Kwota oferty | Cena − rabat menedżera (`discount_pct`) |
+| Rabat z kodu | % kwoty oferty lub stała kwota nie większa niż kwota oferty |
+| Do zapłaty | Kwota oferty − rabat z kodu |
+| Prowizja | % kwoty oferty |
+
+Przykład: cena 10 000, rabat menedżera 10 %, kod 5 %, prowizja 5 % → oferta 9 000, rabat 450, do zapłaty 8 550, prowizja 450. Nie ma limitu łącznego rabatu — marżę kontroluje menedżer, budując ofertę.
+
+Późniejsza zmiana ceny lub rabatu menedżera przelicza rabat i bieżącą prowizję z migawki; typ i stawka się nie zmieniają.
+
+## Zdjęcie kodu
+
+- **Nieopłacone zamówienie:** otwórz zamówienie → **Zdejmij kod**. Użycie staje się *zdjęte*, pola zamówienia są czyszczone, licznik użyć kodu wraca o jeden — jeśli kod nadal jest ważny.
+- **Anulowanie przed płatnością:** kod jest zdejmowany automatycznie według tej samej zasady.
+- **Po płatności:** użycie pozostaje zużyte, cokolwiek stanie się później — cofnięcie płatności, anulowanie lub usunięcie. Zdjęcie kodu z opłaconego zamówienia nie jest możliwe; najpierw zmień status.
+
+Każdy podgląd, użycie, odmowa, zdjęcie i naliczenie trafia do **dziennika operacji**, a strona **Użycia** pokazuje je z informacją, kto użył kodu, kiedy, jakim kanałem (web, MCP, aplikacja) i z jakimi kwotami.

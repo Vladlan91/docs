@@ -1,0 +1,58 @@
+---
+title: Referral system
+sidebarTitle: Overview
+description: "Partner deals between companies, promo codes, partner groups with a single QR, the Revol Wallet app, commissions and settlements"
+---
+
+## What it is
+
+The referral system lets **companies bring customers to each other** and get paid for it. Two companies sign a partnership deal in Revol, each issues a promo code that works at the other, and every order paid with that code records a commission for the partner who brought the customer.
+
+On top of deals, a company can collect its partners into a **partner group** with a single QR. A customer scans it with the **Revol Wallet** app and receives the discounts of every partner in the group.
+
+<CardGroup cols={2}>
+  <Card title="Partnership deals" icon="handshake" href="/en/referral/partnerships">
+    Connect by partner token, confirm with a number, set pool, discount and commission.
+  </Card>
+  <Card title="Promo codes on orders" icon="ticket" href="/en/referral/promo-codes">
+    Cards with QR, code preview and redemption at the order, the rules behind the numbers.
+  </Card>
+  <Card title="Groups and the Wallet app" icon="mobile" href="/en/referral/groups-and-wallet">
+    One QR for all partners, customer rights, the card at the till, transfers, revocation.
+  </Card>
+  <Card title="Commissions and settlements" icon="scale-balanced" href="/en/referral/settlements">
+    Accruals, holds, payouts with exact composition, discrepancies, reports and MCP tools.
+  </Card>
+</CardGroup>
+
+## Who does what
+
+| Role | Where | What they can do |
+|---|---|---|
+| **Company owner** | Partners page (`My referrals`) | Everything: deals, terms, codes, payouts, holds, closing discrepancies, revoking customer rights |
+| **Team member with the `referral` platform** | Partners page | Read deals, balances and journals; connect partners, confirm, set terms, manage codes and the partner token |
+| **Any team member who manages a lead's orders** | Order → Promo code | Preview and apply a code, remove it from an unpaid order, scan a customer's card |
+| **Customer** | Revol Wallet app | Scan a group QR, keep discounts, show the card at the till, pass a discount to a friend |
+
+A partner does not need to be a "business partner" of any special kind. A blogger or an individual entrepreneur registers as a regular Revol user, creates their own company and connects to yours with the same deal.
+
+## The money rule in one paragraph
+
+Your promo code gives the customer a discount **on top of** the manager's discount and the commission is calculated from the offer amount (price minus the manager's discount). The terms of every redemption — discount type and value, commission rate, currency — are **frozen at the moment the code is applied** and never change afterwards. Commissions accrue when the order is paid, mature after a holding period, and are paid out between partners outside Revol; Revol keeps the ledger.
+
+<Note>
+  The customer's wallet holds **discounts only** — not cashback, points or money. Nothing is transferred or stored on behalf of the customer.
+</Note>
+
+## Glossary
+
+| Term | Meaning |
+|---|---|
+| Partner token | `PT_…` string of your company; give it to a company that wants to connect to you |
+| Deal | A partnership between two companies with terms on each side |
+| Pool | The share of the order amount you give to the partner for a customer they bring |
+| Split | How the receiving side divides the partner's pool between the customer's discount and its own commission |
+| Code | An 8-character promo code `XXXX-XXXX` (no `0 O 1 I L U`); each deal issues one per direction |
+| Redemption | A code applied to a specific order with a snapshot of the terms |
+| Right | A customer's discount in the Wallet app, received from a group QR |
+| Holding period | Days a confirmed commission waits before it can be paid out (30 by default) |

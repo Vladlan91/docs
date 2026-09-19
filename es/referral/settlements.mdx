@@ -1,0 +1,69 @@
+---
+title: Comisiones y liquidaciones
+description: "Devengos, periodo de retención, retenciones, pagos con composición exacta, discrepancias tras el pago, informes, exportación y herramientas MCP"
+---
+
+## Devengos
+
+Un evento de comisión se crea cuando un pedido con un código de socio (o un derecho del cliente) se **paga**. Su tasa y base salen de la instantánea de la aplicación, nunca del código vivo.
+
+| Estado del evento | Significado |
+|---|---|
+| Confirmado | Devengado; entra en el saldo |
+| Revertido | El pago se anuló, el pedido se canceló o eliminó antes del pago al socio |
+| Liquidado | Pagado; nunca se modifica después |
+
+Ambas empresas ven el **registro de devengos** de un acuerdo: dirección (devengado a ti / a pagar al socio), importe, moneda, estado, pedido y la marca de retención.
+
+## Saldos y periodo de retención
+
+| Cifra | Significado |
+|---|---|
+| Devengado a ti | Suma de eventos confirmados donde eres el beneficiario |
+| Listo para pagar | Eventos confirmados más antiguos que el **periodo de retención** (30 días) y no retenidos |
+| Debes al socio | Eventos confirmados donde eres el anfitrión |
+| Total | Devengado − debido, por moneda |
+
+Las monedas nunca se mezclan: cada saldo, pago e informe se muestra por moneda.
+
+## Retenciones
+
+El **propietario de la empresa anfitriona** puede **retener** una comisión confirmada y no pagada con un motivo obligatorio. Un evento retenido queda fuera de los pagos hasta que se levante la retención; el socio recibe una notificación con el motivo. No hace falta el consentimiento de la otra parte.
+
+## Pagos
+
+<Steps>
+  <Step title="Vista previa">En la página de liquidaciones elige el acuerdo y el periodo. La vista previa lista exactamente los eventos maduros y no retenidos que se liquidarán, su total y la dirección (quién paga a quién).</Step>
+  <Step title="Confirmación">El propietario confirma **la misma composición** que vio. Si algo cambió entre medias — un nuevo devengo, una retención, una reversión, incluso un conjunto distinto con el mismo total — el pago se rechaza y se muestra de nuevo la vista previa.</Step>
+  <Step title="Registro">El pago se registra con cada evento que contiene; un evento nunca puede formar parte de dos pagos. Ambas partes ven la composición. El dinero real se mueve entre las empresas fuera de Revol; los gestores concilian contra el registro del pago.</Step>
+</Steps>
+
+Cada semana el propietario recibe un recordatorio de los importes maduros listos para pagar.
+
+## Discrepancias tras el pago
+
+Los eventos liquidados nunca se reescriben. Si un pedido ya pagado cambia después — importe, cancelación, eliminación — Revol abre un **caso de discrepancia** visible para ambas empresas, con el importe esperado y el pagado. El propietario anfitrión lo cierra manualmente con un comentario; no hay devolución automática.
+
+## Moneda
+
+Un acuerdo tiene una moneda. Los códigos y pedidos en otra moneda se rechazan, y un pedido sin moneda se rechaza en vez de tratarse silenciosamente como UAH. Los acuerdos históricos sin moneda los resuelve el propietario con pruebas; hasta entonces quedan fuera de saldos y pagos.
+
+## Informes y exportación
+
+- **Embudo** por moneda: códigos → aplicaciones → pagados → liquidados.
+- **Historial de condiciones** de cada acuerdo con la política aplicada a los códigos emitidos.
+- Lista de **Aplicaciones** con quién, cuándo, canal e importes; exportación CSV.
+- Exportación de la **composición del pago** para ambas partes.
+
+## Herramientas MCP
+
+Los empleados que trabajan a través de Claude u otro cliente MCP tienen las mismas operaciones que en la web, con las mismas reglas de acceso:
+
+| Herramienta | Hace |
+|---|---|
+| `revol_promo_preview` | Vista previa de un código en un pedido |
+| `revol_promo_redeem` | Aplicar un código (`confirm=true`, clave de idempotencia opcional) |
+| `revol_promo_release` | Retirar un código de un pedido sin pagar |
+| `revol_redemptions_list` | Listar aplicaciones con sus instantáneas |
+
+Cada aplicación por MCP se registra con el canal `mcp`.

@@ -1,0 +1,48 @@
+---
+title: Programa de socios
+sidebarTitle: Resumen
+description: "Acuerdos de colaboración entre empresas, códigos promocionales, grupos de socios con un solo QR, la app Revol Wallet, comisiones y liquidaciones"
+---
+
+## Qué es
+
+El programa de socios permite a las empresas **traerse clientes unas a otras** y cobrar por ello. Dos empresas firman un acuerdo de colaboración en Revol, cada una emite un código promocional que funciona en la otra, y cada pedido pagado con ese código registra una comisión para el socio que trajo al cliente.
+
+Además, una empresa puede reunir a sus socios en un **grupo** con un único QR. El cliente lo escanea con la app **Revol Wallet** y recibe los descuentos de todos los socios del grupo.
+
+<CardGroup cols={2}>
+  <Card title="Acuerdos de colaboración" icon="handshake" href="/es/referral/partnerships">Conexión por token, confirmación con un número, fondo, descuento y comisión.</Card>
+  <Card title="Códigos en pedidos" icon="ticket" href="/es/referral/promo-codes">Tarjetas con QR, vista previa y aplicación del código, las reglas de los importes.</Card>
+  <Card title="Grupos y la app" icon="mobile" href="/es/referral/groups-and-wallet">Un QR para todos los socios, derechos del cliente, la tarjeta en caja, traspasos, revocación.</Card>
+  <Card title="Comisiones y liquidaciones" icon="scale-balanced" href="/es/referral/settlements">Devengos, retenciones, pagos con composición exacta, discrepancias, informes y herramientas MCP.</Card>
+</CardGroup>
+
+## Quién hace qué
+
+| Rol | Dónde | Qué puede hacer |
+|---|---|---|
+| **Propietario de la empresa** | Página «Mis socios» | Todo: acuerdos, condiciones, códigos, pagos, retenciones, cierre de discrepancias, revocación de derechos de clientes |
+| **Miembro del equipo con la plataforma `referral`** | Página «Mis socios» | Ve acuerdos, saldos y registros; conecta socios, confirma, fija condiciones, gestiona códigos y el token de socio |
+| **Cualquier miembro que gestione los pedidos de un lead** | Pedido → Código promocional | Vista previa y aplicación del código, retirada de un pedido sin pagar, escaneo de la tarjeta del cliente |
+| **Cliente** | App Revol Wallet | Escanea un QR de grupo, guarda descuentos, muestra la tarjeta en caja, traspasa un descuento a un amigo |
+
+Un socio no tiene que ser un negocio «especial». Un bloguero o un autónomo se registra como usuario normal de Revol, crea su propia empresa y se conecta a la tuya con el mismo acuerdo.
+
+## La regla del dinero en un párrafo
+
+El código promocional da al cliente un descuento **además** del descuento del gestor, y la comisión se calcula sobre el importe de la oferta (precio menos el descuento del gestor). Las condiciones de cada aplicación — tipo e importe del descuento, tasa de comisión, moneda — se **congelan en el momento de aplicar el código** y no cambian después. Las comisiones se devengan al pagar el pedido, maduran tras un periodo de retención y se pagan entre socios fuera de Revol; Revol lleva el registro.
+
+<Note>La cartera del cliente guarda **solo descuentos** — no cashback, puntos ni dinero. Nada se transfiere ni se almacena en nombre del cliente.</Note>
+
+## Glosario
+
+| Término | Significado |
+|---|---|
+| Token de socio | Cadena `PT_…` de tu empresa; dásela a la empresa que quiera conectarse contigo |
+| Acuerdo | Una colaboración entre dos empresas con condiciones en cada lado |
+| Fondo | La parte del importe del pedido que das al socio por un cliente que trae |
+| Reparto | Cómo la parte que recibe el fondo lo divide entre el descuento del cliente y su propia comisión |
+| Código | Código promocional de 8 caracteres `XXXX-XXXX` (sin `0 O 1 I L U`); cada acuerdo emite uno por dirección |
+| Aplicación | Un código aplicado a un pedido concreto con una instantánea de las condiciones |
+| Derecho | Un descuento del cliente en la app, recibido desde un QR de grupo |
+| Periodo de retención | Días que una comisión confirmada espera antes de poder pagarse (30 por defecto) |

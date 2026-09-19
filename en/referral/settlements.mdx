@@ -1,0 +1,75 @@
+---
+title: Commissions and settlements
+description: "Accruals, holding period, holds, payouts with exact composition, discrepancies after payout, reports, exports and MCP tools"
+---
+
+## Accruals
+
+A commission event is created when an order with a partner code (or a customer right) is **paid**. Its rate and base come from the redemption snapshot, never from the live code.
+
+| Event status | Meaning |
+|---|---|
+| Confirmed | Accrued; enters the balance |
+| Reversed | The order was un-paid, cancelled or deleted before payout |
+| Settled | Paid out; never modified afterwards |
+
+Both companies see the **accrual journal** of a deal: direction (accrued to you / owed to the partner), amount, currency, status, order and the hold flag.
+
+## Balances and holding period
+
+| Figure | Meaning |
+|---|---|
+| Accrued to you | Sum of confirmed events where you are the beneficiary |
+| Ready for payout | Confirmed events older than the **holding period** (30 days) and not held |
+| You owe the partner | Confirmed events where you are the host |
+| Total | Accrued − owed, per currency |
+
+Currencies are never mixed: every balance, payout and report is shown per currency.
+
+## Holds
+
+The **owner of the host company** can put a confirmed, unpaid commission **on hold** with a mandatory reason. A held event is excluded from payouts until the hold is lifted; the partner is notified with the reason. Holds do not need the other side's consent.
+
+## Payouts
+
+<Steps>
+  <Step title="Preview">
+    On the settlements page pick the deal and period. The preview lists exactly the mature, non-held events that will be settled, their total and the direction (who pays whom).
+  </Step>
+  <Step title="Confirm">
+    The owner confirms **the same composition** they saw. If anything changed in between — a new accrual, a hold, a reversal, even a different set with the same total — the payout is refused and the preview is shown again.
+  </Step>
+  <Step title="Record">
+    The payout is recorded with every event it contains; an event can never be part of two payouts. Both sides see the composition. The actual money moves between the companies outside Revol; managers reconcile against the payout record.
+  </Step>
+</Steps>
+
+Weekly, the owner receives a reminder about mature amounts ready for payout.
+
+## Discrepancies after payout
+
+Settled events are never rewritten. If a paid-out order later changes — amount, cancellation, deletion — Revol opens a **discrepancy case** visible to both companies with the expected and paid amounts. The host owner closes it manually with a comment; there is no automatic clawback.
+
+## Currency
+
+A deal has one currency. Codes and orders in another currency are refused, and an order without a currency is refused rather than silently treated as UAH. Historical deals without a currency are resolved by the owner from evidence; until then they stay out of balances and payouts.
+
+## Reports and exports
+
+- **Funnel** per currency: codes → redemptions → paid → settled.
+- **Terms history** of every deal with the policy applied to issued codes.
+- **Redemptions** list with who, when, channel and amounts; CSV export.
+- **Payout composition** export for both sides.
+
+## MCP tools
+
+Employees who work through Claude or another MCP client get the same operations as the web, with the same access rules:
+
+| Tool | Does |
+|---|---|
+| `revol_promo_preview` | Preview a code on an order |
+| `revol_promo_redeem` | Apply a code (`confirm=true`, optional idempotency key) |
+| `revol_promo_release` | Remove a code from an unpaid order |
+| `revol_redemptions_list` | List redemptions with their snapshots |
+
+Every MCP redemption is journaled with the channel `mcp`.

@@ -1,0 +1,57 @@
+---
+title: Umowy partnerskie
+description: "Podłączenie partnera tokenem, potwierdzenie liczbą, pula, rabat i prowizja, cykl życia umowy"
+---
+
+Otwórz **Moi partnerzy → Partnerzy**. Strona pokazuje Twój token partnera, formularz podłączenia i wszystkie umowy z warunkami, saldami i dziennikami.
+
+## Podłącz partnera
+
+<Steps>
+  <Step title="Zdobądź token partnera">Każda firma ma **token partnera** (`PT_…`) na stronie „Partnerzy”. Poproś o niego firmę, z którą chcesz współpracować, albo przekaż swój. Token można odnowić w każdej chwili; istniejące umowy pozostają.</Step>
+  <Step title="Wyślij prośbę">Wklej token w pole **Podłącz partnera** i kliknij **Podłącz**. Druga firma dostanie e-mail i powiadomienie w systemie.</Step>
+  <Step title="Potwierdź liczbą">Umowa zaczyna w stanie *Oczekuje weryfikacji*. Inicjator widzi liczbę; partner otwiera prośbę i wybiera tę samą liczbę w ciągu **15 minut**. Chroni to przed podłączeniem do niewłaściwej firmy przez skopiowany token.</Step>
+  <Step title="Obie strony ustalają warunki">Po weryfikacji umowa jest w stanie *Uzgadnianie warunków*. Każda strona zapisuje swoje warunki; umowa staje się **Aktywna**, gdy potwierdzą obie. W tym momencie wydawane są kody.</Step>
+</Steps>
+
+<Warning>Jedna umowa na parę firm. Prośba z drugiej strony, gdy Twoja czeka, jest odrzucana jako duplikat.</Warning>
+
+## Warunki: pula i podział
+
+| Ustawienie | Kto ustala | Znaczenie |
+|---|---|---|
+| **Twoja pula dla partnera, %** | Ty | Udział *Twojej* kwoty zamówienia, który oddajesz za klienta przyprowadzonego przez partnera |
+| **Rabat klienta, %** | Partner (z Twojej puli) | Część Twojej puli, którą partner oddaje klientowi jako rabat przy Twojej kasie |
+| **Prowizja, %** | Partner (z Twojej puli) | Część Twojej puli, którą partner zostawia sobie |
+| **Ważne do** | Każda strona | Opcjonalna data końca warunków tej strony |
+
+Rabat + prowizja nie mogą przekroczyć puli. Nie można obniżyć puli poniżej tego, co partner już dzieli. Waluta ustalana jest raz na umowę (zob. [Prowizje i rozliczenia](/pl/referral/settlements#waluta)).
+
+### Zmiana stawki
+
+| Polityka | Efekt |
+|---|---|
+| **Zostaw** | Stare kody działają ze starym %, nowe — z nowym |
+| **Zaktualizuj** | Aktywne kody dostają nową stawkę |
+| **Zakończ** | Stare kody są dezaktywowane, wydawany jest nowy |
+
+Każda zmiana trafia do **Historii warunków** z zastosowaną polityką. Warunki już użyte na zamówieniach pozostają zamrożone.
+
+## Cykl życia
+
+| Status | Znaczenie |
+|---|---|
+| Oczekuje weryfikacji | Prośba wysłana, liczba niepotwierdzona (wygasa po 15 minutach) |
+| Uzgadnianie warunków | Zweryfikowano, czekamy na potwierdzenie warunków przez obie strony |
+| Aktywna | Kody działają, prowizje się naliczają |
+| Wstrzymana | Kody nie działają; wydane prawa klientów działają dalej |
+| Zakończona | Kody nie działają; prawa klientów działają jeszcze przez **okres karencji** (domyślnie 30 dni, pole umowy) |
+| Odrzucona / Wygasła | Prośba odrzucona lub niepotwierdzona na czas |
+
+Zakończenie umowy nie dotyka naliczonych prowizji, sald ani wypłat. Ponowne podłączenie tej samej pary wydaje nowe kody i nigdy nie nadpisuje warunków kodów już przekazanych klientom.
+
+## Dostęp
+
+- Właściciel i członkowie z platformą `referral` zarządzają umowami: podłączenie, potwierdzenie, warunki, status, kody, token partnera, waluta.
+- Członkowie bez platformy nie widzą tej strony.
+- Wypłaty, wstrzymania i zamykanie rozbieżności — tylko właściciel.

@@ -1,0 +1,57 @@
+---
+title: Acuerdos de colaboración
+description: "Conectar un socio por token, confirmar con un número, fijar fondo, descuento y comisión, ciclo de vida del acuerdo"
+---
+
+Abre **Mis socios → Socios**. La página muestra tu token de socio, el formulario de conexión y todos los acuerdos con sus condiciones, saldos y registros.
+
+## Conectar un socio
+
+<Steps>
+  <Step title="Consigue el token del socio">Cada empresa tiene un **token de socio** (`PT_…`) en su página de Socios. Pídeselo a la empresa con la que quieres trabajar, o dale el tuyo. El token puede regenerarse en cualquier momento; los acuerdos existentes se conservan.</Step>
+  <Step title="Envía la solicitud">Pega el token en **Conectar socio** y pulsa **Conectar**. La otra empresa recibe un correo y una notificación en la app.</Step>
+  <Step title="Confirma con un número">El acuerdo empieza en *Pendiente de verificación*. El iniciador ve un número; el socio abre la solicitud y elige el mismo número en **15 minutos**. Esto evita conectarse a la empresa equivocada con un token copiado.</Step>
+  <Step title="Ambas partes fijan condiciones">Tras la verificación el acuerdo pasa a *Acordando condiciones*. Cada parte guarda las suyas; el acuerdo pasa a **Activo** cuando ambas han confirmado. En ese momento se emiten los códigos.</Step>
+</Steps>
+
+<Warning>Un acuerdo por par de empresas. Una solicitud inversa de la otra parte mientras la tuya está pendiente se rechaza como duplicada.</Warning>
+
+## Condiciones: fondo y reparto
+
+| Ajuste | Quién lo fija | Significado |
+|---|---|---|
+| **Tu fondo para el socio, %** | Tú | La parte de *tu* importe de pedido que estás dispuesto a ceder por un cliente que trae el socio |
+| **Descuento al cliente, %** | El socio (de tu fondo) | Parte de tu fondo que el socio da al cliente como descuento en tu caja |
+| **Comisión, %** | El socio (de tu fondo) | Parte de tu fondo que el socio se queda como retribución |
+| **Válido hasta** | Cada parte | Fecha de fin opcional de las condiciones de esa parte |
+
+Descuento + comisión no pueden superar el fondo. No puedes bajar tu fondo por debajo de lo que el socio ya reparte. La moneda se fija una vez por acuerdo (ver [Comisiones y liquidaciones](/es/referral/settlements#moneda)).
+
+### Cambiar la tasa
+
+| Política | Efecto |
+|---|---|
+| **Mantener** | Los códigos existentes conservan la tasa antigua, los nuevos reciben la nueva |
+| **Actualizar** | Los códigos activos reciben la nueva tasa |
+| **Terminar** | Los códigos antiguos se desactivan y se emite uno nuevo |
+
+Cada cambio se guarda en el **Historial de condiciones** con la política aplicada. Los pedidos ya aplicados conservan las condiciones congeladas.
+
+## Ciclo de vida
+
+| Estado | Significado |
+|---|---|
+| Pendiente de verificación | Solicitud enviada, número sin confirmar (caduca a los 15 minutos) |
+| Acordando condiciones | Verificado, esperando que ambas partes confirmen condiciones |
+| Activo | Los códigos funcionan, las comisiones se devengan |
+| Pausado | Los códigos dejan de funcionar; los derechos ya emitidos siguen vigentes |
+| Terminado | Los códigos dejan de funcionar; los derechos siguen vigentes durante el **periodo de gracia** (30 días por defecto, un campo del acuerdo) |
+| Rechazado / Caducado | Solicitud rechazada o no confirmada a tiempo |
+
+Terminar un acuerdo no afecta a comisiones devengadas, saldos ni pagos. Reconectar el mismo par más tarde emite códigos nuevos y nunca reescribe las condiciones de códigos ya entregados a clientes.
+
+## Acceso
+
+- El propietario y los miembros con la plataforma `referral` gestionan acuerdos: conexión, confirmación, condiciones, estado, códigos, token de socio, moneda.
+- Los miembros sin la plataforma no ven esta página.
+- Pagos, retenciones y cierre de discrepancias — solo el propietario.

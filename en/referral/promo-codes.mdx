@@ -1,0 +1,72 @@
+---
+title: Promo codes on orders
+description: "How a code reaches the customer, how a manager previews and applies it to an order, and the rules behind the amounts"
+---
+
+## Codes and cards
+
+An active deal issues a **partner promo code** in each direction: your code works at the partner, the partner's code works at you. A company can also have **own codes** with a fixed discount and no partner.
+
+Codes are 8 characters, `XXXX-XXXX`, without the ambiguous `0 O 1 I L U`. The customer can dictate them: input is normalised — case, spaces, hyphens and Cyrillic look-alikes are corrected.
+
+For every code Revol generates a **card with a QR** and a link `/p/{code}`. The card can be saved to the phone's photos, shared in chat or printed. The **Show to customer** block on the Partners page explains where the code appears: on the partner's site by link or QR, in a chat with the assistant, or anywhere else.
+
+<Tip>
+  When a customer writes to the assistant and names a code, the assistant recognises it and suggests it to the manager on the order.
+</Tip>
+
+## Applying a code to an order
+
+<Steps>
+  <Step title="Open the lead's order">
+    The order must be *New* or *Paid* and have no other active code. The employee must manage the lead's orders (team owner, lead owner or lead author).
+  </Step>
+  <Step title="Preview">
+    Click **Promo code**, enter or scan the code. The preview shows the partner, the discount type and value, **the discount for this order, the amount payable**, currency, validity, remaining uses and whether a commission will accrue — or a clear refusal.
+  </Step>
+  <Step title="Apply">
+    Confirm. The discount is fixed on the order and the terms are frozen in a snapshot. If the order is already paid, the commission accrues immediately.
+  </Step>
+  <Step title="Pay">
+    When the order becomes *Paid*, the partner's commission is accrued and appears in both companies' journals.
+  </Step>
+</Steps>
+
+Preview and apply use the same checks, so the preview never says "yes" where applying would refuse.
+
+### Refusals
+
+| Reason | Meaning |
+|---|---|
+| `not_found` | No such code in your company |
+| `redeem_elsewhere` | The code belongs to the other side of your deal and works there, not here |
+| `order_has_promo` | The order already has an active code — remove it first |
+| `order_not_applicable` | Order deleted or cancelled |
+| `code_inactive`, `code_expired`, `code_exhausted` | The code is off, past its end date or out of uses |
+| `deal_inactive` | The deal is paused or ended |
+| `currency_mismatch` | Order currency differs from the code's |
+| `rate_limited` | Too many attempts — 30 per minute per employee, 120 per company |
+
+Rejected attempts are journaled; the owner sees series of refusals on the Partners page.
+
+## The amounts
+
+| Term | Formula |
+|---|---|
+| Price | `amount` — the price without any discounts |
+| Offer amount | Price − manager's discount (`discount_pct`) |
+| Code discount | % of the offer amount, or a fixed sum capped by the offer amount |
+| Payable | Offer amount − code discount |
+| Commission | % of the offer amount |
+
+Example: price 10 000, manager's discount 10 %, code 5 %, commission 5 % → offer 9 000, discount 450, payable 8 550, commission 450. There is no cap on the combined discount — the manager controls margin when building the offer.
+
+Changing the price or the manager's discount later recalculates the discount and the live commission from the snapshot; the type and rate never change.
+
+## Removing a code
+
+- **Unpaid order:** open the order → **Remove code**. The redemption becomes *released*, the order fields are cleared and the code's usage counter goes back once — if the code is still valid.
+- **Cancelled before payment:** the code is released automatically with the same rule.
+- **After payment:** the usage stays used, whatever happens later — un-pay, cancel or delete. Removing a code from a paid order is not allowed; change the status first.
+
+Every preview, redemption, refusal, release and accrual is written to the **operation journal**, and the **Redemptions** page lists them with who applied the code, when, through which channel (web, MCP, app) and with what amounts.

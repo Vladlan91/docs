@@ -1,0 +1,71 @@
+---
+title: Partnership deals
+description: "Connect a partner by token, confirm with a number, set pool, discount and commission, manage the deal's lifecycle"
+---
+
+Open **My referrals → Partners**. The page shows your partner token, the connect form and all deals with their terms, balances and journals.
+
+## Connect a partner
+
+<Steps>
+  <Step title="Get the partner's token">
+    Every company has a **partner token** (`PT_…`) on its Partners page. Ask the company you want to work with for theirs — or give them yours. The token can be regenerated at any time; existing deals survive it.
+  </Step>
+  <Step title="Send the request">
+    Paste the token into **Connect a partner** and click **Connect**. The other company receives an e-mail and an in-app notification.
+  </Step>
+  <Step title="Confirm with a number">
+    The deal starts as *Awaiting verification*. The initiator sees a number; the partner opens the request and picks the same number within **15 minutes**. This prevents connecting to the wrong company by a copied token.
+  </Step>
+  <Step title="Both sides set terms">
+    After verification the deal is *Agreeing terms*. Each side saves its own terms; the deal becomes **Active** when both have confirmed. Promo codes are issued at that moment.
+  </Step>
+</Steps>
+
+<Warning>
+  One deal per pair of companies. A counter-request from the other side while yours is pending is rejected as a duplicate.
+</Warning>
+
+## Terms: pool and split
+
+Each side of a deal has two independent settings.
+
+| Setting | Who sets it | Meaning |
+|---|---|---|
+| **Your pool for the partner, %** | You | The share of *your* order amount you are ready to give away for a customer the partner brings |
+| **Customer discount, %** | The partner (from your pool) | Part of your pool the partner gives to the customer as a discount at your till |
+| **Commission, %** | The partner (from your pool) | Part of your pool the partner keeps as reward |
+| **Valid until** | Each side | Optional end date of that side's terms |
+
+Discount + commission cannot exceed the pool. You cannot lower your pool below what the partner already splits. Currency is set once per deal (see [Commissions and settlements](/en/referral/settlements#currency)).
+
+### Changing the rate
+
+When you change terms on an active deal you choose what happens to already issued codes:
+
+| Policy | Effect |
+|---|---|
+| **Keep** | Existing codes keep the old rate, new codes get the new one |
+| **Update** | Active codes get the new rate |
+| **End** | Old codes are deactivated and a new code is issued |
+
+Every change is stored in **Terms history** with the policy applied. Orders already redeemed keep the terms frozen at redemption.
+
+## Lifecycle
+
+| Status | Meaning |
+|---|---|
+| Awaiting verification | Request sent, number not yet confirmed (expires after 15 minutes) |
+| Agreeing terms | Verified, waiting for both sides to confirm terms |
+| Active | Codes work, commissions accrue |
+| Paused | Codes stop working; already issued customer rights keep working |
+| Ended | Codes stop; customer rights keep working for the **grace period** (30 days by default, a field of the deal) |
+| Declined / Expired | Request rejected or not confirmed in time |
+
+Ending a deal does not touch accrued commissions, balances or payouts. Reconnecting the same pair later issues new codes and never rewrites the terms of codes already given to customers.
+
+## Access
+
+- Owner and members with the `referral` platform manage deals: connect, confirm, terms, status, codes, partner token, currency.
+- Members without the platform see nothing on this page.
+- Payouts, holds and closing discrepancies are owner-only.

@@ -1,0 +1,52 @@
+---
+title: Grupy partnerów i aplikacja
+description: "Jeden QR dla wszystkich partnerów, prawa klienta w Revol Wallet, karta przy kasie, przekazanie, okres karencji i cofnięcie"
+---
+
+## Przebieg
+
+<Steps>
+  <Step title="Firma tworzy grupę">Deweloper, studio projektowe lub sklep zbiera swoje **aktywne umowy** w grupę partnerów na stronie „Partnerzy” i otrzymuje **jeden QR**. Każda pozycja grupy to umowa; warunki pochodzą z kodu tej umowy.</Step>
+  <Step title="Menedżer pokazuje QR">Klient skanuje go aplikacją **Revol Wallet** (aparat telefonu otworzy stronę podglądu z rabatami grupy i linkiem do aplikacji).</Step>
+  <Step title="Klient otrzymuje prawa">Każda aktywna pozycja staje się **prawem** w portfelu klienta z warunkami zamrożonymi w tej chwili: rabat, stawka prowizji, waluta, ważność, jedno użycie, jedno przekazanie.</Step>
+  <Step title="Karta przy kasie">U partnera klient otwiera rabat i pokazuje **kartę QR odświeżaną co 2 minuty**. Menedżer skanuje ją skanerem zamówień — rabat jest stosowany dokładnie jak kod promocyjny, a prowizja trafia do firmy, która wydała grupę.</Step>
+</Steps>
+
+<Frame caption="Podgląd grupy, portfel i karta przy kasie w Revol Wallet">
+  <img src="/images/referral-app-claimed.png" alt="Odebrane rabaty grupy" width="220" />
+  <img src="/images/referral-app-wallet.png" alt="Revol Wallet" width="220" />
+  <img src="/images/referral-app-card.png" alt="Karta przy kasie" width="220" />
+</Frame>
+
+## Zasady praw
+
+| Zasada | Domyślnie |
+|---|---|
+| Ważność | 12 miesięcy od otrzymania, nie dłużej niż ważność kodu |
+| Użycia | 1 |
+| Przekazania | 1 — przez zeskanowanie QR przekazania w aplikacji; numer telefonu nie jest wpisywany |
+| Zaproszenie do przekazania | 30 minut, potem prawo wraca do nadawcy |
+| Przekazanie z nowego urządzenia | Nie wcześniej niż 24 godziny po zalogowaniu na tym urządzeniu |
+| Token karty | 2 minuty, jednorazowy, nowy anuluje poprzedni |
+| Jedno prawo na umowę i partnera | Powtórne skany i prawa przyjęte przez przekazanie nie tworzą duplikatów |
+
+Prawo to **nie cashback**: to lista rabatów. Klient nigdy nie widzi stawki prowizji — to sprawa między firmami.
+
+### Po płatności
+
+Gdy zamówienie z prawem zostało opłacone, użycie pozostaje zużyte: późniejsze anulowanie, cofnięcie płatności czy usunięcie zamówienia nie ożywia prawa. Anulowanie **nieopłaconego** zamówienia zwraca użycie, jeśli prawo nadal jest ważne.
+
+### Gdy zmienia się umowa
+
+- **Wstrzymanie** zatrzymuje wydawanie nowych praw; wydane działają dalej.
+- **Zmiana stawki** z ponownym wydaniem kodu nie skraca wydanych praw.
+- **Zakończenie** umowy uruchamia **okres karencji** (domyślnie 30 dni): prawa nadal działają i prowizja dla źródła się nalicza; potem prawa wygasają.
+- **Awaryjne cofnięcie** — właściciel firmy-gospodarza cofa wszystkie prawa umowy (lub jedno) natychmiast, z powodem widocznym dla klienta. Zamówienia z już zastosowanym prawem zachowują rabat.
+
+## Zarządzanie grupami
+
+Na stronie „Partnerzy”: utwórz grupę, wybierz umowy, nazwij, pobierz lub wydrukuj QR, **odnów token** (stary QR przestaje działać), zarchiwizuj grupę. Podsumowanie grupy pokazuje, ilu klientów odebrało prawa, ile praw jest aktywnych, użytych i cofniętych.
+
+## Aplikacja dla klientów
+
+Revol Wallet loguje klienta numerem telefonu i kodem SMS, przechowuje prawa, pokazuje kartę, obsługuje przekazania i prowadzi historię oszczędności. Klient widzi swoje urządzenia, może wylogować się zdalnie i **usunąć konto** w aplikacji. Strona i wsparcie: [revol-wallet.app](https://revol-wallet.app).

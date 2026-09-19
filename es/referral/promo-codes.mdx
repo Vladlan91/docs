@@ -1,0 +1,62 @@
+---
+title: Códigos promocionales en pedidos
+description: "Cómo llega un código al cliente, cómo un gestor lo previsualiza y aplica a un pedido, y las reglas de los importes"
+---
+
+## Códigos y tarjetas
+
+Un acuerdo activo emite un **código promocional de socio** en cada dirección: tu código funciona en el socio, el del socio funciona en ti. Una empresa también puede tener **códigos propios** con descuento fijo y sin socio.
+
+Los códigos tienen 8 caracteres, `XXXX-XXXX`, sin los ambiguos `0 O 1 I L U`. El cliente puede dictarlos: la entrada se normaliza — mayúsculas, espacios, guiones y dobles cirílicos se corrigen.
+
+Para cada código Revol genera una **tarjeta con QR** y un enlace `/p/{code}`. La tarjeta puede guardarse en las fotos del móvil, compartirse en un chat o imprimirse. El bloque **Mostrar al cliente** de la página de Socios explica dónde aparece el código: en la web del socio por enlace o QR, en un chat con el asistente o en cualquier otro sitio.
+
+<Tip>Cuando un cliente escribe al asistente y menciona un código, el asistente lo reconoce y se lo sugiere al gestor en el pedido.</Tip>
+
+## Aplicar un código a un pedido
+
+<Steps>
+  <Step title="Abre el pedido del lead">El pedido debe estar *Nuevo* o *Pagado* y sin otro código activo. El empleado debe gestionar los pedidos del lead (propietario del equipo, propietario o autor del lead).</Step>
+  <Step title="Vista previa">Pulsa **Código promocional**, escribe o escanea el código. La vista previa muestra el socio, el tipo e importe del descuento, **el descuento para este pedido, el importe a pagar**, la moneda, la validez, los usos restantes y si se devengará comisión — o un rechazo claro.</Step>
+  <Step title="Aplica">Confirma. El descuento queda fijado en el pedido y las condiciones congeladas en una instantánea. Si el pedido ya está pagado, la comisión se devenga de inmediato.</Step>
+  <Step title="Pago">Cuando el pedido pasa a *Pagado*, se devenga la comisión del socio y aparece en los registros de ambas empresas.</Step>
+</Steps>
+
+Vista previa y aplicación usan las mismas comprobaciones, así que la vista previa nunca dice «sí» donde la aplicación rechazaría.
+
+### Rechazos
+
+| Motivo | Significado |
+|---|---|
+| `not_found` | No existe ese código en tu empresa |
+| `redeem_elsewhere` | El código pertenece a la otra parte de tu acuerdo y funciona allí, no aquí |
+| `order_has_promo` | El pedido ya tiene un código activo — retíralo primero |
+| `order_not_applicable` | Pedido eliminado o cancelado |
+| `code_inactive`, `code_expired`, `code_exhausted` | Código desactivado, caducado o agotado |
+| `deal_inactive` | Acuerdo pausado o terminado |
+| `currency_mismatch` | La moneda del pedido difiere de la del código |
+| `rate_limited` | Demasiados intentos — 30 por minuto por empleado, 120 por empresa |
+
+Los intentos rechazados se registran; el propietario ve las series de rechazos en la página de Socios.
+
+## Los importes
+
+| Término | Fórmula |
+|---|---|
+| Precio | `amount` — el precio sin ningún descuento |
+| Importe de la oferta | Precio − descuento del gestor (`discount_pct`) |
+| Descuento del código | % del importe de la oferta, o una suma fija limitada por el importe de la oferta |
+| A pagar | Importe de la oferta − descuento del código |
+| Comisión | % del importe de la oferta |
+
+Ejemplo: precio 10 000, descuento del gestor 10 %, código 5 %, comisión 5 % → oferta 9 000, descuento 450, a pagar 8 550, comisión 450. No hay tope al descuento combinado — el margen lo controla el gestor al construir la oferta.
+
+Cambiar después el precio o el descuento del gestor recalcula el descuento y la comisión viva desde la instantánea; el tipo y la tasa nunca cambian.
+
+## Retirar un código
+
+- **Pedido sin pagar:** abre el pedido → **Retirar código**. La aplicación pasa a *liberada*, los campos del pedido se limpian y el contador de usos del código retrocede una vez — si el código sigue vigente.
+- **Cancelado antes del pago:** el código se libera automáticamente con la misma regla.
+- **Tras el pago:** el uso queda consumido pase lo que pase después — anular el pago, cancelar o eliminar. Retirar un código de un pedido pagado no está permitido; cambia primero el estado.
+
+Cada vista previa, aplicación, rechazo, liberación y devengo se escribe en el **registro de operaciones**, y la página **Aplicaciones** las lista con quién aplicó el código, cuándo, por qué canal (web, MCP, app) y con qué importes.

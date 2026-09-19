@@ -1,0 +1,62 @@
+---
+title: Promo-Codes auf Bestellungen
+description: "Wie ein Code den Kunden erreicht, wie ein Manager ihn prüft und auf eine Bestellung anwendet, und die Regeln hinter den Beträgen"
+---
+
+## Codes und Karten
+
+Eine aktive Partnerschaft gibt je Richtung einen **Partner-Promo-Code** aus: Ihr Code gilt beim Partner, der Code des Partners bei Ihnen. Ein Unternehmen kann auch **eigene Codes** mit festem Rabatt ohne Partner haben.
+
+Codes haben 8 Zeichen, `XXXX-XXXX`, ohne die verwechselbaren `0 O 1 I L U`. Kunden können sie diktieren: die Eingabe wird normalisiert — Groß-/Kleinschreibung, Leerzeichen, Bindestriche und kyrillische Doppelgänger werden korrigiert.
+
+Für jeden Code erzeugt Revol eine **Karte mit QR** und einen Link `/p/{code}`. Die Karte kann in den Fotos gespeichert, im Chat geteilt oder gedruckt werden. Der Block **Dem Kunden zeigen** auf der Partnerseite erklärt, wo der Code erscheint: auf der Website des Partners per Link oder QR, im Chat mit dem Assistenten oder anderswo.
+
+<Tip>Schreibt ein Kunde dem Assistenten und nennt einen Code, erkennt der Assistent ihn und schlägt ihn dem Manager auf der Bestellung vor.</Tip>
+
+## Code auf eine Bestellung anwenden
+
+<Steps>
+  <Step title="Bestellung des Leads öffnen">Die Bestellung muss *Neu* oder *Bezahlt* sein und keinen anderen aktiven Code haben. Der Mitarbeiter muss die Bestellungen des Leads verwalten (Teaminhaber, Lead-Inhaber oder Lead-Autor).</Step>
+  <Step title="Vorschau">Klicken Sie **Promo-Code**, geben Sie den Code ein oder scannen Sie ihn. Die Vorschau zeigt den Partner, Art und Höhe des Rabatts, **den Rabatt für diese Bestellung, den zu zahlenden Betrag**, Währung, Gültigkeit, verbleibende Nutzungen und ob eine Provision entsteht — oder eine klare Ablehnung.</Step>
+  <Step title="Anwenden">Bestätigen Sie. Der Rabatt ist auf der Bestellung fixiert, die Konditionen sind in einer Momentaufnahme eingefroren. Ist die Bestellung bereits bezahlt, entsteht die Provision sofort.</Step>
+  <Step title="Bezahlen">Wird die Bestellung *Bezahlt*, entsteht die Provision des Partners und erscheint in den Journalen beider Unternehmen.</Step>
+</Steps>
+
+Vorschau und Anwendung nutzen dieselben Prüfungen — die Vorschau sagt nie „ja“, wo die Anwendung ablehnen würde.
+
+### Ablehnungen
+
+| Grund | Bedeutung |
+|---|---|
+| `not_found` | Kein solcher Code in Ihrem Unternehmen |
+| `redeem_elsewhere` | Der Code gehört der anderen Seite Ihrer Partnerschaft und gilt dort, nicht hier |
+| `order_has_promo` | Die Bestellung hat bereits einen aktiven Code — zuerst entfernen |
+| `order_not_applicable` | Bestellung gelöscht oder storniert |
+| `code_inactive`, `code_expired`, `code_exhausted` | Code deaktiviert, abgelaufen oder aufgebraucht |
+| `deal_inactive` | Partnerschaft pausiert oder beendet |
+| `currency_mismatch` | Bestellwährung weicht von der des Codes ab |
+| `rate_limited` | Zu viele Versuche — 30 pro Minute je Mitarbeiter, 120 je Unternehmen |
+
+Abgelehnte Versuche werden protokolliert; der Inhaber sieht Serien von Ablehnungen auf der Partnerseite.
+
+## Die Beträge
+
+| Begriff | Formel |
+|---|---|
+| Preis | `amount` — der Preis ohne jeden Rabatt |
+| Angebotsbetrag | Preis − Managerrabatt (`discount_pct`) |
+| Code-Rabatt | % des Angebotsbetrags oder fester Betrag, begrenzt durch den Angebotsbetrag |
+| Zu zahlen | Angebotsbetrag − Code-Rabatt |
+| Provision | % des Angebotsbetrags |
+
+Beispiel: Preis 10 000, Managerrabatt 10 %, Code 5 %, Provision 5 % → Angebot 9 000, Rabatt 450, zu zahlen 8 550, Provision 450. Es gibt keine Obergrenze für den Gesamtrabatt — die Marge steuert der Manager beim Erstellen des Angebots.
+
+Eine spätere Änderung des Preises oder des Managerrabatts berechnet Rabatt und laufende Provision aus der Momentaufnahme neu; Art und Satz ändern sich nie.
+
+## Code entfernen
+
+- **Unbezahlte Bestellung:** Bestellung öffnen → **Code entfernen**. Die Einlösung wird *freigegeben*, die Felder der Bestellung werden geleert und der Nutzungszähler des Codes geht einmal zurück — sofern der Code noch gültig ist.
+- **Storno vor Bezahlung:** der Code wird automatisch nach derselben Regel freigegeben.
+- **Nach Bezahlung:** die Nutzung bleibt verbraucht, was auch später geschieht — Bezahlung zurücknehmen, stornieren oder löschen. Von einer bezahlten Bestellung lässt sich kein Code entfernen; zuerst den Status ändern.
+
+Jede Vorschau, Einlösung, Ablehnung, Freigabe und Gutschrift wird ins **Operationsjournal** geschrieben, und die Seite **Einlösungen** listet sie mit Anwender, Zeitpunkt, Kanal (Web, MCP, App) und Beträgen.

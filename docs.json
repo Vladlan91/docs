@@ -70,6 +70,21 @@
             ]
           },
           {
+            "tab": "Referral",
+            "groups": [
+              {
+                "group": "Referral system",
+                "pages": [
+                  "en/referral/overview",
+                  "en/referral/partnerships",
+                  "en/referral/promo-codes",
+                  "en/referral/groups-and-wallet",
+                  "en/referral/settlements"
+                ]
+              }
+            ]
+          },
+          {
             "tab": "Integrations",
             "groups": [
               {
@@ -174,6 +189,21 @@
                 "pages": [
                   "uk/billing/plans",
                   "uk/billing/usage"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "Реферали",
+            "groups": [
+              {
+                "group": "Реферальна система",
+                "pages": [
+                  "uk/referral/overview",
+                  "uk/referral/partnerships",
+                  "uk/referral/promo-codes",
+                  "uk/referral/groups-and-wallet",
+                  "uk/referral/settlements"
                 ]
               }
             ]
@@ -288,6 +318,21 @@
             ]
           },
           {
+            "tab": "Partnerzy",
+            "groups": [
+              {
+                "group": "Program partnerski",
+                "pages": [
+                  "pl/referral/overview",
+                  "pl/referral/partnerships",
+                  "pl/referral/promo-codes",
+                  "pl/referral/groups-and-wallet",
+                  "pl/referral/settlements"
+                ]
+              }
+            ]
+          },
+          {
             "tab": "Integracje",
             "groups": [
               {
@@ -397,6 +442,21 @@
             ]
           },
           {
+            "tab": "Partner",
+            "groups": [
+              {
+                "group": "Partnerprogramm",
+                "pages": [
+                  "de/referral/overview",
+                  "de/referral/partnerships",
+                  "de/referral/promo-codes",
+                  "de/referral/groups-and-wallet",
+                  "de/referral/settlements"
+                ]
+              }
+            ]
+          },
+          {
             "tab": "Integrationen",
             "groups": [
               {
@@ -501,6 +561,21 @@
                 "pages": [
                   "es/billing/plans",
                   "es/billing/usage"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "Socios",
+            "groups": [
+              {
+                "group": "Programa de socios",
+                "pages": [
+                  "es/referral/overview",
+                  "es/referral/partnerships",
+                  "es/referral/promo-codes",
+                  "es/referral/groups-and-wallet",
+                  "es/referral/settlements"
                 ]
               }
             ]

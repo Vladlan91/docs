@@ -1,0 +1,48 @@
+---
+title: Program partnerski
+sidebarTitle: Przegląd
+description: "Umowy partnerskie między firmami, kody promocyjne, grupy partnerów z jednym QR, aplikacja Revol Wallet, prowizje i rozliczenia"
+---
+
+## Co to jest
+
+Program partnerski pozwala firmom **przyprowadzać sobie nawzajem klientów** i otrzymywać za to wynagrodzenie. Dwie firmy zawierają w Revol umowę partnerską, każda wydaje kod promocyjny działający u drugiej, a każde zamówienie opłacone z tym kodem zapisuje prowizję dla partnera, który przyprowadził klienta.
+
+Ponad umowami firma może zebrać partnerów w **grupę** z jednym QR. Klient skanuje go aplikacją **Revol Wallet** i otrzymuje rabaty wszystkich partnerów grupy.
+
+<CardGroup cols={2}>
+  <Card title="Umowy partnerskie" icon="handshake" href="/pl/referral/partnerships">Podłączenie tokenem, potwierdzenie liczbą, pula, rabat i prowizja.</Card>
+  <Card title="Kody promocyjne na zamówieniu" icon="ticket" href="/pl/referral/promo-codes">Karty z QR, podgląd i użycie kodu, zasady kwot.</Card>
+  <Card title="Grupy i aplikacja" icon="mobile" href="/pl/referral/groups-and-wallet">Jeden QR dla wszystkich partnerów, prawa klienta, karta przy kasie, przekazanie, cofnięcie.</Card>
+  <Card title="Prowizje i rozliczenia" icon="scale-balanced" href="/pl/referral/settlements">Naliczenia, wstrzymania, wypłaty z dokładnym składem, rozbieżności, raporty i narzędzia MCP.</Card>
+</CardGroup>
+
+## Kto co robi
+
+| Rola | Gdzie | Co może |
+|---|---|---|
+| **Właściciel firmy** | Strona „Moi partnerzy” | Wszystko: umowy, warunki, kody, wypłaty, wstrzymania, zamykanie rozbieżności, cofanie praw klientów |
+| **Członek zespołu z platformą `referral`** | Strona „Moi partnerzy” | Widzi umowy, salda i dzienniki; podłącza partnerów, potwierdza, ustala warunki, zarządza kodami i tokenem partnera |
+| **Każdy członek zarządzający zamówieniami leada** | Zamówienie → Kod promocyjny | Podgląd i użycie kodu, zdjęcie z nieopłaconego zamówienia, skanowanie karty klienta |
+| **Klient** | Aplikacja Revol Wallet | Skanuje grupowy QR, przechowuje rabaty, pokazuje kartę przy kasie, przekazuje rabat znajomemu |
+
+Partner nie musi być „szczególnym” biznesem. Bloger lub jednoosobowa działalność rejestruje się jako zwykły użytkownik Revol, tworzy własną firmę i podłącza się do Twojej tą samą umową.
+
+## Zasada pieniędzy w jednym akapicie
+
+Kod promocyjny daje klientowi rabat **ponad** rabat menedżera, a prowizja liczona jest od kwoty oferty (cena minus rabat menedżera). Warunki każdego użycia — typ i wysokość rabatu, stawka prowizji, waluta — są **zamrażane w chwili użycia kodu** i później się nie zmieniają. Prowizje naliczają się przy opłaceniu zamówienia, dojrzewają po okresie karencji i są wypłacane między partnerami poza Revol; Revol prowadzi ewidencję.
+
+<Note>Portfel klienta przechowuje **wyłącznie rabaty** — nie cashback, punkty ani pieniądze. W imieniu klienta nic nie jest przelewane ani przechowywane.</Note>
+
+## Słownik
+
+| Termin | Znaczenie |
+|---|---|
+| Token partnera | Ciąg `PT_…` Twojej firmy; przekaż go firmie, która chce się do Ciebie podłączyć |
+| Umowa | Partnerstwo dwóch firm z warunkami po każdej stronie |
+| Pula | Udział w kwocie zamówienia, który oddajesz partnerowi za przyprowadzonego klienta |
+| Podział | Jak strona otrzymująca pulę dzieli ją między rabat klienta a własną prowizję |
+| Kod | 8-znakowy kod `XXXX-XXXX` (bez `0 O 1 I L U`); każda umowa wydaje po jednym w każdą stronę |
+| Użycie | Kod zastosowany do konkretnego zamówienia z migawką warunków |
+| Prawo | Rabat klienta w aplikacji, otrzymany z grupowego QR |
+| Okres karencji | Dni, przez które potwierdzona prowizja czeka na wypłatę (domyślnie 30) |

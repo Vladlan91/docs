@@ -1,0 +1,69 @@
+---
+title: Provisionen und Abrechnungen
+description: "Gutschriften, Karenzfrist, Zurückhaltungen, Auszahlungen mit genauer Zusammensetzung, Abweichungen nach Auszahlung, Berichte, Export und MCP-Tools"
+---
+
+## Gutschriften
+
+Ein Provisionsereignis entsteht, wenn eine Bestellung mit einem Partnercode (oder einem Kundenrecht) **bezahlt** wird. Satz und Basis stammen aus der Momentaufnahme der Einlösung, nie aus dem laufenden Code.
+
+| Ereignisstatus | Bedeutung |
+|---|---|
+| Bestätigt | Gutgeschrieben; geht in den Saldo ein |
+| Storniert | Bezahlung zurückgenommen, Bestellung storniert oder gelöscht vor der Auszahlung |
+| Ausgezahlt | Ausgezahlt; wird danach nie geändert |
+
+Beide Unternehmen sehen das **Gutschriftenjournal** einer Partnerschaft: Richtung (Ihnen gutgeschrieben / an den Partner zu zahlen), Betrag, Währung, Status, Bestellung und die Markierung der Zurückhaltung.
+
+## Salden und Karenzfrist
+
+| Kennzahl | Bedeutung |
+|---|---|
+| Ihnen gutgeschrieben | Summe bestätigter Ereignisse, bei denen Sie Begünstigter sind |
+| Auszahlbar | Bestätigte Ereignisse, älter als die **Karenzfrist** (30 Tage) und nicht zurückgehalten |
+| Sie schulden dem Partner | Bestätigte Ereignisse, bei denen Sie Gastgeber sind |
+| Summe | Gutgeschrieben − geschuldet, je Währung |
+
+Währungen werden nie vermischt: jeder Saldo, jede Auszahlung und jeder Bericht wird je Währung angezeigt.
+
+## Zurückhaltungen
+
+Der **Inhaber des Gastgeberunternehmens** kann eine bestätigte, nicht ausgezahlte Provision mit einem Pflichtgrund **zurückhalten**. Ein zurückgehaltenes Ereignis ist von Auszahlungen ausgeschlossen, bis die Zurückhaltung aufgehoben wird; der Partner wird mit dem Grund benachrichtigt. Die Zustimmung der anderen Seite ist nicht nötig.
+
+## Auszahlungen
+
+<Steps>
+  <Step title="Vorschau">Wählen Sie auf der Abrechnungsseite Partnerschaft und Zeitraum. Die Vorschau listet genau die gereiften, nicht zurückgehaltenen Ereignisse, die abgerechnet werden, ihre Summe und die Richtung (wer wem zahlt).</Step>
+  <Step title="Bestätigen">Der Inhaber bestätigt **dieselbe Zusammensetzung**, die er gesehen hat. Hat sich zwischenzeitlich etwas geändert — eine neue Gutschrift, eine Zurückhaltung, ein Storno, sogar ein anderer Satz mit derselben Summe — wird die Auszahlung abgelehnt und die Vorschau erneut gezeigt.</Step>
+  <Step title="Verbuchen">Die Auszahlung wird mit jedem enthaltenen Ereignis verbucht; ein Ereignis kann nie Teil zweier Auszahlungen sein. Beide Seiten sehen die Zusammensetzung. Das Geld selbst fließt außerhalb von Revol zwischen den Unternehmen; die Manager gleichen gegen den Auszahlungsdatensatz ab.</Step>
+</Steps>
+
+Wöchentlich erhält der Inhaber eine Erinnerung an gereifte, auszahlbare Beträge.
+
+## Abweichungen nach Auszahlung
+
+Ausgezahlte Ereignisse werden nie umgeschrieben. Ändert sich eine ausgezahlte Bestellung später — Betrag, Storno, Löschung — eröffnet Revol einen **Abweichungsfall**, der für beide Unternehmen sichtbar ist, mit erwartetem und gezahltem Betrag. Der Inhaber des Gastgebers schließt ihn manuell mit einem Kommentar; eine automatische Rückforderung gibt es nicht.
+
+## Währung
+
+Eine Partnerschaft hat eine Währung. Codes und Bestellungen in einer anderen Währung werden abgelehnt, und eine Bestellung ohne Währung wird abgelehnt statt stillschweigend als UAH behandelt. Historische Partnerschaften ohne Währung klärt der Inhaber anhand von Belegen; bis dahin bleiben sie außerhalb von Salden und Auszahlungen.
+
+## Berichte und Export
+
+- **Trichter** je Währung: Codes → Einlösungen → bezahlt → ausgezahlt.
+- **Konditionshistorie** jeder Partnerschaft mit der Richtlinie für ausgegebene Codes.
+- Liste der **Einlösungen** mit Anwender, Zeitpunkt, Kanal und Beträgen; CSV-Export.
+- Export der **Auszahlungszusammensetzung** für beide Seiten.
+
+## MCP-Tools
+
+Mitarbeiter, die über Claude oder einen anderen MCP-Client arbeiten, haben dieselben Operationen wie im Web, mit denselben Zugriffsregeln:
+
+| Tool | Funktion |
+|---|---|
+| `revol_promo_preview` | Vorschau eines Codes auf einer Bestellung |
+| `revol_promo_redeem` | Code anwenden (`confirm=true`, optionaler Idempotenzschlüssel) |
+| `revol_promo_release` | Code von einer unbezahlten Bestellung entfernen |
+| `revol_redemptions_list` | Einlösungen mit ihren Momentaufnahmen auflisten |
+
+Jede Einlösung über MCP wird mit dem Kanal `mcp` protokolliert.
