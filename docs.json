@@ -79,6 +79,7 @@
                   "en/referral/partnerships",
                   "en/referral/promo-codes",
                   "en/referral/groups-and-wallet",
+                  "en/referral/market",
                   "en/referral/settlements"
                 ]
               }
@@ -203,6 +204,7 @@
                   "uk/referral/partnerships",
                   "uk/referral/promo-codes",
                   "uk/referral/groups-and-wallet",
+                  "uk/referral/market",
                   "uk/referral/settlements"
                 ]
               }
@@ -327,6 +329,7 @@
                   "pl/referral/partnerships",
                   "pl/referral/promo-codes",
                   "pl/referral/groups-and-wallet",
+                  "pl/referral/market",
                   "pl/referral/settlements"
                 ]
               }
@@ -451,6 +454,7 @@
                   "de/referral/partnerships",
                   "de/referral/promo-codes",
                   "de/referral/groups-and-wallet",
+                  "de/referral/market",
                   "de/referral/settlements"
                 ]
               }
@@ -575,6 +579,7 @@
                   "es/referral/partnerships",
                   "es/referral/promo-codes",
                   "es/referral/groups-and-wallet",
+                  "es/referral/market",
                   "es/referral/settlements"
                 ]
               }
