@@ -1,73 +1,18 @@
-# Documentation Workflow
+# Робота з публічною документацією
 
-## Process
+Навігація та мови визначені в [docs.json](docs.json): en, uk, pl, de, es.
+Працюй із потрібною локаллю й узгоджуй залежні переклади. Обговорення з власником —
+українською; дозвіл на публікацію визначає поточне доручення.
 
-1. **Plan** — Claude analyzes internal docs and proposes structure in Ukrainian
-2. **Approve** — User reviews, adjusts, confirms
-3. **Write** — Claude writes content in English using Mintlify components
-4. **Review** — User reviews the result
-5. **Commit** — Claude commits approved changes
+Перед зміною звір поведінку з core-кодом, чинним контрактом та відкритими питаннями.
+Нові сторінки додавай до навігації; не дублюй неперевірені обіцянки зі старих планів.
+MDX — вміст сайту, тому відсутність згадки в README не означає, що сторінка зайва.
 
-## Language
+Використовуй наявні Mintlify-компоненти за прикладами сусідніх сторінок:
+`CardGroup`/`Card`, `Tabs`/`Tab`, `Steps`/`Step`, `AccordionGroup`/`Accordion`,
+`Note`/`Tip`/`Warning`, `CodeGroup`, `Frame`. Зображення — в `images/`, з описовою
+назвою й alt; не залишай посилань на відсутні скриншоти як готовий результат.
 
-- All documentation content: **English**
-- Plans and discussions: **Ukrainian**
-
-## Mintlify Components Usage
-
-### Navigation & Layout
-- `<CardGroup cols={2|3}>` + `<Card>` — navigation blocks, feature grids
-- `<Tabs>` + `<Tab>` — tabbed content sections
-- `<AccordionGroup>` + `<Accordion>` — collapsible FAQ / details
-- `<Steps>` + `<Step>` — sequential instructions
-
-### Media & Embeds
-- `<Frame caption="...">` — image wrapper with caption (for screenshots)
-- `<img>` inside `<Frame>` — actual screenshot images
-- `<video>` — embedded video demos
-
-### Callouts
-- `<Note>` — important information
-- `<Tip>` — helpful hints
-- `<Warning>` — caution notices
-- `<Info>` — supplementary context
-
-### Code
-- Triple backtick blocks with language tag (```html, ```javascript, ```bash)
-- `<CodeGroup>` — multiple code variants side by side
-
-### Other
-- `<Icon icon="name" />` — inline icons (FontAwesome)
-- `<Tooltip tip="...">` — hover tooltips
-- Tables — standard markdown tables
-
-## Screenshots
-
-- Store in `/images/` directory
-- Use `<Frame>` wrapper with descriptive caption
-- Naming: `{section}-{description}.png` (e.g., `agents-workflow-editor.png`)
-- Placeholder format when screenshot not yet available:
-
-```mdx
-<Frame caption="Agent workflow editor">
-  <img src="/images/agents-workflow-editor.png" alt="Agent workflow editor" />
-</Frame>
-```
-
-## File Structure
-
-```
-docs-public/
-├── docs.json              # Mintlify config (navigation, theme)
-├── introduction.mdx       # Platform overview
-├── quickstart.mdx         # Getting started guide
-├── concepts.mdx           # Key terminology
-├── agents/                # AI Agents section
-├── conversations/         # Conversations section
-├── integrations/          # Integrations section
-├── widget/                # Widget & Tracker section
-├── billing/               # Billing section
-├── api-reference/         # API docs
-├── images/                # Screenshots and diagrams
-└── logo/                  # Logo assets
-```
+Перевір локальні посилання, assets, навігацію та MDX у доступному preview;
+`git diff --check` не замінює рендер. У коміт входять лише зміни доручення,
+сторонні редагування й видалення зберігаються.

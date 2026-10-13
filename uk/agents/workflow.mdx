@@ -57,68 +57,68 @@ description: "Створюйте потоки розмов за допомого
 
 <Accordion title="Промпт для генерації воркфлоу">
 ```text
-# Instruction: Generate a Revol Workflow Template JSON
+# Інструкція: Генерація JSON-шаблону воркфлоу Revol
 
-## Context
+## Контекст
 
-I use Revol — a platform for building AI sales agents. Each agent
-has a visual workflow editor with nodes and edges that define
-conversation logic.
+Я використовую Revol — платформу для створення AI-агентів
+продажів. Кожен агент має візуальний редактор воркфлоу з
+нодами та зв'язками (edges), що визначають логіку розмови.
 
-I need you to generate a workflow template as a JSON object that
-I can import into my Revol agent. The JSON follows a strict schema
-used by Revol's template system.
+Мені потрібно згенерувати шаблон воркфлоу як JSON-об'єкт,
+який я можу імпортувати у свого Revol-агента. JSON
+відповідає строгій схемі системи шаблонів Revol.
 
-## JSON Schema
+## JSON-схема
 
-The output must be a single JSON object with these top-level keys:
+Результат має бути єдиним JSON-об'єктом з такими ключами:
 
 {
   "nodes_data": [...],
   "edges_data": [...],
   "tools_data": {...},
-  "memory_fields_data": [...]   // optional
+  "memory_fields_data": [...]   // опціонально
 }
 
-### nodes_data (array of objects)
+### nodes_data (масив об'єктів)
 
-Each node object has these fields:
+Кожен об'єкт ноди має такі поля:
 
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-| index | integer | yes | Unique index (0-based), used for edge references |
-| node_type | string | yes | One of: start, custom, system_stt, system_tts, system_product, system_media, system_company, system_formatter |
-| name | string | yes | Display name on the canvas |
-| position_x | integer | yes | Canvas X coordinate |
-| position_y | integer | yes | Canvas Y coordinate |
-| is_active | boolean | yes | Whether this node is active |
-| conversation_goal | string | no | System prompt for this node (custom nodes only) |
-| config | object | no | Node-specific configuration (see below) |
-| llm_provider_override | string | no | Override LLM provider: openai, anthropic, gemini, groq |
-| llm_model_override | string | no | Override model name |
-| temperature_override | number | no | Override temperature (0.0-2.0) |
+| Поле | Тип | Обов'язкове | Опис |
+|------|-----|-------------|------|
+| index | integer | так | Унікальний індекс (від 0), використовується для посилань у edges |
+| node_type | string | так | Один з: start, custom, system_stt, system_tts, system_product, system_media, system_company, system_formatter |
+| name | string | так | Назва на canvas |
+| position_x | integer | так | X-координата на canvas |
+| position_y | integer | так | Y-координата на canvas |
+| is_active | boolean | так | Чи активна нода |
+| conversation_goal | string | ні | Системний промпт для ноди (тільки custom ноди) |
+| config | object | ні | Конфігурація ноди (див. нижче) |
+| llm_provider_override | string | ні | Перевизначити LLM провайдера: openai, anthropic, gemini, groq |
+| llm_model_override | string | ні | Перевизначити модель |
+| temperature_override | number | ні | Перевизначити temperature (0.0-2.0) |
 
-Node types and their purpose:
-- start — entry point, exactly one per workflow, no conversation_goal
-- custom — LLM-powered node with its own prompt, tools, and knowledge base
-- system_product — searches products, checks availability, shows details
-- system_media — retrieves photos, videos, documents
-- system_company — company info and support questions
-- system_formatter — combines outputs from parallel nodes into final response
-- system_stt — speech-to-text (voice input), usually inactive by default
-- system_tts — text-to-speech (voice output), usually inactive by default
+Типи нод та їх призначення:
+- start — точка входу, рівно одна на воркфлоу, без conversation_goal
+- custom — LLM-нода з власним промптом, інструментами та базою знань
+- system_product — пошук товарів, перевірка наявності, деталі
+- system_media — отримання фото, відео, документів
+- system_company — інформація про компанію та підтримка
+- system_formatter — об'єднує результати паралельних нод у фінальну відповідь
+- system_stt — розпізнавання мовлення (голосовий ввід), зазвичай неактивна
+- system_tts — синтез мовлення (голосовий вивід), зазвичай неактивна
 
-Config for system_stt:
+Конфіг для system_stt:
 {
   "provider": "openai",
-  "language": "en",
-  "greeting_text": "Hi! How can I help you?",
+  "language": "uk",
+  "greeting_text": "Привіт! Чим можу допомогти?",
   "greeting_audio_url": null,
-  "farewell_text": "Thanks! Goodbye!",
+  "farewell_text": "Дякую! До побачення!",
   "farewell_audio_url": null
 }
 
-Config for system_tts:
+Конфіг для system_tts:
 {
   "provider": "openai",
   "voice": "nova",
@@ -126,134 +126,134 @@ Config for system_tts:
   "speed": 1.0
 }
 
-Config for custom nodes (optional):
+Конфіг для custom нод (опціонально):
 {
   "save_to_memory": ["field_key1", "field_key2"],
   "max_tool_rounds": 3,
   "tool_timeout_seconds": 30
 }
 
-### edges_data (array of objects)
+### edges_data (масив об'єктів)
 
-Each edge object connects two nodes:
+Кожен об'єкт edge з'єднує дві ноди:
 
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-| source_index | integer | yes | Index of the source node |
-| target_index | integer | yes | Index of the target node |
-| condition_type | string | yes | One of: always, keyword, intent, state, fallback |
-| condition_value | object | no | Condition parameters (null for always/fallback) |
-| priority | integer | no | Evaluation priority (default: 90 for always) |
+| Поле | Тип | Обов'язкове | Опис |
+|------|-----|-------------|------|
+| source_index | integer | так | Індекс ноди-джерела |
+| target_index | integer | так | Індекс ноди-цілі |
+| condition_type | string | так | Один з: always, keyword, intent, state, fallback |
+| condition_value | object | ні | Параметри умови (null для always/fallback) |
+| priority | integer | ні | Пріоритет оцінки (за замовчуванням: 90 для always) |
 
-Condition types and priorities:
-- keyword (priority: 100) — matches words in the message
-  condition_value: { "keywords": ["word1", "word2", ...] }
-- state (priority: 95) — checks memory field values
+Типи умов та пріоритети:
+- keyword (пріоритет: 100) — збіг слів у повідомленні
+  condition_value: { "keywords": ["слово1", "слово2", ...] }
+- state (пріоритет: 95) — перевірка значень полів пам'яті
   condition_value: { "conditions": [{"field": "name", "operator": "filled|empty|=|!=|contains|>|<", "value": ""}] }
-- always (priority: 90) — unconditional, enables parallel fan-out
+- always (пріоритет: 90) — безумовний, дозволяє паралельне розгалуження
   condition_value: null
-- intent (priority: 50) — LLM classifies the message intent
+- intent (пріоритет: 50) — LLM класифікує намір повідомлення
   condition_value: { "intents": ["intent_name"] }
-- fallback (priority: 10) — routes only when nothing else matches
+- fallback (пріоритет: 10) — спрацьовує тільки коли нічого інше не підійшло
   condition_value: null
 
-### tools_data (object, keys are node indexes as strings)
+### tools_data (об'єкт, ключі — індекси нод як рядки)
 
-Maps node index to an array of tool names:
+Зіставляє індекс ноди з масивом назв інструментів:
 
 {
   "2": ["search_documents", "get_company_info"],
   "3": ["get_products", "get_product_details"]
 }
 
-Available built-in tools (9):
-- get_products — search products by name/description
-- get_product_details — full details for one product
-- check_availability — check if product is in stock
-- search_by_parameters — filter products by attributes
-- get_company_info — company name, description, contacts
-- search_documents — semantic RAG search in knowledge base
-- get_photos — retrieve photos
-- get_videos — retrieve videos
-- get_documents — retrieve PDF/Word/Excel files
+Доступні вбудовані інструменти (9):
+- get_products — пошук товарів за назвою/описом
+- get_product_details — повна інформація про один товар
+- check_availability — перевірка наявності товару
+- search_by_parameters — фільтрація товарів за атрибутами
+- get_company_info — назва, опис, контакти компанії
+- search_documents — семантичний RAG-пошук у базі знань
+- get_photos — отримання фото
+- get_videos — отримання відео
+- get_documents — отримання PDF/Word/Excel файлів
 
-### memory_fields_data (optional array)
+### memory_fields_data (опціональний масив)
 
-Define structured fields the agent should collect:
+Визначає структуровані поля для збору даних агентом:
 
 [
-  {"key": "client_name", "label": "Client Name", "type": "text"},
-  {"key": "client_phone", "label": "Phone", "type": "phone"},
-  {"key": "topic", "label": "Topic", "type": "select", "options": ["sales", "support"]}
+  {"key": "client_name", "label": "Ім'я клієнта", "type": "text"},
+  {"key": "client_phone", "label": "Телефон", "type": "phone"},
+  {"key": "topic", "label": "Тема", "type": "select", "options": ["продажі", "підтримка"]}
 ]
 
-Field types: text, phone, email, number, select (with options array).
+Типи полів: text, phone, email, number, select (з масивом options).
 
-## Workflow Patterns
+## Паттерни воркфлоу
 
-### Pattern 1: Simple (single expert)
+### Паттерн 1: Простий (один експерт)
 Start → Custom Node → Formatter
-Best for: FAQ bots, simple support, single-topic agents.
+Найкраще для: FAQ-боти, проста підтримка, одна тема.
 
-### Pattern 2: Parallel experts (always routing)
-Start → Expert A → Formatter
-      → Expert B → Formatter
-      → Expert C → Formatter
-Best for: agents that need to search products + documents + company info simultaneously.
+### Паттерн 2: Паралельні експерти (always маршрутизація)
+Start → Експерт A → Formatter
+      → Експерт B → Formatter
+      → Експерт C → Formatter
+Найкраще для: агенти, яким потрібно шукати товари + документи + інфо про компанію одночасно.
 
-### Pattern 3: Smart router (intent/keyword routing)
-Start → (intent: sales) → Sales Expert → Formatter
-      → (intent: support) → Support Expert → Formatter
-      → (fallback) → General Expert → Formatter
-Best for: multi-topic agents where different questions need different expertise.
+### Паттерн 3: Розумний маршрутизатор (intent/keyword маршрутизація)
+Start → (intent: sales) → Експерт з продажів → Formatter
+      → (intent: support) → Експерт з підтримки → Formatter
+      → (fallback) → Загальний експерт → Formatter
+Найкраще для: мультитематичні агенти, де різні питання потребують різної експертизи.
 
-### Pattern 4: Lead collection (state routing)
-Start → (name empty) → Collect Name → Formatter
-      → (name filled, phone empty) → Collect Phone → Formatter
-      → (all filled) → Final Response → Formatter
-Best for: lead qualification, appointment booking, form-filling flows.
+### Паттерн 4: Збір лідів (state маршрутизація)
+Start → (ім'я пусте) → Збір імені → Formatter
+      → (ім'я заповнене, телефон пустий) → Збір телефону → Formatter
+      → (все заповнене) → Фінальна відповідь → Formatter
+Найкраще для: кваліфікація лідів, бронювання, заповнення форм.
 
-### Pattern 5: Voice agent
-STT → Start → Expert → Formatter → TTS
-Same as any pattern above, but with STT/TTS nodes active.
+### Паттерн 5: Голосовий агент
+STT → Start → Експерт → Formatter → TTS
+Те саме що будь-який паттерн вище, але з активними STT/TTS нодами.
 
-## Layout Guidelines
+## Рекомендації з розташування
 
-- Start node at position (0, 0)
-- STT node to the left: (-200, 0)
-- Expert nodes to the right: (200, -100), (200, 0), (200, 100)
-- Formatter further right: (400, 0)
-- TTS node furthest right: (600, 0)
-- Vertical spacing between parallel nodes: 100-200px
+- Start нода на позиції (0, 0)
+- STT нода зліва: (-200, 0)
+- Ноди-експерти справа: (200, -100), (200, 0), (200, 100)
+- Formatter далі справа: (400, 0)
+- TTS нода найдалі справа: (600, 0)
+- Вертикальний відступ між паралельними нодами: 100-200px
 
-## Rules
+## Правила
 
-1. Every workflow MUST have exactly one "start" node
-2. Every workflow MUST have exactly one "system_formatter" node
-3. STT and TTS nodes should be included but set to is_active: false
-   unless voice is specifically requested
-4. Custom nodes should have clear, focused conversation_goal text
-5. Each custom node should have at least search_documents tool
-6. Use intent routing instead of keyword for multilingual agents
-7. The fallback edge ensures no message goes unanswered
-8. Node indexes must be sequential starting from 0
-9. All edge source_index and target_index must reference valid node indexes
-10. conversation_goal should be written in the language the agent will use
+1. Кожен воркфлоу ПОВИНЕН мати рівно одну ноду "start"
+2. Кожен воркфлоу ПОВИНЕН мати рівно одну ноду "system_formatter"
+3. STT та TTS ноди мають бути включені, але з is_active: false,
+   якщо голос не запитано спеціально
+4. Custom ноди мають мати чіткий, сфокусований текст conversation_goal
+5. Кожна custom нода повинна мати щонайменше інструмент search_documents
+6. Використовуй intent маршрутизацію замість keyword для мультимовних агентів
+7. Fallback edge гарантує що жодне повідомлення не залишиться без відповіді
+8. Індекси нод мають бути послідовними починаючи з 0
+9. Всі source_index та target_index в edges мають посилатися на дійсні індекси нод
+10. conversation_goal має бути написаний мовою, якою працюватиме агент
 
-## Output
+## Вивід
 
-Return ONLY the JSON object — no markdown, no explanation, no
-code fences. The JSON must be valid and parseable.
+Поверни ТІЛЬКИ JSON-об'єкт — без markdown, без пояснень, без
+огорток коду. JSON має бути валідним і придатним для парсингу.
 
-## Input
+## Вхідні дані
 
-My business: [DESCRIBE YOUR BUSINESS]
-Agent role: [e.g., sales consultant, support agent, lead collector]
-Languages: [e.g., English, Ukrainian, multilingual]
-Voice enabled: [yes/no]
-Key topics/departments: [e.g., products, billing, technical support]
-Memory fields to collect: [e.g., name, phone, email, or none]
-Special requirements: [any additional requirements]
+Мій бізнес: [ОПИШІТЬ ВАШ БІЗНЕС]
+Роль агента: [напр., консультант з продажів, агент підтримки, збирач лідів]
+Мови: [напр., українська, англійська, мультимовний]
+Голос увімкнено: [так/ні]
+Ключові теми/відділи: [напр., товари, білінг, технічна підтримка]
+Поля пам'яті для збору: [напр., ім'я, телефон, email, або нічого]
+Спеціальні вимоги: [будь-які додаткові вимоги]
 ```
 </Accordion>
 

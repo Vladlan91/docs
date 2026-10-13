@@ -57,21 +57,23 @@ Wenn Sie einen benutzerdefinierten Workflow für Ihren AI-Agenten basierend auf 
 
 <Accordion title="Prompt zur Workflow-Generierung">
 ```text
-# Instruction: Generate a Revol Workflow Template JSON
+# Anleitung: Revol Workflow-Vorlage als JSON generieren
 
-## Context
+## Kontext
 
-I use Revol — a platform for building AI sales agents. Each agent
-has a visual workflow editor with nodes and edges that define
-conversation logic.
+Ich verwende Revol — eine Plattform zur Erstellung von
+AI-Vertriebsagenten. Jeder Agent hat einen visuellen
+Workflow-Editor mit Nodes und Edges, die die
+Konversationslogik definieren.
 
-I need you to generate a workflow template as a JSON object that
-I can import into my Revol agent. The JSON follows a strict schema
-used by Revol's template system.
+Ich benötige eine Workflow-Vorlage als JSON-Objekt, das ich
+in meinen Revol-Agenten importieren kann. Das JSON folgt
+einem strikten Schema des Revol-Template-Systems.
 
-## JSON Schema
+## JSON-Schema
 
-The output must be a single JSON object with these top-level keys:
+Die Ausgabe muss ein einzelnes JSON-Objekt mit diesen
+Schlüsseln sein:
 
 {
   "nodes_data": [...],
@@ -80,45 +82,45 @@ The output must be a single JSON object with these top-level keys:
   "memory_fields_data": [...]   // optional
 }
 
-### nodes_data (array of objects)
+### nodes_data (Array von Objekten)
 
-Each node object has these fields:
+Jedes Node-Objekt hat diese Felder:
 
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-| index | integer | yes | Unique index (0-based), used for edge references |
-| node_type | string | yes | One of: start, custom, system_stt, system_tts, system_product, system_media, system_company, system_formatter |
-| name | string | yes | Display name on the canvas |
-| position_x | integer | yes | Canvas X coordinate |
-| position_y | integer | yes | Canvas Y coordinate |
-| is_active | boolean | yes | Whether this node is active |
-| conversation_goal | string | no | System prompt for this node (custom nodes only) |
-| config | object | no | Node-specific configuration (see below) |
-| llm_provider_override | string | no | Override LLM provider: openai, anthropic, gemini, groq |
-| llm_model_override | string | no | Override model name |
-| temperature_override | number | no | Override temperature (0.0-2.0) |
+| Feld | Typ | Pflicht | Beschreibung |
+|------|-----|---------|-------------|
+| index | integer | ja | Eindeutiger Index (ab 0), für Edge-Referenzen |
+| node_type | string | ja | Einer von: start, custom, system_stt, system_tts, system_product, system_media, system_company, system_formatter |
+| name | string | ja | Anzeigename auf dem Canvas |
+| position_x | integer | ja | X-Koordinate auf dem Canvas |
+| position_y | integer | ja | Y-Koordinate auf dem Canvas |
+| is_active | boolean | ja | Ob der Node aktiv ist |
+| conversation_goal | string | nein | System-Prompt für diesen Node (nur custom Nodes) |
+| config | object | nein | Node-spezifische Konfiguration (siehe unten) |
+| llm_provider_override | string | nein | LLM-Provider überschreiben: openai, anthropic, gemini, groq |
+| llm_model_override | string | nein | Modellname überschreiben |
+| temperature_override | number | nein | Temperature überschreiben (0.0-2.0) |
 
-Node types and their purpose:
-- start — entry point, exactly one per workflow, no conversation_goal
-- custom — LLM-powered node with its own prompt, tools, and knowledge base
-- system_product — searches products, checks availability, shows details
-- system_media — retrieves photos, videos, documents
-- system_company — company info and support questions
-- system_formatter — combines outputs from parallel nodes into final response
-- system_stt — speech-to-text (voice input), usually inactive by default
-- system_tts — text-to-speech (voice output), usually inactive by default
+Node-Typen und ihre Aufgabe:
+- start — Einstiegspunkt, genau einer pro Workflow, kein conversation_goal
+- custom — LLM-Node mit eigenem Prompt, Tools und Wissensdatenbank
+- system_product — Produktsuche, Verfügbarkeitsprüfung, Details
+- system_media — Abruf von Fotos, Videos, Dokumenten
+- system_company — Firmeninformationen und Support
+- system_formatter — kombiniert Ergebnisse paralleler Nodes zur finalen Antwort
+- system_stt — Spracherkennung (Spracheingabe), standardmäßig inaktiv
+- system_tts — Sprachsynthese (Sprachausgabe), standardmäßig inaktiv
 
-Config for system_stt:
+Config für system_stt:
 {
   "provider": "openai",
-  "language": "en",
-  "greeting_text": "Hi! How can I help you?",
+  "language": "de",
+  "greeting_text": "Hallo! Wie kann ich Ihnen helfen?",
   "greeting_audio_url": null,
-  "farewell_text": "Thanks! Goodbye!",
+  "farewell_text": "Danke! Auf Wiedersehen!",
   "farewell_audio_url": null
 }
 
-Config for system_tts:
+Config für system_tts:
 {
   "provider": "openai",
   "voice": "nova",
@@ -126,134 +128,134 @@ Config for system_tts:
   "speed": 1.0
 }
 
-Config for custom nodes (optional):
+Config für custom Nodes (optional):
 {
   "save_to_memory": ["field_key1", "field_key2"],
   "max_tool_rounds": 3,
   "tool_timeout_seconds": 30
 }
 
-### edges_data (array of objects)
+### edges_data (Array von Objekten)
 
-Each edge object connects two nodes:
+Jedes Edge-Objekt verbindet zwei Nodes:
 
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-| source_index | integer | yes | Index of the source node |
-| target_index | integer | yes | Index of the target node |
-| condition_type | string | yes | One of: always, keyword, intent, state, fallback |
-| condition_value | object | no | Condition parameters (null for always/fallback) |
-| priority | integer | no | Evaluation priority (default: 90 for always) |
+| Feld | Typ | Pflicht | Beschreibung |
+|------|-----|---------|-------------|
+| source_index | integer | ja | Index des Quell-Nodes |
+| target_index | integer | ja | Index des Ziel-Nodes |
+| condition_type | string | ja | Einer von: always, keyword, intent, state, fallback |
+| condition_value | object | nein | Bedingungsparameter (null für always/fallback) |
+| priority | integer | nein | Auswertungspriorität (Standard: 90 für always) |
 
-Condition types and priorities:
-- keyword (priority: 100) — matches words in the message
-  condition_value: { "keywords": ["word1", "word2", ...] }
-- state (priority: 95) — checks memory field values
+Bedingungstypen und Prioritäten:
+- keyword (Priorität: 100) — Wortübereinstimmung in der Nachricht
+  condition_value: { "keywords": ["Wort1", "Wort2", ...] }
+- state (Priorität: 95) — prüft Speicherfeldwerte
   condition_value: { "conditions": [{"field": "name", "operator": "filled|empty|=|!=|contains|>|<", "value": ""}] }
-- always (priority: 90) — unconditional, enables parallel fan-out
+- always (Priorität: 90) — bedingungslos, ermöglicht parallele Verzweigung
   condition_value: null
-- intent (priority: 50) — LLM classifies the message intent
+- intent (Priorität: 50) — LLM klassifiziert die Nachrichtenabsicht
   condition_value: { "intents": ["intent_name"] }
-- fallback (priority: 10) — routes only when nothing else matches
+- fallback (Priorität: 10) — greift nur wenn nichts anderes passt
   condition_value: null
 
-### tools_data (object, keys are node indexes as strings)
+### tools_data (Objekt, Schlüssel sind Node-Indizes als Strings)
 
-Maps node index to an array of tool names:
+Ordnet Node-Index einem Array von Tool-Namen zu:
 
 {
   "2": ["search_documents", "get_company_info"],
   "3": ["get_products", "get_product_details"]
 }
 
-Available built-in tools (9):
-- get_products — search products by name/description
-- get_product_details — full details for one product
-- check_availability — check if product is in stock
-- search_by_parameters — filter products by attributes
-- get_company_info — company name, description, contacts
-- search_documents — semantic RAG search in knowledge base
-- get_photos — retrieve photos
-- get_videos — retrieve videos
-- get_documents — retrieve PDF/Word/Excel files
+Verfügbare eingebaute Tools (9):
+- get_products — Produktsuche nach Name/Beschreibung
+- get_product_details — Vollständige Details eines Produkts
+- check_availability — Verfügbarkeitsprüfung
+- search_by_parameters — Produkte nach Attributen filtern
+- get_company_info — Firmenname, Beschreibung, Kontakte
+- search_documents — Semantische RAG-Suche in der Wissensdatenbank
+- get_photos — Fotos abrufen
+- get_videos — Videos abrufen
+- get_documents — PDF/Word/Excel-Dateien abrufen
 
-### memory_fields_data (optional array)
+### memory_fields_data (optionales Array)
 
-Define structured fields the agent should collect:
+Definiert strukturierte Felder, die der Agent sammeln soll:
 
 [
-  {"key": "client_name", "label": "Client Name", "type": "text"},
-  {"key": "client_phone", "label": "Phone", "type": "phone"},
-  {"key": "topic", "label": "Topic", "type": "select", "options": ["sales", "support"]}
+  {"key": "client_name", "label": "Kundenname", "type": "text"},
+  {"key": "client_phone", "label": "Telefon", "type": "phone"},
+  {"key": "topic", "label": "Thema", "type": "select", "options": ["Verkauf", "Support"]}
 ]
 
-Field types: text, phone, email, number, select (with options array).
+Feldtypen: text, phone, email, number, select (mit options-Array).
 
-## Workflow Patterns
+## Workflow-Muster
 
-### Pattern 1: Simple (single expert)
+### Muster 1: Einfach (ein Experte)
 Start → Custom Node → Formatter
-Best for: FAQ bots, simple support, single-topic agents.
+Geeignet für: FAQ-Bots, einfacher Support, Einzelthema-Agenten.
 
-### Pattern 2: Parallel experts (always routing)
-Start → Expert A → Formatter
-      → Expert B → Formatter
-      → Expert C → Formatter
-Best for: agents that need to search products + documents + company info simultaneously.
+### Muster 2: Parallele Experten (always-Routing)
+Start → Experte A → Formatter
+      → Experte B → Formatter
+      → Experte C → Formatter
+Geeignet für: Agenten die gleichzeitig Produkte + Dokumente + Firmeninfo durchsuchen.
 
-### Pattern 3: Smart router (intent/keyword routing)
-Start → (intent: sales) → Sales Expert → Formatter
-      → (intent: support) → Support Expert → Formatter
-      → (fallback) → General Expert → Formatter
-Best for: multi-topic agents where different questions need different expertise.
+### Muster 3: Smart Router (intent/keyword-Routing)
+Start → (intent: sales) → Verkaufsexperte → Formatter
+      → (intent: support) → Supportexperte → Formatter
+      → (fallback) → Allgemeiner Experte → Formatter
+Geeignet für: Multithema-Agenten mit unterschiedlicher Expertise pro Frage.
 
-### Pattern 4: Lead collection (state routing)
-Start → (name empty) → Collect Name → Formatter
-      → (name filled, phone empty) → Collect Phone → Formatter
-      → (all filled) → Final Response → Formatter
-Best for: lead qualification, appointment booking, form-filling flows.
+### Muster 4: Lead-Sammlung (state-Routing)
+Start → (Name leer) → Name sammeln → Formatter
+      → (Name gefüllt, Telefon leer) → Telefon sammeln → Formatter
+      → (alles gefüllt) → Abschlussantwort → Formatter
+Geeignet für: Lead-Qualifizierung, Terminbuchung, Formularflüsse.
 
-### Pattern 5: Voice agent
-STT → Start → Expert → Formatter → TTS
-Same as any pattern above, but with STT/TTS nodes active.
+### Muster 5: Voice-Agent
+STT → Start → Experte → Formatter → TTS
+Wie jedes obige Muster, aber mit aktiven STT/TTS-Nodes.
 
-## Layout Guidelines
+## Layout-Richtlinien
 
-- Start node at position (0, 0)
-- STT node to the left: (-200, 0)
-- Expert nodes to the right: (200, -100), (200, 0), (200, 100)
-- Formatter further right: (400, 0)
-- TTS node furthest right: (600, 0)
-- Vertical spacing between parallel nodes: 100-200px
+- Start-Node auf Position (0, 0)
+- STT-Node links: (-200, 0)
+- Experten-Nodes rechts: (200, -100), (200, 0), (200, 100)
+- Formatter weiter rechts: (400, 0)
+- TTS-Node ganz rechts: (600, 0)
+- Vertikaler Abstand zwischen parallelen Nodes: 100-200px
 
-## Rules
+## Regeln
 
-1. Every workflow MUST have exactly one "start" node
-2. Every workflow MUST have exactly one "system_formatter" node
-3. STT and TTS nodes should be included but set to is_active: false
-   unless voice is specifically requested
-4. Custom nodes should have clear, focused conversation_goal text
-5. Each custom node should have at least search_documents tool
-6. Use intent routing instead of keyword for multilingual agents
-7. The fallback edge ensures no message goes unanswered
-8. Node indexes must be sequential starting from 0
-9. All edge source_index and target_index must reference valid node indexes
-10. conversation_goal should be written in the language the agent will use
+1. Jeder Workflow MUSS genau einen "start"-Node haben
+2. Jeder Workflow MUSS genau einen "system_formatter"-Node haben
+3. STT- und TTS-Nodes einbinden, aber is_active: false setzen,
+   außer Voice wird explizit angefordert
+4. Custom Nodes sollten einen klaren, fokussierten conversation_goal-Text haben
+5. Jeder Custom Node sollte mindestens das Tool search_documents haben
+6. Intent-Routing statt keyword für mehrsprachige Agenten verwenden
+7. Der Fallback-Edge stellt sicher, dass keine Nachricht unbeantwortet bleibt
+8. Node-Indizes müssen sequenziell ab 0 sein
+9. Alle source_index und target_index in Edges müssen auf gültige Node-Indizes verweisen
+10. conversation_goal sollte in der Sprache geschrieben werden, die der Agent verwendet
 
-## Output
+## Ausgabe
 
-Return ONLY the JSON object — no markdown, no explanation, no
-code fences. The JSON must be valid and parseable.
+Gib NUR das JSON-Objekt zurück — kein Markdown, keine Erklärung,
+keine Code-Blöcke. Das JSON muss valide und parsebar sein.
 
-## Input
+## Eingabe
 
-My business: [DESCRIBE YOUR BUSINESS]
-Agent role: [e.g., sales consultant, support agent, lead collector]
-Languages: [e.g., English, Ukrainian, multilingual]
-Voice enabled: [yes/no]
-Key topics/departments: [e.g., products, billing, technical support]
-Memory fields to collect: [e.g., name, phone, email, or none]
-Special requirements: [any additional requirements]
+Mein Unternehmen: [BESCHREIBEN SIE IHR UNTERNEHMEN]
+Agentenrolle: [z.B. Verkaufsberater, Supportagent, Lead-Sammler]
+Sprachen: [z.B. Deutsch, Englisch, mehrsprachig]
+Voice aktiviert: [ja/nein]
+Schlüsselthemen/Abteilungen: [z.B. Produkte, Abrechnung, technischer Support]
+Speicherfelder zum Sammeln: [z.B. Name, Telefon, E-Mail, oder keine]
+Besondere Anforderungen: [zusätzliche Anforderungen]
 ```
 </Accordion>
 
