@@ -83,6 +83,14 @@ Bitten Sie den Assistenten:
 
 Wenn Sie mehrere Unternehmen ausgewählt haben, nennen Sie das gewünschte Unternehmen bei jeder Aufgabe, etwa: „Zeige über Revol die Produktliste des Unternehmens ‹Beispiel›.“ Jede Aktion muss im Kontext eines einzelnen Unternehmens erfolgen.
 
+## Kennzahlen mit dem Dashboard vergleichen
+
+Vergleichen Sie dasselbe Unternehmen, denselben Zeitraum und dieselben Filter. **24h** im Dashboard bedeutet die vergangenen 24 Stunden, einschließlich eines Teils des Vortags. Eine Abfrage für „heute“ oder `date_from=date_to` wählt einen Kalendertag und kann niedrigere Werte liefern.
+
+Um das Dashboard nachzubilden, bitten Sie: „Zeige über Revol das Tracking des gewählten Unternehmens für die letzten 24 Stunden (`period=24h`, ohne `date_from` und `date_to`) mit denselben Filtern. Nenne die genauen Zeitgrenzen, die Zeitzone und den Abrufzeitpunkt.“ Für andere Zeitraum-Schaltflächen verwenden Sie entsprechend `7d`, `30d` oder `90d`.
+
+`revol_tracking_dashboard` liefert diese Angaben in `context`, zusammen mit dem Unternehmen und den angewandten Filtern. Angegebene Daten haben Vorrang vor `period`; der Endtag wird vollständig eingeschlossen. Eindeutige Besucher werden für den gesamten Zeitraum gezählt: Die Summe der Tageswerte kann durch wiederkehrende Besucher höher sein.
+
 ## Zugriff verwalten und widerrufen
 
 Öffnen Sie das entsprechende Unternehmen in Revol und gehen Sie zu **Mein Assistent**. In der Verbindungskarte können Sie einzelne Tools deaktivieren oder auf **Trennen** klicken. Die Verbindung kann von ihrem Ersteller oder einem Eigentümer eines darin enthaltenen Unternehmens verwaltet werden.

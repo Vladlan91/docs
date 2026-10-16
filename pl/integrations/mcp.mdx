@@ -83,6 +83,14 @@ Poproś asystenta:
 
 Jeśli wybrano kilka firm, wskazuj firmę w każdym zadaniu, np.: „Pokaż przez Revol listę produktów firmy «Przykład»”. Każda operacja musi dotyczyć jednej firmy.
 
+## Porównanie wskaźników z Dashboard
+
+Porównuj tę samą firmę, okres i filtry. **24h** w Dashboard oznacza ostatnie 24 godziny, w tym część poprzedniego dnia. Zapytanie „za dzisiaj” lub `date_from=date_to` wybiera dzień kalendarzowy i może zwrócić niższe liczby.
+
+Aby odtworzyć Dashboard, poproś: „Przez Revol pokaż śledzenie wybranej firmy z ostatnich 24 godzin (`period=24h`, bez `date_from` i `date_to`) z tymi samymi filtrami. Podaj dokładny zakres czasu, strefę czasową i czas pobrania danych”. Dla innego przycisku okresu użyj odpowiednio `7d`, `30d` lub `90d`.
+
+`revol_tracking_dashboard` zwraca te informacje w `context`, wraz z firmą i zastosowanymi filtrami. Podane daty mają pierwszeństwo przed `period`; dzień końcowy jest uwzględniany w całości. Unikalni odwiedzający są liczeni dla całego okresu: suma wartości dziennych może być większa przez powracających odwiedzających.
+
 ## Zarządzanie i cofnięcie dostępu
 
 Otwórz odpowiednią firmę w Revol i przejdź do **Mój Asystent**. W karcie połączenia możesz wyłączyć pojedyncze narzędzia lub kliknąć **Odłącz**. Połączeniem może zarządzać jego autor albo właściciel firmy objętej połączeniem.

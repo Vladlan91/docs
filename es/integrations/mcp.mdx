@@ -83,6 +83,14 @@ Pide al asistente:
 
 Si seleccionaste varias empresas, indica la empresa en cada tarea, por ejemplo: «Usa Revol para mostrar los productos de la empresa “Ejemplo”». Cada operación debe realizarse en el contexto de una sola empresa.
 
+## Comparar métricas con el Dashboard
+
+Compare la misma empresa, el mismo período y los mismos filtros. **24h** en el Dashboard significa las últimas 24 horas, incluida parte del día anterior. Una consulta de «hoy» o `date_from=date_to` selecciona un día natural y puede devolver cifras menores.
+
+Para reproducir el Dashboard, pida: «Usa Revol para mostrar el seguimiento de la empresa seleccionada durante las últimas 24 horas (`period=24h`, sin `date_from` ni `date_to`) con los mismos filtros. Indica los límites exactos, la zona horaria y la hora de consulta». Para otro botón de período, use `7d`, `30d` o `90d`, según corresponda.
+
+`revol_tracking_dashboard` devuelve estos datos en `context`, junto con la empresa y los filtros aplicados. Las fechas explícitas tienen prioridad sobre `period`; el día final se incluye por completo. Los visitantes únicos se cuentan para todo el período: sumar los valores diarios puede contar varias veces a los visitantes recurrentes.
+
 ## Gestionar y revocar el acceso
 
 Abre la empresa correspondiente en Revol y ve a **Mi Asistente**. En la tarjeta de la conexión puedes desactivar herramientas individuales o pulsar **Desconectar**. Puede gestionarla su creador o el propietario de una empresa incluida en la conexión.

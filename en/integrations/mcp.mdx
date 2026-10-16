@@ -83,6 +83,14 @@ Ask the assistant:
 
 If you selected several companies, name the company in each task, for example: “Use Revol to list products for the company ‘Example’.” Each operation must run in the context of one company.
 
+## Compare metrics with the Dashboard
+
+Compare the same company, period and filters. **24h** in the Dashboard means the preceding 24 hours, including part of the previous day. A request for “today” or `date_from=date_to` selects a calendar day and can return lower counts.
+
+To match the Dashboard, ask: “Use Revol to show tracking for the selected company over the last 24 hours (`period=24h`, without `date_from` or `date_to`) with the same filters. Include the exact time range, time zone and retrieval time.” For another period button, use `7d`, `30d` or `90d` respectively.
+
+`revol_tracking_dashboard` returns this information in `context`, including the company and applied filters. Explicit dates take precedence over `period`; the entire end date is included. Unique visitors across multiple days are counted for the whole period: adding daily counts can overcount returning visitors.
+
 ## Manage and revoke access
 
 Open the relevant company in Revol and go to **My Assistant**. The connection card lets you disable individual tools or click **Disconnect**. The connection's creator or an owner of a company included in it can manage the connection.
