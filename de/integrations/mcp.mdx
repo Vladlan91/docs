@@ -1,10 +1,10 @@
 ---
-title: "ChatGPT und Claude über MCP"
-sidebarTitle: "ChatGPT / Claude (MCP)"
-description: "ChatGPT oder Claude mit Revol verbinden: OAuth, Unternehmens- und Toolauswahl, Verbindungsprüfung und Zugriff widerrufen"
+title: "ChatGPT, Claude und Gemini über MCP"
+sidebarTitle: "MCP"
+description: "ChatGPT, Claude oder Gemini CLI mit Revol verbinden: OAuth, Unternehmens- und Toolauswahl, Verbindungsprüfung und Zugriff widerrufen"
 ---
 
-Mit Revol MCP arbeiten Sie direkt in ChatGPT oder Claude mit Unternehmensdaten. Der Assistent kann Daten lesen und die für Sie verfügbaren Aktionen für Gespräche, Leads, Produkte, KI-Agenten und Analysen ausführen.
+Mit Revol MCP arbeiten Sie direkt in ChatGPT, Claude oder Gemini CLI mit Unternehmensdaten. Der Assistent kann Daten lesen und die für Sie verfügbaren Aktionen für Gespräche, Leads, Produkte, KI-Agenten und Analysen ausführen.
 
 ## Vor dem Verbinden
 
@@ -32,7 +32,7 @@ Mit Revol MCP arbeiten Sie direkt in ChatGPT oder Claude mit Unternehmensdaten. 
 1. Öffnen Sie **Add custom MCP server** im Bereich für Apps, Konnektoren oder Plugins Ihrer Oberfläche.
 2. Übernehmen Sie die Einstellungen aus der Tabelle und wählen Sie **OAuth**. Client ID und Client Secret müssen nicht manuell eingetragen werden.
 3. Bestätigen Sie die Einrichtung. Melden Sie sich auf der Revol-Seite an und erteilen Sie den Zugriff wie unten beschrieben.
-4. Kehren Sie zu ChatGPT zurück, schließen Sie die Einrichtung ab und aktivieren Sie Revol im gewünschten Chat.
+4. Kehren Sie zu ChatGPT zurück und schließen Sie die Plugin-Installation ab. Öffnen Sie einen neuen Chat, wählen Sie **@Revol** in der Nachricht und bitten Sie um einen reinen Leseaufruf von `revol_whoami`.
 
 Für das Symbolfeld können Sie das [Revol-Logo als PNG](https://revol-ai.app/favicon.png) herunterladen: **256 × 256 px, 2,7 KB**. Die Datei liegt unter dem Formularlimit von 10 KB.
 
@@ -44,13 +44,27 @@ Fügen Sie unter **Connectors** einen eigenen Konnektor mit den obigen Einstellu
 
 Menüpfade und Administratorrechte: [Claude-Anleitung](https://support.claude.com/en/articles/11175166-get-started-with-custom-connectors-using-remote-mcp).
 
+## Gemini CLI
+
+Fügen Sie in einer installierten Gemini CLI denselben Streamable-HTTP-Endpunkt hinzu:
+
+```bash
+gemini mcp add --transport http Revol https://revol-ai.app/mcp
+```
+
+Starten Sie Gemini CLI und führen Sie `/mcp auth Revol` aus, um OAuth im Browser abzuschließen. Prüfen Sie die Verbindung mit `/mcp`. Automatische Erkennung und Client-Registrierung nutzen denselben Revol-Autorisierungsablauf wie andere Clients.
+
+Diese Schritte gelten für **Gemini CLI**. Die Gemini-Website und andere Google-Produkte haben eigene Integrationsmöglichkeiten; das Hinzufügen in der CLI aktiviert den Server dort nicht.
+
+[Gemini-CLI-Dokumentation](https://geminicli.com/docs/tools/mcp-server/).
+
 ## Zugriff in Revol erteilen
 
 Auf dem Zustimmungsbildschirm:
 
 1. Wählen Sie ein oder mehrere Unternehmen für den Assistenten aus. Lange Listen lassen sich innerhalb des Formulars scrollen.
 2. Wählen Sie das passende Toolset für Ihre Aufgabe.
-3. Klicken Sie auf **Erlauben**, um zu ChatGPT oder Claude zurückzukehren.
+3. Klicken Sie auf **Erlauben**, um zu ChatGPT, Claude oder Gemini CLI zurückzukehren.
 
 | Toolset | Zweck |
 |---|---|
@@ -74,6 +88,16 @@ Wenn Sie mehrere Unternehmen ausgewählt haben, nennen Sie das gewünschte Unter
 Öffnen Sie das entsprechende Unternehmen in Revol und gehen Sie zu **Mein Assistent**. In der Verbindungskarte können Sie einzelne Tools deaktivieren oder auf **Trennen** klicken. Die Verbindung kann von ihrem Ersteller oder einem Eigentümer eines darin enthaltenen Unternehmens verwaltet werden.
 
 Das Trennen widerruft die gesamte Verbindung einschließlich aller dafür ausgewählten Unternehmen. Für eine andere Unternehmensauswahl oder ein anderes Profil durchlaufen Sie OAuth erneut. Zeigt der Client noch eine alte Toolliste an, aktualisieren Sie diese oder beginnen Sie einen neuen Chat.
+
+## Tools sind in Revol aktiviert, fehlen aber im Chat
+
+Die Schalter in **Mein Assistent** bestimmen, was Revol dieser Verbindung erlaubt. Der Client muss außerdem den Toolkatalog laden und das Plugin für die Nachricht aktivieren.
+
+Öffnen Sie in ChatGPT die Verbindung und wählen Sie **Refresh** oder aktualisieren Sie die Aktionen in den App-Einstellungen des Arbeitsbereichs. Prüfen Sie die erkannten Tools und deren Berechtigungen. Öffnen Sie dann einen neuen Chat mit **@Revol** und testen Sie `revol_whoami`. Manche Tarife, Modi oder Arbeitsbereichsrichtlinien erlauben nur Lesezugriffe. Siehe [OpenAI-Verbindungs- und Aktionskontrollen](https://help.openai.com/en/articles/12584461-connecting-custom-mcp-servers-in-chatgpt).
+
+Falls ein großer Katalog die Erkennung in einem MCP-Client erschwert, verbinden Sie sich erneut mit dem passenden Toolprofil. Eine erfolgreiche OAuth-Seite oder die Antwort „verbunden“ ersetzt keinen erfolgreichen Toolaufruf.
+
+Die App-Karte — Beschreibung, Kategorie, Entwickler, Website und Logo — wird vom Client verwaltet. Gespeicherte Felder können von Servermetadaten abweichen; eine Bearbeitung der Karte behebt keine Toolerkennungsfehler.
 
 ## Häufige Probleme
 

@@ -1,10 +1,10 @@
 ---
-title: "ChatGPT and Claude via MCP"
-sidebarTitle: "ChatGPT / Claude (MCP)"
-description: "Connect ChatGPT or Claude to Revol: OAuth, company and tool selection, connection checks, and access revocation"
+title: "ChatGPT, Claude and Gemini via MCP"
+sidebarTitle: "MCP"
+description: "Connect ChatGPT, Claude or Gemini CLI to Revol: OAuth, company and tool selection, connection checks, and access revocation"
 ---
 
-Revol MCP lets you work with company data directly in ChatGPT or Claude. The assistant can read data and perform operations available to you on conversations, leads, products, AI agents, and analytics.
+Revol MCP lets you work with company data directly in ChatGPT, Claude or Gemini CLI. The assistant can read data and perform operations available to you on conversations, leads, products, AI agents, and analytics.
 
 ## Before connecting
 
@@ -32,7 +32,7 @@ Revol MCP lets you work with company data directly in ChatGPT or Claude. The ass
 1. Open **Add custom MCP server** in your interface's apps, connectors, or plugins section.
 2. Use the settings above and select **OAuth**. You do not need to enter a Client ID or Client Secret manually.
 3. Confirm the connection setup. On the Revol page, sign in and grant access as described below.
-4. Return to ChatGPT, finish setup, and enable Revol for the chat you want to use.
+4. Return to ChatGPT and finish installing the plugin. Start a new chat, select **@Revol** in the message, and ask it to call `revol_whoami` using read access only.
 
 For the icon field, download the [Revol PNG logo](https://revol-ai.app/favicon.png): **256 × 256 px, 2.7 KB**. It fits the form's 10 KB limit.
 
@@ -44,13 +44,27 @@ In **Connectors**, add a custom connector using the settings above. If prompted,
 
 For menu locations and administrator permissions, see the [Claude guide](https://support.claude.com/en/articles/11175166-get-started-with-custom-connectors-using-remote-mcp).
 
+## Gemini CLI
+
+In an installed Gemini CLI, add the same Streamable HTTP endpoint:
+
+```bash
+gemini mcp add --transport http Revol https://revol-ai.app/mcp
+```
+
+Start Gemini CLI and run `/mcp auth Revol` to complete OAuth in your browser. Check the connection with `/mcp`. Automatic discovery and client registration use the same Revol authorization flow as other clients.
+
+These steps are for **Gemini CLI**. The Gemini website and other Google products have their own integration options; adding a server to the CLI does not enable it there.
+
+[Gemini CLI documentation](https://geminicli.com/docs/tools/mcp-server/).
+
 ## Grant access in Revol
 
 On the consent screen:
 
 1. Select one or more companies for the assistant. A long list scrolls within the form.
 2. Choose the toolset that matches your task.
-3. Click **Allow** to return to ChatGPT or Claude.
+3. Click **Allow** to return to ChatGPT, Claude or Gemini CLI.
 
 | Toolset | Purpose |
 |---|---|
@@ -74,6 +88,16 @@ If you selected several companies, name the company in each task, for example: �
 Open the relevant company in Revol and go to **My Assistant**. The connection card lets you disable individual tools or click **Disconnect**. The connection's creator or an owner of a company included in it can manage the connection.
 
 Disconnecting revokes the entire connection, including all companies selected for it. To choose a different set of companies or another profile, complete OAuth again. If your client still shows an old tool list, refresh it or start a new chat.
+
+## Tools are enabled in Revol but missing in the chat
+
+The switches in **My Assistant** control what Revol allows this connection to use. The client must also load the tool catalog and enable the plugin for the message.
+
+In ChatGPT, open the connection and select **Refresh** (or refresh actions in workspace app settings), review the discovered tools and their permissions, then start a new chat with **@Revol**. Test with `revol_whoami`. Some plans, modes or workspace policies permit only read tools. See [OpenAI connection and action controls](https://help.openai.com/en/articles/12584461-connecting-custom-mcp-servers-in-chatgpt).
+
+For any MCP client, if a large catalog causes discovery problems, reconnect with the task-specific toolset you need. A successful OAuth screen or a reply saying “connected” does not replace an actual successful tool call.
+
+The app card (description, category, developer, website and logo) is managed by the client. Its saved fields may differ from server metadata; changing the card does not fix tool discovery.
 
 ## Troubleshooting
 
