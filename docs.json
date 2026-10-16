@@ -92,6 +92,7 @@
                 "group": "Integrations",
                 "pages": [
                   "en/integrations/overview",
+                  "en/integrations/mcp",
                   "en/integrations/voip",
                   "en/integrations/messengers",
                   "en/integrations/google-workspace",
@@ -217,6 +218,7 @@
                 "group": "Інтеграції",
                 "pages": [
                   "uk/integrations/overview",
+                  "uk/integrations/mcp",
                   "uk/integrations/voip",
                   "uk/integrations/messengers",
                   "uk/integrations/google-workspace",
@@ -342,6 +344,7 @@
                 "group": "Integracje",
                 "pages": [
                   "pl/integrations/overview",
+                  "pl/integrations/mcp",
                   "pl/integrations/voip",
                   "pl/integrations/messengers",
                   "pl/integrations/google-workspace",
@@ -467,6 +470,7 @@
                 "group": "Integrationen",
                 "pages": [
                   "de/integrations/overview",
+                  "de/integrations/mcp",
                   "de/integrations/voip",
                   "de/integrations/messengers",
                   "de/integrations/google-workspace",
@@ -592,6 +596,7 @@
                 "group": "Integraciones",
                 "pages": [
                   "es/integrations/overview",
+                  "es/integrations/mcp",
                   "es/integrations/voip",
                   "es/integrations/messengers",
                   "es/integrations/google-workspace",

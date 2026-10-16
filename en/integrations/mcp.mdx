@@ -1,0 +1,88 @@
+---
+title: "ChatGPT and Claude via MCP"
+sidebarTitle: "ChatGPT / Claude (MCP)"
+description: "Connect ChatGPT or Claude to Revol: OAuth, company and tool selection, connection checks, and access revocation"
+---
+
+Revol MCP lets you work with company data directly in ChatGPT or Claude. The assistant can read data and perform operations available to you on conversations, leads, products, AI agents, and analytics.
+
+## Before connecting
+
+- Sign in to your Revol account and check that you can access the company you need.
+- The company's subscription must include access to the MCP module.
+- Your ChatGPT/Claude account or workspace must allow custom MCP connectors. If the option is missing, check access settings with your administrator.
+
+## Connection settings
+
+| Field | Value |
+|---|---|
+| Name | `Revol` |
+| Server URL / Connection | `https://revol-ai.app/mcp` |
+| Authentication | **OAuth** |
+| OAuth client registration, if offered | Automatic / **DCR** |
+| Client ID and Client Secret | Leave blank for automatic registration |
+| Transport, if offered | **Streamable HTTP** |
+
+<Note>
+  Revol requires authentication when establishing the connection. Choose **OAuth** in ChatGPT: **No authentication** causes **The MCP server denied access**.
+</Note>
+
+## ChatGPT
+
+1. Open **Add custom MCP server** in your interface's apps, connectors, or plugins section.
+2. Use the settings above and select **OAuth**. You do not need to enter a Client ID or Client Secret manually.
+3. Confirm the connection setup. On the Revol page, sign in and grant access as described below.
+4. Return to ChatGPT, finish setup, and enable Revol for the chat you want to use.
+
+For the icon field, download the [Revol PNG logo](https://revol-ai.app/favicon.png): **256 × 256 px, 2.7 KB**. It fits the form's 10 KB limit.
+
+For current menu locations, see the [OpenAI guide](https://developers.openai.com/api/docs/guides/custom-mcp-server).
+
+## Claude
+
+In **Connectors**, add a custom connector using the settings above. If prompted, choose **Sign in now** and **Register automatically** for the OAuth client. Grant access in Revol, then enable the connector in your chat.
+
+For menu locations and administrator permissions, see the [Claude guide](https://support.claude.com/en/articles/11175166-get-started-with-custom-connectors-using-remote-mcp).
+
+## Grant access in Revol
+
+On the consent screen:
+
+1. Select one or more companies for the assistant. A long list scrolls within the form.
+2. Choose the toolset that matches your task.
+3. Click **Allow** to return to ChatGPT or Claude.
+
+| Toolset | Purpose |
+|---|---|
+| **Conversations & sales** | Conversations, teamwork, leads, products, and department scripts |
+| **AI agents administration** | Agents, workflows, knowledge base, files, channels, and company settings |
+| **Analytics, billing & tracking** | KPIs, metrics, billing, diagnostics, and website tracking |
+| **Full access** | All tools available within your permissions and subscription |
+
+The profile limits the toolset without expanding your role. The assistant acts as the person who authorized the connection; company, workspace, and subscription restrictions still apply. “Full access” does not grant administrator rights.
+
+## Check the connection
+
+Ask the assistant:
+
+> Use Revol to show the companies available to this connection.
+
+If you selected several companies, name the company in each task, for example: “Use Revol to list products for the company ‘Example’.” Each operation must run in the context of one company.
+
+## Manage and revoke access
+
+Open the relevant company in Revol and go to **My Assistant**. The connection card lets you disable individual tools or click **Disconnect**. The connection's creator or an owner of a company included in it can manage the connection.
+
+Disconnecting revokes the entire connection, including all companies selected for it. To choose a different set of companies or another profile, complete OAuth again. If your client still shows an old tool list, refresh it or start a new chat.
+
+## Troubleshooting
+
+| Symptom | What to check |
+|---|---|
+| **The MCP server denied access** immediately when adding the server | Set **Authentication → OAuth** and reconnect using `https://revol-ai.app/mcp` |
+| `401` or `Missing bearer token` when opening the URL in a browser | The URL is not a login page. Add it in your MCP client and complete OAuth |
+| A company is missing from the consent screen | Check which Revol account you signed in with and whether it has access to that company |
+| Connected, but no tools are available or an operation is denied | Check the company's subscription, your role, the profile, and disabled tools in **My Assistant** |
+| The assistant does not know which company to use | Specify a company you allowed when connecting |
+| The connection stopped working after revocation | Authorize Revol again through OAuth |
+| A default icon appears instead of the Revol logo | Upload the PNG logo in the connector's icon field |
