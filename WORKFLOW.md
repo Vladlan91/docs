@@ -19,7 +19,7 @@ MDX — вміст сайту, тому відсутність згадки в R
 
 ## Тарифи та скриншоти білінгу
 
-Джерело каталогу — `billing_plans`, модель `Plan`, billing-міграції й
+Джерело каталогу — `plans`, модель `Plan`, billing-міграції й
 `resources/lang/*/billing.php` core. Звіряй ціни, квоти та окремо доступність
 самостійного підключення. Для обліку ресурсів джерело —
 `GetAccountUsageAction` і `BillingPeriodService`; для доступу — `AccessGrant`.
@@ -28,7 +28,7 @@ MDX — вміст сайту, тому відсутність згадки в R
 Оновлюй п’ять мов і старі англійські маршрути `billing/` разом; ціни й
 можливості також узгоджуй із `/pricing` та прикладом чату в `landing/`.
 
-`images/billing-catalog-{light,dark}.png` та
+`images/billing-catalog-commission-{light,dark}.png` та
 `images/billing-access-{light,dark}.png` — англійські знімки чинних Blade-шаблонів
 `billing/pricing`, `billing/access` і `billing/partials/account-usage` core.
 Для кадрів без приватних даних відрендери сам вміст шаблонів із перевіреним
