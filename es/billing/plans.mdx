@@ -1,267 +1,100 @@
 ---
-title: Planes y Precios
-description: "Planes de suscripción de Revol, pagos con Stripe, paquetes adicionales, gestión de suscripciones y facturas"
+title: "Planes y precios"
+description: "Planes actuales de Revol, cuotas compartidas, piloto por invitación y condiciones de pago"
 ---
 
-## Descripción General
+## Catálogo y disponibilidad
 
-Revol usa un modelo de **facturación basado en tokens** impulsado por **Stripe**. Cada interacción de IA consume tokens — cuanto más trabajan sus agentes, más tokens se usan. Elija un plan que se ajuste a su volumen, y compre paquetes adicionales cuando necesite más recursos sin actualizar su plan.
+Desde un programa de socios hasta ventas con IA y tu propio marketplace. El precio mensual cubre la cuenta del propietario; el equipo y todas sus empresas comparten las cuotas del plan.
 
----
+<Note>
+Red de socios está disponible mediante un piloto gratuito por invitación. Después cuesta $30/mes. Sus participantes mantienen ese precio durante los primeros seis meses pagados y confirmados.
 
-## Página de Precios
-
-Navegue a **Facturación** → **Plan de Precios** para comparar planes y suscribirse.
+Se muestran los precios del catálogo. Ventas con IA, Crecimiento y Marketplace aún no admiten activación por cuenta propia. El equipo de Revol acuerda el acceso y el pago contigo.
+</Note>
 
 <Frame>
-  <img className="block dark:hidden" src="/images/billing-plans-light.png" alt="Comparación de planes" />
-  <img className="hidden dark:block" src="/images/billing-plans-dark.png" alt="Comparación de planes" />
+  <img className="block dark:hidden" src="/images/billing-catalog-light.png" alt="Catálogo actual de los cuatro planes de Revol en inglés" />
+  <img className="hidden dark:block" src="/images/billing-catalog-dark.png" alt="Catálogo actual de los cuatro planes de Revol en inglés" />
 </Frame>
 
-La página muestra una tarjeta destacada en la parte superior con la insignia de su plan actual y un botón **Gestionar Suscripción** (solo planes de pago), seguido de tres tarjetas de plan dispuestas una al lado de la otra.
+Los mismos planes y estados de disponibilidad que muestra el panel de Revol. Las capturas utilizan la interfaz en inglés.
 
-La tarjeta de su plan actual se resalta con un borde oscuro y una insignia verde **"Su Plan"**. Cada tarjeta se divide en tres grupos de funcionalidades: **Plataforma**, **Recursos de IA** y **Funcionalidades**. Las capacidades incluidas muestran una marca verde, mientras que las funcionalidades no disponibles muestran una X gris.
-
-### Planes
+## Qué incluye cada plan
 
 <Tabs>
-  <Tab title="Free">
-    **$0/mes** — comience y explore la plataforma
+  <Tab title="Red de socios">
+    Lanza un programa de socios.
 
-    | Recurso | Límite |
-    |----------|-------|
-    | Empresas | 1 |
-    | Agentes de IA | 1 |
-    | Tokens Estándar | 20,000 / día |
-    | Tokens Premium | — |
-    | Voz (STT) | — |
-    | Voz (TTS) | — |
-    | Tokens de Embedding | 100,000 / mes |
-    | Almacenamiento | 100 MB |
-    | Documentos de Conocimiento | 10 |
-    | Conversaciones | 100 |
-    | Retención de Seguimiento | 30 días |
-    | Integraciones | — |
-    | Marca del Widget | Marca Revol |
-    | Marketplace | Solo navegación |
-    | Límite de Velocidad | 10 sol/min |
+    - Empresa y productos
+    - Socios y acuerdos
+    - QR de socio y escaneo
+    - Leads y pedidos
+    - Recompensas, pagos y informes
   </Tab>
-  <Tab title="Premium">
-    **$29/mes** — para negocios en crecimiento
+  <Tab title="Ventas con IA">
+    Red de socios más IA en tu sitio web.
 
-    | Recurso | Límite |
-    |----------|-------|
-    | Empresas | 3 |
-    | Agentes de IA | 5 |
-    | Tokens Estándar | 5,000,000 / ciclo de facturación |
-    | Tokens Premium | 1,000,000 / ciclo de facturación |
-    | Voz (STT) | 60 min |
-    | Voz (TTS) | 200,000 caracteres |
-    | Tokens de Embedding | 1,000,000 / ciclo de facturación |
-    | Almacenamiento | 5 GB |
-    | Documentos de Conocimiento | 100 |
-    | Conversaciones | 5,000 |
-    | Retención de Seguimiento | 180 días |
-    | Integraciones | VoIP + Mensajeros |
-    | Marca del Widget | Personalizada |
-    | Marketplace | Instalar + Publicar |
-    | Límite de Velocidad | 60 sol/min |
+    - Todo lo de Red de socios
+    - Agentes de IA y widget del sitio
+    - Base de conocimiento y conversaciones
+    - Seguimiento, eventos y códigos promocionales independientes
   </Tab>
-  <Tab title="Professional">
-    **$79/mes** — para agencias y empresas
+  <Tab title="Crecimiento">
+    Ventas con IA más canales externos y modelos avanzados.
 
-    | Recurso | Límite |
-    |----------|-------|
-    | Empresas | 10 |
-    | Agentes de IA | Ilimitados |
-    | Tokens Estándar | 25,000,000 / ciclo de facturación |
-    | Tokens Premium | 2,000,000 / ciclo de facturación |
-    | Voz (STT) | 300 min |
-    | Voz (TTS) | 500,000 caracteres |
-    | Tokens de Embedding | 5,000,000 / ciclo de facturación |
-    | Almacenamiento | 50 GB |
-    | Documentos de Conocimiento | 1,000 |
-    | Conversaciones | 50,000 |
-    | Retención de Seguimiento | 730 días (2 años) |
-    | Integraciones | Todas (VoIP, Mensajeros, Google Workspace, Ads, Webhooks) |
-    | Marca del Widget | Marca Blanca |
-    | Marketplace | Instalar + Publicar + Prioridad |
-    | Límite de Velocidad | 300 sol/min |
+    - Todo lo de Ventas con IA
+    - Integraciones externas
+    - Conector MCP
+    - APIs de voz
+    - Modelos top
+  </Tab>
+  <Tab title="Marketplace">
+    Crecimiento más la API pública del catálogo de empresas de Revol para tu escaparate.
+
+    - Todo lo de Crecimiento
+    - API pública del catálogo de empresas
+    - Claves de escaparate
+    - Asesor de IA en el escaparate
+    - Cuotas ampliadas de IA y almacenamiento
   </Tab>
 </Tabs>
 
-<Note>
-  El plan Free restablece el uso de tokens **diariamente** (medianoche UTC). Los planes de pago se restablecen al inicio de cada **ciclo de facturación** (la fecha en que se suscribió).
-</Note>
+## Cuotas incluidas
 
-### Acceso a Modelos
+| Recurso | Red de socios | Ventas con IA | Crecimiento | Marketplace |
+|---|---|---|---|---|
+| Precio mensual, USD | $30 | $50 | $80 | $500 |
+| Disponibilidad | Piloto por invitación | Próximamente | Próximamente | Próximamente |
+| Empresas | 1 | 1 | 3 | 5 |
+| Agentes de IA | — | 1 | 3 | 10 |
+| Plazas del equipo, incluido el propietario | 3 | 5 | 15 | 30 |
+| Tokens de texto | — | 10 000 000 | 20 000 000 | 100 000 000 |
+| Tokens premium | — | — | 500 000 | 3 000 000 |
+| Tokens de indexación (embeddings) | — | 1 000 000 | 3 000 000 | 20 000 000 |
+| Reconocimiento de voz (STT), minutos | — | — | 500 | 2 000 |
+| Síntesis de voz (TTS), caracteres | — | — | 200 000 | 200 000 |
+| Almacenamiento de archivos | 1 GiB | 5 GiB | 20 GiB | 100 GiB |
+| Almacenamiento vectorial | — | 50 MiB | 200 MiB | 1 GiB |
+| Fuentes de conocimiento | — | 200 | 1 000 | 5 000 |
+| Sesiones de seguimiento | — | 20 000 | 50 000 | 200 000 |
 
-Cada plan determina qué modelos de IA están disponibles:
+Todas las cuotas se comparten en la cuenta del propietario. Texto, premium, indexación, voz y seguimiento corresponden al periodo mostrado en Billing. Empresas, agentes, plazas, fuentes y almacenamiento son límites de capacidad, no una asignación mensual que borre los datos. Un guion significa que el recurso no está incluido. GiB y MiB usan múltiplos de 1024; el panel los identifica como GB y MB.
 
-| Nivel | Modelos | Planes |
-|------|--------|-------|
-| **Estándar** | GPT-4o Mini, Claude 3.5 Haiku, Gemini 2.0 Flash, Llama 3.1 8B | Todos los planes |
-| **Premium** | GPT-4o, Claude 3.5 Sonnet, Gemini 2.5 Pro, Llama 3.3 70B | Premium y Professional |
+## Modelos de IA y voz
 
-Los modelos estándar son más rápidos y consumen tokens estándar. Los modelos premium ofrecen respuestas de mayor calidad y consumen tokens premium. En el plan Free, los modelos premium están bloqueados — seleccionar uno muestra un aviso de actualización con enlace a la página de Precios.
+**Ventas con IA** incluye GPT-4o mini y text-embedding-3-small. **Crecimiento** y **Marketplace** también incluyen GPT-4o, Whisper (whisper-1) y OpenAI TTS (tts-1 / tts-1-hd), con cuotas separadas. Red de socios no incluye recursos de IA.
 
----
+Marketplace también permite modelos de ElevenLabs (eleven_v4_turbo y eleven_multilingual_v2) para una integración configurada. La conexión propia de ElevenLabs de una empresa se factura en su cuenta del proveedor, aparte de la cuota de Revol para OpenAI TTS. La telefonía y otros servicios externos se cobran según las condiciones de sus proveedores.
 
-## Pago vía Stripe
+## Acceso y pago
 
-Todos los pagos se procesan de forma segura a través de **Stripe**. Revol no almacena los datos de su tarjeta — todo es gestionado por la infraestructura compatible con PCI de Stripe.
+1. Contacta con el equipo de Revol para acordar el plan y las fechas de acceso. Red de socios está disponible por invitación; las pruebas de otros planes se asignan por separado.
 
-### Suscribirse a un Plan
+2. El piloto de socios es gratuito hasta la fecha acordada. Sus participantes conservan el precio de $30 durante los primeros seis periodos mensuales pagados y confirmados. Las ampliaciones del piloto y los intervalos sin pago no consumen esos periodos.
 
-1. Vaya a **Facturación** → **Plan de Precios** y haga clic en **Seleccionar Plan** en la tarjeta del plan deseado
-2. Será redirigido a una página de **Stripe Checkout** — ingrese los datos de su tarjeta y confirme
-3. Después del pago exitoso, su plan se activa inmediatamente y todos los nuevos límites entran en efecto
-4. Se crea una suscripción con renovación automática mensual
+3. Para el acceso de pago, el equipo emite una factura por transferencia bancaria en USD o UAH. En UAH, el tipo de cambio se indica en la factura. El acceso se confirma al recibir los fondos; un piloto o una prueba no generan deuda ni cargos automáticos.
 
-### Gestionar Su Suscripción
+Al caducar el acceso se detienen las nuevas operaciones que requieren un plan activo. Los datos existentes siguen disponibles para consulta; una prueba no se convierte automáticamente en otro plan de pago. Acuerda cualquier ampliación o cambio con el equipo.
 
-Haga clic en el botón **Gestionar** en la página de Descripción General o Precios para abrir el modal de Gestionar Suscripción.
-
-<Frame>
-  <img className="block dark:hidden" src="/images/billing-manage-light.png" alt="Modal de Gestionar Suscripción" />
-  <img className="hidden dark:block" src="/images/billing-manage-dark.png" alt="Modal de Gestionar Suscripción" />
-</Frame>
-
-El modal muestra tres filas de información:
-
-| Fila | Descripción |
-|-----|-------------|
-| **Plan** | El nombre de su plan actual con una insignia degradada, más el precio mensual |
-| **Período de Facturación** | Fechas de inicio y fin del ciclo de facturación actual (por ejemplo, 15.03.2026 — 15.04.2026) |
-| **Estado** | Una insignia de color — **Activo** (verde), **Cancelando** (ámbar) o **Cancelado** (rojo) |
-
-**Interruptor de renovación automática** — un conmutador en la parte inferior del modal:
-- **Desactivar** cancela la suscripción al final del período de facturación actual. Aparece un diálogo de confirmación antes de proceder. Mantiene acceso completo hasta que termine el período (período de gracia).
-- **Activar** reanuda una suscripción previamente cancelada si el período de gracia no ha expirado.
-
-Durante el período de gracia, aparece una advertencia amarilla: *"Su suscripción terminará el DD.MM.AAAA. La renovación automática está deshabilitada."*
-
-**Botones del pie:**
-- **Cerrar** — descartar el modal
-- **Cambiar Plan** — navegar a la página de Precios para actualizar o bajar de plan
-
-**Métodos de Pago** — haga clic en **Gestionar Métodos de Pago** en la página de Descripción General para abrir el **Portal de Cliente de Stripe**, donde puede actualizar tarjetas, ver recibos y gestionar detalles de facturación.
-
-<Warning>
-  Cuando cancela una suscripción, permanece activa hasta el final del período de facturación actual (período de gracia). Después de eso, se baja automáticamente al plan Free. Todos sus datos se preservan, pero los límites se reducen.
-</Warning>
-
-### Actualización y Degradación
-
-- **Actualización** — entra en efecto inmediatamente. Se le cobra el nuevo precio del plan, prorrateado por los días restantes del período actual.
-- **Degradación** — entra en efecto al final del período de facturación actual. Mantiene acceso completo al plan superior hasta que termine el período.
-
----
-
-## Paquetes Adicionales
-
-¿Necesita más recursos sin actualizar su plan? Compre paquetes adicionales únicos desde **Facturación** → **Plan de Precios** (sección de paquetes en la parte inferior) o la página dedicada de **Paquetes Adicionales**.
-
-<Frame>
-  <img className="block dark:hidden" src="/images/billing-packs-light.png" alt="Paquetes Adicionales" />
-  <img className="hidden dark:block" src="/images/billing-packs-dark.png" alt="Paquetes Adicionales" />
-</Frame>
-
-La página de paquetes muestra una cuadrícula de 6 columnas (3 en tableta, 2 en móvil) de paquetes disponibles:
-
-| Paquete | Lo Que Obtiene | Precio |
-|------|-------------|-------|
-| **Paquete de Tokens S** | 5,000,000 tokens estándar | $4 |
-| **Paquete de Tokens M** | 20,000,000 tokens estándar | $15 |
-| **Paquete de Tokens L** | 50,000,000 tokens estándar | $35 |
-| **Paquete de Tokens Premium** | 2,000,000 tokens premium | $20 |
-| **Paquete de Voz** | 60 minutos STT + 100,000 caracteres TTS | $3 |
-| **Paquete de Almacenamiento** | 10 GB de almacenamiento adicional | $1 |
-
-Cada tarjeta de paquete muestra un icono (rayo para tokens, micrófono para voz, base de datos para almacenamiento), el nombre del paquete, una descripción de lo incluido, el precio y un botón **Comprar**.
-
-Hacer clic en **Comprar** lo redirige a Stripe Checkout para un pago único (no recurrente). El paquete se activa inmediatamente después del pago exitoso.
-
-<Note>
-  Los paquetes adicionales expiran **3 meses** después de la compra. Los recursos no utilizados no se transfieren. Cuando tiene múltiples paquetes activos, se consume primero el paquete con la expiración más próxima.
-</Note>
-
-<Tip>
-  Los paquetes complementan los límites de su plan — se usan solo después de que su cuota incluida del plan se agota. Por ejemplo, si su plan Premium incluye 5M de tokens estándar y compró un Paquete de Tokens S (5M), efectivamente tiene 10M de tokens para ese período.
-</Tip>
-
----
-
-## Facturas
-
-Todo el historial de pagos está disponible en **Facturación** → **Facturas**.
-
-<Frame>
-  <img className="block dark:hidden" src="/images/billing-invoices-light.png" alt="Página de facturas" />
-  <img className="hidden dark:block" src="/images/billing-invoices-dark.png" alt="Página de facturas" />
-</Frame>
-
-### Tarjetas de Resumen
-
-Tres tarjetas en la parte superior de la página proporcionan un resumen financiero rápido:
-
-| Tarjeta | Icono | Descripción |
-|------|------|-------------|
-| **Total Pagado** | Efectivo (verde) | Monto total pagado en todas las transacciones, formateado como USD |
-| **Transacciones** | Recibo (azul) | Número total de transacciones de facturación |
-| **Plan Activo** | Corona (púrpura) | Nombre de su plan de suscripción actual |
-
-Los valores de Total Pagado y Transacciones se actualizan dinámicamente cuando aplica filtros — reflejan solo los resultados filtrados.
-
-### Tabla de Facturas
-
-Una tabla filtrable y paginada de cada transacción de facturación. Haga clic en **+ Filtro** para agregar chips de filtro:
-
-| Filtro | Opciones |
-|--------|---------|
-| **Fecha Desde** | Selector de fecha del calendario |
-| **Fecha Hasta** | Selector de fecha del calendario |
-| **Tipo** | Suscripción, Compra de Paquete, Cambio de Plan |
-| **Estado** | Pagado, Pendiente, Fallido, Reembolsado |
-
-**Columnas de la tabla (7):**
-
-| Columna | Descripción | Formato |
-|--------|-------------|--------|
-| **#** | Número de fila | Índice secuencial en la página actual |
-| **Fecha** | Fecha de pago | `DD.MM.AAAA` |
-| **Descripción** | Por qué se pagó | Nombre del plan, nombre del paquete o descripción del cambio |
-| **Período** | Período de facturación cubierto | `"Mar 15 – Abr 15"` o `—` para compras únicas |
-| **Monto** | Monto del pago | Valor USD pre-formateado (por ejemplo, `$29.00`) |
-| **Estado** | Estado del pago | Insignia codificada por color con indicador de punto |
-| **PDF** | Documento de factura | Enlace de descarga PDF o enlace de factura hospedada |
-
-**Insignias de estado:**
-
-| Estado | Color | Punto |
-|--------|-------|-----|
-| **Pagado** | Verde | Punto verde |
-| **Pendiente** | Ámbar | Punto ámbar |
-| **Fallido** | Rojo | Punto rojo |
-| **Reembolsado** | Gris | Punto gris |
-
-**Columna PDF:** Si hay un PDF generado por Stripe disponible, un icono PDF enlaza al archivo descargable. Si solo existe una URL de factura hospedada, un icono de enlace externo la abre en una nueva pestaña. De lo contrario, el número de factura se muestra como texto plano.
-
-La tabla carga 15 transacciones por página con el mismo sistema de paginación que Eventos de Uso.
-
----
-
-## Modal de Actualización
-
-Cuando intenta realizar una acción que excede los límites de su plan — como crear un nuevo agente, iniciar una conversación o enviar un mensaje cuando los tokens se agotaron — aparece automáticamente un modal de actualización.
-
-El modal muestra:
-- **Icono y nombre del recurso** — qué límite se alcanzó (por ejemplo, "Agentes de IA", "Tokens Estándar")
-- **Uso actual** — cuánto ha usado vs. el límite de su plan (por ejemplo, "5 / 5 agentes")
-- **Nombre de su plan** — para que sepa en qué plan está
-- **Botón Comprar un Paquete** — mostrado para recursos de tokens, almacenamiento y voz, enlaza a la página de Paquetes
-- **Botón Actualizar Plan** — enlaza a la página de Precios
-
-<Tip>
-  El modal de actualización también se activa cuando las solicitudes API devuelven un 429 (límite de velocidad) o 403 (cuota excedida), asegurando que siempre esté informado sobre los límites de facturación independientemente de dónde se originó la interacción.
-</Tip>
+[Cómo interpretar el uso y las cuotas restantes](/es/billing/usage)

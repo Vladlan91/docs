@@ -1,267 +1,100 @@
 ---
-title: Tarife und Preise
-description: "Revol-Abonnementtarife, Stripe-Zahlungen, Zusatzpakete, Abonnementverwaltung und Rechnungen"
+title: "Tarife und Preise"
+description: "Aktuelle Revol-Tarife, gemeinsame Kontingente, Pilot auf Einladung und Zahlungsbedingungen"
 ---
 
-## Ueberblick
+## Katalog und Verfügbarkeit
 
-Revol verwendet ein **tokenbasiertes Abrechnungsmodell**, betrieben von **Stripe**. Jede KI-Interaktion verbraucht Tokens — je mehr Ihre Agenten arbeiten, desto mehr Tokens werden verwendet. Waehlen Sie einen Tarif, der zu Ihrem Volumen passt, und kaufen Sie Zusatzpakete, wenn Sie mehr Ressourcen benoetigen, ohne aufzuruesten.
+Vom Partnerprogramm über KI-Vertrieb bis zum eigenen Marktplatz. Der Monatspreis gilt für das Inhaberkonto; das Team und alle zugehörigen Unternehmen teilen sich die Kontingente.
 
----
+<Note>
+Das Partnernetzwerk ist derzeit als kostenloser Pilot auf Einladung verfügbar. Danach kostet es $30/Monat. Pilotteilnehmer behalten diesen Preis für ihre ersten sechs bestätigten bezahlten Monate.
 
-## Preisseite
-
-Navigieren Sie zu **Abrechnung** → **Tarifplan**, um Tarife zu vergleichen und zu abonnieren.
+Angezeigt werden Katalogpreise. KI-Vertrieb, Wachstum und Marktplatz lassen sich noch nicht selbst aktivieren. Das Revol-Team vereinbart Zugang und Zahlung mit Ihnen.
+</Note>
 
 <Frame>
-  <img className="block dark:hidden" src="/images/billing-plans-light.png" alt="Tarifvergleich" />
-  <img className="hidden dark:block" src="/images/billing-plans-dark.png" alt="Tarifvergleich" />
+  <img className="block dark:hidden" src="/images/billing-catalog-light.png" alt="Aktueller Revol-Katalog mit vier Tarifen auf Englisch" />
+  <img className="hidden dark:block" src="/images/billing-catalog-dark.png" alt="Aktueller Revol-Katalog mit vier Tarifen auf Englisch" />
 </Frame>
 
-Die Seite zeigt oben eine Hero-Karte mit Ihrem aktuellen Tarif-Badge und einer **Abonnement verwalten**-Schaltflaeche (nur fuer kostenpflichtige Tarife), gefolgt von drei nebeneinander angeordneten Tarifkarten.
+Dieselben Tarife und Verfügbarkeiten wie im Revol-Verwaltungsbereich. Die Screenshots zeigen die englische Oberfläche.
 
-Ihre aktuelle Tarifkarte ist mit einem dunklen Rand und einem gruenen **"Ihr Tarif"**-Badge hervorgehoben. Jede Karte ist in drei Funktionsgruppen unterteilt: **Plattform**, **KI-Ressourcen** und **Funktionen**. Enthaltene Funktionen zeigen ein gruenes Haekchen, waehrend nicht verfuegbare Funktionen ein graues X zeigen.
-
-### Tarife
+## Leistungen der Tarife
 
 <Tabs>
-  <Tab title="Free">
-    **0 $/Monat** — loslegen und die Plattform erkunden
+  <Tab title="Partnernetzwerk">
+    Starten Sie ein Partnerprogramm.
 
-    | Ressource | Limit |
-    |----------|-------|
-    | Unternehmen | 1 |
-    | KI-Agenten | 1 |
-    | Standard-Tokens | 20.000 / Tag |
-    | Premium-Tokens | — |
-    | Stimme (STT) | — |
-    | Stimme (TTS) | — |
-    | Embedding-Tokens | 100.000 / Monat |
-    | Speicher | 100 MB |
-    | Wissensdokumente | 10 |
-    | Konversationen | 100 |
-    | Tracking-Aufbewahrung | 30 Tage |
-    | Integrationen | — |
-    | Widget-Branding | Revol-Branding |
-    | Marketplace | Nur durchsuchen |
-    | Ratenlimit | 10 Anfragen/Min. |
+    - Unternehmen und Produkte
+    - Partner und Vereinbarungen
+    - Partner-QR und Scannen
+    - Leads und Bestellungen
+    - Prämien, Auszahlungen und Berichte
   </Tab>
-  <Tab title="Premium">
-    **29 $/Monat** — fuer wachsende Unternehmen
+  <Tab title="KI-Vertrieb">
+    Partnernetzwerk plus KI auf Ihrer Website.
 
-    | Ressource | Limit |
-    |----------|-------|
-    | Unternehmen | 3 |
-    | KI-Agenten | 5 |
-    | Standard-Tokens | 5.000.000 / Abrechnungszyklus |
-    | Premium-Tokens | 1.000.000 / Abrechnungszyklus |
-    | Stimme (STT) | 60 Min. |
-    | Stimme (TTS) | 200.000 Zeichen |
-    | Embedding-Tokens | 1.000.000 / Abrechnungszyklus |
-    | Speicher | 5 GB |
-    | Wissensdokumente | 100 |
-    | Konversationen | 5.000 |
-    | Tracking-Aufbewahrung | 180 Tage |
-    | Integrationen | VoIP + Messenger |
-    | Widget-Branding | Benutzerdefiniert |
-    | Marketplace | Installieren + Veroeffentlichen |
-    | Ratenlimit | 60 Anfragen/Min. |
+    - Alles aus Partnernetzwerk
+    - KI-Agenten und Website-Widget
+    - Wissensdatenbank und Gespräche
+    - Tracking, Ereignisse und eigenständige Promo-Codes
   </Tab>
-  <Tab title="Professional">
-    **79 $/Monat** — fuer Agenturen und Unternehmen
+  <Tab title="Wachstum">
+    KI-Vertrieb plus externe Kanäle und fortgeschrittene Modelle.
 
-    | Ressource | Limit |
-    |----------|-------|
-    | Unternehmen | 10 |
-    | KI-Agenten | Unbegrenzt |
-    | Standard-Tokens | 25.000.000 / Abrechnungszyklus |
-    | Premium-Tokens | 2.000.000 / Abrechnungszyklus |
-    | Stimme (STT) | 300 Min. |
-    | Stimme (TTS) | 500.000 Zeichen |
-    | Embedding-Tokens | 5.000.000 / Abrechnungszyklus |
-    | Speicher | 50 GB |
-    | Wissensdokumente | 1.000 |
-    | Konversationen | 50.000 |
-    | Tracking-Aufbewahrung | 730 Tage (2 Jahre) |
-    | Integrationen | Alle (VoIP, Messenger, Google Workspace, Ads, Webhooks) |
-    | Widget-Branding | White Label |
-    | Marketplace | Installieren + Veroeffentlichen + Prioritaet |
-    | Ratenlimit | 300 Anfragen/Min. |
+    - Alles aus KI-Vertrieb
+    - Externe Integrationen
+    - MCP-Connector
+    - Sprach-APIs
+    - Top-Modelle
+  </Tab>
+  <Tab title="Marktplatz">
+    Wachstum plus die öffentliche Revol-Unternehmenskatalog-API für Ihre Storefront.
+
+    - Alles aus Wachstum
+    - Öffentliche Unternehmenskatalog-API
+    - Storefront-Schlüssel
+    - KI-Berater in der Storefront
+    - Erweiterte KI- und Speicherkontingente
   </Tab>
 </Tabs>
 
-<Note>
-  Der Free-Tarif setzt die Token-Nutzung **taeglich** zurueck (UTC Mitternacht). Bezahlte Tarife setzen zu Beginn jedes **Abrechnungszyklus** zurueck (das Datum, an dem Sie abonniert haben).
-</Note>
+## Enthaltene Kontingente
 
-### Modellzugang
+| Ressource | Partnernetzwerk | KI-Vertrieb | Wachstum | Marktplatz |
+|---|---|---|---|---|
+| Monatspreis, USD | $30 | $50 | $80 | $500 |
+| Verfügbarkeit | Pilot auf Einladung | Demnächst | Demnächst | Demnächst |
+| Unternehmen | 1 | 1 | 3 | 5 |
+| KI-Agenten | — | 1 | 3 | 10 |
+| Teamplätze einschließlich Inhaber | 3 | 5 | 15 | 30 |
+| Text-Token | — | 10 000 000 | 20 000 000 | 100 000 000 |
+| Premium-Token | — | — | 500 000 | 3 000 000 |
+| Indexierungs-Token (Embeddings) | — | 1 000 000 | 3 000 000 | 20 000 000 |
+| Spracherkennung (STT), Minuten | — | — | 500 | 2 000 |
+| Sprachsynthese (TTS), Zeichen | — | — | 200 000 | 200 000 |
+| Dateispeicher | 1 GiB | 5 GiB | 20 GiB | 100 GiB |
+| Vektorspeicher | — | 50 MiB | 200 MiB | 1 GiB |
+| Wissensquellen | — | 200 | 1 000 | 5 000 |
+| Tracking-Sitzungen | — | 20 000 | 50 000 | 200 000 |
 
-Jeder Tarif bestimmt, welche KI-Modelle verfuegbar sind:
+Alle Kontingente gelten gemeinsam für das Konto des Inhabers. Text-, Premium-, Indexierungs-, Sprach- und Tracking-Kontingente beziehen sich auf den in Billing angezeigten Zeitraum. Unternehmen, Agenten, Plätze, Quellen und Speicher sind Kapazitätsgrenzen, die Ihre Daten nicht monatlich löschen. Ein Strich bedeutet, dass die Ressource nicht enthalten ist. GiB und MiB basieren auf 1024; das Dashboard bezeichnet sie als GB und MB.
 
-| Stufe | Modelle | Tarife |
-|------|--------|-------|
-| **Standard** | GPT-4o Mini, Claude 3.5 Haiku, Gemini 2.0 Flash, Llama 3.1 8B | Alle Tarife |
-| **Premium** | GPT-4o, Claude 3.5 Sonnet, Gemini 2.5 Pro, Llama 3.3 70B | Premium und Professional |
+## KI- und Sprachmodelle
 
-Standardmodelle sind schneller und verbrauchen Standard-Tokens. Premiummodelle bieten qualitativ hochwertigere Antworten und verbrauchen Premium-Tokens. Im Free-Tarif sind Premiummodelle gesperrt — die Auswahl eines solchen zeigt eine Upgrade-Aufforderung mit einem Link zur Preisseite.
+**KI-Vertrieb** enthält GPT-4o mini und text-embedding-3-small. **Wachstum** und **Marktplatz** enthalten zusätzlich GPT-4o, Whisper (whisper-1) und OpenAI TTS (tts-1 / tts-1-hd) mit eigenen Kontingenten. Partnernetzwerk enthält keine KI-Ressourcen.
 
----
+Marktplatz erlaubt außerdem ElevenLabs-Modelle (eleven_v4_turbo und eleven_multilingual_v2) für eine eingerichtete Integration. Eine eigene ElevenLabs-Verbindung des Unternehmens wird über dessen Anbieterkonto abgerechnet, unabhängig vom Revol-Kontingent für OpenAI TTS. Telefonie und andere externe Dienste unterliegen den Gebühren des Anbieters.
 
-## Zahlung ueber Stripe
+## Zugang und Zahlung
 
-Alle Zahlungen werden sicher ueber **Stripe** abgewickelt. Revol speichert keine Kartendaten — alles wird von Stripes PCI-konformer Infrastruktur verarbeitet.
+1. Vereinbaren Sie Tarif und Zugangszeitraum mit dem Revol-Team. Das Partnernetzwerk ist auf Einladung verfügbar; Testzugänge zu anderen Tarifen werden gesondert vergeben.
 
-### Einen Tarif abonnieren
+2. Der Partnerpilot ist bis zum vereinbarten Datum kostenlos. Teilnehmer behalten den Preis von $30 für ihre ersten sechs bestätigten bezahlten Monatszeiträume. Pilotverlängerungen und Zahlungspausen verbrauchen diese Zeiträume nicht.
 
-1. Gehen Sie zu **Abrechnung** → **Tarifplan** und klicken Sie auf **Tarif waehlen** auf der gewuenschten Tarifkarte
-2. Sie werden zur **Stripe Checkout**-Seite weitergeleitet — geben Sie Ihre Kartendaten ein und bestaetigen Sie
-3. Nach erfolgreicher Zahlung wird Ihr Tarif sofort aktiviert und alle neuen Limits treten in Kraft
-4. Ein Abonnement mit automatischer monatlicher Verlaengerung wird erstellt
+3. Für bezahlten Zugang stellt das Team eine Rechnung zur Banküberweisung in USD oder UAH aus. Bei UAH steht der Wechselkurs auf der Rechnung. Der Zugang wird nach Zahlungseingang bestätigt; Pilot oder Test erzeugen weder Schulden noch automatische Abbuchungen.
 
-### Ihr Abonnement verwalten
+Nach Ablauf des Zugangs werden neue Vorgänge ausgesetzt, die einen aktiven Tarif erfordern. Vorhandene Daten bleiben einsehbar; ein Test wird nicht automatisch in einen anderen kostenpflichtigen Tarif umgewandelt. Verlängerungen oder Änderungen vereinbaren Sie mit dem Team.
 
-Klicken Sie auf die **Verwalten**-Schaltflaeche auf der Ueberblick- oder Preisseite, um das Abonnement-verwalten-Modal zu oeffnen.
-
-<Frame>
-  <img className="block dark:hidden" src="/images/billing-manage-light.png" alt="Abonnement verwalten Modal" />
-  <img className="hidden dark:block" src="/images/billing-manage-dark.png" alt="Abonnement verwalten Modal" />
-</Frame>
-
-Das Modal zeigt drei Informationszeilen:
-
-| Zeile | Beschreibung |
-|-----|-------------|
-| **Tarif** | Ihr aktueller Tarifname mit Verlaufs-Badge, plus dem monatlichen Preis |
-| **Abrechnungszeitraum** | Start- und Enddaten des aktuellen Abrechnungszyklus (z.B. 15.03.2026 — 15.04.2026) |
-| **Status** | Ein farbiges Badge — **Aktiv** (gruen), **Wird gekuendigt** (bernstein) oder **Gekuendigt** (rot) |
-
-**Automatische Verlaengerung** — ein Schalter am unteren Rand des Modals:
-- **Ausschalten** kuendigt das Abonnement zum Ende des aktuellen Abrechnungszeitraums. Ein Bestaetigungsdialog erscheint vor dem Fortfahren. Sie behalten den vollen Zugang bis zum Ende des Zeitraums (Karenzzeit).
-- **Einschalten** setzt ein zuvor gekuendigtes Abonnement fort, wenn die Karenzzeit noch nicht abgelaufen ist.
-
-Waehrend der Karenzzeit erscheint eine gelbe Warnung: *"Ihr Abonnement endet am TT.MM.JJJJ. Die automatische Verlaengerung ist deaktiviert."*
-
-**Fusszeilen-Schaltflaechen:**
-- **Schliessen** — das Modal verwerfen
-- **Tarif aendern** — zur Preisseite navigieren, um auf- oder abzuruesten
-
-**Zahlungsmethoden** — klicken Sie auf **Zahlungsmethoden verwalten** auf der Ueberblick-Seite, um das **Stripe-Kundenportal** zu oeffnen, in dem Sie Karten aktualisieren, Belege ansehen und Abrechnungsdetails verwalten koennen.
-
-<Warning>
-  Wenn Sie ein Abonnement kuendigen, bleibt es bis zum Ende des aktuellen Abrechnungszeitraums aktiv (Karenzzeit). Danach werden Sie automatisch auf den Free-Tarif herabgestuft. Alle Ihre Daten bleiben erhalten, aber die Limits werden reduziert.
-</Warning>
-
-### Auf- und Abruesten
-
-- **Aufruesten** — tritt sofort in Kraft. Ihnen wird der neue Tarifpreis berechnet, anteilig fuer die verbleibenden Tage im aktuellen Zeitraum.
-- **Abruesten** — tritt am Ende des aktuellen Abrechnungszeitraums in Kraft. Sie behalten den vollen Zugang zum hoeheren Tarif bis zum Ende des Zeitraums.
-
----
-
-## Zusatzpakete
-
-Benoetigen Sie mehr Ressourcen, ohne Ihren Tarif aufzuruesten? Kaufen Sie einmalige Zusatzpakete unter **Abrechnung** → **Tarifplan** (Pakete-Abschnitt unten) oder auf der dedizierten **Zusatzpakete**-Seite.
-
-<Frame>
-  <img className="block dark:hidden" src="/images/billing-packs-light.png" alt="Zusatzpakete" />
-  <img className="hidden dark:block" src="/images/billing-packs-dark.png" alt="Zusatzpakete" />
-</Frame>
-
-Die Pakete-Seite zeigt ein 6-spaltiges Raster (3 auf Tablet, 2 auf Mobil) der verfuegbaren Pakete:
-
-| Paket | Was Sie erhalten | Preis |
-|------|-------------|-------|
-| **Token-Paket S** | 5.000.000 Standard-Tokens | 4 $ |
-| **Token-Paket M** | 20.000.000 Standard-Tokens | 15 $ |
-| **Token-Paket L** | 50.000.000 Standard-Tokens | 35 $ |
-| **Premium-Token-Paket** | 2.000.000 Premium-Tokens | 20 $ |
-| **Stimme-Paket** | 60 STT-Minuten + 100.000 TTS-Zeichen | 3 $ |
-| **Speicher-Paket** | 10 GB zusaetzlicher Speicher | 1 $ |
-
-Jede Paketkarte zeigt ein Symbol (Blitz fuer Tokens, Mikrofon fuer Stimme, Datenbank fuer Speicher), den Paketnamen, eine Beschreibung des Inhalts, den Preis und eine **Kaufen**-Schaltflaeche.
-
-Durch Klicken auf **Kaufen** werden Sie fuer eine einmalige Zahlung (nicht wiederkehrend) zu Stripe Checkout weitergeleitet. Das Paket wird sofort nach erfolgreicher Zahlung aktiviert.
-
-<Note>
-  Zusatzpakete laufen **3 Monate** nach dem Kauf ab. Nicht genutzte Ressourcen werden nicht uebertragen. Wenn Sie mehrere aktive Pakete haben, wird das aelteste zuerst verbraucht.
-</Note>
-
-<Tip>
-  Pakete ergaenzen Ihre Tariflimits — sie werden erst verwendet, nachdem Ihr enthaltenes Tarifkontingent erschoepft ist. Wenn Ihr Premium-Tarif beispielsweise 5 Mio. Standard-Tokens enthaelt und Sie ein Token-Paket S (5 Mio.) gekauft haben, haben Sie effektiv 10 Mio. Tokens fuer diesen Zeitraum.
-</Tip>
-
----
-
-## Rechnungen
-
-Der gesamte Zahlungsverlauf ist unter **Abrechnung** → **Rechnungen** verfuegbar.
-
-<Frame>
-  <img className="block dark:hidden" src="/images/billing-invoices-light.png" alt="Rechnungsseite" />
-  <img className="hidden dark:block" src="/images/billing-invoices-dark.png" alt="Rechnungsseite" />
-</Frame>
-
-### Zusammenfassungskarten
-
-Drei Karten oben auf der Seite bieten einen schnellen Finanzueberblick:
-
-| Karte | Symbol | Beschreibung |
-|------|------|-------------|
-| **Gesamt bezahlt** | Geld (gruen) | Gesamtbetrag aller Transaktionen, formatiert in USD |
-| **Transaktionen** | Beleg (blau) | Gesamtanzahl der Abrechnungstransaktionen |
-| **Aktiver Tarif** | Krone (violett) | Name Ihres aktuellen Abonnementtarifs |
-
-Die Werte fuer Gesamt bezahlt und Transaktionen aktualisieren sich dynamisch bei Filteranwendung — sie spiegeln nur die gefilterten Ergebnisse wider.
-
-### Rechnungstabelle
-
-Eine filterbare, paginierte Tabelle jeder Abrechnungstransaktion. Klicken Sie auf **+ Filter**, um Filter-Chips hinzuzufuegen:
-
-| Filter | Optionen |
-|--------|---------|
-| **Datum von** | Kalender-Datumswaehler |
-| **Datum bis** | Kalender-Datumswaehler |
-| **Typ** | Abonnement, Paketkauf, Tarifaenderung |
-| **Status** | Bezahlt, Ausstehend, Fehlgeschlagen, Erstattet |
-
-**Tabellenspalten (7):**
-
-| Spalte | Beschreibung | Format |
-|--------|-------------|--------|
-| **#** | Zeilennummer | Fortlaufender Index auf aktueller Seite |
-| **Datum** | Zahlungsdatum | `TT.MM.JJJJ` |
-| **Beschreibung** | Wofuer bezahlt wurde | Tarifname, Paketname oder Aenderungsbeschreibung |
-| **Zeitraum** | Abgedeckter Abrechnungszeitraum | `"15. Maerz – 15. April"` oder `—` fuer einmalige Kaeufe |
-| **Betrag** | Zahlungsbetrag | Vorformatierter USD-Wert (z.B. `29,00 $`) |
-| **Status** | Zahlungsstatus | Farbcodiertes Badge mit Punktindikator |
-| **PDF** | Rechnungsdokument | PDF-Download-Link oder gehosteter Rechnungslink |
-
-**Status-Badges:**
-
-| Status | Farbe | Punkt |
-|--------|-------|-----|
-| **Bezahlt** | Gruen | Gruener Punkt |
-| **Ausstehend** | Bernstein | Bernsteinfarbener Punkt |
-| **Fehlgeschlagen** | Rot | Roter Punkt |
-| **Erstattet** | Grau | Grauer Punkt |
-
-**PDF-Spalte:** Wenn eine von Stripe generierte PDF verfuegbar ist, verlinkt ein PDF-Symbol auf die herunterladbare Datei. Wenn nur eine gehostete Rechnungs-URL vorhanden ist, oeffnet ein externes Link-Symbol sie in einem neuen Tab. Andernfalls wird die Rechnungsnummer als Klartext angezeigt.
-
-Die Tabelle laedt 15 Transaktionen pro Seite mit demselben Paginierungssystem wie die Nutzungsereignisse.
-
----
-
-## Upgrade-Modal
-
-Wenn Sie versuchen, eine Aktion auszufuehren, die Ihre Tariflimits ueberschreitet — wie das Erstellen eines neuen Agenten, das Starten einer Konversation oder das Senden einer Nachricht bei erschoepften Tokens — erscheint automatisch ein Upgrade-Modal.
-
-Das Modal zeigt:
-- **Ressourcensymbol und -name** — welches Limit erreicht wurde (z.B. "KI-Agenten", "Standard-Tokens")
-- **Aktuelle Nutzung** — wie viel Sie im Verhaeltnis zu Ihrem Tariflimit verbraucht haben (z.B. "5 / 5 Agenten")
-- **Ihr Tarifname** — damit Sie wissen, welchen Tarif Sie haben
-- **Paket kaufen**-Schaltflaeche — angezeigt fuer Token-, Speicher- und Stimmressourcen, verlinkt auf die Pakete-Seite
-- **Tarif aufruesten**-Schaltflaeche — verlinkt auf die Preisseite
-
-<Tip>
-  Das Upgrade-Modal wird auch ausgeloest, wenn API-Anfragen eine 429-Antwort (Ratenlimit) oder 403 (Kontingent ueberschritten) zurueckgeben, sodass Sie immer ueber Abrechnungslimits informiert sind, unabhaengig davon, woher die Interaktion stammt.
-</Tip>
+[Verbrauch und verbleibende Kontingente verstehen](/de/billing/usage)

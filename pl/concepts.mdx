@@ -101,18 +101,7 @@ Każdy produkt zawiera:
 
 ### Dostawcy LLM
 
-Każdy agent (lub pojedynczy węzeł workflow) może używać innego modelu AI:
-
-| Dostawca | Modele standardowe | Modele premium |
-|----------|-------------------|----------------|
-| **OpenAI** | GPT-4o-mini | GPT-4o |
-| **Anthropic** | Claude 3.5 Haiku | Claude 3.5 Sonnet |
-| **Google** | Gemini 2.0 Flash | Gemini 2.5 Pro |
-| **Groq** | Llama 3.1 8B | Llama 3.3 70B |
-
-<Info>
-  Modele standardowe są szybsze i zużywają tokeny standardowe. Modele premium oferują wyższą jakość i zużywają tokeny premium.
-</Info>
+Dostępne modele zależą od przydzielonego planu i jego limitów. Zobacz [modele i limity](/pl/billing/plans).
 
 ---
 
@@ -209,107 +198,10 @@ Każda integracja jest konfigurowana na firmę i może być podłączona do jedn
 
 ## Billing i plany
 
-Revol wykorzystuje **model rozliczania tokenowego**. Każda interakcja z AI zużywa tokeny — tokeny wejściowe (Twoja wiadomość + kontekst) i tokeny wyjściowe (odpowiedź agenta).
+Dostęp przyznawany jest właścicielowi konta, a jego firmy współdzielą zasoby planu. Wymagane są zarówno odpowiednia rola członka zespołu, jak i aktywny plan. Aktualne ceny, dostępność i limity opisuje przewodnik rozliczeń.
 
-### Plany
-
-<Tabs>
-  <Tab title="Darmowy">
-    **0 $/miesiąc** — wypróbuj Revol z podstawowymi limitami
-
-    | Zasób | Limit |
-    |-------|-------|
-    | Firmy | 1 |
-    | Agenci AI | 1 |
-    | Tokeny standardowe | 20 tys. / dzień |
-    | Tokeny premium | — |
-    | Głos | — |
-    | Przestrzeń dyskowa | 100 MB |
-    | Dokumenty wiedzy | 10 |
-    | Rozmowy | 100 |
-    | Retencja śledzenia | 30 dni |
-    | Integracje | — |
-    | Branding widgetu | Branding Revol |
-  </Tab>
-  <Tab title="Premium">
-    **29 $/miesiąc** — dla rozwijających się firm
-
-    | Zasób | Limit |
-    |-------|-------|
-    | Firmy | 3 |
-    | Agenci AI | 5 |
-    | Tokeny standardowe | 5 mln / miesiąc |
-    | Tokeny premium | 1 mln / miesiąc |
-    | Głos (STT) | 60 min |
-    | Głos (TTS) | 200 tys. znaków |
-    | Przestrzeń dyskowa | 5 GB |
-    | Dokumenty wiedzy | 100 |
-    | Rozmowy | 5 000 |
-    | Retencja śledzenia | 180 dni |
-    | Integracje | VoIP, Komunikatory |
-    | Branding widgetu | Własny branding |
-  </Tab>
-  <Tab title="Professional">
-    **79 $/miesiąc** — dla agencji i korporacji
-
-    | Zasób | Limit |
-    |-------|-------|
-    | Firmy | 10 |
-    | Agenci AI | Bez limitu |
-    | Tokeny standardowe | 25 mln / miesiąc |
-    | Tokeny premium | 2 mln / miesiąc |
-    | Głos (STT) | 300 min |
-    | Głos (TTS) | 500 tys. znaków |
-    | Przestrzeń dyskowa | 50 GB |
-    | Dokumenty wiedzy | 1 000 |
-    | Rozmowy | 50 000 |
-    | Retencja śledzenia | 730 dni (2 lata) |
-    | Integracje | Wszystkie (w tym Google Workspace, Ads) |
-    | Branding widgetu | White Label |
-  </Tab>
-</Tabs>
-
-### Co liczy się jako token
-
-Każda interakcja z AI ma dwie części:
-
-- **Tokeny wejściowe** — Twoja wiadomość + prompt systemowy + pobrane fragmenty bazy wiedzy + historia rozmowy
-- **Tokeny wyjściowe** — odpowiedź agenta
-
-Różne modele zużywają różne typy tokenów:
-
-| Typ tokena | Modele | Plany |
-|-----------|--------|-------|
-| **Standardowy** | GPT-4o-mini, Claude 3.5 Haiku, Gemini 2.0 Flash, Llama 3.1 8B | Wszystkie plany |
-| **Premium** | GPT-4o, Claude 3.5 Sonnet, Gemini 2.5 Pro, Llama 3.3 70B | Premium+ |
-
-### Pakiety dodatkowe
-
-Potrzebujesz więcej zasobów? Kup pakiety dodatkowe bez zmiany planu:
-
-| Pakiet | Co otrzymujesz | Cena |
-|--------|---------------|------|
-| Pakiet tokenów S | 5 mln tokenów standardowych | 4 $ |
-| Pakiet tokenów M | 20 mln tokenów standardowych | 15 $ |
-| Pakiet tokenów L | 50 mln tokenów standardowych | 35 $ |
-| Pakiet tokenów premium | 2 mln tokenów premium | 20 $ |
-| Pakiet głosowy | 60 min STT + 100 tys. znaków TTS | 3 $ |
-| Pakiet przestrzeni | 10 GB przestrzeni dyskowej | 1 $ |
-
-<Note>
-  Pakiety dodatkowe wygasają **3 miesiące** po zakupie. Niewykorzystane tokeny nie przechodzą między okresami rozliczeniowymi.
-</Note>
-
-### Co się dzieje po osiągnięciu limitu
-
-| Zasób | Zachowanie |
-|-------|-----------|
-| Tokeny standardowe / premium | Agent przestaje odpowiadać do następnego okresu rozliczeniowego lub zakupu pakietu |
-| Przestrzeń dyskowa | Nie można przesyłać nowych plików |
-| Głos | Funkcje głosowe wyłączone |
-| Rozmowy | Nowe rozmowy zablokowane |
-
-Revol wysyła powiadomienia przy **80%** (ostrzeżenie) i **90%** (krytyczne) wykorzystania, abyś mógł zareagować przed osiągnięciem limitu.
+- [Plany i ceny](/pl/billing/plans)
+- [Dostęp i wykorzystanie zasobów](/pl/billing/usage)
 
 ---
 

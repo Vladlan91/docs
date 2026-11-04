@@ -101,18 +101,7 @@ Un **Agente de IA** es un asistente inteligente configurado de forma independien
 
 ### Proveedores LLM
 
-Cada agente (o nodo individual del flujo de trabajo) puede utilizar un modelo de IA diferente:
-
-| Proveedor | Modelos Estandar | Modelos Premium |
-|-----------|-----------------|-----------------|
-| **OpenAI** | GPT-4o-mini | GPT-4o |
-| **Anthropic** | Claude 3.5 Haiku | Claude 3.5 Sonnet |
-| **Google** | Gemini 2.0 Flash | Gemini 2.5 Pro |
-| **Groq** | Llama 3.1 8B | Llama 3.3 70B |
-
-<Info>
-  Los modelos estandar son mas rapidos y consumen tokens estandar. Los modelos premium ofrecen mayor calidad y consumen tokens premium.
-</Info>
+Los modelos disponibles dependen del plan asignado y sus cuotas. Consulta los [modelos y cuotas](/es/billing/plans).
 
 ---
 
@@ -209,107 +198,10 @@ Cada integracion se configura por empresa y puede conectarse a uno o mas agentes
 
 ## Facturacion y Planes
 
-Revol utiliza un modelo de **facturacion basado en tokens**. Cada interaccion con IA consume tokens — tokens de entrada (su mensaje + contexto) y tokens de salida (respuesta del agente).
+El acceso se asigna al propietario de la cuenta; sus empresas comparten los recursos del plan. Las operaciones requieren tanto el rol adecuado como un plan activo. Los precios, la disponibilidad y las cuotas actuales se mantienen en la guía de facturación.
 
-### Planes
-
-<Tabs>
-  <Tab title="Gratuito">
-    **$0/mes** — pruebe Revol con limites basicos
-
-    | Recurso | Limite |
-    |---------|--------|
-    | Empresas | 1 |
-    | Agentes de IA | 1 |
-    | Tokens Estandar | 20K / dia |
-    | Tokens Premium | — |
-    | Voz | — |
-    | Almacenamiento | 100 MB |
-    | Documentos de Conocimiento | 10 |
-    | Conversaciones | 100 |
-    | Retencion de Seguimiento | 30 dias |
-    | Integraciones | — |
-    | Marca del Widget | Marca Revol |
-  </Tab>
-  <Tab title="Premium">
-    **$29/mes** — para negocios en crecimiento
-
-    | Recurso | Limite |
-    |---------|--------|
-    | Empresas | 3 |
-    | Agentes de IA | 5 |
-    | Tokens Estandar | 5M / mes |
-    | Tokens Premium | 1M / mes |
-    | Voz (STT) | 60 min |
-    | Voz (TTS) | 200K caracteres |
-    | Almacenamiento | 5 GB |
-    | Documentos de Conocimiento | 100 |
-    | Conversaciones | 5,000 |
-    | Retencion de Seguimiento | 180 dias |
-    | Integraciones | VoIP, Mensajeros |
-    | Marca del Widget | Marca personalizada |
-  </Tab>
-  <Tab title="Profesional">
-    **$79/mes** — para agencias y empresas grandes
-
-    | Recurso | Limite |
-    |---------|--------|
-    | Empresas | 10 |
-    | Agentes de IA | Ilimitados |
-    | Tokens Estandar | 25M / mes |
-    | Tokens Premium | 2M / mes |
-    | Voz (STT) | 300 min |
-    | Voz (TTS) | 500K caracteres |
-    | Almacenamiento | 50 GB |
-    | Documentos de Conocimiento | 1,000 |
-    | Conversaciones | 50,000 |
-    | Retencion de Seguimiento | 730 dias (2 anos) |
-    | Integraciones | Todas (incl. Google Workspace, Ads) |
-    | Marca del Widget | Marca Blanca |
-  </Tab>
-</Tabs>
-
-### Que Cuenta como Token
-
-Cada interaccion con IA tiene dos partes:
-
-- **Tokens de entrada** — su mensaje + prompt del sistema + fragmentos recuperados de la base de conocimientos + historial de conversacion
-- **Tokens de salida** — la respuesta del agente
-
-Diferentes modelos consumen diferentes tipos de tokens:
-
-| Tipo de Token | Modelos | Planes |
-|---------------|---------|--------|
-| **Estandar** | GPT-4o-mini, Claude 3.5 Haiku, Gemini 2.0 Flash, Llama 3.1 8B | Todos los planes |
-| **Premium** | GPT-4o, Claude 3.5 Sonnet, Gemini 2.5 Pro, Llama 3.3 70B | Premium+ |
-
-### Paquetes Adicionales
-
-Necesita mas recursos? Adquiera paquetes adicionales sin actualizar su plan:
-
-| Paquete | Que obtiene | Precio |
-|---------|-------------|--------|
-| Paquete de Tokens S | 5M tokens estandar | $4 |
-| Paquete de Tokens M | 20M tokens estandar | $15 |
-| Paquete de Tokens L | 50M tokens estandar | $35 |
-| Paquete de Tokens Premium | 2M tokens premium | $20 |
-| Paquete de Voz | 60 min STT + 100K caracteres TTS | $3 |
-| Paquete de Almacenamiento | 10 GB de almacenamiento | $1 |
-
-<Note>
-  Los paquetes adicionales expiran **3 meses** despues de la compra. Los tokens no utilizados no se transfieren entre periodos de facturacion.
-</Note>
-
-### Que Sucede Cuando Alcanza el Limite
-
-| Recurso | Comportamiento |
-|---------|----------------|
-| Tokens Estandar / Premium | El agente deja de responder hasta el siguiente ciclo de facturacion o la compra de un paquete |
-| Almacenamiento | No se pueden cargar nuevos archivos |
-| Voz | Las funciones de voz se desactivan |
-| Conversaciones | Se bloquean las nuevas conversaciones |
-
-Revol envia notificaciones al **80%** (advertencia) y **90%** (critico) de uso para que pueda actuar antes de alcanzar el limite.
+- [Planes y precios](/es/billing/plans)
+- [Acceso y uso de recursos](/es/billing/usage)
 
 ---
 

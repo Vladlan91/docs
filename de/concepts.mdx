@@ -101,18 +101,7 @@ Ein **KI-Agent** ist ein intelligenter Assistent, der unabhängig mit eigener Pe
 
 ### LLM-Anbieter
 
-Jeder Agent (oder einzelne Workflow-Knoten) kann ein anderes KI-Modell verwenden:
-
-| Anbieter | Standard-Modelle | Premium-Modelle |
-|----------|-----------------|-----------------|
-| **OpenAI** | GPT-4o-mini | GPT-4o |
-| **Anthropic** | Claude 3.5 Haiku | Claude 3.5 Sonnet |
-| **Google** | Gemini 2.0 Flash | Gemini 2.5 Pro |
-| **Groq** | Llama 3.1 8B | Llama 3.3 70B |
-
-<Info>
-  Standard-Modelle sind schneller und verbrauchen Standard-Token. Premium-Modelle bieten höhere Qualität und verbrauchen Premium-Token.
-</Info>
+Verfügbare Modelle hängen vom zugewiesenen Tarif und seinen Kontingenten ab. Siehe [Modelle und Kontingente](/de/billing/plans).
 
 ---
 
@@ -209,107 +198,10 @@ Jede Integration wird pro Unternehmen konfiguriert und kann mit einem oder mehre
 
 ## Abrechnung & Pläne
 
-Revol verwendet ein **token-basiertes Abrechnungsmodell**. Jede KI-Interaktion verbraucht Token — Eingabe-Token (Ihre Nachricht + Kontext) und Ausgabe-Token (Antwort des Agenten).
+Der Zugang wird dem Kontoinhaber zugewiesen; seine Unternehmen teilen sich die Ressourcen des Tarifs. Für die jeweiligen Vorgänge sind sowohl die passende Teamrolle als auch ein aktiver Tarif erforderlich. Aktuelle Preise, Verfügbarkeit und Kontingente stehen im Abrechnungsleitfaden.
 
-### Pläne
-
-<Tabs>
-  <Tab title="Kostenlos">
-    **0 $/Monat** — testen Sie Revol mit Grundlimits
-
-    | Ressource | Limit |
-    |-----------|-------|
-    | Unternehmen | 1 |
-    | KI-Agenten | 1 |
-    | Standard-Token | 20K / Tag |
-    | Premium-Token | — |
-    | Sprache | — |
-    | Speicher | 100 MB |
-    | Wissensdokumente | 10 |
-    | Konversationen | 100 |
-    | Tracking-Aufbewahrung | 30 Tage |
-    | Integrationen | — |
-    | Widget-Branding | Revol-Branding |
-  </Tab>
-  <Tab title="Premium">
-    **29 $/Monat** — für wachsende Unternehmen
-
-    | Ressource | Limit |
-    |-----------|-------|
-    | Unternehmen | 3 |
-    | KI-Agenten | 5 |
-    | Standard-Token | 5M / Monat |
-    | Premium-Token | 1M / Monat |
-    | Sprache (STT) | 60 Min. |
-    | Sprache (TTS) | 200K Zeichen |
-    | Speicher | 5 GB |
-    | Wissensdokumente | 100 |
-    | Konversationen | 5.000 |
-    | Tracking-Aufbewahrung | 180 Tage |
-    | Integrationen | VoIP, Messenger |
-    | Widget-Branding | Eigenes Branding |
-  </Tab>
-  <Tab title="Professional">
-    **79 $/Monat** — für Agenturen und Großunternehmen
-
-    | Ressource | Limit |
-    |-----------|-------|
-    | Unternehmen | 10 |
-    | KI-Agenten | Unbegrenzt |
-    | Standard-Token | 25M / Monat |
-    | Premium-Token | 2M / Monat |
-    | Sprache (STT) | 300 Min. |
-    | Sprache (TTS) | 500K Zeichen |
-    | Speicher | 50 GB |
-    | Wissensdokumente | 1.000 |
-    | Konversationen | 50.000 |
-    | Tracking-Aufbewahrung | 730 Tage (2 Jahre) |
-    | Integrationen | Alle (inkl. Google Workspace, Ads) |
-    | Widget-Branding | White Label |
-  </Tab>
-</Tabs>
-
-### Was als Token zählt
-
-Jede KI-Interaktion besteht aus zwei Teilen:
-
-- **Eingabe-Token** — Ihre Nachricht + System-Prompt + abgerufene Wissensdatenbank-Abschnitte + Gesprächsverlauf
-- **Ausgabe-Token** — die Antwort des Agenten
-
-Verschiedene Modelle verbrauchen unterschiedliche Token-Typen:
-
-| Token-Typ | Modelle | Pläne |
-|-----------|---------|-------|
-| **Standard** | GPT-4o-mini, Claude 3.5 Haiku, Gemini 2.0 Flash, Llama 3.1 8B | Alle Pläne |
-| **Premium** | GPT-4o, Claude 3.5 Sonnet, Gemini 2.5 Pro, Llama 3.3 70B | Premium+ |
-
-### Zusatzpakete
-
-Benötigen Sie mehr Ressourcen? Kaufen Sie Zusatzpakete, ohne Ihren Plan zu upgraden:
-
-| Paket | Was Sie erhalten | Preis |
-|-------|-----------------|-------|
-| Token-Paket S | 5M Standard-Token | 4 $ |
-| Token-Paket M | 20M Standard-Token | 15 $ |
-| Token-Paket L | 50M Standard-Token | 35 $ |
-| Premium-Token-Paket | 2M Premium-Token | 20 $ |
-| Sprach-Paket | 60 STT-Min. + 100K TTS-Zeichen | 3 $ |
-| Speicher-Paket | 10 GB Speicher | 1 $ |
-
-<Note>
-  Zusatzpakete laufen **3 Monate** nach dem Kauf ab. Nicht verwendete Token werden nicht zwischen Abrechnungszeiträumen übertragen.
-</Note>
-
-### Was passiert, wenn Sie das Limit erreichen
-
-| Ressource | Verhalten |
-|-----------|-----------|
-| Standard- / Premium-Token | Agent antwortet nicht mehr bis zum nächsten Abrechnungszeitraum oder Paketkauf |
-| Speicher | Neue Dateien können nicht hochgeladen werden |
-| Sprache | Sprachfunktionen werden deaktiviert |
-| Konversationen | Neue Konversationen werden blockiert |
-
-Revol sendet Benachrichtigungen bei **80 %** (Warnung) und **90 %** (kritisch) Nutzung, damit Sie handeln können, bevor das Limit erreicht wird.
+- [Tarife und Preise](/de/billing/plans)
+- [Zugang und Ressourcenverbrauch](/de/billing/usage)
 
 ---
 

@@ -1,267 +1,100 @@
 ---
-title: Plany i cennik
-description: "Plany subskrypcyjne Revol, płatności Stripe, pakiety dodatkowe, zarządzanie subskrypcją i faktury"
+title: "Plany i ceny"
+description: "Aktualne plany Revol, wspólne limity konta, pilotaż na zaproszenie i płatności"
 ---
 
-## Przegląd
+## Katalog i dostępność
 
-Revol korzysta z modelu rozliczeniowego **opartego na tokenach**, obsługiwanego przez **Stripe**. Każda interakcja z AI zużywa tokeny — im więcej Twoi agenci pracują, tym więcej tokenów jest zużywanych. Wybierz plan odpowiadający Twojemu wolumenowi i kupuj pakiety dodatkowe, gdy potrzebujesz więcej zasobów bez zmiany planu.
+Od programu partnerskiego po sprzedaż z AI i własny marketplace. Cena miesięczna dotyczy konta właściciela, a zespół i wszystkie jego firmy korzystają ze wspólnych limitów.
 
----
+<Note>
+Sieć partnerska jest obecnie dostępna w bezpłatnym pilotażu na zaproszenie. Po pilotażu cena wynosi $30/mies.; uczestnicy zachowują ją przez pierwszych sześć potwierdzonych płatnych miesięcy.
 
-## Strona z cennikiem
-
-Przejdź do **Billing** → **Pricing Plan**, aby porównać plany i wykupić subskrypcję.
+Podane kwoty to ceny katalogowe. Sprzedaż AI, Rozwój i Marketplace nie są jeszcze dostępne do samodzielnej aktywacji. Dostęp i płatności uzgadnia zespół Revol.
+</Note>
 
 <Frame>
-  <img className="block dark:hidden" src="/images/billing-plans-light.png" alt="Porównanie planów" />
-  <img className="hidden dark:block" src="/images/billing-plans-dark.png" alt="Porównanie planów" />
+  <img className="block dark:hidden" src="/images/billing-catalog-light.png" alt="Aktualny katalog czterech planów Revol po angielsku" />
+  <img className="hidden dark:block" src="/images/billing-catalog-dark.png" alt="Aktualny katalog czterech planów Revol po angielsku" />
 </Frame>
 
-Strona wyświetla kartę główną u góry z plakietką aktualnego planu i przyciskiem **Zarządzaj subskrypcją** (tylko plany płatne), a poniżej trzy karty planów ułożone obok siebie.
+Te same plany i statusy dostępności, które widać w panelu Revol. Zrzuty przedstawiają interfejs w języku angielskim.
 
-Karta Twojego aktualnego planu jest wyróżniona ciemnym obramowaniem i zieloną plakietką **"Twój plan"**. Każda karta jest podzielona na trzy grupy funkcji: **Platforma**, **Zasoby AI** i **Funkcje**. Zawarte możliwości mają zielony znacznik, a niedostępne funkcje szary X.
-
-### Plany
+## Co obejmują plany
 
 <Tabs>
-  <Tab title="Free">
-    **0$/miesiąc** — zacznij i poznaj platformę
+  <Tab title="Sieć partnerska">
+    Uruchom program partnerski.
 
-    | Zasób | Limit |
-    |----------|-------|
-    | Firmy | 1 |
-    | Agenci AI | 1 |
-    | Tokeny standardowe | 20 000 / dzień |
-    | Tokeny premium | — |
-    | Głos (STT) | — |
-    | Głos (TTS) | — |
-    | Tokeny embeddingowe | 100 000 / miesiąc |
-    | Przestrzeń dyskowa | 100 MB |
-    | Dokumenty bazy wiedzy | 10 |
-    | Rozmowy | 100 |
-    | Okres przechowywania śledzenia | 30 dni |
-    | Integracje | — |
-    | Branding widżetu | Branding Revol |
-    | Marketplace | Tylko przeglądanie |
-    | Limit żądań | 10 żąd./min |
+    - Firma i produkty
+    - Partnerzy i umowy
+    - QR partnera i skanowanie
+    - Leady i zamówienia
+    - Nagrody, wypłaty i raporty
   </Tab>
-  <Tab title="Premium">
-    **29$/miesiąc** — dla rozwijających się firm
+  <Tab title="Sprzedaż AI">
+    Sieć partnerska plus AI na Twojej stronie.
 
-    | Zasób | Limit |
-    |----------|-------|
-    | Firmy | 3 |
-    | Agenci AI | 5 |
-    | Tokeny standardowe | 5 000 000 / cykl rozliczeniowy |
-    | Tokeny premium | 1 000 000 / cykl rozliczeniowy |
-    | Głos (STT) | 60 min |
-    | Głos (TTS) | 200 000 znaków |
-    | Tokeny embeddingowe | 1 000 000 / cykl rozliczeniowy |
-    | Przestrzeń dyskowa | 5 GB |
-    | Dokumenty bazy wiedzy | 100 |
-    | Rozmowy | 5 000 |
-    | Okres przechowywania śledzenia | 180 dni |
-    | Integracje | VoIP + Messengers |
-    | Branding widżetu | Własny |
-    | Marketplace | Instalacja + Publikacja |
-    | Limit żądań | 60 żąd./min |
+    - Wszystko z planu Sieć partnerska
+    - Agenci AI i widżet na stronę
+    - Baza wiedzy i rozmowy
+    - Śledzenie, zdarzenia i samodzielne kody promocyjne
   </Tab>
-  <Tab title="Professional">
-    **79$/miesiąc** — dla agencji i przedsiębiorstw
+  <Tab title="Rozwój">
+    Sprzedaż AI plus kanały zewnętrzne i zaawansowane modele.
 
-    | Zasób | Limit |
-    |----------|-------|
-    | Firmy | 10 |
-    | Agenci AI | Bez limitu |
-    | Tokeny standardowe | 25 000 000 / cykl rozliczeniowy |
-    | Tokeny premium | 2 000 000 / cykl rozliczeniowy |
-    | Głos (STT) | 300 min |
-    | Głos (TTS) | 500 000 znaków |
-    | Tokeny embeddingowe | 5 000 000 / cykl rozliczeniowy |
-    | Przestrzeń dyskowa | 50 GB |
-    | Dokumenty bazy wiedzy | 1 000 |
-    | Rozmowy | 50 000 |
-    | Okres przechowywania śledzenia | 730 dni (2 lata) |
-    | Integracje | Wszystkie (VoIP, Messengers, Google Workspace, Ads, Webhooks) |
-    | Branding widżetu | White Label |
-    | Marketplace | Instalacja + Publikacja + Priorytet |
-    | Limit żądań | 300 żąd./min |
+    - Wszystko z planu Sprzedaż AI
+    - Integracje zewnętrzne
+    - Konektor MCP
+    - API głosowe
+    - Najlepsze modele
+  </Tab>
+  <Tab title="Marketplace">
+    Rozwój plus publiczne API katalogu firm Revol dla Twojej witryny.
+
+    - Wszystko z planu Rozwój
+    - Publiczne API katalogu firm
+    - Klucze witryny
+    - Konsultant AI na witrynie
+    - Rozszerzone limity AI i pamięci
   </Tab>
 </Tabs>
 
-<Note>
-  Plan Free resetuje zużycie tokenów **codziennie** (o północy UTC). Plany płatne resetują się na początku każdego **cyklu rozliczeniowego** (data wykupienia subskrypcji).
-</Note>
+## Limity w planach
 
-### Dostęp do modeli
+| Zasób | Sieć partnerska | Sprzedaż AI | Rozwój | Marketplace |
+|---|---|---|---|---|
+| Cena miesięczna, USD | $30 | $50 | $80 | $500 |
+| Dostępność | Pilotaż na zaproszenie | Wkrótce | Wkrótce | Wkrótce |
+| Firmy | 1 | 1 | 3 | 5 |
+| Agenci AI | — | 1 | 3 | 10 |
+| Miejsca zespołu z właścicielem | 3 | 5 | 15 | 30 |
+| Tokeny tekstowe | — | 10 000 000 | 20 000 000 | 100 000 000 |
+| Tokeny premium | — | — | 500 000 | 3 000 000 |
+| Tokeny indeksowania (embeddings) | — | 1 000 000 | 3 000 000 | 20 000 000 |
+| Rozpoznawanie mowy (STT), minuty | — | — | 500 | 2 000 |
+| Synteza mowy (TTS), znaki | — | — | 200 000 | 200 000 |
+| Przestrzeń na pliki | 1 GiB | 5 GiB | 20 GiB | 100 GiB |
+| Przestrzeń wektorowa | — | 50 MiB | 200 MiB | 1 GiB |
+| Źródła wiedzy | — | 200 | 1 000 | 5 000 |
+| Sesje śledzenia | — | 20 000 | 50 000 | 200 000 |
 
-Każdy plan określa, które modele AI są dostępne:
+Wszystkie limity są wspólne dla konta właściciela. Tokeny tekstowe, premium, indeksowanie, głos i śledzenie dotyczą okresu widocznego w Billing. Firmy, agenci, miejsca, źródła i przestrzeń dyskowa to limity pojemności, które nie zerują danych co miesiąc. Kreska oznacza brak zasobu w planie. GiB i MiB używają mnożnika 1024; panel oznacza te jednostki jako GB i MB.
 
-| Poziom | Modele | Plany |
-|------|--------|-------|
-| **Standard** | GPT-4o Mini, Claude 3.5 Haiku, Gemini 2.0 Flash, Llama 3.1 8B | Wszystkie plany |
-| **Premium** | GPT-4o, Claude 3.5 Sonnet, Gemini 2.5 Pro, Llama 3.3 70B | Premium i Professional |
+## Modele AI i głosu
 
-Modele standardowe są szybsze i zużywają tokeny standardowe. Modele premium oferują odpowiedzi wyższej jakości i zużywają tokeny premium. W planie Free modele premium są zablokowane — wybranie jednego z nich wyświetla komunikat o aktualizacji z linkiem do strony z cennikiem.
+**Sprzedaż AI** obejmuje GPT-4o mini i text-embedding-3-small. **Rozwój** i **Marketplace** obejmują również GPT-4o, Whisper (whisper-1) oraz OpenAI TTS (tts-1 / tts-1-hd), w ramach osobnych limitów. Sieć partnerska nie obejmuje zasobów AI.
 
----
+Marketplace zezwala także na modele ElevenLabs (eleven_v4_turbo i eleven_multilingual_v2) dla skonfigurowanej integracji. Własne połączenie ElevenLabs firmy jest rozliczane na koncie dostawcy, oddzielnie od limitu Revol na OpenAI TTS. Telefonia i inne usługi zewnętrzne podlegają opłatom dostawców.
 
-## Płatność przez Stripe
+## Dostęp i płatności
 
-Wszystkie płatności są przetwarzane bezpiecznie przez **Stripe**. Revol nie przechowuje danych Twojej karty — wszystko obsługuje infrastruktura Stripe zgodna z PCI.
+1. Skontaktuj się z zespołem Revol, aby uzgodnić plan i daty dostępu. Sieć partnerska działa na zaproszenie; testowy dostęp do innych planów przyznawany jest oddzielnie.
 
-### Wykupienie subskrypcji
+2. Pilotaż partnerski jest bezpłatny do uzgodnionej daty. Uczestnicy zachowują cenę $30 przez pierwszych sześć potwierdzonych płatnych okresów miesięcznych. Przedłużenia pilotażu i przerwy między płatnościami nie zużywają tych okresów.
 
-1. Przejdź do **Billing** → **Pricing Plan** i kliknij **Wybierz plan** na karcie żądanego planu
-2. Zostaniesz przekierowany na stronę **Stripe Checkout** — wpisz dane karty i potwierdź
-3. Po pomyślnej płatności Twój plan aktywuje się natychmiast i wszystkie nowe limity zaczynają obowiązywać
-4. Tworzona jest subskrypcja z automatycznym comiesięcznym odnowieniem
+3. Dla płatnego dostępu zespół wystawia fakturę do przelewu w USD lub UAH. Przy UAH kurs jest podany na fakturze. Dostęp jest potwierdzany po otrzymaniu środków; pilotaż lub test nie powodują zadłużenia ani automatycznej płatności.
 
-### Zarządzanie subskrypcją
+Po wygaśnięciu dostępu nowe operacje wymagające aktywnego planu zostają wstrzymane. Istniejące dane pozostają dostępne do przeglądania; test nie zmienia się automatycznie w inny płatny plan. Przedłużenie lub zmianę dostępu uzgodnij z zespołem.
 
-Kliknij przycisk **Zarządzaj** na stronie Przegląd lub Cennik, aby otworzyć okno modalne Zarządzania subskrypcją.
-
-<Frame>
-  <img className="block dark:hidden" src="/images/billing-manage-light.png" alt="Okno zarządzania subskrypcją" />
-  <img className="hidden dark:block" src="/images/billing-manage-dark.png" alt="Okno zarządzania subskrypcją" />
-</Frame>
-
-Okno modalne wyświetla trzy wiersze informacyjne:
-
-| Wiersz | Opis |
-|-----|-------------|
-| **Plan** | Nazwa Twojego aktualnego planu z gradientową plakietką plus cena miesięczna |
-| **Okres rozliczeniowy** | Daty rozpoczęcia i zakończenia bieżącego cyklu rozliczeniowego (np. 15.03.2026 — 15.04.2026) |
-| **Status** | Kolorowa plakietka — **Aktywny** (zielona), **Anulowanie** (bursztynowa) lub **Anulowany** (czerwona) |
-
-**Przełącznik automatycznego odnawiania** — przełącznik na dole okna:
-- **Wyłączenie** anuluje subskrypcję na koniec bieżącego okresu rozliczeniowego. Przed kontynuacją pojawia się okno potwierdzenia. Zachowujesz pełen dostęp do końca okresu (okres łaski).
-- **Włączenie** wznawia wcześniej anulowaną subskrypcję, jeśli okres łaski jeszcze nie wygasł.
-
-Podczas okresu łaski pojawia się żółte ostrzeżenie: *"Twoja subskrypcja zakończy się DD.MM.YYYY. Automatyczne odnawianie jest wyłączone."*
-
-**Przyciski w stopce:**
-- **Zamknij** — zamknij okno modalne
-- **Zmień plan** — przejdź do strony z cennikiem, aby zmienić plan na wyższy lub niższy
-
-**Metody płatności** — kliknij **Zarządzaj metodami płatności** na stronie Przegląd, aby otworzyć **Portal klienta Stripe**, gdzie możesz aktualizować karty, przeglądać potwierdzenia i zarządzać danymi rozliczeniowymi.
-
-<Warning>
-  Gdy anulujesz subskrypcję, pozostaje ona aktywna do końca bieżącego okresu rozliczeniowego (okres łaski). Po tym czasie automatycznie zostajesz przeniesiony na plan Free. Wszystkie Twoje dane są zachowane, ale limity są zmniejszone.
-</Warning>
-
-### Zmiana planu w górę i w dół
-
-- **Zmiana na wyższy** — wchodzi w życie natychmiast. Naliczana jest nowa cena planu, proporcjonalnie do pozostałych dni w bieżącym okresie.
-- **Zmiana na niższy** — wchodzi w życie na koniec bieżącego okresu rozliczeniowego. Zachowujesz pełen dostęp do wyższego planu do końca okresu.
-
----
-
-## Pakiety dodatkowe
-
-Potrzebujesz więcej zasobów bez zmiany planu? Kup jednorazowe pakiety dodatkowe w **Billing** → **Pricing Plan** (sekcja pakietów na dole) lub na dedykowanej stronie **Pakiety dodatkowe**.
-
-<Frame>
-  <img className="block dark:hidden" src="/images/billing-packs-light.png" alt="Pakiety dodatkowe" />
-  <img className="hidden dark:block" src="/images/billing-packs-dark.png" alt="Pakiety dodatkowe" />
-</Frame>
-
-Strona pakietów wyświetla siatkę 6 kolumn (3 na tablecie, 2 na telefonie) z dostępnymi pakietami:
-
-| Pakiet | Co otrzymujesz | Cena |
-|------|-------------|-------|
-| **Token Pack S** | 5 000 000 tokenów standardowych | 4$ |
-| **Token Pack M** | 20 000 000 tokenów standardowych | 15$ |
-| **Token Pack L** | 50 000 000 tokenów standardowych | 35$ |
-| **Premium Token Pack** | 2 000 000 tokenów premium | 20$ |
-| **Voice Pack** | 60 minut STT + 100 000 znaków TTS | 3$ |
-| **Storage Pack** | 10 GB dodatkowej przestrzeni | 1$ |
-
-Każda karta pakietu pokazuje ikonę (błyskawica dla tokenów, mikrofon dla głosu, baza danych dla przestrzeni), nazwę pakietu, opis zawartości, cenę i przycisk **Kup**.
-
-Kliknięcie **Kup** przekierowuje na Stripe Checkout do jednorazowej płatności (nie cyklicznej). Pakiet aktywuje się natychmiast po pomyślnej płatności.
-
-<Note>
-  Pakiety dodatkowe wygasają **3 miesiące** po zakupie. Niewykorzystane zasoby nie przenoszą się. Gdy masz wiele aktywnych pakietów, najpierw zużywany jest pakiet z najwcześniejszą datą wygaśnięcia.
-</Note>
-
-<Tip>
-  Pakiety uzupełniają limity Twojego planu — są używane dopiero po wyczerpaniu kwoty zawartej w planie. Na przykład, jeśli Twój plan Premium zawiera 5M tokenów standardowych i kupiłeś Token Pack S (5M), masz faktycznie 10M tokenów na ten okres.
-</Tip>
-
----
-
-## Faktury
-
-Cała historia płatności jest dostępna w **Billing** → **Invoices**.
-
-<Frame>
-  <img className="block dark:hidden" src="/images/billing-invoices-light.png" alt="Strona faktur" />
-  <img className="hidden dark:block" src="/images/billing-invoices-dark.png" alt="Strona faktur" />
-</Frame>
-
-### Karty podsumowania
-
-Trzy karty u góry strony zapewniają szybki przegląd finansowy:
-
-| Karta | Ikona | Opis |
-|------|------|-------------|
-| **Łączna kwota** | Gotówka (zielona) | Łączna kwota zapłacona we wszystkich transakcjach, sformatowana w USD |
-| **Transakcje** | Paragon (niebieski) | Łączna liczba transakcji rozliczeniowych |
-| **Aktywny plan** | Korona (fioletowa) | Nazwa Twojego aktualnego planu subskrypcyjnego |
-
-Wartości Łącznej kwoty i Transakcji aktualizują się dynamicznie po zastosowaniu filtrów — odzwierciedlają tylko przefiltrowane wyniki.
-
-### Tabela faktur
-
-Filtrowalna, paginowana tabela każdej transakcji rozliczeniowej. Kliknij **+ Filtr**, aby dodać chipy filtrów:
-
-| Filtr | Opcje |
-|--------|---------|
-| **Data od** | Wybór daty z kalendarza |
-| **Data do** | Wybór daty z kalendarza |
-| **Typ** | Subskrypcja, Zakup pakietu, Zmiana planu |
-| **Status** | Opłacona, Oczekująca, Nieudana, Zwrócona |
-
-**Kolumny tabeli (7):**
-
-| Kolumna | Opis | Format |
-|--------|-------------|--------|
-| **#** | Numer wiersza | Indeks sekwencyjny na bieżącej stronie |
-| **Data** | Data płatności | `DD.MM.YYYY` |
-| **Opis** | Za co zapłacono | Nazwa planu, nazwa pakietu lub opis zmiany |
-| **Okres** | Pokryty okres rozliczeniowy | `"Mar 15 – Apr 15"` lub `—` dla zakupów jednorazowych |
-| **Kwota** | Kwota płatności | Wstępnie sformatowana wartość USD (np. `$29.00`) |
-| **Status** | Status płatności | Kolorowa plakietka ze wskaźnikiem kropki |
-| **PDF** | Dokument faktury | Link do pobrania PDF lub link do hostowanej faktury |
-
-**Plakietki statusu:**
-
-| Status | Kolor | Kropka |
-|--------|-------|-----|
-| **Opłacona** | Zielony | Zielona kropka |
-| **Oczekująca** | Bursztynowy | Bursztynowa kropka |
-| **Nieudana** | Czerwony | Czerwona kropka |
-| **Zwrócona** | Szary | Szara kropka |
-
-**Kolumna PDF:** Jeśli PDF wygenerowany przez Stripe jest dostępny, ikona PDF prowadzi do pliku do pobrania. Jeśli istnieje tylko hostowany URL faktury, ikona linku zewnętrznego otwiera go w nowej karcie. W przeciwnym razie numer faktury jest wyświetlany jako zwykły tekst.
-
-Tabela ładuje 15 transakcji na stronę z tym samym systemem paginacji co Zdarzenia użycia.
-
----
-
-## Okno aktualizacji
-
-Gdy próbujesz wykonać akcję przekraczającą limity Twojego planu — taką jak utworzenie nowego agenta, rozpoczęcie rozmowy lub wysłanie wiadomości przy wyczerpanych tokenach — automatycznie pojawia się okno aktualizacji.
-
-Okno pokazuje:
-- **Ikona i nazwa zasobu** — który limit został osiągnięty (np. "Agenci AI", "Tokeny standardowe")
-- **Aktualne zużycie** — ile wykorzystałeś w stosunku do limitu planu (np. "5 / 5 agentów")
-- **Nazwa Twojego planu** — abyś wiedział, na jakim planie jesteś
-- Przycisk **Kup pakiet** — wyświetlany dla zasobów tokenów, przestrzeni i głosu, prowadzi do strony Pakiety
-- Przycisk **Zmień plan** — prowadzi do strony z cennikiem
-
-<Tip>
-  Okno aktualizacji uruchamia się również, gdy żądania API zwracają odpowiedź 429 (limit żądań) lub 403 (przekroczona kwota), zapewniając, że zawsze jesteś informowany o limitach rozliczeniowych niezależnie od tego, skąd pochodzi interakcja.
-</Tip>
+[Jak odczytywać wykorzystanie i pozostałe limity](/pl/billing/usage)

@@ -1,253 +1,39 @@
 ---
-title: Nutzung und Analyse
-description: "Ueberwachen Sie den Ressourcenverbrauch in Echtzeit, analysieren Sie Nutzungsereignisse, verstehen Sie Token-Mechanismen und verfolgen Sie Kosten ueber alle Ihre Unternehmen"
+title: "Zugang und Ressourcenverbrauch"
+description: "Zugangsstatus, Abrechnungszeitraum, Grenzen und verbleibende Ressourcen"
 ---
 
-## Ueberblick-Dashboard
-
-Navigieren Sie zu **Abrechnung** → **Ueberblick**, um das Nutzungsanalyse-Dashboard zu oeffnen — eine einzelne Seite, die Ihnen volle Transparenz ueber Ressourcenverbrauch, Plattformlimits und ein detailliertes Protokoll jedes abrechnungsrelevanten Ereignisses bietet.
+Öffnen Sie **Billing**, um den Tarif des Kontoinhabers, den Zugangsstatus und den Ressourcenverbrauch zu sehen. **Pricing Plan** öffnet den Katalog, aktiviert aber kein Abonnement.
 
 <Frame>
-  <img className="block dark:hidden" src="/images/billing-overview-light.png" alt="Abrechnungsueberblick-Dashboard" />
-  <img className="hidden dark:block" src="/images/billing-overview-dark.png" alt="Abrechnungsueberblick-Dashboard" />
+  <img className="block dark:hidden" src="/images/billing-access-light.png" alt="Zugang und Ressourcenverbrauch" />
+  <img className="hidden dark:block" src="/images/billing-access-dark.png" alt="Zugang und Ressourcenverbrauch" />
 </Frame>
 
-Das Dashboard ist in vier Abschnitte unterteilt: **Tarifuebersicht**, **Ressourcennutzung**, **Plattformlimits** und **Nutzungsereignisse**.
+Englische Oberfläche im hellen und dunklen Design. Die Verbrauchswerte sind Beispieldaten, keine Kundendaten.
 
----
+## Tarif und Zugangsstatus
 
-## Tarifuebersicht
+Die obere Karte zeigt den zugewiesenen Tarif und den Status des Pilot-, Test- oder bestätigten bezahlten Zugangs. Sie zeigt das Zugangsende und bei bezahltem Zugang auch die Nummer des bezahlten Zeitraums. Dieses Datum ist keine geplante Kartenabbuchung.
 
-Der obere Bereich der Seite zeigt eine Hero-Karte mit Ihren aktuellen Abonnementdetails.
+Der Tarif umfasst die Unternehmen des Inhabers; die Rolle jedes Teammitglieds bestimmt weiterhin die zugänglichen Daten und Aktionen. Plätze werden anhand eindeutiger E-Mail-Adressen im gesamten Konto gezählt, einschließlich Inhaber und Einladungen.
 
-**Linke Seite:**
-- Ein Verlaufs-Badge mit Ihrem Tarifnamen (Free, Premium oder Professional) mit einem Kronensymbol
-- Bei einem kostenpflichtigen Tarif — der monatliche Preis (z.B. **29 $ /Monat**) und das naechste Zahlungsdatum (z.B. "Naechste Zahlung: 15.04.2026")
-- Beim Free-Tarif — eine Aufforderung zum Upgrade
+## Ressourcenkarten lesen
 
-**Rechte Seite:**
-- **Verwalten**-Schaltflaeche — oeffnet das Abonnement-verwalten-Modal (nur fuer kostenpflichtige Tarife). Siehe [Ihr Abonnement verwalten](/billing/plans#managing-your-subscription)
-- **Tarif aufruesten** / **Tarif aendern**-Schaltflaeche — verlinkt auf die [Preisseite](/billing/plans)
+Es erscheinen nur Ressourcen, die im zugewiesenen Tarif enthalten sind. Jede Karte zeigt Verbrauch, Grenze, Restmenge und Prozentsatz. Der KI-Verbrauch enthält auch Ressourcen, die für laufende Arbeiten bereits reserviert sind.
 
----
+Text- und Premium-Token umfassen Modelleingaben und -ausgaben. Indexierungs-Token erzeugen Embeddings für die Wissenssuche; sie trainieren nicht das Sprachmodell selbst. Sprache wird in Erkennungsminuten und Synthesezeichen gemessen. Datei- und Vektorspeicher haben getrennte Grenzen.
 
-## Ressourcennutzung
+## Zeiträume und Grenzen
 
-Sechs Fortschrittsbalken-Karten in einem 3-spaltigen Raster angeordnet (2 Spalten auf Tablet, 1 auf Mobil). Jede Karte verfolgt eine abrechnungsrelevante Ressource in Echtzeit.
+Bei bezahltem Zugang entspricht der Nutzungszeitraum dem bestätigten bezahlten Zeitraum. Pilot und Test verwenden monatliche Zeitfenster ab dem zugewiesenen Zugangsdatum. Maßgeblich sind die Daten in Billing; ein Zeitraum muss nicht am Monatsersten beginnen.
 
-| # | Ressource | Symbol | Was gemessen wird |
-|---|----------|------|-----------------|
-| 1 | **Standard-Tokens** | Blitz (blau) | Tokens, die von Standardmodellen verbraucht werden — GPT-4o Mini, Claude 3.5 Haiku, Gemini 2.0 Flash, Llama 3.1 8B |
-| 2 | **Premium-Tokens** | Blitz (violett) | Tokens, die von Premiummodellen verbraucht werden — GPT-4o, Claude 3.5 Sonnet, Gemini 2.5 Pro, Llama 3.3 70B |
-| 3 | **Stimme STT** | Mikrofon (cyan) | Sprache-zu-Text-Transkriptionszeit in Minuten |
-| 4 | **Stimme TTS** | Lautsprecher (bernstein) | Text-zu-Sprache-Synthese in Zeichen |
-| 5 | **Embeddings** | Datenbank (gruen) | Tokens fuer das Training der Wissensdatenbank (Chunking + Vektorgenerierung) |
-| 6 | **Speicher** | Ordner (rosa) | Gesamter Dateispeicher ueber alle Ihre Unternehmen |
+Die Anzeigen sind unter 80% grün, ab 80% orange und ab 90% rot. Das sind visuelle Schwellen, keine Zusatzgebühren. Ein ausgeschöpftes Kontingent blockiert neue Vorgänge, die diese Ressource benötigen. Kapazitätsgrenzen werden nicht monatlich zurückgesetzt.
 
-Jede Karte zeigt:
-1. **Kopfzeile** — das Ressourcensymbol und Label links, ein Prozent-Badge rechts
-2. **Fortschrittsbalken** — ein 8px hoher Balken, der den aktuellen Verbrauch als gefuellten Verlauf zeigt
-3. **Wertezeile** — "**N** verwendet" links, "von **N**" (Ihr Tariflimit) rechts
+<Note>
+Der Bereich „Usage Events“ ist derzeit ein Vorschauplatzhalter. Ein durchsuchbares Ereignisprotokoll, Filter und Export stehen auf dieser Seite noch nicht zur Verfügung.
+</Note>
 
-### Farbschwellenwerte
+Für mehr Kapazität oder einen anderen Tarif wenden Sie sich an das Revol-Team. Es gibt weder automatische Mehrverbrauchsgebühren noch sofortige eigenständige Tarif-Upgrades.
 
-Das Prozent-Badge und der Fortschrittsbalken aendern die Farbe basierend auf Ihrem Verbrauch:
-
-| Nutzungsstufe | Farbe | Bedeutung |
-|-------------|-------|---------|
-| Unter 80% | **Gruen** | Normal — Sie haben ausreichend Spielraum |
-| 80% – 89% | **Bernstein** | Warnung — erwaegen Sie ein Upgrade oder kaufen Sie ein Paket |
-| 90% und darueber | **Rot** | Kritisch — naehert sich dem Limit, Anfragen koennen bald blockiert werden |
-
-<Tip>
-  Speicherwerte werden in lesbaren Einheiten angezeigt — **MB** fuer Betraege unter 1 GB, **GB** fuer groessere Werte. Alle anderen Ressourcen zeigen formatierte Zahlen mit Tausendertrennzeichen.
-</Tip>
-
----
-
-## Plattformlimits
-
-Vier Zaehler-Karten unter den Ressourcenmetern, in einem 4-spaltigen Raster angeordnet (2 auf Tablet, 1 auf Mobil). Diese zeigen, wie viele Plattformressourcen Sie erstellt haben im Vergleich zu Ihrem Tarifmaximum:
-
-| Symbol | Zaehler | Beispiel |
-|------|---------|---------|
-| Gebaeude (blau) | **Unternehmen** | 2 / 3 |
-| Zauberstab (violett) | **KI-Agenten** | 4 / 5 |
-| Dokument (gruen) | **Wissensdokumente** | 45 / 100 |
-| Nachrichten (bernstein) | **Konversationen** | 1.200 / 5.000 |
-
-Wenn ein Limit unbegrenzt ist (z.B. KI-Agenten im Professional-Tarif), zeigt das Maximum **∞** an.
-
-Wenn Sie versuchen, eine Ressource zu erstellen, die Ihr Tariflimit ueberschreitet (z.B. einen 6. Agenten im Premium-Tarif erstellen), erscheint ein Modal, das das Limit erklaert und ein Upgrade oder Paketkauf anbietet.
-
----
-
-## Nutzungsereignisse
-
-Der untere Abschnitt enthaelt eine detaillierte, filterbare Tabelle, die jede abrechnungsrelevante Aktion ueber alle Ihre Unternehmen protokolliert. Dies ist Ihr Pruefpfad, um genau zu verstehen, was Ihr Kontingent verbraucht hat.
-
-<Frame>
-  <img className="block dark:hidden" src="/images/billing-events-light.png" alt="Nutzungsereignisse-Tabelle" />
-  <img className="hidden dark:block" src="/images/billing-events-dark.png" alt="Nutzungsereignisse-Tabelle" />
-</Frame>
-
-### Filtern
-
-Klicken Sie auf die Schaltflaeche **+ Filter**, um Filter-Chips hinzuzufuegen. Sechs Filtertypen sind verfuegbar:
-
-| Filter | Typ | Optionen |
-|--------|------|---------|
-| **Datum von** | Datumswaehler | Kalender-Popover — Startdatum auswaehlen |
-| **Datum bis** | Datumswaehler | Kalender-Popover — Enddatum auswaehlen |
-| **Unternehmen** | Auswahl-Dropdown | Listet alle Ihre Unternehmen nach Name auf |
-| **Ereignistyp** | Auswahl-Dropdown | Chat, Workflow, STT, TTS, Embedding, Speicher |
-| **Ressource** | Auswahl-Dropdown | Standard-Tokens, Premium-Tokens, STT-Minuten, TTS-Zeichen, Embedding-Tokens, Speicher |
-| **Kanal** | Auswahl-Dropdown | Admin, Widget, System |
-
-Aktive Filter erscheinen als entfernbare Chips ueber der Tabelle. Das Entfernen eines Chips laedt die Tabelle sofort mit aktualisierten Ergebnissen neu.
-
-### Tabellenspalten
-
-Jede Zeile in der Tabelle repraesentiert ein einzelnes abrechnungsrelevantes Ereignis mit acht Spalten:
-
-| Spalte | Beschreibung | Format |
-|--------|-------------|--------|
-| **Datum** | Wann das Ereignis aufgetreten ist | `TT.MM.JJJJ HH:mm` |
-| **Unternehmen** | Welches Unternehmen das Ereignis ausgeloest hat | Unternehmensname oder `—` bei Systemebene |
-| **Ereignis** | Typ der abrechnungsrelevanten Aktion | Farbcodiertes Badge (siehe unten) |
-| **Ressource** | Welches Ressourcenkontingent verbraucht wurde | Klartext-Label |
-| **Kanal** | Woher die Interaktion stammt | Graues Badge (Admin, Widget, System) oder `—` |
-| **Modell** | Welches LLM-Modell verwendet wurde | Monospace-Schrift (z.B. `gpt-4o-mini`) oder `—` fuer Nicht-LLM-Ereignisse |
-| **Menge** | Verbrauchte Menge | Intelligent formatiert (siehe unten) |
-| **Kosten** | Geschaetzte Kosten in USD | Fett, tabellarische Ziffern (siehe unten) |
-
-### Ereignistyp-Badges
-
-Jeder Ereignistyp hat ein markantes farbcodiertes Badge fuer schnelles visuelles Erfassen:
-
-| Ereignistyp | Badge-Farbe | Beschreibung |
-|------------|-------------|-------------|
-| **Chat** | Blau | LLM-Inferenz aus einer Chat-Konversation |
-| **Workflow** | Violett | LLM-Inferenz aus einer Workflow-Knotenausfuehrung |
-| **STT** | Cyan | Sprache-zu-Text-Transkription |
-| **TTS** | Bernstein | Text-zu-Sprache-Synthese |
-| **Embedding** | Gruen | Wissensdatenbank-Training (Vektorgenerierung) |
-| **Speicher** | Rosa | Datei-Upload oder Speicheroperation |
-
-### Mengenformatierung
-
-Die Mengen-Spalte passt ihr Anzeigeformat basierend auf dem Ressourcentyp an:
-
-| Ressource | Format | Beispiel |
-|----------|--------|---------|
-| Tokens (Standard, Premium, Embedding) | Kommagetrennte Zahl + "Tokens" | `4.521 Tokens` |
-| STT-Minuten | Minuten und Sekunden | `2 Min. 34 Sek.` |
-| TTS-Zeichen | Kommagetrennte Zahl + "Zeichen" | `1.250 Zeichen` |
-| Speicher | MB oder KB | `3,2 MB`, `450 KB` |
-
-### Kostenformatierung
-
-Die Kosten-Spalte zeigt geschaetzte USD-Kosten mit an den Wert angepasster Praezision:
-
-- **0,01 $ und darueber** — mit 2 Dezimalstellen angezeigt (z.B. `1,25 $`)
-- **Unter 0,01 $** — mit bis zu 8 Dezimalstellen angezeigt, nachfolgende Nullen entfernt (z.B. `0,00042 $`)
-- **Null oder nicht zutreffend** — angezeigt als `—`
-
-### Paginierung
-
-Die Tabelle laedt 25 Ereignisse pro Seite und verwendet asynchrone Paginierung. Die untere Leiste zeigt:
-- **"Zeigt X–Y von Z"** — aktueller Bereich und Gesamtanzahl
-- **Seitenschaltflaechen** — erste Seite, letzte Seite und ein Fenster von ±2 Seiten um die aktuelle, mit Auslassungszeichen (`…`) fuer Luecken
-
-Waehrend des Ladens zeigt die Tabelle ein animiertes Skeleton mit 8 Shimmer-Zeilen. Wenn keine Ereignisse Ihren Filtern entsprechen, erscheint eine Leerzustandsmeldung: "Keine Nutzungsereignisse gefunden."
-
----
-
-## Wie Tokens funktionieren
-
-Jede KI-Interaktion besteht aus zwei Teilen:
-
-- **Eingabe-Tokens** — Ihre Nachricht + System-Prompt + Wissensdatenbank-Kontext (RAG-Chunks) + Konversationsverlauf + Tool-Beschreibungen
-- **Ausgabe-Tokens** — die Antwort des Agenten
-
-Beide zaehlen zu Ihrem Kontingent. Die Gesamtmenge pro Interaktion haengt ab von:
-
-1. **System-Prompt-Laenge** — laengere Prompts verbrauchen mehr Eingabe-Tokens pro Nachricht
-2. **Wissensdatenbank-Kontext** — mehr abgerufene RAG-Chunks = mehr Eingabe-Tokens. Steuern Sie dies ueber **RAG-Einstellungen → Chunk-Limit**
-3. **Konversationsverlauf** — laengere Konversationen akkumulieren Kontext aus vorherigen Nachrichten
-4. **Antwortlaenge** — gesteuert durch den **Antwortlaenge**-Persoenlichkeitsregler in den Agenteneinstellungen
-5. **Tool-Aufrufe** — jede Tool-Aufruf-Runde fuegt Eingabe-Tokens (Tool-Beschreibungen) und Ausgabe-Tokens (Tool-Argumente + Ergebnisse) hinzu
-
-### Token-Typen
-
-| Token-Typ | Modelle | Kostenprofil |
-|-----------|--------|-------------|
-| **Standard** | GPT-4o Mini, Claude 3.5 Haiku, Gemini 2.0 Flash, Llama 3.1 8B | Niedrigere Kosten, schnellere Antworten |
-| **Premium** | GPT-4o, Claude 3.5 Sonnet, Gemini 2.5 Pro, Llama 3.3 70B | Hoehere Kosten, bessere Qualitaet |
-| **Embedding** | text-embedding-ada-002 | Wird nur beim Wissensdatenbank-Training verwendet |
-
-<Tip>
-  Um die Token-Nutzung zu optimieren: Halten Sie System-Prompts praegnant, begrenzen Sie die Anzahl der RAG-Chunks pro Abfrage (RAG-Einstellungen → Chunk-Limit) und verwenden Sie Standardmodelle fuer einfache Aufgaben, waehrend Sie Premiummodelle fuer komplexe Antworten reservieren.
-</Tip>
-
----
-
-## Stimmnutzung
-
-Stimminteraktionen verbrauchen zwei separate Ressourcen:
-
-- **STT (Sprache-zu-Text)** — gemessen in Minuten. Jede Sprachnachricht wird transkribiert, und die Dauer (aufgerundet auf die naechste Minute) wird von Ihrem Kontingent abgezogen.
-- **TTS (Text-zu-Sprache)** — gemessen in Zeichen. Die Textantwort des Agenten wird zu Audio synthetisiert, und die Zeichenzahl wird abgezogen.
-
-Ein einzelner Sprachkonversationszug verbraucht typischerweise sowohl STT-Minuten (das Audio des Besuchers) als auch TTS-Zeichen (die gesprochene Antwort des Agenten). Diese erscheinen als separate Zeilen in der Nutzungsereignisse-Tabelle — ein **STT**-Ereignis (cyanfarbenes Badge) und ein **TTS**-Ereignis (bernsteinfarbenes Badge).
-
----
-
-## Speichernutzung
-
-Speicher wird verbraucht, wenn Sie Dateien in den [Dateimanager](https://revol-ai.app/file/manager/index) hochladen:
-
-- **Dokumente** — PDF, Word, Excel, TXT
-- **Fotos** — JPG, PNG
-- **Videos** — MP4, WebM, MOV
-- **Audioaufnahmen** — Konversations-Audiodateien
-
-Die Speichernutzung wird bidirektional verfolgt — Hochladen erhoeht die Nutzung, Loeschen von Dateien verringert sie. Der Speichermeter auf dem Dashboard zeigt Ihren aktuellen Gesamtwert ueber alle Unternehmen.
-
----
-
-## Kontingentbenachrichtigungen
-
-Revol ueberwacht Ihre Nutzung und sendet Warnungen, bevor Sie Limits erreichen:
-
-| Schwellenwert | Stufe | Benachrichtigung |
-|-----------|-------|-------------|
-| **80%** | Warnung | E-Mail + In-App-Banner: "Sie haben 80% Ihrer [Ressource] verbraucht. Erwaegen Sie ein Upgrade oder kaufen Sie ein Paket." |
-| **90%** | Kritisch | E-Mail + In-App-Banner: "Sie haben 90% Ihrer [Ressource] verbraucht. Anfragen werden bei 100% blockiert." |
-
-Jede Warnung wird **einmal pro Abrechnungszeitraum** pro Ressourcentyp ausgeloest. Kritische Warnungen haben Vorrang — wenn Ihre Nutzung von 75% auf 92% springt, wird nur die kritische Benachrichtigung gesendet.
-
-In-App-Banner erscheinen oben auf jeder Seite im Dashboard. Sie koennen sie fuer die aktuelle Sitzung verwerfen, aber sie erscheinen bei Ihrer naechsten Anmeldung erneut, wenn der Schwellenwert noch ueberschritten ist.
-
----
-
-## Was am Limit passiert
-
-| Ressource | Verhalten |
-|----------|----------|
-| Standard- / Premium-Tokens | Agent antwortet nicht mehr bis zum naechsten Abrechnungszyklus oder bis Sie ein Paket kaufen |
-| Speicher | Neue Dateien koennen nicht in den Dateimanager hochgeladen werden |
-| Stimme (STT/TTS) | Stimmfunktionen werden deaktiviert, Text-Chat funktioniert weiter |
-| Konversationen | Neue Konversationen werden blockiert, bestehende laufen weiter |
-| Wissensdokumente | Neue Dokumente koennen nicht zu Agenten-Wissensdatenbanken hinzugefuegt werden |
-
-Wenn ein Limit erreicht ist und Sie versuchen, eine blockierte Aktion auszufuehren, erscheint ein Modal, das Ihre aktuelle Nutzung, das Tariflimit und Optionen zum Aufruesten Ihres Tarifs oder Kaufen eines Zusatzpakets anzeigt.
-
----
-
-## Abrechnungszeitraum
-
-- **Free-Tarif** — taeglicher Abrechnungszeitraum. Die Token-Nutzung wird jeden Tag um Mitternacht UTC zurueckgesetzt.
-- **Kostenpflichtige Tarife** — monatlicher Abrechnungszeitraum. Die Nutzung wird am Jahrestag Ihres Abonnementdatums zurueckgesetzt (z.B. wenn Sie am 15. Maerz abonniert haben, ist Ihr naechster Reset am 15. April).
-
-Zusatzpakete sind unabhaengig vom Abrechnungszeitraum — sie haben ein eigenes 3-Monats-Ablaufdatum ab Kaufdatum. Wenn Ihr enthaltenes Tarifkontingent erschoepft ist, wechselt der Verbrauch automatisch zu Ihrem aeltesten Paket.
+[Tarife und Kontingente vergleichen](/de/billing/plans)

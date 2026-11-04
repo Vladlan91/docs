@@ -1,253 +1,39 @@
 ---
-title: Uso y Analíticas
-description: "Monitoree el consumo de recursos en tiempo real, analice eventos de uso, comprenda la mecánica de tokens y rastree costos en todas sus empresas"
+title: "Acceso y uso de recursos"
+description: "Estado del acceso, periodo de uso, límites y recursos restantes"
 ---
 
-## Panel de Descripción General
-
-Navegue a **Facturación** → **Descripción General** para abrir el panel de Analíticas de Uso — una única página que le da visibilidad completa sobre el consumo de recursos, límites de la plataforma y un registro detallado de cada evento facturable.
+Abre **Billing** para ver el plan del propietario de la cuenta, el estado del acceso y el uso actual. **Pricing Plan** abre el catálogo, pero no activa una suscripción.
 
 <Frame>
-  <img className="block dark:hidden" src="/images/billing-overview-light.png" alt="Panel de descripción general de facturación" />
-  <img className="hidden dark:block" src="/images/billing-overview-dark.png" alt="Panel de descripción general de facturación" />
+  <img className="block dark:hidden" src="/images/billing-access-light.png" alt="Acceso y uso de recursos" />
+  <img className="hidden dark:block" src="/images/billing-access-dark.png" alt="Acceso y uso de recursos" />
 </Frame>
 
-El panel se divide en cuatro secciones: **Resumen del Plan**, **Uso de Recursos**, **Límites de Plataforma** y **Eventos de Uso**.
+Interfaz en inglés, con temas claro y oscuro. El ejemplo de uso contiene valores ilustrativos, no datos de clientes.
 
----
+## Plan y estado del acceso
 
-## Resumen del Plan
+La tarjeta superior muestra el plan asignado y si el acceso de piloto, prueba o pago confirmado está activo. Incluye la fecha de fin de acceso y, para el acceso de pago, el número del periodo pagado. Esa fecha no es un cargo programado en la tarjeta.
 
-La parte superior de la página muestra una tarjeta destacada con los detalles de su suscripción actual.
+El plan cubre las empresas del propietario, pero el rol de cada miembro sigue determinando los datos y acciones permitidos. Las plazas se cuentan por correo electrónico único en toda la cuenta, incluido el propietario y las invitaciones.
 
-**Lado izquierdo:**
-- Una insignia degradada mostrando el nombre de su plan (Free, Premium o Professional) con un icono de corona
-- Si tiene un plan de pago — el precio mensual (por ejemplo, **$29 /mes**) y la fecha del próximo pago (por ejemplo, "Próximo pago: 15.04.2026")
-- Si tiene el plan Free — una invitación a actualizar
+## Cómo leer las tarjetas de recursos
 
-**Lado derecho:**
-- Botón **Gestionar** — abre el modal de Gestionar Suscripción (solo planes de pago). Vea [Gestionar Su Suscripción](/billing/plans#managing-your-subscription)
-- Botón **Actualizar Plan** / **Cambiar Plan** — enlaza a la página de [Precios](/billing/plans)
+Solo aparecen los recursos incluidos en el plan asignado. Cada tarjeta muestra la cantidad usada, el límite, lo que queda y un porcentaje. El uso de IA incluye recursos ya reservados para tareas en curso.
 
----
+Los tokens de texto y premium cubren la entrada y salida del modelo. Los tokens de indexación generan embeddings para buscar en la base de conocimiento; no entrenan el modelo de lenguaje. La voz se mide en minutos de reconocimiento y caracteres de síntesis. Los archivos y vectores tienen límites separados.
 
-## Uso de Recursos
+## Periodos y límites
 
-Seis tarjetas con barras de progreso organizadas en una cuadrícula de 3 columnas (2 columnas en tableta, 1 en móvil). Cada tarjeta rastrea un recurso facturable en tiempo real.
+Para el acceso de pago, el periodo de uso coincide con el periodo pagado confirmado. Los pilotos y pruebas tienen ventanas mensuales desde la fecha de acceso asignada. Consulta las fechas en Billing: el periodo no tiene por qué empezar el primer día del mes.
 
-| # | Recurso | Icono | Qué Mide |
-|---|----------|------|-----------------|
-| 1 | **Tokens Estándar** | Rayo (azul) | Tokens consumidos por modelos estándar — GPT-4o Mini, Claude 3.5 Haiku, Gemini 2.0 Flash, Llama 3.1 8B |
-| 2 | **Tokens Premium** | Rayo (púrpura) | Tokens consumidos por modelos premium — GPT-4o, Claude 3.5 Sonnet, Gemini 2.5 Pro, Llama 3.3 70B |
-| 3 | **Voz STT** | Micrófono (cian) | Tiempo de transcripción de voz a texto en minutos |
-| 4 | **Voz TTS** | Altavoz (ámbar) | Síntesis de texto a voz en caracteres |
-| 5 | **Embeddings** | Base de datos (verde) | Tokens usados para entrenamiento de base de conocimientos (fragmentación + generación de vectores) |
-| 6 | **Almacenamiento** | Carpeta (rosa) | Almacenamiento total de archivos en todas sus empresas |
+Los indicadores son verdes por debajo del 80%, naranjas desde el 80% y rojos desde el 90%. Son umbrales visuales, no cargos adicionales. Agotar una cuota bloquea nuevas operaciones que necesiten ese recurso. Los límites de capacidad no se reinician cada mes.
 
-Cada tarjeta muestra:
-1. **Fila de encabezado** — el icono y etiqueta del recurso a la izquierda, una insignia de porcentaje a la derecha
-2. **Barra de progreso** — una barra de 8px de alto mostrando el consumo actual como un degradado relleno
-3. **Fila de valores** — "**N** usado" a la izquierda, "de **N**" (su límite de plan) a la derecha
+<Note>
+El área «Usage Events» es por ahora una vista de ejemplo. Esta página aún no dispone de registro de eventos con búsqueda, filtros ni exportación.
+</Note>
 
-### Umbrales de Color
+Para ampliar la capacidad o cambiar de plan, contacta con el equipo de Revol. No hay cargos automáticos por exceso ni mejoras instantáneas del plan por cuenta propia.
 
-La insignia de porcentaje y la barra de progreso cambian de color según cuánto ha consumido:
-
-| Nivel de Uso | Color | Significado |
-|-------------|-------|---------|
-| Menor al 80% | **Verde** | Normal — tiene suficiente margen |
-| 80% – 89% | **Ámbar** | Advertencia — considere actualizar o comprar un paquete |
-| 90% y más | **Rojo** | Crítico — acercándose al límite, las solicitudes podrían bloquearse pronto |
-
-<Tip>
-  Los valores de almacenamiento se muestran en unidades legibles — **MB** para cantidades menores a 1 GB, **GB** para valores mayores. Todos los demás recursos muestran números formateados con separadores de miles.
-</Tip>
-
----
-
-## Límites de Plataforma
-
-Cuatro tarjetas de contador debajo de los medidores de recursos, organizadas en una cuadrícula de 4 columnas (2 en tableta, 1 en móvil). Estas muestran cuántos recursos de plataforma ha creado versus el máximo de su plan:
-
-| Icono | Contador | Ejemplo |
-|------|---------|---------|
-| Edificio (azul) | **Empresas** | 2 / 3 |
-| Varita (púrpura) | **Agentes de IA** | 4 / 5 |
-| Documento (verde) | **Documentos de Conocimiento** | 45 / 100 |
-| Mensajes (ámbar) | **Conversaciones** | 1,200 / 5,000 |
-
-Cuando un límite es ilimitado (por ejemplo, Agentes de IA en el plan Professional), el máximo se muestra como **∞**.
-
-Cuando intenta crear un recurso que excede el límite de su plan (por ejemplo, crear un 6to agente en el plan Premium), aparece un modal explicando el límite y ofreciendo actualizar o comprar un paquete.
-
----
-
-## Eventos de Uso
-
-La sección inferior contiene una tabla detallada y filtrable que registra cada acción facturable en todas sus empresas. Este es su registro de auditoría para entender exactamente qué consumió su cuota.
-
-<Frame>
-  <img className="block dark:hidden" src="/images/billing-events-light.png" alt="Tabla de eventos de uso" />
-  <img className="hidden dark:block" src="/images/billing-events-dark.png" alt="Tabla de eventos de uso" />
-</Frame>
-
-### Filtrado
-
-Haga clic en el botón **+ Filtro** para agregar chips de filtro. Seis tipos de filtro están disponibles:
-
-| Filtro | Tipo | Opciones |
-|--------|------|---------|
-| **Fecha Desde** | Selector de fecha | Popover de calendario — seleccione una fecha de inicio |
-| **Fecha Hasta** | Selector de fecha | Popover de calendario — seleccione una fecha de fin |
-| **Empresa** | Desplegable | Lista todas sus empresas por nombre |
-| **Tipo de Evento** | Desplegable | Chat, Workflow, STT, TTS, Embedding, Storage |
-| **Recurso** | Desplegable | Tokens Estándar, Tokens Premium, Minutos STT, Caracteres TTS, Tokens de Embedding, Almacenamiento |
-| **Canal** | Desplegable | Admin, Widget, System |
-
-Los filtros activos aparecen como chips removibles sobre la tabla. Eliminar un chip recarga inmediatamente la tabla con resultados actualizados.
-
-### Columnas de la Tabla
-
-Cada fila en la tabla representa un único evento facturable con ocho columnas:
-
-| Columna | Descripción | Formato |
-|--------|-------------|--------|
-| **Fecha** | Cuándo ocurrió el evento | `DD.MM.AAAA HH:mm` |
-| **Empresa** | Qué empresa del agente activó el evento | Nombre de la empresa, o `—` si es a nivel del sistema |
-| **Evento** | Tipo de acción facturable | Insignia codificada por color (vea abajo) |
-| **Recurso** | Qué cuota de recurso se consumió | Etiqueta de texto plano |
-| **Canal** | Dónde se originó la interacción | Insignia gris (Admin, Widget, System), o `—` |
-| **Modelo** | Qué modelo LLM se usó | Fuente monoespaciada (por ejemplo, `gpt-4o-mini`), o `—` para eventos no-LLM |
-| **Cantidad** | Cantidad consumida | Formato inteligente (vea abajo) |
-| **Costo** | Costo estimado en USD | Negrita, numéricos tabulares (vea abajo) |
-
-### Insignias de Tipo de Evento
-
-Cada tipo de evento tiene una insignia distintiva codificada por color para escaneo visual rápido:
-
-| Tipo de Evento | Color de Insignia | Descripción |
-|------------|-------------|-------------|
-| **Chat** | Azul | Inferencia LLM de una conversación de chat |
-| **Workflow** | Púrpura | Inferencia LLM de la ejecución de un nodo de workflow |
-| **STT** | Cian | Transcripción de voz a texto |
-| **TTS** | Ámbar | Síntesis de texto a voz |
-| **Embedding** | Verde | Entrenamiento de base de conocimientos (generación de vectores) |
-| **Storage** | Rosa | Carga de archivos u operación de almacenamiento |
-
-### Formato de Cantidad
-
-La columna Cantidad adapta su formato de visualización según el tipo de recurso:
-
-| Recurso | Formato | Ejemplo |
-|----------|--------|---------|
-| Tokens (Estándar, Premium, Embedding) | Número con separadores + "tokens" | `4,521 tokens` |
-| Minutos STT | Minutos y segundos | `2m 34s` |
-| Caracteres TTS | Número con separadores + "chars" | `1,250 chars` |
-| Almacenamiento | MB o KB | `3.2 MB`, `450 KB` |
-
-### Formato de Costo
-
-La columna Costo muestra el costo estimado en USD con precisión adaptada al valor:
-
-- **$0.01 y más** — mostrado con 2 decimales (por ejemplo, `$1.25`)
-- **Menor a $0.01** — mostrado con hasta 8 decimales, ceros finales eliminados (por ejemplo, `$0.00042`)
-- **Cero o no aplicable** — mostrado como `—`
-
-### Paginación
-
-La tabla carga 25 eventos por página y usa paginación asincrónica. La barra inferior muestra:
-- **"Mostrando X–Y de Z"** — rango actual y conteo total
-- **Botones de página** — primera página, última página, y una ventana de ±2 páginas alrededor de la actual, con puntos suspensivos (`…`) para huecos
-
-Mientras carga, la tabla muestra un esqueleto animado con 8 filas de brillo. Si ningún evento coincide con sus filtros, aparece un mensaje de estado vacío: "No se encontraron eventos de uso."
-
----
-
-## Cómo Funcionan los Tokens
-
-Cada interacción de IA consiste en dos partes:
-
-- **Tokens de entrada** — su mensaje + prompt del sistema + contexto de base de conocimientos (fragmentos RAG) + historial de conversación + descripciones de herramientas
-- **Tokens de salida** — la respuesta del agente
-
-Ambos cuentan para su cuota. El total por interacción depende de:
-
-1. **Longitud del prompt del sistema** — prompts más largos consumen más tokens de entrada por mensaje
-2. **Contexto de base de conocimientos** — más fragmentos RAG recuperados = más tokens de entrada. Controle esto vía **Configuración RAG → Límite de Fragmentos**
-3. **Historial de conversación** — conversaciones más largas acumulan contexto de mensajes anteriores
-4. **Longitud de respuesta** — controlada por el deslizador de **Longitud de Respuesta** en la personalidad del agente
-5. **Llamadas a herramientas** — cada ronda de llamada a herramientas agrega tokens de entrada (descripciones de herramientas) y tokens de salida (argumentos de herramientas + resultados)
-
-### Tipos de Tokens
-
-| Tipo de Token | Modelos | Perfil de Costo |
-|-----------|--------|-------------|
-| **Estándar** | GPT-4o Mini, Claude 3.5 Haiku, Gemini 2.0 Flash, Llama 3.1 8B | Menor costo, respuestas más rápidas |
-| **Premium** | GPT-4o, Claude 3.5 Sonnet, Gemini 2.5 Pro, Llama 3.3 70B | Mayor costo, mejor calidad |
-| **Embedding** | text-embedding-ada-002 | Usado solo durante el entrenamiento de base de conocimientos |
-
-<Tip>
-  Para optimizar el uso de tokens: mantenga los prompts del sistema concisos, limite la cantidad de fragmentos RAG por consulta (Configuración RAG → Límite de Fragmentos), y use modelos estándar para tareas simples reservando modelos premium para respuestas complejas.
-</Tip>
-
----
-
-## Uso de Voz
-
-Las interacciones de voz consumen dos recursos separados:
-
-- **STT (Voz a Texto)** — medido en minutos. Cada mensaje de voz se transcribe, y la duración (redondeada al minuto más cercano) se deduce de su cuota.
-- **TTS (Texto a Voz)** — medido en caracteres. La respuesta de texto del agente se sintetiza a audio, y el conteo de caracteres se deduce.
-
-Un solo turno de conversación de voz típicamente consume tanto minutos STT (el audio del visitante) como caracteres TTS (la respuesta hablada del agente). Estos aparecen como filas separadas en la tabla de Eventos de Uso — un evento **STT** (insignia cian) y un evento **TTS** (insignia ámbar).
-
----
-
-## Uso de Almacenamiento
-
-El almacenamiento se consume cuando sube archivos al [Gestor de Archivos](https://revol-ai.app/file/manager/index):
-
-- **Documentos** — PDF, Word, Excel, TXT
-- **Fotos** — JPG, PNG
-- **Videos** — MP4, WebM, MOV
-- **Grabaciones de audio** — archivos de audio de conversaciones
-
-El uso de almacenamiento se rastrea bidireccionalmente — subir incrementa el uso, eliminar archivos lo disminuye. El medidor de Almacenamiento en el panel muestra su total actual en todas las empresas.
-
----
-
-## Notificaciones de Cuota
-
-Revol monitorea su uso y envía alertas antes de que alcance los límites:
-
-| Umbral | Nivel | Notificación |
-|-----------|-------|-------------|
-| **80%** | Advertencia | Email + banner en la aplicación: "Ha usado el 80% de su [recurso]. Considere actualizar o comprar un paquete." |
-| **90%** | Crítico | Email + banner en la aplicación: "Ha usado el 90% de su [recurso]. Las solicitudes se bloquearán al 100%." |
-
-Cada alerta se dispara **una vez por período de facturación** por tipo de recurso. Las alertas críticas tienen prioridad — si su uso salta del 75% al 92%, solo se envía la notificación crítica.
-
-Los banners en la aplicación aparecen en la parte superior de cada página del panel. Puede descartarlos para la sesión actual, pero reaparecen en su próximo inicio de sesión si el umbral aún se supera.
-
----
-
-## Qué Sucede al Alcanzar el Límite
-
-| Recurso | Comportamiento |
-|----------|----------|
-| Tokens Estándar / Premium | El agente deja de responder hasta el siguiente ciclo de facturación o hasta que compre un paquete |
-| Almacenamiento | No puede subir nuevos archivos al Gestor de Archivos |
-| Voz (STT/TTS) | Las funcionalidades de voz se deshabilitan, el chat de texto continúa funcionando |
-| Conversaciones | Se bloquean nuevas conversaciones, las existentes continúan |
-| Documentos de Conocimiento | No puede agregar nuevos documentos a las bases de conocimiento de los agentes |
-
-Cuando se alcanza un límite e intenta realizar una acción bloqueada, aparece un modal mostrando su uso actual, límite del plan y opciones para actualizar su plan o comprar un paquete adicional.
-
----
-
-## Período de Facturación
-
-- **Plan Free** — período de facturación diario. El uso de tokens se restablece cada día a medianoche UTC.
-- **Planes de pago** — período de facturación mensual. El uso se restablece en el aniversario de su fecha de suscripción (por ejemplo, si se suscribió el 15 de marzo, su próximo restablecimiento es el 15 de abril).
-
-Los paquetes adicionales son independientes del período de facturación — tienen su propia expiración de 3 meses desde la fecha de compra. Cuando su cuota incluida del plan se agota, el consumo cambia automáticamente a su paquete con la expiración más próxima.
+[Comparar planes y cuotas](/es/billing/plans)
